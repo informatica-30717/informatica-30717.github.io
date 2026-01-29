@@ -1,0 +1,29 @@
+# Summary {.unnumbered}
+
+By now you should have a good idea of what Polars can do and how it compares to Pandas.
+
+## Reasons to use Polars
+
+- It's really fast.
+- It has a nice API.
+- It does most of the things Pandas does. The biggest missing things are some I/O methods.
+- It's available in Python, Rust, NodeJS and Ruby. This is partly because most of the code is written in Rust, and calling Rust in other languages works much better than calling Python.
+- The lead dev is **very** productive and quick to fix bugs.
+
+## Reasons not to use Polars
+
+### Bugs (maybe)
+
+As of July 2024 Polars has a few hundred open issues marked as bugs. This is not so bad when you consider
+that Pandas has three times that number. But maybe you already use Pandas and are well-acquainted with these bugs.
+
+
+### If it ain't broke, don't fix it
+
+Suppose you have a bunch of important stuff in another library that works fine, even if it's a bit slow. Maybe it doesn't have good tests. Switching library is tricky and may not be worth it here. Even if Polars is bug-free, various default behaviours might differ from your expectations.
+
+## Other cool stuff you might like
+
+- [r-polars](https://github.com/pola-rs/r-polars), a work-in-progress project bringing Polars to R.
+- [tidypolars](https://github.com/markfairbanks/tidypolars): an API for py-polars that should be familiar to R Tidyverse users.
+- [DuckDB](https://duckdb.org/): not a dataframe library, but can do a lot of what Polars does and is often mentioned in the same breath.
