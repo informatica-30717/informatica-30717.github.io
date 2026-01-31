@@ -6,10 +6,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Kevin Heavey">
-<meta name="description" content="A side-by-side comparison of the Polars and Pandas libraries.">
+<meta name="description" content="Material de la asignatura de Informática (30717) para el Grado en Estudios en Arquitectura de la Universidad de Zaragoza.">
 
-<title>Modern Polars</title>
+<title>Informática (30717) - Grado en Estudios en Arquitectura</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -32,7 +31,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./polar-bear-airpods-no-background.png" rel="icon" type="image/png">
+<link href="./lessons/lesson1.html" rel="next">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
@@ -43,13 +42,13 @@ ul.task-list li input[type="checkbox"] {
 <link href="site_libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-432e0ea3e4aab73090cd77ffaecfaf65.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-029b10fc0dc652dab2ec1ac156c1a037.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
-  "location": "sidebar",
+  "location": "navbar",
   "copy-button": false,
   "collapse-after": 3,
-  "panel-placement": "start",
-  "type": "textbox",
+  "panel-placement": "end",
+  "type": "overlay",
   "limit": 50,
   "keyboard-shortcut": [
     "f",
@@ -73,81 +72,83 @@ ul.task-list li input[type="checkbox"] {
 }</script>
 
 
-<link rel="stylesheet" href="custom.css">
-<meta property="og:title" content="Modern Polars">
-<meta property="og:description" content="Material de prácticas de Informática (30717, Estudios en Arquitectura)">
-<meta property="og:image" content="https://github.com/informatica-30717/informatica-30717.github.io/raw/master/book/resized-og-polar-bear-airpods-no-background.png">
-<meta property="og:site_name" content="Modern Polars">
+<link rel="stylesheet" href="styles.css">
+<meta property="og:title" content="Informática (30717) - Grado en Estudios en Arquitectura">
+<meta property="og:description" content="Material de la asignatura de Informática (30717) para el Grado en Estudios en Arquitectura de la Universidad de Zaragoza.">
+<meta property="og:image" content="https://course.fast.ai/www/social.png">
+<meta property="og:site_name" content="Informática (30717) - Grado en Estudios en Arquitectura">
+<meta name="twitter:title" content="Informática (30717) - Grado en Estudios en Arquitectura">
+<meta name="twitter:description" content="Material de la asignatura de Informática (30717) para el Grado en Estudios en Arquitectura de la Universidad de Zaragoza.">
+<meta name="twitter:image" content="https://course.fast.ai/www/social.png">
+<meta name="twitter:card" content="summary_large_image">
 </head>
 
-<body class="nav-sidebar floating quarto-light">
+<body class="nav-sidebar floating nav-fixed quarto-light">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="./index.html">
+    <span class="navbar-title">Informática (30717) - Grado en Estudios en Arquitectura</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/informatica-30717/informatica-30717.github.io"> <i class="bi bi-github" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+  <a href="" class="quarto-reader-toggle quarto-navigation-tool px-1" onclick="window.quartoToggleReader(); return false;" title="Toggle reader mode">
+  <div class="quarto-reader-toggle-btn">
+  <i class="bi"></i>
+  </div>
+</a>
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
   <nav class="quarto-secondary-nav">
     <div class="container-fluid d-flex">
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./index.html">Preface</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./index.html">Informática (30717) - Grado en Estudios en Arquitectura</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
-      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
-        <i class="bi bi-search"></i>
-      </button>
     </div>
   </nav>
 </header>
 <!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
-    <div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
       <a href="./index.html" class="sidebar-logo-link">
-      <img src="./polar-bear-airpods-no-background.png" alt="" class="sidebar-logo light-content py-0 d-lg-inline d-none">
-      <img src="./polar-bear-airpods-no-background.png" alt="" class="sidebar-logo dark-content py-0 d-lg-inline d-none">
+      <img src="./../resources/unizar.png" alt="" class="sidebar-logo light-content py-0 d-lg-inline d-none">
+      <img src="./../resources/unizar.png" alt="" class="sidebar-logo dark-content py-0 d-lg-inline d-none">
       </a>
-    <div class="sidebar-title mb-0 py-0">
-      <a href="./">Modern Polars</a> 
-        <div class="sidebar-tools-main">
-    <a href="https://github.com/informatica-30717/informatica-30717.github.io/tree/master/book/" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
-    <div class="dropdown">
-      <a href="" title="Share" id="quarto-navigation-tool-dropdown-0" class="quarto-navigation-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false" role="link" aria-label="Share"><i class="bi bi-share"></i></a>
-      <ul class="dropdown-menu" aria-labelledby="quarto-navigation-tool-dropdown-0">
-          <li>
-            <a class="dropdown-item sidebar-tools-main-item" href="https://twitter.com/intent/tweet?url=|url|">
-              <i class="bi bi-twitter pe-1"></i>
-            Twitter
-            </a>
-          </li>
-          <li>
-            <a class="dropdown-item sidebar-tools-main-item" href="https://www.facebook.com/sharer/sharer.php?u=|url|">
-              <i class="bi bi-facebook pe-1"></i>
-            Facebook
-            </a>
-          </li>
-          <li>
-            <a class="dropdown-item sidebar-tools-main-item" href="https://www.linkedin.com/sharing/share-offsite/?url=|url|">
-              <i class="bi bi-linkedin pe-1"></i>
-            LinkedIn
-            </a>
-          </li>
-      </ul>
-    </div>
-</div>
-    </div>
       </div>
-        <div class="mt-2 flex-shrink-0 align-items-center">
-        <div class="sidebar-search">
-        <div id="quarto-search" class="" title="Search"></div>
-        </div>
-        </div>
     <div class="sidebar-menu-container"> 
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./index.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">Preface</span></a>
+ <span class="menu-text">Informática (30717) - Grado en Estudios en Arquitectura</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./lessons/lesson1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Práctica 1: Introducción a Processing</span></a>
   </div>
 </li>
     </ul>
@@ -155,36 +156,20 @@ ul.task-list li input[type="checkbox"] {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">Table of contents</h2>
-   
-  <ul>
-  <li><a href="#preface" id="toc-preface" class="nav-link active" data-scroll-target="#preface">Preface</a>
-  <ul class="collapse">
-  <li><a href="#who-is-this-for" id="toc-who-is-this-for" class="nav-link" data-scroll-target="#who-is-this-for">Who is this for?</a></li>
-  <li><a href="#why" id="toc-why" class="nav-link" data-scroll-target="#why">Why?</a></li>
-  <li><a href="#credit" id="toc-credit" class="nav-link" data-scroll-target="#credit">Credit</a></li>
-  <li><a href="#running-the-code-yourself" id="toc-running-the-code-yourself" class="nav-link" data-scroll-target="#running-the-code-yourself">Running the code yourself</a>
-  <ul class="collapse">
-  <li><a href="#data" id="toc-data" class="nav-link" data-scroll-target="#data">Data</a></li>
-  </ul></li>
-  <li><a href="#contributing" id="toc-contributing" class="nav-link" data-scroll-target="#contributing">Contributing</a></li>
-  </ul></li>
-  </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/informatica-30717/informatica-30717.github.io/edit/master/book/index.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/informatica-30717/informatica-30717.github.io/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li><li><a href="https://github.com/informatica-30717/informatica-30717.github.io/blob/master/book/index.qmd" class="toc-action"><i class="bi empty"></i>View source</a></li></ul></div></nav>
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+        
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Modern Polars</h1>
+<h1 class="title">Informática (30717) - Grado en Estudios en Arquitectura</h1>
 </div>
 
 <div>
   <div class="description">
-    A side-by-side comparison of the Polars and Pandas libraries.
+    Material de la asignatura de Informática (30717) para el Grado en Estudios en Arquitectura de la Universidad de Zaragoza.
   </div>
 </div>
 
@@ -194,7 +179,7 @@ ul.task-list li input[type="checkbox"] {
     <div>
     <div class="quarto-title-meta-heading">Author</div>
     <div class="quarto-title-meta-contents">
-             <p>Kevin Heavey </p>
+             <p><a href="https://alopezruiz.github.io">Alfonso López Ruiz</a> </p>
           </div>
   </div>
     
@@ -207,54 +192,44 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="preface" class="level1 unnumbered">
-<h1 class="unnumbered">Preface</h1>
-<p>This is a side-by-side comparison of the <a href="https://www.pola.rs/">Polars</a> and <a href="https://pandas.pydata.org/">Pandas</a> dataframe libraries, based on <a href="https://tomaugspurger.github.io/posts/modern-8-scaling/">Modern Pandas</a> by Tom Augsburger.</p>
-<p>(In case you haven’t heard, Polars is a very fast and elegant dataframe libary that does the same kinds of things Pandas does.)</p>
-<p>The bulk of this book is structured examples of idiomatic Polars and Pandas code, with commentary on the API and performance of both.</p>
-<p>For the most part, I argue that Polars is “better” than Pandas, though I do try and make it clear when Polars is lacking a Pandas feature or is otherwise disappointing.</p>
-<section id="who-is-this-for" class="level2">
-<h2 class="anchored" data-anchor-id="who-is-this-for">Who is this for?</h2>
-<p>This is not a beginner’s introduction to data programming, though you certainly don’t need to be an expert to read it. If you have some familiarity with any dataframe library, most of the examples should make sense, but if you’re familiar with Pandas they’ll make even more sense because all the Polars code is accompanied by the equivalent Pandas code.</p>
-<p>You don’t need to have read <em>Modern Pandas</em>, though I of course think it’s a great read.</p>
-</section>
-<section id="why" class="level2">
-<h2 class="anchored" data-anchor-id="why">Why?</h2>
-<p>There’s this weird phenomenon where people write data programming code as if they hate themselves. Many of them are academic or quant types who seem to have some complex about being “bad at coding”. Armchair psychology aside, lots of clever folk keep doing <a href="https://www.aidancooper.co.uk/pandas-anti-patterns/">really dumb stuff</a> with Pandas, and at some point you have to wonder if the Pandas API is too difficult for its users.</p>
-<p>At the very least, articles like <a href="https://www.dunderdata.com/blog/minimally-sufficient-pandas">Minimally Sufficient Pandas</a> make a compelling case for Pandas having too much going on.</p>
-<p>Having used Pandas a lot, I <em>think</em> Polars is more intuitive and does a better job of having One Obvious Way to do stuff. It’s also much faster at most things, even when you do Pandas the right way.</p>
-<p>Hopefully this work shows you how, why and when to prefer Polars.</p>
-</section>
-<section id="credit" class="level2">
-<h2 class="anchored" data-anchor-id="credit">Credit</h2>
-<p>The Pandas examples are mostly lifted from Tom’s articles, with some updates for data that’s no longer available, and some code changes to reflect how Pandas is written in 2023. This isn’t just me being lazy - I want to draw on Pandas examples that quite a lot of people are already familiar with.</p>
-<p>So credit goes to Tom for the Pandas examples, for most of the data fetching code and for the general structure of the articles. Meanwhile the text content and the Polars examples are from me.</p>
-</section>
-<section id="running-the-code-yourself" class="level2">
-<h2 class="anchored" data-anchor-id="running-the-code-yourself">Running the code yourself</h2>
-<p>You can install the exact packages that the book uses with the <a href="https://github.com/kevinheavey/modern-polars/blob/master/env.yml">env.yml</a> file:</p>
-<pre class="shell"><code>mamba env create -f env.yml</code></pre>
-<p>If you’re not using mamba/conda you can install the following package versions and it should work:</p>
-<pre><code>polars: 1.0.0
-pyarrow: 10.0.1
-pandas: 2.2.2
-numpy: 1.26.4
-fsspec: 2024.6.1
-matplotlib: 3.8.0
-seaborn: 0.13.2
-statsmodels: 0.14.2</code></pre>
-<section id="data" class="level3">
-<h3 class="anchored" data-anchor-id="data">Data</h3>
-<p>All the data fetching code is included, but will eventually break as websites change or shut down. The smaller datasets have been checked in <a href="https://github.com/kevinheavey/modern-polars/tree/master/data">here</a> for posterity.</p>
-</section>
-</section>
-<section id="contributing" class="level2">
-<h2 class="anchored" data-anchor-id="contributing">Contributing</h2>
-<p>This book is free and open source, so please do <a href="https://github.com/kevinheavey/modern-polars/issues/new">open an issue</a> if you notice a problem!</p>
+<p>En esta página web se irá publicando el material de prácticas actualizado de la asignatura.</p>
+<p>Las prácticas se resolverán utilizando herramientas tales como <strong>Processing</strong>, <strong>Eclipse (programación en Java)</strong>, <strong>Grasshopper (Rhinoceros)</strong> o <strong>Protegé (ontologías)</strong>.</p>
+<p>A tener en cuenta a la hora de resolver las prácticas:</p>
+<ul>
+<li>Representan el <strong>30% de la nota final</strong> de la asignatura.</li>
+<li>Se resolverán organizándose en <strong>parejas</strong>.</li>
+<li>La asistencia es <strong>obligatoria</strong>, y se <strong>evaluará al final de cada sesión el trabajo realizado</strong>.</li>
+<li>Se recomienda leer cada práctica <strong>antes de la sesión correspondiente</strong> para familiarizarse con los conceptos y herramientas que se van a utilizar.</li>
+</ul>
+<p>Más información sobre la asignatura en la <a href="https://estudios.unizar.es/estudio/asignatura?anyo_academico=2025&amp;asignatura_id=30717&amp;estudio_id=20250157&amp;centro_id=110&amp;plan_id_nk=470">documentación oficial de la universidad</a>.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Tutorías
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Puedes encontrar mi horario de tutorías en <a href="https://alfonsolrz.github.io/calendar/">Google Calendar</a>.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Get started
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>¡Comienza leyéndote la <a href="./lessons/lesson1.html">primera práctica</a>!</p>
+</div>
+</div>
 
 
-</section>
-</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -330,7 +305,7 @@ statsmodels: 0.14.2</code></pre>
     }
       var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
       var mailtoRegex = new RegExp(/^mailto:/);
-        var filterRegex = new RegExp('/' + window.location.host + '/');
+        var filterRegex = new RegExp("https:\/\/informatica-30717\.github\.io\/");
       var isInternal = (href) => {
           return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
       }
@@ -657,9 +632,18 @@ statsmodels: 0.14.2</code></pre>
     }
   });
   </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./lessons/lesson1.html" class="pagination-link" aria-label="Práctica 1: Introducción a Processing">
+        <span class="nav-page-text">Práctica 1: Introducción a Processing</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
 </div> <!-- /content -->
 
 
 
 
-<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/informatica-30717/informatica-30717.github.io/edit/master/book/index.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/informatica-30717/informatica-30717.github.io/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li><li><a href="https://github.com/informatica-30717/informatica-30717.github.io/blob/master/book/index.qmd" class="toc-action"><i class="bi empty"></i>View source</a></li></ul></div></div></div></footer></body></html>
+</body></html>

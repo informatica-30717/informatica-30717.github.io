@@ -2,61 +2,91 @@
   {
     "objectID": "index.html",
     "href": "index.html",
-    "title": "Modern Polars",
+    "title": "Informática (30717) - Grado en Estudios en Arquitectura",
     "section": "",
-    "text": "Preface\nThis is a side-by-side comparison of the Polars and Pandas dataframe libraries, based on Modern Pandas by Tom Augsburger.\n(In case you haven’t heard, Polars is a very fast and elegant dataframe libary that does the same kinds of things Pandas does.)\nThe bulk of this book is structured examples of idiomatic Polars and Pandas code, with commentary on the API and performance of both.\nFor the most part, I argue that Polars is “better” than Pandas, though I do try and make it clear when Polars is lacking a Pandas feature or is otherwise disappointing.",
+    "text": "En esta página web se irá publicando el material de prácticas actualizado de la asignatura.\nLas prácticas se resolverán utilizando herramientas tales como Processing, Eclipse (programación en Java), Grasshopper (Rhinoceros) o Protegé (ontologías).\nA tener en cuenta a la hora de resolver las prácticas:\n\nRepresentan el 30% de la nota final de la asignatura.\nSe resolverán organizándose en parejas.\nLa asistencia es obligatoria, y se evaluará al final de cada sesión el trabajo realizado.\nSe recomienda leer cada práctica antes de la sesión correspondiente para familiarizarse con los conceptos y herramientas que se van a utilizar.\n\nMás información sobre la asignatura en la documentación oficial de la universidad.\n\n\n\n\n\n\nNoteTutorías\n\n\n\nPuedes encontrar mi horario de tutorías en Google Calendar.\n\n\n\n\n\n\n\n\nTipGet started\n\n\n\n¡Comienza leyéndote la primera práctica!",
     "crumbs": [
-      "Preface"
+      "Informática (30717) - Grado en Estudios en Arquitectura"
     ]
   },
   {
-    "objectID": "index.html#who-is-this-for",
-    "href": "index.html#who-is-this-for",
-    "title": "Modern Polars",
-    "section": "Who is this for?",
-    "text": "Who is this for?\nThis is not a beginner’s introduction to data programming, though you certainly don’t need to be an expert to read it. If you have some familiarity with any dataframe library, most of the examples should make sense, but if you’re familiar with Pandas they’ll make even more sense because all the Polars code is accompanied by the equivalent Pandas code.\nYou don’t need to have read Modern Pandas, though I of course think it’s a great read.",
+    "objectID": "lessons/lesson1.html",
+    "href": "lessons/lesson1.html",
+    "title": "Práctica 1: Introducción a Processing",
+    "section": "",
+    "text": "Los objetivos de esta práctica son los siguientes:\n\nFamiliarización con el ordenador y los elementos básicos de un sistema operativo.\nFamiliarización con el entorno de desarrollo Processing.\nFamiliarización con aspectos básicos de programación a través de programas en Processing.\n\n\n\n\n\n\n\nNote\n\n\n\n🎞 Diapositivas disponibles",
     "crumbs": [
-      "Preface"
+      "Práctica 1: Introducción a Processing"
     ]
   },
   {
-    "objectID": "index.html#why",
-    "href": "index.html#why",
-    "title": "Modern Polars",
-    "section": "Why?",
-    "text": "Why?\nThere’s this weird phenomenon where people write data programming code as if they hate themselves. Many of them are academic or quant types who seem to have some complex about being “bad at coding”. Armchair psychology aside, lots of clever folk keep doing really dumb stuff with Pandas, and at some point you have to wonder if the Pandas API is too difficult for its users.\nAt the very least, articles like Minimally Sufficient Pandas make a compelling case for Pandas having too much going on.\nHaving used Pandas a lot, I think Polars is more intuitive and does a better job of having One Obvious Way to do stuff. It’s also much faster at most things, even when you do Pandas the right way.\nHopefully this work shows you how, why and when to prefer Polars.",
+    "objectID": "lessons/lesson1.html#objetivos-de-la-práctica",
+    "href": "lessons/lesson1.html#objetivos-de-la-práctica",
+    "title": "Práctica 1: Introducción a Processing",
+    "section": "",
+    "text": "Los objetivos de esta práctica son los siguientes:\n\nFamiliarización con el ordenador y los elementos básicos de un sistema operativo.\nFamiliarización con el entorno de desarrollo Processing.\nFamiliarización con aspectos básicos de programación a través de programas en Processing.\n\n\n\n\n\n\n\nNote\n\n\n\n🎞 Diapositivas disponibles",
     "crumbs": [
-      "Preface"
+      "Práctica 1: Introducción a Processing"
     ]
   },
   {
-    "objectID": "index.html#credit",
-    "href": "index.html#credit",
-    "title": "Modern Polars",
-    "section": "Credit",
-    "text": "Credit\nThe Pandas examples are mostly lifted from Tom’s articles, with some updates for data that’s no longer available, and some code changes to reflect how Pandas is written in 2023. This isn’t just me being lazy - I want to draw on Pandas examples that quite a lot of people are already familiar with.\nSo credit goes to Tom for the Pandas examples, for most of the data fetching code and for the general structure of the articles. Meanwhile the text content and the Polars examples are from me.",
+    "objectID": "lessons/lesson1.html#processing",
+    "href": "lessons/lesson1.html#processing",
+    "title": "Práctica 1: Introducción a Processing",
+    "section": "2 Processing",
+    "text": "2 Processing\n\n2.1 Introducción\n\n\n\nProcessing es un lenguaje de programación y un entorno de desarrollo (Integrated Development Environment, IDE).\n\nBasado en Java\nProducción de proyectos multimedia e interactivos\nCreado por científicos del MIT en 2001\nDistribución gratuita y de código abierto\n\n\n\n\n\n\n\nLa propia página de Processing muestra numerosos ejemplos de proyectos realizados con este lenguaje. También hay muchos ejemplos en Youtube, en particular, en el canal de The Coding Train.\n\n\n\n\n\n\n\n\n\nFigure 1: Visualización del fractal de Mandelbrot.\n\n\n\n\n\n\n\n\n\n\n\nFigure 2: Canal de Youtube The Coding Train.\n\n\n\n\n\n\n\n\n2.2 El entorno de desarrollo\nEl entorno de desarrollo de Processing tiene un diseño minimalista que facilita su uso. La interfaz gráfica posee las siguientes partes:\n\nUn menú de opciones (archivo, editar, sketch, depuración, herramientas y ayuda).\nDos botones para ejecutar y detener el programa.\nUn área central para escribir el código fuente (editor).\nUna ventana inferior donde se muestran dos pestañas:\n\nConsola: Salida estándar del programa.\nErrores: Mensajes de error generados durante la ejecución.\n\n\n\n\n\n\n\n\nFigure 3: Vista del entorno de desarrollo y ventana pop-up que redirige a ejemplos disponibles en su página web.\n\n\n\nAl ejecutar un programa se abrirá una nueva ventana donde se mostrará el resultado de la ejecución .\n\n\n\n\n\n\nWarning\n\n\n\nCada ejercicio debe realizarse en un nuevo fichero, no en una nueva pestaña.",
     "crumbs": [
-      "Preface"
+      "Práctica 1: Introducción a Processing"
     ]
   },
   {
-    "objectID": "index.html#running-the-code-yourself",
-    "href": "index.html#running-the-code-yourself",
-    "title": "Modern Polars",
-    "section": "Running the code yourself",
-    "text": "Running the code yourself\nYou can install the exact packages that the book uses with the env.yml file:\nmamba env create -f env.yml\nIf you’re not using mamba/conda you can install the following package versions and it should work:\npolars: 1.0.0\npyarrow: 10.0.1\npandas: 2.2.2\nnumpy: 1.26.4\nfsspec: 2024.6.1\nmatplotlib: 3.8.0\nseaborn: 0.13.2\nstatsmodels: 0.14.2\n\nData\nAll the data fetching code is included, but will eventually break as websites change or shut down. The smaller datasets have been checked in here for posterity.",
+    "objectID": "lessons/lesson1.html#dibujando-figuras-geométricas",
+    "href": "lessons/lesson1.html#dibujando-figuras-geométricas",
+    "title": "Práctica 1: Introducción a Processing",
+    "section": "3 Dibujando figuras geométricas",
+    "text": "3 Dibujando figuras geométricas\nLos píxeles son puntos de la pantalla del ordenador. Nuestro primer objetivo será dibujar una línea recta.\n\n3.1 Dibujar una línea\nline(10, 0, 40, 50);\nProcessing fija el origen de coordenadas (0,0) en la esquina superior izquierda de la ventana de ejecución.\n\n\n\n\n\n\nWarning\n\n\n\nProcessing es sensible al uso de mayúsculas y minúsculas. Por ejemplo, la función para dibujar una línea es line, no Line ni LINE. Prueba a copiar el siguiente código en el editor de Processing y ejecutarlo:\nLine(10, 0, 40, 50);\nLas palabras reservadas se muestran resaltadas en el editor, por lo que esta es una manera de ver si el nombre de una función está bien escrito. Los errores se muestran en la pestaña “Errores” de la ventana inferior.\n\n\n\n\n3.2 Ejercicios\n\nDibuja líneas en diferentes posiciones de la pantalla.\nComprueba si los resultados obtenidos coinciden con los esperados.\n\nA continuación, intenta deducir qué parámetros son necesarios para dibujar las siguientes figuras geométricas:\n\nPunto\n\nTriángulo\n\nCuadrilátero\n\nRectángulo\n\nElipse\n\nSeguramente has observado que en algunos casos existen varias soluciones posibles.\n¿Podrías poner algún ejemplo?\nPara dibujar estas figuras geométricas, Processing proporciona los siguientes métodos:\n\npoint(x, y)\ntriangle(x1, y1, x2, y2, x3, y3)\nquad(x1, y1, x2, y2, x3, y3, x4, y4)\nrect(x, y, anchura, altura)\nellipse(x, y, anchura, altura)\n\n\n\n\n3.3 Modos de rectángulos y elipses\nPor defecto, Processing interpreta los parámetros de esta forma:\n    rectMode(CORNER);\n    ellipseMode(CENTER);\nTambién es posible cambiar esta interpretación usando:\n    rectMode(CENTER);\n    ellipseMode(CORNER);\n\n3.3.1 Ejercicio\nIntenta dibujar un círculo centrado en (20, 30) con radio 10 utilizando ambos modos.",
     "crumbs": [
-      "Preface"
+      "Práctica 1: Introducción a Processing"
     ]
   },
   {
-    "objectID": "index.html#contributing",
-    "href": "index.html#contributing",
-    "title": "Modern Polars",
-    "section": "Contributing",
-    "text": "Contributing\nThis book is free and open source, so please do open an issue if you notice a problem!",
+    "objectID": "lessons/lesson1.html#añadiendo-color",
+    "href": "lessons/lesson1.html#añadiendo-color",
+    "title": "Práctica 1: Introducción a Processing",
+    "section": "4 3. Añadiendo color",
+    "text": "4 3. Añadiendo color\n\n\n\n\n\n\n\n\n\n\n\nEn blanco y negro, los colores se representan mediante valores enteros en el rango [0, 255]:\n\n0 corresponde al negro.\n255 corresponde al blanco.\n\nEn Processing, las figuras tienen un borde y un relleno.\n    stroke(0);\n    fill(255);\n    background(255);\n\n4.0.1 Ejercicio\nDibuja un círculo negro con borde gris, centrado en (20, 30) y con radio 10.\n\n\n\n4.1 Tamaño del lienzo\nEl tamaño del lienzo se controla con:\n    size(30, 30);\n\n4.1.1 Ejercicio\nCrea un lienzo de tamaño 30x30 y repite el ejercicio anterior.\n\n\n\n\n4.2 Color RGB\nLos colores RGB se representan mediante tres valores enteros:\n    fill(255, 0, 0);   // rojo\n    fill(0, 255, 0);   // verde\n    fill(0, 0, 255);   // azul\n\n4.2.1 Predicción\n¿Qué color producen los siguientes valores?\n- fill(255, 255, 0)\n- fill(0, 255, 255)\n- fill(255, 0, 255)\n- fill(255, 255, 127)\n- fill(127, 255, 255)\n- fill(255, 127, 255)\n\n\n\n\n4.3 Transparencia\nSe puede añadir un cuarto parámetro que representa la transparencia (alfa):\n    fill(255, 0, 0, 127);\n\n4.3.1 Ejercicio\nDibuja dos figuras superpuestas y comprueba el efecto de la transparencia.",
     "crumbs": [
-      "Preface"
+      "Práctica 1: Introducción a Processing"
+    ]
+  },
+  {
+    "objectID": "lessons/lesson1.html#programas-dinámicos",
+    "href": "lessons/lesson1.html#programas-dinámicos",
+    "title": "Práctica 1: Introducción a Processing",
+    "section": "5 4. Programas dinámicos",
+    "text": "5 4. Programas dinámicos\nVamos a dibujar el alienígena Zoog.\n\n5.1 Versión estática\n    size(800, 800);\n    ellipseMode(CENTER);\n    rectMode(CENTER);\n\n    stroke(0);\n    fill(150);\n    rect(100, 100, 20, 100);\n\n    fill(255);\n    ellipse(100, 70, 60, 60);\n\n    fill(0);\n    ellipse(81, 70, 16, 32);\n    ellipse(119, 70, 16, 32);\n\n    stroke(0);\n    line(90, 150, 80, 160);\n    line(110, 150, 120, 160);\n\n\n\n5.2 Comentarios\nSe pueden añadir comentarios usando:\n    // Comentario de una línea\n\n    /*\n       Comentario de varias líneas\n    */\n\n\n\n5.3 Programas dinámicos: setup y draw\n    void draw() {\n        background(255);\n\n        ellipseMode(CENTER);\n        rectMode(CENTER);\n\n        stroke(0);\n        fill(150);\n        rect(100, 100, 20, 100);\n\n        fill(255);\n        ellipse(100, 70, 60, 60);\n\n        fill(0);\n        ellipse(81, 70, 16, 32);\n        ellipse(119, 70, 16, 32);\n\n        stroke(0);\n        line(90, 150, 80, 160);\n        line(110, 150, 120, 160);\n    }\n\n    void setup() {\n        size(800, 800);\n    }\n\n5.3.1 Ejercicios\n\nEjecuta el código y observa la diferencia respecto a la versión estática.\nUsa mouseX y mouseY para mover el cuerpo de Zoog.\n¿Qué ocurre si background(255) se coloca en setup?\nHaz que todo Zoog siga al ratón.",
+    "crumbs": [
+      "Práctica 1: Introducción a Processing"
+    ]
+  },
+  {
+    "objectID": "lessons/lesson1.html#variables-condicionales-y-bucles",
+    "href": "lessons/lesson1.html#variables-condicionales-y-bucles",
+    "title": "Práctica 1: Introducción a Processing",
+    "section": "6 5. Variables, condicionales y bucles",
+    "text": "6 5. Variables, condicionales y bucles\n\n6.1 Variables\nint circleX = 100;\nint circleY = 100;\n\nvoid setup() {\n    size(200, 200);\n}\n\nvoid draw() {\n    background(255);\n    stroke(0);\n    fill(175);\n    ellipse(circleX, circleY, 50, 50);\n    circleX = circleX + 1;\n}\n\n\n\n6.2 Condicionales\nif (condicion) {\n    // instrucciones\n}\n\nif (condicion1) {\n    // instrucciones\n} else if (condicion2) {\n    // instrucciones\n} else {\n    // instrucciones\n}\n\n6.2.1 Ejercicio\nHaz que el color de fondo dependa de la posición horizontal del ratón:\n\nPrimer tercio del lienzo: blanco\nSegundo tercio: gris\nTercer tercio: negro\n\n\n\n\n\n6.3 Bucles\n    for (int i = 1; i &lt;= n; i++) {\n        // instrucciones\n    }\n\n6.3.1 Ejercicios\n\nDibuja dos Zoogs en fila separados 100 píxeles.\nAñade un tercer Zoog.\nEjercicio adicional: añade z pares de brazos a cada Zoog.",
+    "crumbs": [
+      "Práctica 1: Introducción a Processing"
+    ]
+  },
+  {
+    "objectID": "lessons/lesson1.html#apéndice-1-instalación-de-processing",
+    "href": "lessons/lesson1.html#apéndice-1-instalación-de-processing",
+    "title": "Práctica 1: Introducción a Processing",
+    "section": "7 Apéndice 1: Instalación de Processing",
+    "text": "7 Apéndice 1: Instalación de Processing\n\n\n\n\n\n\nFigure 4: Banner de la página oficial de Processing; a la izquierda se muestra el botón de Download.\n\n\n\n\nAccede a la página oficial de Processing y selecciona Download.\nDescarga la versión correspondiente a tu sistema operativo.\nEjecuta el instalador descargado y sigue las instrucciones.",
+    "crumbs": [
+      "Práctica 1: Introducción a Processing"
     ]
   }
 ]
