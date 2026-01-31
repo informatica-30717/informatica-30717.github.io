@@ -1,0 +1,488 @@
+---
+title: "Práctica 1: Introducción a Processing"
+format:
+  html: 
+    toc: true
+    number-sections: true
+navbar:
+  background: primary
+  search: true
+  right:
+    - icon: github
+      href: https://github.com/fastai/course22
+sidebar:
+  style: "floating"
+---
+
+## Objetivos de la práctica
+
+Los objetivos de esta práctica son los siguientes:
+
+- Familiarización con el ordenador y los elementos básicos de un sistema operativo.
+- Familiarización con el entorno de desarrollo Processing.
+- Familiarización con aspectos básicos de programación a través de programas en Processing.
+
+::: {.callout-note}
+[🎞 **Diapositivas disponibles**](index-slides.html)
+:::
+
+---
+
+## Processing
+
+### Introducción
+
+::: {layout="[75,25]"}
+::: {.column}
+Processing es un lenguaje de programación y un entorno de desarrollo (*Integrated Development Environment*, IDE).
+
+- **Basado en Java**
+- **Producción de proyectos multimedia e interactivos**
+- Creado por científicos del MIT en 2001
+- Distribución gratuita y de código abierto
+:::
+::: {.column}
+![](../resources/lesson1/processing.svg)
+:::
+:::
+
+La propia [página de Processing](https://processing.org/examples/) muestra numerosos ejemplos de proyectos realizados con este lenguaje. También hay muchos ejemplos en Youtube, en particular, en el canal de [The Coding Train](https://www.youtube.com/c/TheCodingTrain).
+
+::: {layout="[50,50]"}
+::: {.column}
+![Visualización del [fractal de Mandelbrot](https://processing.org/examples/mandelbrot.html).](../resources/lesson1/processing-example.png){#fig-environment}
+:::
+::: {.column}
+![Canal de Youtube [The Coding Train](https://www.youtube.com/c/TheCodingTrain).](../resources/lesson1/thecodetrain.gif){#fig-environment}
+:::
+:::
+
+### El entorno de desarrollo
+
+El entorno de desarrollo de Processing tiene un diseño minimalista que facilita su uso. La interfaz gráfica posee las siguientes partes:
+
+- **Un menú de opciones** (archivo, editar, sketch, depuración, herramientas y ayuda).
+- **Dos botones para ejecutar y detener el programa.**
+- Un área central para escribir el código fuente (**editor**).
+- Una ventana inferior donde se muestran dos pestañas:
+  - **Consola**: Salida estándar del programa.
+  - **Errores**: Mensajes de error generados durante la ejecución.
+  
+![Vista del entorno de desarrollo y ventana pop-up que redirige a ejemplos disponibles en su página web.](../resources/lesson1/ide.png){#fig-environment}
+
+Al ejecutar un programa se abrirá una **nueva ventana donde se mostrará el resultado de la ejecución** .
+
+::: callout-warning
+Cada ejercicio debe realizarse en un nuevo fichero, no en una nueva pestaña.
+:::
+
+---
+
+## Dibujando figuras geométricas
+
+Los píxeles son puntos de la pantalla del ordenador. Nuestro primer objetivo será dibujar una línea recta.
+
+### Dibujar una línea
+
+```java
+line(10, 0, 40, 50);
+```
+
+Processing fija el origen de coordenadas (0,0) en la esquina superior izquierda de la ventana de ejecución.
+
+::: callout-warning
+Processing es sensible al uso de mayúsculas y minúsculas. Por ejemplo, la función para dibujar una línea es `line`, no `Line` ni `LINE`. Prueba a copiar el siguiente código en el editor de Processing y ejecutarlo:
+```java
+Line(10, 0, 40, 50);
+```
+Las palabras reservadas se muestran resaltadas en el editor, por lo que esta es una manera de ver si el nombre de una función está bien escrito.
+Los errores se muestran en la pestaña "Errores" de la ventana inferior.
+:::
+
+### Ejercicios
+
+- Dibuja líneas en diferentes posiciones de la pantalla.
+- Comprueba si los resultados obtenidos coinciden con los esperados.
+
+A continuación, intenta deducir qué parámetros son necesarios para dibujar las siguientes figuras geométricas:
+
+- Punto  
+- Triángulo  
+- Cuadrilátero  
+- Rectángulo  
+- Elipse  
+
+Seguramente has observado que en algunos casos existen varias soluciones posibles.  
+¿Podrías poner algún ejemplo?
+
+Para dibujar estas figuras geométricas, Processing proporciona los siguientes métodos:
+
+- point(x, y)
+- triangle(x1, y1, x2, y2, x3, y3)
+- quad(x1, y1, x2, y2, x3, y3, x4, y4)
+- rect(x, y, anchura, altura)
+- ellipse(x, y, anchura, altura)
+
+---
+
+### Modos de rectángulos y elipses
+
+Por defecto, Processing interpreta los parámetros de esta forma:
+
+```java
+    rectMode(CORNER);
+    ellipseMode(CENTER);
+```
+
+También es posible cambiar esta interpretación usando:
+
+```java
+    rectMode(CENTER);
+    ellipseMode(CORNER);
+```
+
+#### Ejercicio
+
+Intenta dibujar un círculo centrado en (20, 30) con radio 10 utilizando ambos modos.
+
+---
+
+## 3. Añadiendo color
+
+<div style="display:flex; gap:12px; align-items:flex-start;">
+
+  <!-- SV square -->
+  <canvas id="sv" width="256" height="256"
+          style="border:2px solid #ccc; cursor:crosshair;"></canvas>
+
+  <!-- Hue slider -->
+  <canvas id="hue" width="26" height="256"
+          style="border:2px solid #ccc; cursor:ns-resize;"></canvas>
+
+</div>
+
+<p id="rgbText" style="margin-top:10px; font-size:1.1em;"></p>
+
+<script>
+const sv = document.getElementById("sv");
+const hue = document.getElementById("hue");
+const svCtx = sv.getContext("2d");
+const hueCtx = hue.getContext("2d");
+
+let H = 0;   // [0,360)
+let S = 1;   // [0,1]
+let V = 1;   // [0,1]
+
+// --- HSV → RGB ---
+function hsvToRgb(h,s,v){
+  let f=(n,k=(n+h/60)%6)=>v-v*s*Math.max(Math.min(k,4-k,1),0);
+  return [
+    Math.round(f(5)*255),
+    Math.round(f(3)*255),
+    Math.round(f(1)*255)
+  ];
+}
+
+// --- Draw hue bar ---
+function drawHue() {
+  const g = hueCtx.createLinearGradient(0,0,0,hue.height);
+  for (let i=0;i<=360;i+=60)
+    g.addColorStop(i/360, `hsl(${i},100%,50%)`);
+
+  hueCtx.clearRect(0,0,hue.width,hue.height);
+  hueCtx.fillStyle = g;
+  hueCtx.fillRect(0,0,hue.width,hue.height);
+
+  // marker
+  const y = (H/360)*hue.height;
+  hueCtx.strokeStyle = "#fff";
+  hueCtx.lineWidth = 2;
+  hueCtx.beginPath();
+  hueCtx.moveTo(0, y);
+  hueCtx.lineTo(hue.width, y);
+  hueCtx.stroke();
+}
+
+// --- Draw SV square ---
+function drawSV() {
+  svCtx.clearRect(0,0,sv.width,sv.height);
+
+  // base hue
+  svCtx.fillStyle = `hsl(${H},100%,50%)`;
+  svCtx.fillRect(0,0,sv.width,sv.height);
+
+  // saturation (white overlay)
+  const white = svCtx.createLinearGradient(0,0,sv.width,0);
+  white.addColorStop(0,"#fff");
+  white.addColorStop(1,"transparent");
+  svCtx.fillStyle = white;
+  svCtx.fillRect(0,0,sv.width,sv.height);
+
+  // value (black overlay)
+  const black = svCtx.createLinearGradient(0,0,0,sv.height);
+  black.addColorStop(0,"transparent");
+  black.addColorStop(1,"#000");
+  svCtx.fillStyle = black;
+  svCtx.fillRect(0,0,sv.width,sv.height);
+
+  // selection circle
+  const x = S * sv.width;
+  const y = (1 - V) * sv.height;
+  svCtx.strokeStyle = "#fff";
+  svCtx.lineWidth = 2;
+  svCtx.beginPath();
+  svCtx.arc(x, y, 6, 0, Math.PI*2);
+  svCtx.stroke();
+}
+
+// --- Update text ---
+function updateText(){
+  const [r,g,b] = hsvToRgb(H,S,V);
+  rgbText.textContent = `RGB = (${r}, ${g}, ${b})`;
+}
+
+// --- Interaction ---
+hue.addEventListener("mousedown", e => {
+  H = Math.max(0, Math.min(360, (e.offsetY / hue.height) * 360));
+  drawHue();
+  drawSV();
+  updateText();
+});
+
+sv.addEventListener("mousedown", e => {
+  S = Math.max(0, Math.min(1, e.offsetX / sv.width));
+  V = Math.max(0, Math.min(1, 1 - e.offsetY / sv.height));
+  drawSV();
+  updateText();
+});
+
+// --- Initial draw ---
+drawHue();
+drawSV();
+updateText();
+</script>
+
+
+En blanco y negro, los colores se representan mediante valores enteros en el rango [0, 255]:
+
+- 0 corresponde al negro.
+- 255 corresponde al blanco.
+
+En Processing, las figuras tienen un borde y un relleno.
+
+```java
+    stroke(0);
+    fill(255);
+    background(255);
+```
+
+#### Ejercicio
+
+Dibuja un círculo negro con borde gris, centrado en (20, 30) y con radio 10.
+
+---
+
+### Tamaño del lienzo
+
+El tamaño del lienzo se controla con:
+
+```java
+    size(30, 30);
+```
+
+#### Ejercicio
+
+Crea un lienzo de tamaño 30x30 y repite el ejercicio anterior.
+
+---
+
+### Color RGB
+
+Los colores RGB se representan mediante tres valores enteros:
+
+```java
+    fill(255, 0, 0);   // rojo
+    fill(0, 255, 0);   // verde
+    fill(0, 0, 255);   // azul
+```
+
+#### Predicción
+
+¿Qué color producen los siguientes valores?
+
+```java
+- fill(255, 255, 0)
+- fill(0, 255, 255)
+- fill(255, 0, 255)
+- fill(255, 255, 127)
+- fill(127, 255, 255)
+- fill(255, 127, 255)
+```
+
+---
+
+### Transparencia
+
+Se puede añadir un cuarto parámetro que representa la transparencia (alfa):
+
+```java
+    fill(255, 0, 0, 127);
+```
+
+#### Ejercicio
+
+Dibuja dos figuras superpuestas y comprueba el efecto de la transparencia.
+
+---
+
+## 4. Programas dinámicos
+
+Vamos a dibujar el alienígena Zoog.
+
+### Versión estática
+
+```java
+    size(800, 800);
+    ellipseMode(CENTER);
+    rectMode(CENTER);
+
+    stroke(0);
+    fill(150);
+    rect(100, 100, 20, 100);
+
+    fill(255);
+    ellipse(100, 70, 60, 60);
+
+    fill(0);
+    ellipse(81, 70, 16, 32);
+    ellipse(119, 70, 16, 32);
+
+    stroke(0);
+    line(90, 150, 80, 160);
+    line(110, 150, 120, 160);
+```
+
+---
+
+### Comentarios
+
+Se pueden añadir comentarios usando:
+
+```java
+    // Comentario de una línea
+
+    /*
+       Comentario de varias líneas
+    */
+```
+
+---
+
+### Programas dinámicos: setup y draw
+
+```java
+    void draw() {
+        background(255);
+
+        ellipseMode(CENTER);
+        rectMode(CENTER);
+
+        stroke(0);
+        fill(150);
+        rect(100, 100, 20, 100);
+
+        fill(255);
+        ellipse(100, 70, 60, 60);
+
+        fill(0);
+        ellipse(81, 70, 16, 32);
+        ellipse(119, 70, 16, 32);
+
+        stroke(0);
+        line(90, 150, 80, 160);
+        line(110, 150, 120, 160);
+    }
+
+    void setup() {
+        size(800, 800);
+    }
+```
+
+#### Ejercicios
+
+- Ejecuta el código y observa la diferencia respecto a la versión estática.
+- Usa mouseX y mouseY para mover el cuerpo de Zoog.
+- ¿Qué ocurre si background(255) se coloca en setup?
+- Haz que todo Zoog siga al ratón.
+
+---
+
+## 5. Variables, condicionales y bucles
+
+### Variables
+
+    int circleX = 100;
+    int circleY = 100;
+
+    void setup() {
+        size(200, 200);
+    }
+
+    void draw() {
+        background(255);
+        stroke(0);
+        fill(175);
+        ellipse(circleX, circleY, 50, 50);
+        circleX = circleX + 1;
+    }
+
+---
+
+### Condicionales
+
+    if (condicion) {
+        // instrucciones
+    }
+
+    if (condicion1) {
+        // instrucciones
+    } else if (condicion2) {
+        // instrucciones
+    } else {
+        // instrucciones
+    }
+
+#### Ejercicio
+
+Haz que el color de fondo dependa de la posición horizontal del ratón:
+
+- Primer tercio del lienzo: blanco
+- Segundo tercio: gris
+- Tercer tercio: negro
+
+---
+
+### Bucles
+
+```java
+    for (int i = 1; i <= n; i++) {
+        // instrucciones
+    }
+```
+
+#### Ejercicios
+
+- Dibuja dos Zoogs en fila separados 100 píxeles.
+- Añade un tercer Zoog.
+- Ejercicio adicional: añade z pares de brazos a cada Zoog.
+
+---
+
+## Apéndice 1: Instalación de Processing
+
+![Banner de la página oficial de *Processing*; a la izquierda se muestra el botón de *Download*.](../resources/lesson1/web-teaser.png){#fig-installation}
+
+- Accede a [la página oficial de *Processing*](http://processing.org) y selecciona **Download**.
+- Descarga la versión correspondiente a tu sistema operativo.
+- Ejecuta el instalador descargado y sigue las instrucciones.
+

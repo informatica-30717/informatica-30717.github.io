@@ -1,0 +1,5 @@
+website:
+  sidebar:
+    contents:
+      - index.qmd
+      - lessons/lesson1.qmd

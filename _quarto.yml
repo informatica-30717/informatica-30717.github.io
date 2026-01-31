@@ -1,40 +1,38 @@
 project:
-  type: book
-
-book:
-  title: "Modern Polars"
-  author: "Kevin Heavey"
-  favicon: polar-bear-airpods-no-background.png
-  description: A side-by-side comparison of the Polars and Pandas libraries.
-  keyword: polars, pandas, python, dataframe, performance, data science, data engineering
-  url: https://informatica-30717.github.io/
-  sidebar: 
-    background: "#F5F5F5"
-    logo: polar-bear-airpods-no-background.png
-    search: true
-  repo-url: https://github.com/informatica-30717/informatica-30717.github.io/
-  repo-subdir: book
-  repo-branch: master
-  repo-actions: [edit, issue, source]
-  sharing: [twitter, facebook, linkedin]
-  image: polar-bear-airpods-no-background.png
-  comments: false
-  open-graph:
-    image: https://github.com/informatica-30717/informatica-30717.github.io/raw/master/book/resized-og-polar-bear-airpods-no-background.png
-    description: Material de prácticas de Informática (30717, Estudios en Arquitectura)
-
-  chapters:
-    - index.qmd
+  type: website
+  resources:
+    - "resources/*"
+  preview:
+    port: 3000
+    browser: true
 
 format:
   html:
-    theme:
-      light: cosmo
-    code-fold: false
-    css: custom.css
-    backgroundcolor: "#F5F5F5"
+    theme: cosmo
+    css: styles.css
+    toc: true
 
+website:
+  title: "Informática (30717) - Grado en Estudios en Arquitectura"
+  description: "Material de prácticas del curso 2025-2026."
+  twitter-card: true
+  open-graph: true
+  reader-mode: true
+  page-navigation: true
+  repo-branch: master
+  repo-url: https://github.com/informatica-30717/informatica-30717.github.io
+  navbar:
+    background: primary
+    search: true
+    right:
+      - icon: github
+        href: https://github.com/informatica-30717/informatica-30717.github.io
+  sidebar:
+    style: floating
+    logo: ../resources/unizar.png
 
+execute:
+  freeze: auto
 
-# good themes: default, cosmo, flatly, lumen, minty, pulse, sandstone, solar, united
-# favourites: minty, cosmo
+metadata-files:
+  - sidebar.yml
