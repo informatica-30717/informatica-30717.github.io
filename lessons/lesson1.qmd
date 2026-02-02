@@ -73,7 +73,7 @@ El entorno de desarrollo de Processing tiene un diseño minimalista que facilita
 
 Al ejecutar un programa se abrirá una **nueva ventana donde se mostrará el resultado de la ejecución** .
 
-::: callout-warning
+::: {.callout-warning}
 Cada ejercicio debe realizarse en un nuevo fichero, no en una nueva pestaña. Se recomienda guarda cada fichero a medida que se avanza en los ejercicios.
 :::
 
@@ -87,16 +87,17 @@ Por ejemplo, las dos animaciones siguientes muestran la diferencia entre una res
 
 ::: {layout="[50,50]"}
 ::: {.column}
-![Animación con una resolución de pantalla alta.](../resources/lesson1/animation_pixels.webm){#fig-environment}
+![Animación con una resolución de pantalla alta.](../resources/lesson1/animation_pixels.webm){#fig-highres}
 :::
+
 ::: {.column}
-![Animación con una resolución de pantalla baja, mostrando píxeles.](../resources/lesson1/animation_pixels_lowerres.webm){#fig-environment}
+![Animación con una resolución de pantalla baja, mostrando píxeles.](../resources/lesson1/animation_pixels_lowerres.webm){#fig-lowres}
 :::
 :::
 
 ::: {layout="[70,30]"}
 ::: {.column}
-Para dibujar cualquier figura geométrica, es necesario especificar una o varias posiciones en la ventana. Dichas posiciones se definen mediante un par de coordenadas **(x, y)**, donde **x** indica la *posición horizontal** e **y** la **posición vertical**. En *Processing*, el origen de coordenadas (0,0) se encuentra en la esquina superior izquierda de la ventana, como se muestra en la figura de la derecha.
+Para dibujar cualquier figura geométrica, es necesario especificar una o varias posiciones en la ventana. Dichas posiciones se definen mediante un par de coordenadas **(x, y)**, donde **x** indica la **posición horizontal** e **y** la **posición vertical**. En *Processing*, el origen de coordenadas (0,0) se encuentra en la esquina superior izquierda de la ventana, como se muestra en la figura de la derecha.
 
 ::: {.callout-note}
 ## 🧪 Ejercicio 1 - Sistema de coordenadas
@@ -265,7 +266,7 @@ ellipse(20, 30, 20, 20);
 
 Trata de obtener algo parecido a la figura que se muestra debajo.
 
-![](../resources/lesson1/render.png){width="30%" fig-align="center"}
+![](../resources/lesson1/render.png){width="20%" fig-align="center"}
 :::
 
 ### Colores RGB (red, green, blue)
@@ -284,7 +285,6 @@ fill(0, 255, 0);  // verde
 fill(0, 0, 255);  // azul
 ```
 :::
-
 :::
 
 ::: {.callout-note}
@@ -300,239 +300,122 @@ fill(0, 0, 255);  // azul
 - `fill(255, 127, 255)`
 
 **Pista**: fíjate en la @fig-rgb.
-
 :::
 
 ### Opacidad
 
-Además de los canales R, G y B, también podemos indicar un valor de **opacidad**. De esta manera, un valor de 255 indica opacidad por completa, y un valor de 0 determina que un elemento será transparente. Para especificar la opacidad, bastante con indicar un cuarto valor en operaciones como `stroke` o `fill`.
+Además de los canales R, G y B, también podemos indicar un valor de **opacidad**. De esta manera, un valor de opacidad de 255 indica que elemento a dibujar es completamente opaco, y un valor de 0 indica que es completamente transparente. Para especificar la opacidad, bastante con indicar un cuarto valor en operaciones como `stroke` o `fill`.
 
 ```java
 fill(255, 255, 127);
-rect(50, 50, 100, 100);
+rect(50, 50, 100, 100);     // rectángulo opaco     
 
-fill(255, 0, 127, 127);
-rect(20, 20, 50, 50);
+fill(255, 0, 127, 127);     
+rect(20, 20, 50, 50);       // rectángulo semitransparente
 ```
 
-## Modelo de color HSV
+## Programas dinámicos
 
-![](../resources/lesson1/primary-colors.png){#fig-hsv}
+Hasta este momento, hemos escrito programas estáticos, es decir, programas que dibujan una imagen fija. A continuación, veremos cómo crear programas dinámicos que pueden cambiar con el tiempo.
 
-En blanco y negro, los colores se representan mediante valores enteros en el rango [0, 255]:
-
-- 0 corresponde al negro.
-- 255 corresponde al blanco.
-
-En Processing, las figuras tienen un borde y un relleno.
-
+::: {layout="[50,50]"}
+::: {.column}
+Comenzaremos con este bloque de código:
 ```java
-    stroke(0);
-    fill(255);
-    background(255);
+size(800, 800);
+
+ellipseMode(CENTER);
+rectMode(CENTER);
+
+stroke(0);
+fill(150);
+rect(200, 200, 40, 200);
+
+fill(255);
+ellipse(200, 140, 120, 120);
+
+fill(0);
+ellipse(162, 140, 32, 64);
+ellipse(238, 140, 32, 64);
+
+stroke(0);
+line(180, 300, 160, 320);
+line(220, 300, 240, 320);
 ```
+:::
 
-#### Ejercicio
+::: {.column}
+![Imagen del alienígena Zoog.](../resources/lesson1/zoog.png){#fig-zoog}
 
-Dibuja un círculo negro con borde gris, centrado en (20, 30) y con radio 10.
-
----
-
-### Tamaño del lienzo
-
-El tamaño del lienzo se controla con:
-
-```java
-    size(30, 30);
-```
-
-#### Ejercicio
-
-Crea un lienzo de tamaño 30x30 y repite el ejercicio anterior.
-
----
-
-### Color RGB
-
-Los colores RGB se representan mediante tres valores enteros:
-
-```java
-    fill(255, 0, 0);   // rojo
-    fill(0, 255, 0);   // verde
-    fill(0, 0, 255);   // azul
-```
-
-#### Predicción
-
-¿Qué color producen los siguientes valores?
-
-```java
-- fill(255, 255, 0)
-- fill(0, 255, 255)
-- fill(255, 0, 255)
-- fill(255, 255, 127)
-- fill(127, 255, 255)
-- fill(255, 127, 255)
-```
-
----
-
-### Transparencia
-
-Se puede añadir un cuarto parámetro que representa la transparencia (alfa):
-
-```java
-    fill(255, 0, 0, 127);
-```
-
-#### Ejercicio
-
-Dibuja dos figuras superpuestas y comprueba el efecto de la transparencia.
-
----
-
-## 4. Programas dinámicos
-
-Vamos a dibujar el alienígena Zoog.
-
-### Versión estática
-
-```java
-    size(800, 800);
-    ellipseMode(CENTER);
-    rectMode(CENTER);
-
-    stroke(0);
-    fill(150);
-    rect(100, 100, 20, 100);
-
-    fill(255);
-    ellipse(100, 70, 60, 60);
-
-    fill(0);
-    ellipse(81, 70, 16, 32);
-    ellipse(119, 70, 16, 32);
-
-    stroke(0);
-    line(90, 150, 80, 160);
-    line(110, 150, 120, 160);
-```
-
----
+::: {.callout-note}
+## 🧪 Ejercicio 10 - Dibuja a Zoog
+Intenta dibujar al alienígena Zoog utilizando el bloque de código anterior como referencia.
+:::
+:::
+:::
 
 ### Comentarios
 
-Se pueden añadir comentarios usando:
+Aprovechando que nuestro programa empieza a ser un poco más largo, es recomendable añadir comentarios para explicar qué hace cada parte del código. En *Processing*, los comentarios se indican con `//` para comentarios de una sola línea, o con `/*` y `*/` para comentarios multilínea. Por ejemplo, en el siguiente código se han añadido comentarios para explicar qué parte del cuerpo de Zoog dibuja cada bloque de instrucciones:
 
 ```java
-    // Comentario de una línea
+// Dibuja el cuerpo de Zoog
+rect(200, 200, 40, 200);
 
-    /*
-       Comentario de varias líneas
-    */
+/* Dibuja los ojos de Zoog en la posición (200, 140) con ancho y alto 120 */
+ellipse(200, 140, 120, 120);
 ```
 
----
+### Funciones `setup` y `draw`
 
-### Programas dinámicos: setup y draw
+*Processing* utiliza dos funciones especiales para organizar el código: `setup` y `draw`. 
 
+- La función `setup` se ejecuta una única vez al inicio del programa, y es el lugar adecuado para inicializar variables, definir el tamaño de la ventana, etc. 
+- Por otro lado, la función `draw` se ejecuta de manera repetitiva en un bucle infinito, y es el lugar adecuado para dibujar figuras que cambian con el tiempo.
+
+::: {.callout-note}
+## Bouncing ball
+
+::: {layout="[54,46]"}
+::: {.column}
+Por ejemplo, el siguiente programa dibuja una pelota que rebota dentro de la ventana:
 ```java
-    void draw() {
-        background(255);
+int x = 50;
+int y = 50;
+int speedX = 3;
+int speedY = 2;
 
-        ellipseMode(CENTER);
-        rectMode(CENTER);
+void setup() {
+  size(400, 400);
+} 
 
-        stroke(0);
-        fill(150);
-        rect(100, 100, 20, 100);
-
-        fill(255);
-        ellipse(100, 70, 60, 60);
-
-        fill(0);
-        ellipse(81, 70, 16, 32);
-        ellipse(119, 70, 16, 32);
-
-        stroke(0);
-        line(90, 150, 80, 160);
-        line(110, 150, 120, 160);
-    }
-
-    void setup() {
-        size(800, 800);
-    }
+void draw() {
+  background(255);
+  
+  // Dibuja la pelota
+  fill(0);
+  ellipse(x, y, 30, 30);
+  
+  // Actualiza la posición de la pelota
+  x += speedX;
+  y += speedY;
+  
+  // Rebote en los bordes
+  if (x <= 15 || x >= width - 15) {
+    speedX = -speedX;
+  }
+  if (y <= 15 || y >= height - 15) {
+    speedY = -speedY;
+  }
+}
 ```
+::: 
 
-#### Ejercicios
-
-- Ejecuta el código y observa la diferencia respecto a la versión estática.
-- Usa mouseX y mouseY para mover el cuerpo de Zoog.
-- ¿Qué ocurre si background(255) se coloca en setup?
-- Haz que todo Zoog siga al ratón.
-
----
-
-## 5. Variables, condicionales y bucles
-
-### Variables
-
-    int circleX = 100;
-    int circleY = 100;
-
-    void setup() {
-        size(200, 200);
-    }
-
-    void draw() {
-        background(255);
-        stroke(0);
-        fill(175);
-        ellipse(circleX, circleY, 50, 50);
-        circleX = circleX + 1;
-    }
-
----
-
-### Condicionales
-
-    if (condicion) {
-        // instrucciones
-    }
-
-    if (condicion1) {
-        // instrucciones
-    } else if (condicion2) {
-        // instrucciones
-    } else {
-        // instrucciones
-    }
-
-#### Ejercicio
-
-Haz que el color de fondo dependa de la posición horizontal del ratón:
-
-- Primer tercio del lienzo: blanco
-- Segundo tercio: gris
-- Tercer tercio: negro
-
----
-
-### Bucles
-
-```java
-    for (int i = 1; i <= n; i++) {
-        // instrucciones
-    }
-```
-
-#### Ejercicios
-
-- Dibuja dos Zoogs en fila separados 100 píxeles.
-- Añade un tercer Zoog.
-- Ejercicio adicional: añade z pares de brazos a cada Zoog.
-
----
+::: {.column .centered}
+![](../resources/lesson1/bouncing_ball.gif)
+:::
+:::
+:::
 
 ## Apéndice: Instalación de Processing {.unnumbered}
 
