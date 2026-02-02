@@ -228,10 +228,10 @@ En *Processing*, las figuras tienen **borde** y **relleno**, que se definen medi
 
 Por ejemplo, podemos definir el color del fondo, así como del borde y el relleno de un rectángulo de la siguiente manera:
 ```java
-background(0);  // fondo 
+background(0);              // fondo 
 
-stroke(200);    // borde
-fill(100);      // relleno
+stroke(200);                // borde
+fill(100);                  // relleno
 rect(50, 50, 100, 100);
 ```
 
@@ -261,11 +261,11 @@ ellipse(20, 30, 20, 20);
 :::
 
 ::: {.callout-note}
-## 🧪 Ejercicio 8 - Simula una forma geométrica
+## 🧪 Ejercicio 8 - Dibuja una forma geométrica
 
-Trata de obtener algo parecido a la figura que se muestra a la derecha.
+Trata de obtener algo parecido a la figura que se muestra debajo.
 
-![](../resources/lesson1/render.png){width="30%"}
+![](../resources/lesson1/render.png){width="30%" fig-align="center"}
 :::
 
 ### Colores RGB (red, green, blue)
@@ -276,7 +276,7 @@ Trata de obtener algo parecido a la figura que se muestra a la derecha.
 :::
 
 ::: {.column}
-Además de diferentes tonos de gris, *Processing* permite definir colores a partir de los tres colores primarios: rojo, verde y azul (RGB). Cuando los tres componentes toman el valor máximo (255), el color resultante es el blanco. En una escala de grises, los tres valores RGB coinciden; por ejemplo, el color (0, 0, 0) corresponde al negro.
+Además de diferentes tonos de gris, *Processing* permite definir colores a partir de los tres colores primarios: rojo, verde y azul (RGB). Cuando los tres componentes toman el valor máximo (255), el color resultante es el blanco. En una escala de grises, los tres valores RGB coinciden; por ejemplo, el color (0, 0, 0) corresponde al negro. Por otro lado, si sólo activamos un canal con 255, y dejamos el resto a 0, obtenemos rojo, verde o azul.
 
 ```java
 fill(255, 0, 0);  // rojo
@@ -288,9 +288,32 @@ fill(0, 0, 255);  // azul
 :::
 
 ::: {.callout-note}
-## 🧪 Ejercicio 6 - 
+## 🧪 Ejercicio 9 - Colores RGB
+
+¿Sabrías decir qué colores crearán las siguientes combinaciones de rojo, verde y azul?
+
+- `fill(255, 255, 0)`
+- `fill(0, 255, 255)`
+- `fill(255, 0, 255)`
+- `fill(255, 255, 127)`
+- `fill(127, 255, 255)`
+- `fill(255, 127, 255)`
+
+**Pista**: fíjate en la @fig-rgb.
 
 :::
+
+### Opacidad
+
+Además de los canales R, G y B, también podemos indicar un valor de **opacidad**. De esta manera, un valor de 255 indica opacidad por completa, y un valor de 0 determina que un elemento será transparente. Para especificar la opacidad, bastante con indicar un cuarto valor en operaciones como `stroke` o `fill`.
+
+```java
+fill(255, 255, 127);
+rect(50, 50, 100, 100);
+
+fill(255, 0, 127, 127);
+rect(20, 20, 50, 50);
+```
 
 ## Modelo de color HSV
 
