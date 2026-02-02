@@ -23,7 +23,8 @@ Los objetivos de esta práctica son los siguientes:
 - Familiarización con aspectos básicos de programación a través de programas en Processing.
 
 ::: {.callout-note}
-[🎞 **Diapositivas disponibles**](index-slides.html)
+## 🎞 Diapositivas
+[**Diapositivas para la presentación de la práctica en clase**](../slides/lesson1.html)
 :::
 
 ---
@@ -50,10 +51,10 @@ La propia [página de Processing](https://processing.org/examples/) muestra nume
 
 ::: {layout="[50,50]"}
 ::: {.column}
-![Visualización del [fractal de Mandelbrot](https://processing.org/examples/mandelbrot.html).](../resources/lesson1/processing-example.png){#fig-environment}
+![Visualización del [fractal de Mandelbrot](https://processing.org/examples/mandelbrot.html).](../resources/lesson1/processing-example.png){#fig-mandelbrot}
 :::
 ::: {.column}
-![Canal de Youtube [The Coding Train](https://www.youtube.com/c/TheCodingTrain).](../resources/lesson1/thecodetrain.gif){#fig-environment}
+![Canal de Youtube [The Coding Train](https://www.youtube.com/c/TheCodingTrain).](../resources/lesson1/thecodetrain.gif){#fig-thecodetrain}
 :::
 :::
 
@@ -68,200 +69,232 @@ El entorno de desarrollo de Processing tiene un diseño minimalista que facilita
   - **Consola**: Salida estándar del programa.
   - **Errores**: Mensajes de error generados durante la ejecución.
   
-![Vista del entorno de desarrollo y ventana pop-up que redirige a ejemplos disponibles en su página web.](../resources/lesson1/ide.png){#fig-environment}
+![Vista del entorno de desarrollo y ventana pop-up que redirige a ejemplos disponibles en su página web.](../resources/lesson1/ide.png){#fig-ide}
 
 Al ejecutar un programa se abrirá una **nueva ventana donde se mostrará el resultado de la ejecución** .
 
 ::: callout-warning
-Cada ejercicio debe realizarse en un nuevo fichero, no en una nueva pestaña.
+Cada ejercicio debe realizarse en un nuevo fichero, no en una nueva pestaña. Se recomienda guarda cada fichero a medida que se avanza en los ejercicios.
 :::
 
 ---
 
 ## Dibujando figuras geométricas
 
-Los píxeles son puntos de la pantalla del ordenador. Nuestro primer objetivo será dibujar una línea recta.
+Las figuras geométricas se dibujan en una ventana que está formada por una **matriz de píxeles**. Cada píxel es un pequeño punto de luz que puede tener un color diferente. La combinación de todos los píxeles forma la imagen que vemos en la pantalla.
 
-### Dibujar una línea
+Por ejemplo, las dos animaciones siguientes muestran la diferencia entre una resolución de pantalla alta y otra baja. En la animación de la derecha, a medida que reducimos la resolución, podemos observar los píxeles individuales que componen la imagen.
 
+::: {layout="[50,50]"}
+::: {.column}
+![Animación con una resolución de pantalla alta.](../resources/lesson1/animation_pixels.webm){#fig-environment}
+:::
+::: {.column}
+![Animación con una resolución de pantalla baja, mostrando píxeles.](../resources/lesson1/animation_pixels_lowerres.webm){#fig-environment}
+:::
+:::
+
+::: {layout="[70,30]"}
+::: {.column}
+Para dibujar cualquier figura geométrica, es necesario especificar una o varias posiciones en la ventana. Dichas posiciones se definen mediante un par de coordenadas **(x, y)**, donde **x** indica la *posición horizontal** e **y** la **posición vertical**. En *Processing*, el origen de coordenadas (0,0) se encuentra en la esquina superior izquierda de la ventana, como se muestra en la figura de la derecha.
+
+::: {.callout-note}
+## 🧪 Ejercicio 1 - Sistema de coordenadas
+
+Dibuja una línea que va desde la posición (10, 0) hasta la posición (40, 50).
 ```java
 line(10, 0, 40, 50);
 ```
+:::
+:::
+::: {.column}
+![Ilustración de una matriz de píxeles, indicando las coordenadas de algunos de ellos.](../resources/lesson1/pixel-matrix.png){#fig-pixels}
+:::
+:::
 
-Processing fija el origen de coordenadas (0,0) en la esquina superior izquierda de la ventana de ejecución.
+::: {.callout-warning}
+## 📝 Ejercicio 2 — Errores comunes
 
-::: callout-warning
-Processing es sensible al uso de mayúsculas y minúsculas. Por ejemplo, la función para dibujar una línea es `line`, no `Line` ni `LINE`. Prueba a copiar el siguiente código en el editor de Processing y ejecutarlo:
+Prueba a copiar el siguiente código en el editor de *Processing* y ejecutarlo:
 ```java
 Line(10, 0, 40, 50);
 ```
-Las palabras reservadas se muestran resaltadas en el editor, por lo que esta es una manera de ver si el nombre de una función está bien escrito.
-Los errores se muestran en la pestaña "Errores" de la ventana inferior.
+
+<details>
+<summary>💡 Solución</summary>
+Processing es sensible al uso de mayúsculas y minúsculas. Por ejemplo, la función para dibujar una línea es `line`, no `Line` ni `LINE`.
+
+Las palabras reservadas se muestran <span style="color:#1f77ff; font-weight:600;">resaltadas</span> en el editor, por lo que esta es una manera de ver si el nombre de una función está bien escrito. Los <span style="color:#FF0000; font-weight:600;">errores</span> se muestran en la pestaña *Errores* de la ventana inferior.
+</details>
 :::
 
-### Ejercicios
+::: {.callout-note}
+## 🧪 Ejercicio 3 - Múltiples formas geométricas
 
-- Dibuja líneas en diferentes posiciones de la pantalla.
-- Comprueba si los resultados obtenidos coinciden con los esperados.
+Prueba a dibujar varias líneas en diferentes posiciones de la pantalla, utilizando la instrucción `line` varias veces. 
+:::
 
-A continuación, intenta deducir qué parámetros son necesarios para dibujar las siguientes figuras geométricas:
+### Lienzo
 
-- Punto  
-- Triángulo  
-- Cuadrilátero  
-- Rectángulo  
-- Elipse  
+Las figuras geométricas se dibujan sobre un lienzo de tamaño predeterminado 100x100 píxeles. No obstante, es posible cambiar el tamaño del lienzo utilizando la función `size`, que recibe dos parámetros: el ancho y el alto del lienzo en píxeles.
 
-Seguramente has observado que en algunos casos existen varias soluciones posibles.  
-¿Podrías poner algún ejemplo?
+::: {.callout-note}
+## 🧪 Ejercicio 4 - Tamaño del lienzo 
 
-Para dibujar estas figuras geométricas, Processing proporciona los siguientes métodos:
+Dibuja varias líneas en un lienzo de tamaño 300x200 píxeles.
 
-- point(x, y)
-- triangle(x1, y1, x2, y2, x3, y3)
-- quad(x1, y1, x2, y2, x3, y3, x4, y4)
-- rect(x, y, anchura, altura)
-- ellipse(x, y, anchura, altura)
-
----
-
-### Modos de rectángulos y elipses
-
-Por defecto, Processing interpreta los parámetros de esta forma:
-
+<details>
+<summary>💡 Solución</summary>
 ```java
-    rectMode(CORNER);
-    ellipseMode(CENTER);
+size(300, 200);
+line(10, 0, 40, 50);
+line(100, 50, 200, 150);
+line(250, 0, 250, 200);
+```
+</details>
+:::
+
+### Tipos de figuras geométricas
+
+Además de la línea utilizada en los ejercicios anteriores, *Processing* permite dibujar otras figuras geométricas básicas, tales como **puntos**, **triángulos**, **cuadriláteros**, **rectángulos** y **elipses**. 
+
+::: {.callout-note}
+## 🧪 Ejercicio 5 - Deducción de parámetros
+
+¿Puedes deducir qué parámetros son necesarios para dibujar algunas de las figuras geométricas mencionadas anteriormente?
+Puedes consultar la [documentación oficial de *Processing*](https://processing.org/reference#shape), y más concretamente, la sección *2d primitives* en el apartado *Shape*.
+
+<details>
+<summary>💡 Solución</summary>
+- `point(x, y)`: un punto en la posición (x, y).
+- `triangle(x1, y1, x2, y2, x3, y3)`: un triángulo con vértices en las posiciones (x1, y1), (x2, y2) y (x3, y3).
+- `quad(x1, y1, x2, y2, x3, y3, x4, y4)`: un cuadrilátero con vértices en las posiciones (x1, y1), (x2, y2), (x3, y3) y (x4, y4).
+- `rect(x, y, anchura, altura)`: un rectángulo con esquina superior izquierda en la posición (x, y), de anchura y altura especificadas.
+- `ellipse(x, y, anchura, altura)`: una elipse centrada en la posición (x, y), con anchura y altura especificadas.
+</details>
+:::
+
+#### Dibujando rectángulos y elipses
+
+Tanto en la documentación oficial, como en la solución del ejercicio anterior, os habréis podido dar cuenta de que las funciones `rect` y `ellipse` requieren cuatro parámetros: dos para la posición y dos para el tamaño. Sin embargo, hemos asumido que la posición siempre corresponde a la esquina superior izquierda del rectángulo o al centro de la elipse. Esta suposición es correcta por defecto, pero es posible cambiarla utilizando las funciones `rectMode` y `ellipseMode`.
+
+![](../resources/lesson1/rect-mode.svg){#fig-rectmodes}
+
+Por defecto, Processing interpreta las posiciones de la siguiente manera:
+```java
+rectMode(CORNER);
+ellipseMode(CENTER);
 ```
 
 También es posible cambiar esta interpretación usando:
 
 ```java
-    rectMode(CENTER);
-    ellipseMode(CORNER);
+rectMode(CENTER);
+ellipseMode(CORNER);
 ```
 
-#### Ejercicio
+::: {.callout-note}
+## 🧪 Ejercicio 6 - Modo de dibujo
 
-Intenta dibujar un círculo centrado en (20, 30) con radio 10 utilizando ambos modos.
+Intenta dibujar un círculo centrado en (20, 30) con radio 10 utilizando ambos modos. En el siguiente código tienes todas las instrucciones necesarias para completar el ejercicio:
+```java
+// Modo por defecto
+ellipseMode(CENTER);
+ellipse( , , , );
 
----
+// Modo alternativo
+ellipseMode(CORNER);
+ellipse( , , , );
+```
+:::
 
-## 3. Añadiendo color
+## Color en *Processing*
 
-<div style="display:flex; gap:12px; align-items:flex-start;">
+### Escala de grises
 
-  <!-- SV square -->
-  <canvas id="sv" width="256" height="256"
-          style="border:2px solid #ccc; cursor:crosshair;"></canvas>
+::: {layout="[60,30]"}
+::: {.column}
+Hasta ahora, hemos dibujado figuras geométricas sin especificar ningún color. Por defecto, las figuras se dibujan en negro sobre un fondo blanco.
 
-  <!-- Hue slider -->
-  <canvas id="hue" width="26" height="256"
-          style="border:2px solid #ccc; cursor:ns-resize;"></canvas>
+A continuación, veremos cómo especificar colores en *Processing*. Por ahora, basta con componer colores en escala de grises. Para ello hay que tener en cuenta que la escala de un tono de gris va de 0 a 255; el valor 0 corresponde al negro y el valor 255 corresponde al blanco. Por ejemplo, la figura de la derecha se ha representado única y exclusivamente con diferentes valores de gris.
 
-</div>
+En *Processing*, las figuras tienen **borde** y **relleno**, que se definen mediante los métodos `stroke` y `fill`. Además, también puede controlarse el color de fondo de la ventana con `background`.
+:::
 
-<p id="rgbText" style="margin-top:10px; font-size:1.1em;"></p>
+::: {.column}
+![Imagen representada únicamente con valores de gris.](../resources/lesson1/grayscale.svg){#fig-grayscale}
+:::
+:::
 
-<script>
-const sv = document.getElementById("sv");
-const hue = document.getElementById("hue");
-const svCtx = sv.getContext("2d");
-const hueCtx = hue.getContext("2d");
+Por ejemplo, podemos definir el color del fondo, así como del borde y el relleno de un rectángulo de la siguiente manera:
+```java
+background(0);  // fondo 
 
-let H = 0;   // [0,360)
-let S = 1;   // [0,1]
-let V = 1;   // [0,1]
+stroke(200);    // borde
+fill(100);      // relleno
+rect(50, 50, 100, 100);
+```
 
-// --- HSV → RGB ---
-function hsvToRgb(h,s,v){
-  let f=(n,k=(n+h/60)%6)=>v-v*s*Math.max(Math.min(k,4-k,1),0);
-  return [
-    Math.round(f(5)*255),
-    Math.round(f(3)*255),
-    Math.round(f(1)*255)
-  ];
-}
+Además, cabe destacar que *Processing* funciona como una **máquina de estados**; es decir, **una vez se indica el color de borde o de relleno, este se utilizará para todas las figuras que se dibujen a continuación**. Por ejemplo, podemos dibujar dos rectángulos con el mismo color de borde, pero diferente color de relleno, de la siguiente manera:
+```java
+stroke(0);
+fill(150);
+rect(20, 20, 50, 50);       // borde negro, relleno gris
 
-// --- Draw hue bar ---
-function drawHue() {
-  const g = hueCtx.createLinearGradient(0,0,0,hue.height);
-  for (let i=0;i<=360;i+=60)
-    g.addColorStop(i/360, `hsl(${i},100%,50%)`);
+fill(50);
+rect(80, 20, 50, 50);       // mismo borde, diferente relleno
+```
 
-  hueCtx.clearRect(0,0,hue.width,hue.height);
-  hueCtx.fillStyle = g;
-  hueCtx.fillRect(0,0,hue.width,hue.height);
+::: {.callout-note}
+## 🧪 Ejercicio 7 - Círculo y colores
 
-  // marker
-  const y = (H/360)*hue.height;
-  hueCtx.strokeStyle = "#fff";
-  hueCtx.lineWidth = 2;
-  hueCtx.beginPath();
-  hueCtx.moveTo(0, y);
-  hueCtx.lineTo(hue.width, y);
-  hueCtx.stroke();
-}
+Dibuja un círculo negro con borde gris, centrado en (20, 30) y con radio 10.
 
-// --- Draw SV square ---
-function drawSV() {
-  svCtx.clearRect(0,0,sv.width,sv.height);
+<details>
+<summary>💡 Solución</summary>
+```java
+stroke(128);
+fill(0);
+ellipse(20, 30, 20, 20);
+```
+</details>
+:::
 
-  // base hue
-  svCtx.fillStyle = `hsl(${H},100%,50%)`;
-  svCtx.fillRect(0,0,sv.width,sv.height);
+::: {.callout-note}
+## 🧪 Ejercicio 8 - Simula una forma geométrica
 
-  // saturation (white overlay)
-  const white = svCtx.createLinearGradient(0,0,sv.width,0);
-  white.addColorStop(0,"#fff");
-  white.addColorStop(1,"transparent");
-  svCtx.fillStyle = white;
-  svCtx.fillRect(0,0,sv.width,sv.height);
+Trata de obtener algo parecido a la figura que se muestra a la derecha.
 
-  // value (black overlay)
-  const black = svCtx.createLinearGradient(0,0,0,sv.height);
-  black.addColorStop(0,"transparent");
-  black.addColorStop(1,"#000");
-  svCtx.fillStyle = black;
-  svCtx.fillRect(0,0,sv.width,sv.height);
+![](../resources/lesson1/render.png){width="30%"}
+:::
 
-  // selection circle
-  const x = S * sv.width;
-  const y = (1 - V) * sv.height;
-  svCtx.strokeStyle = "#fff";
-  svCtx.lineWidth = 2;
-  svCtx.beginPath();
-  svCtx.arc(x, y, 6, 0, Math.PI*2);
-  svCtx.stroke();
-}
+### Colores RGB (red, green, blue)
 
-// --- Update text ---
-function updateText(){
-  const [r,g,b] = hsvToRgb(H,S,V);
-  rgbText.textContent = `RGB = (${r}, ${g}, ${b})`;
-}
+::: {layout="[30,70]"}
+::: {.column}
+![Representación de los colores primarios RGB.](../resources/lesson1/primary-colors.png){#fig-rgb}
+:::
 
-// --- Interaction ---
-hue.addEventListener("mousedown", e => {
-  H = Math.max(0, Math.min(360, (e.offsetY / hue.height) * 360));
-  drawHue();
-  drawSV();
-  updateText();
-});
+::: {.column}
+Además de diferentes tonos de gris, *Processing* permite definir colores a partir de los tres colores primarios: rojo, verde y azul (RGB). Cuando los tres componentes toman el valor máximo (255), el color resultante es el blanco. En una escala de grises, los tres valores RGB coinciden; por ejemplo, el color (0, 0, 0) corresponde al negro.
 
-sv.addEventListener("mousedown", e => {
-  S = Math.max(0, Math.min(1, e.offsetX / sv.width));
-  V = Math.max(0, Math.min(1, 1 - e.offsetY / sv.height));
-  drawSV();
-  updateText();
-});
+```java
+fill(255, 0, 0);  // rojo
+fill(0, 255, 0);  // verde
+fill(0, 0, 255);  // azul
+```
+:::
 
-// --- Initial draw ---
-drawHue();
-drawSV();
-updateText();
-</script>
+:::
 
+::: {.callout-note}
+## 🧪 Ejercicio 6 - 
+
+:::
+
+## Modelo de color HSV
+
+![](../resources/lesson1/primary-colors.png){#fig-hsv}
 
 En blanco y negro, los colores se representan mediante valores enteros en el rango [0, 255]:
 
@@ -478,7 +511,7 @@ Haz que el color de fondo dependa de la posición horizontal del ratón:
 
 ---
 
-## Apéndice 1: Instalación de Processing
+## Apéndice: Instalación de Processing {.unnumbered}
 
 ![Banner de la página oficial de *Processing*; a la izquierda se muestra el botón de *Download*.](../resources/lesson1/web-teaser.png){#fig-installation}
 
