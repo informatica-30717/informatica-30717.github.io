@@ -904,8 +904,8 @@ Figura&nbsp;10: Imagen del alienígena Zoog.
 </ul></li>
 <li><code>scale(s)</code>: escala el sistema de coordenadas por un factor <em>s</em>.</li>
 </ul>
-<p>Por otro lado, cuando aplicamos transformaciones geométricas, es importante tener en cuenta que estas se acumulan. Por ejemplo, si definimos en el código una traslación seguida de una rotación, todas las figuras que se dibujen a continuación se verán afectadas por ambas transformaciones; primero se aplicará la rotación y luego la traslación.</p>
-<p>Para evitar este comportamiento acumulativo, <em>Processing</em> proporciona las funciones <code>pushMatrix()</code> y <code>popMatrix()</code>, que permiten guardar y restaurar el estado del sistema de coordenadas, respectivamente. De esta manera, podemos aplicar transformaciones geométricas a un bloque específico de código sin afectar al resto del programa.</p>
+<p>Por otro lado, cuando aplicamos transformaciones geométricas, es importante tener en cuenta que estas se <strong>acumulan</strong>. Por ejemplo, si definimos en el código una traslación seguida de una rotación, todas las figuras que se dibujen a continuación se verán afectadas por ambas transformaciones; primero se aplicará la rotación y luego la traslación.</p>
+<p>Para evitar este comportamiento acumulativo, <em>Processing</em> proporciona las funciones <code>pushMatrix()</code> y <code>popMatrix()</code>, que permiten <strong>guardar y restaurar el estado del sistema de coordenadas</strong>, respectivamente. De esta manera, podemos aplicar transformaciones geométricas a un bloque específico de código sin afectar al resto del programa.</p>
 <p>Por ejemplo, el siguiente bloque de código dibuja dos rectángulos: el primero se dibuja con una traslación y una rotación, mientras que el segundo se dibuja sin ninguna transformación geométrica, gracias al uso de <code>pushMatrix()</code> y <code>popMatrix()</code>.</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb17"><pre class="sourceCode java code-with-copy"><code class="sourceCode java"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">size</span><span class="op">(</span><span class="dv">400</span><span class="op">,</span> <span class="dv">200</span><span class="op">);</span></span>
 <span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a></span>
@@ -930,7 +930,7 @@ Figura&nbsp;11: A la izquierda, una rotación respecto del origen de coordenadas
 </section>
 <section id="interacción-con-el-ratón" class="level3" data-number="5.4">
 <h3 data-number="5.4" class="anchored" data-anchor-id="interacción-con-el-ratón"><span class="header-section-number">5.4</span> Interacción con el ratón</h3>
-<p>Como habrás podido observar, en el programa de la pelota que rebota, se utilizan algunas palabras reservadas como <code>width</code> y <code>height</code>. Estas palabras reservadas permiten acceder al ancho y alto de la ventana, respectivamente. De manera similar, <em>Processing</em> proporciona otras palabras reservadas que permiten interactuar con el ratón, como <code>mouseX</code> y <code>mouseY</code>, que indican la posición actual del ratón en la ventana.</p>
+<p>Como habrás podido observar, en el programa de la pelota que rebota, se utilizan algunas <strong>palabras reservadas</strong> como <code>width</code> y <code>height</code>. Estas palabras reservadas permiten acceder al ancho y alto de la ventana, respectivamente. De manera similar, <em>Processing</em> proporciona otras palabras reservadas que permiten interactuar con el ratón, como <code>mouseX</code> y <code>mouseY</code>, que indican la <strong>posición actual del ratón en la ventana</strong>.</p>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -1001,7 +1001,7 @@ Figura&nbsp;11: A la izquierda, una rotación respecto del origen de coordenadas
 </section>
 <section id="condicionales" class="level3" data-number="6.2">
 <h3 data-number="6.2" class="anchored" data-anchor-id="condicionales"><span class="header-section-number">6.2</span> Condicionales</h3>
-<p>Los <strong>condicionales</strong> permiten ejecutar diferentes bloques de código en función de si se cumple o no una determinada condición. En <em>Processing</em>, los condicionales se implementan utilizando las palabras reservadas <code>if</code>, <code>else if</code> y <code>else</code>.</p>
+<p>Los <strong>condicionales</strong> permiten ejecutar <strong>diferentes bloques de código</strong> en función de <strong>si se cumple o no una determinada condición</strong>. En <em>Processing</em>, los condicionales se implementan utilizando las palabras reservadas <code>if</code>, <code>else if</code> y <code>else</code>.</p>
 <p>La sintaxis básica de un condicional es la siguiente:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb19"><pre class="sourceCode java code-with-copy"><code class="sourceCode java"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="op">(</span>condición<span class="op">)</span> <span class="op">{</span></span>
 <span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>  <span class="co">// bloque de código si la condición es verdadera</span></span>
@@ -1010,7 +1010,7 @@ Figura&nbsp;11: A la izquierda, una rotación respecto del origen de coordenadas
 <span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a><span class="op">}</span> <span class="cf">else</span> <span class="op">{</span></span>
 <span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a>  <span class="co">// bloque de código si ninguna condición es verdadera</span></span>
 <span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
-<p>Ten en cuenta que no siempre es necesario utilizar <code>else if</code> o <code>else</code>; un condicional puede consistir únicamente en una instrucción <code>if</code>.</p>
+<p>Ten en cuenta que no siempre es necesario utilizar <code>else if</code> o <code>else</code>; <strong>un condicional puede consistir únicamente en una instrucción <code>if</code></strong>.</p>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -1027,7 +1027,7 @@ Figura&nbsp;11: A la izquierda, una rotación respecto del origen de coordenadas
 </section>
 <section id="bucles" class="level3" data-number="6.3">
 <h3 data-number="6.3" class="anchored" data-anchor-id="bucles"><span class="header-section-number">6.3</span> Bucles</h3>
-<p>Existen algunas palabras reservadas en <em>Java</em> para representar bucles, es decir, bloques de código que se definen durante un número de iteraciones, o infinitamente hasta que no se cumpla alguna condición.</p>
+<p>Existen algunas palabras reservadas en <em>Java</em> para representar <strong>bucles</strong>, es decir, <strong>bloques de código que se repiten durante un número de iteraciones, o infinitamente hasta que no se cumpla alguna condición</strong>.</p>
 <p>En esta sesión es suficiente con conocer el bucle <code>for</code>, que permite ejecutar un bloque de código un número determinado de veces. La sintaxis básica de un bucle <code>for</code> es la siguiente:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb20"><pre class="sourceCode java code-with-copy"><code class="sourceCode java"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> <span class="op">(</span><span class="dt">int</span> i <span class="op">=</span> <span class="dv">1</span><span class="op">;</span> i <span class="op">&lt;=</span> N<span class="op">;</span> i<span class="op">++)</span> <span class="op">{</span></span>
 <span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>  <span class="co">// bloque de código a ejecutar N veces</span></span>
@@ -1044,7 +1044,7 @@ Figura&nbsp;11: A la izquierda, una rotación respecto del origen de coordenadas
 </div>
 <div class="callout-body-container callout-body">
 <p>El objetivo es mostrar 2 Zoogs en la pantalla a partir del programa de un único Zoog. Ten en cuenta que tendrás que modificar la posición de al menos uno de ellos para que sea visible.</p>
-<p><strong>Un poco de inspiración</strong>:</p>
+<p><strong>A modo de inspiración</strong>, el siguiente código dibuja dos rectángulos desplazados en el eje horizontal y vertical en función de <em>i</em>:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb21"><pre class="sourceCode java code-with-copy"><code class="sourceCode java"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">size</span><span class="op">(</span><span class="dv">500</span><span class="op">,</span> <span class="dv">200</span><span class="op">);</span></span>
 <span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a><span class="dt">int</span> N <span class="op">=</span> <span class="dv">2</span><span class="op">;</span></span>
