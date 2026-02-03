@@ -389,7 +389,7 @@ Figura&nbsp;4: Animación con una resolución de pantalla alta.
 <video src="../resources/lesson1/animation_pixels_lowerres.webm" class="img-fluid" controls=""><a href="../resources/lesson1/animation_pixels_lowerres.webm">Video</a></video>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-lowres-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figura&nbsp;5: Animación con una resolución de pantalla baja, mostrando píxeles.
+Figura&nbsp;5: Animación con una resolución de pantalla más baja, donde comienzan a ser visibles los píxeles.
 </figcaption>
 </figure>
 </div>
@@ -419,7 +419,7 @@ Figura&nbsp;5: Animación con una resolución de pantalla baja, mostrando píxel
 <div id="fig-pixels" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-pixels-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="../resources/lesson1/pixel-matrix.png" class="img-fluid figure-img">
+<img src="../resources/lesson1/pixel-matrix.svg" class="img-fluid figure-img">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-pixels-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figura&nbsp;6: Ilustración de una matriz de píxeles, indicando las coordenadas de algunos de ellos.
@@ -519,18 +519,22 @@ Las palabras reservadas se muestran <span style="color:#1f77ff; font-weight:600;
 </div>
 <section id="dibujando-rectángulos-y-elipses" class="level4" data-number="3.2.1">
 <h4 data-number="3.2.1" class="anchored" data-anchor-id="dibujando-rectángulos-y-elipses"><span class="header-section-number">3.2.1</span> Dibujando rectángulos y elipses</h4>
-<p>Tanto en la documentación oficial, como en la solución del ejercicio anterior, os habréis podido dar cuenta de que las funciones <code>rect</code> y <code>ellipse</code> requieren cuatro parámetros: dos para la posición y dos para el tamaño. Sin embargo, hemos asumido que la posición siempre corresponde a la esquina superior izquierda del rectángulo o al centro de la elipse. Esta suposición es correcta por defecto, pero es posible cambiarla utilizando las funciones <code>rectMode</code> y <code>ellipseMode</code>.</p>
+<p>Tanto en la documentación oficial, como en la solución del ejercicio anterior, os habréis podido dar cuenta de que las funciones <code>rect</code> y <code>ellipse</code> requieren cuatro parámetros: dos para la posición y dos para el tamaño. Sin embargo, hemos asumido que la posición siempre corresponde a la esquina superior izquierda del rectángulo o al centro de la elipse. Esta suposición es correcta por defecto, pero es posible cambiarla utilizando las funciones <code>rectMode</code> y <code>ellipseMode</code>. Más concretamente, estas funciones permiten definir cómo se interpretan las posiciones pasadas como parámetros a las funciones <code>rect</code> y <code>ellipse</code>. Existen dos modos principales para cada una de estas funciones:</p>
+<ul>
+<li><code>CORNER</code>: la posición corresponde a la esquina superior izquierda del rectángulo o elipse.</li>
+<li><code>CENTER</code>: la posición corresponde al centro del rectángulo o elipse.</li>
+</ul>
 <div id="fig-rectmodes" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-rectmodes-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="../resources/lesson1/rect-mode.svg" id="fig-rectmodes" class="img-fluid figure-img">
+<img src="../resources/lesson1/rect-mode.svg" class="img-fluid figure-img">
 </div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-rectmodes-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figura&nbsp;7
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-rectmodes-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;7: Representación de cómo se interpretan las posiciones en ambos modos para rectángulos y elipses.
 </figcaption>
 </figure>
 </div>
-<p>Por defecto, Processing interpreta las posiciones de la siguiente manera:</p>
+<p>Por defecto, <em>Processing</em> interpreta las posiciones de la siguiente manera:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode java code-with-copy"><code class="sourceCode java"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rectMode</span><span class="op">(</span>CORNER<span class="op">);</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ellipseMode</span><span class="op">(</span>CENTER<span class="op">);</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 <p>También es posible cambiar esta interpretación usando:</p>
@@ -597,6 +601,9 @@ Figura&nbsp;8: Imagen representada únicamente con valores de gris.
 <span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="fu">fill</span><span class="op">(</span><span class="dv">50</span><span class="op">);</span></span>
 <span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a><span class="fu">rect</span><span class="op">(</span><span class="dv">80</span><span class="op">,</span> <span class="dv">20</span><span class="op">,</span> <span class="dv">50</span><span class="op">,</span> <span class="dv">50</span><span class="op">);</span>       <span class="co">// mismo borde, diferente relleno</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="quarto-layout-panel" data-layout="[50, 50]">
+<div class="quarto-layout-row">
+<div class="column quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -618,6 +625,8 @@ Figura&nbsp;8: Imagen representada únicamente con valores de gris.
 </details>
 </div>
 </div>
+</div>
+<div class="column quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -631,8 +640,11 @@ Figura&nbsp;8: Imagen representada únicamente con valores de gris.
 <p>Trata de obtener algo parecido a la figura que se muestra debajo.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="../resources/lesson1/render.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:20.0%"></p>
+<p><img src="../resources/lesson1/render.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:40.0%"></p>
 </figure>
+</div>
+</div>
+</div>
 </div>
 </div>
 </div>
@@ -697,9 +709,9 @@ Figura&nbsp;9: Representación de los colores primarios RGB.
 <section id="programas-dinámicos" class="level2" data-number="5">
 <h2 data-number="5" class="anchored" data-anchor-id="programas-dinámicos"><span class="header-section-number">5</span> Programas dinámicos</h2>
 <p>Hasta este momento, hemos escrito programas estáticos, es decir, programas que dibujan una imagen fija. A continuación, veremos cómo crear programas dinámicos que pueden cambiar con el tiempo.</p>
-<div class="quarto-layout-panel" data-layout="[50,50]">
+<div class="quarto-layout-panel" data-layout="[60,40]">
 <div class="quarto-layout-row">
-<div class="column quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div class="column quarto-layout-cell" style="flex-basis: 60.0%;justify-content: flex-start;">
 <p>Comenzaremos con este bloque de código:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12"><pre class="sourceCode java code-with-copy"><code class="sourceCode java"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">size</span><span class="op">(</span><span class="dv">800</span><span class="op">,</span> <span class="dv">800</span><span class="op">);</span></span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a></span>
@@ -729,7 +741,7 @@ Figura&nbsp;9: Representación de los colores primarios RGB.
 <span id="cb12-26"><a href="#cb12-26" aria-hidden="true" tabindex="-1"></a><span class="fu">line</span><span class="op">(</span><span class="dv">360</span><span class="op">,</span> <span class="dv">600</span><span class="op">,</span> <span class="dv">320</span><span class="op">,</span> <span class="dv">640</span><span class="op">);</span></span>
 <span id="cb12-27"><a href="#cb12-27" aria-hidden="true" tabindex="-1"></a><span class="fu">line</span><span class="op">(</span><span class="dv">440</span><span class="op">,</span> <span class="dv">600</span><span class="op">,</span> <span class="dv">480</span><span class="op">,</span> <span class="dv">640</span><span class="op">);</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<div class="column quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div class="column quarto-layout-cell" style="flex-basis: 40.0%;justify-content: flex-start;">
 <div id="fig-zoog" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-zoog-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
