@@ -324,20 +324,31 @@ Comenzaremos con este bloque de código:
 ```java
 size(800, 800);
 
+// Aumenta el tamaño de todo lo que se dibuje
+scale(2);
+
+// Pinta un fondo blanco
+background(255);
+
+// Fija las coordenadas basadas en el centro
 ellipseMode(CENTER);
 rectMode(CENTER);
 
+// Dibuja el cuerpo
 stroke(0);
 fill(150);
 rect(200, 200, 40, 200);
 
+// Dibuja la cabeza
 fill(255);
 ellipse(200, 140, 120, 120);
 
+// Dibuja los ojos
 fill(0);
 ellipse(162, 140, 32, 64);
 ellipse(238, 140, 32, 64);
 
+// Dibuja las piernas
 stroke(0);
 line(180, 300, 160, 320);
 line(220, 300, 240, 320);
@@ -373,10 +384,9 @@ ellipse(200, 140, 120, 120);
 - La función `setup` se ejecuta una única vez al inicio del programa, y es el lugar adecuado para inicializar variables, definir el tamaño de la ventana, etc. 
 - Por otro lado, la función `draw` se ejecuta de manera repetitiva en un bucle infinito, y es el lugar adecuado para dibujar figuras que cambian con el tiempo.
 
-::: {.callout-note}
-## Bouncing ball
+Tanto `setup` como `draw` son funciones especiales que no requieren ser llamadas explícitamente en el código; *Processing* se encarga de ello automáticamente. Aunque no entraremos en detalles sobre la sintaxis de las funciones en este momento, es importante destacar que el código que se encuentra dentro de una función debe estar **sangrado** (indentado) para indicar que pertenece a dicha función. Además, ambas funciones devuelven `void`, lo que significa que no devuelven ningún valor. También es importante abrir y cerrar llaves `{}` para definir el bloque de código que pertenece a cada función.
 
-::: {layout="[54,46]"}
+::: {layout="[50.5,49.5]"}
 ::: {.column}
 Por ejemplo, el siguiente programa dibuja una pelota que rebota dentro de la ventana:
 ```java
@@ -415,7 +425,142 @@ void draw() {
 ![](../resources/lesson1/bouncing_ball.gif)
 :::
 :::
+
+::: {.callout-note}
+## 🧪 Ejercicio 11 - Zoog, utilizando `setup` y `draw`
+
+Reescribe el código de Zoog utilizando las funciones `setup` y `draw`. **¿Notas alguna diferencia en el resultado respecto al código original?**
+
+```java
+void draw() {
+  // Pinta un fondo blanco
+  background(255);
+
+  // Fija las coordenadas basadas en el centro
+  ellipseMode(CENTER);
+  rectMode(CENTER);
+
+  // Dibuja el cuerpo
+  stroke(0);
+  fill(150);
+  rect(200, 200, 40, 200);
+
+  // Dibuja la cabeza
+  fill(255);
+  ellipse(200, 140, 120, 120);
+
+  // Dibuja los ojos
+  fill(0);
+  ellipse(162, 140, 32, 64);
+  ellipse(238, 140, 32, 64);
+
+  // Dibuja las piernas
+  stroke(0);
+  line(180, 300, 160, 320);
+  line(220, 300, 240, 320);
+}
+
+void setup() {
+  // Tamaño del lienzo
+  size(800, 800);
+}
+```
 :::
+
+::: {.callout-warning}
+## 🔴 Color de fondo 
+
+Prueba a mover la instrucción `background(255);` desde la función `draw` a la función `setup`. **¿Qué ocurre?**
+:::
+
+### Transformaciones geométricas
+
+Aunque no entraremos en detalles sobre las transformaciones geométricas en este momento, es importante mencionar que *Processing* proporciona varias funciones para trasladar, rotar y escalar las figuras geométricas. Por ejemplo, la función `translate(x, y)` permite trasladar el origen de coordenadas a la posición (x, y), de manera que todas las figuras que se dibujen a continuación se posicionarán en función de este nuevo origen.
+
+En resumen, las transformaciones geométricas más comunes son:
+
+- `translate(x, y)`: traslada el origen de coordenadas a la posición (x, y).
+- `rotate(angle)`: rota el sistema de coordenadas en un ángulo especificado (en radianes).
+- `scale(s)`: escala el sistema de coordenadas por un factor s.
+- `scale(sx, sy)`: escala el sistema de coordenadas por factores sx y sy en las direcciones x e y, respectivamente.
+
+Por otro lado, cuando aplicamos transformaciones geométricas, es importante tener en cuenta que estas se acumulan. Por ejemplo, si aplicamos una traslación seguida de una rotación, la rotación se realizará en función del nuevo origen de coordenadas tras la traslación.
+
+Para evitar este comportamiento acumulativo, *Processing* proporciona las funciones `pushMatrix()` y `popMatrix()`, que permiten guardar y restaurar el estado del sistema de coordenadas, respectivamente. De esta manera, podemos aplicar transformaciones geométricas a un bloque específico de código sin afectar al resto del programa.
+
+### Interacción con el ratón
+
+Como habrás podido observar, en el programa de la pelota que rebota, se utilizan algunas palabras reservadas como `width` y `height`. Estas palabras reservadas permiten acceder al ancho y alto de la ventana, respectivamente. De manera similar, *Processing* proporciona otras palabras reservadas que permiten interactuar con el ratón, como `mouseX` y `mouseY`, que indican la posición actual del ratón en la ventana.
+
+::: {.callout-note}
+## 🧪 Ejercicio 12 - Sigue al ratón
+
+Modifica el programa de Zoog para que la esquina superior izquierda, es decir, desde donde se dibuja el cuerpo, siga la posición del ratón, utilizando `mouseX` y `mouseY`.
+
+💡**Pista**: se puede trasladar toda la geometría con una de las transformaciones geométricas antes mencionadas.
+:::
+
+::: {.callout-note}
+## 🧪 Ejercicio 13 - Reacción del cuerpo al movimiento del ratón
+
+Modifica el programa de Zoog para que la cabeza gire en función de la posición del ratón. Por ejemplo, si el ratón está a la izquierda de Zoog, la cabeza debe girar hacia la izquierda, y viceversa.
+
+💡**Pista**: se puede rotar toda la geometría de la cabeza con una de las transformaciones geométricas antes mencionadas. Para calcular el ángulo de rotación, puedes utilizar la función `atan2(dy, dx)`, donde `dy` y `dx` son las diferencias en las coordenadas y y x entre la posición del ratón y la posición de la cabeza de Zoog.
+
+<details>
+<summary>💡 Solución</summary>
+```java
+void drawPupil(float ex, float ey) {
+  pushMatrix();
+  translate(ex, ey);
+
+  float angle = atan2(mouseY - ey, mouseX - ex);
+  rotate(angle);
+
+  fill(0);
+  ellipse(6, 0, 12, 12);  // pupil offset along X
+
+  popMatrix();
+}
+```
+</details>
+:::
+
+## Variables, condicionales y bucles
+
+### Introducción a variables
+
+En la sección anterior hemos descubierto que el método `draw` se ejecuta de manera repetitiva en un bucle infinito. Esto nos permite crear programas dinámicos que cambian con el tiempo. Sin embargo, para crear programas más complejos, es necesario utilizar **variables** para almacenar datos que pueden cambiar durante la ejecución del programa.
+
+::: {.callout-note}
+## 🧪 Ejercicio 14 - Traslada una esfera
+
+Crea un programa que traslade una esfera de izquierda a derecha en la ventana. Utiliza una variable para almacenar la posición horizontal de la esfera, y actualízala en cada iteración del bucle `draw`.
+
+<details>
+<summary>💡 Solución</summary>
+```java
+int circleX = 100;
+int circleY = 100;
+
+void setup() {
+  size(200, 200);
+}
+
+void draw() {
+  background(255);
+  stroke(0);
+  fill(175);
+  ellipse(circleX, circleY, 50, 50);
+  circleX = circleX + 1;
+}
+```
+</details>
+:::
+
+### Condicionales
+
+Los **condicionales** permiten ejecutar diferentes bloques de código en función de si se cumple o no una determinada condición. En *Processing*, los condicionales se implementan utilizando las palabras reservadas `if`, `else if` y `else`.
 
 ## Apéndice: Instalación de Processing {.unnumbered}
 
