@@ -338,6 +338,16 @@ fill(0, 0, 255);  // azul
 **Pista**: fíjate en la @fig-rgb.
 :::
 
+::: {layout="[40, 50]"}
+::: {.column}
+![Captura de pantalla del selector de color de *Processing*.](../resources/lesson1/hsv-picker.png){#fig-colorpicker}
+:::
+
+::: {.column}
+Como habréis podido observar a partir del Ejercicio 9, no es sencillo imaginar qué color genera una mezcla concreta de valores RGB, ni determinar qué valores exactos u aproximados de rojo, verde y azul necesitamos para componer un color que tengamos en mente. Por esta razón, *Processing* dispone de una herramienta, ***Selector de color***, que permite interactuar con una paleta de colores y obtener valores de rojo, verde y azul. Podéis acceder a esta herramienta desde el menú **Herramientas > Selector de color**.
+:::
+:::
+
 ### Opacidad
 
 Además de los canales R, G y B, también podemos indicar un valor de **opacidad**. De esta manera, un valor de opacidad de 255 indica que elemento a dibujar es completamente opaco, y un valor de 0 indica que es completamente transparente. Para especificar la opacidad, bastante con indicar un cuarto valor en operaciones como `stroke` o `fill`.
@@ -400,14 +410,18 @@ Intenta dibujar al alienígena Zoog utilizando el bloque de código anterior com
 
 ### Comentarios
 
-Aprovechando que nuestro programa empieza a ser un poco más largo, es recomendable añadir comentarios para explicar qué hace cada parte del código. En *Processing*, los comentarios se indican con `//` para comentarios de una sola línea, o con `/*` y `*/` para comentarios multilínea. Por ejemplo, en el siguiente código se han añadido comentarios para explicar qué parte del cuerpo de Zoog dibuja cada bloque de instrucciones:
+Aprovechando que nuestro programa empieza a ser un poco más largo, es recomendable añadir comentarios para explicar qué hace cada parte del código. En *Processing*, los comentarios se indican con `//` para comentarios de una sola línea, o con `/*` y `*/` para comentarios multilínea. Además de para indicar qué hace una parte de nuestro código, también se pueden usar para desactivar temporalmente líneas de código durante la depuración. Por ejemplo, en el siguiente código se han añadido comentarios para explicar qué parte del cuerpo de Zoog dibuja cada bloque de instrucciones, y para desactivar el dibujo de la cabeza temporalmente:
 
 ```java
 // Dibuja el cuerpo de Zoog
 rect(200, 200, 40, 200);
 
 /* Dibuja la cabeza de Zoog en la posición (200, 140) con ancho y alto 120 */
-ellipse(200, 140, 100, 120);
+//ellipse(200, 140, 100, 120);        // Desactivado temporalmente
+
+// Dibuja los ojos de Zoog
+/**ellipse(170, 140, 25, 50);         // Ojo izquierdo
+ellipse(230, 140, 25, 50);**/         // Ojo derecho
 ```
 
 ### Funciones `setup` y `draw`
@@ -511,7 +525,7 @@ Prueba a mover la instrucción `background(255);` desde la función `draw` a la 
 
 ### Interacción con el ratón
 
-Como habrás podido observar, en el programa de la pelota que rebota, se utilizan algunas **palabras reservadas** como `width` y `height`. Estas palabras reservadas permiten acceder al ancho y alto de la ventana, respectivamente. De manera similar, *Processing* proporciona otras palabras reservadas que permiten interactuar con el ratón, como `mouseX` y `mouseY`, que indican la **posición actual del ratón en la ventana**.
+En *Processing* existen algunas **palabras reservadas** como `width` y `height`, que permiten acceder al ancho y alto de la ventana, respectivamente, y otras que permiten interactuar con el usuario, como `mouseX` y `mouseY`, que indican la **posición actual del ratón en la ventana**.
 
 ::: {.callout-note}
 ## 🧪 Ejercicio 12 - Sigue al ratón
@@ -520,9 +534,14 @@ Modifica el programa de Zoog para que la esquina superior izquierda del cuerpo d
 :::
 
 ::: {.callout-note}
-## 🧪 Ejercicio 13 - Reacción del cuerpo al movimiento del ratón
+## 🧪 Ejercicio 13 - Sigue al ratón II
 
-Modifica el programa de Zoog para que la cabeza gire en función de la posición del ratón. Por ejemplo, si el ratón está a la izquierda de Zoog, la cabeza debe girar hacia la izquierda, y viceversa.
+Centra la cabeza de Zoog en la posición (`mouseX`, `mouseY` - 30), de manera que la cabeza se mueva en función de la posición del ratón, pero siempre esté situada por encima del cuerpo. Por supuesto, tendrás que ajustar también la posición de los ojos.
+:::
+
+::: {.callout-note}
+## 🧪 Ejercicio extra - Sigue al ratón III
+Intenta que las piernas de Zoog también sigan al ratón, manteniendo la misma distancia relativa con el cuerpo.
 :::
 
 ## Variables, condicionales y bucles

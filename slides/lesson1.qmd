@@ -310,6 +310,16 @@ fill(0, 0, 255);  // azul
 **Pista**: fíjate en la @fig-rgb.
 :::
 
+::: {layout="[40, 50]"}
+::: {.column}
+![Captura de pantalla del selector de color de *Processing*.](../resources/lesson1/hsv-picker.png){#fig-colorpicker}
+:::
+
+::: {.column}
+Como habréis podido observar a partir del Ejercicio 9, no es sencillo imaginar qué color genera una mezcla concreta de valores RGB, ni determinar qué valores exactos u aproximados de rojo, verde y azul necesitamos para componer un color que tengamos en mente. Por esta razón, *Processing* dispone de una herramienta, *Selector de color*, que permite interactuar con una paleta de colores y obtener valores de rojo, verde y azul. Podéis acceder a esta herramienta desde el menú **Herramientas > Selector de color**.
+:::
+:::
+
 ### Opacidad
 
 Además de los canales R, G y B, también podemos indicar un valor de **opacidad**. De esta manera, un valor de opacidad de 255 indica que elemento a dibujar es completamente opaco, y un valor de 0 indica que es completamente transparente. Para especificar la opacidad, bastante con indicar un cuarto valor en operaciones como `stroke` o `fill`.
