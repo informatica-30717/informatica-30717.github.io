@@ -19,8 +19,8 @@ sidebar:
 Los objetivos de esta práctica son los siguientes:
 
 - Familiarización con el ordenador y los elementos básicos de un sistema operativo.
-- Familiarización con el entorno de desarrollo Processing.
-- Familiarización con aspectos básicos de programación a través de programas en Processing.
+- Familiarización con el entorno de desarrollo *Processing*.
+- Familiarización con aspectos básicos de programación a través de programas en *Processing*.
 
 ::: {.callout-note}
 ## 🎞 Diapositivas
@@ -33,14 +33,14 @@ Los objetivos de esta práctica son los siguientes:
 
 ### Introducción
 
-::: {layout="[75,25]"}
+::: {layout="[80,20]"}
 ::: {.column}
-Processing es un lenguaje de programación y un entorno de desarrollo (*Integrated Development Environment*, IDE).
+*Processing* es un lenguaje de programación y un entorno de desarrollo (*Integrated Development Environment*, IDE).
 
-- **Basado en Java**
-- **Producción de proyectos multimedia e interactivos**
-- Creado por científicos del MIT en 2001
-- Distribución gratuita y de código abierto
+- **Basado en Java**.
+- **Producción de proyectos multimedia e interactivos**.
+- Creado por científicos del MIT en 2001.
+- Distribución gratuita y de código abierto.
 :::
 ::: {.column}
 ![](../resources/lesson1/processing.svg)
@@ -60,30 +60,30 @@ La propia [página de Processing](https://processing.org/examples/) muestra nume
 
 ### El entorno de desarrollo
 
-El entorno de desarrollo de Processing tiene un diseño minimalista que facilita su uso. La interfaz gráfica posee las siguientes partes:
+El entorno de desarrollo de *Processing* tiene un diseño minimalista que facilita su uso. La interfaz gráfica está compuesta por los siguientes elementos principales:
 
 - **Un menú de opciones** (archivo, editar, sketch, depuración, herramientas y ayuda).
 - **Dos botones para ejecutar y detener el programa.**
 - Un área central para escribir el código fuente (**editor**).
 - Una ventana inferior donde se muestran dos pestañas:
-  - **Consola**: Salida estándar del programa.
-  - **Errores**: Mensajes de error generados durante la ejecución.
+  - **Consola**: salida estándar del programa.
+  - **Errores**: mensajes de error generados durante la ejecución.
   
-![Vista del entorno de desarrollo y ventana pop-up que redirige a ejemplos disponibles en su página web.](../resources/lesson1/ide.png){#fig-ide}
+Al ejecutar un programa se abrirá una **nueva ventana donde se mostrará el resultado de la ejecución**.
 
-Al ejecutar un programa se abrirá una **nueva ventana donde se mostrará el resultado de la ejecución** .
+![Vista del entorno de desarrollo (derecha) y ventana *pop-up* (izquierda) que redirige a ejemplos disponibles en su página web.](../resources/lesson1/ide.png){#fig-ide}
 
 ::: {.callout-warning}
-Cada ejercicio debe realizarse en un nuevo fichero, no en una nueva pestaña. Se recomienda guarda cada fichero a medida que se avanza en los ejercicios.
-:::
+El primer archivo que se crea en un nuevo proyecto de *Processing* se denomina `sketch_yymmdda`. Es recomendable cambiar el nombre del archivo para que tenga sentido con el programa que se va a desarrollar. Además, al guardarlo nos preguntará el nombre del proyecto, que también es recomendable que tenga sentido. 
 
----
+Indicad una ubicación de fácil acceso en vuestro ordenador para guardar los proyectos de *Processing*.
+:::
 
 ## Dibujando figuras geométricas
 
 Las figuras geométricas se dibujan en una ventana que está formada por una **matriz de píxeles**. Cada píxel es un pequeño punto de luz que puede tener un color diferente. La combinación de todos los píxeles forma la imagen que vemos en la pantalla.
 
-Por ejemplo, las dos animaciones siguientes muestran la diferencia entre una resolución de pantalla alta y otra baja. En la animación de la derecha, a medida que reducimos la resolución, podemos observar los píxeles individuales que componen la imagen.
+Un píxel es la **unidad más pequeña de una imagen digital**. La resolución de una imagen se refiere a la cantidad de píxeles que contiene, y se expresa como el número de píxeles en el eje horizontal por el número de píxeles en el eje vertical (por ejemplo, 1920x1080 píxeles). Por ejemplo, la @fig-highres muestra una animación con una resolución alta, donde los píxeles no son visibles a simple vista. En cambio, en la @fig-lowres se ha reducido la resolución de la animación, y comienzan a ser visibles los píxeles individuales.
 
 ::: {layout="[50,50]"}
 ::: {.column}
@@ -91,27 +91,52 @@ Por ejemplo, las dos animaciones siguientes muestran la diferencia entre una res
 :::
 
 ::: {.column}
-![Animación con una resolución de pantalla baja, mostrando píxeles.](../resources/lesson1/animation_pixels_lowerres.webm){#fig-lowres}
+![Animación con una resolución de pantalla más baja, donde comienzan a ser visibles los píxeles.](../resources/lesson1/animation_pixels_lowerres.webm){#fig-lowres}
 :::
 :::
 
 ::: {layout="[70,30]"}
 ::: {.column}
-Para dibujar cualquier figura geométrica, es necesario especificar una o varias posiciones en la ventana. Dichas posiciones se definen mediante un par de coordenadas **(x, y)**, donde **x** indica la **posición horizontal** e **y** la **posición vertical**. En *Processing*, el origen de coordenadas (0,0) se encuentra en la esquina superior izquierda de la ventana, como se muestra en la figura de la derecha.
+Para dibujar cualquier figura geométrica, es necesario especificar una o varias posiciones en la ventana. Dichas posiciones se definen mediante un par de coordenadas ***(x, y)***, donde ***x*** indica la **posición horizontal** e ***y*** la **posición vertical**. En *Processing*, **el origen de coordenadas (0,0) se encuentra en la esquina superior izquierda de la ventana**, como se muestra en la @fig-pixels
 
 ::: {.callout-note}
 ## 🧪 Ejercicio 1 - Sistema de coordenadas
 
-Dibuja una línea que va desde la posición (10, 0) hasta la posición (40, 50).
+Dibuja una línea que va desde la posición (10, 0) hasta la posición (40, 50). Cuando se ejecute, os podréis dar cuenta de que el origen, (0,0), parte de la esquina superior izquierda.
 ```java
 line(10, 0, 40, 50);
 ```
 :::
 :::
 ::: {.column}
-![Ilustración de una matriz de píxeles, indicando las coordenadas de algunos de ellos.](../resources/lesson1/pixel-matrix.png){#fig-pixels}
+![Ilustración de una matriz de píxeles, indicando las coordenadas de algunos de ellos.](../resources/lesson1/pixel-matrix.svg){#fig-pixels}
 :::
 :::
+
+Este concepto puede entenderse como **darle un nombre a un conjunto de instrucciones para poder reutilizarlas fácilmente** más adelante. En **matemáticas**, una función toma uno o varios valores de entrada y produce un valor de salida siguiendo una regla. Por ejemplo, la función
+$f(x) = x^2$ toma un número $x$ y devuelve su cuadrado.
+
+En programación ocurre algo muy similar: una función recibe unos parámetros, ejecuta unas instrucciones con ellos y, opcionalmente, devuelve un resultado.
+
+Por ejemplo, podemos definir en Java una función que reciba un número entero y devuelva su cuadrado:
+```java
+int square(int x) {
+  return x * x;
+}
+```
+
+Una vez definida, podemos usar la función tantas veces como queramos, simplemente indicando el valor de entrada:
+```java
+int result = square(5);  // result tendrá el valor 25
+```
+
+De este modo:
+
+- `square` es el nombre de la función.
+- `x` es el parámetro de entrada.
+- `return` indica el valor que devuelve la función.
+
+En *Processing* ocurre exactamente lo mismo. La función `line`, por ejemplo, recibe cuatro parámetros (las coordenadas de dos puntos) y ejecuta una acción: dibujar una línea en la ventana. La diferencia es que, en este caso, la función no devuelve un valor, sino que produce un efecto visual en pantalla.
 
 ::: {.callout-warning}
 ## 📝 Ejercicio 2 — Errores comunes
@@ -177,11 +202,14 @@ Puedes consultar la [documentación oficial de *Processing*](https://processing.
 
 #### Dibujando rectángulos y elipses
 
-Tanto en la documentación oficial, como en la solución del ejercicio anterior, os habréis podido dar cuenta de que las funciones `rect` y `ellipse` requieren cuatro parámetros: dos para la posición y dos para el tamaño. Sin embargo, hemos asumido que la posición siempre corresponde a la esquina superior izquierda del rectángulo o al centro de la elipse. Esta suposición es correcta por defecto, pero es posible cambiarla utilizando las funciones `rectMode` y `ellipseMode`.
+Tanto en la documentación oficial, como en la solución del ejercicio anterior, os habréis podido dar cuenta de que las funciones `rect` y `ellipse` requieren cuatro parámetros: **dos para la posición** y **dos para el tamaño**. Sin embargo, hemos asumido que la posición siempre corresponde a la esquina superior izquierda del rectángulo o al centro de la elipse. Esta suposición es correcta por defecto, pero es posible cambiarla utilizando las funciones `rectMode` y `ellipseMode`. Más concretamente, estas funciones permiten definir cómo se interpretan las posiciones pasadas como parámetros a las funciones `rect` y `ellipse`. Existen dos modos principales para cada una de estas funciones:
 
-![](../resources/lesson1/rect-mode.svg){#fig-rectmodes}
+- `CORNER`: la posición corresponde a la esquina superior izquierda del rectángulo o elipse.
+- `CENTER`: la posición corresponde al centro del rectángulo o elipse.
 
-Por defecto, Processing interpreta las posiciones de la siguiente manera:
+![Representación de cómo se interpretan las posiciones en ambos modos para rectángulos y elipses.](../resources/lesson1/rect-mode.svg){#fig-rectmodes}
+
+Por defecto, *Processing* interpreta las posiciones de la siguiente manera:
 ```java
 rectMode(CORNER);
 ellipseMode(CENTER);
@@ -246,6 +274,9 @@ fill(50);
 rect(80, 20, 50, 50);       // mismo borde, diferente relleno
 ```
 
+::: {layout="[50, 50]"}
+
+::: {.column}
 ::: {.callout-note}
 ## 🧪 Ejercicio 7 - Círculo y colores
 
@@ -260,14 +291,19 @@ ellipse(20, 30, 20, 20);
 ```
 </details>
 :::
+:::
 
+::: {.column}
 ::: {.callout-note}
 ## 🧪 Ejercicio 8 - Dibuja una forma geométrica
 
 Trata de obtener algo parecido a la figura que se muestra debajo.
 
-![](../resources/lesson1/render.png){width="20%" fig-align="center"}
+![](../resources/lesson1/render.png){width="40%" fig-align="center"}
 :::
+:::
+:::
+
 
 ### Colores RGB (red, green, blue)
 
@@ -318,14 +354,11 @@ rect(20, 20, 50, 50);       // rectángulo semitransparente
 
 Hasta este momento, hemos escrito programas estáticos, es decir, programas que dibujan una imagen fija. A continuación, veremos cómo crear programas dinámicos que pueden cambiar con el tiempo.
 
-::: {layout="[50,50]"}
+::: {layout="[60,40]"}
 ::: {.column}
 Comenzaremos con este bloque de código:
 ```java
 size(800, 800);
-
-// Aumenta el tamaño de todo lo que se dibuje
-scale(2);
 
 // Pinta un fondo blanco
 background(255);
@@ -337,21 +370,21 @@ rectMode(CENTER);
 // Dibuja el cuerpo
 stroke(0);
 fill(150);
-rect(200, 200, 40, 200);
+rect(400, 400, 80, 400);
 
 // Dibuja la cabeza
 fill(255);
-ellipse(200, 140, 120, 120);
+ellipse(400, 280, 200, 240);
 
 // Dibuja los ojos
 fill(0);
-ellipse(162, 140, 32, 64);
-ellipse(238, 140, 32, 64);
+ellipse(350, 280, 50, 100);
+ellipse(450, 280, 50, 100);
 
 // Dibuja las piernas
 stroke(0);
-line(180, 300, 160, 320);
-line(220, 300, 240, 320);
+line(360, 600, 320, 640);
+line(440, 600, 480, 640);
 ```
 :::
 
@@ -373,58 +406,61 @@ Aprovechando que nuestro programa empieza a ser un poco más largo, es recomenda
 // Dibuja el cuerpo de Zoog
 rect(200, 200, 40, 200);
 
-/* Dibuja los ojos de Zoog en la posición (200, 140) con ancho y alto 120 */
-ellipse(200, 140, 120, 120);
+/* Dibuja la cabeza de Zoog en la posición (200, 140) con ancho y alto 120 */
+ellipse(200, 140, 100, 120);
 ```
 
 ### Funciones `setup` y `draw`
 
-*Processing* utiliza dos funciones especiales para organizar el código: `setup` y `draw`. 
+Cuando ejecutamos un programa en *Processing*, el código no se ejecuta de arriba a abajo una sola vez, sino que utiliza un modelo de ejecución basado en dos fases bien diferenciadas: `setup()` y `draw()`.
 
-- La función `setup` se ejecuta una única vez al inicio del programa, y es el lugar adecuado para inicializar variables, definir el tamaño de la ventana, etc. 
-- Por otro lado, la función `draw` se ejecuta de manera repetitiva en un bucle infinito, y es el lugar adecuado para dibujar figuras que cambian con el tiempo.
-
-Tanto `setup` como `draw` son funciones especiales que no requieren ser llamadas explícitamente en el código; *Processing* se encarga de ello automáticamente. Aunque no entraremos en detalles sobre la sintaxis de las funciones en este momento, es importante destacar que el código que se encuentra dentro de una función debe estar **sangrado** (indentado) para indicar que pertenece a dicha función. Además, ambas funciones devuelven `void`, lo que significa que no devuelven ningún valor. También es importante abrir y cerrar llaves `{}` para definir el bloque de código que pertenece a cada función.
-
-::: {layout="[50.5,49.5]"}
+::: {layout="[70, 30]"}
 ::: {.column}
-Por ejemplo, el siguiente programa dibuja una pelota que rebota dentro de la ventana:
-```java
-int x = 50;
-int y = 50;
-int speedX = 3;
-int speedY = 2;
+- Al pulsar el botón ▶️, *Processing* inicia el programa y lo primero que hace es llamar a la función `setup()`.
+- **La función `setup()` se ejecuta una única vez al comienzo del programa**. Su objetivo es preparar el entorno antes de empezar a dibujar. En esta función se suele definir el tamaño de la ventana, inicializar variables, configurar colores o modos de dibujo y cargar recursos como imágenes o fuentes. **Una vez que `setup()` termina, *Processing* no vuelve a ejecutarla**.
+- Después de `setup()`, *Processing* entra automáticamente en la función `draw()`. **La función `draw()` se ejecuta repetidamente**, normalmente unas sesenta veces por segundo. **En cada ejecución se dibuja un nuevo fotograma y se actualizan posiciones o estados**. Gracias a este bucle continuo es posible crear animaciones, juegos y visualizaciones interactivas.
 
-void setup() {
-  size(400, 400);
-} 
-
-void draw() {
-  background(255);
-  
-  // Dibuja la pelota
-  fill(0);
-  ellipse(x, y, 30, 30);
-  
-  // Actualiza la posición de la pelota
-  x += speedX;
-  y += speedY;
-  
-  // Rebote en los bordes
-  if (x <= 15 || x >= width - 15) {
-    speedX = -speedX;
-  }
-  if (y <= 15 || y >= height - 15) {
-    speedY = -speedY;
-  }
-}
-```
+![Analogía del funcionamiento de *Processing*, y el proceso de animación. El resultado final se compone de varias llamadas a `draw`, y en cada llamada, se dibujan múltiples tipos de geometría.](../resources/lesson1/disney-animation.svg){#fig-disney-animation}
 ::: 
 
 ::: {.column .centered}
-![](../resources/lesson1/bouncing_ball.gif)
+```{mermaid}
+flowchart TD
+    A["El programa comienza"]
+    B["setup()"]
+    C["Inicializa ventana y variables"]
+    D["setup() termina"]
+    E["draw()"]
+    F["Dibuja un fotograma"]
+    G["Actualiza estado"]
+
+    A --> B
+    B --> C
+    C --> D
+    D --> E
+    E --> F
+    F --> G
+    G --> E
+```
 :::
 :::
+
+Tanto `setup` como `draw` son funciones especiales que no requieren ser llamadas explícitamente en el código; *Processing* se encarga de ello automáticamente. Por ahora, sólo cabe destacar que el código que se encuentra dentro de una función debe estar **sangrado** (indentado) para indicar que pertenece a dicha función. Además, ambas funciones devuelven `void`, lo que significa que no devuelven ningún valor. También es importante abrir y cerrar llaves `{}` para definir el bloque de código que pertenece a cada función.
+
+::: {.grid}
+::: {.g-col-4}
+![Inicializa ventana y variables](../resources/lesson1/processing-setup.png){#fig-processing-setup}
+:::
+
+::: {.g-col-4}
+![Dibuja un fotograma](../resources/lesson1/processing-draw.png){#fig-processing-draw}
+:::
+
+::: {.g-col-4}
+![Fin de la animación](../resources/lesson1/processing-finished.png){#fig-processing-finished}
+:::
+:::
+
 
 ::: {.callout-note}
 ## 🧪 Ejercicio 11 - Zoog, utilizando `setup` y `draw`
@@ -433,36 +469,36 @@ Reescribe el código de Zoog utilizando las funciones `setup` y `draw`. **¿Nota
 
 ```java
 void draw() {
-  // Pinta un fondo blanco
-  background(255);
+    // Pinta un fondo blanco
+    background(255);
 
-  // Fija las coordenadas basadas en el centro
-  ellipseMode(CENTER);
-  rectMode(CENTER);
+    // Fija las coordenadas basadas en el centro
+    ellipseMode(CENTER);
+    rectMode(CENTER);
 
-  // Dibuja el cuerpo
-  stroke(0);
-  fill(150);
-  rect(200, 200, 40, 200);
+    // Dibuja el cuerpo
+    stroke(0);
+    fill(150);
+    rect(400, 400, 80, 400);
 
-  // Dibuja la cabeza
-  fill(255);
-  ellipse(200, 140, 120, 120);
+    // Dibuja la cabeza
+    fill(255);
+    ellipse(400, 280, 200, 240);
 
-  // Dibuja los ojos
-  fill(0);
-  ellipse(162, 140, 32, 64);
-  ellipse(238, 140, 32, 64);
+    // Dibuja los ojos
+    fill(0);
+    ellipse(350, 280, 50, 100);
+    ellipse(450, 280, 50, 100);
 
-  // Dibuja las piernas
-  stroke(0);
-  line(180, 300, 160, 320);
-  line(220, 300, 240, 320);
+    // Dibuja las piernas
+    stroke(0);
+    line(360, 600, 320, 640);
+    line(440, 600, 480, 640);
 }
 
 void setup() {
   // Tamaño del lienzo
-  size(800, 800);
+  size(900, 900);
 }
 ```
 :::
@@ -473,57 +509,20 @@ void setup() {
 Prueba a mover la instrucción `background(255);` desde la función `draw` a la función `setup`. **¿Qué ocurre?**
 :::
 
-### Transformaciones geométricas
-
-Aunque no entraremos en detalles sobre las transformaciones geométricas en este momento, es importante mencionar que *Processing* proporciona varias funciones para trasladar, rotar y escalar las figuras geométricas. Por ejemplo, la función `translate(x, y)` permite trasladar el origen de coordenadas a la posición (x, y), de manera que todas las figuras que se dibujen a continuación se posicionarán en función de este nuevo origen.
-
-En resumen, las transformaciones geométricas más comunes son:
-
-- `translate(x, y)`: traslada el origen de coordenadas a la posición (x, y).
-- `rotate(angle)`: rota el sistema de coordenadas en un ángulo especificado (en radianes).
-- `scale(s)`: escala el sistema de coordenadas por un factor s.
-- `scale(sx, sy)`: escala el sistema de coordenadas por factores sx y sy en las direcciones x e y, respectivamente.
-
-Por otro lado, cuando aplicamos transformaciones geométricas, es importante tener en cuenta que estas se acumulan. Por ejemplo, si aplicamos una traslación seguida de una rotación, la rotación se realizará en función del nuevo origen de coordenadas tras la traslación.
-
-Para evitar este comportamiento acumulativo, *Processing* proporciona las funciones `pushMatrix()` y `popMatrix()`, que permiten guardar y restaurar el estado del sistema de coordenadas, respectivamente. De esta manera, podemos aplicar transformaciones geométricas a un bloque específico de código sin afectar al resto del programa.
-
 ### Interacción con el ratón
 
-Como habrás podido observar, en el programa de la pelota que rebota, se utilizan algunas palabras reservadas como `width` y `height`. Estas palabras reservadas permiten acceder al ancho y alto de la ventana, respectivamente. De manera similar, *Processing* proporciona otras palabras reservadas que permiten interactuar con el ratón, como `mouseX` y `mouseY`, que indican la posición actual del ratón en la ventana.
+Como habrás podido observar, en el programa de la pelota que rebota, se utilizan algunas **palabras reservadas** como `width` y `height`. Estas palabras reservadas permiten acceder al ancho y alto de la ventana, respectivamente. De manera similar, *Processing* proporciona otras palabras reservadas que permiten interactuar con el ratón, como `mouseX` y `mouseY`, que indican la **posición actual del ratón en la ventana**.
 
 ::: {.callout-note}
 ## 🧪 Ejercicio 12 - Sigue al ratón
 
-Modifica el programa de Zoog para que la esquina superior izquierda, es decir, desde donde se dibuja el cuerpo, siga la posición del ratón, utilizando `mouseX` y `mouseY`.
-
-💡**Pista**: se puede trasladar toda la geometría con una de las transformaciones geométricas antes mencionadas.
+Modifica el programa de Zoog para que la esquina superior izquierda del cuerpo de Zoog sea la posición del ratón, utilizando `mouseX` y `mouseY`.
 :::
 
 ::: {.callout-note}
 ## 🧪 Ejercicio 13 - Reacción del cuerpo al movimiento del ratón
 
 Modifica el programa de Zoog para que la cabeza gire en función de la posición del ratón. Por ejemplo, si el ratón está a la izquierda de Zoog, la cabeza debe girar hacia la izquierda, y viceversa.
-
-💡**Pista**: se puede rotar toda la geometría de la cabeza con una de las transformaciones geométricas antes mencionadas. Para calcular el ángulo de rotación, puedes utilizar la función `atan2(dy, dx)`, donde `dy` y `dx` son las diferencias en las coordenadas y y x entre la posición del ratón y la posición de la cabeza de Zoog.
-
-<details>
-<summary>💡 Solución</summary>
-```java
-void drawPupil(float ex, float ey) {
-  pushMatrix();
-  translate(ex, ey);
-
-  float angle = atan2(mouseY - ey, mouseX - ex);
-  rotate(angle);
-
-  fill(0);
-  ellipse(6, 0, 12, 12);  // pupil offset along X
-
-  popMatrix();
-}
-```
-</details>
 :::
 
 ## Variables, condicionales y bucles
@@ -560,7 +559,75 @@ void draw() {
 
 ### Condicionales
 
-Los **condicionales** permiten ejecutar diferentes bloques de código en función de si se cumple o no una determinada condición. En *Processing*, los condicionales se implementan utilizando las palabras reservadas `if`, `else if` y `else`.
+Los **condicionales** permiten ejecutar **diferentes bloques de código** en función de **si se cumple o no una determinada condición**. En *Processing*, los condicionales se implementan utilizando las palabras reservadas `if`, `else if` y `else`.
+
+La sintaxis básica de un condicional es la siguiente:
+```java
+if (condición) {
+  // bloque de código si la condición es verdadera
+} else if (otra_condición) {
+  // bloque de código si la otra condición es verdadera
+} else {
+  // bloque de código si ninguna condición es verdadera
+}
+```
+
+Ten en cuenta que no siempre es necesario utilizar `else if` o `else`; **un condicional puede consistir únicamente en una instrucción `if`**.
+
+::: {.callout-note}
+## 🧪 Ejercicio 15 - Color de fondo interactivo
+
+Modifica el programa de Zoog para que el color de fondo cambie en función de la posición del ratón. Por ejemplo, si el ratón se encuentra en el primer tercio de la ventana, el fondo debe ser blanco; si está en el segundo tercio, el fondo debe ser gris; y si está en el tercer tercio, el fondo debe ser negro.
+
+💡 **Pista**: en el código que hemos utilizado para dibujar a Zoog se define una ventana de tamaño 900x900. Puedes comprobar si `mouseX` o `mouseY` se encuentran en un determinado tercio de la pantalla:
+```java
+if (mouseX < 300) {
+    ...
+}
+else if (...) {
+    ...
+}
+else {
+    ...
+}
+```
+:::
+
+### Bucles
+
+Existen algunas palabras reservadas en *Java* para representar **bucles**, es decir, **bloques de código que se repiten durante un número de iteraciones, o infinitamente hasta que no se cumpla alguna condición**. 
+
+En esta sesión es suficiente con conocer el bucle `for`, que permite ejecutar un bloque de código un número determinado de veces. La sintaxis básica de un bucle `for` es la siguiente:
+```java
+for (int i = 1; i <= N; i++) {
+  // bloque de código a ejecutar N veces
+}
+```
+
+---
+
+::: {.callout-note}
+### 🧪 Ejercicio 16 - Múltiples Zoog
+
+El objetivo es mostrar 2 Zoogs en la pantalla a partir del programa de un único Zoog. Ten en cuenta que tendrás que modificar la posición de al menos uno de ellos para que sea visible.
+
+**A modo de inspiración**, el siguiente código dibuja dos rectángulos desplazados en el eje horizontal y vertical en función de *i*:
+```java
+size(500, 200);
+
+int N = 2;
+float offsetX = 0;
+float offsetY = 0;
+
+for (int i = 1; i <= N; i++) {
+  rect(50 + offsetX, 20 + offsetY, 80, 80);
+
+  offsetX += 100;
+  offsetY += 10;
+}
+```
+
+:::
 
 ## Apéndice: Instalación de Processing {.unnumbered}
 

@@ -5,6 +5,8 @@ description: Material de la asignatura de Informática (30717) para el Grado en 
 authors:
   - name: "Alfonso López Ruiz"
     url: https://alfonsolrz.github.io
+  - name: "Ignacio Huitzil Velasco"
+    url: https://webdiis.unizar.es/~ihvdis/
 ---
 
 En esta página web se irá publicando el material de prácticas actualizado de la asignatura. 
@@ -22,7 +24,10 @@ Más información sobre la asignatura en la [documentación oficial de la univer
 
 :::{.callout-note}
 ## Tutorías
-Puedes encontrar mi horario de tutorías en [Google Calendar](https://alfonsolrz.github.io/calendar/).
+Puedes encontrar mi horario de tutorías en los siguientes enlaces:
+
+- [Tutorías de Alfonso López Ruiz](https://alfonsolrz.github.io/tutorias/)
+- [Tutorías de Ignacio Huitzil Velasco](https://webdiis.unizar.es/~ihvdis/tutorias.html)
 :::
 
 :::{.callout-tip}
