@@ -1,5 +1,54 @@
 [
   {
+    "objectID": "slides/lesson1.html#objetivos-de-la-práctica",
+    "href": "slides/lesson1.html#objetivos-de-la-práctica",
+    "title": "Lección 1: Introducción a Processing",
+    "section": "Objetivos de la práctica",
+    "text": "Objetivos de la práctica\nLos objetivos de esta práctica son los siguientes:\n\nFamiliarización con el ordenador y los elementos básicos de un sistema operativo.\nFamiliarización con el entorno de desarrollo Processing.\nFamiliarización con aspectos básicos de programación a través de programas en Processing."
+  },
+  {
+    "objectID": "slides/lesson1.html#processing",
+    "href": "slides/lesson1.html#processing",
+    "title": "Lección 1: Introducción a Processing",
+    "section": "Processing",
+    "text": "Processing"
+  },
+  {
+    "objectID": "slides/lesson1.html#dibujando-figuras-geométricas",
+    "href": "slides/lesson1.html#dibujando-figuras-geométricas",
+    "title": "Lección 1: Introducción a Processing",
+    "section": "Dibujando figuras geométricas",
+    "text": "Dibujando figuras geométricas\nLas figuras geométricas se dibujan en una ventana que está formada por una matriz de píxeles. Cada píxel es un pequeño punto de luz que puede tener un color diferente. La combinación de todos los píxeles forma la imagen que vemos en la pantalla.\nPor ejemplo, las dos animaciones siguientes muestran la diferencia entre una resolución de pantalla alta y otra baja. En la animación de la derecha, a medida que reducimos la resolución, podemos observar los píxeles individuales que componen la imagen.\n\n\n\n\n\n\nVideo\n\n\nFigura 4: Animación con una resolución de pantalla alta.\n\n\n\n\n\n\n\nVideo\n\n\nFigura 5: Animación con una resolución de pantalla más baja, donde comienzan a ser visibles los píxeles.\n\n\n\n\n\n\n\n\nPara dibujar cualquier figura geométrica, es necesario especificar una o varias posiciones en la ventana. Dichas posiciones se definen mediante un par de coordenadas (x, y), donde x indica la posición horizontal e y la posición vertical. En Processing, el origen de coordenadas (0,0) se encuentra en la esquina superior izquierda de la ventana, como se muestra en la figura de la derecha.\n\n\n\n\n\n\n🧪 Ejercicio 1 - Sistema de coordenadas\n\n\nDibuja una línea que va desde la posición (10, 0) hasta la posición (40, 50).\nline(10, 0, 40, 50);\n\n\n\n\n\n\n\n\n\n\nFigura 6: Ilustración de una matriz de píxeles, indicando las coordenadas de algunos de ellos.\n\n\n\n\n\n\n\n\n\n\n\n📝 Ejercicio 2 — Errores comunes\n\n\nPrueba a copiar el siguiente código en el editor de Processing y ejecutarlo:\nLine(10, 0, 40, 50);\n\n\n💡 Solución\n\nProcessing es sensible al uso de mayúsculas y minúsculas. Por ejemplo, la función para dibujar una línea es line, no Line ni LINE.\nLas palabras reservadas se muestran resaltadas en el editor, por lo que esta es una manera de ver si el nombre de una función está bien escrito. Los errores se muestran en la pestaña Errores de la ventana inferior.\n\n\n\n\n\n\n\n\n\n\n🧪 Ejercicio 3 - Múltiples formas geométricas\n\n\nPrueba a dibujar varias líneas en diferentes posiciones de la pantalla, utilizando la instrucción line varias veces."
+  },
+  {
+    "objectID": "slides/lesson1.html#color-en-processing",
+    "href": "slides/lesson1.html#color-en-processing",
+    "title": "Lección 1: Introducción a Processing",
+    "section": "Color en Processing",
+    "text": "Color en Processing"
+  },
+  {
+    "objectID": "slides/lesson1.html#programas-dinámicos",
+    "href": "slides/lesson1.html#programas-dinámicos",
+    "title": "Lección 1: Introducción a Processing",
+    "section": "Programas dinámicos",
+    "text": "Programas dinámicos\nHasta este momento, hemos escrito programas estáticos, es decir, programas que dibujan una imagen fija. A continuación, veremos cómo crear programas dinámicos que pueden cambiar con el tiempo.\n\n\n\nComenzaremos con este bloque de código:\nsize(800, 800);\n\n// Pinta un fondo blanco\nbackground(255);\n\n// Fija las coordenadas basadas en el centro\nellipseMode(CENTER);\nrectMode(CENTER);\n\n// Dibuja el cuerpo\nstroke(0);\nfill(150);\nrect(400, 400, 80, 400);\n\n// Dibuja la cabeza\nfill(255);\nellipse(400, 280, 200, 240);\n\n// Dibuja los ojos\nfill(0);\nellipse(350, 280, 50, 100);\nellipse(450, 280, 50, 100);\n\n// Dibuja las piernas\nstroke(0);\nline(360, 600, 320, 640);\nline(440, 600, 480, 640);\n\n\n\n\n\n\n\nFigura 10: Imagen del alienígena Zoog.\n\n\n\n\n\n\n\n\n\n🧪 Ejercicio 10 - Dibuja a Zoog\n\n\nIntenta dibujar al alienígena Zoog utilizando el bloque de código anterior como referencia."
+  },
+  {
+    "objectID": "slides/lesson1.html#variables-condicionales-y-bucles",
+    "href": "slides/lesson1.html#variables-condicionales-y-bucles",
+    "title": "Lección 1: Introducción a Processing",
+    "section": "Variables, condicionales y bucles",
+    "text": "Variables, condicionales y bucles"
+  },
+  {
+    "objectID": "slides/lesson1.html#apéndice-instalación-de-processing",
+    "href": "slides/lesson1.html#apéndice-instalación-de-processing",
+    "title": "Lección 1: Introducción a Processing",
+    "section": "Apéndice: Instalación de Processing",
+    "text": "Apéndice: Instalación de Processing\n\n\nFigura 12: Banner de la página oficial de Processing; a la izquierda se muestra el botón de Download.\n\nAccede a la página oficial de Processing y selecciona Download.\nDescarga la versión correspondiente a tu sistema operativo.\nEjecuta el instalador descargado y sigue las instrucciones."
+  },
+  {
     "objectID": "index.html",
     "href": "index.html",
     "title": "Información general",
@@ -34,7 +83,7 @@
     "href": "lessons/lesson1.html#processing",
     "title": "Práctica 1: Introducción a Processing",
     "section": "2 Processing",
-    "text": "2 Processing\n\n2.1 Introducción\n\n\n\nProcessing es un lenguaje de programación y un entorno de desarrollo (Integrated Development Environment, IDE).\n\nBasado en Java\nProducción de proyectos multimedia e interactivos\nCreado por científicos del MIT en 2001\nDistribución gratuita y de código abierto\n\n\n\n\n\n\n\nLa propia página de Processing muestra numerosos ejemplos de proyectos realizados con este lenguaje. También hay muchos ejemplos en Youtube, en particular, en el canal de The Coding Train.\n\n\n\n\n\n\n\n\n\nFigura 1: Visualización del fractal de Mandelbrot.\n\n\n\n\n\n\n\n\n\n\n\nFigura 2: Canal de Youtube The Coding Train.\n\n\n\n\n\n\n\n\n2.2 El entorno de desarrollo\nEl entorno de desarrollo de Processing tiene un diseño minimalista que facilita su uso. La interfaz gráfica posee las siguientes partes:\n\nUn menú de opciones (archivo, editar, sketch, depuración, herramientas y ayuda).\nDos botones para ejecutar y detener el programa.\nUn área central para escribir el código fuente (editor).\nUna ventana inferior donde se muestran dos pestañas:\n\nConsola: Salida estándar del programa.\nErrores: Mensajes de error generados durante la ejecución.\n\n\n\n\n\n\n\n\nFigura 3: Vista del entorno de desarrollo y ventana pop-up que redirige a ejemplos disponibles en su página web.\n\n\n\nAl ejecutar un programa se abrirá una nueva ventana donde se mostrará el resultado de la ejecución .\n\n\n\n\n\n\nAdvertencia\n\n\n\nCada ejercicio debe realizarse en un nuevo fichero, no en una nueva pestaña. Se recomienda guarda cada fichero a medida que se avanza en los ejercicios.",
+    "text": "2 Processing\n\n2.1 Introducción\n\n\n\nProcessing es un lenguaje de programación y un entorno de desarrollo (Integrated Development Environment, IDE).\n\nBasado en Java\nProducción de proyectos multimedia e interactivos\nCreado por científicos del MIT en 2001\nDistribución gratuita y de código abierto\n\n\n\n\n\n\n\nLa propia página de Processing muestra numerosos ejemplos de proyectos realizados con este lenguaje. También hay muchos ejemplos en Youtube, en particular, en el canal de The Coding Train.\n\n\n\n\n\n\n\n\n\nFigura 1: Visualización del fractal de Mandelbrot.\n\n\n\n\n\n\n\n\n\n\n\nFigura 2: Canal de Youtube The Coding Train.\n\n\n\n\n\n\n\n\n2.2 El entorno de desarrollo\nEl entorno de desarrollo de Processing tiene un diseño minimalista que facilita su uso. La interfaz gráfica posee las siguientes partes:\n\nUn menú de opciones (archivo, editar, sketch, depuración, herramientas y ayuda).\nDos botones para ejecutar y detener el programa.\nUn área central para escribir el código fuente (editor).\nUna ventana inferior donde se muestran dos pestañas:\n\nConsola: Salida estándar del programa.\nErrores: Mensajes de error generados durante la ejecución.\n\n\n\n\n\n\n\n\nFigura 3: Vista del entorno de desarrollo y ventana pop-up que redirige a ejemplos disponibles en su página web.\n\n\n\nAl ejecutar un programa se abrirá una nueva ventana donde se mostrará el resultado de la ejecución .\n\n\n\n\n\n\nAdvertencia\n\n\n\nCada ejercicio debe realizarse en un nuevo fichero, no en una nueva pestaña. Se recomienda guardar cada fichero a medida que se avanza en los ejercicios.",
     "crumbs": [
       "Práctica 1: Introducción a Processing"
     ]
