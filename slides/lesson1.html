@@ -277,15 +277,15 @@ Figura&nbsp;2: Canal de Youtube <a href="https://www.youtube.com/c/TheCodingTrai
 <li class="fragment">Un área central para escribir el código fuente (<strong>editor</strong>).</li>
 <li class="fragment">Una ventana inferior donde se muestran dos pestañas:
 <ul>
-<li class="fragment"><strong>Consola</strong>: Salida estándar del programa.</li>
-<li class="fragment"><strong>Errores</strong>: Mensajes de error generados durante la ejecución.</li>
+<li class="fragment"><strong>Consola</strong>: salida estándar del programa.</li>
+<li class="fragment"><strong>Errores</strong>: mensajes de error generados durante la ejecución.</li>
 </ul></li>
 </ul>
+<p>Al ejecutar un programa se abrirá una <strong>nueva ventana donde se mostrará el resultado de la ejecución</strong>.</p>
 
 <img data-src="../resources/lesson1/ide.png" class="r-stretch quarto-figure-center" id="fig-ide"><p class="caption">
-Figura&nbsp;3: Vista del entorno de desarrollo y ventana pop-up que redirige a ejemplos disponibles en su página web.
-</p><p>Al ejecutar un programa se abrirá una <strong>nueva ventana donde se mostrará el resultado de la ejecución</strong> .</p>
-<div class="callout callout-warning callout-titled callout-style-default">
+Figura&nbsp;3: Vista del entorno de desarrollo (derecha) y ventana <em>pop-up</em> (izquierda) que redirige a ejemplos disponibles en su página web.
+</p><div class="callout callout-warning callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
 <div class="callout-icon-container">
@@ -294,7 +294,8 @@ Figura&nbsp;3: Vista del entorno de desarrollo y ventana pop-up que redirige a e
 <p><strong>Advertencia</strong></p>
 </div>
 <div class="callout-content">
-<p>Cada ejercicio debe realizarse en un nuevo fichero, no en una nueva pestaña. Se recomienda guardar cada fichero a medida que se avanza en los ejercicios.</p>
+<p>El primer archivo que se crea en un nuevo proyecto de <em>Processing</em> se denomina <code>sketch_XXXXXX</code>. Es recomendable cambiar el nombre del archivo para que tenga sentido con el programa que se va a desarrollar. Además, al guardarlo nos preguntará por el nombre del proyecto, que también es recomendable que tenga sentido.</p>
+<p>Indicad una ubicación de fácil acceso en vuestro ordenador para guardar los proyectos de <em>Processing</em>.</p>
 </div>
 </div>
 </div>
@@ -303,7 +304,7 @@ Figura&nbsp;3: Vista del entorno de desarrollo y ventana pop-up que redirige a e
 <section id="dibujando-figuras-geométricas" class="title-slide slide level2 center">
 <h2>Dibujando figuras geométricas</h2>
 <p>Las figuras geométricas se dibujan en una ventana que está formada por una <strong>matriz de píxeles</strong>. Cada píxel es un pequeño punto de luz que puede tener un color diferente. La combinación de todos los píxeles forma la imagen que vemos en la pantalla.</p>
-<p>Por ejemplo, las dos animaciones siguientes muestran la diferencia entre una resolución de pantalla alta y otra baja. En la animación de la derecha, a medida que reducimos la resolución, podemos observar los píxeles individuales que componen la imagen.</p>
+<p>Un píxel es la <strong>unidad más pequeña de una imagen digital</strong>. La resolución de una imagen se refiere a la cantidad de píxeles que contiene, y se expresa como el número de píxeles en el eje horizontal por el número de píxeles en el eje vertical (por ejemplo, 1920x1080 píxeles). Por ejemplo, la <a href="#/fig-highres" class="quarto-xref">Figura&nbsp;4</a> muestra una animación con una resolución alta, donde los píxeles no son visibles a simple vista. En cambio, en la <a href="#/fig-lowres" class="quarto-xref">Figura&nbsp;5</a> se ha reducido la resolución de la animación, y comienzan a ser visibles los píxeles individuales.</p>
 <div class="quarto-layout-panel" data-layout="[50,50]">
 <div class="quarto-layout-row">
 <div class="column quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
@@ -333,7 +334,7 @@ Figura&nbsp;5: Animación con una resolución de pantalla más baja, donde comie
 <div class="quarto-layout-panel" data-layout="[70,30]">
 <div class="quarto-layout-row">
 <div class="column quarto-layout-cell" style="flex-basis: 70.0%;justify-content: flex-start;">
-<p>Para dibujar cualquier figura geométrica, es necesario especificar una o varias posiciones en la ventana. Dichas posiciones se definen mediante un par de coordenadas <strong>(x, y)</strong>, donde <strong>x</strong> indica la <strong>posición horizontal</strong> e <strong>y</strong> la <strong>posición vertical</strong>. En <em>Processing</em>, el origen de coordenadas (0,0) se encuentra en la esquina superior izquierda de la ventana, como se muestra en la figura de la derecha.</p>
+<p>Para dibujar cualquier figura geométrica, es necesario especificar una o varias posiciones en la ventana. Dichas posiciones se definen mediante un par de coordenadas <strong>(x, y)</strong>, donde <strong><em>x</em></strong> indica la <strong>posición horizontal</strong> e <strong><em>y</em></strong> la <strong>posición vertical</strong>. En <em>Processing</em>, el origen de coordenadas (0,0) se encuentra en la esquina superior izquierda de la ventana, como se muestra en la figura de la derecha.</p>
 <div class="callout callout-note callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
@@ -615,6 +616,23 @@ Figura&nbsp;9: Representación de los colores primarios RGB.
 </div>
 </div>
 </div>
+<div class="quarto-layout-panel" data-layout="[40, 50]">
+<div class="quarto-layout-row">
+<div class="column quarto-layout-cell" style="flex-basis: 44.4%;justify-content: flex-start;">
+<div id="fig-colorpicker" class="quarto-float quarto-figure quarto-figure-center">
+<figure class="quarto-float quarto-float-fig">
+<div aria-describedby="fig-colorpicker-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img data-src="../resources/lesson1/hsv-picker.png">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-colorpicker-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;10: Captura de pantalla del selector de color de <em>Processing</em>.
+</figcaption>
+</figure>
+</div>
+</div><div class="column quarto-layout-cell" style="flex-basis: 55.6%;justify-content: flex-start;">
+<p>Como habréis podido observar a partir del Ejercicio 9, no es sencillo imaginar qué color genera una mezcla concreta de valores RGB, ni determinar qué valores exactos u aproximados de rojo, verde y azul necesitamos para componer un color que tengamos en mente. Por esta razón, <em>Processing</em> dispone de una herramienta, <em>Selector de color</em>, que permite interactuar con una paleta de colores y obtener valores de rojo, verde y azul. Podéis acceder a esta herramienta desde el menú <strong>Herramientas &gt; Selector de color</strong>.</p>
+</div></div>
+</div>
 </section>
 <section id="opacidad" class="slide level3">
 <h3>Opacidad</h3>
@@ -667,7 +685,7 @@ Figura&nbsp;9: Representación de los colores primarios RGB.
 <img data-src="../resources/lesson1/zoog.png">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-zoog-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figura&nbsp;10: Imagen del alienígena Zoog.
+Figura&nbsp;11: Imagen del alienígena Zoog.
 </figcaption>
 </figure>
 </div>
@@ -835,10 +853,10 @@ Figura&nbsp;10: Imagen del alienígena Zoog.
 <span id="cb17-9"><a></a><span class="fu">popMatrix</span><span class="op">();</span>            <span class="co">// Restauramos el sistema de coordenadas original</span></span>
 <span id="cb17-10"><a></a></span>
 <span id="cb17-11"><a></a><span class="fu">rect</span><span class="op">(</span><span class="dv">300</span><span class="op">,</span> <span class="dv">50</span><span class="op">,</span> <span class="dv">50</span><span class="op">,</span> <span class="dv">100</span><span class="op">);</span> <span class="co">// No se ve afectado por las transformaciones anteriores</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
-<p>A modo de ejemplo, la <a href="#/fig-transformations" class="quarto-xref">Figura&nbsp;11</a> ilustra la importancia de ordenar correctamente las transformaciones geométricas. En la imagen de la izquierda, primero se traslada el origen de coordenadas y luego se rota, mientras que en la imagen de la derecha, primero se rota y luego se traslada. Como resultado, los rectángulos aparecen en posiciones diferentes.</p>
+<p>A modo de ejemplo, la <a href="#/fig-transformations" class="quarto-xref">Figura&nbsp;12</a> ilustra la importancia de ordenar correctamente las transformaciones geométricas. En la imagen de la izquierda, primero se traslada el origen de coordenadas y luego se rota, mientras que en la imagen de la derecha, primero se rota y luego se traslada. Como resultado, los rectángulos aparecen en posiciones diferentes.</p>
 
 <img data-src="../resources/lesson1/transformations.svg" class="r-stretch quarto-figure-center" id="fig-transformations"><p class="caption">
-Figura&nbsp;11: A la izquierda, una rotación respecto del origen de coordenadas, seguida por una traslación; a la derecha, una traslación seguida por una rotación
+Figura&nbsp;12: A la izquierda, una rotación respecto del origen de coordenadas, seguida por una traslación; a la derecha, una traslación seguida por una rotación
 </p></section>
 <section id="interacción-con-el-ratón" class="slide level3">
 <h3>Interacción con el ratón</h3>
@@ -977,7 +995,7 @@ Figura&nbsp;11: A la izquierda, una rotación respecto del origen de coordenadas
 <h2>Apéndice: Instalación de Processing</h2>
 
 <img data-src="../resources/lesson1/web-teaser.png" class="r-stretch quarto-figure-center" id="fig-installation"><p class="caption">
-Figura&nbsp;12: Banner de la página oficial de <em>Processing</em>; a la izquierda se muestra el botón de <em>Download</em>.
+Figura&nbsp;13: Banner de la página oficial de <em>Processing</em>; a la izquierda se muestra el botón de <em>Download</em>.
 </p><ul>
 <li class="fragment">Accede a <a href="http://processing.org">la página oficial de <em>Processing</em></a> y selecciona <strong>Download</strong>.</li>
 <li class="fragment">Descarga la versión correspondiente a tu sistema operativo.</li>

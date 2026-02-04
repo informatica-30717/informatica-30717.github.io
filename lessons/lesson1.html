@@ -104,7 +104,39 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-label": "Buscar"
   }
 }</script>
+<script src="../site_libs/quarto-diagram/mermaid.min.js"></script>
+<script src="../site_libs/quarto-diagram/mermaid-init.js"></script>
+<link href="../site_libs/quarto-diagram/mermaid.css" rel="stylesheet">
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 <link rel="stylesheet" href="../styles.css">
 <meta property="og:title" content="Práctica 1: Introducción a Processing – Informática (30717) - Grado en Estudios en Arquitectura">
@@ -216,8 +248,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <ul class="collapse">
   <li><a href="#comentarios" id="toc-comentarios" class="nav-link" data-scroll-target="#comentarios"><span class="header-section-number">5.1</span> Comentarios</a></li>
   <li><a href="#funciones-setup-y-draw" id="toc-funciones-setup-y-draw" class="nav-link" data-scroll-target="#funciones-setup-y-draw"><span class="header-section-number">5.2</span> Funciones <code>setup</code> y <code>draw</code></a></li>
-  <li><a href="#transformaciones-geométricas" id="toc-transformaciones-geométricas" class="nav-link" data-scroll-target="#transformaciones-geométricas"><span class="header-section-number">5.3</span> Transformaciones geométricas</a></li>
-  <li><a href="#interacción-con-el-ratón" id="toc-interacción-con-el-ratón" class="nav-link" data-scroll-target="#interacción-con-el-ratón"><span class="header-section-number">5.4</span> Interacción con el ratón</a></li>
+  <li><a href="#interacción-con-el-ratón" id="toc-interacción-con-el-ratón" class="nav-link" data-scroll-target="#interacción-con-el-ratón"><span class="header-section-number">5.3</span> Interacción con el ratón</a></li>
   </ul></li>
   <li><a href="#variables-condicionales-y-bucles" id="toc-variables-condicionales-y-bucles" class="nav-link" data-scroll-target="#variables-condicionales-y-bucles"><span class="header-section-number">6</span> Variables, condicionales y bucles</a>
   <ul class="collapse">
@@ -256,8 +287,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Los objetivos de esta práctica son los siguientes:</p>
 <ul>
 <li>Familiarización con el ordenador y los elementos básicos de un sistema operativo.</li>
-<li>Familiarización con el entorno de desarrollo Processing.</li>
-<li>Familiarización con aspectos básicos de programación a través de programas en Processing.</li>
+<li>Familiarización con el entorno de desarrollo <em>Processing</em>.</li>
+<li>Familiarización con aspectos básicos de programación a través de programas en <em>Processing</em>.</li>
 </ul>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -278,18 +309,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 data-number="2" class="anchored" data-anchor-id="processing"><span class="header-section-number">2</span> Processing</h2>
 <section id="introducción" class="level3" data-number="2.1">
 <h3 data-number="2.1" class="anchored" data-anchor-id="introducción"><span class="header-section-number">2.1</span> Introducción</h3>
-<div class="quarto-layout-panel" data-layout="[75,25]">
+<div class="quarto-layout-panel" data-layout="[80,20]">
 <div class="quarto-layout-row">
-<div class="column quarto-layout-cell" style="flex-basis: 75.0%;justify-content: flex-start;">
-<p>Processing es un lenguaje de programación y un entorno de desarrollo (<em>Integrated Development Environment</em>, IDE).</p>
+<div class="column quarto-layout-cell" style="flex-basis: 80.0%;justify-content: flex-start;">
+<p><em>Processing</em> es un lenguaje de programación y un entorno de desarrollo (<em>Integrated Development Environment</em>, IDE).</p>
 <ul>
-<li><strong>Basado en Java</strong></li>
-<li><strong>Producción de proyectos multimedia e interactivos</strong></li>
-<li>Creado por científicos del MIT en 2001</li>
-<li>Distribución gratuita y de código abierto</li>
+<li><strong>Basado en Java</strong>.</li>
+<li><strong>Producción de proyectos multimedia e interactivos</strong>.</li>
+<li>Creado por científicos del MIT en 2001.</li>
+<li>Distribución gratuita y de código abierto.</li>
 </ul>
 </div>
-<div class="column quarto-layout-cell" style="flex-basis: 25.0%;justify-content: center;">
+<div class="column quarto-layout-cell" style="flex-basis: 20.0%;justify-content: center;">
 <p><img src="../resources/lesson1/processing.svg" class="img-fluid"></p>
 </div>
 </div>
@@ -326,28 +357,28 @@ Figura&nbsp;2: Canal de Youtube <a href="https://www.youtube.com/c/TheCodingTrai
 </section>
 <section id="el-entorno-de-desarrollo" class="level3" data-number="2.2">
 <h3 data-number="2.2" class="anchored" data-anchor-id="el-entorno-de-desarrollo"><span class="header-section-number">2.2</span> El entorno de desarrollo</h3>
-<p>El entorno de desarrollo de Processing tiene un diseño minimalista que facilita su uso. La interfaz gráfica posee las siguientes partes:</p>
+<p>El entorno de desarrollo de <em>Processing</em> tiene un diseño minimalista que facilita su uso. La interfaz gráfica está compuesta por los siguientes elementos principales:</p>
 <ul>
 <li><strong>Un menú de opciones</strong> (archivo, editar, sketch, depuración, herramientas y ayuda).</li>
 <li><strong>Dos botones para ejecutar y detener el programa.</strong></li>
 <li>Un área central para escribir el código fuente (<strong>editor</strong>).</li>
 <li>Una ventana inferior donde se muestran dos pestañas:
 <ul>
-<li><strong>Consola</strong>: Salida estándar del programa.</li>
-<li><strong>Errores</strong>: Mensajes de error generados durante la ejecución.</li>
+<li><strong>Consola</strong>: salida estándar del programa.</li>
+<li><strong>Errores</strong>: mensajes de error generados durante la ejecución.</li>
 </ul></li>
 </ul>
+<p>Al ejecutar un programa se abrirá una <strong>nueva ventana donde se mostrará el resultado de la ejecución</strong>.</p>
 <div id="fig-ide" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-ide-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="../resources/lesson1/ide.png" class="img-fluid figure-img">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-ide-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figura&nbsp;3: Vista del entorno de desarrollo y ventana pop-up que redirige a ejemplos disponibles en su página web.
+Figura&nbsp;3: Vista del entorno de desarrollo (derecha) y ventana <em>pop-up</em> (izquierda) que redirige a ejemplos disponibles en su página web.
 </figcaption>
 </figure>
 </div>
-<p>Al ejecutar un programa se abrirá una <strong>nueva ventana donde se mostrará el resultado de la ejecución</strong> .</p>
 <div class="callout callout-style-default callout-warning callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -358,7 +389,8 @@ Advertencia
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Cada ejercicio debe realizarse en un nuevo fichero, no en una nueva pestaña. Se recomienda guardar cada fichero a medida que se avanza en los ejercicios.</p>
+<p>El primer archivo que se crea en un nuevo proyecto de <em>Processing</em> se denomina <code>sketch_yymmdda</code>. Es recomendable cambiar el nombre del archivo para que tenga sentido con el programa que se va a desarrollar. Además, al guardarlo nos preguntará el nombre del proyecto, que también es recomendable que tenga sentido.</p>
+<p>Indicad una ubicación de fácil acceso en vuestro ordenador para guardar los proyectos de <em>Processing</em>.</p>
 </div>
 </div>
 </section>
@@ -366,7 +398,7 @@ Advertencia
 <section id="dibujando-figuras-geométricas" class="level2" data-number="3">
 <h2 data-number="3" class="anchored" data-anchor-id="dibujando-figuras-geométricas"><span class="header-section-number">3</span> Dibujando figuras geométricas</h2>
 <p>Las figuras geométricas se dibujan en una ventana que está formada por una <strong>matriz de píxeles</strong>. Cada píxel es un pequeño punto de luz que puede tener un color diferente. La combinación de todos los píxeles forma la imagen que vemos en la pantalla.</p>
-<p>Por ejemplo, las dos animaciones siguientes muestran la diferencia entre una resolución de pantalla alta y otra baja. En la animación de la derecha, a medida que reducimos la resolución, podemos observar los píxeles individuales que componen la imagen.</p>
+<p>Un píxel es la <strong>unidad más pequeña de una imagen digital</strong>. La resolución de una imagen se refiere a la cantidad de píxeles que contiene, y se expresa como el número de píxeles en el eje horizontal por el número de píxeles en el eje vertical (por ejemplo, 1920x1080 píxeles). Por ejemplo, la <a href="#fig-highres" class="quarto-xref">Figura&nbsp;4</a> muestra una animación con una resolución alta, donde los píxeles no son visibles a simple vista. En cambio, en la <a href="#fig-lowres" class="quarto-xref">Figura&nbsp;5</a> se ha reducido la resolución de la animación, y comienzan a ser visibles los píxeles individuales.</p>
 <div class="quarto-layout-panel" data-layout="[50,50]">
 <div class="quarto-layout-row">
 <div class="column quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
@@ -398,7 +430,7 @@ Figura&nbsp;5: Animación con una resolución de pantalla más baja, donde comie
 <div class="quarto-layout-panel" data-layout="[70,30]">
 <div class="quarto-layout-row">
 <div class="column quarto-layout-cell" style="flex-basis: 70.0%;justify-content: flex-start;">
-<p>Para dibujar cualquier figura geométrica, es necesario especificar una o varias posiciones en la ventana. Dichas posiciones se definen mediante un par de coordenadas <strong>(x, y)</strong>, donde <strong>x</strong> indica la <strong>posición horizontal</strong> e <strong>y</strong> la <strong>posición vertical</strong>. En <em>Processing</em>, el origen de coordenadas (0,0) se encuentra en la esquina superior izquierda de la ventana, como se muestra en la figura de la derecha.</p>
+<p>Para dibujar cualquier figura geométrica, es necesario especificar una o varias posiciones en la ventana. Dichas posiciones se definen mediante un par de coordenadas <strong><em>(x, y)</em></strong>, donde <strong><em>x</em></strong> indica la <strong>posición horizontal</strong> e <strong><em>y</em></strong> la <strong>posición vertical</strong>. En <em>Processing</em>, <strong>el origen de coordenadas (0,0) se encuentra en la esquina superior izquierda de la ventana</strong>, como se muestra en la <a href="#fig-pixels" class="quarto-xref">Figura&nbsp;6</a></p>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -409,7 +441,7 @@ Figura&nbsp;5: Animación con una resolución de pantalla más baja, donde comie
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Dibuja una línea que va desde la posición (10, 0) hasta la posición (40, 50).</p>
+<p>Dibuja una línea que va desde la posición (10, 0) hasta la posición (40, 50). Cuando se ejecute, os podréis dar cuenta de que el origen, (0,0), parte de la esquina superior izquierda.</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode java code-with-copy"><code class="sourceCode java"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">line</span><span class="op">(</span><span class="dv">10</span><span class="op">,</span> <span class="dv">0</span><span class="op">,</span> <span class="dv">40</span><span class="op">,</span> <span class="dv">50</span><span class="op">);</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
@@ -428,6 +460,21 @@ Figura&nbsp;6: Ilustración de una matriz de píxeles, indicando las coordenadas
 </div>
 </div>
 </div>
+<p>Este concepto puede entenderse como <strong>darle un nombre a un conjunto de instrucciones para poder reutilizarlas fácilmente</strong> más adelante. En <strong>matemáticas</strong>, una función toma uno o varios valores de entrada y produce un valor de salida siguiendo una regla. Por ejemplo, la función <span class="math inline">\(f(x) = x^2\)</span> toma un número <span class="math inline">\(x\)</span> y devuelve su cuadrado.</p>
+<p>En programación ocurre algo muy similar: una función recibe unos parámetros, ejecuta unas instrucciones con ellos y, opcionalmente, devuelve un resultado.</p>
+<p>Por ejemplo, podemos definir en Java una función que reciba un número entero y devuelva su cuadrado:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode java code-with-copy"><code class="sourceCode java"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="dt">int</span> <span class="fu">square</span><span class="op">(</span><span class="dt">int</span> x<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> x <span class="op">*</span> x<span class="op">;</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Una vez definida, podemos usar la función tantas veces como queramos, simplemente indicando el valor de entrada:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode java code-with-copy"><code class="sourceCode java"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="dt">int</span> result <span class="op">=</span> <span class="fu">square</span><span class="op">(</span><span class="dv">5</span><span class="op">);</span>  <span class="co">// result tendrá el valor 25</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<p>De este modo:</p>
+<ul>
+<li><code>square</code> es el nombre de la función.</li>
+<li><code>x</code> es el parámetro de entrada.</li>
+<li><code>return</code> indica el valor que devuelve la función.</li>
+</ul>
+<p>En <em>Processing</em> ocurre exactamente lo mismo. La función <code>line</code>, por ejemplo, recibe cuatro parámetros (las coordenadas de dos puntos) y ejecuta una acción: dibujar una línea en la ventana. La diferencia es que, en este caso, la función no devuelve un valor, sino que produce un efecto visual en pantalla.</p>
 <div class="callout callout-style-default callout-warning callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -439,7 +486,7 @@ Figura&nbsp;6: Ilustración de una matriz de píxeles, indicando las coordenadas
 </div>
 <div class="callout-body-container callout-body">
 <p>Prueba a copiar el siguiente código en el editor de <em>Processing</em> y ejecutarlo:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode java code-with-copy"><code class="sourceCode java"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="bu">Line</span><span class="op">(</span><span class="dv">10</span><span class="op">,</span> <span class="dv">0</span><span class="op">,</span> <span class="dv">40</span><span class="op">,</span> <span class="dv">50</span><span class="op">);</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode java code-with-copy"><code class="sourceCode java"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="bu">Line</span><span class="op">(</span><span class="dv">10</span><span class="op">,</span> <span class="dv">0</span><span class="op">,</span> <span class="dv">40</span><span class="op">,</span> <span class="dv">50</span><span class="op">);</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 <details>
 <summary>
 💡 Solución
@@ -480,10 +527,10 @@ Las palabras reservadas se muestran <span style="color:#1f77ff; font-weight:600;
 <summary>
 💡 Solución
 </summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode java code-with-copy"><code class="sourceCode java"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">size</span><span class="op">(</span><span class="dv">300</span><span class="op">,</span> <span class="dv">200</span><span class="op">);</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">line</span><span class="op">(</span><span class="dv">10</span><span class="op">,</span> <span class="dv">0</span><span class="op">,</span> <span class="dv">40</span><span class="op">,</span> <span class="dv">50</span><span class="op">);</span></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="fu">line</span><span class="op">(</span><span class="dv">100</span><span class="op">,</span> <span class="dv">50</span><span class="op">,</span> <span class="dv">200</span><span class="op">,</span> <span class="dv">150</span><span class="op">);</span></span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="fu">line</span><span class="op">(</span><span class="dv">250</span><span class="op">,</span> <span class="dv">0</span><span class="op">,</span> <span class="dv">250</span><span class="op">,</span> <span class="dv">200</span><span class="op">);</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode java code-with-copy"><code class="sourceCode java"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">size</span><span class="op">(</span><span class="dv">300</span><span class="op">,</span> <span class="dv">200</span><span class="op">);</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">line</span><span class="op">(</span><span class="dv">10</span><span class="op">,</span> <span class="dv">0</span><span class="op">,</span> <span class="dv">40</span><span class="op">,</span> <span class="dv">50</span><span class="op">);</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="fu">line</span><span class="op">(</span><span class="dv">100</span><span class="op">,</span> <span class="dv">50</span><span class="op">,</span> <span class="dv">200</span><span class="op">,</span> <span class="dv">150</span><span class="op">);</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="fu">line</span><span class="op">(</span><span class="dv">250</span><span class="op">,</span> <span class="dv">0</span><span class="op">,</span> <span class="dv">250</span><span class="op">,</span> <span class="dv">200</span><span class="op">);</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
 </div>
@@ -518,7 +565,7 @@ Las palabras reservadas se muestran <span style="color:#1f77ff; font-weight:600;
 </div>
 <section id="dibujando-rectángulos-y-elipses" class="level4" data-number="3.2.1">
 <h4 data-number="3.2.1" class="anchored" data-anchor-id="dibujando-rectángulos-y-elipses"><span class="header-section-number">3.2.1</span> Dibujando rectángulos y elipses</h4>
-<p>Tanto en la documentación oficial, como en la solución del ejercicio anterior, os habréis podido dar cuenta de que las funciones <code>rect</code> y <code>ellipse</code> requieren cuatro parámetros: dos para la posición y dos para el tamaño. Sin embargo, hemos asumido que la posición siempre corresponde a la esquina superior izquierda del rectángulo o al centro de la elipse. Esta suposición es correcta por defecto, pero es posible cambiarla utilizando las funciones <code>rectMode</code> y <code>ellipseMode</code>. Más concretamente, estas funciones permiten definir cómo se interpretan las posiciones pasadas como parámetros a las funciones <code>rect</code> y <code>ellipse</code>. Existen dos modos principales para cada una de estas funciones:</p>
+<p>Tanto en la documentación oficial, como en la solución del ejercicio anterior, os habréis podido dar cuenta de que las funciones <code>rect</code> y <code>ellipse</code> requieren cuatro parámetros: <strong>dos para la posición</strong> y <strong>dos para el tamaño</strong>. Sin embargo, hemos asumido que la posición siempre corresponde a la esquina superior izquierda del rectángulo o al centro de la elipse. Esta suposición es correcta por defecto, pero es posible cambiarla utilizando las funciones <code>rectMode</code> y <code>ellipseMode</code>. Más concretamente, estas funciones permiten definir cómo se interpretan las posiciones pasadas como parámetros a las funciones <code>rect</code> y <code>ellipse</code>. Existen dos modos principales para cada una de estas funciones:</p>
 <ul>
 <li><code>CORNER</code>: la posición corresponde a la esquina superior izquierda del rectángulo o elipse.</li>
 <li><code>CENTER</code>: la posición corresponde al centro del rectángulo o elipse.</li>
@@ -534,11 +581,11 @@ Figura&nbsp;7: Representación de cómo se interpretan las posiciones en ambos m
 </figure>
 </div>
 <p>Por defecto, <em>Processing</em> interpreta las posiciones de la siguiente manera:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode java code-with-copy"><code class="sourceCode java"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rectMode</span><span class="op">(</span>CORNER<span class="op">);</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ellipseMode</span><span class="op">(</span>CENTER<span class="op">);</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode java code-with-copy"><code class="sourceCode java"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rectMode</span><span class="op">(</span>CORNER<span class="op">);</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ellipseMode</span><span class="op">(</span>CENTER<span class="op">);</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 <p>También es posible cambiar esta interpretación usando:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode java code-with-copy"><code class="sourceCode java"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rectMode</span><span class="op">(</span>CENTER<span class="op">);</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ellipseMode</span><span class="op">(</span>CORNER<span class="op">);</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode java code-with-copy"><code class="sourceCode java"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rectMode</span><span class="op">(</span>CENTER<span class="op">);</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ellipseMode</span><span class="op">(</span>CORNER<span class="op">);</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -550,13 +597,13 @@ Figura&nbsp;7: Representación de cómo se interpretan las posiciones en ambos m
 </div>
 <div class="callout-body-container callout-body">
 <p>Intenta dibujar un círculo centrado en (20, 30) con radio 10 utilizando ambos modos. En el siguiente código tienes todas las instrucciones necesarias para completar el ejercicio:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode java code-with-copy"><code class="sourceCode java"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co">// Modo por defecto</span></span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ellipseMode</span><span class="op">(</span>CENTER<span class="op">);</span></span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ellipse</span><span class="op">(</span> <span class="op">,</span> <span class="op">,</span> <span class="op">,</span> <span class="op">);</span></span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="co">// Modo alternativo</span></span>
-<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a><span class="fu">ellipseMode</span><span class="op">(</span>CORNER<span class="op">);</span></span>
-<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a><span class="fu">ellipse</span><span class="op">(</span> <span class="op">,</span> <span class="op">,</span> <span class="op">,</span> <span class="op">);</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode java code-with-copy"><code class="sourceCode java"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co">// Modo por defecto</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ellipseMode</span><span class="op">(</span>CENTER<span class="op">);</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ellipse</span><span class="op">(</span> <span class="op">,</span> <span class="op">,</span> <span class="op">,</span> <span class="op">);</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="co">// Modo alternativo</span></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a><span class="fu">ellipseMode</span><span class="op">(</span>CORNER<span class="op">);</span></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a><span class="fu">ellipse</span><span class="op">(</span> <span class="op">,</span> <span class="op">,</span> <span class="op">,</span> <span class="op">);</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 </section>
@@ -588,18 +635,18 @@ Figura&nbsp;8: Imagen representada únicamente con valores de gris.
 </div>
 </div>
 <p>Por ejemplo, podemos definir el color del fondo, así como del borde y el relleno de un rectángulo de la siguiente manera:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode java code-with-copy"><code class="sourceCode java"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">background</span><span class="op">(</span><span class="dv">0</span><span class="op">);</span>              <span class="co">// fondo </span></span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="fu">stroke</span><span class="op">(</span><span class="dv">200</span><span class="op">);</span>                <span class="co">// borde</span></span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="fu">fill</span><span class="op">(</span><span class="dv">100</span><span class="op">);</span>                  <span class="co">// relleno</span></span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="fu">rect</span><span class="op">(</span><span class="dv">50</span><span class="op">,</span> <span class="dv">50</span><span class="op">,</span> <span class="dv">100</span><span class="op">,</span> <span class="dv">100</span><span class="op">);</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode java code-with-copy"><code class="sourceCode java"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">background</span><span class="op">(</span><span class="dv">0</span><span class="op">);</span>              <span class="co">// fondo </span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="fu">stroke</span><span class="op">(</span><span class="dv">200</span><span class="op">);</span>                <span class="co">// borde</span></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="fu">fill</span><span class="op">(</span><span class="dv">100</span><span class="op">);</span>                  <span class="co">// relleno</span></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="fu">rect</span><span class="op">(</span><span class="dv">50</span><span class="op">,</span> <span class="dv">50</span><span class="op">,</span> <span class="dv">100</span><span class="op">,</span> <span class="dv">100</span><span class="op">);</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Además, cabe destacar que <em>Processing</em> funciona como una <strong>máquina de estados</strong>; es decir, <strong>una vez se indica el color de borde o de relleno, este se utilizará para todas las figuras que se dibujen a continuación</strong>. Por ejemplo, podemos dibujar dos rectángulos con el mismo color de borde, pero diferente color de relleno, de la siguiente manera:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode java code-with-copy"><code class="sourceCode java"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">stroke</span><span class="op">(</span><span class="dv">0</span><span class="op">);</span></span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">fill</span><span class="op">(</span><span class="dv">150</span><span class="op">);</span></span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="fu">rect</span><span class="op">(</span><span class="dv">20</span><span class="op">,</span> <span class="dv">20</span><span class="op">,</span> <span class="dv">50</span><span class="op">,</span> <span class="dv">50</span><span class="op">);</span>       <span class="co">// borde negro, relleno gris</span></span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="fu">fill</span><span class="op">(</span><span class="dv">50</span><span class="op">);</span></span>
-<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a><span class="fu">rect</span><span class="op">(</span><span class="dv">80</span><span class="op">,</span> <span class="dv">20</span><span class="op">,</span> <span class="dv">50</span><span class="op">,</span> <span class="dv">50</span><span class="op">);</span>       <span class="co">// mismo borde, diferente relleno</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode java code-with-copy"><code class="sourceCode java"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">stroke</span><span class="op">(</span><span class="dv">0</span><span class="op">);</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="fu">fill</span><span class="op">(</span><span class="dv">150</span><span class="op">);</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="fu">rect</span><span class="op">(</span><span class="dv">20</span><span class="op">,</span> <span class="dv">20</span><span class="op">,</span> <span class="dv">50</span><span class="op">,</span> <span class="dv">50</span><span class="op">);</span>       <span class="co">// borde negro, relleno gris</span></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="fu">fill</span><span class="op">(</span><span class="dv">50</span><span class="op">);</span></span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a><span class="fu">rect</span><span class="op">(</span><span class="dv">80</span><span class="op">,</span> <span class="dv">20</span><span class="op">,</span> <span class="dv">50</span><span class="op">,</span> <span class="dv">50</span><span class="op">);</span>       <span class="co">// mismo borde, diferente relleno</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="quarto-layout-panel" data-layout="[50, 50]">
 <div class="quarto-layout-row">
 <div class="column quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
@@ -618,9 +665,9 @@ Figura&nbsp;8: Imagen representada únicamente con valores de gris.
 <summary>
 💡 Solución
 </summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode java code-with-copy"><code class="sourceCode java"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">stroke</span><span class="op">(</span><span class="dv">128</span><span class="op">);</span></span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="fu">fill</span><span class="op">(</span><span class="dv">0</span><span class="op">);</span></span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ellipse</span><span class="op">(</span><span class="dv">20</span><span class="op">,</span> <span class="dv">30</span><span class="op">,</span> <span class="dv">20</span><span class="op">,</span> <span class="dv">20</span><span class="op">);</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="sourceCode java code-with-copy"><code class="sourceCode java"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">stroke</span><span class="op">(</span><span class="dv">128</span><span class="op">);</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="fu">fill</span><span class="op">(</span><span class="dv">0</span><span class="op">);</span></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ellipse</span><span class="op">(</span><span class="dv">20</span><span class="op">,</span> <span class="dv">30</span><span class="op">,</span> <span class="dv">20</span><span class="op">,</span> <span class="dv">20</span><span class="op">);</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
 </div>
@@ -666,9 +713,9 @@ Figura&nbsp;9: Representación de los colores primarios RGB.
 </div>
 <div class="column quarto-layout-cell" style="flex-basis: 70.0%;justify-content: flex-start;">
 <p>Además de diferentes tonos de gris, <em>Processing</em> permite definir colores a partir de los tres colores primarios: rojo, verde y azul (RGB). Cuando los tres componentes toman el valor máximo (255), el color resultante es el blanco. En una escala de grises, los tres valores RGB coinciden; por ejemplo, el color (0, 0, 0) corresponde al negro. Por otro lado, si sólo activamos un canal con 255, y dejamos el resto a 0, obtenemos rojo, verde o azul.</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode java code-with-copy"><code class="sourceCode java"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">fill</span><span class="op">(</span><span class="dv">255</span><span class="op">,</span> <span class="dv">0</span><span class="op">,</span> <span class="dv">0</span><span class="op">);</span>  <span class="co">// rojo</span></span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="fu">fill</span><span class="op">(</span><span class="dv">0</span><span class="op">,</span> <span class="dv">255</span><span class="op">,</span> <span class="dv">0</span><span class="op">);</span>  <span class="co">// verde</span></span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="fu">fill</span><span class="op">(</span><span class="dv">0</span><span class="op">,</span> <span class="dv">0</span><span class="op">,</span> <span class="dv">255</span><span class="op">);</span>  <span class="co">// azul</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12"><pre class="sourceCode java code-with-copy"><code class="sourceCode java"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">fill</span><span class="op">(</span><span class="dv">255</span><span class="op">,</span> <span class="dv">0</span><span class="op">,</span> <span class="dv">0</span><span class="op">);</span>  <span class="co">// rojo</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="fu">fill</span><span class="op">(</span><span class="dv">0</span><span class="op">,</span> <span class="dv">255</span><span class="op">,</span> <span class="dv">0</span><span class="op">);</span>  <span class="co">// verde</span></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="fu">fill</span><span class="op">(</span><span class="dv">0</span><span class="op">,</span> <span class="dv">0</span><span class="op">,</span> <span class="dv">255</span><span class="op">);</span>  <span class="co">// azul</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 </div>
@@ -694,15 +741,34 @@ Figura&nbsp;9: Representación de los colores primarios RGB.
 <p><strong>Pista</strong>: fíjate en la <a href="#fig-rgb" class="quarto-xref">Figura&nbsp;9</a>.</p>
 </div>
 </div>
+<div class="quarto-layout-panel" data-layout="[40, 50]">
+<div class="quarto-layout-row">
+<div class="column quarto-layout-cell" style="flex-basis: 44.4%;justify-content: flex-start;">
+<div id="fig-colorpicker" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-colorpicker-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../resources/lesson1/hsv-picker.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-colorpicker-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;10: Captura de pantalla del selector de color de <em>Processing</em>.
+</figcaption>
+</figure>
+</div>
+</div>
+<div class="column quarto-layout-cell" style="flex-basis: 55.6%;justify-content: flex-start;">
+<p>Como habréis podido observar a partir del Ejercicio 9, no es sencillo imaginar qué color genera una mezcla concreta de valores RGB, ni determinar qué valores exactos u aproximados de rojo, verde y azul necesitamos para componer un color que tengamos en mente. Por esta razón, <em>Processing</em> dispone de una herramienta, <strong><em>Selector de color</em></strong>, que permite interactuar con una paleta de colores y obtener valores de rojo, verde y azul. Podéis acceder a esta herramienta desde el menú <strong>Herramientas &gt; Selector de color</strong>.</p>
+</div>
+</div>
+</div>
 </section>
 <section id="opacidad" class="level3" data-number="4.3">
 <h3 data-number="4.3" class="anchored" data-anchor-id="opacidad"><span class="header-section-number">4.3</span> Opacidad</h3>
 <p>Además de los canales R, G y B, también podemos indicar un valor de <strong>opacidad</strong>. De esta manera, un valor de opacidad de 255 indica que elemento a dibujar es completamente opaco, y un valor de 0 indica que es completamente transparente. Para especificar la opacidad, bastante con indicar un cuarto valor en operaciones como <code>stroke</code> o <code>fill</code>.</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="sourceCode java code-with-copy"><code class="sourceCode java"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">fill</span><span class="op">(</span><span class="dv">255</span><span class="op">,</span> <span class="dv">255</span><span class="op">,</span> <span class="dv">127</span><span class="op">);</span></span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="fu">rect</span><span class="op">(</span><span class="dv">50</span><span class="op">,</span> <span class="dv">50</span><span class="op">,</span> <span class="dv">100</span><span class="op">,</span> <span class="dv">100</span><span class="op">);</span>     <span class="co">// rectángulo opaco     </span></span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="fu">fill</span><span class="op">(</span><span class="dv">255</span><span class="op">,</span> <span class="dv">0</span><span class="op">,</span> <span class="dv">127</span><span class="op">,</span> <span class="dv">127</span><span class="op">);</span>     </span>
-<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a><span class="fu">rect</span><span class="op">(</span><span class="dv">20</span><span class="op">,</span> <span class="dv">20</span><span class="op">,</span> <span class="dv">50</span><span class="op">,</span> <span class="dv">50</span><span class="op">);</span>       <span class="co">// rectángulo semitransparente</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13"><pre class="sourceCode java code-with-copy"><code class="sourceCode java"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">fill</span><span class="op">(</span><span class="dv">255</span><span class="op">,</span> <span class="dv">255</span><span class="op">,</span> <span class="dv">127</span><span class="op">);</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="fu">rect</span><span class="op">(</span><span class="dv">50</span><span class="op">,</span> <span class="dv">50</span><span class="op">,</span> <span class="dv">100</span><span class="op">,</span> <span class="dv">100</span><span class="op">);</span>     <span class="co">// rectángulo opaco     </span></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a><span class="fu">fill</span><span class="op">(</span><span class="dv">255</span><span class="op">,</span> <span class="dv">0</span><span class="op">,</span> <span class="dv">127</span><span class="op">,</span> <span class="dv">127</span><span class="op">);</span>     </span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a><span class="fu">rect</span><span class="op">(</span><span class="dv">20</span><span class="op">,</span> <span class="dv">20</span><span class="op">,</span> <span class="dv">50</span><span class="op">,</span> <span class="dv">50</span><span class="op">);</span>       <span class="co">// rectángulo semitransparente</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 </section>
 <section id="programas-dinámicos" class="level2" data-number="5">
@@ -712,33 +778,33 @@ Figura&nbsp;9: Representación de los colores primarios RGB.
 <div class="quarto-layout-row">
 <div class="column quarto-layout-cell" style="flex-basis: 60.0%;justify-content: flex-start;">
 <p>Comenzaremos con este bloque de código:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12"><pre class="sourceCode java code-with-copy"><code class="sourceCode java"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">size</span><span class="op">(</span><span class="dv">800</span><span class="op">,</span> <span class="dv">800</span><span class="op">);</span></span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="co">// Pinta un fondo blanco</span></span>
-<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a><span class="fu">background</span><span class="op">(</span><span class="dv">255</span><span class="op">);</span></span>
-<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a><span class="co">// Fija las coordenadas basadas en el centro</span></span>
-<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a><span class="fu">ellipseMode</span><span class="op">(</span>CENTER<span class="op">);</span></span>
-<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a><span class="fu">rectMode</span><span class="op">(</span>CENTER<span class="op">);</span></span>
-<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a><span class="co">// Dibuja el cuerpo</span></span>
-<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a><span class="fu">stroke</span><span class="op">(</span><span class="dv">0</span><span class="op">);</span></span>
-<span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a><span class="fu">fill</span><span class="op">(</span><span class="dv">150</span><span class="op">);</span></span>
-<span id="cb12-13"><a href="#cb12-13" aria-hidden="true" tabindex="-1"></a><span class="fu">rect</span><span class="op">(</span><span class="dv">400</span><span class="op">,</span> <span class="dv">400</span><span class="op">,</span> <span class="dv">80</span><span class="op">,</span> <span class="dv">400</span><span class="op">);</span></span>
-<span id="cb12-14"><a href="#cb12-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-15"><a href="#cb12-15" aria-hidden="true" tabindex="-1"></a><span class="co">// Dibuja la cabeza</span></span>
-<span id="cb12-16"><a href="#cb12-16" aria-hidden="true" tabindex="-1"></a><span class="fu">fill</span><span class="op">(</span><span class="dv">255</span><span class="op">);</span></span>
-<span id="cb12-17"><a href="#cb12-17" aria-hidden="true" tabindex="-1"></a><span class="fu">ellipse</span><span class="op">(</span><span class="dv">400</span><span class="op">,</span> <span class="dv">280</span><span class="op">,</span> <span class="dv">200</span><span class="op">,</span> <span class="dv">240</span><span class="op">);</span></span>
-<span id="cb12-18"><a href="#cb12-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-19"><a href="#cb12-19" aria-hidden="true" tabindex="-1"></a><span class="co">// Dibuja los ojos</span></span>
-<span id="cb12-20"><a href="#cb12-20" aria-hidden="true" tabindex="-1"></a><span class="fu">fill</span><span class="op">(</span><span class="dv">0</span><span class="op">);</span></span>
-<span id="cb12-21"><a href="#cb12-21" aria-hidden="true" tabindex="-1"></a><span class="fu">ellipse</span><span class="op">(</span><span class="dv">350</span><span class="op">,</span> <span class="dv">280</span><span class="op">,</span> <span class="dv">50</span><span class="op">,</span> <span class="dv">100</span><span class="op">);</span></span>
-<span id="cb12-22"><a href="#cb12-22" aria-hidden="true" tabindex="-1"></a><span class="fu">ellipse</span><span class="op">(</span><span class="dv">450</span><span class="op">,</span> <span class="dv">280</span><span class="op">,</span> <span class="dv">50</span><span class="op">,</span> <span class="dv">100</span><span class="op">);</span></span>
-<span id="cb12-23"><a href="#cb12-23" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-24"><a href="#cb12-24" aria-hidden="true" tabindex="-1"></a><span class="co">// Dibuja las piernas</span></span>
-<span id="cb12-25"><a href="#cb12-25" aria-hidden="true" tabindex="-1"></a><span class="fu">stroke</span><span class="op">(</span><span class="dv">0</span><span class="op">);</span></span>
-<span id="cb12-26"><a href="#cb12-26" aria-hidden="true" tabindex="-1"></a><span class="fu">line</span><span class="op">(</span><span class="dv">360</span><span class="op">,</span> <span class="dv">600</span><span class="op">,</span> <span class="dv">320</span><span class="op">,</span> <span class="dv">640</span><span class="op">);</span></span>
-<span id="cb12-27"><a href="#cb12-27" aria-hidden="true" tabindex="-1"></a><span class="fu">line</span><span class="op">(</span><span class="dv">440</span><span class="op">,</span> <span class="dv">600</span><span class="op">,</span> <span class="dv">480</span><span class="op">,</span> <span class="dv">640</span><span class="op">);</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb14"><pre class="sourceCode java code-with-copy"><code class="sourceCode java"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">size</span><span class="op">(</span><span class="dv">600</span><span class="op">,</span> <span class="dv">600</span><span class="op">);</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="co">// Pinta un fondo blanco</span></span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a><span class="fu">background</span><span class="op">(</span><span class="dv">255</span><span class="op">);</span></span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a><span class="co">// Fija las coordenadas basadas en el centro</span></span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a><span class="fu">ellipseMode</span><span class="op">(</span>CENTER<span class="op">);</span></span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a><span class="fu">rectMode</span><span class="op">(</span>CENTER<span class="op">);</span></span>
+<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a><span class="co">// Dibuja el cuerpo</span></span>
+<span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a><span class="fu">stroke</span><span class="op">(</span><span class="dv">0</span><span class="op">);</span></span>
+<span id="cb14-12"><a href="#cb14-12" aria-hidden="true" tabindex="-1"></a><span class="fu">fill</span><span class="op">(</span><span class="dv">150</span><span class="op">);</span></span>
+<span id="cb14-13"><a href="#cb14-13" aria-hidden="true" tabindex="-1"></a><span class="fu">rect</span><span class="op">(</span><span class="dv">200</span><span class="op">,</span> <span class="dv">250</span><span class="op">,</span> <span class="dv">53</span><span class="op">,</span> <span class="dv">267</span><span class="op">);</span></span>
+<span id="cb14-14"><a href="#cb14-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-15"><a href="#cb14-15" aria-hidden="true" tabindex="-1"></a><span class="co">// Dibuja la cabeza</span></span>
+<span id="cb14-16"><a href="#cb14-16" aria-hidden="true" tabindex="-1"></a><span class="fu">fill</span><span class="op">(</span><span class="dv">255</span><span class="op">);</span></span>
+<span id="cb14-17"><a href="#cb14-17" aria-hidden="true" tabindex="-1"></a><span class="fu">ellipse</span><span class="op">(</span><span class="dv">200</span><span class="op">,</span> <span class="dv">170</span><span class="op">,</span> <span class="dv">133</span><span class="op">,</span> <span class="dv">160</span><span class="op">);</span></span>
+<span id="cb14-18"><a href="#cb14-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-19"><a href="#cb14-19" aria-hidden="true" tabindex="-1"></a><span class="co">// Dibuja los ojos</span></span>
+<span id="cb14-20"><a href="#cb14-20" aria-hidden="true" tabindex="-1"></a><span class="fu">fill</span><span class="op">(</span><span class="dv">0</span><span class="op">);</span></span>
+<span id="cb14-21"><a href="#cb14-21" aria-hidden="true" tabindex="-1"></a><span class="fu">ellipse</span><span class="op">(</span><span class="dv">167</span><span class="op">,</span> <span class="dv">170</span><span class="op">,</span> <span class="dv">33</span><span class="op">,</span> <span class="dv">67</span><span class="op">);</span></span>
+<span id="cb14-22"><a href="#cb14-22" aria-hidden="true" tabindex="-1"></a><span class="fu">ellipse</span><span class="op">(</span><span class="dv">233</span><span class="op">,</span> <span class="dv">170</span><span class="op">,</span> <span class="dv">33</span><span class="op">,</span> <span class="dv">67</span><span class="op">);</span></span>
+<span id="cb14-23"><a href="#cb14-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-24"><a href="#cb14-24" aria-hidden="true" tabindex="-1"></a><span class="co">// Dibuja las piernas</span></span>
+<span id="cb14-25"><a href="#cb14-25" aria-hidden="true" tabindex="-1"></a><span class="fu">stroke</span><span class="op">(</span><span class="dv">0</span><span class="op">);</span></span>
+<span id="cb14-26"><a href="#cb14-26" aria-hidden="true" tabindex="-1"></a><span class="fu">line</span><span class="op">(</span><span class="dv">173</span><span class="op">,</span> <span class="dv">383</span><span class="op">,</span> <span class="dv">147</span><span class="op">,</span> <span class="dv">410</span><span class="op">);</span></span>
+<span id="cb14-27"><a href="#cb14-27" aria-hidden="true" tabindex="-1"></a><span class="fu">line</span><span class="op">(</span><span class="dv">227</span><span class="op">,</span> <span class="dv">383</span><span class="op">,</span> <span class="dv">253</span><span class="op">,</span> <span class="dv">410</span><span class="op">);</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="column quarto-layout-cell" style="flex-basis: 40.0%;justify-content: flex-start;">
 <div id="fig-zoog" class="quarto-float quarto-figure quarto-figure-center anchored">
@@ -747,7 +813,7 @@ Figura&nbsp;9: Representación de los colores primarios RGB.
 <img src="../resources/lesson1/zoog.png" class="img-fluid figure-img">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-zoog-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figura&nbsp;10: Imagen del alienígena Zoog.
+Figura&nbsp;11: Imagen del alienígena Zoog.
 </figcaption>
 </figure>
 </div>
@@ -769,56 +835,106 @@ Figura&nbsp;10: Imagen del alienígena Zoog.
 </div>
 <section id="comentarios" class="level3" data-number="5.1">
 <h3 data-number="5.1" class="anchored" data-anchor-id="comentarios"><span class="header-section-number">5.1</span> Comentarios</h3>
-<p>Aprovechando que nuestro programa empieza a ser un poco más largo, es recomendable añadir comentarios para explicar qué hace cada parte del código. En <em>Processing</em>, los comentarios se indican con <code>//</code> para comentarios de una sola línea, o con <code>/*</code> y <code>*/</code> para comentarios multilínea. Por ejemplo, en el siguiente código se han añadido comentarios para explicar qué parte del cuerpo de Zoog dibuja cada bloque de instrucciones:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13"><pre class="sourceCode java code-with-copy"><code class="sourceCode java"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co">// Dibuja el cuerpo de Zoog</span></span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="fu">rect</span><span class="op">(</span><span class="dv">200</span><span class="op">,</span> <span class="dv">200</span><span class="op">,</span> <span class="dv">40</span><span class="op">,</span> <span class="dv">200</span><span class="op">);</span></span>
-<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a><span class="co">/* Dibuja la cabeza de Zoog en la posición (200, 140) con ancho y alto 120 */</span></span>
-<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a><span class="fu">ellipse</span><span class="op">(</span><span class="dv">200</span><span class="op">,</span> <span class="dv">140</span><span class="op">,</span> <span class="dv">100</span><span class="op">,</span> <span class="dv">120</span><span class="op">);</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Aprovechando que nuestro programa empieza a ser un poco más largo, es recomendable añadir comentarios para explicar qué hace cada parte del código. En <em>Processing</em>, los comentarios se indican con <code>//</code> para comentarios de una sola línea, o con <code>/*</code> y <code>*/</code> para comentarios multilínea. Además de para indicar qué hace una parte de nuestro código, también se pueden usar para desactivar temporalmente líneas de código durante la depuración. Por ejemplo, en el siguiente código se han añadido comentarios para explicar qué parte del cuerpo de Zoog dibuja cada bloque de instrucciones, y para desactivar el dibujo de la cabeza temporalmente:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb15"><pre class="sourceCode java code-with-copy"><code class="sourceCode java"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co">// Dibuja el cuerpo de Zoog</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="fu">rect</span><span class="op">(</span><span class="dv">200</span><span class="op">,</span> <span class="dv">250</span><span class="op">,</span> <span class="dv">53</span><span class="op">,</span> <span class="dv">267</span><span class="op">);</span></span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a><span class="co">/* Dibuja la cabeza de Zoog en la posición (200, 140) con ancho y alto 120 */</span></span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a><span class="co">//ellipse(200, 170, 133, 160);        // Desactivado temporalmente</span></span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a><span class="co">// Dibuja los ojos de Zoog</span></span>
+<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a><span class="co">/**</span>ellipse<span class="co">(167,</span> <span class="co">170,</span> <span class="co">33,</span> <span class="co">67);</span></span>
+<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a>ellipse<span class="co">(233,</span> <span class="co">170,</span> <span class="co">33,</span> <span class="co">67);**/</span>         <span class="co">// Ojo derecho</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 <section id="funciones-setup-y-draw" class="level3" data-number="5.2">
 <h3 data-number="5.2" class="anchored" data-anchor-id="funciones-setup-y-draw"><span class="header-section-number">5.2</span> Funciones <code>setup</code> y <code>draw</code></h3>
-<p><em>Processing</em> utiliza dos funciones especiales para organizar el código: <code>setup</code> y <code>draw</code>.</p>
-<ul>
-<li>La función <code>setup</code> se ejecuta una única vez al inicio del programa, y es el lugar adecuado para inicializar variables, definir el tamaño de la ventana, etc.</li>
-<li>Por otro lado, la función <code>draw</code> se ejecuta de manera repetitiva en un bucle infinito, y es el lugar adecuado para dibujar figuras que cambian con el tiempo.</li>
-</ul>
-<p>Tanto <code>setup</code> como <code>draw</code> son funciones especiales que no requieren ser llamadas explícitamente en el código; <em>Processing</em> se encarga de ello automáticamente. Aunque no entraremos en detalles sobre la sintaxis de las funciones en este momento, es importante destacar que el código que se encuentra dentro de una función debe estar <strong>sangrado</strong> (indentado) para indicar que pertenece a dicha función. Además, ambas funciones devuelven <code>void</code>, lo que significa que no devuelven ningún valor. También es importante abrir y cerrar llaves <code>{}</code> para definir el bloque de código que pertenece a cada función.</p>
-<div class="quarto-layout-panel" data-layout="[50.5,49.5]">
+<p>Cuando ejecutamos un programa en <em>Processing</em>, el código no se ejecuta de arriba a abajo una sola vez, sino que utiliza un modelo de ejecución basado en dos fases bien diferenciadas: <code>setup()</code> y <code>draw()</code>.</p>
+<div class="quarto-layout-panel" data-layout="[70, 30]">
 <div class="quarto-layout-row">
-<div class="column quarto-layout-cell" style="flex-basis: 50.5%;justify-content: flex-start;">
-<p>Por ejemplo, el siguiente programa dibuja una pelota que rebota dentro de la ventana:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb14"><pre class="sourceCode java code-with-copy"><code class="sourceCode java"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="dt">int</span> x <span class="op">=</span> <span class="dv">50</span><span class="op">;</span></span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="dt">int</span> y <span class="op">=</span> <span class="dv">50</span><span class="op">;</span></span>
-<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="dt">int</span> speedX <span class="op">=</span> <span class="dv">3</span><span class="op">;</span></span>
-<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a><span class="dt">int</span> speedY <span class="op">=</span> <span class="dv">2</span><span class="op">;</span></span>
-<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a><span class="dt">void</span> <span class="fu">setup</span><span class="op">()</span> <span class="op">{</span></span>
-<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">size</span><span class="op">(</span><span class="dv">400</span><span class="op">,</span> <span class="dv">400</span><span class="op">);</span></span>
-<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a><span class="op">}</span> </span>
-<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a><span class="dt">void</span> <span class="fu">draw</span><span class="op">()</span> <span class="op">{</span></span>
-<span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">background</span><span class="op">(</span><span class="dv">255</span><span class="op">);</span></span>
-<span id="cb14-12"><a href="#cb14-12" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb14-13"><a href="#cb14-13" aria-hidden="true" tabindex="-1"></a>  <span class="co">// Dibuja la pelota</span></span>
-<span id="cb14-14"><a href="#cb14-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">fill</span><span class="op">(</span><span class="dv">0</span><span class="op">);</span></span>
-<span id="cb14-15"><a href="#cb14-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ellipse</span><span class="op">(</span>x<span class="op">,</span> y<span class="op">,</span> <span class="dv">30</span><span class="op">,</span> <span class="dv">30</span><span class="op">);</span></span>
-<span id="cb14-16"><a href="#cb14-16" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb14-17"><a href="#cb14-17" aria-hidden="true" tabindex="-1"></a>  <span class="co">// Actualiza la posición de la pelota</span></span>
-<span id="cb14-18"><a href="#cb14-18" aria-hidden="true" tabindex="-1"></a>  x <span class="op">+=</span> speedX<span class="op">;</span></span>
-<span id="cb14-19"><a href="#cb14-19" aria-hidden="true" tabindex="-1"></a>  y <span class="op">+=</span> speedY<span class="op">;</span></span>
-<span id="cb14-20"><a href="#cb14-20" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb14-21"><a href="#cb14-21" aria-hidden="true" tabindex="-1"></a>  <span class="co">// Rebote en los bordes</span></span>
-<span id="cb14-22"><a href="#cb14-22" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> <span class="op">(</span>x <span class="op">&lt;=</span> <span class="dv">15</span> <span class="op">||</span> x <span class="op">&gt;=</span> width <span class="op">-</span> <span class="dv">15</span><span class="op">)</span> <span class="op">{</span></span>
-<span id="cb14-23"><a href="#cb14-23" aria-hidden="true" tabindex="-1"></a>    speedX <span class="op">=</span> <span class="op">-</span>speedX<span class="op">;</span></span>
-<span id="cb14-24"><a href="#cb14-24" aria-hidden="true" tabindex="-1"></a>  <span class="op">}</span></span>
-<span id="cb14-25"><a href="#cb14-25" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> <span class="op">(</span>y <span class="op">&lt;=</span> <span class="dv">15</span> <span class="op">||</span> y <span class="op">&gt;=</span> height <span class="op">-</span> <span class="dv">15</span><span class="op">)</span> <span class="op">{</span></span>
-<span id="cb14-26"><a href="#cb14-26" aria-hidden="true" tabindex="-1"></a>    speedY <span class="op">=</span> <span class="op">-</span>speedY<span class="op">;</span></span>
-<span id="cb14-27"><a href="#cb14-27" aria-hidden="true" tabindex="-1"></a>  <span class="op">}</span></span>
-<span id="cb14-28"><a href="#cb14-28" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="column quarto-layout-cell" style="flex-basis: 70.0%;justify-content: flex-start;">
+<ul>
+<li>Al pulsar el botón ▶️, <em>Processing</em> inicia el programa y lo primero que hace es llamar a la función <code>setup()</code>.</li>
+<li><strong>La función <code>setup()</code> se ejecuta una única vez al comienzo del programa</strong>. Su objetivo es preparar el entorno antes de empezar a dibujar. En esta función se suele definir el tamaño de la ventana, inicializar variables, configurar colores o modos de dibujo y cargar recursos como imágenes o fuentes. <strong>Una vez que <code>setup()</code> termina, <em>Processing</em> no vuelve a ejecutarla</strong>.</li>
+<li>Después de <code>setup()</code>, <em>Processing</em> entra automáticamente en la función <code>draw()</code>. <strong>La función <code>draw()</code> se ejecuta repetidamente</strong>, normalmente unas sesenta veces por segundo. <strong>En cada ejecución se dibuja un nuevo fotograma y se actualizan posiciones o estados</strong>. Gracias a este bucle continuo es posible crear animaciones, juegos y visualizaciones interactivas.</li>
+</ul>
+<div id="fig-disney-animation" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-disney-animation-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../resources/lesson1/disney-animation.svg" class="img-fluid figure-img">
 </div>
-<div class="column centered quarto-layout-cell" style="flex-basis: 49.5%;justify-content: center;">
-<p><img src="../resources/lesson1/bouncing_ball.gif" class="img-fluid"></p>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-disney-animation-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;12: Analogía del funcionamiento de <em>Processing</em>, y el proceso de animación. El resultado final se compone de varias llamadas a <code>draw</code>, y en cada llamada, se dibujan múltiples tipos de geometría.
+</figcaption>
+</figure>
+</div>
+</div>
+<div class="column centered quarto-layout-cell" style="flex-basis: 30.0%;justify-content: flex-start;">
+<div class="cell" data-layout-align="default">
+<div class="cell-output-display">
+<div>
+<p></p><figure class="figure"><p></p>
+<div>
+<pre class="mermaid mermaid-js">flowchart TD
+    A["El programa comienza"]
+    B["setup()"]
+    C["Inicializa ventana y variables"]
+    D["setup() termina"]
+    E["draw()"]
+    F["Dibuja un fotograma"]
+    G["Actualiza estado"]
+
+    A --&gt; B
+    B --&gt; C
+    C --&gt; D
+    D --&gt; E
+    E --&gt; F
+    F --&gt; G
+    G --&gt; E
+</pre>
+</div>
+<p></p></figure><p></p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<p>Tanto <code>setup</code> como <code>draw</code> son funciones especiales que no requieren ser llamadas explícitamente en el código; <em>Processing</em> se encarga de ello automáticamente. Por ahora, sólo cabe destacar que el código que se encuentra dentro de una función debe estar <strong>sangrado</strong> (indentado) para indicar que pertenece a dicha función. Además, ambas funciones devuelven <code>void</code>, lo que significa que no devuelven ningún valor. También es importante abrir y cerrar llaves <code>{}</code> para definir el bloque de código que pertenece a cada función.</p>
+<div class="grid">
+<div class="g-col-4">
+<div id="fig-processing-setup" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-processing-setup-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../resources/lesson1/processing-setup.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-processing-setup-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;13: Inicializa ventana y variables
+</figcaption>
+</figure>
+</div>
+</div>
+<div class="g-col-4">
+<div id="fig-processing-draw" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-processing-draw-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../resources/lesson1/processing-draw.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-processing-draw-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;14: Dibuja un fotograma
+</figcaption>
+</figure>
+</div>
+</div>
+<div class="g-col-4">
+<div id="fig-processing-finished" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-processing-finished-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../resources/lesson1/processing-finished.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-processing-finished-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;15: Fin de la animación
+</figcaption>
+</figure>
 </div>
 </div>
 </div>
@@ -833,38 +949,38 @@ Figura&nbsp;10: Imagen del alienígena Zoog.
 </div>
 <div class="callout-body-container callout-body">
 <p>Reescribe el código de Zoog utilizando las funciones <code>setup</code> y <code>draw</code>. <strong>¿Notas alguna diferencia en el resultado respecto al código original?</strong></p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb15"><pre class="sourceCode java code-with-copy"><code class="sourceCode java"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="dt">void</span> <span class="fu">draw</span><span class="op">()</span> <span class="op">{</span></span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">// Pinta un fondo blanco</span></span>
-<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">background</span><span class="op">(</span><span class="dv">255</span><span class="op">);</span></span>
-<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>    <span class="co">// Fija las coordenadas basadas en el centro</span></span>
-<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ellipseMode</span><span class="op">(</span>CENTER<span class="op">);</span></span>
-<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">rectMode</span><span class="op">(</span>CENTER<span class="op">);</span></span>
-<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a>    <span class="co">// Dibuja el cuerpo</span></span>
-<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">stroke</span><span class="op">(</span><span class="dv">0</span><span class="op">);</span></span>
-<span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a>    <span class="fu">fill</span><span class="op">(</span><span class="dv">150</span><span class="op">);</span></span>
-<span id="cb15-12"><a href="#cb15-12" aria-hidden="true" tabindex="-1"></a>    <span class="fu">rect</span><span class="op">(</span><span class="dv">400</span><span class="op">,</span> <span class="dv">400</span><span class="op">,</span> <span class="dv">80</span><span class="op">,</span> <span class="dv">400</span><span class="op">);</span></span>
-<span id="cb15-13"><a href="#cb15-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-14"><a href="#cb15-14" aria-hidden="true" tabindex="-1"></a>    <span class="co">// Dibuja la cabeza</span></span>
-<span id="cb15-15"><a href="#cb15-15" aria-hidden="true" tabindex="-1"></a>    <span class="fu">fill</span><span class="op">(</span><span class="dv">255</span><span class="op">);</span></span>
-<span id="cb15-16"><a href="#cb15-16" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ellipse</span><span class="op">(</span><span class="dv">400</span><span class="op">,</span> <span class="dv">280</span><span class="op">,</span> <span class="dv">200</span><span class="op">,</span> <span class="dv">240</span><span class="op">);</span></span>
-<span id="cb15-17"><a href="#cb15-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-18"><a href="#cb15-18" aria-hidden="true" tabindex="-1"></a>    <span class="co">// Dibuja los ojos</span></span>
-<span id="cb15-19"><a href="#cb15-19" aria-hidden="true" tabindex="-1"></a>    <span class="fu">fill</span><span class="op">(</span><span class="dv">0</span><span class="op">);</span></span>
-<span id="cb15-20"><a href="#cb15-20" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ellipse</span><span class="op">(</span><span class="dv">350</span><span class="op">,</span> <span class="dv">280</span><span class="op">,</span> <span class="dv">50</span><span class="op">,</span> <span class="dv">100</span><span class="op">);</span></span>
-<span id="cb15-21"><a href="#cb15-21" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ellipse</span><span class="op">(</span><span class="dv">450</span><span class="op">,</span> <span class="dv">280</span><span class="op">,</span> <span class="dv">50</span><span class="op">,</span> <span class="dv">100</span><span class="op">);</span></span>
-<span id="cb15-22"><a href="#cb15-22" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-23"><a href="#cb15-23" aria-hidden="true" tabindex="-1"></a>    <span class="co">// Dibuja las piernas</span></span>
-<span id="cb15-24"><a href="#cb15-24" aria-hidden="true" tabindex="-1"></a>    <span class="fu">stroke</span><span class="op">(</span><span class="dv">0</span><span class="op">);</span></span>
-<span id="cb15-25"><a href="#cb15-25" aria-hidden="true" tabindex="-1"></a>    <span class="fu">line</span><span class="op">(</span><span class="dv">360</span><span class="op">,</span> <span class="dv">600</span><span class="op">,</span> <span class="dv">320</span><span class="op">,</span> <span class="dv">640</span><span class="op">);</span></span>
-<span id="cb15-26"><a href="#cb15-26" aria-hidden="true" tabindex="-1"></a>    <span class="fu">line</span><span class="op">(</span><span class="dv">440</span><span class="op">,</span> <span class="dv">600</span><span class="op">,</span> <span class="dv">480</span><span class="op">,</span> <span class="dv">640</span><span class="op">);</span></span>
-<span id="cb15-27"><a href="#cb15-27" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span>
-<span id="cb15-28"><a href="#cb15-28" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-29"><a href="#cb15-29" aria-hidden="true" tabindex="-1"></a><span class="dt">void</span> <span class="fu">setup</span><span class="op">()</span> <span class="op">{</span></span>
-<span id="cb15-30"><a href="#cb15-30" aria-hidden="true" tabindex="-1"></a>  <span class="co">// Tamaño del lienzo</span></span>
-<span id="cb15-31"><a href="#cb15-31" aria-hidden="true" tabindex="-1"></a>  <span class="fu">size</span><span class="op">(</span><span class="dv">800</span><span class="op">,</span> <span class="dv">800</span><span class="op">);</span></span>
-<span id="cb15-32"><a href="#cb15-32" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb16"><pre class="sourceCode java code-with-copy"><code class="sourceCode java"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="dt">void</span> <span class="fu">setup</span><span class="op">()</span> <span class="op">{</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">// Tamaño del lienzo</span></span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">size</span><span class="op">(</span><span class="dv">600</span><span class="op">,</span> <span class="dv">600</span><span class="op">);</span></span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a><span class="dt">void</span> <span class="fu">draw</span><span class="op">()</span> <span class="op">{</span></span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>    <span class="co">// Pinta un fondo blanco</span></span>
+<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">background</span><span class="op">(</span><span class="dv">255</span><span class="op">);</span></span>
+<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a>    <span class="co">// Fija las coordenadas basadas en el centro</span></span>
+<span id="cb16-11"><a href="#cb16-11" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ellipseMode</span><span class="op">(</span>CENTER<span class="op">);</span></span>
+<span id="cb16-12"><a href="#cb16-12" aria-hidden="true" tabindex="-1"></a>    <span class="fu">rectMode</span><span class="op">(</span>CENTER<span class="op">);</span></span>
+<span id="cb16-13"><a href="#cb16-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-14"><a href="#cb16-14" aria-hidden="true" tabindex="-1"></a>    <span class="co">// Dibuja el cuerpo</span></span>
+<span id="cb16-15"><a href="#cb16-15" aria-hidden="true" tabindex="-1"></a>    <span class="fu">stroke</span><span class="op">(</span><span class="dv">0</span><span class="op">);</span></span>
+<span id="cb16-16"><a href="#cb16-16" aria-hidden="true" tabindex="-1"></a>    <span class="fu">fill</span><span class="op">(</span><span class="dv">150</span><span class="op">);</span></span>
+<span id="cb16-17"><a href="#cb16-17" aria-hidden="true" tabindex="-1"></a>    <span class="fu">rect</span><span class="op">(</span><span class="dv">200</span><span class="op">,</span> <span class="dv">250</span><span class="op">,</span> <span class="dv">53</span><span class="op">,</span> <span class="dv">267</span><span class="op">);</span></span>
+<span id="cb16-18"><a href="#cb16-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-19"><a href="#cb16-19" aria-hidden="true" tabindex="-1"></a>    <span class="co">// Dibuja la cabeza</span></span>
+<span id="cb16-20"><a href="#cb16-20" aria-hidden="true" tabindex="-1"></a>    <span class="fu">fill</span><span class="op">(</span><span class="dv">255</span><span class="op">);</span></span>
+<span id="cb16-21"><a href="#cb16-21" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ellipse</span><span class="op">(</span><span class="dv">200</span><span class="op">,</span> <span class="dv">170</span><span class="op">,</span> <span class="dv">133</span><span class="op">,</span> <span class="dv">160</span><span class="op">);</span></span>
+<span id="cb16-22"><a href="#cb16-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-23"><a href="#cb16-23" aria-hidden="true" tabindex="-1"></a>    <span class="co">// Dibuja los ojos</span></span>
+<span id="cb16-24"><a href="#cb16-24" aria-hidden="true" tabindex="-1"></a>    <span class="fu">fill</span><span class="op">(</span><span class="dv">0</span><span class="op">);</span></span>
+<span id="cb16-25"><a href="#cb16-25" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ellipse</span><span class="op">(</span><span class="dv">167</span><span class="op">,</span> <span class="dv">170</span><span class="op">,</span> <span class="dv">33</span><span class="op">,</span> <span class="dv">67</span><span class="op">);</span></span>
+<span id="cb16-26"><a href="#cb16-26" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ellipse</span><span class="op">(</span><span class="dv">233</span><span class="op">,</span> <span class="dv">170</span><span class="op">,</span> <span class="dv">33</span><span class="op">,</span> <span class="dv">67</span><span class="op">);</span></span>
+<span id="cb16-27"><a href="#cb16-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-28"><a href="#cb16-28" aria-hidden="true" tabindex="-1"></a>    <span class="co">// Dibuja las piernas</span></span>
+<span id="cb16-29"><a href="#cb16-29" aria-hidden="true" tabindex="-1"></a>    <span class="fu">stroke</span><span class="op">(</span><span class="dv">0</span><span class="op">);</span></span>
+<span id="cb16-30"><a href="#cb16-30" aria-hidden="true" tabindex="-1"></a>    <span class="fu">line</span><span class="op">(</span><span class="dv">173</span><span class="op">,</span> <span class="dv">383</span><span class="op">,</span> <span class="dv">147</span><span class="op">,</span> <span class="dv">410</span><span class="op">);</span></span>
+<span id="cb16-31"><a href="#cb16-31" aria-hidden="true" tabindex="-1"></a>    <span class="fu">line</span><span class="op">(</span><span class="dv">227</span><span class="op">,</span> <span class="dv">383</span><span class="op">,</span> <span class="dv">253</span><span class="op">,</span> <span class="dv">410</span><span class="op">);</span></span>
+<span id="cb16-32"><a href="#cb16-32" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 <div class="callout callout-style-default callout-warning callout-titled">
@@ -881,55 +997,9 @@ Figura&nbsp;10: Imagen del alienígena Zoog.
 </div>
 </div>
 </section>
-<section id="transformaciones-geométricas" class="level3" data-number="5.3">
-<h3 data-number="5.3" class="anchored" data-anchor-id="transformaciones-geométricas"><span class="header-section-number">5.3</span> Transformaciones geométricas</h3>
-<p>Aunque no entraremos en detalles sobre las transformaciones geométricas en este momento, es importante mencionar que <em>Processing</em> proporciona varias funciones para trasladar, rotar y escalar las figuras geométricas. Por ejemplo, la función <code>translate(x, y)</code> permite trasladar el origen de coordenadas a la posición (x, y), de manera que todas las figuras que se dibujen a continuación se posicionarán en función de este nuevo origen.</p>
-<p>Por ejemplo, los siguientes dos bloques de código dibujan un rectángulo en la misma posición, pero utilizando diferentes transformaciones geométricas:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb16"><pre class="sourceCode java code-with-copy"><code class="sourceCode java"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">size</span><span class="op">(</span><span class="dv">150</span><span class="op">,</span> <span class="dv">200</span><span class="op">);</span></span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="co">// Sin transformaciones geométricas</span></span>
-<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a><span class="fu">rect</span><span class="op">(</span><span class="dv">50</span><span class="op">,</span> <span class="dv">50</span><span class="op">,</span> <span class="dv">50</span><span class="op">,</span> <span class="dv">100</span><span class="op">);</span></span>
-<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a><span class="co">// Con transformaciones geométricas</span></span>
-<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a><span class="fu">translate</span><span class="op">(</span><span class="dv">50</span><span class="op">,</span> <span class="dv">50</span><span class="op">);</span></span>
-<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a><span class="fu">rect</span><span class="op">(</span><span class="dv">0</span><span class="op">,</span> <span class="dv">0</span><span class="op">,</span> <span class="dv">50</span><span class="op">,</span> <span class="dv">100</span><span class="op">);</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
-<p>Las transformaciones geométricas más comunes son:</p>
-<ul>
-<li><code>translate(x, y)</code>: traslada el origen de coordenadas a la posición (x, y).</li>
-<li><code>rotate(angle)</code>: rota el sistema de coordenadas en un ángulo especificado (en radianes).
-<ul>
-<li>Por ejemplo, para rotar 45 grados, se puede utilizar <code>rotate(PI/4)</code>, ya que π radianes equivalen a 180 grados.</li>
-<li>Dados dos puntos (x1, y1) y (x2, y2), el ángulo entre ellos puede calcularse con la función <code>atan2(y2 - y1, x2 - x1)</code>.</li>
-</ul></li>
-<li><code>scale(s)</code>: escala el sistema de coordenadas por un factor <em>s</em>.</li>
-</ul>
-<p>Por otro lado, cuando aplicamos transformaciones geométricas, es importante tener en cuenta que estas se <strong>acumulan</strong>. Por ejemplo, si definimos en el código una traslación seguida de una rotación, todas las figuras que se dibujen a continuación se verán afectadas por ambas transformaciones; primero se aplicará la rotación y luego la traslación.</p>
-<p>Para evitar este comportamiento acumulativo, <em>Processing</em> proporciona las funciones <code>pushMatrix()</code> y <code>popMatrix()</code>, que permiten <strong>guardar y restaurar el estado del sistema de coordenadas</strong>, respectivamente. De esta manera, podemos aplicar transformaciones geométricas a un bloque específico de código sin afectar al resto del programa.</p>
-<p>Por ejemplo, el siguiente bloque de código dibuja dos rectángulos: el primero se dibuja con una traslación y una rotación, mientras que el segundo se dibuja sin ninguna transformación geométrica, gracias al uso de <code>pushMatrix()</code> y <code>popMatrix()</code>.</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb17"><pre class="sourceCode java code-with-copy"><code class="sourceCode java"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">size</span><span class="op">(</span><span class="dv">400</span><span class="op">,</span> <span class="dv">200</span><span class="op">);</span></span>
-<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a><span class="fu">pushMatrix</span><span class="op">();</span></span>
-<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a><span class="fu">translate</span><span class="op">(</span><span class="dv">150</span><span class="op">,</span> <span class="dv">50</span><span class="op">);</span></span>
-<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a><span class="fu">rotate</span><span class="op">(</span>PI<span class="op">/</span><span class="dv">4</span><span class="op">);</span></span>
-<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a><span class="fu">rect</span><span class="op">(</span><span class="dv">0</span><span class="op">,</span> <span class="dv">0</span><span class="op">,</span> <span class="dv">50</span><span class="op">,</span> <span class="dv">100</span><span class="op">);</span></span>
-<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a><span class="fu">popMatrix</span><span class="op">();</span></span>
-<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a><span class="fu">rect</span><span class="op">(</span><span class="dv">300</span><span class="op">,</span> <span class="dv">50</span><span class="op">,</span> <span class="dv">50</span><span class="op">,</span> <span class="dv">100</span><span class="op">);</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
-<p>A modo de ejemplo, la <a href="#fig-transformations" class="quarto-xref">Figura&nbsp;11</a> ilustra la importancia de ordenar correctamente las transformaciones geométricas. En la imagen de la izquierda, primero se traslada el origen de coordenadas y luego se rota, mientras que en la imagen de la derecha, primero se rota y luego se traslada. Como resultado, los rectángulos aparecen en posiciones diferentes.</p>
-<div id="fig-transformations" class="quarto-float quarto-figure quarto-figure-center anchored">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-transformations-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="../resources/lesson1/transformations.svg" class="img-fluid figure-img">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-transformations-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figura&nbsp;11: A la izquierda, una rotación respecto del origen de coordenadas, seguida por una traslación; a la derecha, una traslación seguida por una rotación
-</figcaption>
-</figure>
-</div>
-</section>
-<section id="interacción-con-el-ratón" class="level3" data-number="5.4">
-<h3 data-number="5.4" class="anchored" data-anchor-id="interacción-con-el-ratón"><span class="header-section-number">5.4</span> Interacción con el ratón</h3>
-<p>Como habrás podido observar, en el programa de la pelota que rebota, se utilizan algunas <strong>palabras reservadas</strong> como <code>width</code> y <code>height</code>. Estas palabras reservadas permiten acceder al ancho y alto de la ventana, respectivamente. De manera similar, <em>Processing</em> proporciona otras palabras reservadas que permiten interactuar con el ratón, como <code>mouseX</code> y <code>mouseY</code>, que indican la <strong>posición actual del ratón en la ventana</strong>.</p>
+<section id="interacción-con-el-ratón" class="level3" data-number="5.3">
+<h3 data-number="5.3" class="anchored" data-anchor-id="interacción-con-el-ratón"><span class="header-section-number">5.3</span> Interacción con el ratón</h3>
+<p>En <em>Processing</em> existen algunas <strong>palabras reservadas</strong> como <code>width</code> y <code>height</code>, que permiten acceder al ancho y alto de la ventana, respectivamente, y otras que permiten interactuar con el usuario, como <code>mouseX</code> y <code>mouseY</code>, que indican la <strong>posición actual del ratón en la ventana</strong>.</p>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -940,8 +1010,7 @@ Figura&nbsp;11: A la izquierda, una rotación respecto del origen de coordenadas
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Modifica el programa de Zoog para que la esquina superior izquierda, es decir, desde donde se dibuja el cuerpo, siga la posición del ratón, utilizando <code>mouseX</code> y <code>mouseY</code>.</p>
-<p>💡<strong>Pista</strong>: se puede trasladar toda la geometría con una de las transformaciones geométricas antes mencionadas.</p>
+<p>Modifica el programa de Zoog para que la esquina superior izquierda del cuerpo de Zoog sea la posición del ratón, utilizando <code>mouseX</code> y <code>mouseY</code>.</p>
 </div>
 </div>
 <div class="callout callout-style-default callout-note callout-titled">
@@ -950,12 +1019,24 @@ Figura&nbsp;11: A la izquierda, una rotación respecto del origen de coordenadas
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Nota</span>🧪 Ejercicio 13 - Reacción del cuerpo al movimiento del ratón
+<span class="screen-reader-only">Nota</span>🧪 Ejercicio 13 - Sigue al ratón II
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Modifica el programa de Zoog para que la cabeza gire en función de la posición del ratón. Por ejemplo, si el ratón está a la izquierda de Zoog, la cabeza debe girar hacia la izquierda, y viceversa.</p>
-<p>💡<strong>Pista</strong>: se puede rotar toda la cabeza, incluyendo los ojos, con una de las transformaciones geométricas antes mencionadas. Para calcular el ángulo de rotación, puedes utilizar la función <code>atan2(dy, dx)</code>, donde <code>dy</code> y <code>dx</code> son las diferencias en las coordenadas y y x entre la posición del ratón y la posición de la cabeza de Zoog.</p>
+<p>Centra la cabeza de Zoog en la posición (<code>mouseX</code>, <code>mouseY</code> - 30), de manera que la cabeza se mueva en función de la posición del ratón, pero siempre esté situada por encima del cuerpo. Por supuesto, tendrás que ajustar también la posición de los ojos.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Nota</span>🧪 Ejercicio extra - Sigue al ratón III
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Intenta que las piernas de Zoog también sigan al ratón, manteniendo la misma distancia relativa con el cuerpo.</p>
 </div>
 </div>
 </section>
@@ -980,20 +1061,20 @@ Figura&nbsp;11: A la izquierda, una rotación respecto del origen de coordenadas
 <summary>
 💡 Solución
 </summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb18"><pre class="sourceCode java code-with-copy"><code class="sourceCode java"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="dt">int</span> circleX <span class="op">=</span> <span class="dv">100</span><span class="op">;</span></span>
-<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="dt">int</span> circleY <span class="op">=</span> <span class="dv">100</span><span class="op">;</span></span>
-<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a><span class="dt">void</span> <span class="fu">setup</span><span class="op">()</span> <span class="op">{</span></span>
-<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">size</span><span class="op">(</span><span class="dv">200</span><span class="op">,</span> <span class="dv">200</span><span class="op">);</span></span>
-<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span>
-<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a><span class="dt">void</span> <span class="fu">draw</span><span class="op">()</span> <span class="op">{</span></span>
-<span id="cb18-9"><a href="#cb18-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">background</span><span class="op">(</span><span class="dv">255</span><span class="op">);</span></span>
-<span id="cb18-10"><a href="#cb18-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stroke</span><span class="op">(</span><span class="dv">0</span><span class="op">);</span></span>
-<span id="cb18-11"><a href="#cb18-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">fill</span><span class="op">(</span><span class="dv">175</span><span class="op">);</span></span>
-<span id="cb18-12"><a href="#cb18-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ellipse</span><span class="op">(</span>circleX<span class="op">,</span> circleY<span class="op">,</span> <span class="dv">50</span><span class="op">,</span> <span class="dv">50</span><span class="op">);</span></span>
-<span id="cb18-13"><a href="#cb18-13" aria-hidden="true" tabindex="-1"></a>  circleX <span class="op">=</span> circleX <span class="op">+</span> <span class="dv">1</span><span class="op">;</span></span>
-<span id="cb18-14"><a href="#cb18-14" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb17"><pre class="sourceCode java code-with-copy"><code class="sourceCode java"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="dt">int</span> circleX <span class="op">=</span> <span class="dv">100</span><span class="op">;</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="dt">int</span> circleY <span class="op">=</span> <span class="dv">100</span><span class="op">;</span></span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a><span class="dt">void</span> <span class="fu">setup</span><span class="op">()</span> <span class="op">{</span></span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">size</span><span class="op">(</span><span class="dv">200</span><span class="op">,</span> <span class="dv">200</span><span class="op">);</span></span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span>
+<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a><span class="dt">void</span> <span class="fu">draw</span><span class="op">()</span> <span class="op">{</span></span>
+<span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">background</span><span class="op">(</span><span class="dv">255</span><span class="op">);</span></span>
+<span id="cb17-10"><a href="#cb17-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stroke</span><span class="op">(</span><span class="dv">0</span><span class="op">);</span></span>
+<span id="cb17-11"><a href="#cb17-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">fill</span><span class="op">(</span><span class="dv">175</span><span class="op">);</span></span>
+<span id="cb17-12"><a href="#cb17-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ellipse</span><span class="op">(</span>circleX<span class="op">,</span> circleY<span class="op">,</span> <span class="dv">50</span><span class="op">,</span> <span class="dv">50</span><span class="op">);</span></span>
+<span id="cb17-13"><a href="#cb17-13" aria-hidden="true" tabindex="-1"></a>  circleX <span class="op">=</span> circleX <span class="op">+</span> <span class="dv">1</span><span class="op">;</span></span>
+<span id="cb17-14"><a href="#cb17-14" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
 </div>
@@ -1002,13 +1083,13 @@ Figura&nbsp;11: A la izquierda, una rotación respecto del origen de coordenadas
 <h3 data-number="6.2" class="anchored" data-anchor-id="condicionales"><span class="header-section-number">6.2</span> Condicionales</h3>
 <p>Los <strong>condicionales</strong> permiten ejecutar <strong>diferentes bloques de código</strong> en función de <strong>si se cumple o no una determinada condición</strong>. En <em>Processing</em>, los condicionales se implementan utilizando las palabras reservadas <code>if</code>, <code>else if</code> y <code>else</code>.</p>
 <p>La sintaxis básica de un condicional es la siguiente:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb19"><pre class="sourceCode java code-with-copy"><code class="sourceCode java"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="op">(</span>condición<span class="op">)</span> <span class="op">{</span></span>
-<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>  <span class="co">// bloque de código si la condición es verdadera</span></span>
-<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a><span class="op">}</span> <span class="cf">else</span> <span class="cf">if</span> <span class="op">(</span>otra_condición<span class="op">)</span> <span class="op">{</span></span>
-<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>  <span class="co">// bloque de código si la otra condición es verdadera</span></span>
-<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a><span class="op">}</span> <span class="cf">else</span> <span class="op">{</span></span>
-<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a>  <span class="co">// bloque de código si ninguna condición es verdadera</span></span>
-<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb18"><pre class="sourceCode java code-with-copy"><code class="sourceCode java"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="op">(</span>condición<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>  <span class="co">// bloque de código si la condición es verdadera</span></span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a><span class="op">}</span> <span class="cf">else</span> <span class="cf">if</span> <span class="op">(</span>otra_condición<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>  <span class="co">// bloque de código si la otra condición es verdadera</span></span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a><span class="op">}</span> <span class="cf">else</span> <span class="op">{</span></span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a>  <span class="co">// bloque de código si ninguna condición es verdadera</span></span>
+<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Ten en cuenta que no siempre es necesario utilizar <code>else if</code> o <code>else</code>; <strong>un condicional puede consistir únicamente en una instrucción <code>if</code></strong>.</p>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -1021,6 +1102,16 @@ Figura&nbsp;11: A la izquierda, una rotación respecto del origen de coordenadas
 </div>
 <div class="callout-body-container callout-body">
 <p>Modifica el programa de Zoog para que el color de fondo cambie en función de la posición del ratón. Por ejemplo, si el ratón se encuentra en el primer tercio de la ventana, el fondo debe ser blanco; si está en el segundo tercio, el fondo debe ser gris; y si está en el tercer tercio, el fondo debe ser negro.</p>
+<p>💡 <strong>Pista</strong>: en el código que hemos utilizado para dibujar a Zoog se define una ventana de tamaño 600x600. Puedes comprobar si <code>mouseX</code> o <code>mouseY</code> se encuentran en un determinado tercio de la pantalla:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb19"><pre class="sourceCode java code-with-copy"><code class="sourceCode java"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="op">(</span>mouseX <span class="op">&lt;</span> <span class="dv">200</span><span class="op">)</span> <span class="op">{</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">...</span></span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span> <span class="cf">if</span> <span class="op">(</span><span class="kw">...</span><span class="op">)</span> <span class="op">{</span></span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>    <span class="kw">...</span></span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span>
+<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span> <span class="op">{</span></span>
+<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a>    <span class="kw">...</span></span>
+<span id="cb19-9"><a href="#cb19-9" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 </section>
@@ -1047,9 +1138,46 @@ Figura&nbsp;11: A la izquierda, una rotación respecto del origen de coordenadas
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb21"><pre class="sourceCode java code-with-copy"><code class="sourceCode java"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">size</span><span class="op">(</span><span class="dv">500</span><span class="op">,</span> <span class="dv">200</span><span class="op">);</span></span>
 <span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a><span class="dt">int</span> N <span class="op">=</span> <span class="dv">2</span><span class="op">;</span></span>
-<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> <span class="op">(</span><span class="dt">int</span> i <span class="op">=</span> <span class="dv">1</span><span class="op">;</span> i <span class="op">&lt;=</span> N<span class="op">;</span> i<span class="op">++)</span> <span class="op">{</span></span>
-<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rect</span><span class="op">(</span>i <span class="op">*</span> <span class="dv">150</span><span class="op">,</span> <span class="dv">50</span> <span class="op">+</span> i <span class="op">*</span> <span class="dv">10</span><span class="op">,</span> <span class="dv">80</span><span class="op">,</span> <span class="dv">80</span><span class="op">);</span></span>
-<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a><span class="dt">float</span> offsetX <span class="op">=</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a><span class="dt">float</span> offsetY <span class="op">=</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> <span class="op">(</span><span class="dt">int</span> i <span class="op">=</span> <span class="dv">1</span><span class="op">;</span> i <span class="op">&lt;=</span> N<span class="op">;</span> i<span class="op">++)</span> <span class="op">{</span></span>
+<span id="cb21-8"><a href="#cb21-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rect</span><span class="op">(</span><span class="dv">50</span> <span class="op">+</span> offsetX<span class="op">,</span> <span class="dv">20</span> <span class="op">+</span> offsetY<span class="op">,</span> <span class="dv">80</span><span class="op">,</span> <span class="dv">80</span><span class="op">);</span></span>
+<span id="cb21-9"><a href="#cb21-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-10"><a href="#cb21-10" aria-hidden="true" tabindex="-1"></a>  offsetX <span class="op">+=</span> <span class="dv">100</span><span class="op">;</span></span>
+<span id="cb21-11"><a href="#cb21-11" aria-hidden="true" tabindex="-1"></a>  offsetY <span class="op">+=</span> <span class="dv">10</span><span class="op">;</span></span>
+<span id="cb21-12"><a href="#cb21-12" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</div>
+<div class="quarto-layout-panel" data-layout="[70,30]">
+<div class="quarto-layout-row">
+<div class="column quarto-layout-cell" style="flex-basis: 70.0%;justify-content: flex-start;">
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Nota</span>🧪 Ejercicio 17 - Z pares de brazos
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Modifica el programa de Zoog para que dibuje <em>Z</em> pares de brazos, donde <em>Z</em> es una variable que puedes definir al principio del programa. Utiliza un bucle <code>for</code> para dibujar los brazos.</p>
+</div>
+</div>
+</div>
+<div class="column quarto-layout-cell" style="flex-basis: 30.0%;justify-content: flex-start;">
+<div id="fig-zoog-multiple-arms" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-zoog-multiple-arms-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../resources/lesson1/zoog-arms.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-zoog-multiple-arms-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;16: Resultado de añadir 3 pares de brazos a Zoog.
+</figcaption>
+</figure>
+</div>
+</div>
 </div>
 </div>
 </section>
@@ -1062,7 +1190,7 @@ Figura&nbsp;11: A la izquierda, una rotación respecto del origen de coordenadas
 <img src="../resources/lesson1/web-teaser.png" class="img-fluid figure-img">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-installation-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figura&nbsp;12: Banner de la página oficial de <em>Processing</em>; a la izquierda se muestra el botón de <em>Download</em>.
+Figura&nbsp;17: Banner de la página oficial de <em>Processing</em>; a la izquierda se muestra el botón de <em>Download</em>.
 </figcaption>
 </figure>
 </div>
