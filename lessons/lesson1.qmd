@@ -570,7 +570,7 @@ void draw() {
   stroke(0);
   fill(175);
   ellipse(circleX, circleY, 50, 50);
-  circleX = circleX + 1;
+  circleX = circleX + 5;
 }
 ```
 </details>
@@ -647,7 +647,7 @@ for (int i = 1; i <= N; i++) {
 ```
 :::
 
-::: {layout="[70,30]"}
+::: {layout="[80,20]"}
 ::: {.column}
 ::: {.callout-note}
 ### 🧪 Ejercicio 17 - Z pares de brazos
