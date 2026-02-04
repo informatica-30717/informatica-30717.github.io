@@ -1,0 +1,99 @@
+---
+title: "📅 Calendario"
+description: Calendario de prácticas de la asignatura de Informática.
+---
+
+En esta sección se publicará el calendario de prácticas actualizado. Recordad que la asistencia a las prácticas es obligatoria.
+
+<div id="calendar-grid"></div>
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+    const practicas = [
+        { id: 1, title: "Introducción a Processing", icon: "bi-laptop",
+        summary: "Primer contacto con Processing: entorno, dibujo básico y animación.",
+        dates: ["2026-02-11", "2026-02-12"] },
+
+        { id: 2, title: "Entorno de programación para Java", icon: "bi-code-slash",
+        summary: "Estructura de programas, tipos de datos y control del flujo.",
+        dates: ["2026-02-18", "2026-02-19"] },
+
+        { id: 3, title: "Resolución de problemas en Java (I)", icon: "bi-code-slash",
+        summary: "Ecuación de segundo grado.",
+        dates: ["2026-02-25", "2026-02-26"] },
+
+        { id: 4, title: "Aspectos avanzados de Excel", icon: "bi-table",
+        summary: "Fórmulas, funciones, tablas y análisis básico de datos.",
+        dates: ["2026-03-04", "2026-03-05"] },
+
+        { id: 5, title: "Resolución de problemas en Java (II)", icon: "bi-code-slash",
+        summary: "Implementación de algoritmos clásicos.",
+        dates: ["2026-03-11", "2026-03-12"] },
+
+        { id: 6, title: "Resolución de problemas en Java (III)", icon: "bi-code-slash",
+        summary: "Ordenación de números.",
+        dates: ["2026-03-18", "2026-03-19"] },
+
+        { id: 7, title: "Visualizador de elementos gráficos", icon: "bi-display",
+        summary: "Identificación de elementos de un visualizador. Gestión de aplicaciones Java complejas.",
+        dates: ["2026-03-25", "2026-03-26"] },
+
+        { id: 8, title: "BIM semántico", icon: "bi-building",
+        summary: "Introducción al modelado BIM y gestión de información asociada.",
+        dates: ["2026-04-08", "2026-04-09"] },
+
+        { id: 9, title: "Introducción a Grasshopper", icon: "bi-diagram-3",
+        summary: "Programación visual y generación paramétrica de geometría.",
+        dates: ["2026-04-15", "2026-04-16"] }
+    ];
+
+    const grid = document.getElementById("calendar-grid");
+
+    const today = new Date();
+    today.setHours(0,0,0,0);
+
+    const fmt = d => d.toLocaleDateString("es-ES", { day: "2-digit", month: "2-digit", year: "numeric" });
+
+    const firstPracticeStart = new Date(practicas[0].dates[0]);
+    firstPracticeStart.setHours(0,0,0,0);
+
+    practicas.forEach(p => {
+        const dStart = new Date(p.dates[0]);
+        const dEnd   = new Date(p.dates[1]);
+
+        const start = new Date(dStart); start.setHours(0,0,0,0);
+        const end   = new Date(dEnd);   end.setHours(23,59,59,999);
+
+        const isP0 = today < firstPracticeStart && p.id === 1;
+
+        const isCurrent = isP0 || (today >= start && today <= end);
+
+        grid.insertAdjacentHTML("beforeend", `
+            <div class="practice-card-wrapper">
+                <div class="card h-100 p-3 shadow-sm border-0 rounded-3 d-flex flex-column
+                            ${isCurrent ? "is-current" : ""}">
+
+                <div class="mb-1">
+                    <span class="badge bg-primary rounded-pill">Práctica ${p.id}</span>
+                    ${isCurrent ? '<span class="badge bg-danger ms-2">ACTUAL</span>' : ''}
+                </div>
+
+                <h4 class="card-title text-primary mt-2">
+                    <i class="bi ${p.icon}"></i> ${p.title}
+                </h4>
+
+                <p class="card-text text-secondary">
+                    ${p.summary}
+                </p>
+
+                <div class="mt-auto d-flex align-items-center gap-2 text-muted">
+                    <i class="bi bi-calendar-event"></i>
+                    <span>${fmt(dStart)} (X) – ${fmt(dEnd)} (J)</span>
+                </div>
+                </div>
+            </div>
+            `);
+        });
+    });
+</script>
+

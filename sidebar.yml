@@ -1,5 +1,10 @@
 website:
   sidebar:
     contents:
-      - index.qmd
-      - lessons/lesson1.qmd
+      - section: "Información"
+        contents:
+          - index.qmd
+          - calendar.qmd
+      - section: "Prácticas"
+        contents:
+          - lessons/lesson1.qmd
