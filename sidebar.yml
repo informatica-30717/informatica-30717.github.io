@@ -7,4 +7,4 @@ website:
           - calendar.qmd
       - section: "Prácticas"
         contents:
-          - lessons/lesson1.qmd
+          - practices/practice1.qmd

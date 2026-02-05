@@ -32,7 +32,7 @@ Puedes encontrar nuestro horario de tutorías en los siguientes enlaces:
 
 :::{.callout-tip}
 ## Get started
-¡Comienza leyendo la [primera práctica](lessons/lesson1.qmd)!
+¡Comienza leyendo la [primera práctica](practices/practice1.qmd)!
 :::
 
 

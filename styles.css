@@ -42,7 +42,7 @@ main ol ol, main ul ul, main ol ul, main ul ol {
 
 @media (min-width: 768px) {
   #calendar-grid {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(1, 1fr);
   }
 }
 
@@ -50,4 +50,22 @@ main ol ol, main ul ul, main ol ul, main ul ol {
   border-left: 6px solid #0d6efd;
   background-color: #f8faff;
   box-shadow: 0 0.5rem 1rem rgba(13,110,253,.15);
+}
+
+.is-past {
+    filter: grayscale(100%);
+    opacity: 0.6;
+}
+
+.is-past .badge {
+    opacity: 0.7;
+}
+
+.practice-card-wrapper a .card {
+    transition: background-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.practice-card-wrapper a:hover .card {
+    background-color: #f8f9fa; /* Bootstrap light */
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
 }

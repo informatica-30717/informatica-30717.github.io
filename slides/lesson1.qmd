@@ -28,7 +28,7 @@ Los objetivos de esta práctica son los siguientes:
 
 ### Introducción
 
-::: {layout="[75,25]"}
+::: {layout="[70,30]"}
 ::: {.column}
 Processing es un lenguaje de programación y un entorno de desarrollo (*Integrated Development Environment*, IDE).
 
