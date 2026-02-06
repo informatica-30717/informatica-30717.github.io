@@ -69,3 +69,7 @@ main ol ol, main ul ul, main ol ul, main ul ol {
     background-color: #f8f9fa; /* Bootstrap light */
     box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
 }
+
+hr {
+  display: none;
+}

@@ -4,14 +4,8 @@ format:
   html: 
     toc: true
     number-sections: true
-navbar:
-  background: primary
-  search: true
-  right:
-    - icon: github
-      href: https://github.com/fastai/course22
-sidebar:
-  style: "floating"
+  revealjs: 
+    output-ext: "reveal.html"
 ---
 
 ## Objetivos de la práctica
@@ -22,18 +16,13 @@ Los objetivos de esta práctica son los siguientes:
 - Familiarización con el entorno de desarrollo *Processing*.
 - Familiarización con aspectos básicos de programación a través de programas en *Processing*.
 
-::: {.callout-note}
-## 🎞 Diapositivas
-[**Diapositivas para la presentación de la práctica en clase**](../slides/lesson1.html)
-:::
-
 ---
 
 ## Processing
 
 ### Introducción
 
-::: {layout="[80,20]"}
+::: {layout="[75,25]"}
 ::: {.column}
 *Processing* es un lenguaje de programación y un entorno de desarrollo (*Integrated Development Environment*, IDE).
 
@@ -95,12 +84,12 @@ Un píxel es la **unidad más pequeña de una imagen digital**. La resolución d
 :::
 :::
 
-::: {layout="[70,30]"}
+::: {layout="[68,32]"}
 ::: {.column}
 Para dibujar cualquier figura geométrica, es necesario especificar una o varias posiciones en la ventana. Dichas posiciones se definen mediante un par de coordenadas ***(x, y)***, donde ***x*** indica la **posición horizontal** e ***y*** la **posición vertical**. En *Processing*, **el origen de coordenadas (0,0) se encuentra en la esquina superior izquierda de la ventana**, como se muestra en la @fig-pixels
 
 ::: {.callout-note}
-## 🧪 Ejercicio 1 - Sistema de coordenadas
+## 🧠 Ejercicio 1 - Sistema de coordenadas
 
 Dibuja una línea que va desde la posición (10, 0) hasta la posición (40, 50). Cuando se ejecute, os podréis dar cuenta de que el origen, (0,0), parte de la esquina superior izquierda.
 ```java
@@ -139,7 +128,7 @@ De este modo:
 En *Processing* ocurre exactamente lo mismo. La función `line`, por ejemplo, recibe cuatro parámetros (las coordenadas de dos puntos) y ejecuta una acción: dibujar una línea en la ventana. La diferencia es que, en este caso, la función no devuelve un valor, sino que produce un efecto visual en pantalla.
 
 ::: {.callout-warning}
-## 📝 Ejercicio 2 — Errores comunes
+## Ejercicio 2 - Errores comunes
 
 Prueba a copiar el siguiente código en el editor de *Processing* y ejecutarlo:
 ```java
@@ -155,7 +144,7 @@ Las palabras reservadas se muestran <span style="color:#1f77ff; font-weight:600;
 :::
 
 ::: {.callout-note}
-## 🧪 Ejercicio 3 - Múltiples formas geométricas
+## 🧠 Ejercicio 3 - Múltiples formas geométricas
 
 Prueba a dibujar varias líneas en diferentes posiciones de la pantalla, utilizando la instrucción `line` varias veces. 
 :::
@@ -165,7 +154,7 @@ Prueba a dibujar varias líneas en diferentes posiciones de la pantalla, utiliza
 Las figuras geométricas se dibujan sobre un lienzo de tamaño predeterminado 100x100 píxeles. No obstante, es posible cambiar el tamaño del lienzo utilizando la función `size`, que recibe dos parámetros: el ancho y el alto del lienzo en píxeles.
 
 ::: {.callout-note}
-## 🧪 Ejercicio 4 - Tamaño del lienzo 
+## 🧠 Ejercicio 4 - Tamaño del lienzo 
 
 Dibuja varias líneas en un lienzo de tamaño 300x200 píxeles.
 
@@ -185,7 +174,7 @@ line(250, 0, 250, 200);
 Además de la línea utilizada en los ejercicios anteriores, *Processing* permite dibujar otras figuras geométricas básicas, tales como **puntos**, **triángulos**, **cuadriláteros**, **rectángulos** y **elipses**. 
 
 ::: {.callout-note}
-## 🧪 Ejercicio 5 - Deducción de parámetros
+## 🧠 Ejercicio 5 - Deducción de parámetros
 
 ¿Puedes deducir qué parámetros son necesarios para dibujar algunas de las figuras geométricas mencionadas anteriormente?
 Puedes consultar la [documentación oficial de *Processing*](https://processing.org/reference#shape), y más concretamente, la sección *2d primitives* en el apartado *Shape*.
@@ -223,7 +212,7 @@ ellipseMode(CORNER);
 ```
 
 ::: {.callout-note}
-## 🧪 Ejercicio 6 - Modo de dibujo
+## 🧠 Ejercicio 6 - Modo de dibujo
 
 Intenta dibujar un círculo centrado en (20, 30) con radio 10 utilizando ambos modos. En el siguiente código tienes todas las instrucciones necesarias para completar el ejercicio:
 ```java
@@ -278,7 +267,7 @@ rect(80, 20, 50, 50);       // mismo borde, diferente relleno
 
 ::: {.column}
 ::: {.callout-note}
-## 🧪 Ejercicio 7 - Círculo y colores
+## 🧠 Ejercicio 7 - Círculo y colores
 
 Dibuja un círculo negro con borde gris, centrado en (20, 30) y con radio 10.
 
@@ -295,7 +284,7 @@ ellipse(20, 30, 20, 20);
 
 ::: {.column}
 ::: {.callout-note}
-## 🧪 Ejercicio 8 - Dibuja una forma geométrica
+## 🧠 Ejercicio 8 - Dibuja una forma geométrica
 
 Trata de obtener algo parecido a la figura que se muestra debajo.
 
@@ -324,7 +313,7 @@ fill(0, 0, 255);  // azul
 :::
 
 ::: {.callout-note}
-## 🧪 Ejercicio 9 - Colores RGB
+## 🧠 Ejercicio 9 - Colores RGB
 
 ¿Sabrías decir qué colores crearán las siguientes combinaciones de rojo, verde y azul?
 
@@ -402,7 +391,7 @@ line(227, 383, 253, 410);
 ![Imagen del alienígena Zoog.](../resources/lesson1/zoog.png){#fig-zoog}
 
 ::: {.callout-note}
-## 🧪 Ejercicio 10 - Dibuja a Zoog
+## 🧠 Ejercicio 10 - Dibuja a Zoog
 Intenta dibujar al alienígena Zoog utilizando el bloque de código anterior como referencia.
 :::
 :::
@@ -463,21 +452,21 @@ Tanto `setup` como `draw` son funciones especiales que no requieren ser llamadas
 
 ::: {.grid}
 ::: {.g-col-4}
-![Inicializa ventana y variables](../resources/lesson1/processing-setup.png){#fig-processing-setup}
+![Inicializa ventana y variables.](../resources/lesson1/processing-setup.png){#fig-processing-setup}
 :::
 
 ::: {.g-col-4}
-![Dibuja un fotograma](../resources/lesson1/processing-draw.png){#fig-processing-draw}
+![Dibuja fotogramas en bucle.](../resources/lesson1/processing-draw.png){#fig-processing-draw}
 :::
 
 ::: {.g-col-4}
-![Fin de la animación](../resources/lesson1/processing-finished.png){#fig-processing-finished}
+![Fin del programa y de la animación.](../resources/lesson1/processing-finished.png){#fig-processing-finished}
 :::
 :::
 
 
 ::: {.callout-note}
-## 🧪 Ejercicio 11 - Zoog, utilizando `setup` y `draw`
+## 🧠 Ejercicio 11 - Zoog, utilizando `setup` y `draw`
 
 Reescribe el código de Zoog utilizando las funciones `setup` y `draw`. **¿Notas alguna diferencia en el resultado respecto al código original?**
 
@@ -528,19 +517,19 @@ Prueba a mover la instrucción `background(255);` desde la función `draw` a la 
 En *Processing* existen algunas **palabras reservadas** como `width` y `height`, que permiten acceder al ancho y alto de la ventana, respectivamente, y otras que permiten interactuar con el usuario, como `mouseX` y `mouseY`, que indican la **posición actual del ratón en la ventana**.
 
 ::: {.callout-note}
-## 🧪 Ejercicio 12 - Sigue al ratón
+## 🧠 Ejercicio 12 - Sigue al ratón
 
 Modifica el programa de Zoog para que la esquina superior izquierda del cuerpo de Zoog sea la posición del ratón, utilizando `mouseX` y `mouseY`.
 :::
 
 ::: {.callout-note}
-## 🧪 Ejercicio 13 - Sigue al ratón II
+## 🧠 Ejercicio 13 - Sigue al ratón II
 
 Centra la cabeza de Zoog en la posición (`mouseX`, `mouseY` - 30), de manera que la cabeza se mueva en función de la posición del ratón, pero siempre esté situada por encima del cuerpo. Por supuesto, tendrás que ajustar también la posición de los ojos.
 :::
 
 ::: {.callout-note}
-## 🧪 Ejercicio extra - Sigue al ratón III
+## 🧠 Ejercicio extra - Sigue al ratón III
 Intenta que las piernas de Zoog también sigan al ratón, manteniendo la misma distancia relativa con el cuerpo.
 :::
 
@@ -551,7 +540,7 @@ Intenta que las piernas de Zoog también sigan al ratón, manteniendo la misma d
 En la sección anterior hemos descubierto que el método `draw` se ejecuta de manera repetitiva en un bucle infinito. Esto nos permite crear programas dinámicos que cambian con el tiempo. Sin embargo, para crear programas más complejos, es necesario utilizar **variables** para almacenar datos que pueden cambiar durante la ejecución del programa.
 
 ::: {.callout-note}
-## 🧪 Ejercicio 14 - Traslada una esfera
+## 🧠 Ejercicio 14 - Traslada una esfera
 
 Crea un programa que traslade una esfera de izquierda a derecha en la ventana. Utiliza una variable para almacenar la posición horizontal de la esfera, y actualízala en cada iteración del bucle `draw`.
 
@@ -594,7 +583,7 @@ if (condición) {
 Ten en cuenta que no siempre es necesario utilizar `else if` o `else`; **un condicional puede consistir únicamente en una instrucción `if`**.
 
 ::: {.callout-note}
-## 🧪 Ejercicio 15 - Color de fondo interactivo
+## 🧠 Ejercicio 15 - Color de fondo interactivo
 
 Modifica el programa de Zoog para que el color de fondo cambie en función de la posición del ratón. Por ejemplo, si el ratón se encuentra en el primer tercio de la ventana, el fondo debe ser blanco; si está en el segundo tercio, el fondo debe ser gris; y si está en el tercer tercio, el fondo debe ser negro.
 
@@ -626,7 +615,7 @@ for (int i = 1; i <= N; i++) {
 ---
 
 ::: {.callout-note}
-### 🧪 Ejercicio 16 - Múltiples Zoog
+### 🧠 Ejercicio 16 - Múltiples Zoog
 
 El objetivo es mostrar 2 Zoogs en la pantalla a partir del programa de un único Zoog. Ten en cuenta que tendrás que modificar la posición de al menos uno de ellos para que sea visible.
 
@@ -650,7 +639,7 @@ for (int i = 1; i <= N; i++) {
 ::: {layout="[80,20]"}
 ::: {.column}
 ::: {.callout-note}
-### 🧪 Ejercicio 17 - Z pares de brazos
+### 🧠 Ejercicio 17 - Z pares de brazos
 
 Modifica el programa de Zoog para que dibuje *Z* pares de brazos, donde *Z* es una variable que puedes definir al principio del programa. Utiliza un bucle `for` para dibujar los brazos.
 :::

@@ -8,10 +8,11 @@ project:
 
 format:
   html:
-    theme: cosmo
     css: 
       - styles.css
     toc: true
+    theme: 
+      light: cosmo
 
 website:
   title: "Informática (30717) - Grado en Estudios en Arquitectura"
@@ -26,8 +27,8 @@ website:
     background: primary
     search: true
     right:
-      - icon: github
-        href: https://github.com/informatica-30717/informatica-30717.github.io
+      - href: https://moodle.unizar.es/add/course/view.php?id=153600
+        text: "![](../resources/unizar_white.png){width=95px}"
   sidebar:
     style: floating
     logo: ../resources/unizar.png

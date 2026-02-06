@@ -3,107 +3,153 @@ title: "📅 Calendario"
 description: Calendario de prácticas de la asignatura de Informática.
 ---
 
-En esta sección se publicará el calendario de prácticas actualizado. Recordad que la asistencia a las prácticas es obligatoria.
+En esta sección se publicará el calendario de prácticas actualizado. Además: 
+
+- Recordad que la **asistencia a las prácticas es obligatoria**. 
+- Aquellas prácticas con una fecha anómala se han marcado con una advertencia ⚠️.
 
 <div id="calendar-grid"></div>
 
 <script>
 document.addEventListener("DOMContentLoaded", () => {
-    const practicas = [
-        { id: 1, title: "Introducción a Processing", icon: "bi-laptop",
-          summary: "Primer contacto con Processing: entorno, dibujo básico y animación.",
-          dates: ["2026-02-11", "2026-02-12"] },
+  const practicas = [
+    { id: 1, title: "Introducción a Processing", icon: "bi-laptop",
+      summary: "Primer contacto con Processing: entorno, dibujo básico y animación.",
+      dates: ["2026-02-11", "2026-02-12"] },
 
-        { id: 2, title: "Entorno de programación para Java", icon: "bi-code-slash",
-          summary: "Estructura de programas, tipos de datos y control del flujo.",
-          dates: ["2026-02-18", "2026-02-19"] },
+    { id: 2, title: "Entorno de programación para Java", icon: "bi-code-slash",
+      summary: "Instalación y primeros pasos en un entorno de desarrollo para Java.",
+      dates: ["2026-02-18", "2026-02-19"] },
 
-        { id: 3, title: "Resolución de problemas en Java (I)", icon: "bi-code-slash",
-          summary: "Ecuación de segundo grado.",
-          dates: ["2026-02-25", "2026-02-26"] },
+    { id: 3, title: "Resolución de problemas en Java (I)", icon: "bi-code-slash",
+      summary: "Ecuaciones de segundo grado.",
+      dates: ["2026-03-03", "2026-03-04"] },
 
-        { id: 4, title: "Aspectos avanzados de Excel", icon: "bi-table",
-          summary: "Fórmulas, funciones, tablas y análisis básico de datos.",
-          dates: ["2026-03-04", "2026-03-05"] },
+    { id: 4, title: "Aspectos avanzados de Excel", icon: "bi-table",
+      summary: "Fórmulas, funciones, tablas y análisis básico de datos.",
+      dates: ["2026-03-11", "2026-03-12"] },
 
-        { id: 5, title: "Resolución de problemas en Java (II)", icon: "bi-code-slash",
-          summary: "Implementación de algoritmos clásicos.",
-          dates: ["2026-03-11", "2026-03-12"] },
+    { id: 5, title: "Resolución de problemas en Java (II)", icon: "bi-code-slash",
+      summary: "Implementación de algoritmos clásicos.",
+      dates: ["2026-03-18", "2026-03-19"] },
 
-        { id: 6, title: "Resolución de problemas en Java (III)", icon: "bi-code-slash",
-          summary: "Ordenación de números.",
-          dates: ["2026-03-18", "2026-03-19"] },
+    { id: 6, title: "Resolución de problemas en Java (III)", icon: "bi-code-slash",
+      summary: "Ordenación de números.",
+      dates: ["2026-04-08", "2026-04-09"] },
 
-        { id: 7, title: "Visualizador de elementos gráficos", icon: "bi-display",
-        summary: "Identificación de elementos de un visualizador. Gestión de aplicaciones Java complejas.",
-        dates: ["2026-03-25", "2026-03-26"] },
+    { id: 7, title: "Visualizador de elementos gráficos", icon: "bi-display",
+      summary: "Identificación de elementos de un visualizador. Gestión de aplicaciones complejas desarrolladas en Java.",
+      dates: ["2026-04-15", "2026-04-16"] },
 
-        { id: 8, title: "BIM semántico", icon: "bi-building",
-        summary: "Introducción al modelado BIM y gestión de información asociada.",
-        dates: ["2026-04-08", "2026-04-09"] },
+    { id: 8, title: "BIM semántico", icon: "bi-building",
+      summary: "Introducción al modelado BIM y gestión de información asociada.",
+      dates: ["2026-04-22", "2026-04-30"] },
 
-        { id: 9, title: "Introducción a Grasshopper", icon: "bi-diagram-3",
-        summary: "Programación visual y generación paramétrica de geometría.",
-        dates: ["2026-04-15", "2026-04-16"] }
-    ];
+    { id: 9, title: "Introducción a Grasshopper", icon: "bi-diagram-3",
+      summary: "Programación visual y generación paramétrica de geometría.",
+      dates: ["2026-05-06", "2026-05-07"] }
+  ];
 
-    const grid = document.getElementById("calendar-grid");
+  const weekdayShortES = ["D", "L", "M", "X", "J", "V", "S"];
+  const weekday = d => weekdayShortES[d.getDay()];
 
-    const today = new Date();
-    today.setHours(0,0,0,0);
+  const fmt = d =>
+    d.toLocaleDateString("es-ES", { day: "2-digit", month: "2-digit", year: "numeric" });
 
-    const fmt = d => d.toLocaleDateString("es-ES", { day: "2-digit", month: "2-digit", year: "numeric" });
+  function getISOWeek(date) {
+    const d = new Date(Date.UTC(date.getFullYear(), date.getMonth(), date.getDate()));
+    const dayNum = d.getUTCDay() || 7;
+    d.setUTCDate(d.getUTCDate() + 4 - dayNum);
+    const yearStart = new Date(Date.UTC(d.getUTCFullYear(), 0, 1));
+    return Math.ceil((((d - yearStart) / 86400000) + 1) / 7);
+  }
 
-    const firstPracticeStart = new Date(practicas[0].dates[0]);
-    firstPracticeStart.setHours(0,0,0,0);
+  const grid = document.getElementById("calendar-grid");
 
-    let foundCurrent = false;  
+  const today = new Date();
+  today.setHours(0, 0, 0, 0);
 
-    practicas.forEach(p => {
+  let foundCurrent = false;
+  let prevStart = null;
+
+  /* Render */
+  practicas.forEach(p => {
+
     const dStart = new Date(p.dates[0]);
     const dEnd   = new Date(p.dates[1]);
 
-    const start = new Date(dStart); start.setHours(0,0,0,0);
-    const end   = new Date(dEnd);   end.setHours(23,59,59,999);
+    const start = new Date(dStart); start.setHours(0, 0, 0, 0);
+    const end   = new Date(dEnd);   end.setHours(23, 59, 59, 999);
 
-    const isPast = today > end;
-    const isOngoing = today >= start && today <= end;
+    const isPast     = today > end;
+    const isOngoing  = today >= start && today <= end;
     const isUpcoming = today < start;
 
     const isCurrent = !foundCurrent && (isOngoing || isUpcoming);
     if (isCurrent) foundCurrent = true;
 
+    /* Calendar warnings */
+    let warnings = [];
+
+    if (prevStart) {
+      const diffDays = (start - prevStart) / (1000 * 60 * 60 * 24);
+      if (diffDays < 6) {
+        warnings.push("No hay una semana completa desde la práctica anterior");
+      }
+      else if (diffDays > 10) {
+        warnings.push("Hay una semana completa sin prácticas desde la práctica anterior");
+      }
+    }
+
+    if (getISOWeek(start) !== getISOWeek(end)) {
+      warnings.push("Las sesiones caen en semanas distintas");
+    }
+
+    prevStart = start;
+
+    /* Render card */
     grid.insertAdjacentHTML("beforeend", `
-        <div class="practice-card-wrapper">
-            <a href="practices/practice${p.id}.html"
-            class="text-decoration-none text-reset">
+      <div class="practice-card-wrapper">
+        <a href="practices/practice${p.id}.html"
+           class="text-decoration-none text-reset">
 
-                <div class="card h-100 p-3 shadow-sm border-0 rounded-3 d-flex flex-column
-                            ${isCurrent ? "is-current" : ""}
-                            ${isPast ? "is-past" : ""}">
+          <div class="card h-100 p-3 shadow-sm border-0 rounded-3 d-flex flex-column
+                      ${isCurrent ? "is-current" : ""}
+                      ${isPast ? "is-past" : ""}">
 
-                    <div class="mb-1">
-                        <span class="badge bg-primary rounded-pill">Práctica ${p.id}</span>
-                        ${isCurrent ? '<span class="badge bg-danger ms-2">ACTUAL</span>' : ''}
-                    </div>
+            <div class="mb-1">
+              <span class="badge bg-primary rounded-pill">Práctica ${p.id}</span>
+              ${isCurrent ? '<span class="badge bg-danger ms-2">ACTUAL</span>' : ''}
+            </div>
 
-                    <h4 class="card-title mt-2 ${isPast ? "text-muted" : "text-primary"}">
-                        <i class="bi ${p.icon}"></i> ${p.title}
-                    </h4>
+            <h4 class="card-title mt-2 ${isPast ? "text-muted" : "text-primary"}">
+              <i class="bi ${p.icon}"></i> ${p.title}
+            </h4>
 
-                    <p class="card-text ${isPast ? "text-muted" : "text-secondary"}">
-                        ${p.summary}
-                    </p>
+            <p class="card-text ${isPast ? "text-muted" : "text-secondary"}">
+              ${p.summary}
+            </p>
 
-                    <div class="mt-auto d-flex align-items-center gap-2 text-muted">
-                        <i class="bi bi-calendar-event"></i>
-                        <span>${fmt(dStart)} (X) – ${fmt(dEnd)} (J)</span>
-                    </div>
+            <div class="mt-auto text-muted d-flex flex-column gap-1">
+              <div class="d-flex align-items-center gap-2">
+                <i class="bi bi-calendar-event"></i>
+                <span>
+                  ${fmt(dStart)} (${weekday(dStart)}) –
+                  ${fmt(dEnd)} (${weekday(dEnd)})
+                </span>
+              </div>
+
+              ${warnings.length ? `
+                <div class="text-warning small">
+                  ⚠️ ${warnings.join(". ")}
                 </div>
-            </a>
-        </div>
+              ` : ""}
+            </div>
+
+          </div>
+        </a>
+      </div>
     `);
-    });
+  });
 });
 </script>
-
