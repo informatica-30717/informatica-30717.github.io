@@ -339,6 +339,7 @@ window.Quarto = {
 </div>
 </div>
 </div>
+<hr>
 <p>La propia <a href="https://processing.org/examples/">página de Processing</a> muestra numerosos ejemplos de proyectos realizados con este lenguaje. También hay muchos ejemplos en Youtube, en particular, en el canal de <a href="https://www.youtube.com/c/TheCodingTrain">The Coding Train</a>.</p>
 <div class="quarto-layout-panel" data-layout="[50,50]">
 <div class="quarto-layout-row">
@@ -368,6 +369,7 @@ Figura&nbsp;2: Canal de Youtube <a href="https://www.youtube.com/c/TheCodingTrai
 </div>
 </div>
 </div>
+<hr>
 </section>
 <section id="el-entorno-de-desarrollo" class="level3" data-number="2.2">
 <h3 data-number="2.2" class="anchored" data-anchor-id="el-entorno-de-desarrollo"><span class="header-section-number">2.2</span> El entorno de desarrollo</h3>
@@ -382,6 +384,7 @@ Figura&nbsp;2: Canal de Youtube <a href="https://www.youtube.com/c/TheCodingTrai
 <li><strong>Errores</strong>: mensajes de error generados durante la ejecución.</li>
 </ul></li>
 </ul>
+<hr>
 <p>Al ejecutar un programa se abrirá una <strong>nueva ventana donde se mostrará el resultado de la ejecución</strong>.</p>
 <div id="fig-ide" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
@@ -393,6 +396,7 @@ Figura&nbsp;3: Vista del entorno de desarrollo (derecha) y ventana <em>pop-up</e
 </figcaption>
 </figure>
 </div>
+<hr>
 <div class="callout callout-style-default callout-warning callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -407,11 +411,13 @@ Advertencia
 <p>Indicad una ubicación de fácil acceso en vuestro ordenador para guardar los proyectos de <em>Processing</em>.</p>
 </div>
 </div>
+<hr>
 </section>
 </section>
 <section id="dibujando-figuras-geométricas" class="level2" data-number="3">
 <h2 data-number="3" class="anchored" data-anchor-id="dibujando-figuras-geométricas"><span class="header-section-number">3</span> Dibujando figuras geométricas</h2>
 <p>Las figuras geométricas se dibujan en una ventana que está formada por una <strong>matriz de píxeles</strong>. Cada píxel es un pequeño punto de luz que puede tener un color diferente. La combinación de todos los píxeles forma la imagen que vemos en la pantalla.</p>
+<hr>
 <p>Un píxel es la <strong>unidad más pequeña de una imagen digital</strong>. La resolución de una imagen se refiere a la cantidad de píxeles que contiene, y se expresa como el número de píxeles en el eje horizontal por el número de píxeles en el eje vertical (por ejemplo, 1920x1080 píxeles). Por ejemplo, la <a href="#fig-highres" class="quarto-xref">Figura&nbsp;4</a> muestra una animación con una resolución alta, donde los píxeles no son visibles a simple vista. En cambio, en la <a href="#fig-lowres" class="quarto-xref">Figura&nbsp;5</a> se ha reducido la resolución de la animación, y comienzan a ser visibles los píxeles individuales.</p>
 <div class="quarto-layout-panel" data-layout="[50,50]">
 <div class="quarto-layout-row">
@@ -441,6 +447,7 @@ Figura&nbsp;5: Animación con una resolución de pantalla más baja, donde comie
 </div>
 </div>
 </div>
+<hr>
 <div class="quarto-layout-panel" data-layout="[68,32]">
 <div class="quarto-layout-row">
 <div class="column quarto-layout-cell" style="flex-basis: 68.0%;justify-content: flex-start;">
@@ -474,8 +481,10 @@ Figura&nbsp;6: Ilustración de una matriz de píxeles, indicando las coordenadas
 </div>
 </div>
 </div>
+<hr>
 <p>Este concepto puede entenderse como <strong>darle un nombre a un conjunto de instrucciones para poder reutilizarlas fácilmente</strong> más adelante. En <strong>matemáticas</strong>, una función toma uno o varios valores de entrada y produce un valor de salida siguiendo una regla. Por ejemplo, la función <span class="math inline">\(f(x) = x^2\)</span> toma un número <span class="math inline">\(x\)</span> y devuelve su cuadrado.</p>
 <p>En programación ocurre algo muy similar: una función recibe unos parámetros, ejecuta unas instrucciones con ellos y, opcionalmente, devuelve un resultado.</p>
+<hr>
 <p>Por ejemplo, podemos definir en Java una función que reciba un número entero y devuelva su cuadrado:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode java code-with-copy"><code class="sourceCode java"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="dt">int</span> <span class="fu">square</span><span class="op">(</span><span class="dt">int</span> x<span class="op">)</span> <span class="op">{</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> x <span class="op">*</span> x<span class="op">;</span></span>
@@ -489,6 +498,7 @@ Figura&nbsp;6: Ilustración de una matriz de píxeles, indicando las coordenadas
 <li><code>return</code> indica el valor que devuelve la función.</li>
 </ul>
 <p>En <em>Processing</em> ocurre exactamente lo mismo. La función <code>line</code>, por ejemplo, recibe cuatro parámetros (las coordenadas de dos puntos) y ejecuta una acción: dibujar una línea en la ventana. La diferencia es que, en este caso, la función no devuelve un valor, sino que produce un efecto visual en pantalla.</p>
+<hr>
 <div class="callout callout-style-default callout-warning callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -523,6 +533,7 @@ Las palabras reservadas se muestran <span style="color:#1f77ff; font-weight:600;
 <p>Prueba a dibujar varias líneas en diferentes posiciones de la pantalla, utilizando la instrucción <code>line</code> varias veces.</p>
 </div>
 </div>
+<hr>
 <section id="lienzo" class="level3" data-number="3.1">
 <h3 data-number="3.1" class="anchored" data-anchor-id="lienzo"><span class="header-section-number">3.1</span> Lienzo</h3>
 <p>Las figuras geométricas se dibujan sobre un lienzo de tamaño predeterminado 100x100 píxeles. No obstante, es posible cambiar el tamaño del lienzo utilizando la función <code>size</code>, que recibe dos parámetros: el ancho y el alto del lienzo en píxeles.</p>
@@ -548,6 +559,7 @@ Las palabras reservadas se muestran <span style="color:#1f77ff; font-weight:600;
 </details>
 </div>
 </div>
+<hr>
 </section>
 <section id="tipos-de-figuras-geométricas" class="level3" data-number="3.2">
 <h3 data-number="3.2" class="anchored" data-anchor-id="tipos-de-figuras-geométricas"><span class="header-section-number">3.2</span> Tipos de figuras geométricas</h3>
@@ -577,6 +589,7 @@ Las palabras reservadas se muestran <span style="color:#1f77ff; font-weight:600;
 </details>
 </div>
 </div>
+<hr>
 <section id="dibujando-rectángulos-y-elipses" class="level4" data-number="3.2.1">
 <h4 data-number="3.2.1" class="anchored" data-anchor-id="dibujando-rectángulos-y-elipses"><span class="header-section-number">3.2.1</span> Dibujando rectángulos y elipses</h4>
 <p>Tanto en la documentación oficial, como en la solución del ejercicio anterior, os habréis podido dar cuenta de que las funciones <code>rect</code> y <code>ellipse</code> requieren cuatro parámetros: <strong>dos para la posición</strong> y <strong>dos para el tamaño</strong>. Sin embargo, hemos asumido que la posición siempre corresponde a la esquina superior izquierda del rectángulo o al centro de la elipse. Esta suposición es correcta por defecto, pero es posible cambiarla utilizando las funciones <code>rectMode</code> y <code>ellipseMode</code>. Más concretamente, estas funciones permiten definir cómo se interpretan las posiciones pasadas como parámetros a las funciones <code>rect</code> y <code>ellipse</code>. Existen dos modos principales para cada una de estas funciones:</p>
@@ -584,6 +597,7 @@ Las palabras reservadas se muestran <span style="color:#1f77ff; font-weight:600;
 <li><code>CORNER</code>: la posición corresponde a la esquina superior izquierda del rectángulo o elipse.</li>
 <li><code>CENTER</code>: la posición corresponde al centro del rectángulo o elipse.</li>
 </ul>
+<hr>
 <div id="fig-rectmodes" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-rectmodes-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
@@ -594,6 +608,7 @@ Figura&nbsp;7: Representación de cómo se interpretan las posiciones en ambos m
 </figcaption>
 </figure>
 </div>
+<hr>
 <p>Por defecto, <em>Processing</em> interpreta las posiciones de la siguiente manera:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode java code-with-copy"><code class="sourceCode java"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rectMode</span><span class="op">(</span>CORNER<span class="op">);</span></span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ellipseMode</span><span class="op">(</span>CENTER<span class="op">);</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
@@ -620,6 +635,7 @@ Figura&nbsp;7: Representación de cómo se interpretan las posiciones en ambos m
 <span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a><span class="fu">ellipse</span><span class="op">(</span> <span class="op">,</span> <span class="op">,</span> <span class="op">,</span> <span class="op">);</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
+<hr>
 </section>
 </section>
 </section>
@@ -648,6 +664,7 @@ Figura&nbsp;8: Imagen representada únicamente con valores de gris.
 </div>
 </div>
 </div>
+<hr>
 <p>Por ejemplo, podemos definir el color del fondo, así como del borde y el relleno de un rectángulo de la siguiente manera:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode java code-with-copy"><code class="sourceCode java"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">background</span><span class="op">(</span><span class="dv">0</span><span class="op">);</span>              <span class="co">// fondo </span></span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a></span>
@@ -661,6 +678,7 @@ Figura&nbsp;8: Imagen representada únicamente con valores de gris.
 <span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="fu">fill</span><span class="op">(</span><span class="dv">50</span><span class="op">);</span></span>
 <span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a><span class="fu">rect</span><span class="op">(</span><span class="dv">80</span><span class="op">,</span> <span class="dv">20</span><span class="op">,</span> <span class="dv">50</span><span class="op">,</span> <span class="dv">50</span><span class="op">);</span>       <span class="co">// mismo borde, diferente relleno</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<hr>
 <div class="quarto-layout-panel" data-layout="[50, 50]">
 <div class="quarto-layout-row">
 <div class="column quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
@@ -708,6 +726,7 @@ Figura&nbsp;8: Imagen representada únicamente con valores de gris.
 </div>
 </div>
 </div>
+<hr>
 </section>
 <section id="colores-rgb-red-green-blue" class="level3" data-number="4.2">
 <h3 data-number="4.2" class="anchored" data-anchor-id="colores-rgb-red-green-blue"><span class="header-section-number">4.2</span> Colores RGB (red, green, blue)</h3>
@@ -755,6 +774,7 @@ Figura&nbsp;9: Representación de los colores primarios RGB.
 <p><strong>Pista</strong>: fíjate en la <a href="#fig-rgb" class="quarto-xref">Figura&nbsp;9</a>.</p>
 </div>
 </div>
+<hr>
 <div class="quarto-layout-panel" data-layout="[40, 50]">
 <div class="quarto-layout-row">
 <div class="column quarto-layout-cell" style="flex-basis: 44.4%;justify-content: flex-start;">
@@ -774,6 +794,7 @@ Figura&nbsp;10: Captura de pantalla del selector de color de <em>Processing</em>
 </div>
 </div>
 </div>
+<hr>
 </section>
 <section id="opacidad" class="level3" data-number="4.3">
 <h3 data-number="4.3" class="anchored" data-anchor-id="opacidad"><span class="header-section-number">4.3</span> Opacidad</h3>
@@ -783,11 +804,13 @@ Figura&nbsp;10: Captura de pantalla del selector de color de <em>Processing</em>
 <span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a><span class="fu">fill</span><span class="op">(</span><span class="dv">255</span><span class="op">,</span> <span class="dv">0</span><span class="op">,</span> <span class="dv">127</span><span class="op">,</span> <span class="dv">127</span><span class="op">);</span>     </span>
 <span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a><span class="fu">rect</span><span class="op">(</span><span class="dv">20</span><span class="op">,</span> <span class="dv">20</span><span class="op">,</span> <span class="dv">50</span><span class="op">,</span> <span class="dv">50</span><span class="op">);</span>       <span class="co">// rectángulo semitransparente</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<hr>
 </section>
 </section>
 <section id="programas-dinámicos" class="level2" data-number="5">
 <h2 data-number="5" class="anchored" data-anchor-id="programas-dinámicos"><span class="header-section-number">5</span> Programas dinámicos</h2>
 <p>Hasta este momento, hemos escrito programas estáticos, es decir, programas que dibujan una imagen fija. A continuación, veremos cómo crear programas dinámicos que pueden cambiar con el tiempo.</p>
+<hr>
 <div class="quarto-layout-panel" data-layout="[60,40]">
 <div class="quarto-layout-row">
 <div class="column quarto-layout-cell" style="flex-basis: 60.0%;justify-content: flex-start;">
@@ -847,6 +870,7 @@ Figura&nbsp;11: Imagen del alienígena Zoog.
 </div>
 </div>
 </div>
+<hr>
 <section id="comentarios" class="level3" data-number="5.1">
 <h3 data-number="5.1" class="anchored" data-anchor-id="comentarios"><span class="header-section-number">5.1</span> Comentarios</h3>
 <p>Aprovechando que nuestro programa empieza a ser un poco más largo, es recomendable añadir comentarios para explicar qué hace cada parte del código. En <em>Processing</em>, los comentarios se indican con <code>//</code> para comentarios de una sola línea, o con <code>/*</code> y <code>*/</code> para comentarios multilínea. Además de para indicar qué hace una parte de nuestro código, también se pueden usar para desactivar temporalmente líneas de código durante la depuración. Por ejemplo, en el siguiente código se han añadido comentarios para explicar qué parte del cuerpo de Zoog dibuja cada bloque de instrucciones, y para desactivar el dibujo de la cabeza temporalmente:</p>
@@ -859,10 +883,12 @@ Figura&nbsp;11: Imagen del alienígena Zoog.
 <span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a><span class="co">// Dibuja los ojos de Zoog</span></span>
 <span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a><span class="co">/**</span>ellipse<span class="co">(170,</span> <span class="co">160,</span> <span class="co">30,</span> <span class="co">60);</span></span>
 <span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a>ellipse<span class="co">(230,</span> <span class="co">160,</span> <span class="co">30,</span> <span class="co">60);**/</span>         <span class="co">// Ojo derecho</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<hr>
 </section>
 <section id="funciones-setup-y-draw" class="level3" data-number="5.2">
 <h3 data-number="5.2" class="anchored" data-anchor-id="funciones-setup-y-draw"><span class="header-section-number">5.2</span> Funciones <code>setup</code> y <code>draw</code></h3>
 <p>Cuando ejecutamos un programa en <em>Processing</em>, el código no se ejecuta de arriba a abajo una sola vez, sino que utiliza un modelo de ejecución basado en dos fases bien diferenciadas: <code>setup()</code> y <code>draw()</code>.</p>
+<hr>
 <div class="quarto-layout-panel" data-layout="[70, 30]">
 <div class="quarto-layout-row">
 <div class="column quarto-layout-cell" style="flex-basis: 70.0%;justify-content: flex-start;">
@@ -913,7 +939,9 @@ Figura&nbsp;12: Analogía del funcionamiento de <em>Processing</em>, y el proces
 </div>
 </div>
 </div>
+<hr>
 <p>Tanto <code>setup</code> como <code>draw</code> son funciones especiales que no requieren ser llamadas explícitamente en el código; <em>Processing</em> se encarga de ello automáticamente. Por ahora, sólo cabe destacar que el código que se encuentra dentro de una función debe estar <strong>sangrado</strong> (indentado) para indicar que pertenece a dicha función. Además, ambas funciones devuelven <code>void</code>, lo que significa que no devuelven ningún valor. También es importante abrir y cerrar llaves <code>{}</code> para definir el bloque de código que pertenece a cada función.</p>
+<hr>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -931,36 +959,35 @@ Figura&nbsp;12: Analogía del funcionamiento de <em>Processing</em>, y el proces
 <span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span>
 <span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a><span class="dt">void</span> <span class="fu">draw</span><span class="op">()</span> <span class="op">{</span></span>
-<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">size</span><span class="op">(</span><span class="dv">600</span><span class="op">,</span> <span class="dv">600</span><span class="op">);</span></span>
-<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a>  <span class="co">// Fondo blanco</span></span>
-<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">background</span><span class="op">(</span><span class="dv">255</span><span class="op">);</span></span>
-<span id="cb16-11"><a href="#cb16-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-12"><a href="#cb16-12" aria-hidden="true" tabindex="-1"></a>  <span class="co">// Coordenadas desde el centro</span></span>
-<span id="cb16-13"><a href="#cb16-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ellipseMode</span><span class="op">(</span>CENTER<span class="op">);</span></span>
-<span id="cb16-14"><a href="#cb16-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rectMode</span><span class="op">(</span>CENTER<span class="op">);</span></span>
-<span id="cb16-15"><a href="#cb16-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-16"><a href="#cb16-16" aria-hidden="true" tabindex="-1"></a>  <span class="co">// CUERPO</span></span>
-<span id="cb16-17"><a href="#cb16-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stroke</span><span class="op">(</span><span class="dv">0</span><span class="op">);</span></span>
-<span id="cb16-18"><a href="#cb16-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">fill</span><span class="op">(</span><span class="dv">150</span><span class="op">);</span></span>
-<span id="cb16-19"><a href="#cb16-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rect</span><span class="op">(</span><span class="dv">200</span><span class="op">,</span> <span class="dv">260</span><span class="op">,</span> <span class="dv">50</span><span class="op">,</span> <span class="dv">260</span><span class="op">);</span></span>
-<span id="cb16-20"><a href="#cb16-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-21"><a href="#cb16-21" aria-hidden="true" tabindex="-1"></a>  <span class="co">// CABEZA</span></span>
-<span id="cb16-22"><a href="#cb16-22" aria-hidden="true" tabindex="-1"></a>  <span class="fu">fill</span><span class="op">(</span><span class="dv">255</span><span class="op">);</span></span>
-<span id="cb16-23"><a href="#cb16-23" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ellipse</span><span class="op">(</span><span class="dv">200</span><span class="op">,</span> <span class="dv">160</span><span class="op">,</span> <span class="dv">130</span><span class="op">,</span> <span class="dv">160</span><span class="op">);</span></span>
-<span id="cb16-24"><a href="#cb16-24" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-25"><a href="#cb16-25" aria-hidden="true" tabindex="-1"></a>  <span class="co">// OJOS</span></span>
-<span id="cb16-26"><a href="#cb16-26" aria-hidden="true" tabindex="-1"></a>  <span class="fu">fill</span><span class="op">(</span><span class="dv">0</span><span class="op">);</span></span>
-<span id="cb16-27"><a href="#cb16-27" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ellipse</span><span class="op">(</span><span class="dv">170</span><span class="op">,</span> <span class="dv">160</span><span class="op">,</span> <span class="dv">30</span><span class="op">,</span> <span class="dv">60</span><span class="op">);</span></span>
-<span id="cb16-28"><a href="#cb16-28" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ellipse</span><span class="op">(</span><span class="dv">230</span><span class="op">,</span> <span class="dv">160</span><span class="op">,</span> <span class="dv">30</span><span class="op">,</span> <span class="dv">60</span><span class="op">);</span></span>
-<span id="cb16-29"><a href="#cb16-29" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-30"><a href="#cb16-30" aria-hidden="true" tabindex="-1"></a>  <span class="co">// PIERNAS</span></span>
-<span id="cb16-31"><a href="#cb16-31" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stroke</span><span class="op">(</span><span class="dv">0</span><span class="op">);</span></span>
-<span id="cb16-32"><a href="#cb16-32" aria-hidden="true" tabindex="-1"></a>  <span class="fu">line</span><span class="op">(</span><span class="dv">175</span><span class="op">,</span> <span class="dv">390</span><span class="op">,</span> <span class="dv">150</span><span class="op">,</span> <span class="dv">420</span><span class="op">);</span></span>
-<span id="cb16-33"><a href="#cb16-33" aria-hidden="true" tabindex="-1"></a>  <span class="fu">line</span><span class="op">(</span><span class="dv">226</span><span class="op">,</span> <span class="dv">390</span><span class="op">,</span> <span class="dv">250</span><span class="op">,</span> <span class="dv">420</span><span class="op">);</span></span>
-<span id="cb16-34"><a href="#cb16-34" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>  <span class="co">// Fondo blanco</span></span>
+<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">background</span><span class="op">(</span><span class="dv">255</span><span class="op">);</span></span>
+<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a>  <span class="co">// Coordenadas desde el centro</span></span>
+<span id="cb16-11"><a href="#cb16-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ellipseMode</span><span class="op">(</span>CENTER<span class="op">);</span></span>
+<span id="cb16-12"><a href="#cb16-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rectMode</span><span class="op">(</span>CENTER<span class="op">);</span></span>
+<span id="cb16-13"><a href="#cb16-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-14"><a href="#cb16-14" aria-hidden="true" tabindex="-1"></a>  <span class="co">// CUERPO</span></span>
+<span id="cb16-15"><a href="#cb16-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stroke</span><span class="op">(</span><span class="dv">0</span><span class="op">);</span></span>
+<span id="cb16-16"><a href="#cb16-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">fill</span><span class="op">(</span><span class="dv">150</span><span class="op">);</span></span>
+<span id="cb16-17"><a href="#cb16-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rect</span><span class="op">(</span><span class="dv">200</span><span class="op">,</span> <span class="dv">260</span><span class="op">,</span> <span class="dv">50</span><span class="op">,</span> <span class="dv">260</span><span class="op">);</span></span>
+<span id="cb16-18"><a href="#cb16-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-19"><a href="#cb16-19" aria-hidden="true" tabindex="-1"></a>  <span class="co">// CABEZA</span></span>
+<span id="cb16-20"><a href="#cb16-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">fill</span><span class="op">(</span><span class="dv">255</span><span class="op">);</span></span>
+<span id="cb16-21"><a href="#cb16-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ellipse</span><span class="op">(</span><span class="dv">200</span><span class="op">,</span> <span class="dv">160</span><span class="op">,</span> <span class="dv">130</span><span class="op">,</span> <span class="dv">160</span><span class="op">);</span></span>
+<span id="cb16-22"><a href="#cb16-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-23"><a href="#cb16-23" aria-hidden="true" tabindex="-1"></a>  <span class="co">// OJOS</span></span>
+<span id="cb16-24"><a href="#cb16-24" aria-hidden="true" tabindex="-1"></a>  <span class="fu">fill</span><span class="op">(</span><span class="dv">0</span><span class="op">);</span></span>
+<span id="cb16-25"><a href="#cb16-25" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ellipse</span><span class="op">(</span><span class="dv">170</span><span class="op">,</span> <span class="dv">160</span><span class="op">,</span> <span class="dv">30</span><span class="op">,</span> <span class="dv">60</span><span class="op">);</span></span>
+<span id="cb16-26"><a href="#cb16-26" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ellipse</span><span class="op">(</span><span class="dv">230</span><span class="op">,</span> <span class="dv">160</span><span class="op">,</span> <span class="dv">30</span><span class="op">,</span> <span class="dv">60</span><span class="op">);</span></span>
+<span id="cb16-27"><a href="#cb16-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-28"><a href="#cb16-28" aria-hidden="true" tabindex="-1"></a>  <span class="co">// PIERNAS</span></span>
+<span id="cb16-29"><a href="#cb16-29" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stroke</span><span class="op">(</span><span class="dv">0</span><span class="op">);</span></span>
+<span id="cb16-30"><a href="#cb16-30" aria-hidden="true" tabindex="-1"></a>  <span class="fu">line</span><span class="op">(</span><span class="dv">175</span><span class="op">,</span> <span class="dv">390</span><span class="op">,</span> <span class="dv">150</span><span class="op">,</span> <span class="dv">420</span><span class="op">);</span></span>
+<span id="cb16-31"><a href="#cb16-31" aria-hidden="true" tabindex="-1"></a>  <span class="fu">line</span><span class="op">(</span><span class="dv">226</span><span class="op">,</span> <span class="dv">390</span><span class="op">,</span> <span class="dv">250</span><span class="op">,</span> <span class="dv">420</span><span class="op">);</span></span>
+<span id="cb16-32"><a href="#cb16-32" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
+<hr>
 <div class="callout callout-style-default callout-warning callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -974,10 +1001,15 @@ Figura&nbsp;12: Analogía del funcionamiento de <em>Processing</em>, y el proces
 <p>Prueba a mover la instrucción <code>background(255);</code> desde la función <code>draw</code> a la función <code>setup</code>. <strong>¿Qué ocurre?</strong></p>
 </div>
 </div>
+<hr>
 </section>
 <section id="interacción-con-el-ratón" class="level3" data-number="5.3">
 <h3 data-number="5.3" class="anchored" data-anchor-id="interacción-con-el-ratón"><span class="header-section-number">5.3</span> Interacción con el ratón</h3>
 <p>En <em>Processing</em> existen algunas <strong>palabras reservadas</strong> como <code>width</code> y <code>height</code>, que permiten acceder al ancho y alto de la ventana, respectivamente, y otras que permiten interactuar con el usuario, como <code>mouseX</code> y <code>mouseY</code>, que indican la <strong>posición actual del ratón en la ventana</strong>.</p>
+<hr>
+<div class="quarto-layout-panel" data-layout="[70,30]">
+<div class="quarto-layout-row">
+<div class="column quarto-layout-cell" style="flex-basis: 70.0%;justify-content: flex-start;">
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -1017,6 +1049,22 @@ Figura&nbsp;12: Analogía del funcionamiento de <em>Processing</em>, y el proces
 <p>Intenta que las piernas de Zoog también sigan al ratón, manteniendo la misma distancia relativa con el cuerpo.</p>
 </div>
 </div>
+</div>
+<div class="column quarto-layout-cell" style="flex-basis: 30.0%;justify-content: flex-start;">
+<div id="fig-zoog-follow-mouse" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-zoog-follow-mouse-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../resources/lesson1/zoog_size.svg" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-zoog-follow-mouse-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;13: Algunas medidas de Zoog.
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<hr>
 </section>
 </section>
 <section id="variables-condicionales-y-bucles" class="level2" data-number="6">
@@ -1043,7 +1091,7 @@ Figura&nbsp;12: Analogía del funcionamiento de <em>Processing</em>, y el proces
 <span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="dt">int</span> circleY <span class="op">=</span> <span class="dv">100</span><span class="op">;</span></span>
 <span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a><span class="dt">void</span> <span class="fu">setup</span><span class="op">()</span> <span class="op">{</span></span>
-<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">size</span><span class="op">(</span><span class="dv">200</span><span class="op">,</span> <span class="dv">200</span><span class="op">);</span></span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">size</span><span class="op">(</span><span class="dv">400</span><span class="op">,</span> <span class="dv">200</span><span class="op">);</span></span>
 <span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span>
 <span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a><span class="dt">void</span> <span class="fu">draw</span><span class="op">()</span> <span class="op">{</span></span>
@@ -1051,11 +1099,12 @@ Figura&nbsp;12: Analogía del funcionamiento de <em>Processing</em>, y el proces
 <span id="cb17-10"><a href="#cb17-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stroke</span><span class="op">(</span><span class="dv">0</span><span class="op">);</span></span>
 <span id="cb17-11"><a href="#cb17-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">fill</span><span class="op">(</span><span class="dv">175</span><span class="op">);</span></span>
 <span id="cb17-12"><a href="#cb17-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ellipse</span><span class="op">(</span>circleX<span class="op">,</span> circleY<span class="op">,</span> <span class="dv">50</span><span class="op">,</span> <span class="dv">50</span><span class="op">);</span></span>
-<span id="cb17-13"><a href="#cb17-13" aria-hidden="true" tabindex="-1"></a>  circleX <span class="op">=</span> circleX <span class="op">+</span> <span class="dv">5</span><span class="op">;</span></span>
+<span id="cb17-13"><a href="#cb17-13" aria-hidden="true" tabindex="-1"></a>  circleX <span class="op">=</span> circleX <span class="op">+</span> <span class="dv">1</span><span class="op">;</span></span>
 <span id="cb17-14"><a href="#cb17-14" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
 </div>
+<hr>
 </section>
 <section id="condicionales" class="level3" data-number="6.2">
 <h3 data-number="6.2" class="anchored" data-anchor-id="condicionales"><span class="header-section-number">6.2</span> Condicionales</h3>
@@ -1069,6 +1118,7 @@ Figura&nbsp;12: Analogía del funcionamiento de <em>Processing</em>, y el proces
 <span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a>  <span class="co">// bloque de código si ninguna condición es verdadera</span></span>
 <span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Ten en cuenta que no siempre es necesario utilizar <code>else if</code> o <code>else</code>; <strong>un condicional puede consistir únicamente en una instrucción <code>if</code></strong>.</p>
+<hr>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -1092,6 +1142,7 @@ Figura&nbsp;12: Analogía del funcionamiento de <em>Processing</em>, y el proces
 <span id="cb19-9"><a href="#cb19-9" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
+<hr>
 </section>
 <section id="bucles" class="level3" data-number="6.3">
 <h3 data-number="6.3" class="anchored" data-anchor-id="bucles"><span class="header-section-number">6.3</span> Bucles</h3>
@@ -1127,6 +1178,7 @@ Figura&nbsp;12: Analogía del funcionamiento de <em>Processing</em>, y el proces
 <span id="cb21-12"><a href="#cb21-12" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
+<hr>
 <div class="quarto-layout-panel" data-layout="[80,20]">
 <div class="quarto-layout-row">
 <div class="column quarto-layout-cell" style="flex-basis: 80.0%;justify-content: flex-start;">
@@ -1151,13 +1203,14 @@ Figura&nbsp;12: Analogía del funcionamiento de <em>Processing</em>, y el proces
 <img src="../resources/lesson1/zoog-arms.png" class="img-fluid figure-img">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-zoog-multiple-arms-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figura&nbsp;13: Resultado de añadir 3 pares de brazos a Zoog.
+Figura&nbsp;14: Resultado de añadir 3 pares de brazos a Zoog.
 </figcaption>
 </figure>
 </div>
 </div>
 </div>
 </div>
+<hr>
 </section>
 </section>
 <section id="apéndice-instalación-de-processing" class="level2 unnumbered">
@@ -1168,7 +1221,7 @@ Figura&nbsp;13: Resultado de añadir 3 pares de brazos a Zoog.
 <img src="../resources/lesson1/web-teaser.png" class="img-fluid figure-img">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-installation-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figura&nbsp;14: Banner de la página oficial de <em>Processing</em>; a la izquierda se muestra el botón de <em>Download</em>.
+Figura&nbsp;15: Banner de la página oficial de <em>Processing</em>; a la izquierda se muestra el botón de <em>Download</em>.
 </figcaption>
 </figure>
 </div>

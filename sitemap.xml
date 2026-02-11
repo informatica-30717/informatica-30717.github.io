@@ -2,15 +2,23 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://informatica-30717.github.io/practicas/practica1.html</loc>
-    <lastmod>2026-02-09T14:26:53.120Z</lastmod>
+    <lastmod>2026-02-11T09:20:01.438Z</lastmod>
   </url>
   <url>
     <loc>https://informatica-30717.github.io/practicas/practica1.reveal.html</loc>
-    <lastmod>2026-02-09T14:27:03.204Z</lastmod>
+    <lastmod>2026-02-11T09:20:42.464Z</lastmod>
   </url>
   <url>
     <loc>https://informatica-30717.github.io/calendar.html</loc>
     <lastmod>2026-02-06T21:21:44.665Z</lastmod>
+  </url>
+  <url>
+    <loc>https://informatica-30717.github.io/calendar.reveal.html</loc>
+    <lastmod>2026-02-11T09:20:40.547Z</lastmod>
+  </url>
+  <url>
+    <loc>https://informatica-30717.github.io/index.reveal.html</loc>
+    <lastmod>2026-02-11T09:20:41.131Z</lastmod>
   </url>
   <url>
     <loc>https://informatica-30717.github.io/index.html</loc>
