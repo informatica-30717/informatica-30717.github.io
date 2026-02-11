@@ -6,7 +6,7 @@ authors:
   - name: "Alfonso López Ruiz"
     url: https://alfonsolrz.github.io
   - name: "Ignacio Huitzil Velasco"
-    url: https://webdiis.unizar.es/~ihvdis/
+    url: https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ346IpCunODPqP-H9huByMxUCXRzugo9vr2kLtkKmahfQ8FGxbKfGmLpsPfCU4Ly6pT71Au1sIf
 ---
 
 En esta página web se irá publicando el material de prácticas actualizado de la asignatura. 
@@ -22,17 +22,21 @@ A tener en cuenta a la hora de resolver las prácticas:
 
 Más información sobre la asignatura en la [documentación oficial de la universidad](https://estudios.unizar.es/estudio/asignatura?anyo_academico=2025&asignatura_id=30717&estudio_id=20250157&centro_id=110&plan_id_nk=470).
 
+---
+
 :::{.callout-note}
 ## Tutorías
 Puedes encontrar nuestro horario de tutorías en los siguientes enlaces:
 
 - [Tutorías de Alfonso López Ruiz](https://alfonsolrz.github.io/calendar/)
-- [Tutorías de Ignacio Huitzil Velasco](https://webdiis.unizar.es/~ihvdis/tutorias.html)
+- [Tutorías de Ignacio Huitzil Velasco](https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ346IpCunODPqP-H9huByMxUCXRzugo9vr2kLtkKmahfQ8FGxbKfGmLpsPfCU4Ly6pT71Au1sIf)
 :::
+
+---
 
 :::{.callout-tip}
 ## Get started
-¡Comienza leyendo la [primera práctica](practices/practice1.qmd)!
+¡Comienza leyendo la [primera práctica](practicas/practica1.qmd)!
 :::
 
 
