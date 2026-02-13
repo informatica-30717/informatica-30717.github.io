@@ -34,128 +34,97 @@ Por ejemplo, los siguientes coeficientes generan diferentes números de solucion
 - $a=1$, $b=-2$, $c=1$ → una solución real ($x=1$).
 - $a=1$, $b=0$, $c=1$ → no soluciones reales.
 
-```{ojs}
-viewof params = {
-  // helper to create a slider
-  const cleanSlider = (range, config) => {
-    // generate the standard input without a fixed width
-    const input = Inputs.range(range, config);
-    
-    // select the internal number box and hide it
-    const numberBox = input.querySelector("input[type=number]");
-    if (numberBox) numberBox.style.display = "none";
-    
-    // force the slider itself to take up all available space
-    const rangeSlider = input.querySelector("input[type=range]");
-    if (rangeSlider) rangeSlider.style.width = "100%";
-    
-    // set the container to full width
-    input.style.width = "100%";
-    
-    return input;
-  };
+<div class="card shadow-sm mb-4">
+  <div class="card-body">
+  
+    ```{ojs}
+    viewof params = {
+      const cleanSlider = (range, config) => {
+        const input = Inputs.range(range, config);
+        const numberBox = input.querySelector("input[type=number]");
+        if (numberBox) numberBox.style.display = "none";
+        const rangeSlider = input.querySelector("input[type=range]");
+        if (rangeSlider) rangeSlider.style.width = "100%";
+        input.style.width = "100%";
+        return input;
+      };
 
-  // create the inputs using our helper
-  const ia = cleanSlider([-5, 5], { value: 1, step: 0.1 });
-  const ib = cleanSlider([-10, 10], { value: -2, step: 0.1 });
-  const ic = cleanSlider([-10, 10], { value: -3, step: 0.1 });
+      const ia = cleanSlider([-5, 5], { value: 1, step: 0.1 });
+      const ib = cleanSlider([-10, 10], { value: -2, step: 0.1 });
+      const ic = cleanSlider([-10, 10], { value: -3, step: 0.1 });
 
-  const col = (input, label) => {
-    const val = htl.html`<div style="font-family: monospace; color: #555; margin-top: 4px;">${input.value.toFixed(1)}</div>`;
-    
-    // update the label when slider moves
-    input.addEventListener("input", () => val.textContent = input.value.toFixed(1));
+      const col = (input, label) => {
+        const val = htl.html`<div style="font-family: monospace; color: #555; margin-top: 4px;">${input.value.toFixed(1)}</div>`;
+        input.addEventListener("input", () => val.textContent = input.value.toFixed(1));
+        
+        return htl.html`<div style="display: flex; flex-direction: column; align-items: center; margin: 0 10px; flex: 1; min-width: 120px;">
+          <div style="font-weight: bold; font-size: 0.9rem; margin-bottom: 5px; white-space: nowrap;">${label}</div>
+          <div style="width: 100%">${input}</div>
+          ${val}
+        </div>`;
+      };
 
-    return htl.html`<div style="display: flex; flex-direction: column; align-items: center; margin: 0 10px; flex: 1; min-width: 150px;">
-      <div style="font-weight: bold; margin-bottom: 5px; white-space: nowrap;">${label}</div>
-      <div style="width: 100%">${input}</div>
-      ${val}
-    </div>`;
-  };
+      // Styles: Removed background/border here so it blends into the card
+      const form = htl.html`<div style="display: flex; flex-wrap: wrap; justify-content: center; width: 100%; padding-bottom: 20px; border-bottom: 1px solid #eee; margin-bottom: 20px;">
+        ${col(ia, "a (curvatura)")}
+        ${col(ib, "b (pendiente)")}
+        ${col(ic, "c (desplazamiento ↑↓)")}
+      </div>`;
 
-  // main Container
-  const form = htl.html`<div style="display: flex; flex-wrap: wrap; justify-content: center; width: 100%;">
-    ${col(ia, "a (curvature)")}
-    ${col(ib, "b (slope)")}
-    ${col(ic, "c (shift)")}
-  </div>`;
+      form.oninput = () => form.value = { a: ia.value, b: ib.value, c: ic.value };
+      form.value = { a: ia.value, b: ib.value, c: ic.value };
+      return form;
+    }
 
-  // binding
-  form.oninput = () => form.value = { a: ia.value, b: ib.value, c: ic.value };
-  form.value = { a: ia.value, b: ib.value, c: ic.value };
+    // Extract variables for reactivity
+    a = params.a
+    b = params.b
+    c = params.c
+    ```
 
-  return form;
-}
+    ```{ojs}
+    {
+      const curve = Array.from({ length: 401 }, (_, i) => {
+        const x = -10 + i * 0.05;
+        return { x, y: a * x * x + b * x + c };
+      });
 
-a = params.a
-b = params.b
-c = params.c
-```
-
-``` {ojs}
-{
-  // curve data
-  const curve = Array.from({ length: 401 }, (_, i) => 
-  {
-    const x = -10 + i * 0.05;
-    return { x, y: a * x * x + b * x + c };
-  });
-
-  const points = [];
-  const disc = b * b - 4 * a * c; 
-  if (a !== 0 && disc >= 0) 
-  {
-    const r1 = (-b + Math.sqrt(disc)) / (2 * a);
-    const r2 = (-b - Math.sqrt(disc)) / (2 * a);
-    
-    points.push({ x: r1, y: 0, type: "Root", label: `x=${r1.toFixed(2)}` });
-    if (disc > 0) 
-      points.push({ x: r2, y: 0, type: "Root", label: `x=${r2.toFixed(2)}` });
-  } 
-  else if (a === 0 && b !== 0) 
-  {
-    const root = -c / b;
-    points.push({ x: root, y: 0, type: "Root", label: `x=${root.toFixed(2)}` });
-  }
-
-  // render
-  const curve_plot = Plot.plot({
-    height: 400,
-    grid: true,
-    x: { domain: [-10, 10], label: "x axis" },
-    y: { domain: [-10, 10], label: "f(x)" },
-    marks: [
-      Plot.ruleY([0], { stroke: "#888", strokeWidth: 1.5 }),
-      Plot.ruleX([0], { stroke: "#888", strokeWidth: 1.5 }),
+      const points = [];
+      const disc = b * b - 4 * a * c; 
       
-      Plot.line(curve, { x: "x", y: "y", stroke: "steelblue", strokeWidth: 3 }),
+      if (a !== 0 && disc >= 0) {
+        const r1 = (-b + Math.sqrt(disc)) / (2 * a);
+        const r2 = (-b - Math.sqrt(disc)) / (2 * a);
+        points.push({ x: r1, y: 0, type: "Root", label: `x=${r1.toFixed(2)}` });
+        if (disc > 0) points.push({ x: r2, y: 0, type: "Root", label: `x=${r2.toFixed(2)}` });
+      } else if (a === 0 && b !== 0) {
+        const root = -c / b;
+        points.push({ x: root, y: 0, type: "Root", label: `x=${root.toFixed(2)}` });
+      }
+
+      const curve_plot = Plot.plot({
+        height: 400,
+        grid: true,
+        marginLeft: 40, 
+        marginRight: 20,
+        x: { domain: [-10, 10], label: "x axis" },
+        y: { domain: [-10, 10], label: null }, // Removed Y label to save space
+        marks: [
+          Plot.ruleY([0], { stroke: "#888", strokeWidth: 1.5 }),
+          Plot.ruleX([0], { stroke: "#888", strokeWidth: 1.5 }),
+          Plot.line(curve, { x: "x", y: "y", stroke: "steelblue", strokeWidth: 3 }),
+          Plot.dot(points, { x: "x", y: "y", fill: d => d.type === "Root" ? "#e63946" : "#457b9d", r: 6, stroke: "white", strokeWidth: 2 }),
+          Plot.text(points, { x: "x", y: "y", text: "label", dy: -15, fill: "currentColor", stroke: "white", strokeWidth: 4, fontWeight: "bold", fontSize: 12 })
+        ]
+      });
       
-      Plot.dot(points, { 
-        x: "x", 
-        y: "y", 
-        fill: d => d.type === "Root" ? "#e63946" : "#457b9d", 
-        r: 6,
-        stroke: "white",
-        strokeWidth: 2
-      }),
-      
-      Plot.text(points, {
-        x: "x",
-        y: "y",
-        text: "label",
-        dy: -15,
-        fill: "currentColor",
-        stroke: "white",
-        strokeWidth: 4,
-        fontWeight: "bold",
-        fontSize: 12
-      })
-    ]
-  });
-  curve_plot.style.width = "100%";
-  return curve_plot;
-}
-```
+      // Ensure the SVG fills the card width
+      curve_plot.style.width = "100%";
+      return curve_plot;
+    }
+    ```
+    
+  </div> </div>
 
 ---
 
@@ -175,7 +144,8 @@ El valor dentro de la raíz cuadrada, $b^2 - 4ac$, se llama **discriminante** ($
 **Si $\Delta > 0$, la ecuación tiene dos soluciones reales distintas**, que se calculan con la fórmula general utilizando el símbolo $+$ para una raíz y el símbolo $-$ para la otra raíz.
 
 Verifica que la solución es correcta utilizando los siguientes coeficientes:
-- $a=1$, $b=-3$, $c=2$ → dos soluciones reales ($x=1$ y $x=2$).
+
+- $a=1, \quad b=-3, \quad c=2$ → dos soluciones reales ($x=1$ y $x=2$).
 
 ::: {.callout-tip}
 ## Clases en Java
@@ -210,7 +180,8 @@ Si $\Delta = 0$, la ecuación tiene una única solución real, que se calcula co
 ## Solución única
 
 Verifica que la solución es correcta utilizando los siguientes coeficientes:
-- $a=1$, $b=-2$, $c=1$ → una solución real ($x=1$).
+
+- $a=1, \quad b=-2, \quad c=1$ → una solución real ($x=1$).
 :::
 
 ### Clase 3: no soluciones reales
@@ -228,5 +199,12 @@ $$
 
 ::: {.callout-tip}
 ## Solución compleja
+
 Verifica que la solución es correcta utilizando los siguientes coeficientes:
-- $a=1$, $b=0$, $c=1$ → no soluciones reales, pero dos soluciones complejas conjugadas ($x_1 = 0 + 1i$ y $x_2 = 0 - 1i$).
+
+$a=1, \quad b=0, \quad c=1$
+
+Las soluciones son:
+$$x_1 = 0 + 1i$$
+$$x_2 = 0 - 1i$$
+:::
