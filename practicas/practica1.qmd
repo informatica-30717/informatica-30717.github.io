@@ -575,7 +575,7 @@ Modifica el programa de Zoog para que la esquina superior izquierda del cuerpo d
 ::: {.callout-note}
 ## 🧠 Ejercicio 13 - Sigue al ratón II
 
-Centra la cabeza de Zoog en la posición (`mouseX`, `mouseY` - 30), de manera que la cabeza se mueva en función de la posición del ratón, pero siempre esté situada por encima del cuerpo. Por supuesto, tendrás que ajustar también la posición de los ojos.
+Posiciona la cabeza de Zoog sobre el cuerpo, de acuerdo también a las coordenadas (`mouseX`, `mouseY`), de manera que la cabeza se mueva en función de la posición del ratón. Por supuesto, tendrás que ajustar también la posición de los ojos.
 :::
 
 ::: {.callout-note}
