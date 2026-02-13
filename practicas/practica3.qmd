@@ -1,0 +1,232 @@
+---
+title: "Práctica 3: Resolución de problemas en Java (I)"
+format:
+  html: 
+    toc: true
+    number-sections: true
+  revealjs: 
+    output-ext: "reveal.html"
+execute:
+  echo: false
+---
+
+## Objetivos de la práctica
+
+- Algoritmos para la resolución de problemas.
+- Implementar algoritmos en Java.
+- Ejecutar algoritmos en el entorno Eclipse.
+
+## Raíces de una ecuación de segundo grado
+
+Como bien sabemos, una ecuación de segundo grado tiene la forma:
+
+$$
+ax^2 + bx + c = 0
+$$
+
+donde $a$, $b$ y $c$ son coeficientes reales, y $x$ es la variable que queremos resolver.
+
+A diferencia de las ecuaciones de primer grado, las de segundo grado pueden tener **0, 1 o 2 soluciones reales** dependiendo de los valores de los coeficientes ($a$, $b$, $c$).
+
+Por ejemplo, los siguientes coeficientes generan diferentes números de soluciones:
+
+- $a=1$, $b=-3$, $c=2$ → dos soluciones reales ($x=1$ y $x=2$).
+- $a=1$, $b=-2$, $c=1$ → una solución real ($x=1$).
+- $a=1$, $b=0$, $c=1$ → no soluciones reales.
+
+```{ojs}
+viewof params = {
+  // helper to create a slider
+  const cleanSlider = (range, config) => {
+    // generate the standard input without a fixed width
+    const input = Inputs.range(range, config);
+    
+    // select the internal number box and hide it
+    const numberBox = input.querySelector("input[type=number]");
+    if (numberBox) numberBox.style.display = "none";
+    
+    // force the slider itself to take up all available space
+    const rangeSlider = input.querySelector("input[type=range]");
+    if (rangeSlider) rangeSlider.style.width = "100%";
+    
+    // set the container to full width
+    input.style.width = "100%";
+    
+    return input;
+  };
+
+  // create the inputs using our helper
+  const ia = cleanSlider([-5, 5], { value: 1, step: 0.1 });
+  const ib = cleanSlider([-10, 10], { value: -2, step: 0.1 });
+  const ic = cleanSlider([-10, 10], { value: -3, step: 0.1 });
+
+  const col = (input, label) => {
+    const val = htl.html`<div style="font-family: monospace; color: #555; margin-top: 4px;">${input.value.toFixed(1)}</div>`;
+    
+    // update the label when slider moves
+    input.addEventListener("input", () => val.textContent = input.value.toFixed(1));
+
+    return htl.html`<div style="display: flex; flex-direction: column; align-items: center; margin: 0 10px; flex: 1; min-width: 150px;">
+      <div style="font-weight: bold; margin-bottom: 5px; white-space: nowrap;">${label}</div>
+      <div style="width: 100%">${input}</div>
+      ${val}
+    </div>`;
+  };
+
+  // main Container
+  const form = htl.html`<div style="display: flex; flex-wrap: wrap; justify-content: center; width: 100%;">
+    ${col(ia, "a (curvature)")}
+    ${col(ib, "b (slope)")}
+    ${col(ic, "c (shift)")}
+  </div>`;
+
+  // binding
+  form.oninput = () => form.value = { a: ia.value, b: ib.value, c: ic.value };
+  form.value = { a: ia.value, b: ib.value, c: ic.value };
+
+  return form;
+}
+
+a = params.a
+b = params.b
+c = params.c
+```
+
+``` {ojs}
+{
+  // curve data
+  const curve = Array.from({ length: 401 }, (_, i) => 
+  {
+    const x = -10 + i * 0.05;
+    return { x, y: a * x * x + b * x + c };
+  });
+
+  const points = [];
+  const disc = b * b - 4 * a * c; 
+  if (a !== 0 && disc >= 0) 
+  {
+    const r1 = (-b + Math.sqrt(disc)) / (2 * a);
+    const r2 = (-b - Math.sqrt(disc)) / (2 * a);
+    
+    points.push({ x: r1, y: 0, type: "Root", label: `x=${r1.toFixed(2)}` });
+    if (disc > 0) 
+      points.push({ x: r2, y: 0, type: "Root", label: `x=${r2.toFixed(2)}` });
+  } 
+  else if (a === 0 && b !== 0) 
+  {
+    const root = -c / b;
+    points.push({ x: root, y: 0, type: "Root", label: `x=${root.toFixed(2)}` });
+  }
+
+  // render
+  const curve_plot = Plot.plot({
+    height: 400,
+    grid: true,
+    x: { domain: [-10, 10], label: "x axis" },
+    y: { domain: [-10, 10], label: "f(x)" },
+    marks: [
+      Plot.ruleY([0], { stroke: "#888", strokeWidth: 1.5 }),
+      Plot.ruleX([0], { stroke: "#888", strokeWidth: 1.5 }),
+      
+      Plot.line(curve, { x: "x", y: "y", stroke: "steelblue", strokeWidth: 3 }),
+      
+      Plot.dot(points, { 
+        x: "x", 
+        y: "y", 
+        fill: d => d.type === "Root" ? "#e63946" : "#457b9d", 
+        r: 6,
+        stroke: "white",
+        strokeWidth: 2
+      }),
+      
+      Plot.text(points, {
+        x: "x",
+        y: "y",
+        text: "label",
+        dy: -15,
+        fill: "currentColor",
+        stroke: "white",
+        strokeWidth: 4,
+        fontWeight: "bold",
+        fontSize: 12
+      })
+    ]
+  });
+  curve_plot.style.width = "100%";
+  return curve_plot;
+}
+```
+
+---
+
+## Resolución de la práctica
+
+Para resolver esta práctica se propone implementar **tres clases en Java** que correspondan a cada uno de los casos de solución de la ecuación cuadrática.
+
+De manera general, ten en cuenta que la solución única o doble de la ecuación se calcula a través de la siguiente fórmula, conocida como la **fórmula general**:
+$$
+x = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a} = \frac{-b \pm \sqrt{\Delta}}{2a}
+$$
+
+El valor dentro de la raíz cuadrada, $b^2 - 4ac$, se llama **discriminante** ($\Delta$) y determina el número de soluciones reales que tiene la ecuación:
+
+### Clase 1: dos soluciones reales
+
+**Si $\Delta > 0$, la ecuación tiene dos soluciones reales distintas**, que se calculan con la fórmula general utilizando el símbolo $+$ para una raíz y el símbolo $-$ para la otra raíz.
+
+Verifica que la solución es correcta utilizando los siguientes coeficientes:
+- $a=1$, $b=-3$, $c=2$ → dos soluciones reales ($x=1$ y $x=2$).
+
+::: {.callout-tip}
+## Clases en Java
+
+Recuerda que, en Java, una clase toma el siguiente formato general:
+```java
+public class NombreDeLaClase {
+    /*
+    * @author: Vuestros nombres
+    * @date: Fecha de entrega
+    */
+    public static void main(String[] args) {
+        // solución del problema
+    }
+}
+```
+:::
+
+::: {.callout-note}
+## Imprimir resultados en Java
+Utiliza la impresión por consola para mostrar los resultados de las soluciones, por ejemplo:
+```java
+System.out.println("La solución es: " + x);
+```
+:::
+
+### Clase 2: una solución real
+
+Si $\Delta = 0$, la ecuación tiene una única solución real, que se calcula con la fórmula general utilizando cualquiera de los símbolos $+$ o $-$, ya que ambos darán el mismo resultado.
+
+::: {.callout-tip}
+## Solución única
+
+Verifica que la solución es correcta utilizando los siguientes coeficientes:
+- $a=1$, $b=-2$, $c=1$ → una solución real ($x=1$).
+:::
+
+### Clase 3: no soluciones reales
+Si $\Delta < 0$, la ecuación no tiene soluciones reales, ya que la raíz cuadrada de un número negativo no es un número real. En este caso, se pueden calcular las soluciones complejas utilizando números imaginarios de la siguiente forma:
+$$
+x = \frac{-b \pm i\sqrt{-(b^2 - 4ac)}}{2a} = \frac{-b \pm i\sqrt{4ac - b^2}}{2a}
+$$
+
+de tal manera que el número imaginario $i$ se define como la raíz cuadrada de $-1$.
+
+Por tanto, las dos soluciones complejas conjugadas se pueden expresar como:
+$$
+x_1 = \frac{-b + i\sqrt{4ac - b^2}}{2a} \quad \text{y} \quad x_2 = \frac{-b - i\sqrt{4ac - b^2}}{2a}
+$$
+
+::: {.callout-tip}
+## Solución compleja
+Verifica que la solución es correcta utilizando los siguientes coeficientes:
+- $a=1$, $b=0$, $c=1$ → no soluciones reales, pero dos soluciones complejas conjugadas ($x_1 = 0 + 1i$ y $x_2 = 0 - 1i$).
