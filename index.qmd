@@ -7,6 +7,8 @@ authors:
     url: https://alfonsolrz.github.io
   - name: "Ignacio Huitzil Velasco"
     url: https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ346IpCunODPqP-H9huByMxUCXRzugo9vr2kLtkKmahfQ8FGxbKfGmLpsPfCU4Ly6pT71Au1sIf
+  - name: "Yamilka Toca Díaz"
+    url: https://janovas.unizar.es/sideral/CV/yamilka-toca-diaz
 ---
 
 En esta página web se irá publicando el material de prácticas actualizado de la asignatura. 
@@ -30,6 +32,7 @@ Puedes encontrar nuestro horario de tutorías en los siguientes enlaces:
 
 - [Tutorías de Alfonso López Ruiz](https://alfonsolrz.github.io/calendar/)
 - [Tutorías de Ignacio Huitzil Velasco](https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ346IpCunODPqP-H9huByMxUCXRzugo9vr2kLtkKmahfQ8FGxbKfGmLpsPfCU4Ly6pT71Au1sIf)
+- [Tutorías de Yamilka Toca Díaz](https://janovas.unizar.es/sideral/CV/yamilka-toca-diaz)
 :::
 
 ---

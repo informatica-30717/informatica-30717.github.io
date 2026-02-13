@@ -8,3 +8,5 @@ website:
       - section: "Prácticas"
         contents:
           - practicas/practica1.qmd
+          - practicas/practica2.qmd
+          - practicas/practica3.qmd
