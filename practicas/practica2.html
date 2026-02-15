@@ -1,0 +1,1322 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.8.27">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Práctica 2: Un entorno de programación en Java – Informática (30717) - Grado en Estudios en Arquitectura</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="../practicas/practica3.html" rel="next">
+<link href="../practicas/practica1.html" rel="prev">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-029b10fc0dc652dab2ec1ac156c1a037.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No se han encontrado resultados",
+    "search-matching-documents-text": "documentos encontrados",
+    "search-copy-link-title": "Copiar el enlace en la búsqueda",
+    "search-hide-matches-text": "Ocultar resultados adicionales",
+    "search-more-match-text": "resultado adicional en este documento",
+    "search-more-matches-text": "resultados adicionales en este documento",
+    "search-clear-button-title": "Borrar",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancelar",
+    "search-submit-button-title": "Enviar",
+    "search-label": "Buscar"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="../styles.css">
+<meta property="og:title" content="Práctica 2: Un entorno de programación en Java – Informática (30717) - Grado en Estudios en Arquitectura">
+<meta property="og:description" content="Material de prácticas del curso 2025-2026.">
+<meta property="og:image" content="https://informatica-30717.github.io/resources/practica2/init_eclipse.png">
+<meta property="og:site_name" content="Informática (30717) - Grado en Estudios en Arquitectura">
+<meta property="og:image:height" content="302">
+<meta property="og:image:width" content="452">
+<meta name="twitter:title" content="Práctica 2: Un entorno de programación en Java – Informática (30717) - Grado en Estudios en Arquitectura">
+<meta name="twitter:description" content="Material de prácticas del curso 2025-2026.">
+<meta name="twitter:image" content="https://informatica-30717.github.io/resources/practica2/init_eclipse.png">
+<meta name="twitter:image-height" content="302">
+<meta name="twitter:image-width" content="452">
+<meta name="twitter:card" content="summary_large_image">
+</head>
+
+<body class="nav-sidebar floating nav-fixed quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../index.html">
+    <span class="navbar-title">Informática (30717) - Grado en Estudios en Arquitectura</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Buscar"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Navegación de palanca" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="https://moodle.unizar.es/add/course/view.php?id=153600"> 
+<span class="menu-text"><img src="../resources/unizar_white.png" class="img-fluid" width="95"></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+  <a href="" class="quarto-reader-toggle quarto-navigation-tool px-1" onclick="window.quartoToggleReader(); return false;" title="Alternar modo lector">
+  <div class="quarto-reader-toggle-btn">
+  <i class="bi"></i>
+  </div>
+</a>
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../practicas/practica1.html">Prácticas</a></li><li class="breadcrumb-item"><a href="../practicas/practica2.html">Práctica 2: Un entorno de programación en Java</a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+      <a href="../index.html" class="sidebar-logo-link">
+      <img src="../../resources/unizar.png" alt="" class="sidebar-logo light-content py-0 d-lg-inline d-none">
+      <img src="../../resources/unizar.png" alt="" class="sidebar-logo dark-content py-0 d-lg-inline d-none">
+      </a>
+      </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
+ <span class="menu-text">Información</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Alternar sección">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">📌 Información general</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../calendar.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">📅 Calendario</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
+ <span class="menu-text">Prácticas</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Alternar sección">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../practicas/practica1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Práctica 1: Introducción a Processing</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../practicas/practica2.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Práctica 2: Un entorno de programación en Java</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../practicas/practica3.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Práctica 3: Resolución de problemas en Java (I)</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">En esta página</h2>
+   
+  <ul>
+  <li><a href="#objetivos-de-la-práctica" id="toc-objetivos-de-la-práctica" class="nav-link active" data-scroll-target="#objetivos-de-la-práctica"><span class="header-section-number">1</span> Objetivos de la práctica</a></li>
+  <li><a href="#el-entorno-de-desarrollo-eclipse" id="toc-el-entorno-de-desarrollo-eclipse" class="nav-link" data-scroll-target="#el-entorno-de-desarrollo-eclipse"><span class="header-section-number">2</span> El entorno de desarrollo Eclipse</a>
+  <ul class="collapse">
+  <li><a href="#pantalla-de-bienvenida" id="toc-pantalla-de-bienvenida" class="nav-link" data-scroll-target="#pantalla-de-bienvenida"><span class="header-section-number">2.1</span> Pantalla de bienvenida</a></li>
+  <li><a href="#entorno-de-trabajo" id="toc-entorno-de-trabajo" class="nav-link" data-scroll-target="#entorno-de-trabajo"><span class="header-section-number">2.2</span> Entorno de trabajo</a></li>
+  <li><a href="#crear-un-proyecto" id="toc-crear-un-proyecto" class="nav-link" data-scroll-target="#crear-un-proyecto"><span class="header-section-number">2.3</span> Crear un proyecto</a></li>
+  <li><a href="#crear-una-aplicación" id="toc-crear-una-aplicación" class="nav-link" data-scroll-target="#crear-una-aplicación"><span class="header-section-number">2.4</span> Crear una aplicación</a></li>
+  <li><a href="#compilación-de-aplicaciones" id="toc-compilación-de-aplicaciones" class="nav-link" data-scroll-target="#compilación-de-aplicaciones"><span class="header-section-number">2.5</span> Compilación de aplicaciones</a></li>
+  <li><a href="#ejecución-de-aplicaciones" id="toc-ejecución-de-aplicaciones" class="nav-link" data-scroll-target="#ejecución-de-aplicaciones"><span class="header-section-number">2.6</span> Ejecución de aplicaciones</a></li>
+  <li><a href="#depuración-de-errores" id="toc-depuración-de-errores" class="nav-link" data-scroll-target="#depuración-de-errores"><span class="header-section-number">2.7</span> Depuración de errores</a></li>
+  <li><a href="#exportar-proyectos" id="toc-exportar-proyectos" class="nav-link" data-scroll-target="#exportar-proyectos"><span class="header-section-number">2.8</span> Exportar proyectos</a></li>
+  <li><a href="#importar-proyectos" id="toc-importar-proyectos" class="nav-link" data-scroll-target="#importar-proyectos"><span class="header-section-number">2.9</span> Importar proyectos</a></li>
+  <li><a href="#crear-biblioteca" id="toc-crear-biblioteca" class="nav-link" data-scroll-target="#crear-biblioteca"><span class="header-section-number">2.10</span> Crear biblioteca</a></li>
+  <li><a href="#añadir-bibliotecas-a-un-proyecto" id="toc-añadir-bibliotecas-a-un-proyecto" class="nav-link" data-scroll-target="#añadir-bibliotecas-a-un-proyecto"><span class="header-section-number">2.11</span> Añadir bibliotecas a un proyecto</a></li>
+  <li><a href="#generar-documentación" id="toc-generar-documentación" class="nav-link" data-scroll-target="#generar-documentación"><span class="header-section-number">2.12</span> Generar documentación</a></li>
+  <li><a href="#acceso-a-la-documentación-del-jdk" id="toc-acceso-a-la-documentación-del-jdk" class="nav-link" data-scroll-target="#acceso-a-la-documentación-del-jdk"><span class="header-section-number">2.13</span> Acceso a la documentación del JDK</a></li>
+  </ul></li>
+  <li><a href="#apéndice.-instalación-de-eclipse-y-jdk" id="toc-apéndice.-instalación-de-eclipse-y-jdk" class="nav-link" data-scroll-target="#apéndice.-instalación-de-eclipse-y-jdk"><span class="header-section-number">3</span> Apéndice. Instalación de Eclipse y JDK</a>
+  <ul class="collapse">
+  <li><a href="#instalación-de-eclipse-mediante-un-instalador" id="toc-instalación-de-eclipse-mediante-un-instalador" class="nav-link" data-scroll-target="#instalación-de-eclipse-mediante-un-instalador"><span class="header-section-number">3.1</span> Instalación de Eclipse mediante un instalador</a></li>
+  <li><a href="#instalación-alternativa-de-eclipse-sin-instalador" id="toc-instalación-alternativa-de-eclipse-sin-instalador" class="nav-link" data-scroll-target="#instalación-alternativa-de-eclipse-sin-instalador"><span class="header-section-number">3.2</span> Instalación alternativa de Eclipse sin instalador</a></li>
+  </ul></li>
+  </ul>
+<div class="quarto-alternate-formats"><h2>Otros formatos</h2><ul><li><a href="practica2.reveal.html"><i class="bi bi-file-slides"></i>RevealJS</a></li></ul></div></nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../practicas/practica1.html">Prácticas</a></li><li class="breadcrumb-item"><a href="../practicas/practica2.html">Práctica 2: Un entorno de programación en Java</a></li></ol></nav>
+<div class="quarto-title">
+<h1 class="title">Práctica 2: Un entorno de programación en Java</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="objetivos-de-la-práctica" class="level2" data-number="1">
+<h2 data-number="1" class="anchored" data-anchor-id="objetivos-de-la-práctica"><span class="header-section-number">1</span> Objetivos de la práctica</h2>
+<p>Los objetivos de la segunda práctica de la asignatura son los siguientes:</p>
+<ul>
+<li>Familiarizarse con el ordenador y los elementos básicos de su sistema operativo.</li>
+<li>Familiarizarse con el entorno de desarrollo Java Eclipse.</li>
+</ul>
+</section>
+<section id="el-entorno-de-desarrollo-eclipse" class="level2" data-number="2">
+<h2 data-number="2" class="anchored" data-anchor-id="el-entorno-de-desarrollo-eclipse"><span class="header-section-number">2</span> El entorno de desarrollo Eclipse</h2>
+<p>Para facilitar el desarrollo de programas, existen entornos que permiten trabajar más cómodamente, tales como NetBeans, Eclipse o IntelliJ. Nosotros recomendamos el uso de <strong><em>Eclipse</em></strong>, un entorno de desarrollo de libre distribución.</p>
+<p>Inicia <em>Eclipse</em> haciendo doble clic sobre el ejecutable <em>Eclipse</em> en la carpeta <code>software_disponible</code>, o bien buscando <em>Eclipse</em> en la barra de tareas. Para instalar esta aplicación en otros ordenadores puede consultarse el Apéndice. Al iniciar <em>Eclipse</em> aparecerá la pantalla de bienvenida que se muestra en la <a href="#fig-init_eclipse" class="quarto-xref">Figura&nbsp;1</a>.</p>
+<div id="fig-init_eclipse" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-init_eclipse-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../resources/practica2/init_eclipse.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-init_eclipse-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;1: Pantalla de bienvenida.
+</figcaption>
+</figure>
+</div>
+<p>Para poder comenzar a trabajar con el entorno de desarrollo será necesario definir un espacio de trabajo o <em>workspace</em>, tal y como se muestra en la <a href="#fig-workspace_eclipse" class="quarto-xref">Figura&nbsp;2</a>. Este <em>workspace</em> contendrá todos los ficheros creados con <em>Eclipse</em>. Por ejemplo, se puede establecer el directorio <code>C:/PracticasARQ</code> como directorio de trabajo.</p>
+<div id="fig-workspace_eclipse" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-workspace_eclipse-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../resources/practica2/workspace_eclipse.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-workspace_eclipse-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;2: Configuración del <em>workspace</em>.
+</figcaption>
+</figure>
+</div>
+<p>En los siguientes subapartados aparecen solo algunas de las características de <em>Eclipse</em> o recomendaciones acerca de su uso. Si tienes más dudas sobre cómo utilizar <em>Eclipse</em>, deberás consultar la ayuda en línea (opción de menú <code>Help &gt; Help Contents</code>), o bien accediendo a su <a href="http://help.eclipse.org/">página web</a>, donde se encuentra también toda la documentación del programa.</p>
+<section id="pantalla-de-bienvenida" class="level3" data-number="2.1">
+<h3 data-number="2.1" class="anchored" data-anchor-id="pantalla-de-bienvenida"><span class="header-section-number">2.1</span> Pantalla de bienvenida</h3>
+<p>La primera vez que se utiliza Eclipse, aparecerá un mensaje preguntándonos si queremos excluir Eclipse del análisis del antivirus de Windows. Como aparece en la <a href="#fig-antivirus_eclipse" class="quarto-xref">Figura&nbsp;3</a>, podemos indicar que se excluya <em>Eclipse</em> de dichos análisis para evitar ralentizar la aplicación.</p>
+<div id="fig-antivirus_eclipse" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-antivirus_eclipse-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../resources/practica2/antivirus.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-antivirus_eclipse-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;3: Pregunta de exclusión de Eclipse IDE respecto del sistema antivirus de Windows.
+</figcaption>
+</figure>
+</div>
+<p>Una vez seleccionada una opción, nos aparecerá una ventana de bienvenida (<a href="#fig-welcome_eclipse" class="quarto-xref">Figura&nbsp;4</a>) con varias opciones, de las cuales cabe destacar las siguientes:</p>
+<div id="fig-welcome_eclipse" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-welcome_eclipse-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../resources/practica2/welcome_eclipse.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-welcome_eclipse-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;4: Pantalla de bienvenida.
+</figcaption>
+</figure>
+</div>
+<div class="card shadow-sm mb-3">
+<div class="card-body d-flex align-items-start">
+<div style="width: 7%; min-width: 50px; flex-shrink: 0;">
+<p><img src="../resources/practica2/overview.svg" class="img-fluid" style="width:100.0%"></p>
+</div>
+<div class="ms-3">
+<p><strong>Overview</strong>. Proporciona un vistazo general de las características principales del entorno de desarrollo, sobre todo para familiarizarse con la interfaz de usuario.</p>
+</div>
+</div>
+</div>
+<div class="card shadow-sm mb-3">
+<div class="card-body d-flex align-items-start">
+<div style="width: 7%; min-width: 50px; flex-shrink: 0;">
+<p><img src="../resources/practica2/tutorials.svg" class="img-fluid" style="width:100.0%"></p>
+</div>
+<div class="ms-3">
+<p><strong>Tutorials</strong>. Otra forma de conocer todas las características de Eclipse es ejecutando alguno de los tutoriales de manejo del entorno de desarrollo disponibles.</p>
+</div>
+</div>
+</div>
+<div class="card shadow-sm mb-3">
+<div class="card-body d-flex align-items-start">
+<div style="width: 7%; min-width: 50px; flex-shrink: 0;">
+<p><img src="../resources/practica2/samples.svg" class="img-fluid" style="width:100.0%"></p>
+</div>
+<div class="ms-3">
+<p><strong>Samples</strong>. Una manera de conocer cómo funciona la herramienta es ejecutar algunos de los ejemplos que Eclipse pone a nuestra disposición.</p>
+</div>
+</div>
+</div>
+<div class="card shadow-sm mb-3">
+<div class="card-body d-flex align-items-start">
+<div style="width: 7%; min-width: 50px; flex-shrink: 0;">
+<p><img src="../resources/practica2/new.svg" class="img-fluid" style="width:100.0%"></p>
+</div>
+<div class="ms-3">
+<p><strong>What’s new</strong>. Para los que han utilizado con anterioridad la herramienta Eclipse, esta utilidad describe las nuevas características que proporciona la versión instalada frente a versiones anteriores.</p>
+</div>
+</div>
+</div>
+<div class="card shadow-sm mb-3">
+<div class="card-body d-flex align-items-start">
+<div style="width: 7%; min-width: 50px; flex-shrink: 0;">
+<p><img src="../resources/practica2/workbench.png" class="img-fluid" style="width:100.0%"></p>
+</div>
+<div class="ms-3">
+<p><strong>Workbench</strong>. Usando esta opción se accede directamente al espacio de trabajo de Eclipse. Se encuentra arriba a la derecha, junto a un texto que dice <em>Hide</em>. Esta es la opción que utilizaremos para acceder al entorno de desarrollo cada vez que iniciemos Eclipse, una vez que ya nos hayamos familiarizado con la herramienta.</p>
+</div>
+</div>
+</div>
+<p>Dentro de las opciones que se muestran en la pantalla de bienvendia encontramos <em>Create a Java project</em>. Utilizaremos esta opción cada vez que queramos crear un nuevo proyecto, por ejemplo, para cada práctica de programación en Java de este curso. Para esta práctica, podemos crear un nuevo proyecto al que llamaremos <code>practica2</code>.</p>
+<p>Si cerramos la pestaña de bienvenida (<em>Welcome</em>, arriba a la izquierda), nos conduce al entorno de trabajo que se explica en la siguiente sección.</p>
+</section>
+<section id="entorno-de-trabajo" class="level3" data-number="2.2">
+<h3 data-number="2.2" class="anchored" data-anchor-id="entorno-de-trabajo"><span class="header-section-number">2.2</span> Entorno de trabajo</h3>
+<p>El entorno de trabajo o <em>workbench</em> nos proporciona una interfaz de usuario intuitiva, bien estructurada y sencilla de utilizar, donde están bien definidas las distintas zonas de trabajo. En la <a href="#fig-workbench_eclipse" class="quarto-xref">Figura&nbsp;5</a> se puede observar la interfaz de usuario de <em>Eclipse</em>.</p>
+<p>Las diferentes partes en las que está dividida la interfaz son:</p>
+<ul>
+<li>En la <strong>zona izquierda</strong>, se encuentra un menú (<strong><em>Package Explorer</em></strong>) que agrupa los componentes de cada uno de los proyectos abiertos.</li>
+<li>En la <strong>zona central</strong> de la pantalla se encuentra un <strong>editor</strong>, que sirve para ver y modificar los ficheros Java con los que trabajamos.</li>
+<li>En la <strong>zona de la derecha</strong>, hay un resumen (<em>Outline</em>) que nos indica la <strong>estructura del fichero activo</strong> en el editor (clases, métodos, variables, etc.).</li>
+<li>En la <strong>parte inferior del editor</strong> se encuentran algunas utilidades que nos permiten conocer el estado del proyecto, incluyendo <strong>errores</strong> (pestaña <em>Problems</em>) y la <strong>salida</strong> obtenida en los programas ejecutados (pestaña <em>Console</em>).</li>
+</ul>
+<div id="fig-workbench_eclipse" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-workbench_eclipse-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../resources/practica2/workbench_eclipse.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-workbench_eclipse-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;5: Espacio de trabajo de <em>Eclipse IDE</em>.
+</figcaption>
+</figure>
+</div>
+</section>
+<section id="crear-un-proyecto" class="level3" data-number="2.3">
+<h3 data-number="2.3" class="anchored" data-anchor-id="crear-un-proyecto"><span class="header-section-number">2.3</span> Crear un proyecto</h3>
+<p>Para la realización de cada práctica se recomienda <strong>crear un proyecto nuevo</strong>. De esta forma se pueden agrupar los ficheros correspondientes a una determinada práctica dentro de un proyecto para compilar y ejecutar programas individuales con una configuración concreta.</p>
+<p>Los proyectos se crean a través de la opción <code>File &gt; New &gt; Java Project</code>. Para crear el nuevo proyecto hay que dotarlo de un nombre identificativo (por ejemplo, <code>practica2</code>). Dicho proyecto se guarda en un directorio dentro del equipo, en el <em>workspace</em> seleccionado al lanzar <em>Eclipse</em>. Conviene seleccionar la opción <strong><em>Create separate source and output folders</em></strong>. En la <a href="#fig-new_project" class="quarto-xref">Figura&nbsp;6</a> se pueden observar todas las propiedades que se deben definir en la creación del proyecto.</p>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Advertencia</span>Configuración del proyecto
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Recuerda desmarcar la opción <em>Create module-info.java</em> y marcar la opción <em>Create separate source and output folders</em> para que se cree una carpeta para el código fuente y otra para los ficheros binarios.</p>
+</div>
+</div>
+<p>Teniendo en cuenta que nuestro entorno de trabajo se encuentra en <code>C:\practicasARQ</code>, el nuevo proyecto que has creado se configurará sobre la carpeta:</p>
+<p><code>C:\practicasARQ\practica2</code></p>
+<p>Abre dicha carpeta en el explorador de archivos del sistema operativo y observa que se han creado dos subcarpetas. En <code>src</code> se almacenarán los ficheros con el código en lenguaje Java (<em>source</em>), mientras que en la carpeta <code>bin</code> se almacenan los ficheros binarios (<em>binaries</em>).</p>
+<div id="fig-new_project" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-new_project-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../resources/practica2/new_project.png" class="img-fluid figure-img" style="width:70.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-new_project-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;6: Propiedades que debemos configurar al crear un nuevo proyecto.
+</figcaption>
+</figure>
+</div>
+</section>
+<section id="crear-una-aplicación" class="level3" data-number="2.4">
+<h3 data-number="2.4" class="anchored" data-anchor-id="crear-una-aplicación"><span class="header-section-number">2.4</span> Crear una aplicación</h3>
+<p>Los lenguajes orientados a objetos, como Java, giran en torno al concepto de clase. Todas las variables y métodos de Java deben pertenecer a una <strong>clase</strong>. Una clase es una colección de datos (variables) y de métodos (funciones) que operan sobre dichos datos. Cada clase pública debe ir en un fichero con extensión <code>.java</code>, cuyo nombre es exactamente igual que el de la clase. Por ejemplo, en un fichero <code>HolaMundo.java</code>, definiremos una clase <em>HolaMundo</em>.</p>
+<div id="fig-class_skeleton" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-class_skeleton-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../resources/practica2/class_skeleton.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-class_skeleton-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;7: Ejemplo de estructura de una clase Java.
+</figcaption>
+</figure>
+</div>
+<p>Para <strong>añadir nuevas clases</strong> al proyecto utilizaremos la opción de menú <code>File &gt; New &gt; Class</code>. Selecciona <code>src</code> como subcarpeta e introduce <code>HolaMundo</code> como nombre del archivo que contendrá el programa (clase) que deberás escribir a continuación. La opción <code>public static void main(String[] args)</code> debe marcarse para que la clase sea ejecutable, ejecutándose por tanto el método <em>main</em> de la clase. La <a href="#fig-new_class" class="quarto-xref">Figura&nbsp;8</a> muestra la configuración de nuestra nueva clase Java.</p>
+<div id="fig-new_class" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-new_class-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../resources/practica2/new_class.png" class="img-fluid figure-img" style="width:60.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-new_class-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;8: Creación de una nueva clase de Java en <em>Eclipse IDE</em>.
+</figcaption>
+</figure>
+</div>
+<p>Fijaos en que, además de la carpeta, hemos indicado el nombre de un paquete. Dicho nombre no se puede dejar en blanco, por lo que hemos escrito <code>practica2</code>. En futuras sesiones de prácticas hablaremos de qué es un paquete, y cómo crearlo para estructurar las clases que creemos en cada proyecto.</p>
+<p>Al finalizar la creación, se creará automáticamente un pequeño esqueleto con el código inicial común a cada clase, que deberá completarse para contener el siguiente código:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode java code-with-copy"><code class="sourceCode java"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">import</span> <span class="im">java</span><span class="op">.</span><span class="im">util</span><span class="op">.*;</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co">/**</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a> <span class="co">*</span> La clase HolaMundo ejemplifica el uso de Eclipse para programar en Java<span class="co">.</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a> <span class="co">*</span> <span class="an">@author</span> Fernando Bobillo<span class="co">,</span> Alfonso L<span class="co">ó</span>pez<span class="co">,</span> Ignacio Huitzil<span class="co">.</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a> <span class="co">*/</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="kw">public</span> <span class="kw">class</span> HolaMundo</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="op">{</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>    <span class="co">/**</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>     <span class="co">*</span> El m<span class="co">é</span>todo main contiene el programa principal<span class="co">.</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>     <span class="co">*</span> <span class="an">@param</span><span class="co"> </span><span class="an">args</span><span class="co"> </span>Puede recibir una lista de par<span class="co">á</span>metros como argumento<span class="co">.</span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>     <span class="co">*/</span></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>    <span class="kw">public</span> <span class="dt">static</span> <span class="dt">void</span> <span class="fu">main</span><span class="op">(</span><span class="bu">String</span><span class="op">[]</span> args<span class="op">)</span></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>    <span class="op">{</span></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>        <span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">print</span><span class="op">(</span><span class="st">"Escribe tu nombre: "</span><span class="op">);</span></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>        <span class="bu">String</span> nombre <span class="op">=</span> <span class="op">(</span><span class="kw">new</span> <span class="bu">Scanner</span><span class="op">(</span><span class="bu">System</span><span class="op">.</span><span class="fu">in</span><span class="op">)).</span><span class="fu">nextLinea</span><span class="op">();</span></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>        <span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span><span class="st">"Hola "</span> <span class="op">+</span> nom <span class="op">+</span> <span class="st">", mucho gusto."</span><span class="op">);</span></span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Advertencia</span>Errores de compilación
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>El código anterior contiene algunos <strong>errores</strong> introducidos intencionadamente para que se produzcan <strong>errores de compilación</strong>.</p>
+</div>
+</div>
+<p>El editor de <em>Eclipse</em> es un editor típico del entorno Windows: se puede copiar, cortar, pegar, buscar y sustituir. Tiene un sistema de tabulación inteligente que facilita la tarea de escritura. Se puede conseguir aumentar o disminuir la <strong>tabulación de una porción de código seleccionando</strong> dicha porción y pulsando tabulador (<code>TAB</code>) o mayúsculas-tabulador (<code>Shift + TAB</code>), respectivamente. Además, el editor de <em>Eclipse</em> tiene un sistema de <strong>autocompletado</strong> que se activa pulsando <code>Ctrl + Space</code> y que facilita la escritura de código, por ejemplo, para completar el nombre de una clase o método a partir de las primeras letras escritas.</p>
+<p><strong>Guarda los cambios</strong> que hemos introducido pulsando los iconos con disquetes que hay en la barra de herramientas superior (<img src="../resources/practica2/save.svg" class="img-fluid" style="width:1em"><img src="../resources/practica2/save_all.svg" class="img-fluid" style="width:1em">), pulsando <code>Ctrl-S</code> o bien con <code>File &gt; Save</code>.</p>
+</section>
+<section id="compilación-de-aplicaciones" class="level3" data-number="2.5">
+<h3 data-number="2.5" class="anchored" data-anchor-id="compilación-de-aplicaciones"><span class="header-section-number">2.5</span> Compilación de aplicaciones</h3>
+<p>Para compilar un programa, es necesario traducir el código fuente escrito en lenguaje Java a un código binario que pueda ser interpretado por la máquina virtual de Java. En el entorno <em>Eclipse</em>, la compilación se realiza automáticamente cada vez que se guarda un fichero, aunque también es posible compilar manualmente utilizando la opción de menú <code>Project &gt; Build Project</code>. Si el programa contiene errores de compilación, <em>Eclipse</em> nos lo indicará en la zona inferior del editor, en la subpestaña <em>Problems</em> (ver <a href="#fig-compilation_errors" class="quarto-xref">Figura&nbsp;9</a>). En esta subpestaña se nos informará sobre el proceso de compilación indicando los posibles errores. Puedes seleccionar cada error mediante doble click, y se indicará dentro del código dónde se encuentra el error.</p>
+<div id="fig-compilation_errors" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-compilation_errors-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../resources/practica2/compilation_errors.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-compilation_errors-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;9: Compilación de un programa con errores.
+</figcaption>
+</figure>
+</div>
+<p>Si trabajásemos sin un entorno de desarrollo, sería equivalente a abrir una ventana de órdenes del sistema operativo y teclear:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">javac</span> HolaMundo.java</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Nota</span>Resolución de errores de compilación
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>El primer error se produce porque el nombre correcto del método es <code>nextLine</code>; el segundo porque se ha escrito mal la variable <code>nombre</code>. Corrige ambos errores y recompila con <code>Project &gt; Build project</code>. Ahora no te deberá mostrar ningún error. El fichero compilado se llama <code>HolaMundo.class</code> y se habrá creado en la subcarpeta <code>bin</code>.</p>
+</div>
+</div>
+</section>
+<section id="ejecución-de-aplicaciones" class="level3" data-number="2.6">
+<h3 data-number="2.6" class="anchored" data-anchor-id="ejecución-de-aplicaciones"><span class="header-section-number">2.6</span> Ejecución de aplicaciones</h3>
+<p>Una vez que el programa se ha compilado correctamente, es posible ejecutarlo. Para ello, en el entorno Eclipse, se utiliza la opción de menú <code>Run &gt; Run as: Java Application</code> o bien el icono de ejecutar <img src="../resources/practica2/play.svg" class="img-fluid" style="width:1em"> en la barra de herramientas superior. Si el programa se ejecuta correctamente, aparecerá una nueva pestaña llamada <em>Console</em> en la parte inferior del editor, donde se mostrará la salida del programa.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Nota</span>Ejecución sin un entorno de desarrollo
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Si trabajásemos directamente con el JDK deberíamos invocar al intérprete (comando <code>java</code>) pasándole como parámetro el fichero compilado sin poner la extensión <code>.class</code>. Así pues, en el intérprete de órdenes teclearíamos:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">java</span> HolaMundo</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</div>
+</section>
+<section id="depuración-de-errores" class="level3" data-number="2.7">
+<h3 data-number="2.7" class="anchored" data-anchor-id="depuración-de-errores"><span class="header-section-number">2.7</span> Depuración de errores</h3>
+<p>En el proceso de desarrollo de un programa, es habitual que se produzcan errores de ejecución. Para solucionar estos errores, es necesario depurar el programa, es decir, ejecutar el programa paso a paso para observar el estado de las variables y comprender mejor el funcionamiento real del programa (ver <a href="#fig-debug_eclipse" class="quarto-xref">Figura&nbsp;10</a>).</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Nota</span>Ejecución paso a paso
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>La opción <code>Step into</code> ejecuta el código instrucción a instrucción, mientras que <code>Step over</code> ejecuta las llamadas a métodos como sentencias simples (sin entrar a ejecutar paso a paso cada instrucción dentro del método).</p>
+</div>
+</div>
+<div id="fig-debug_eclipse" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-debug_eclipse-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../resources/practica2/debugging.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-debug_eclipse-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;10: Depuración de un programa en Eclipse.
+</figcaption>
+</figure>
+</div>
+<p>Para ello, seguimos los siguientes pasos:</p>
+<ul>
+<li>Utiliza la opción de menú <code>Run &gt; Toggle line breakpoint</code> para establecer (o eliminar) puntos de parada sobre el código que queremos ejecutar paso a paso. La ejecución paso a paso comenzará en la línea que contenga el punto de ruptura. También se puede utilizar el menú desplegable que aparece al pulsar el botón derecho del ratón sobre el margen izquierdo de la ventana que muestra el código de una clase Java.</li>
+<li>Utiliza la opción <code>Run &gt; Debug</code>, o <code>Debug</code> <img src="../resources/practica2/debug.svg" class="img-fluid" style="width:1em"> en la barra de herramientas superior, para lanzar la ejecución en modo depuración de errores. Aparecerá una ventana de <em>debugger</em> (depurador) con el estado de todas las variables.</li>
+<li>Utiliza <code>Run &gt; Step into (F5)</code> y <code>Run &gt; Step over (F6)</code> para ejecutar el código instrucción a instrucción. <code>Step over</code> ejecuta las llamadas a métodos como sentencias simples (sin entrar a ejecutar paso a paso cada instrucción dentro del método).</li>
+</ul>
+<p>Para practicar todo lo visto hasta ahora, haz lo siguiente:</p>
+<ul>
+<li>Crea una nueva clase llamada <strong>Ejercicio</strong> (comenzando con una letra mayúscula).</li>
+<li>Pega el siguiente código en la clase creada.</li>
+</ul>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode java code-with-copy"><code class="sourceCode java"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="kw">package</span><span class="im"> practica2</span><span class="op">;</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="kw">public</span> <span class="kw">class</span> Ejercicio</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="op">{</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>        <span class="kw">public</span> <span class="dt">static</span> <span class="dt">void</span> <span class="fu">main</span><span class="op">(</span><span class="bu">String</span><span class="op">[]</span> args<span class="op">)</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>        <span class="op">{</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>            <span class="dt">int</span> n<span class="op">,</span> x<span class="op">,</span> y<span class="op">,</span> z<span class="op">;</span></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>            n <span class="op">=</span> <span class="dv">10</span><span class="op">;</span></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>            x <span class="op">=</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>            y <span class="op">=</span> <span class="dv">1</span><span class="op">;</span></span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>            z <span class="op">=</span> <span class="dv">1</span><span class="op">;</span></span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> <span class="op">(</span>n <span class="op">==</span> <span class="dv">0</span><span class="op">)</span> <span class="op">||</span> <span class="op">(</span>n <span class="op">==</span> <span class="dv">1</span><span class="op">)</span></span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>            <span class="op">{</span></span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>                x <span class="op">=</span> <span class="dv">1</span></span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>            <span class="op">}</span></span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>            <span class="cf">else</span></span>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a>            <span class="op">{</span></span>
+<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a>                <span class="cf">for</span> <span class="op">(</span>i<span class="op">=</span><span class="dv">2</span><span class="op">;</span> i<span class="op">&lt;=</span>n<span class="op">;</span> i<span class="op">++)</span></span>
+<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a>                <span class="op">{</span></span>
+<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a>                    <span class="dt">int</span> s <span class="op">=</span> y <span class="op">+</span> z<span class="op">;</span></span>
+<span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a>                    x <span class="op">=</span> s<span class="op">;</span></span>
+<span id="cb4-23"><a href="#cb4-23" aria-hidden="true" tabindex="-1"></a>                    z <span class="op">=</span> y<span class="op">;</span></span>
+<span id="cb4-24"><a href="#cb4-24" aria-hidden="true" tabindex="-1"></a>                    y <span class="op">=</span> x<span class="op">;</span></span>
+<span id="cb4-25"><a href="#cb4-25" aria-hidden="true" tabindex="-1"></a>                <span class="op">}</span></span>
+<span id="cb4-26"><a href="#cb4-26" aria-hidden="true" tabindex="-1"></a>            <span class="op">}</span></span>
+<span id="cb4-27"><a href="#cb4-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-28"><a href="#cb4-28" aria-hidden="true" tabindex="-1"></a>            <span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span>Programa terminado<span class="op">);</span></span>
+<span id="cb4-29"><a href="#cb4-29" aria-hidden="true" tabindex="-1"></a>        <span class="op">}</span></span>
+<span id="cb4-30"><a href="#cb4-30" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<ul>
+<li>Soluciona todos los errores de compilación en el programa anterior.</li>
+<li>Ejecuta el programa paso a paso para observar cuál es el valor que toma la variable <code>x</code> justo antes de finalizar el programa.</li>
+</ul>
+</section>
+<section id="exportar-proyectos" class="level3" data-number="2.8">
+<h3 data-number="2.8" class="anchored" data-anchor-id="exportar-proyectos"><span class="header-section-number">2.8</span> Exportar proyectos</h3>
+<p>Las opciones de exportar e importar proyectos sirven para transferir proyectos de un ordenador a otro. Por ejemplo, podemos exportar un proyecto <em>Eclipse</em> a una carpeta de una memoria USB y, en otro ordenador, importar la carpeta.</p>
+<p>Para exportar un proyecto de <em>Eclipse</em> a una carpeta de ficheros, haremos lo siguiente:</p>
+<ul>
+<li>Utiliza la opción de menú <code>File &gt; Export</code> y elegir <code>General &gt; File system</code> (ver <a href="#fig-export_project" class="quarto-xref">Figura&nbsp;11</a>).</li>
+</ul>
+<div id="fig-export_project" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-export_project-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../resources/practica2/export_workspace.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-export_project-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;11: Exportación de proyectos a una carpeta de ficheros.
+</figcaption>
+</figure>
+</div>
+<ul>
+<li>Marcaremos el proyecto a exportar y todos sus elementos (carpetas en la parte izquierda, ficheros concretos en la parte izquierda). En general, sólo se suele exportar la carpeta <code>src</code>, dado que los ficheros binarios (<em>bin</em>) se generan a partir de la compilación.</li>
+<li>En la zona <code>To directory</code> se indicará el nombre de la carpeta que vamos a crear.</li>
+<li>Pulsa <code>Finish</code> para finalizar.</li>
+</ul>
+<p>Si ha ido todo bien, habrás generado una carpeta con la estructura de subcarpetas del proyecto actual. Existen otras maneras de exportar proyectos, pero esta es la más sencilla. Por otro lado, no es estrictamente necesario exportar el proyecto, sino que es suficiente con guardar los ficheros <code>.java</code> ubicados en la carpeta <code>src</code>.</p>
+</section>
+<section id="importar-proyectos" class="level3" data-number="2.9">
+<h3 data-number="2.9" class="anchored" data-anchor-id="importar-proyectos"><span class="header-section-number">2.9</span> Importar proyectos</h3>
+<p>Por otro lado, para importar un proyecto tenemos varias alternativas:</p>
+<ul>
+<li>Copiamos la carpeta de ficheros exportada en el <em>workspace</em> del ordenador. Si existe otra carpeta con una versión previa del proyecto (por ejemplo, si estamos practicando la exportación y la importación en el mismo ordenador), deberemos borrar la versión previa para poder importarla correctamente.</li>
+<li>Utilizamos la opción <code>File &gt; Import</code> y a continuación seleccionamos <code>General &gt; Existing projects into workspace</code> (ver <a href="#fig-import_project" class="quarto-xref">Figura&nbsp;12</a>). De esta manera, se importará el proyecto completo, incluyendo la configuración de compilación y ejecución. Esta es la opción recomendada para importar proyectos a <em>Eclipse</em>.</li>
+</ul>
+<div id="fig-import_project" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-import_project-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../resources/practica2/import_workspace.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-import_project-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;12: Importación de proyectos en un <em>workspace</em>.
+</figcaption>
+</figure>
+</div>
+<ul>
+<li>Crear un nuevo proyecto a partir de clases Java existentes utilizando la opción <code>Import  &gt; General &gt; File system</code>. De esta manera, podríamos importar únicamente los ficheros <code>.java</code> sin necesidad de considerar el resto del proyecto.</li>
+</ul>
+<p>Por ahora recomendamos utilizar la opción <strong><code>General &gt; Existing projects into workspace</code></strong>.</p>
+</section>
+<section id="crear-biblioteca" class="level3" data-number="2.10">
+<h3 data-number="2.10" class="anchored" data-anchor-id="crear-biblioteca"><span class="header-section-number">2.10</span> Crear biblioteca</h3>
+<p>Cuando se quiere distribuir una aplicación desarrollada en Java que incluye un número considerable de clases y paquetes, conviene generar una <strong>biblioteca</strong>. Las bibliotecas en Java son archivos con extensión <strong><code>.jar</code></strong> que comprimen, de manera similar a un <code>.zip</code>, un conjunto de clases ya compiladas (ficheros <code>.class</code>) y organizadas en paquetes. Se puede explorar el contenido de un fichero <code>.jar</code> con programas de compresión de ficheros como <em>WinZip</em>.</p>
+<div id="fig-import_export_scheme" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-import_export_scheme-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../resources/practica2/import_export_scheme.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-import_export_scheme-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;13: Ejemplo de usos de importación y exportación de bibliotecas.
+</figcaption>
+</figure>
+</div>
+<p>Para crear una biblioteca en el entorno <em>Eclipse</em> debemos seleccionar el proyecto que queremos exportar, utilizar la opción de menú <code>File &gt; Export</code>, seleccionar <code>Java &gt; Runnable JAR File</code> y seguir los siguientes pasos, ilustrados en la Ilustración 12:</p>
+<ul>
+<li>En <code>Launch configuration</code> se elige la clase principal, es decir, la que tiene el método <code>main</code> que se ejecutará una vez que ejecutemos el fichero <code>.jar</code>.</li>
+<li>En <code>Export destination</code> se indica el nombre del fichero que vamos a crear y la ruta donde se va a almacenar dicho fichero.</li>
+<li>Pulsa <code>Finish</code> para finalizar. Si ha ido todo bien, se habrá generado un fichero <code>.jar</code>.</li>
+</ul>
+<div id="fig-create_jar" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-create_jar-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../resources/practica2/jar.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-create_jar-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;14: Creación de una biblioteca .jar a partir de un proyecto.
+</figcaption>
+</figure>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Nota</span>Ejecución de un programa a partir de un fichero .jar
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Si el programa se llama <code>HolaMundo.jar</code>, podrás ejecutarlo escribiendo en una terminal del sistema operativo lo siguiente:`</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="ex">java</span> –jar HolaMundo.jar</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Para abrir una terminal en <em>Windows</em>, hay que utilizar la barra de búsqueda e introducir <code>Símbolo del sistema</code>. Antes de poder ejecutar el <code>.jar</code> con la instrucción anterior, debemos posicionarnos en la carpeta que lo contenga. Para simplificar, guarda el fichero <code>.jar</code> en la carpeta raíz del disco duro, <code>C:</code>, y posteriormente escribe en la ventana de órdenes la siguiente instrucción:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> /</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</div>
+</section>
+<section id="añadir-bibliotecas-a-un-proyecto" class="level3" data-number="2.11">
+<h3 data-number="2.11" class="anchored" data-anchor-id="añadir-bibliotecas-a-un-proyecto"><span class="header-section-number">2.11</span> Añadir bibliotecas a un proyecto</h3>
+<p>Si queremos utilizar alguna de las clases ya definidas en Java, simplemente es necesario añadir una sentencia en nuestro programa para <strong>importar la biblioteca</strong> correspondiente. Por ejemplo, para utilizar las clases definidas en el paquete <code>java.util</code>, hemos añadido en nuestro programa la siguiente instrucción:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode java code-with-copy"><code class="sourceCode java"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="kw">import</span> <span class="im">java</span><span class="op">.</span><span class="im">util</span><span class="op">.*;</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<p>El proceso de incluir bibliotecas diferentes a las incluidas por defecto en Java puede no ser trivial, dado que hay varias maneras; entre ellas, las siguientes:</p>
+<ul>
+<li>Si tenemos un fichero <code>.jar</code> con las clases compiladas, podemos añadirlo directamente.</li>
+<li>Si tenemos las clases compiladas pero no un fichero <code>.jar</code>, nos puede interesar incluir el directorio con clases compiladas.</li>
+<li>Si vamos a utilizar una biblioteca común, es recomendable crear una variable, e incluirla como biblioteca.</li>
+</ul>
+<p>En este apartado vamos a describir el primer escenario. Para ello, vamos a importar a modo de ejemplo la biblioteca <code>.jar</code> incluida en Moodle, <code>biblioteca.jar</code>.</p>
+<p>Antes de ello, vamos a escribir en nuestro programa la siguiente instrucción:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode java code-with-copy"><code class="sourceCode java"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>Practicas<span class="op">.</span><span class="fu">escribeMensaje</span><span class="op">();</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Al compilar, se nos informa de un error: la clase Practicas no ha sido definida todavía. Para solucionarlo, vamos a importar una biblioteca donde se define dicha clase. Debemos hacer click derecho sobre el nombre del proyecto y seleccionar <code>Properties &gt; Java Build Path</code>. Obtendremos una ventana como la de la <a href="#fig-add_jar" class="quarto-xref">Figura&nbsp;15</a>, donde se pueden configurar las bibliotecas que se van a utilizar en el proyecto.</p>
+<p>A continuación, hacemos click sobre <code>Add External JARs</code> y seleccionamos el fichero a importar. Una vez hecho esto, podemos comprobar que es posible ejecutar nuestro programa sin ningún tipo de problemas, pues el código necesario se obtiene en el fichero importado.</p>
+<div id="fig-add_jar" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-add_jar-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../resources/practica2/add_jar.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-add_jar-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;15: Añadir una biblioteca.jar a un proyecto.
+</figcaption>
+</figure>
+</div>
+</section>
+<section id="generar-documentación" class="level3" data-number="2.12">
+<h3 data-number="2.12" class="anchored" data-anchor-id="generar-documentación"><span class="header-section-number">2.12</span> Generar documentación</h3>
+<p>Para generar la documentación de las clases y paquetes desarrollados se utiliza la herramienta javadoc, incluida en la JDK. Desde el entorno de <em>Eclipse</em>, se facilita la utilización de esta herramienta a través de la opción de menú <code>Project &gt; Generate Javadoc</code> (<a href="#fig-javadoc" class="quarto-xref">Figura&nbsp;16</a>). Al seleccionar esta opción, se muestra una ventana donde se deben configurar algunos parámetros para generar la documentación.</p>
+<p>En primer lugar, seleccionamos la ubicación del ejecutable javadoc con el botón <code>Configure</code>. Normalmente, <em>Eclipse</em> detecta automáticamente su ubicación y rellena este campo por nosotros, por lo que no necesitamos hacer nada.</p>
+<p>A continuación, se debe configurar el directorio de salida de la documentación utilizando la caja de texto <code>Destination</code> y el botón <code>Browse</code> asociado. Por último, se pulsará el botón <code>Finish</code> para finalizar y generar la documentación. La documentación podrá abrirse con cualquier navegador HTML. Pruébalo para la clase <code>HolaMundo</code>.</p>
+<div id="fig-javadoc" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-javadoc-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../resources/practica2/javadoc.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-javadoc-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;16: Generación de documentación con la herramienta javadoc.
+</figcaption>
+</figure>
+</div>
+</section>
+<section id="acceso-a-la-documentación-del-jdk" class="level3" data-number="2.13">
+<h3 data-number="2.13" class="anchored" data-anchor-id="acceso-a-la-documentación-del-jdk"><span class="header-section-number">2.13</span> Acceso a la documentación del JDK</h3>
+<p>Java proporciona una amplia y detallada documentación acerca de las herramientas que incluye el JDK, así como la especificación de la API (<em>Application Programming Interface</em>), es decir, la documentación de las bibliotecas disponibles por defecto en Java. Esta documentación se encuentra la página oficial de <em>Oracle</em> (ver <a href="#fig-jdk_doc" class="quarto-xref">Figura&nbsp;17</a>), y lo mismo sucede para la documentación de la API (ver <a href="#fig-api_doc" class="quarto-xref">Figura&nbsp;18</a>). Esta documentación puede descargarse para poder consultarla sin necesidad de acceder a Internet; el material descargado puede visualizarse con cualquier navegador web.</p>
+<p>Modifica la clase <code>Ejercicio</code> para que cada vez que se ejecute escriba por pantalla un número diferente. Para ello, modifica la instrucción <code>x = 1</code> con métodos de la clase <code>Math</code> que permitan obtener un número enteros aleatorio: primero se obtendrá un número real aleatorio y luego se redondeará a un número entero. Puede buscarse dicho método en la documentación de la clase <code>java.lang.Math</code>.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode java code-with-copy"><code class="sourceCode java"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> <span class="bu">Math</span><span class="op">.???(</span><span class="bu">Math</span><span class="op">.???());</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="fig-jdk_doc" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-jdk_doc-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../resources/practica2/jdk_doc.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-jdk_doc-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;17: Acceso a la documentación del JDK.
+</figcaption>
+</figure>
+</div>
+<div id="fig-api_doc" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-api_doc-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../resources/practica2/api_doc.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-api_doc-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;18: Acceso a la documentación de la API de Java.
+</figcaption>
+</figure>
+</div>
+</section>
+</section>
+<section id="apéndice.-instalación-de-eclipse-y-jdk" class="level2" data-number="3">
+<h2 data-number="3" class="anchored" data-anchor-id="apéndice.-instalación-de-eclipse-y-jdk"><span class="header-section-number">3</span> Apéndice. Instalación de Eclipse y JDK</h2>
+<p>En este apéndice explicaremos el proceso de instalación del software necesario para realizar las prácticas de Informática en los ordenadores personales. Existen al menos dos maneras de instalar el software:</p>
+<section id="instalación-de-eclipse-mediante-un-instalador" class="level3" data-number="3.1">
+<h3 data-number="3.1" class="anchored" data-anchor-id="instalación-de-eclipse-mediante-un-instalador"><span class="header-section-number">3.1</span> Instalación de Eclipse mediante un instalador</h3>
+<ul>
+<li>Visita la página web oficial de <a href="https://www.eclipse.org/"><em>Eclipse</em></a>.</li>
+<li>Localiza el botón de <strong><em>Download</em></strong>. Nos llevará a la página de descargas.</li>
+<li>Localiza el panel de <em>Eclipse Installer</em> (<a href="#fig-installer" class="quarto-xref">Figura&nbsp;19</a>). Debemos reconocer nuestro sistema operativo (<em>Windows</em>, <em>Linux</em> o <em>macOS</em>), y pulsar sobre <code>x86_64</code>.</li>
+<li>Una vez descargado el instalador, lo ejecutamos.</li>
+</ul>
+<p>El instalador permite obtener múltiples herramientas de Eclipse, aunque nosotros sólo necesitamos el entorno de desarrollo para Java. La instalación es bastante automática, y simplemente tendremos que seleccionar Eclipse IDE for Java Developers (<a href="#fig-suite_tools" class="quarto-xref">Figura&nbsp;20</a>) y pulsar el botón <code>Install</code> para iniciar la instalación.</p>
+<div id="fig-installer" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-installer-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../resources/practica2/eclipse_suite_installation.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-installer-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;19: Panel de descarga del instalador de Eclipse.
+</figcaption>
+</figure>
+</div>
+<div id="fig-suite_tools" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-suite_tools-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../resources/practica2/eclipse_suite.png" class="img-fluid figure-img" style="width:60.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-suite_tools-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;20: Herramientas disponibles en la suite de Eclipse.
+</figcaption>
+</figure>
+</div>
+<p>Una vez seleccionada dicha opción, se nos dirige a una pantalla como la que se muestra en la <a href="#fig-jre_installation" class="quarto-xref">Figura&nbsp;21</a>. El objetivo es configurar dos rutas: la localización de las herramientas de desarrollo para Java y la ruta de instalación de Eclipse. Podéis personalizar ambas rutas, pero no es recomendable hacerlo. En particular, la primera ruta apunta a un <em>Java Development Kit</em> (JDK), que, si no queremos descargar junto con Eclipse, deberá instalarse por separado. Esta última opción, aunque es menos sencilla, se describe en el siguiente punto y, entre otras ventajas, permite probar los comandos java y javac en la terminal del ordenador.</p>
+<div id="fig-jre_installation" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-jre_installation-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../resources/practica2/jre_installation.png" class="img-fluid figure-img" style="width:75.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-jre_installation-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;21: Instalación de Eclipse para Java, indicando que queremos descargar un JRE.
+</figcaption>
+</figure>
+</div>
+<p>Una opción alternativa consiste en indicar la ruta de un <em>Java Runtime Environment</em> (JRE) (versión 21 o superior) previamente instalado (ver <a href="#fig-jdk_installation" class="quarto-xref">Figura&nbsp;22</a>). Para la descarga e instalación del JDK de Java, por favor, dirígete a la sección B.1 del Apéndice. Por ejemplo, en la siguiente imagen, se ha detectado una instalación en la ruta <code>C:/Program Files/Java/jdk-25</code>, que es la ruta de instalación por defecto de un JDK.</p>
+<div id="fig-jdk_installation" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-jdk_installation-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../resources/practica2/jdk_installation.png" class="img-fluid figure-img" style="width:75.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-jdk_installation-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;22: Instalación de Eclipse para Java, indicando que queremos utilizar un JDK previamente instalado.
+</figcaption>
+</figure>
+</div>
+</section>
+<section id="instalación-alternativa-de-eclipse-sin-instalador" class="level3" data-number="3.2">
+<h3 data-number="3.2" class="anchored" data-anchor-id="instalación-alternativa-de-eclipse-sin-instalador"><span class="header-section-number">3.2</span> Instalación alternativa de Eclipse sin instalador</h3>
+<section id="instalación-del-java-software-development-kit-jdk" class="level4" data-number="3.2.1">
+<h4 data-number="3.2.1" class="anchored" data-anchor-id="instalación-del-java-software-development-kit-jdk"><span class="header-section-number">3.2.1</span> Instalación del Java Software Development Kit (JDK)</h4>
+<p>Para comenzar, debemos descargar la última versión del JDK de la página web de Oracle:</p>
+<ul>
+<li>Descargamos el JDK de Java de la página oficial de <a href="https://www.oracle.com/es/java/technologies/downloads/">Oracle</a>. En este momento, la última versión disponible es la <strong>25</strong>.</li>
+<li>Debemos seleccionar el sistema operativo de nuestro ordenador personal (<em>Linux</em>, <em>macOS</em> o <em>Windows</em>) y descargar un instalador. En <em>Windows</em>, podemos descargar tanto <code>x64 Installer</code> como <code>x64 MSI Installer</code>.</li>
+<li>Una vez descargado, abrimos el archivo para comenzar el proceso de instalación. El proceso es completamente automático y no habrá que hacer nada, salvo utilizar el botón <code>Next</code> para avanzar al siguiente paso. La ruta de instalación por defecto en Windows es <code>C:/Program Files/Java/jdk-25</code>. <strong>Se recomienda no modificar esta ruta, salvo que no tengamos espacio en <code>C:</code></strong>.</li>
+</ul>
+<div id="fig-jdk_installation2" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-jdk_installation2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../resources/practica2/jdk_installation_standalone.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-jdk_installation2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;23: Paso intermedio de la instalación del JDK. Se muestra la ruta de instalación por defecto, la cual no modificaremos.
+</figcaption>
+</figure>
+</div>
+</section>
+<section id="instalación-de-eclipse" class="level4" data-number="3.2.2">
+<h4 data-number="3.2.2" class="anchored" data-anchor-id="instalación-de-eclipse"><span class="header-section-number">3.2.2</span> Instalación de Eclipse</h4>
+<ul>
+<li>Visita la página web oficial de <em>Eclipse</em>.</li>
+<li>Localiza el botón de <code>Download</code>; nos llevará a la página de descargas.</li>
+</ul>
+<div id="fig-eclipse_download" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-eclipse_download-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../resources/practica2/eclipse_ide_download.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-eclipse_download-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;24: Panel de descarga de Eclipse sin instalador.
+</figcaption>
+</figure>
+</div>
+<ul>
+<li>Partiendo de un panel similar al de la <a href="#fig-eclipse_download" class="quarto-xref">Figura&nbsp;24</a>, reconocemos nuestro sistema operativo y pulsamos sobre <code>x86_64</code>. Se descargará un <code>.zip</code> con una carpeta dentro llamada <code>eclipse</code> (ver <a href="#fig-eclipse_files" class="quarto-xref">Figura&nbsp;25</a>). Podemos situar dicha carpeta en cualquier directorio de nuestra elección, por ejemplo, en la unidad <code>C:</code>. Ten en cuenta que esta opción no requiere instalación, y por tanto, accederemos siempre a dicha carpeta cuando queramos iniciar <em>Eclipse</em> haciendo click sobre <code>eclipse.exe</code>. En la <a href="#fig-eclipse_files" class="quarto-xref">Figura&nbsp;25</a> se muestra el contenido del fichero <code>.zip</code> descomprimido.</li>
+</ul>
+<div id="fig-eclipse_files" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-eclipse_files-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../resources/practica2/filesystem.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-eclipse_files-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;25: Ficheros contenidos en el directorio eclipse, tras descomprimir el fichero .zip descargado de la página oficial de Eclipse.
+</figcaption>
+</figure>
+</div>
+
+
+</section>
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copiado");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copiado");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/informatica-30717\.github\.io\/");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="../practicas/practica1.html" class="pagination-link" aria-label="Práctica 1: Introducción a Processing">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Práctica 1: Introducción a Processing</span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="../practicas/practica3.html" class="pagination-link" aria-label="Práctica 3: Resolución de problemas en Java (I)">
+        <span class="nav-page-text">Práctica 3: Resolución de problemas en Java (I)</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

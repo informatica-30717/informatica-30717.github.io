@@ -1,27 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://informatica-30717.github.io/practicas/practica3.html</loc>
+    <lastmod>2026-02-15T09:30:06.774Z</lastmod>
+  </url>
+  <url>
+    <loc>https://informatica-30717.github.io/practicas/practica3.reveal.html</loc>
+    <lastmod>2026-02-15T15:37:43.664Z</lastmod>
+  </url>
+  <url>
     <loc>https://informatica-30717.github.io/practicas/practica1.html</loc>
-    <lastmod>2026-02-12T13:36:25.979Z</lastmod>
+    <lastmod>2026-02-15T15:20:00.982Z</lastmod>
   </url>
   <url>
     <loc>https://informatica-30717.github.io/practicas/practica1.reveal.html</loc>
-    <lastmod>2026-02-13T06:51:41.925Z</lastmod>
+    <lastmod>2026-02-15T15:37:41.412Z</lastmod>
   </url>
   <url>
     <loc>https://informatica-30717.github.io/calendar.html</loc>
     <lastmod>2026-02-11T09:25:34.385Z</lastmod>
   </url>
   <url>
-    <loc>https://informatica-30717.github.io/calendar.reveal.html</loc>
-    <lastmod>2026-02-13T06:51:38.056Z</lastmod>
-  </url>
-  <url>
-    <loc>https://informatica-30717.github.io/index.reveal.html</loc>
-    <lastmod>2026-02-13T06:51:38.607Z</lastmod>
-  </url>
-  <url>
     <loc>https://informatica-30717.github.io/index.html</loc>
-    <lastmod>2026-02-11T12:37:41.529Z</lastmod>
+    <lastmod>2026-02-13T22:49:21.389Z</lastmod>
+  </url>
+  <url>
+    <loc>https://informatica-30717.github.io/practicas/practica2.reveal.html</loc>
+    <lastmod>2026-02-15T15:37:42.584Z</lastmod>
+  </url>
+  <url>
+    <loc>https://informatica-30717.github.io/practicas/practica2.html</loc>
+    <lastmod>2026-02-15T15:25:27.076Z</lastmod>
   </url>
 </urlset>
