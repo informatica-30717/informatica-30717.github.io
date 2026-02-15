@@ -66,8 +66,8 @@ Por ejemplo, los siguientes coeficientes generan diferentes números de solucion
 
       // Styles: Removed background/border here so it blends into the card
       const form = htl.html`<div style="display: flex; flex-wrap: wrap; justify-content: center; width: 100%; padding-bottom: 20px; border-bottom: 1px solid #eee; margin-bottom: 20px;">
-        ${col(ia, "a (curvatura)")}
-        ${col(ib, "b (pendiente)")}
+        ${col(ia, "a (curvatura ╭╮)")}
+        ${col(ib, "b (pendiente ⟋)")}
         ${col(ic, "c (desplazamiento ↑↓)")}
       </div>`;
 

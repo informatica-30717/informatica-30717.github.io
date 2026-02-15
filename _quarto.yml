@@ -13,18 +13,6 @@ format:
     toc: true
     theme: 
       light: cosmo
-  revealjs:
-    slide-level: 2
-    theme: simple
-    smaller: true
-    code-overflow: scroll
-    scrollable: true
-    footer: "Informatica (30717) - Estudios en Arquitectura (UNIZAR)"
-    auto-animate: true
-    incremental: true
-    show-slide-number: all
-    code-line-numbers: true
-    output-ext: "reveal.html"
 
 website:
   title: "Informática (30717) - Grado en Estudios en Arquitectura"
@@ -44,6 +32,16 @@ website:
   sidebar:
     style: floating
     logo: ../resources/unizar.png
+  page-footer:
+    left: |
+      © 2026 Alfonso López Ruiz  
+      Universidad de Zaragoza
+    right: |
+      Material docente protegido.  
+      Licencia **CC BY-NC-SA 4.0** ![](https://mirrors.creativecommons.org/presskit/buttons/88x31/png/by-nc-sa.png){width=80px}  
+      Uso docente no comercial permitido con atribución y licencia compartida.
+
+license: "CC BY-NC-SA 4.0"
 
 execute:
   freeze: auto

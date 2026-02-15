@@ -32,7 +32,7 @@ Los objetivos de esta práctica son los siguientes:
 - Distribución gratuita y de código abierto.
 :::
 ::: {.column}
-![](../resources/lesson1/processing.svg)
+![](../resources/practica1/processing.svg)
 :::
 :::
 
@@ -42,10 +42,10 @@ La propia [página de Processing](https://processing.org/examples/) muestra nume
 
 ::: {layout="[50,50]"}
 ::: {.column}
-![Visualización del [fractal de Mandelbrot](https://processing.org/examples/mandelbrot.html).](../resources/lesson1/processing-example.png){#fig-mandelbrot}
+![Visualización del [fractal de Mandelbrot](https://processing.org/examples/mandelbrot.html).](../resources/practica1/processing-example.png){#fig-mandelbrot}
 :::
 ::: {.column}
-![Canal de Youtube [The Coding Train](https://www.youtube.com/c/TheCodingTrain).](../resources/lesson1/thecodetrain.gif){#fig-thecodetrain}
+![Canal de Youtube [The Coding Train](https://www.youtube.com/c/TheCodingTrain).](../resources/practica1/thecodetrain.gif){#fig-thecodetrain}
 :::
 :::
 
@@ -66,7 +66,7 @@ El entorno de desarrollo de *Processing* tiene un diseño minimalista que facili
 
 Al ejecutar un programa se abrirá una **nueva ventana donde se mostrará el resultado de la ejecución**.
 
-![Vista del entorno de desarrollo (derecha) y ventana *pop-up* (izquierda) que redirige a ejemplos disponibles en su página web.](../resources/lesson1/ide.png){#fig-ide}
+![Vista del entorno de desarrollo (derecha) y ventana *pop-up* (izquierda) que redirige a ejemplos disponibles en su página web.](../resources/practica1/ide.png){#fig-ide}
 
 ---
 
@@ -88,11 +88,11 @@ Un píxel es la **unidad más pequeña de una imagen digital**. La resolución d
 
 ::: {layout="[50,50]"}
 ::: {.column}
-![Animación con una resolución de pantalla alta.](../resources/lesson1/animation_pixels.webm){#fig-highres}
+![Animación con una resolución de pantalla alta.](../resources/practica1/animation_pixels.webm){#fig-highres}
 :::
 
 ::: {.column}
-![Animación con una resolución de pantalla más baja, donde comienzan a ser visibles los píxeles.](../resources/lesson1/animation_pixels_lowerres.webm){#fig-lowres}
+![Animación con una resolución de pantalla más baja, donde comienzan a ser visibles los píxeles.](../resources/practica1/animation_pixels_lowerres.webm){#fig-lowres}
 :::
 :::
 
@@ -112,7 +112,7 @@ line(10, 0, 40, 50);
 :::
 :::
 ::: {.column}
-![Ilustración de una matriz de píxeles, indicando las coordenadas de algunos de ellos.](../resources/lesson1/pixel-matrix.svg){#fig-pixels}
+![Ilustración de una matriz de píxeles, indicando las coordenadas de algunos de ellos.](../resources/practica1/pixel-matrix.svg){#fig-pixels}
 :::
 :::
 
@@ -223,7 +223,7 @@ Tanto en la documentación oficial, como en la solución del ejercicio anterior,
 
 ---
 
-![Representación de cómo se interpretan las posiciones en ambos modos para rectángulos y elipses.](../resources/lesson1/rect-mode.svg){#fig-rectmodes}
+![Representación de cómo se interpretan las posiciones en ambos modos para rectángulos y elipses.](../resources/practica1/rect-mode.svg){#fig-rectmodes}
 
 ---
 
@@ -271,7 +271,7 @@ En *Processing*, las figuras tienen **borde** y **relleno**, que se definen medi
 :::
 
 ::: {.column}
-![Imagen representada únicamente con valores de gris.](../resources/lesson1/grayscale.svg){#fig-grayscale}
+![Imagen representada únicamente con valores de gris.](../resources/practica1/grayscale.svg){#fig-grayscale}
 :::
 :::
 
@@ -325,7 +325,7 @@ Intenta crear un lienzo de tamaño 30x30 y repite este ejercicio. **¿Qué suced
 
 Trata de obtener algo parecido a la figura que se muestra debajo.
 
-![](../resources/lesson1/render.png){width="40%" fig-align="center"}
+![](../resources/practica1/render.png){width="40%" fig-align="center"}
 :::
 :::
 :::
@@ -336,7 +336,7 @@ Trata de obtener algo parecido a la figura que se muestra debajo.
 
 ::: {layout="[30,70]"}
 ::: {.column}
-![Representación de los colores primarios RGB.](../resources/lesson1/primary-colors.png){#fig-rgb}
+![Representación de los colores primarios RGB.](../resources/practica1/primary-colors.png){#fig-rgb}
 :::
 
 ::: {.column}
@@ -369,7 +369,7 @@ fill(0, 0, 255);  // azul
 
 ::: {layout="[40, 50]"}
 ::: {.column}
-![Captura de pantalla del selector de color de *Processing*.](../resources/lesson1/hsv-picker.png){#fig-colorpicker}
+![Captura de pantalla del selector de color de *Processing*.](../resources/practica1/hsv-picker.png){#fig-colorpicker}
 :::
 
 ::: {.column}
@@ -434,7 +434,7 @@ line(226, 390, 250, 420);
 :::
 
 ::: {.column}
-![Imagen del alienígena Zoog.](../resources/lesson1/zoog.png){#fig-zoog}
+![Imagen del alienígena Zoog.](../resources/practica1/zoog.png){#fig-zoog}
 
 ::: {.callout-note}
 ## 🧠 Ejercicio 10 - Dibuja a Zoog
@@ -475,7 +475,7 @@ Cuando ejecutamos un programa en *Processing*, el código no se ejecuta de arrib
 - **La función `setup()` se ejecuta una única vez al comienzo del programa**. Su objetivo es preparar el entorno antes de empezar a dibujar. En esta función se suele definir el tamaño de la ventana, inicializar variables, configurar colores o modos de dibujo y cargar recursos como imágenes o fuentes. **Una vez que `setup()` termina, *Processing* no vuelve a ejecutarla**.
 - Después de `setup()`, *Processing* entra automáticamente en la función `draw()`. **La función `draw()` se ejecuta repetidamente**, normalmente unas sesenta veces por segundo. **En cada ejecución se dibuja un nuevo fotograma y se actualizan posiciones o estados**. Gracias a este bucle continuo es posible crear animaciones, juegos y visualizaciones interactivas.
 
-![Analogía del funcionamiento de *Processing*, y el proceso de animación. El resultado final se compone de varias llamadas a `draw`, y en cada llamada, se dibujan múltiples tipos de geometría.](../resources/lesson1/disney-animation.svg){#fig-disney-animation}
+![Analogía del funcionamiento de *Processing*, y el proceso de animación. El resultado final se compone de varias llamadas a `draw`, y en cada llamada, se dibujan múltiples tipos de geometría.](../resources/practica1/disney-animation.svg){#fig-disney-animation}
 ::: 
 
 ::: {.column .centered}
@@ -585,7 +585,7 @@ Intenta que las piernas de Zoog también sigan al ratón, manteniendo la misma d
 :::
 
 ::: {.column}
-![Algunas medidas de Zoog.](../resources/lesson1/zoog_size.svg){#fig-zoog-follow-mouse}
+![Algunas medidas de Zoog.](../resources/practica1/zoog_size.svg){#fig-zoog-follow-mouse}
 :::
 :::
 
@@ -711,7 +711,7 @@ Modifica el programa de Zoog para que dibuje *Z* pares de brazos, donde *Z* es u
 :::
 :::
 ::: {.column}
-![Resultado de añadir 3 pares de brazos a Zoog.](../resources/lesson1/zoog-arms.png){#fig-zoog-multiple-arms}
+![Resultado de añadir 3 pares de brazos a Zoog.](../resources/practica1/zoog-arms.png){#fig-zoog-multiple-arms}
 :::
 :::
 
@@ -719,7 +719,7 @@ Modifica el programa de Zoog para que dibuje *Z* pares de brazos, donde *Z* es u
 
 ## Apéndice: Instalación de Processing {.unnumbered}
 
-![Banner de la página oficial de *Processing*; a la izquierda se muestra el botón de *Download*.](../resources/lesson1/web-teaser.png){#fig-installation}
+![Banner de la página oficial de *Processing*; a la izquierda se muestra el botón de *Download*.](../resources/practica1/web-teaser.png){#fig-installation}
 
 - Accede a [la página oficial de *Processing*](http://processing.org) y selecciona **Download**.
 - Descarga la versión correspondiente a tu sistema operativo.

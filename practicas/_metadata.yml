@@ -1,0 +1,13 @@
+format:
+  revealjs:
+    slide-level: 2
+    theme: simple
+    smaller: true
+    code-overflow: scroll
+    scrollable: true
+    footer: "Informatica (30717) - Estudios en Arquitectura (UNIZAR)"
+    auto-animate: true
+    incremental: true
+    show-slide-number: all
+    code-line-numbers: true
+    output-ext: "reveal.html"
