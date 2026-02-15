@@ -17,74 +17,138 @@ Los objetivos de la segunda práctica de la asignatura son los siguientes:
 
 ## El entorno de desarrollo Eclipse
 
-Para facilitar la tarea de desarrollo de programas existen entornos que permiten trabajar de una manera más cómoda. Algunos ejemplos son NetBeans, Eclipse o IntelliJ. Nosotros recomendamos el uso de Eclipse, un entorno de desarrollo de libre distribución.
+Para facilitar el desarrollo de programas, existen entornos que permiten trabajar más cómodamente, tales como NetBeans, Eclipse o IntelliJ. Nosotros recomendamos el uso de ***Eclipse***, un entorno de desarrollo de libre distribución.
 
-Inicia la herramienta Eclipse haciendo doble clic sobre el ejecutable Eclipse en el escritorio de los laboratorios de prácticas, o bien buscando Eclipse en la barra de tareas. Para instalar esta aplicación en otros ordenadores puede consultarse el Apéndice. Al iniciar Eclipse aparecerá la pantalla de bienvenida que se muestra en la @fig:init_eclipse.
+Inicia *Eclipse* haciendo doble clic sobre el ejecutable *Eclipse* en la carpeta `software_disponible`, o bien buscando *Eclipse* en la barra de tareas. Para instalar esta aplicación en otros ordenadores puede consultarse el Apéndice. Al iniciar *Eclipse* aparecerá la pantalla de bienvenida que se muestra en la @fig-init_eclipse.
 
-![Pantalla de bienvenida.](../resources/lesson2/init_eclipse.png){#fig:init_eclipse}
+![Pantalla de bienvenida.](../resources/lesson2/init_eclipse.png){#fig-init_eclipse}
 
-Para poder comenzar a trabajar con el entorno de desarrollo será necesario definir un espacio de trabajo (*workspace*), tal y como se muestra en la @fig:workspace_eclipse. Este *workspace* contendrá todos los ficheros creados con Eclipse. Por ejemplo, se puede establecer el directorio *C:/PracticasARQ* como directorio de trabajo.
+Para poder comenzar a trabajar con el entorno de desarrollo será necesario definir un espacio de trabajo o *workspace*, tal y como se muestra en la @fig-workspace_eclipse. Este *workspace* contendrá todos los ficheros creados con *Eclipse*. Por ejemplo, se puede establecer el directorio `C:/PracticasARQ` como directorio de trabajo.
 
-![Configuración del *workspace*.](../resources/lesson2/workspace_eclipse.png){#fig:workspace_eclipse}
+![Configuración del *workspace*.](../resources/lesson2/workspace_eclipse.png){#fig-workspace_eclipse}
 
-En los siguientes subapartados aparecen solo algunas de las características de Eclipse, o recomendaciones acerca de su uso. Si tienes más dudas sobre cómo utilizar Eclipse, deberás consultar la ayuda en línea (opción de menú `Help > Help Contents`), o bien accediendo a su [página web](http://help.eclipse.org/), donde se encuentra también toda la documentación del programa.
+En los siguientes subapartados aparecen solo algunas de las características de *Eclipse* o recomendaciones acerca de su uso. Si tienes más dudas sobre cómo utilizar *Eclipse*, deberás consultar la ayuda en línea (opción de menú `Help > Help Contents`), o bien accediendo a su [página web](http://help.eclipse.org/), donde se encuentra también toda la documentación del programa.
 
 ### Pantalla de bienvenida
 
-La primera vez que se utiliza Eclipse, aparecerá un mensaje preguntándonos si queremos excluir Eclipse del análisis del antivirus de Windows. Como aparece en la @fig:antivirus_eclipse, podemos indicar que se excluya Eclipse de dichos análisis para evitar ralentizar la aplicación.
+La primera vez que se utiliza Eclipse, aparecerá un mensaje preguntándonos si queremos excluir Eclipse del análisis del antivirus de Windows. Como aparece en la @fig-antivirus_eclipse, podemos indicar que se excluya *Eclipse* de dichos análisis para evitar ralentizar la aplicación.
 
-![Pregunta de exclusión de Eclipse IDE respecto del sistema antivirus de Windows.](../resources/lesson2/antivirus.png){#fig:antivirus_eclipse}
+![Pregunta de exclusión de Eclipse IDE respecto del sistema antivirus de Windows.](../resources/lesson2/antivirus.png){#fig-antivirus_eclipse}
 
-Una vez seleccionada una opción, nos aparecerá una ventana de bienvenida (@fig:welcome_eclipse) con varias opciones, de las cuales cabe destacar las siguientes:
+Una vez seleccionada una opción, nos aparecerá una ventana de bienvenida (@fig-welcome_eclipse) con varias opciones, de las cuales cabe destacar las siguientes:
 
-![Pantalla de bienvenida.](../resources/lesson2/welcome_eclipse.png){#fig:welcome_eclipse}
+::: {.card .shadow-sm .mb-3}
+::: {.card-body .d-flex .align-items-start}
 
-Si cerramos la pestaña de bienvenida, nos conducirá al entorno de trabajo que se explica en la siguiente sección.
+::: {style="width: 7%; min-width: 50px; flex-shrink: 0;"}
+![](../resources/lesson2/overview.svg){width=100%}
+:::
 
-En esta pantalla de bienvenida, en la barra izquierda, se nos muestran algunas opciones, entre las que se incluye *Create a Java project*. Utilizaremos esta opción cada vez que queramos crear un nuevo proyecto, por ejemplo, para cada práctica de programación de este curso. Para esta práctica, podemos crear un nuevo proyecto al que llamaremos practica2.
+::: {.ms-3}
+**Overview**: proporciona un vistazo general de las características principales del entorno de desarrollo, sobre todo para familiarizarse con la interfaz de usuario.
+:::
+
+:::
+:::
+
+::: {.card .shadow-sm .mb-3}
+::: {.card-body .d-flex .align-items-start}
+
+::: {style="width: 7%; min-width: 50px; flex-shrink: 0;"}
+![](../resources/lesson2/tutorials.svg){width=100%}
+:::
+
+::: {.ms-3}
+**Tutorials**: otra forma de conocer todas las características de Eclipse es ejecutando alguno de los tutoriales de manejo del entorno de desarrollo disponibles.
+:::
+
+:::
+:::
+
+::: {.card .shadow-sm .mb-3}
+::: {.card-body .d-flex .align-items-start}
+
+::: {style="width: 7%; min-width: 50px; flex-shrink: 0;"}
+![](../resources/lesson2/samples.svg){width=100%}
+:::
+
+::: {.ms-3}
+**Samples**: otra manera de conocer cómo funciona la herramienta es ejecutar algunos de los ejemplos que Eclipse pone a nuestra disposición.
+:::
+
+:::
+:::
+
+::: {.card .shadow-sm .mb-3}
+::: {.card-body .d-flex .align-items-start}
+
+::: {style="width: 7%; min-width: 50px; flex-shrink: 0;"}
+![](../resources/lesson2/new.svg){width=100%}
+:::
+
+::: {.ms-3}
+**What’s new**: para los que han utilizado con anterioridad la herramienta Eclipse, esta utilidad describe las nuevas características que proporciona la versión instalada frente a versiones anteriores.
+:::
+
+:::
+:::
+
+::: {.card .shadow-sm .mb-3}
+::: {.card-body .d-flex .align-items-start}
+
+::: {style="width: 7%; min-width: 50px; flex-shrink: 0;"}
+![](../resources/lesson2/workbench.png){width=100%}
+:::
+
+::: {.ms-3}
+**Workbench**: usando esta opción se accede directamente al espacio de trabajo de Eclipse.
+:::
+
+:::
+:::
+
+![Pantalla de bienvenida.](../resources/lesson2/welcome_eclipse.png){#fig-welcome_eclipse}
+
+Si cerramos la pestaña de bienvenida (*Welcome*, arriba a la izquierda), nos conducirá al entorno de trabajo que se explica en la siguiente sección.
+
+Dentro de las opciones que se muestran en la pantalla de bienvendia encontramos *Create a Java project*. Utilizaremos esta opción cada vez que queramos crear un nuevo proyecto, por ejemplo, para cada práctica de programación en Java de este curso. Para esta práctica, podemos crear un nuevo proyecto al que llamaremos `practica2`.
 
 ### Entorno de trabajo
 
-El entorno de trabajo o *workbench* nos proporciona una interfaz de usuario intuitiva, bien estructurada y sencilla de utilizar, donde están bien definidas las distintas zonas de trabajo. En la Figura 5 se puede observar la interfaz de usuario de Eclipse.
+El entorno de trabajo o *workbench* nos proporciona una interfaz de usuario intuitiva, bien estructurada y sencilla de utilizar, donde están bien definidas las distintas zonas de trabajo. En la @fig-workbench_eclipse se puede observar la interfaz de usuario de *Eclipse*.
 
 Las diferentes partes en las que está dividida la interfaz son:
 
-- En la zona de la izquierda, se halla un menú (Package Explorer) que agrupa los componentes de cada uno de los proyectos abiertos.
-- En la zona central de la pantalla se encuentra un editor, que sirve para ver y modificar los ficheros Java con los que trabajamos.
-- En la zona de la derecha, hay un resumen (Outline) que nos indica la estructura del fichero activo en el editor (clases, métodos, variables, etc.).
-- En la parte inferior del editor se encuentran algunas utilidades que nos permiten conocer el estado del proyecto, incluyendo errores (Problems) y la salida obtenida en los programas ejecutados (Console).
+- En la **zona izquierda**, se encuentra un menú (***Package Explorer***) que agrupa los componentes de cada uno de los proyectos abiertos.
+- En la **zona central** de la pantalla se encuentra un **editor**, que sirve para ver y modificar los ficheros Java con los que trabajamos.
+- En la **zona de la derecha**, hay un resumen (*Outline*) que nos indica la **estructura del fichero activo** en el editor (clases, métodos, variables, etc.).
+- En la **parte inferior del editor** se encuentran algunas utilidades que nos permiten conocer el estado del proyecto, incluyendo **errores** (*Problems*) y la **salida** obtenida en los programas ejecutados (*Console*).
 
-![Espacio de trabajo de Eclipse IDE.](../resources/lesson2/workbench_eclipse.png){#fig:workbench_eclipse}
+![Espacio de trabajo de *Eclipse IDE*.](../resources/lesson2/workbench_eclipse.png){#fig-workbench_eclipse}
 
 ### 1.3. Crear un proyecto
 
-Para la realización de cada práctica se recomienda crear un proyecto nuevo. De esta forma se pueden agrupar los ficheros correspondientes a una determinada práctica dentro de ese proyecto para compilar y ejecutar programas individuales que comparten una configuración común.
+Para la realización de cada práctica se recomienda **crear un proyecto nuevo**. De esta forma se pueden agrupar los ficheros correspondientes a una determinada práctica dentro de un proyecto para compilar y ejecutar programas individuales con una configuración concreta.
 
-```text
-Los proyectos se crean a través de la opción File > New > Java Project. Para crear el nuevo proyecto hay que dotarlo de un nombre identificativo (ej. practica2). Dicho proyecto corresponderá con un directorio dentro del equipo, y dentro del workspace seleccionado al lanzar Eclipse. Conviene seleccionar la opción Create separate source and output folders. En la Figura 6 se pueden observar todas las propiedades que se pueden definir en la creación del proyecto.
-```
+Los proyectos se crean a través de la opción `File > New > Java Project`. Para crear el nuevo proyecto hay que dotarlo de un nombre identificativo (por ejemplo, `practica2`). Dicho proyecto se guarda en un directorio dentro del equipo, y dentro del *workspace* seleccionado al lanzar *Eclipse*. Conviene seleccionar la opción ***Create separate source and output folders***. En la @fig-new_project se pueden observar todas las propiedades que se pueden definir en la creación del proyecto.
 
 El nuevo proyecto que has creado se configurará sobre la carpeta:
 
-```text
-C:\practicasARQ\practica2
-Observa que en la carpeta practica2 se han creado dos subcarpetas. En src se almacenarán los ficheros con el código en lenguaje Java (source), mientras que en la carpeta bin se almacenan los ficheros binarios (binaries).
-```
+`C:\practicasARQ\practica2`
 
-*Ilustración . Propiedades que podemos configurar al crear un nuevo proyecto.*
+Abre dicha carpeta en el explorador de archivos del sistema operativo y observa que en la carpeta `practica2` se han creado dos subcarpetas. En src se almacenarán los ficheros con el código en lenguaje Java (*source*), mientras que en la carpeta *bin* se almacenan los ficheros binarios (*binaries*).
+
+![Propiedades que debemos configurar al crear un nuevo proyecto.](../resources/lesson2/new_project.png){#fig-new_project}
 
 ### 1.4. Crear una aplicación
 
-```java
-Los lenguajes orientados a objetos, como Java, giran en torno al concepto de clase. Todas las variables y métodos de Java deben pertenecer a una clase. Una clase es una colección de datos (variables) y de métodos (funciones) que operan sobre dichos datos. Cada clase pública debe ir en un fichero con extensión .java, cuyo nombre es exactamente igual que el de la clase. Por ejemplo, en un fichero HolaMundo.java, definiremos una clase HolaMundo.
-Para añadir nuevas clases al proyecto utilizaremos la opción de menú File > New > Class. Selecciona src como subcarpeta e introduce HolaMundo como nombre del archivo que contendrá el programa (clase) que deberás escribir a continuación. La opción public static void main(String[] args) debe marcarse para que la clase sea ejecutable (ejecutándose por tanto el método main de la clase). La Ilustración 7 ilustra este proceso.
-```
+Los lenguajes orientados a objetos, como Java, giran en torno al concepto de clase. Todas las variables y métodos de Java deben pertenecer a una clase. Una clase es una colección de datos (variables) y de métodos (funciones) que operan sobre dichos datos. Cada clase pública debe ir en un fichero con extensión `.java`, cuyo nombre es exactamente igual que el de la clase. Por ejemplo, en un fichero `HolaMundo.java`, definiremos una clase *HolaMundo*.
 
-*Ilustración . Creación de una nueva clase de Java.*
+Para añadir nuevas clases al proyecto utilizaremos la opción de menú `File > New > Class`. Selecciona `src` como subcarpeta e introduce `HolaMundo` como nombre del archivo que contendrá el programa (clase) que deberás escribir a continuación. La opción `public static void main(String[] args)` debe marcarse para que la clase sea ejecutable (ejecutándose por tanto el método *main* de la clase). La @fig-new_class muestra la configuración que se debe realizar para crear una nueva clase Java.
 
-```text
-Fijaos en que, además de la carpeta, hemos indicado el nombre de un paquete. Dicho nombre no se puede dejar en blanco, por lo que hemos nombrado practica2. En futuras sesiones de prácticas hablaremos de qué es un paquete, y cómo crearlo para estructurar las clases que creemos en cada proyecto.
-```
+![Creación de una nueva clase de Java en *Eclipse IDE*.](../resources/lesson2/new_class.png){#fig-new_class}
+
+Fijaos en que, además de la carpeta, hemos indicado el nombre de un paquete. Dicho nombre no se puede dejar en blanco, por lo que hemos escrito `practica2`. En futuras sesiones de prácticas hablaremos de qué es un paquete, y cómo crearlo para estructurar las clases que creemos en cada proyecto.
 
 Al finalizar la creación, se creará automáticamente un pequeño esqueleto con el código inicial común a cada clase, que deberá completarse para contener el siguiente código:
 
@@ -110,13 +174,11 @@ public class HolaMundo
 }
 ```
 
-El código anterior contiene algunos errores introducidos voluntariamente para que se produzcan errores de compilación.
+El código anterior contiene algunos **errores** introducidos voluntariamente para que se produzcan **errores de compilación**.
 
-El editor de Eclipse es un editor típico del entorno Windows: se puede copiar, cortar, pegar, buscar y sustituir. Tiene un sistema de tabulación inteligente que facilita la tarea de escritura. Se puede conseguir aumentar o disminuir la tabulación de una porción de código seleccionando dicha porción y pulsando tabulador o mayúsculas-tabulador.
+El editor de *Eclipse* es un editor típico del entorno Windows: se puede copiar, cortar, pegar, buscar y sustituir. Tiene un sistema de tabulación inteligente que facilita la tarea de escritura. Se puede conseguir aumentar o disminuir la tabulación de una porción de código seleccionando dicha porción y pulsando tabulador o mayúsculas-tabulador.
 
-```text
-Guarda los cambios que hemos introducido pulsando los iconos con disquetes que hay en la barra de herramientas superior ( ), pulsando Ctrl-S o bien con File > Save.
-```
+Guarda los cambios que hemos introducido pulsando los iconos con disquetes que hay en la barra de herramientas superior (![](../resources/lesson2/save.svg){width=1em}![](../resources/lesson2/save_all.svg){width=1em}), pulsando `Ctrl-S` o bien con `File > Save`.
 
 ### 1.5. Compilación de aplicaciones
 
