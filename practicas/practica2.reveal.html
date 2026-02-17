@@ -213,572 +213,226 @@
 </section>
 <section id="el-entorno-de-desarrollo-eclipse" class="slide level2">
 <h2>El entorno de desarrollo Eclipse</h2>
-<p>Para facilitar el desarrollo de programas, existen entornos que permiten trabajar más cómodamente, tales como NetBeans, Eclipse o IntelliJ. Nosotros recomendamos el uso de <strong><em>Eclipse</em></strong>, un entorno de desarrollo de libre distribución.</p>
-<p>Inicia <em>Eclipse</em> haciendo doble clic sobre el ejecutable <em>Eclipse</em> en la carpeta <code>software_disponible</code>, o bien buscando <em>Eclipse</em> en la barra de tareas. Para instalar esta aplicación en otros ordenadores puede consultarse el <a href="#/appendix-installation">Apéndice</a>. Al iniciar <em>Eclipse</em> aparecerá la pantalla de bienvenida que se muestra en la <a href="#/fig-init_eclipse" class="quarto-xref">Figura&nbsp;1</a>.</p>
-<div id="fig-init_eclipse" class="quarto-float quarto-figure quarto-figure-center">
-<figure class="quarto-float quarto-float-fig">
-<div aria-describedby="fig-init_eclipse-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img data-src="../resources/practica2/init_eclipse.png">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-init_eclipse-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figura&nbsp;1: Pantalla de bienvenida.
-</figcaption>
+<p>Para facilitar la tarea de desarrollo de programas existen entornos que permiten trabajar de una manera más cómoda. Algunos ejemplos son NetBeans, Eclipse o IntelliJ. Nosotros recomendamos el uso de Eclipse, un entorno de desarrollo de libre distribución.</p>
+<p>Inicia la herramienta Eclipse haciendo doble clic sobre el ejecutable Eclipse en el escritorio de los laboratorios de prácticas, o bien buscando Eclipse en la barra de tareas. Para instalar esta aplicación en otros ordenadores puede consultarse el Apéndice. Al iniciar Eclipse aparecerá la pantalla de bienvenida que se muestra en la <span class="citation" data-cites="fig:init_eclipse">@fig:init_eclipse</span>.</p>
+<div id="fig:init_eclipse" class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="../resources/lesson2/init_eclipse.png"></p>
+<figcaption>Pantalla de bienvenida.</figcaption>
 </figure>
 </div>
-<p>Para poder comenzar a trabajar con el entorno de desarrollo será necesario definir un espacio de trabajo o <em>workspace</em>, tal y como se muestra en la <a href="#/fig-workspace_eclipse" class="quarto-xref">Figura&nbsp;2</a>. Simplemente se trata de una carpeta donde guardaremos nuestros proyectos. Por ejemplo, se puede establecer el directorio <code>C:/PracticasARQ</code> como directorio de trabajo.</p>
-<div id="fig-workspace_eclipse" class="quarto-float quarto-figure quarto-figure-center">
-<figure class="quarto-float quarto-float-fig">
-<div aria-describedby="fig-workspace_eclipse-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img data-src="../resources/practica2/workspace_eclipse.png">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-workspace_eclipse-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figura&nbsp;2: Configuración del directorio de trabajo.
-</figcaption>
+<p>Para poder comenzar a trabajar con el entorno de desarrollo será necesario definir un espacio de trabajo (<em>workspace</em>), tal y como se muestra en la <span class="citation" data-cites="fig:workspace_eclipse">@fig:workspace_eclipse</span>. Este <em>workspace</em> contendrá todos los ficheros creados con Eclipse. Por ejemplo, se puede establecer el directorio <em>C:/PracticasARQ</em> como directorio de trabajo.</p>
+<div id="fig:workspace_eclipse" class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="../resources/lesson2/workspace_eclipse.png"></p>
+<figcaption>Configuración del <em>workspace</em>.</figcaption>
 </figure>
 </div>
-<p>En los siguientes subapartados aparecen solo algunas de las características de <em>Eclipse</em> o recomendaciones acerca de su uso. Si tienes más dudas sobre cómo utilizar <em>Eclipse</em>, deberás consultar la ayuda en línea (opción de menú <code>Help &gt; Help Contents</code>), o bien accediendo a su <a href="http://help.eclipse.org/">página web</a>, donde se encuentra también toda la documentación del programa.</p>
+<p>En los siguientes subapartados aparecen solo algunas de las características de Eclipse, o recomendaciones acerca de su uso. Si tienes más dudas sobre cómo utilizar Eclipse, deberás consultar la ayuda en línea (opción de menú <code>Help &gt; Help Contents</code>), o bien accediendo a su <a href="http://help.eclipse.org/">página web</a>, donde se encuentra también toda la documentación del programa.</p>
 <h3 id="pantalla-de-bienvenida">Pantalla de bienvenida</h3>
-<p>La primera vez que se utiliza <em>Eclipse</em>, aparecerá un mensaje preguntándonos si queremos excluir <em>Eclipse</em> del análisis del antivirus de Windows. Como aparece en la <a href="#/fig-antivirus_eclipse" class="quarto-xref">Figura&nbsp;3</a>, podemos indicar que se excluya <em>Eclipse</em> de dichos análisis para evitar ralentizar la aplicación.</p>
-<div id="fig-antivirus_eclipse" class="quarto-float quarto-figure quarto-figure-center">
-<figure class="quarto-float quarto-float-fig">
-<div aria-describedby="fig-antivirus_eclipse-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img data-src="../resources/practica2/antivirus.png">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-antivirus_eclipse-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figura&nbsp;3: Pregunta de exclusión de Eclipse IDE respecto del sistema antivirus de Windows.
-</figcaption>
+<p>La primera vez que se utiliza Eclipse, aparecerá un mensaje preguntándonos si queremos excluir Eclipse del análisis del antivirus de Windows. Como aparece en la <span class="citation" data-cites="fig:antivirus_eclipse">@fig:antivirus_eclipse</span>, podemos indicar que se excluya Eclipse de dichos análisis para evitar ralentizar la aplicación.</p>
+<div id="fig:antivirus_eclipse" class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="../resources/lesson2/antivirus.png"></p>
+<figcaption>Pregunta de exclusión de Eclipse IDE respecto del sistema antivirus de Windows.</figcaption>
 </figure>
 </div>
-<p>Una vez seleccionada una opción, nos aparecerá una ventana de bienvenida (<a href="#/fig-welcome_eclipse" class="quarto-xref">Figura&nbsp;4</a>) con varias opciones, de las cuales cabe destacar las siguientes:</p>
-<div id="fig-welcome_eclipse" class="quarto-float quarto-figure quarto-figure-center">
-<figure class="quarto-float quarto-float-fig">
-<div aria-describedby="fig-welcome_eclipse-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img data-src="../resources/practica2/welcome_eclipse.png">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-welcome_eclipse-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figura&nbsp;4: Pantalla de bienvenida.
-</figcaption>
+<p>Una vez seleccionada una opción, nos aparecerá una ventana de bienvenida (<span class="citation" data-cites="fig:welcome_eclipse">@fig:welcome_eclipse</span>) con varias opciones, de las cuales cabe destacar las siguientes:</p>
+<div id="fig:welcome_eclipse" class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="../resources/lesson2/welcome_eclipse.png"></p>
+<figcaption>Pantalla de bienvenida.</figcaption>
 </figure>
 </div>
-<div class="card shadow-sm mb-3">
-<div class="card-body d-flex align-items-start">
-<div style="width: 7%; min-width: 50px; flex-shrink: 0;">
-<p><img data-src="../resources/practica2/overview.svg" style="width:100.0%"></p>
-</div>
-<div class="ms-3">
-<p><strong>Overview</strong>. Proporciona un vistazo general de las características principales del entorno de desarrollo, sobre todo para familiarizarse con la interfaz de usuario.</p>
-</div>
-</div>
-</div>
-<div class="card shadow-sm mb-3">
-<div class="card-body d-flex align-items-start">
-<div style="width: 7%; min-width: 50px; flex-shrink: 0;">
-<p><img data-src="../resources/practica2/tutorials.svg" style="width:100.0%"></p>
-</div>
-<div class="ms-3">
-<p><strong>Tutorials</strong>. Otra forma de conocer todas las características de Eclipse es ejecutando alguno de los tutoriales de manejo del entorno de desarrollo disponibles.</p>
-</div>
-</div>
-</div>
-<div class="card shadow-sm mb-3">
-<div class="card-body d-flex align-items-start">
-<div style="width: 7%; min-width: 50px; flex-shrink: 0;">
-<p><img data-src="../resources/practica2/samples.svg" style="width:100.0%"></p>
-</div>
-<div class="ms-3">
-<p><strong>Samples</strong>. Una manera de conocer cómo funciona la herramienta es ejecutar algunos de los ejemplos que Eclipse pone a nuestra disposición.</p>
-</div>
-</div>
-</div>
-<div class="card shadow-sm mb-3">
-<div class="card-body d-flex align-items-start">
-<div style="width: 7%; min-width: 50px; flex-shrink: 0;">
-<p><img data-src="../resources/practica2/new.svg" style="width:100.0%"></p>
-</div>
-<div class="ms-3">
-<p><strong>What’s new</strong>. Para los que han utilizado con anterioridad la herramienta <em>Eclipse</em>, esta utilidad describe las nuevas características que proporciona la versión instalada frente a versiones anteriores.</p>
-</div>
-</div>
-</div>
-<div class="card shadow-sm mb-3">
-<div class="card-body d-flex align-items-start">
-<div style="width: 7%; min-width: 50px; flex-shrink: 0;">
-<p><img data-src="../resources/practica2/workbench.png" style="width:100.0%"></p>
-</div>
-<div class="ms-3">
-<p><strong>Workbench</strong>. Usando esta opción se accede directamente al espacio de trabajo de Eclipse. Se encuentra arriba a la derecha, junto a un texto que dice <em>Hide</em>. Esta es la opción que utilizaremos para acceder al entorno de desarrollo cada vez que iniciemos Eclipse, una vez que ya nos hayamos familiarizado con la herramienta.</p>
-</div>
-</div>
-</div>
-<p>Dentro de las opciones que se muestran en la pantalla de bienvendia encontramos <em>Create a Java project</em>. Utilizaremos esta opción cada vez que queramos crear un nuevo proyecto, por ejemplo, para cada práctica de programación en Java de este curso. Para esta práctica, podemos crear un nuevo proyecto al que llamaremos <code>practica2</code>.</p>
-<p>Si cerramos la pestaña de bienvenida (<em>Welcome</em>, arriba a la izquierda), nos conduce al entorno de trabajo que se explica en la siguiente sección.</p>
+<p>Si cerramos la pestaña de bienvenida, nos conducirá al entorno de trabajo que se explica en la siguiente sección.</p>
+<p>En esta pantalla de bienvenida, en la barra izquierda, se nos muestran algunas opciones, entre las que se incluye <em>Create a Java project</em>. Utilizaremos esta opción cada vez que queramos crear un nuevo proyecto, por ejemplo, para cada práctica de programación de este curso. Para esta práctica, podemos crear un nuevo proyecto al que llamaremos practica2.</p>
 <h3 id="entorno-de-trabajo">Entorno de trabajo</h3>
-<p>El <strong>entorno de trabajo o <em>workbench</em></strong> nos proporciona una interfaz de usuario intuitiva, bien estructurada y sencilla de utilizar, donde están bien definidas las distintas zonas de trabajo. En la <a href="#/fig-workbench_eclipse" class="quarto-xref">Figura&nbsp;5</a> se puede observar la interfaz de usuario de <em>Eclipse</em>.</p>
+<p>El entorno de trabajo o <em>workbench</em> nos proporciona una interfaz de usuario intuitiva, bien estructurada y sencilla de utilizar, donde están bien definidas las distintas zonas de trabajo. En la Figura 5 se puede observar la interfaz de usuario de Eclipse.</p>
 <p>Las diferentes partes en las que está dividida la interfaz son:</p>
 <ul>
-<li class="fragment">En la <strong>zona izquierda</strong>, se encuentra un menú (<strong><em>Package Explorer</em></strong>) que agrupa los componentes de cada uno de los proyectos abiertos.</li>
-<li class="fragment">En la <strong>zona central</strong> de la pantalla se encuentra un <strong>editor</strong>, que sirve para ver y modificar los ficheros Java con los que trabajamos.</li>
-<li class="fragment">En la <strong>zona de la derecha</strong>, hay un resumen (<em>Outline</em>) que nos indica la <strong>estructura del fichero activo</strong> en el editor (clases, métodos, variables, etc.).</li>
-<li class="fragment">En la <strong>parte inferior del editor</strong> se encuentran algunas utilidades que nos permiten conocer el estado del proyecto, incluyendo <strong>errores</strong> (pestaña <em>Problems</em>) y la <strong>salida</strong> obtenida en los programas ejecutados (pestaña <em>Console</em>).</li>
+<li class="fragment">En la zona de la izquierda, se halla un menú (Package Explorer) que agrupa los componentes de cada uno de los proyectos abiertos.</li>
+<li class="fragment">En la zona central de la pantalla se encuentra un editor, que sirve para ver y modificar los ficheros Java con los que trabajamos.</li>
+<li class="fragment">En la zona de la derecha, hay un resumen (Outline) que nos indica la estructura del fichero activo en el editor (clases, métodos, variables, etc.).</li>
+<li class="fragment">En la parte inferior del editor se encuentran algunas utilidades que nos permiten conocer el estado del proyecto, incluyendo errores (Problems) y la salida obtenida en los programas ejecutados (Console).</li>
 </ul>
-<div id="fig-workbench_eclipse" class="quarto-float quarto-figure quarto-figure-center">
-<figure class="quarto-float quarto-float-fig">
-<div aria-describedby="fig-workbench_eclipse-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img data-src="../resources/practica2/workbench_eclipse.png">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-workbench_eclipse-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figura&nbsp;5: Espacio de trabajo de <em>Eclipse IDE</em>.
-</figcaption>
+<div id="fig:workbench_eclipse" class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="../resources/lesson2/workbench_eclipse.png"></p>
+<figcaption>Espacio de trabajo de Eclipse IDE.</figcaption>
 </figure>
 </div>
-<h3 id="crear-un-proyecto">Crear un proyecto</h3>
-<p>Para la realización de cada práctica se recomienda <strong>crear un proyecto nuevo</strong>. De esta forma se pueden agrupar los ficheros correspondientes a una determinada práctica dentro de un proyecto para compilar y ejecutar programas individuales con una configuración concreta.</p>
-<p>Los proyectos se crean a través de la opción <code>File &gt; New &gt; Java Project</code>. Para crear el nuevo proyecto hay que dotarlo de un nombre identificativo (por ejemplo, <code>practica2</code>). Dicho proyecto se guarda en un directorio del equipo, dentro del <em>workspace</em> seleccionado al lanzar <em>Eclipse</em>. Conviene seleccionar la opción <strong><em>Create separate source and output folders</em></strong>. En la <a href="#/fig-new_project" class="quarto-xref">Figura&nbsp;6</a> se pueden observar todas las propiedades que se deben definir en la creación del proyecto.</p>
-<div class="callout callout-warning callout-titled callout-style-default">
-<div class="callout-body">
-<div class="callout-title">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<p><strong>Configuración del proyecto</strong></p>
-</div>
-<div class="callout-content">
-<p>Recuerda <strong>desmarcar la opción <em>Create module-info.java</em></strong> y <strong>marcar la opción <em>Create separate source and output folders</em></strong> para que se cree una carpeta para el código fuente y otra para los ficheros binarios.</p>
-</div>
-</div>
-</div>
-<p>Teniendo en cuenta que nuestro entorno de trabajo se encuentra en <code>C:\practicasARQ</code>, el nuevo proyecto que has creado se encuentra en la carpeta:</p>
-<p><code>C:\practicasARQ\practica2</code></p>
-<p>Abre dicha carpeta en el explorador de archivos del sistema operativo y observa que se han creado dos subcarpetas. En <code>src</code> se almacenarán los ficheros con el código en lenguaje Java (<em>source</em>), mientras que en la carpeta <code>bin</code> se almacenan los ficheros binarios (<em>binaries</em>).</p>
-<div id="fig-new_project" class="quarto-float quarto-figure quarto-figure-center">
-<figure class="quarto-float quarto-float-fig">
-<div aria-describedby="fig-new_project-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img data-src="../resources/practica2/new_project.png" style="width:70.0%">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-new_project-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figura&nbsp;6: Propiedades que debemos configurar al crear un nuevo proyecto.
-</figcaption>
-</figure>
-</div>
-<h3 id="crear-una-aplicación">Crear una aplicación</h3>
-<p>Los lenguajes orientados a objetos, como Java, giran en torno al concepto de clase. Todas las variables y métodos de Java deben pertenecer a una <strong>clase</strong>. Una clase es una colección de datos (variables) y de métodos (funciones) que operan sobre dichos datos. Cada clase pública debe ir en un fichero con extensión <code>.java</code>, cuyo nombre es exactamente igual que el de la clase. Por ejemplo, en un fichero <code>HolaMundo.java</code>, definiremos una clase <em>HolaMundo</em>.</p>
-<div id="fig-class_skeleton" class="quarto-float quarto-figure quarto-figure-center">
-<figure class="quarto-float quarto-float-fig">
-<div aria-describedby="fig-class_skeleton-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img data-src="../resources/practica2/class_skeleton.png">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-class_skeleton-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figura&nbsp;7: Ejemplo de estructura de una clase Java.
-</figcaption>
-</figure>
-</div>
-<p>Para <strong>añadir nuevas clases</strong> al proyecto utilizaremos la opción de menú <code>File &gt; New &gt; Class</code>. Selecciona <code>src</code> como subcarpeta e introduce <code>HolaMundo</code> como nombre del archivo que contendrá el programa (clase) que deberás escribir a continuación. La opción <code>public static void main(String[] args)</code> debe marcarse para que la clase sea ejecutable, ejecutándose por tanto el método <em>main</em> de la clase. La <a href="#/fig-new_class" class="quarto-xref">Figura&nbsp;8</a> muestra la configuración de nuestra nueva clase Java.</p>
-<div id="fig-new_class" class="quarto-float quarto-figure quarto-figure-center">
-<figure class="quarto-float quarto-float-fig">
-<div aria-describedby="fig-new_class-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img data-src="../resources/practica2/new_class.png" style="width:60.0%">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-new_class-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figura&nbsp;8: Creación de una nueva clase de Java en <em>Eclipse IDE</em>.
-</figcaption>
-</figure>
-</div>
-<p>Fijaos en que no hemos indicado el nombre de un paquete, por lo que la clase formará parte un paquete por defecto (<em>default</em>). En futuras sesiones de prácticas hablaremos de qué es un paquete, y cómo crearlo para estructurar las clases que creemos en cada proyecto.</p>
-<p>Al finalizar la creación, se generará automáticamente un pequeño esqueleto con el código inicial común a cada clase, que deberá completarse para contener el siguiente código:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode numberSource java number-lines code-with-copy"><code class="sourceCode java"><span id="cb1-1"><a></a><span class="kw">import</span> <span class="im">java</span><span class="op">.</span><span class="im">util</span><span class="op">.*;</span></span>
-<span id="cb1-2"><a></a></span>
-<span id="cb1-3"><a></a><span class="co">/**</span></span>
-<span id="cb1-4"><a></a> <span class="co">*</span> La clase HolaMundo ejemplifica el uso de Eclipse para programar en Java<span class="co">.</span></span>
-<span id="cb1-5"><a></a> <span class="co">*</span> <span class="an">@author</span> Fernando Bobillo<span class="co">,</span> Alfonso L<span class="co">ó</span>pez<span class="co">,</span> Ignacio Huitzil<span class="co">.</span></span>
-<span id="cb1-6"><a></a> <span class="co">*/</span></span>
-<span id="cb1-7"><a></a><span class="kw">public</span> <span class="kw">class</span> HolaMundo</span>
-<span id="cb1-8"><a></a><span class="op">{</span></span>
-<span id="cb1-9"><a></a>    <span class="co">/**</span></span>
-<span id="cb1-10"><a></a>     <span class="co">*</span> El m<span class="co">é</span>todo main contiene el programa principal<span class="co">.</span></span>
-<span id="cb1-11"><a></a>     <span class="co">*</span> <span class="an">@param</span><span class="co"> </span><span class="an">args</span><span class="co"> </span>Puede recibir una lista de par<span class="co">á</span>metros como argumento<span class="co">.</span></span>
-<span id="cb1-12"><a></a>     <span class="co">*/</span></span>
-<span id="cb1-13"><a></a>    <span class="kw">public</span> <span class="dt">static</span> <span class="dt">void</span> <span class="fu">main</span><span class="op">(</span><span class="bu">String</span><span class="op">[]</span> args<span class="op">)</span></span>
-<span id="cb1-14"><a></a>    <span class="op">{</span></span>
-<span id="cb1-15"><a></a>        <span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">print</span><span class="op">(</span><span class="st">"Escribe tu nombre: "</span><span class="op">);</span></span>
-<span id="cb1-16"><a></a>        <span class="bu">String</span> nombre <span class="op">=</span> <span class="op">(</span><span class="kw">new</span> <span class="bu">Scanner</span><span class="op">(</span><span class="bu">System</span><span class="op">.</span><span class="fu">in</span><span class="op">)).</span><span class="fu">nextLinea</span><span class="op">();</span></span>
-<span id="cb1-17"><a></a>        <span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span><span class="st">"Hola "</span> <span class="op">+</span> nom <span class="op">+</span> <span class="st">", mucho gusto."</span><span class="op">);</span></span>
-<span id="cb1-18"><a></a>    <span class="op">}</span></span>
-<span id="cb1-19"><a></a><span class="op">}</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="callout callout-warning callout-titled callout-style-default">
-<div class="callout-body">
-<div class="callout-title">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<p><strong>Errores de compilación</strong></p>
-</div>
-<div class="callout-content">
-<p>El código anterior contiene algunos <strong>errores introducidos intencionadamente</strong> para que se produzcan <strong>errores de compilación</strong>.</p>
-</div>
-</div>
-</div>
-<p>El editor de <em>Eclipse</em> es un editor típico del entorno Windows: se puede copiar, cortar, pegar, buscar y sustituir. Tiene un sistema de tabulación inteligente que facilita la tarea de escritura. Se puede conseguir aumentar o disminuir la <strong>tabulación de una porción de código seleccionando</strong> dicha porción y pulsando tabulador (<code>TAB</code>) o mayúsculas-tabulador (<code>Shift + TAB</code>), respectivamente. Además, el editor de <em>Eclipse</em> tiene un sistema de <strong>autocompletado</strong> que se activa pulsando <code>Ctrl + Space</code> y que facilita la escritura de código, por ejemplo, para completar el nombre de una clase o método a partir de las primeras letras escritas.</p>
-<p><strong>Guarda los cambios</strong> que hemos introducido pulsando los iconos con disquetes que hay en la barra de herramientas superior (<img data-src="../resources/practica2/save.svg" style="width:1em"><img data-src="../resources/practica2/save_all.svg" style="width:1em">), pulsando <code>Ctrl-S</code> o bien con <code>File &gt; Save</code>.</p>
-<h3 id="compilación-de-aplicaciones">Compilación de aplicaciones</h3>
-<p>Para compilar un programa, es necesario <strong>traducir el código fuente escrito en lenguaje Java a un código binario</strong> que pueda ser interpretado por la máquina virtual de Java. En el entorno <em>Eclipse</em>, la compilación se realiza <strong>automáticamente cada vez que se guarda un fichero</strong>, aunque también es posible compilar manualmente utilizando la opción de menú <code>Project &gt; Build Project</code>. Si el programa contiene errores de compilación, <em>Eclipse</em> nos lo indicará en la zona inferior del editor, en la subpestaña <strong><em>Problems</em></strong> (ver <a href="#/fig-compilation_errors" class="quarto-xref">Figura&nbsp;9</a>). En esta subpestaña se nos informará sobre el proceso de compilación indicando los posibles errores. <strong>Puedes seleccionar cada error mediante doble click, y se indicará dentro del código dónde se encuentra el error</strong>.</p>
-<div id="fig-compilation_errors" class="quarto-float quarto-figure quarto-figure-center">
-<figure class="quarto-float quarto-float-fig">
-<div aria-describedby="fig-compilation_errors-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img data-src="../resources/practica2/compilation_errors.png">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-compilation_errors-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figura&nbsp;9: Compilación de un programa con errores.
-</figcaption>
-</figure>
-</div>
+<h3 id="crear-un-proyecto">1.3. Crear un proyecto</h3>
+<p>Para la realización de cada práctica se recomienda crear un proyecto nuevo. De esta forma se pueden agrupar los ficheros correspondientes a una determinada práctica dentro de ese proyecto para compilar y ejecutar programas individuales que comparten una configuración común.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode numberSource text number-lines code-with-copy"><code class="sourceCode"><span id="cb1-1"><a></a>Los proyectos se crean a través de la opción File &gt; New &gt; Java Project. Para crear el nuevo proyecto hay que dotarlo de un nombre identificativo (ej. practica2). Dicho proyecto corresponderá con un directorio dentro del equipo, y dentro del workspace seleccionado al lanzar Eclipse. Conviene seleccionar la opción Create separate source and output folders. En la Figura 6 se pueden observar todas las propiedades que se pueden definir en la creación del proyecto.</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<p>El nuevo proyecto que has creado se configurará sobre la carpeta:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode numberSource text number-lines code-with-copy"><code class="sourceCode"><span id="cb2-1"><a></a>C:\practicasARQ\practica2</span>
+<span id="cb2-2"><a></a>Observa que en la carpeta practica2 se han creado dos subcarpetas. En src se almacenarán los ficheros con el código en lenguaje Java (source), mientras que en la carpeta bin se almacenan los ficheros binarios (binaries).</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<p><em>Ilustración . Propiedades que podemos configurar al crear un nuevo proyecto.</em></p>
+<h3 id="crear-una-aplicación">1.4. Crear una aplicación</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode numberSource java number-lines code-with-copy"><code class="sourceCode java"><span id="cb3-1"><a></a>Los lenguajes orientados a objetos<span class="op">,</span> como Java<span class="op">,</span> giran en torno al concepto de clase<span class="op">.</span> <span class="fu">Todas</span> las variables y métodos de Java deben pertenecer a una clase<span class="op">.</span> <span class="fu">Una</span> clase es una colección de <span class="fu">datos</span> <span class="op">(</span>variables<span class="op">)</span> y de <span class="fu">métodos</span> <span class="op">(</span>funciones<span class="op">)</span> que operan sobre dichos datos<span class="op">.</span> <span class="fu">Cada</span> clase pública debe ir en un fichero con extensión <span class="op">.</span><span class="fu">java</span><span class="op">,</span> cuyo nombre es exactamente igual que el de la clase<span class="op">.</span> <span class="fu">Por</span> ejemplo<span class="op">,</span> en un fichero HolaMundo<span class="op">.</span><span class="fu">java</span><span class="op">,</span> definiremos una clase HolaMundo<span class="op">.</span></span>
+<span id="cb3-2"><a></a><span class="fu">Para</span> añadir nuevas clases al proyecto utilizaremos la opción de menú <span class="bu">File</span> <span class="op">&gt;</span> New <span class="op">&gt;</span> <span class="bu">Class</span><span class="op">.</span> <span class="fu">Selecciona</span> src como subcarpeta e introduce HolaMundo como nombre del archivo que contendrá el <span class="fu">programa</span> <span class="op">(</span>clase<span class="op">)</span> que deberás escribir a continuación<span class="op">.</span> <span class="fu">La</span> opción <span class="kw">public</span> <span class="dt">static</span> <span class="dt">void</span> <span class="fu">main</span><span class="op">(</span><span class="bu">String</span><span class="op">[]</span> args<span class="op">)</span> debe marcarse para que la clase sea <span class="fu">ejecutable</span> <span class="op">(</span>ejecutándose por tanto el método main de la clase<span class="op">).</span> <span class="fu">La</span> Ilustración <span class="dv">7</span> ilustra este proceso<span class="op">.</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<p><em>Ilustración . Creación de una nueva clase de Java.</em></p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode numberSource text number-lines code-with-copy"><code class="sourceCode"><span id="cb4-1"><a></a>Fijaos en que, además de la carpeta, hemos indicado el nombre de un paquete. Dicho nombre no se puede dejar en blanco, por lo que hemos nombrado practica2. En futuras sesiones de prácticas hablaremos de qué es un paquete, y cómo crearlo para estructurar las clases que creemos en cada proyecto.</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Al finalizar la creación, se creará automáticamente un pequeño esqueleto con el código inicial común a cada clase, que deberá completarse para contener el siguiente código:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode numberSource java number-lines code-with-copy"><code class="sourceCode java"><span id="cb5-1"><a></a><span class="kw">import</span> <span class="im">java</span><span class="op">.</span><span class="im">util</span><span class="op">.*;</span></span>
+<span id="cb5-2"><a></a></span>
+<span id="cb5-3"><a></a><span class="co">/**</span></span>
+<span id="cb5-4"><a></a> <span class="co">*</span> La clase HolaMundo ejemplifica el uso de Eclipse para programar en Java<span class="co">.</span></span>
+<span id="cb5-5"><a></a> <span class="co">*</span> <span class="an">@author</span> Fernando Bobillo<span class="co">,</span> Alfonso L<span class="co">ó</span>pez<span class="co">,</span> Ignacio Huitzil<span class="co">.</span></span>
+<span id="cb5-6"><a></a> <span class="co">*/</span></span>
+<span id="cb5-7"><a></a><span class="kw">public</span> <span class="kw">class</span> HolaMundo</span>
+<span id="cb5-8"><a></a><span class="op">{</span></span>
+<span id="cb5-9"><a></a>    <span class="co">/**</span></span>
+<span id="cb5-10"><a></a>     <span class="co">*</span> El m<span class="co">é</span>todo main contiene el programa principal<span class="co">.</span></span>
+<span id="cb5-11"><a></a>     <span class="co">*</span> <span class="an">@param</span><span class="co"> </span><span class="an">args</span><span class="co"> </span>Puede recibir una lista de par<span class="co">á</span>metros como argumento<span class="co">.</span></span>
+<span id="cb5-12"><a></a>     <span class="co">*/</span></span>
+<span id="cb5-13"><a></a>    <span class="kw">public</span> <span class="dt">static</span> <span class="dt">void</span> <span class="fu">main</span><span class="op">(</span><span class="bu">String</span><span class="op">[]</span> args<span class="op">)</span></span>
+<span id="cb5-14"><a></a>    <span class="op">{</span></span>
+<span id="cb5-15"><a></a>        <span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">print</span><span class="op">(</span><span class="st">"Escribe tu nombre: "</span><span class="op">);</span></span>
+<span id="cb5-16"><a></a>        <span class="bu">String</span> nombre <span class="op">=</span> <span class="op">(</span><span class="kw">new</span> <span class="bu">Scanner</span><span class="op">(</span><span class="bu">System</span><span class="op">.</span><span class="fu">in</span><span class="op">)).</span><span class="fu">nextLinea</span><span class="op">();</span></span>
+<span id="cb5-17"><a></a>        <span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span><span class="st">"Hola "</span> <span class="op">+</span> nom <span class="op">+</span> <span class="st">", mucho gusto."</span><span class="op">);</span></span>
+<span id="cb5-18"><a></a>    <span class="op">}</span></span>
+<span id="cb5-19"><a></a><span class="op">}</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<p>El código anterior contiene algunos errores introducidos voluntariamente para que se produzcan errores de compilación.</p>
+<p>El editor de Eclipse es un editor típico del entorno Windows: se puede copiar, cortar, pegar, buscar y sustituir. Tiene un sistema de tabulación inteligente que facilita la tarea de escritura. Se puede conseguir aumentar o disminuir la tabulación de una porción de código seleccionando dicha porción y pulsando tabulador o mayúsculas-tabulador.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode numberSource text number-lines code-with-copy"><code class="sourceCode"><span id="cb6-1"><a></a>Guarda los cambios que hemos introducido pulsando los iconos con disquetes que hay en la barra de herramientas superior ( ), pulsando Ctrl-S o bien con File &gt; Save.</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<h3 id="compilación-de-aplicaciones">1.5. Compilación de aplicaciones</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode numberSource text number-lines code-with-copy"><code class="sourceCode"><span id="cb7-1"><a></a>Para compilar el programa deberás utilizar la opción de menú Project &gt; Build Project en el caso de que no esté marcada la compilación automática. En este último caso, será suficiente con guardar el fichero para que se compile.</span>
+<span id="cb7-2"><a></a>Dentro de las herramientas que se muestran en la porción inferior, encontramos la subpestaña Problems. En esa subpestaña se nos informará sobre el proceso de compilación indicando los posibles errores (ver Ilustración 8). Puedes seleccionar cada error mediante doble click, y se indicará dentro del código dónde se encuentra el error.</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Si trabajásemos sin un entorno de desarrollo, sería equivalente a abrir una ventana de órdenes del sistema operativo y teclear:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a></a><span class="ex">javac</span> HolaMundo.java</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="callout callout-note callout-titled callout-style-default">
-<div class="callout-body">
-<div class="callout-title">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<p><strong>Resolución de errores de compilación</strong></p>
-</div>
-<div class="callout-content">
-<p>El primer error se produce porque el nombre correcto del método es <code>nextLine</code>; el segundo porque se ha escrito mal la variable <code>nombre</code>. Corrige ambos errores y recompila con <code>Project &gt; Build project</code>. Ahora no te deberá mostrar ningún error. El fichero compilado se llama <code>HolaMundo.class</code> y se habrá creado en la subcarpeta <code>bin</code>.</p>
-</div>
-</div>
-</div>
-<h3 id="ejecución-de-aplicaciones">Ejecución de aplicaciones</h3>
-<p>Una vez que el programa se ha compilado correctamente, es posible ejecutarlo. Para ello, en el entorno Eclipse se utiliza la opción de menú <strong><code>Run &gt; Run as: Java Application</code></strong> o bien el icono de <strong>ejecutar</strong> <img data-src="../resources/practica2/play.svg" style="width:1em"> en la barra de herramientas superior. Si el programa se ejecuta correctamente, aparecerá una nueva pestaña llamada <em>Console</em> en la parte inferior del editor, donde se mostrará la salida del programa.</p>
-<div class="callout callout-note callout-titled callout-style-default">
-<div class="callout-body">
-<div class="callout-title">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<p><strong>Ejecución sin un entorno de desarrollo</strong></p>
-</div>
-<div class="callout-content">
-<p>Si trabajásemos directamente con el JDK deberíamos invocar al intérprete (comando <code>java</code>) pasándole como parámetro el fichero compilado sin poner la extensión <code>.class</code>. Así pues, en el intérprete de órdenes teclearíamos:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a></a><span class="ex">java</span> HolaMundo</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-</div>
-</div>
-<h3 id="depuración-de-errores">Depuración de errores</h3>
-<p>En el proceso de desarrollo de un programa, es habitual que se produzcan errores de ejecución. Para solucionar estos errores, es necesario <strong>depurar el programa</strong>, es decir, <strong>ejecutar el programa paso a paso</strong> para observar el estado de las variables y comprender mejor el funcionamiento real del programa (ver <a href="#/fig-debug_eclipse" class="quarto-xref">Figura&nbsp;10</a>).</p>
-<div class="callout callout-note callout-titled callout-style-default">
-<div class="callout-body">
-<div class="callout-title">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<p><strong>Ejecución paso a paso</strong></p>
-</div>
-<div class="callout-content">
-<p>La opción <code>Step into</code> ejecuta el código <em>instrucción a instrucción</em>, mientras que <code>Step over</code> <em>ejecuta las llamadas a métodos como sentencias simples</em> (sin entrar a ejecutar paso a paso cada instrucción dentro del método).</p>
-</div>
-</div>
-</div>
-<div id="fig-debug_eclipse" class="quarto-float quarto-figure quarto-figure-center">
-<figure class="quarto-float quarto-float-fig">
-<div aria-describedby="fig-debug_eclipse-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img data-src="../resources/practica2/debugging.png">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-debug_eclipse-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figura&nbsp;10: Depuración de un programa en Eclipse.
-</figcaption>
-</figure>
-</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a></a><span class="ex">javac</span> HolaMundo.java</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<p><em>Ilustración . Compilación con errores.</em></p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode numberSource java number-lines code-with-copy"><code class="sourceCode java"><span id="cb9-1"><a></a>El primer error se produce porque el nombre correcto del método es nextLine<span class="op">;</span> el segundo porque se ha escrito mal la variable nombre<span class="op">.</span> <span class="fu">Corrige</span> ambos errores y recompila con Project <span class="op">&gt;</span> Build project<span class="op">.</span> <span class="fu">Ahora</span> no te deberá mostrar ningún error<span class="op">.</span> <span class="fu">El</span> fichero compilado se llama HolaMundo<span class="op">.</span><span class="fu">class</span> y se habrá creado en la subcarpeta bin<span class="op">.</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<h3 id="ejecución-de-aplicaciones">1.6. Ejecución de aplicaciones</h3>
+<p>Finalmente, hay que llamar al intérprete de la máquina virtual. En el entorno Eclipse esto se hace utilizando la opción de menú Run &gt; Run as: Java application, o mediante el icono de ejecutar en la barra de herramientas superior .</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a></a><span class="ex">Si</span> trabajásemos directamente con el JDK deberíamos invocar al intérprete <span class="er">(</span><span class="ex">comando</span> java<span class="kw">)</span> <span class="ex">pasándole</span> como parámetro el fichero compilado sin poner la extensión .class. Así pues, en el intérprete de órdenes teclearíamos:</span>
+<span id="cb10-2"><a></a><span class="ex">java</span> HolaMundo</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<h3 id="depuración-de-errores">1.7. Depuración de errores</h3>
+<p>Para depurar los errores de un proyecto, lo ejecutaremos paso a paso para comprender mejor el funcionamiento real del programa, tal y como se ilustra en la Ilustración 9.</p>
+<p><em>Ilustración . Depuración de un programa.</em></p>
 <p>Para ello, seguimos los siguientes pasos:</p>
-<ul>
-<li class="fragment">Utiliza la opción de menú <code>Run &gt; Toggle line breakpoint</code> para establecer (o eliminar) puntos de parada sobre el código que queremos ejecutar paso a paso. La ejecución paso a paso comenzará en la línea que contenga el punto de ruptura. También se puede utilizar el menú desplegable que aparece al pulsar el botón derecho del ratón sobre el margen izquierdo de la ventana que muestra el código de una clase Java, justo al lado del número de línea.</li>
-<li class="fragment">Utiliza la opción <code>Run &gt; Debug</code>, o <code>Debug</code> <img data-src="../resources/practica2/debug.svg" style="width:1em"> en la barra de herramientas superior, para lanzar la ejecución en modo depuración de errores. Aparecerá una ventana de <em>debugger</em> (depurador) con el estado de todas las variables.</li>
-<li class="fragment">Utiliza <code>Run &gt; Step into (F5)</code> y <code>Run &gt; Step over (F6)</code> para ejecutar el código instrucción a instrucción. <code>Step over</code> ejecuta las llamadas a métodos como sentencias simples (sin entrar a ejecutar paso a paso cada instrucción dentro del método).</li>
-</ul>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="sourceCode numberSource java number-lines code-with-copy"><code class="sourceCode java"><span id="cb11-1"><a></a>Utiliza la opción de menú Run <span class="op">&gt;</span> Toggle line breakpoint para <span class="fu">establecer</span> <span class="op">(</span>o eliminar<span class="op">)</span> puntos de parada sobre el código que queremos ejecutar paso a paso<span class="op">.</span> <span class="fu">La</span> ejecución paso a paso comenzará en la línea que contenga el punto de ruptura<span class="op">.</span> <span class="fu">Tambi</span>én se puede utilizar el menú desplegable que aparece al pulsar el botón derecho del ratón sobre el margen izquierdo de la ventana que muestra el código de una clase Java<span class="op">.</span></span>
+<span id="cb11-2"><a></a><span class="fu">Utiliza</span> la opción Run <span class="op">&gt;</span> Debug<span class="op">,</span> o Debug  en la barra de herramientas superior<span class="op">,</span> para lanzar la ejecución en modo depuración de errores<span class="op">.</span> <span class="fu">Aparecer</span>á una ventana de <span class="fu">debugger</span> <span class="op">(</span>depurador<span class="op">)</span> con el estado de todas las variables<span class="op">.</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Utiliza Run &gt; Step into (F5) y Run &gt; Step over (F6) para ejecutar el código instrucción a instrucción. Step over ejecuta las llamadas a métodos como sentencias simples (sin entrar a ejecutar paso a paso cada instrucción dentro del método).</p>
 <p>Para practicar todo lo visto hasta ahora, haz lo siguiente:</p>
-<ul>
-<li class="fragment">Crea una nueva clase llamada <strong>Ejercicio</strong> (comenzando con una letra mayúscula).</li>
-<li class="fragment">Pega el siguiente código en la clase creada.</li>
-</ul>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode numberSource java number-lines code-with-copy"><code class="sourceCode java"><span id="cb4-1"><a></a><span class="kw">public</span> <span class="kw">class</span> Ejercicio</span>
-<span id="cb4-2"><a></a><span class="op">{</span></span>
-<span id="cb4-3"><a></a>        <span class="kw">public</span> <span class="dt">static</span> <span class="dt">void</span> <span class="fu">main</span><span class="op">(</span><span class="bu">String</span><span class="op">[]</span> args<span class="op">)</span></span>
-<span id="cb4-4"><a></a>        <span class="op">{</span></span>
-<span id="cb4-5"><a></a>            <span class="dt">int</span> n<span class="op">,</span> x<span class="op">,</span> y<span class="op">,</span> z<span class="op">;</span></span>
-<span id="cb4-6"><a></a>            n <span class="op">=</span> <span class="dv">10</span><span class="op">;</span></span>
-<span id="cb4-7"><a></a>            x <span class="op">=</span> <span class="dv">0</span><span class="op">;</span></span>
-<span id="cb4-8"><a></a>            y <span class="op">=</span> <span class="dv">1</span><span class="op">;</span></span>
-<span id="cb4-9"><a></a>            z <span class="op">=</span> <span class="dv">1</span><span class="op">;</span></span>
-<span id="cb4-10"><a></a></span>
-<span id="cb4-11"><a></a>            <span class="cf">if</span> <span class="op">(</span>n <span class="op">==</span> <span class="dv">0</span><span class="op">)</span> <span class="op">||</span> <span class="op">(</span>n <span class="op">==</span> <span class="dv">1</span><span class="op">)</span></span>
-<span id="cb4-12"><a></a>            <span class="op">{</span></span>
-<span id="cb4-13"><a></a>                x <span class="op">=</span> <span class="dv">1</span></span>
-<span id="cb4-14"><a></a>            <span class="op">}</span></span>
-<span id="cb4-15"><a></a>            <span class="cf">else</span></span>
-<span id="cb4-16"><a></a>            <span class="op">{</span></span>
-<span id="cb4-17"><a></a>                <span class="cf">for</span> <span class="op">(</span>i<span class="op">=</span><span class="dv">2</span><span class="op">;</span> i<span class="op">&lt;=</span>n<span class="op">;</span> i<span class="op">++)</span></span>
-<span id="cb4-18"><a></a>                <span class="op">{</span></span>
-<span id="cb4-19"><a></a>                    <span class="dt">int</span> s <span class="op">=</span> y <span class="op">+</span> z<span class="op">;</span></span>
-<span id="cb4-20"><a></a>                    x <span class="op">=</span> s<span class="op">;</span></span>
-<span id="cb4-21"><a></a>                    z <span class="op">=</span> y<span class="op">;</span></span>
-<span id="cb4-22"><a></a>                    y <span class="op">=</span> x<span class="op">;</span></span>
-<span id="cb4-23"><a></a>                <span class="op">}</span></span>
-<span id="cb4-24"><a></a>            <span class="op">}</span></span>
-<span id="cb4-25"><a></a></span>
-<span id="cb4-26"><a></a>            <span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span>Programa terminado<span class="op">);</span></span>
-<span id="cb4-27"><a></a>        <span class="op">}</span></span>
-<span id="cb4-28"><a></a><span class="op">}</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
-<ul>
-<li class="fragment">Soluciona todos los errores de compilación en el programa anterior.</li>
-<li class="fragment">Ejecuta el programa paso a paso para observar cuál es el valor que toma la variable <code>x</code> justo antes de finalizar el programa.</li>
-</ul>
-<h3 id="exportar-proyectos">Exportar proyectos</h3>
-<p>Las opciones de <strong>exportar e importar proyectos</strong> sirven para <strong>transferir proyectos de un ordenador a otro</strong>. Por ejemplo, podemos exportar un proyecto <em>Eclipse</em> a una carpeta de una memoria USB y, en otro ordenador, importar la carpeta.</p>
-<p>Para exportar un proyecto de <em>Eclipse</em> a una carpeta de ficheros, haremos lo siguiente:</p>
-<ul>
-<li class="fragment">Utiliza la opción de menú <code>File &gt; Export</code> y elegir <code>General &gt; File system</code> (ver <a href="#/fig-export_project" class="quarto-xref">Figura&nbsp;11</a>).</li>
-</ul>
-<div id="fig-export_project" class="quarto-float quarto-figure quarto-figure-center">
-<figure class="quarto-float quarto-float-fig">
-<div aria-describedby="fig-export_project-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img data-src="../resources/practica2/export_workspace.png">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-export_project-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figura&nbsp;11: Exportación de proyectos a una carpeta de ficheros.
-</figcaption>
-</figure>
-</div>
-<ul>
-<li class="fragment">Marcaremos el proyecto a exportar y todos sus elementos (carpetas en la parte izquierda, ficheros concretos en la parte derecha). En general, sólo se suele exportar la carpeta <code>src</code>, dado que los ficheros binarios (<em>bin</em>) se generan a partir de la compilación.</li>
-<li class="fragment">En la zona <code>To directory</code> se indicará el nombre de la carpeta que vamos a crear.</li>
-<li class="fragment">Pulsa <code>Finish</code> para finalizar.</li>
-</ul>
-<p>Si ha ido todo bien, habrás generado una carpeta con la estructura de subcarpetas del proyecto actual. Existen otras maneras de exportar proyectos, pero esta es la más sencilla. Por otro lado, no es estrictamente necesario exportar el proyecto, sino que es suficiente con guardar los ficheros <code>.java</code> ubicados en la carpeta <code>src</code>.</p>
-<h3 id="importar-proyectos">Importar proyectos</h3>
-<p>Por otro lado, para importar un proyecto tenemos varias alternativas:</p>
-<ul>
-<li class="fragment">Copiamos la carpeta de ficheros exportada en el <em>workspace</em> del ordenador. Si existe otra carpeta con una versión previa del proyecto (por ejemplo, si estamos practicando la exportación y la importación en el mismo ordenador), deberemos borrar la versión previa para poder importarla correctamente.</li>
-<li class="fragment">Utilizamos la opción <code>File &gt; Import</code> y a continuación seleccionamos <code>General &gt; Existing projects into workspace</code> (ver <a href="#/fig-import_project" class="quarto-xref">Figura&nbsp;12</a>). De esta manera, se importará el proyecto completo, incluyendo la configuración de compilación y ejecución. Esta es la opción recomendada para importar proyectos a <em>Eclipse</em>.</li>
-</ul>
-<div id="fig-import_project" class="quarto-float quarto-figure quarto-figure-center">
-<figure class="quarto-float quarto-float-fig">
-<div aria-describedby="fig-import_project-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img data-src="../resources/practica2/import_workspace.png">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-import_project-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figura&nbsp;12: Importación de proyectos en un <em>workspace</em>.
-</figcaption>
-</figure>
-</div>
-<ul>
-<li class="fragment">Crear un nuevo proyecto a partir de clases Java existentes utilizando la opción <code>Import  &gt; General &gt; File system</code>. De esta manera, podríamos importar únicamente los ficheros <code>.java</code> sin necesidad de considerar el resto del proyecto.</li>
-</ul>
-<p>Por ahora recomendamos utilizar la opción <strong><code>General &gt; Existing projects into workspace</code></strong>.</p>
-<h3 id="crear-biblioteca">Crear biblioteca</h3>
-<p>Cuando se quiere distribuir una aplicación desarrollada en Java que incluye un número considerable de clases y paquetes, conviene generar una <strong>biblioteca</strong>. Las bibliotecas en Java son archivos con extensión <strong><code>.jar</code></strong> que comprimen, de manera similar a un <code>.zip</code>, un conjunto de clases ya compiladas (ficheros <code>.class</code>) y organizadas en paquetes. Se puede explorar el contenido de un fichero <code>.jar</code> con programas de compresión de ficheros como <em>WinZip</em>.</p>
-<div id="fig-import_export_scheme" class="quarto-float quarto-figure quarto-figure-center">
-<figure class="quarto-float quarto-float-fig">
-<div aria-describedby="fig-import_export_scheme-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img data-src="../resources/practica2/import_export_scheme.png">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-import_export_scheme-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figura&nbsp;13: Ejemplo de usos de importación y exportación de bibliotecas.
-</figcaption>
-</figure>
-</div>
-<p>Para crear una biblioteca en el entorno <em>Eclipse</em> debemos seleccionar el proyecto que queremos exportar, utilizar la opción de menú <code>File &gt; Export</code>, seleccionar <code>Java &gt; Runnable JAR File</code> y seguir los siguientes pasos, ilustrados en la Ilustración 12:</p>
-<ul>
-<li class="fragment">En <code>Launch configuration</code> se elige la clase principal, es decir, la que tiene el método <code>main</code> que se ejecutará una vez que ejecutemos el fichero <code>.jar</code>.</li>
-<li class="fragment">En <code>Export destination</code> se indica el nombre del fichero que vamos a crear y la ruta donde se va a almacenar dicho fichero.</li>
-<li class="fragment">Pulsa <code>Finish</code> para finalizar. Si ha ido todo bien, se habrá generado un fichero <code>.jar</code>.</li>
-</ul>
-<div id="fig-create_jar" class="quarto-float quarto-figure quarto-figure-center">
-<figure class="quarto-float quarto-float-fig">
-<div aria-describedby="fig-create_jar-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img data-src="../resources/practica2/jar.png">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-create_jar-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figura&nbsp;14: Creación de una biblioteca .jar a partir de un proyecto.
-</figcaption>
-</figure>
-</div>
-<div class="callout callout-note callout-titled callout-style-default">
-<div class="callout-body">
-<div class="callout-title">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<p><strong>Ejecución de un programa a partir de un fichero .jar</strong></p>
-</div>
-<div class="callout-content">
-<p>Si el programa se llama <code>HolaMundo.jar</code>, podrás ejecutarlo escribiendo en una terminal del sistema operativo lo siguiente:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a></a><span class="ex">java</span> –jar HolaMundo.jar</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
-<p>Para abrir una terminal en <em>Windows</em>, hay que utilizar la barra de búsqueda e introducir <code>Símbolo del sistema</code>. Antes de poder ejecutar el <code>.jar</code> con la instrucción anterior, debemos posicionarnos en la carpeta que lo contenga. Para simplificar, guarda el fichero <code>.jar</code> en la carpeta raíz del disco duro, <code>C:</code>, y posteriormente escribe en la ventana de órdenes la siguiente instrucción:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a></a><span class="bu">cd</span> /</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-</div>
-</div>
-<h3 id="añadir-bibliotecas-a-un-proyecto">Añadir bibliotecas a un proyecto</h3>
-<p>Si queremos utilizar alguna de las clases ya definidas en Java, simplemente es necesario añadir una sentencia en nuestro programa para <strong>importar la biblioteca</strong> correspondiente. Por ejemplo, para utilizar las clases definidas en el paquete <code>java.util</code>, hemos añadido en nuestro programa la siguiente instrucción:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode numberSource java number-lines code-with-copy"><code class="sourceCode java"><span id="cb7-1"><a></a><span class="kw">import</span> <span class="im">java</span><span class="op">.</span><span class="im">util</span><span class="op">.*;</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
-<p>El proceso de incluir bibliotecas diferentes a las incluidas por defecto en Java puede no ser trivial, dado que hay varias maneras; entre ellas, las siguientes:</p>
-<ul>
-<li class="fragment">Si tenemos un fichero <code>.jar</code> con las clases compiladas, podemos añadirlo directamente.</li>
-<li class="fragment">Si tenemos las clases compiladas pero no un fichero <code>.jar</code>, nos puede interesar incluir el directorio con clases compiladas.</li>
-<li class="fragment">Si vamos a utilizar una biblioteca común, es recomendable crear una variable e incluirla como biblioteca.</li>
-</ul>
-<p>En este apartado vamos a describir el primer escenario. Para ello, vamos a importar a modo de ejemplo la biblioteca <code>.jar</code> incluida en Moodle, <code>biblioteca.jar</code>.</p>
-<p>[<a href="../resources/practica2/biblioteca.jar">Descargar Fichero JAR</a>]</p>
+<p>Crea una nueva clase llamada Ejercicio (comenzando con una letra mayúscula).</p>
+<p>Pega el siguiente código en la clase creada.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12"><pre class="sourceCode numberSource java number-lines code-with-copy"><code class="sourceCode java"><span id="cb12-1"><a></a><span class="kw">package</span><span class="im"> practica2</span><span class="op">;</span></span>
+<span id="cb12-2"><a></a></span>
+<span id="cb12-3"><a></a><span class="kw">public</span> <span class="kw">class</span> Ejercicio</span>
+<span id="cb12-4"><a></a><span class="op">{</span></span>
+<span id="cb12-5"><a></a>        <span class="kw">public</span> <span class="dt">static</span> <span class="dt">void</span> <span class="fu">main</span><span class="op">(</span><span class="bu">String</span><span class="op">[]</span> args<span class="op">)</span></span>
+<span id="cb12-6"><a></a>        <span class="op">{</span></span>
+<span id="cb12-7"><a></a>            <span class="dt">int</span> n<span class="op">,</span> x<span class="op">,</span> y<span class="op">,</span> z<span class="op">;</span></span>
+<span id="cb12-8"><a></a>            n <span class="op">=</span> <span class="dv">10</span><span class="op">;</span></span>
+<span id="cb12-9"><a></a>            x <span class="op">=</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb12-10"><a></a>            y <span class="op">=</span> <span class="dv">1</span><span class="op">;</span></span>
+<span id="cb12-11"><a></a>            z <span class="op">=</span> <span class="dv">1</span><span class="op">;</span></span>
+<span id="cb12-12"><a></a></span>
+<span id="cb12-13"><a></a>            <span class="cf">if</span> <span class="op">(</span>n <span class="op">==</span> <span class="dv">0</span><span class="op">)</span> <span class="op">||</span> <span class="op">(</span>n <span class="op">==</span> <span class="dv">1</span><span class="op">)</span></span>
+<span id="cb12-14"><a></a>            <span class="op">{</span></span>
+<span id="cb12-15"><a></a>                x <span class="op">=</span> <span class="dv">1</span></span>
+<span id="cb12-16"><a></a>            <span class="op">}</span></span>
+<span id="cb12-17"><a></a>            <span class="cf">else</span></span>
+<span id="cb12-18"><a></a>            <span class="op">{</span></span>
+<span id="cb12-19"><a></a>                <span class="cf">for</span> <span class="op">(</span>i<span class="op">=</span><span class="dv">2</span><span class="op">;</span> i<span class="op">&lt;=</span>n<span class="op">;</span> i<span class="op">++)</span></span>
+<span id="cb12-20"><a></a>                <span class="op">{</span></span>
+<span id="cb12-21"><a></a>                    <span class="dt">int</span> s <span class="op">=</span> y <span class="op">+</span> z<span class="op">;</span></span>
+<span id="cb12-22"><a></a>                    x <span class="op">=</span> s<span class="op">;</span></span>
+<span id="cb12-23"><a></a>                    z <span class="op">=</span> y<span class="op">;</span></span>
+<span id="cb12-24"><a></a>                    y <span class="op">=</span> x<span class="op">;</span></span>
+<span id="cb12-25"><a></a>                <span class="op">}</span></span>
+<span id="cb12-26"><a></a>            <span class="op">}</span></span>
+<span id="cb12-27"><a></a></span>
+<span id="cb12-28"><a></a>            <span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span>Programa terminado<span class="op">);</span></span>
+<span id="cb12-29"><a></a>        <span class="op">}</span></span>
+<span id="cb12-30"><a></a><span class="op">}</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Soluciona todos los errores de compilación en el programa anterior.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13"><pre class="sourceCode numberSource text number-lines code-with-copy"><code class="sourceCode"><span id="cb13-1"><a></a>Ejecuta el programa paso a paso para observar cuál es el valor que toma la variable x justo antes de finalizar el programa.</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<h3 id="exportar-e-importar-proyectos">1.8. Exportar e importar proyectos</h3>
+<p>Las opciones de exportar e importar proyectos sirven para transferir proyectos de un ordenador a otro. Por ejemplo, podemos exportar un proyecto Eclipse a una carpeta de ficheros ubicada en una memoria USB y, en otro ordenador, importar la carpeta.</p>
+<p>Para exportar un proyecto de Eclipse a una carpeta de ficheros, haremos lo siguiente:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb14"><pre class="sourceCode numberSource text number-lines code-with-copy"><code class="sourceCode"><span id="cb14-1"><a></a>Utiliza la opción de menú File &gt; Export y elegir General &gt; File system (ver Ilustración 10).</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<p><em>Ilustración . Exportar proyectos del workspace.</em></p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb15"><pre class="sourceCode numberSource text number-lines code-with-copy"><code class="sourceCode"><span id="cb15-1"><a></a>Marcaremos el proyecto a exportar y todos sus elementos (carpetas en la parte izquierda, ficheros concretos en la parte izquierda). En general, sólo se suele exportar la carpeta src, dado que los ficheros binarios (bin) se generan a partir de la compilación.</span>
+<span id="cb15-2"><a></a>En la zona To directory se indicará el nombre de la carpeta que vamos a crear.</span>
+<span id="cb15-3"><a></a>Pulsa Finish para finalizar.</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Si ha ido todo bien, habrás generado una carpeta con la estructura de subcarpetas del proyecto actual. Existen otras maneras de exportar proyectos, pero esta es la más sencilla.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb16"><pre class="sourceCode numberSource text number-lines code-with-copy"><code class="sourceCode"><span id="cb16-1"><a></a>Por otro lado, no es estrictamente necesario exportar el proyecto, sino que es suficiente con guardar los ficheros .java ubicados en la carpeta src.</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Para importar un proyecto tenemos varias alternativas:</p>
+<p>Copiamos la carpeta de ficheros exportada en el workspace del ordenador. Si existe otra carpeta con una versión previa del proyecto (por ejemplo, si estamos practicando la exportación y la importación en el mismo ordenador), deberemos borrar la versión previa para poder importarla correctamente.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb17"><pre class="sourceCode numberSource text number-lines code-with-copy"><code class="sourceCode"><span id="cb17-1"><a></a>Utilizamos la opción File &gt; Import y a continuación seleccionamos General &gt; Existing projects into workspace (ver Ilustración 11).</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<p><em>Ilustración . Importar proyectos del workspace.</em></p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb18"><pre class="sourceCode numberSource text number-lines code-with-copy"><code class="sourceCode"><span id="cb18-1"><a></a>Crear un nuevo proyecto a partir de clases Java existentes utilizando la opción Import  &gt; General &gt; File system. De esta manera, podríamos importar únicamente los ficheros .java sin necesidad de considerar el resto del proyecto.</span>
+<span id="cb18-2"><a></a>Por ahora recomendamos utilizar la opción General &gt; Existing projects into workspace.</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<h3 id="crear-y-utilizar-bibliotecas-.jar">1.9. Crear y utilizar bibliotecas .jar</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb19"><pre class="sourceCode numberSource text number-lines code-with-copy"><code class="sourceCode"><span id="cb19-1"><a></a>Cuando se quiere distribuir una aplicación desarrollada en Java que incluye un número considerable de clases y paquetes, conviene generar una biblioteca. Las bibliotecas en Java son archivos con extensión .jar que comprimen (al estilo de los ficheros .zip) un conjunto de clases compiladas (.class) organizadas en paquetes. Se puede explorar el contenido de un fichero .jar con programas de compresión de ficheros como WinZip.</span>
+<span id="cb19-2"><a></a>Para crear una biblioteca en el entorno Eclipse debemos seleccionar el proyecto que queremos exportar, utilizar la opción de menú File &gt; Export, seleccionar Java &gt; Runnable JAR File y seguir los siguientes pasos, ilustrados en la Ilustración 12:</span>
+<span id="cb19-3"><a></a>En Launch configuration se elige la clase principal, es decir, la que tiene el método main que se ejecutará una vez que ejecutemos el fichero .jar.</span>
+<span id="cb19-4"><a></a>En Export destination se indica el nombre del fichero que vamos a crear y la ruta donde se va a almacenar dicho fichero.</span>
+<span id="cb19-5"><a></a>Pulsa Finish para finalizar. Si ha ido todo bien, se habrá generado un fichero .jar.</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<p><em>Ilustración . Construcción de una biblioteca .jar.</em></p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb20"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb20-1"><a></a><span class="ex">Si</span> el programa se llama HolaMundo.jar, podrás ejecutarlo escribiendo en una terminal del sistema operativo lo siguiente:</span>
+<span id="cb20-2"><a></a><span class="ex">java</span> –jar HolaMundo.jar</span>
+<span id="cb20-3"><a></a><span class="ex">Para</span> abrir una terminal en Windows, hay que utilizar la barra de búsqueda e introducir Símbolo del sistema. Antes de poder ejecutar el .jar con la instrucción anterior, debemos posicionarnos en la carpeta que lo contenga. Para simplificar, guarda el fichero .jar en la carpeta raíz del disco duro,  C:, y posteriormente escribe en la ventana de órdenes la siguiente instrucción:</span>
+<span id="cb20-4"><a></a><span class="bu">cd</span> /</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<h3 id="añadir-bibliotecas-a-un-proyecto">1.10. Añadir bibliotecas a un proyecto</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb21"><pre class="sourceCode numberSource java number-lines code-with-copy"><code class="sourceCode java"><span id="cb21-1"><a></a>Si queremos utilizar alguna de las clases ya definidas en Java<span class="op">,</span> simplemente es necesario añadir una sentencia en nuestro programa para importar la biblioteca correspondiente<span class="op">.</span> <span class="fu">Por</span> ejemplo<span class="op">,</span> para utilizar las clases definidas en el paquete java<span class="op">.</span><span class="fu">util</span><span class="op">,</span> hemos añadido en nuestro programa la sentencia</span>
+<span id="cb21-2"><a></a><span class="kw">import</span> <span class="im">java</span><span class="op">.</span><span class="im">util</span><span class="op">.*;</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<p>El proceso de incluir bibliotecas diferentes a las incluidas por defecto en Java puede no ser sencillo, ya que hay varias opciones para hacerlo de una manera correcta. Entre las distintas opciones que tenemos para incluir bibliotecas están las siguientes:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb22"><pre class="sourceCode numberSource text number-lines code-with-copy"><code class="sourceCode"><span id="cb22-1"><a></a>Si tenemos un fichero .jar con las clases compiladas, podemos añadirlo directamente.</span>
+<span id="cb22-2"><a></a>Si tenemos las clases compiladas pero no un fichero .jar, nos puede interesar incluir el directorio con clases compiladas.</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Si vamos a utilizar una biblioteca común, es recomendable crear una variable, e incluirla como biblioteca.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb23"><pre class="sourceCode numberSource text number-lines code-with-copy"><code class="sourceCode"><span id="cb23-1"><a></a>En este apartado vamos a describir el primer escenario. Para ello, vamos a importar a modo de ejemplo la biblioteca .jar incluida en Moodle, biblioteca.jar.</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Antes de ello, vamos a escribir en nuestro programa la siguiente instrucción:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode numberSource java number-lines code-with-copy"><code class="sourceCode java"><span id="cb8-1"><a></a>Practicas<span class="op">.</span><span class="fu">escribeMensaje</span><span class="op">();</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
-<p>Al compilar, se nos informa de un error: <strong>la clase <em>Practicas</em> no ha sido definida todavía</strong>. Para solucionarlo, vamos a importar una biblioteca donde se define dicha clase. Debemos hacer click derecho sobre el nombre del proyecto y seleccionar <code>Properties &gt; Java Build Path</code>. Obtendremos una ventana como la de la <a href="#/fig-add_jar" class="quarto-xref">Figura&nbsp;15</a>, donde se pueden configurar las bibliotecas que se van a utilizar en el proyecto.</p>
-<p>A continuación, hacemos click sobre <code>Add External JARs</code> y seleccionamos el fichero a importar. Una vez hecho esto, podemos comprobar que es posible ejecutar nuestro programa sin ningún tipo de problemas, pues el código necesario se obtiene en el fichero importado.</p>
-<div id="fig-add_jar" class="quarto-float quarto-figure quarto-figure-center">
-<figure class="quarto-float quarto-float-fig">
-<div aria-describedby="fig-add_jar-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img data-src="../resources/practica2/add_jar.png">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-add_jar-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figura&nbsp;15: Añadir una biblioteca.jar a un proyecto.
-</figcaption>
-</figure>
-</div>
-<h3 id="generar-documentación">Generar documentación</h3>
-<p>Para generar la documentación de las clases y paquetes desarrollados se utiliza la herramienta <strong><em>javadoc</em></strong>, incluida en la JDK. Desde el entorno de <em>Eclipse</em>, se facilita la utilización de esta herramienta a través de la opción de menú <code>Project &gt; Generate Javadoc</code> (<a href="#/fig-javadoc" class="quarto-xref">Figura&nbsp;16</a>). Al seleccionar esta opción, se muestra una ventana donde se deben configurar algunos parámetros para generar la documentación.</p>
-<p>En primer lugar, seleccionamos la ubicación del ejecutable <em>javadoc</em> con el botón <code>Configure</code>. Normalmente, <em>Eclipse</em> detecta automáticamente su ubicación y rellena este campo por nosotros, por lo que no necesitamos hacer nada.</p>
-<p>A continuación, se debe configurar el directorio de salida de la documentación utilizando la caja de texto <code>Destination</code> y el botón <code>Browse</code> asociado. Por último, se pulsará el botón <code>Finish</code> para finalizar y generar la documentación. La documentación podrá abrirse con cualquier navegador HTML. Pruébalo para la clase <code>HolaMundo</code>.</p>
-<div id="fig-javadoc" class="quarto-float quarto-figure quarto-figure-center">
-<figure class="quarto-float quarto-float-fig">
-<div aria-describedby="fig-javadoc-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img data-src="../resources/practica2/javadoc.png">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-javadoc-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figura&nbsp;16: Generación de documentación con la herramienta javadoc.
-</figcaption>
-</figure>
-</div>
-<h3 id="acceso-a-la-documentación-del-jdk">Acceso a la documentación del JDK</h3>
-<p>Java proporciona una amplia y detallada documentación acerca de las <strong>herramientas que incluye el JDK</strong>, así como la especificación de la API (<em>Application Programming Interface</em>), es decir, la documentación de las bibliotecas disponibles por defecto en Java. Esta documentación se encuentra la página oficial de <em>Oracle</em> (ver <a href="#/fig-jdk_doc" class="quarto-xref">Figura&nbsp;17</a>), y lo mismo sucede para la documentación de la API (ver <a href="#/fig-api_doc" class="quarto-xref">Figura&nbsp;18</a>). Esta documentación puede descargarse para poder consultarla sin necesidad de acceder a Internet; el material descargado puede visualizarse con cualquier navegador web.</p>
-<p>Modifica la clase <code>Ejercicio</code> para que cada vez que se ejecute escriba por pantalla un número diferente. Para ello, modifica la instrucción <code>x = 1</code> con métodos de la clase <code>Math</code> que permitan obtener un número entero aleatorio: primero se obtendrá un número real aleatorio y luego se redondeará a un número entero. Puede buscarse dicho método en la documentación de la clase <a href="https://docs.oracle.com/en/java/javase/25/docs/api/java.base/java/lang/Math.html"><code>java.lang.Math</code></a>.</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode numberSource java number-lines code-with-copy"><code class="sourceCode java"><span id="cb9-1"><a></a>x <span class="op">=</span> <span class="op">(</span><span class="dt">int</span><span class="op">)</span> <span class="bu">Math</span><span class="op">.???(</span><span class="bu">Math</span><span class="op">.???());</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
-<div id="fig-jdk_doc" class="quarto-float quarto-figure quarto-figure-center">
-<figure class="quarto-float quarto-float-fig">
-<div aria-describedby="fig-jdk_doc-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img data-src="../resources/practica2/jdk_doc.png">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-jdk_doc-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figura&nbsp;17: Acceso a la documentación del JDK.
-</figcaption>
-</figure>
-</div>
-<div id="fig-api_doc" class="quarto-float quarto-figure quarto-figure-center">
-<figure class="quarto-float quarto-float-fig">
-<div aria-describedby="fig-api_doc-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img data-src="../resources/practica2/api_doc.png">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-api_doc-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figura&nbsp;18: Acceso a la documentación de la API de Java.
-</figcaption>
-</figure>
-</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb24"><pre class="sourceCode numberSource text number-lines code-with-copy"><code class="sourceCode"><span id="cb24-1"><a></a>Practicas.escribeMensaje();</span>
+<span id="cb24-2"><a></a>Al compilar, se nos informa de un error: la clase Practicas no ha sido definida todavía. Para solucionarlo, vamos a importar una biblioteca donde se define dicha clase. Debemos hacer click derecho sobre el nombre del proyecto y seleccionar Properties &gt; Java Build Path. Obtendremos una ventana como la de la Ilustración 13.</span>
+<span id="cb24-3"><a></a>A continuación, hacemos click sobre Add External JARs y seleccionamos el fichero a importar.  Una vez hecho esto, podemos comprobar que es posible ejecutar nuestro programa sin ningún tipo de problemas, pues el código necesario se obtiene en el fichero importado.</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<p><em>Ilustración . Añadiendo una biblioteca .jar a un proyecto.</em></p>
+<h3 id="generar-documentación">1.11. Generar documentación</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb25"><pre class="sourceCode numberSource text number-lines code-with-copy"><code class="sourceCode"><span id="cb25-1"><a></a>Para generar la documentación de las clases y paquetes desarrollados se utiliza la herramienta javadoc, incluida en la JDK. Desde el entorno de Eclipse, se facilita la utilización de esta herramienta a través de la opción de menú Project &gt; Generate Javadoc (Ilustración 14).</span>
+<span id="cb25-2"><a></a>En primer lugar, seleccionamos la ubicación del ejecutable javadoc con el botón Configure. Normalmente, Eclipse detecta automáticamente su ubicación y rellena este campo por nosotros, por lo que no necesitamos hacer nada.</span>
+<span id="cb25-3"><a></a>A continuación, se debe configurar el directorio de salida de la documentación utilizando la caja de texto Destination y el botón Browse asociado.</span>
+<span id="cb25-4"><a></a>Por último, se pulsará el botón Finish para finalizar y generar la documentación. La documentación podrá abrirse con cualquier navegador HTML.</span>
+<span id="cb25-5"><a></a>Pruébalo para la clase HolaMundo.</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<p><em>Ilustración . Generación de documentación con la herramienta javadoc.</em></p>
 </section>
-<section id="appendix-installation" class="slide level2">
+<section id="acceso-a-la-documentación-del-jdk" class="slide level2">
+<h2>1.12. Acceso a la documentación del JDK</h2>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb26"><pre class="sourceCode numberSource java number-lines code-with-copy"><code class="sourceCode java"><span id="cb26-1"><a></a>Java proporciona una amplia y detallada documentación acerca de las herramientas que incluye el JDK<span class="op">,</span> así como la especificación de la <span class="fu">API</span> <span class="op">(</span>Application Programming Interface<span class="op">),</span> es decir<span class="op">,</span> la documentación de las bibliotecas disponibles por defecto en Java<span class="op">.</span> <span class="fu">Esta</span> documentación está accesible en la página oficial de <span class="fu">Oracle</span> <span class="op">(</span>Ilustración <span class="dv">15</span><span class="op">),</span> y lo mismo sucede para la documentación de la <span class="fu">API</span> <span class="op">(</span>Ilustración <span class="dv">16</span><span class="op">).</span> <span class="fu">Esta</span> documentación puede descargarse para poder consultarla sin necesidad de acceder a Internet<span class="op">;</span> el material descargado puede visualizarse con cualquier navegador web<span class="op">.</span></span>
+<span id="cb26-2"><a></a><span class="fu">Modifica</span> la clase Ejercicio para que cada vez que se ejecute escriba por pantalla un número diferente<span class="op">.</span> <span class="fu">Para</span> ello<span class="op">,</span> modifica la instrucción x <span class="op">=</span> <span class="dv">1</span> con métodos de la clase <span class="bu">Math</span> que permitan obtener un número enteros aleatorio<span class="op">:</span> primero se obtendrá un número real aleatorio y luego se redondeará a un número entero<span class="op">.</span> <span class="fu">Puede</span> buscarse dicho método en la documentación de la clase java<span class="op">.</span><span class="fu">lang</span><span class="op">.</span><span class="fu">Math</span><span class="op">.</span></span>
+<span id="cb26-3"><a></a><span class="fu">x</span> <span class="op">=</span> <span class="bu">Math</span><span class="op">.???(</span><span class="bu">Math</span><span class="op">.???());</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<p><em>Ilustración . Documentación del JDK.</em></p>
+<p><em>Ilustración . Documentación de la API de Java.</em></p>
+</section>
+<section id="apéndice.-instalación-de-eclipse-y-jdk" class="slide level2">
 <h2>Apéndice. Instalación de Eclipse y JDK</h2>
 <p>En este apéndice explicaremos el proceso de instalación del software necesario para realizar las prácticas de Informática en los ordenadores personales. Existen al menos dos maneras de instalar el software:</p>
 <h3 id="instalación-de-eclipse-mediante-un-instalador">Instalación de Eclipse mediante un instalador</h3>
-<ul>
-<li class="fragment">Visita la página web oficial de <a href="https://www.eclipse.org/"><em>Eclipse</em></a>.</li>
-<li class="fragment">Localiza el botón de <strong><em>Download</em></strong>. Nos llevará a la página de descargas.</li>
-<li class="fragment">Localiza el panel de <em>Eclipse Installer</em> (<a href="#/fig-installer" class="quarto-xref">Figura&nbsp;19</a>). Debemos reconocer nuestro sistema operativo (<em>Windows</em>, <em>Linux</em> o <em>macOS</em>), y pulsar sobre <code>x86_64</code>.</li>
-<li class="fragment">Una vez descargado el instalador, lo ejecutamos.</li>
-</ul>
-<p>El instalador permite obtener múltiples herramientas de Eclipse, aunque nosotros sólo necesitamos el entorno de desarrollo para Java. La instalación es bastante automática, y simplemente tendremos que seleccionar Eclipse IDE for Java Developers (<a href="#/fig-suite_tools" class="quarto-xref">Figura&nbsp;20</a>) y pulsar el botón <code>Install</code> para iniciar la instalación.</p>
-<div id="fig-installer" class="quarto-float quarto-figure quarto-figure-center">
-<figure class="quarto-float quarto-float-fig">
-<div aria-describedby="fig-installer-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img data-src="../resources/practica2/eclipse_suite_installation.png">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-installer-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figura&nbsp;19: Panel de descarga del instalador de Eclipse.
-</figcaption>
-</figure>
-</div>
-<div id="fig-suite_tools" class="quarto-float quarto-figure quarto-figure-center">
-<figure class="quarto-float quarto-float-fig">
-<div aria-describedby="fig-suite_tools-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img data-src="../resources/practica2/eclipse_suite.png" style="width:60.0%">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-suite_tools-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figura&nbsp;20: Herramientas disponibles en la suite de Eclipse.
-</figcaption>
-</figure>
-</div>
-<p>Una vez seleccionada dicha opción, se nos dirige a una pantalla como la que se muestra en la <a href="#/fig-jre_installation" class="quarto-xref">Figura&nbsp;21</a>. El objetivo es configurar dos rutas: la localización de las herramientas de desarrollo para Java y la ruta de instalación de Eclipse. Podéis personalizar ambas rutas, pero no es recomendable hacerlo. En particular, la primera ruta apunta a un <em>Java Development Kit</em> (JDK), que, si no queremos descargar junto con Eclipse, deberá instalarse por separado. Esta última opción, aunque es menos sencilla, se describe en el siguiente punto y, entre otras ventajas, permite probar los comandos java y javac en la terminal del ordenador.</p>
-<div id="fig-jre_installation" class="quarto-float quarto-figure quarto-figure-center">
-<figure class="quarto-float quarto-float-fig">
-<div aria-describedby="fig-jre_installation-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img data-src="../resources/practica2/jre_installation.png" style="width:75.0%">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-jre_installation-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figura&nbsp;21: Instalación de Eclipse para Java, indicando que queremos descargar un JRE.
-</figcaption>
-</figure>
-</div>
-<p>Una opción alternativa consiste en indicar la ruta de un <em>Java Runtime Environment</em> (JRE) (versión 21 o superior) previamente instalado (ver <a href="#/fig-jdk_installation" class="quarto-xref">Figura&nbsp;22</a>). Para la descarga e instalación del JDK de Java, por favor, dirígete a la sección B.1 del Apéndice. Por ejemplo, en la siguiente imagen, se ha detectado una instalación en la ruta <code>C:/Program Files/Java/jdk-25</code>, que es la ruta de instalación por defecto de un JDK.</p>
-<div id="fig-jdk_installation" class="quarto-float quarto-figure quarto-figure-center">
-<figure class="quarto-float quarto-float-fig">
-<div aria-describedby="fig-jdk_installation-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img data-src="../resources/practica2/jdk_installation.png" style="width:75.0%">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-jdk_installation-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figura&nbsp;22: Instalación de Eclipse para Java, indicando que queremos utilizar un JDK previamente instalado.
-</figcaption>
-</figure>
-</div>
+<p>Visita la página web oficial de Eclipse.</p>
+<p>Localiza el botón de Download. Nos llevará a la página de descargas.</p>
+<p>Localiza el panel de Eclipse Installer (Ilustración 17). Debemos reconocer nuestro sistema operativo (Windows, Linux o macOS), y pulsar sobre x86_64.</p>
+<p>Una vez descargado el instalador, lo ejecutamos.</p>
+<p>El instalador permite obtener múltiples herramientas de Eclipse, aunque nosotros sólo necesitamos el entorno de desarrollo para Java. La instalación es bastante automática, y simplemente tendremos que seleccionar Eclipse IDE for Java Developers (Ilustración 18).</p>
+<p><em>Ilustración . Instalador de la suite de Eclipse.</em></p>
+<p><em>Ilustración . Herramientas disponibles en la suite de Eclipse.</em></p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb27"><pre class="sourceCode numberSource text number-lines code-with-copy"><code class="sourceCode"><span id="cb27-1"><a></a>Una vez seleccionada dicha opción, se nos dirige a una pantalla como la que se muestra en la Ilustración 19. El objetivo es configurar dos rutas: la localización de las herramientas de desarrollo para Java y la ruta de instalación de Eclipse. Podéis personalizar ambas rutas, pero no es recomendable hacerlo. En particular, la primera ruta apunta a un Java Development Kit (JDK), que, si no queremos descargar junto con Eclipse, deberá instalarse por separado. Esta última opción, aunque es menos sencilla, se describe en el siguiente punto y, entre otras ventajas, permite probar los comandos java y javac en la terminal del ordenador.</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<p><em>Ilustración . Instalación de Eclipse para Java, indicando que queremos descargar un JRE.</em></p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb28"><pre class="sourceCode numberSource text number-lines code-with-copy"><code class="sourceCode"><span id="cb28-1"><a></a>Una opción alternativa consiste en indicar la ruta de un Java Runtime Environment (JRE) (versión 21 o superior) previamente instalado (ver Ilustración 20). Para la descarga e instalación del JDK de Java, por favor, dirígete a la sección B.1 del Apéndice. Por ejemplo, en la siguiente imagen, se ha detectado una instalación en la ruta C:/Program Files/Java/jdk-25, que es la ruta de instalación por defecto de un JDK.</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<p><em>Ilustración . Instalación de Eclipse para Java, indicando la ruta de un JDK previamente instalado.</em></p>
 <h3 id="instalación-alternativa-de-eclipse-sin-instalador">Instalación alternativa de Eclipse sin instalador</h3>
 <h4 id="instalación-del-java-software-development-kit-jdk">Instalación del Java Software Development Kit (JDK)</h4>
 <p>Para comenzar, debemos descargar la última versión del JDK de la página web de Oracle:</p>
-<ul>
-<li class="fragment">Descargamos el JDK de Java de la página oficial de <a href="https://www.oracle.com/es/java/technologies/downloads/">Oracle</a>. En este momento, la última versión disponible es la <strong>25</strong>.</li>
-<li class="fragment">Debemos seleccionar el sistema operativo de nuestro ordenador personal (<em>Linux</em>, <em>macOS</em> o <em>Windows</em>) y descargar un instalador. En <em>Windows</em>, podemos descargar tanto <code>x64 Installer</code> como <code>x64 MSI Installer</code>.</li>
-<li class="fragment">Una vez descargado, abrimos el archivo para comenzar el proceso de instalación. El proceso es completamente automático y no habrá que hacer nada, salvo utilizar el botón <code>Next</code> para avanzar al siguiente paso. La ruta de instalación por defecto en Windows es <code>C:/Program Files/Java/jdk-25</code>. <strong>Se recomienda no modificar esta ruta, salvo que no tengamos espacio en <code>C:</code></strong>.</li>
-</ul>
-<div id="fig-jdk_installation2" class="quarto-float quarto-figure quarto-figure-center">
-<figure class="quarto-float quarto-float-fig">
-<div aria-describedby="fig-jdk_installation2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img data-src="../resources/practica2/jdk_installation_standalone.png">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-jdk_installation2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figura&nbsp;23: Paso intermedio de la instalación del JDK. Se muestra la ruta de instalación por defecto, la cual no modificaremos.
-</figcaption>
-</figure>
-</div>
+<p>Descargamos el JDK de Java de la página oficial de Oracle. En este momento, la última versión disponible es la 25.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb29"><pre class="sourceCode numberSource text number-lines code-with-copy"><code class="sourceCode"><span id="cb29-1"><a></a>Debemos seleccionar el sistema operativo de nuestro ordenador personal (Linux, macOS o Windows) y descargar un instalador. En Windows, podemos descargar tanto x64 Installer como x64 MSI Installer.</span>
+<span id="cb29-2"><a></a>Una vez descargado, abrimos el archivo para comenzar el proceso de instalación. El proceso es completamente automático y no habrá que hacer nada, salvo utilizar el botón Next para avanzar entre pasos. La ruta de instalación por defecto en Windows es C:/Program Files/Java/jdk-25. Se recomienda no modificar esta ruta, salvo que no tengamos espacio en C:.</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<p><em>Ilustración . Paso intermedio de la instalación del JDK. Se muestra la ruta de instalación por defecto, la cual no modificaremos.</em></p>
 <h4 id="instalación-de-eclipse">Instalación de Eclipse</h4>
-<ul>
-<li class="fragment">Visita la página web oficial de <em>Eclipse</em>.</li>
-<li class="fragment">Localiza el botón de <code>Download</code>; nos llevará a la página de descargas.</li>
-</ul>
-<div id="fig-eclipse_download" class="quarto-float quarto-figure quarto-figure-center">
-<figure class="quarto-float quarto-float-fig">
-<div aria-describedby="fig-eclipse_download-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img data-src="../resources/practica2/eclipse_ide_download.png">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-eclipse_download-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figura&nbsp;24: Panel de descarga de Eclipse sin instalador.
-</figcaption>
-</figure>
-</div>
-<ul>
-<li class="fragment">Partiendo de un panel similar al de la <a href="#/fig-eclipse_download" class="quarto-xref">Figura&nbsp;24</a>, reconocemos nuestro sistema operativo y pulsamos sobre <code>x86_64</code>. Se descargará un <code>.zip</code> con una carpeta dentro llamada <code>eclipse</code> (ver <a href="#/fig-eclipse_files" class="quarto-xref">Figura&nbsp;25</a>). Podemos situar dicha carpeta en cualquier directorio de nuestra elección, por ejemplo, en la unidad <code>C:</code>. Ten en cuenta que esta opción no requiere instalación, y por tanto, accederemos siempre a dicha carpeta cuando queramos iniciar <em>Eclipse</em> haciendo click sobre <code>eclipse.exe</code>. En la <a href="#/fig-eclipse_files" class="quarto-xref">Figura&nbsp;25</a> se muestra el contenido del fichero <code>.zip</code> descomprimido.</li>
-</ul>
-<div id="fig-eclipse_files" class="quarto-float quarto-figure quarto-figure-center">
-<figure class="quarto-float quarto-float-fig">
-<div aria-describedby="fig-eclipse_files-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img data-src="../resources/practica2/filesystem.png">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-eclipse_files-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figura&nbsp;25: Ficheros contenidos en el directorio eclipse, tras descomprimir el fichero .zip descargado de la página oficial de Eclipse.
-</figcaption>
-</figure>
-</div>
+<p>Visita la página web oficial de Eclipse.</p>
+<p>Localiza el botón de Download. Nos llevará a la página de descargas.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb30"><pre class="sourceCode numberSource text number-lines code-with-copy"><code class="sourceCode"><span id="cb30-1"><a></a>Partiendo de un panel similar al de la Ilustración 22, reconocemos nuestro sistema operativo y pulsamos sobre x86_64. Se descargará un .zip con una carpeta dentro llamada eclipse (ver Ilustración 23). Podemos situar dicha carpeta en cualquier directorio de nuestra elección, por ejemplo, en la unidad C:. Ten en cuenta que esta opción no requiere instalación, y por tanto, accederemos siempre a dicha carpeta cuando queramos iniciar Eclipse haciendo click sobre eclipse.exe. En la Ilustración 23 se muestra el contenido del fichero .zip descomprimido.</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<p><em>Ilustración . Panel de descarga de Eclipse sin instalador.</em></p>
+<p><em>Ilustración . Ficheros contenidos en el directorio eclipse, tras descomprimir el fichero .zip descargado de la página oficial de Eclipse.</em></p>
 
 
 </section>
