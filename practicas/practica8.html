@@ -72,9 +72,17 @@ ul.task-list li input[type="checkbox"] {
 
 <link rel="stylesheet" href="../styles.css">
 <meta property="og:title" content="Práctica 8: BIM semántico – Informática (30717) - Grado en Estudios en Arquitectura">
+<meta property="og:description" content="Material de prácticas del curso 2025-2026.">
+<meta property="og:image" content="https://informatica-30717.github.io/resources/lesson8/bim1.png">
 <meta property="og:site_name" content="Informática (30717) - Grado en Estudios en Arquitectura">
+<meta property="og:image:height" content="416">
+<meta property="og:image:width" content="440">
 <meta name="twitter:title" content="Práctica 8: BIM semántico – Informática (30717) - Grado en Estudios en Arquitectura">
-<meta name="twitter:card" content="summary">
+<meta name="twitter:description" content="Material de prácticas del curso 2025-2026.">
+<meta name="twitter:image" content="https://informatica-30717.github.io/resources/lesson8/bim1.png">
+<meta name="twitter:image-height" content="416">
+<meta name="twitter:image-width" content="440">
+<meta name="twitter:card" content="summary_large_image">
 </head>
 
 <body class="nav-sidebar floating nav-fixed quarto-light">
@@ -195,9 +203,10 @@ ul.task-list li input[type="checkbox"] {
    
   <ul>
   <li><a href="#objetivos-de-la-práctica" id="toc-objetivos-de-la-práctica" class="nav-link active" data-scroll-target="#objetivos-de-la-práctica"><span class="header-section-number">1</span> Objetivos de la práctica</a></li>
-  <li><a href="#uso-de-un-software-visualizador-bim" id="toc-uso-de-un-software-visualizador-bim" class="nav-link" data-scroll-target="#uso-de-un-software-visualizador-bim"><span class="header-section-number">2</span> Uso de un software visualizador BIM</a></li>
-  <li><a href="#conversión-a-modelo-semántico" id="toc-conversión-a-modelo-semántico" class="nav-link" data-scroll-target="#conversión-a-modelo-semántico"><span class="header-section-number">3</span> Conversión a modelo semántico</a></li>
-  <li><a href="#uso-del-editor-de-ontologías-protégé" id="toc-uso-del-editor-de-ontologías-protégé" class="nav-link" data-scroll-target="#uso-del-editor-de-ontologías-protégé"><span class="header-section-number">4</span> Uso del editor de ontologías Protégé</a></li>
+  <li><a href="#qué-es-bim" id="toc-qué-es-bim" class="nav-link" data-scroll-target="#qué-es-bim"><span class="header-section-number">2</span> ¿Qué es BIM?</a></li>
+  <li><a href="#uso-de-un-software-visualizador-bim" id="toc-uso-de-un-software-visualizador-bim" class="nav-link" data-scroll-target="#uso-de-un-software-visualizador-bim"><span class="header-section-number">3</span> Uso de un software visualizador BIM</a></li>
+  <li><a href="#conversión-a-modelo-semántico" id="toc-conversión-a-modelo-semántico" class="nav-link" data-scroll-target="#conversión-a-modelo-semántico"><span class="header-section-number">4</span> Conversión a modelo semántico</a></li>
+  <li><a href="#uso-del-editor-de-ontologías-protégé" id="toc-uso-del-editor-de-ontologías-protégé" class="nav-link" data-scroll-target="#uso-del-editor-de-ontologías-protégé"><span class="header-section-number">5</span> Uso del editor de ontologías Protégé</a></li>
   </ul>
 <div class="quarto-alternate-formats"><h2>Otros formatos</h2><ul><li><a href="practica8.reveal.html"><i class="bi bi-file-slides"></i>RevealJS</a></li></ul></div></nav>
     </div>
@@ -230,14 +239,153 @@ ul.task-list li input[type="checkbox"] {
 <li>Hacer consultas al modelo BIM usando un razonador semántico.</li>
 </ul>
 </section>
-<section id="uso-de-un-software-visualizador-bim" class="level2" data-number="2">
-<h2 data-number="2" class="anchored" data-anchor-id="uso-de-un-software-visualizador-bim"><span class="header-section-number">2</span> Uso de un software visualizador BIM</h2>
+<section id="qué-es-bim" class="level2" data-number="2">
+<h2 data-number="2" class="anchored" data-anchor-id="qué-es-bim"><span class="header-section-number">2</span> ¿Qué es BIM?</h2>
+<div id="fig-BIM" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-BIM-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../resources/lesson8/bim1.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-BIM-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;1: Youtube: Autodesk Building Solutions <a href="https://www.youtube.com/watch?v=suNadRnHy-Un">What Is BIM (Building Information Modeling)?</a>.
+</figcaption>
+</figure>
+</div>
+<div id="fig-edif" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-edif-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../resources/lesson8/bim2.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-edif-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;2: Ciclo de vida de la edificación.
+</figcaption>
+</figure>
+</div>
 </section>
-<section id="conversión-a-modelo-semántico" class="level2" data-number="3">
-<h2 data-number="3" class="anchored" data-anchor-id="conversión-a-modelo-semántico"><span class="header-section-number">3</span> Conversión a modelo semántico</h2>
+<section id="uso-de-un-software-visualizador-bim" class="level2" data-number="3">
+<h2 data-number="3" class="anchored" data-anchor-id="uso-de-un-software-visualizador-bim"><span class="header-section-number">3</span> Uso de un software visualizador BIM</h2>
+<p>En esta práctica considerararemos diferentes versiones de un modelo BIM públicamente disponible correspondiente a un apartamento dúplex. La versión original (<a href="../resources/lesson8/Duplex.ifc">⬇️ Duplex.ifc</a>) está en IFC (concretamente, 2x3). La versión semántica (<a href="../resources/lesson8/Duplex.owl">⬇️ Duplex.owl</a>) está en el <strong>lenguaje OWL</strong>.</p>
+<p>El primer paso de la práctica es usar <a href="https://bimvision.eu">BIMvision</a> u otro visualizador BIM para abrir el fichero <strong>Duplex.ifc</strong> y familiarizarse con el modelo. La <a href="#fig-visor" class="quarto-xref">Figura&nbsp;3</a> muestra el detalle de una ventana de la planta baja (Level 1).</p>
+<div id="fig-visor" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-visor-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../resources/lesson8/fig1.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-visor-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;3: Modelo Duplex en BIMvision.
+</figcaption>
+</figure>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Nota</span>🧠 Ejercicio 1 - Encontrar elementos
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>¿Cuántas ventanas hay?</p>
+<p>¿Qué identificador, alturas y anchura tiene cada una?</p>
+</div>
+</div>
 </section>
-<section id="uso-del-editor-de-ontologías-protégé" class="level2" data-number="4">
-<h2 data-number="4" class="anchored" data-anchor-id="uso-del-editor-de-ontologías-protégé"><span class="header-section-number">4</span> Uso del editor de ontologías Protégé</h2>
+<section id="conversión-a-modelo-semántico" class="level2" data-number="4">
+<h2 data-number="4" class="anchored" data-anchor-id="conversión-a-modelo-semántico"><span class="header-section-number">4</span> Conversión a modelo semántico</h2>
+<p>Este apartado es opcional, puesto que el objetivo es obtener el fichero Duplex.owl que ya está disponible, pero en todo caso vamos a describir mejor el proceso seguido para obtener el fichero. Aunque existen varias herramientas que permiten traducir un fichero de entrada en IFC a un fichero de salida en OWL, en nuestro caso se ha usado en particular <a href="https://github.com/jyrkioraskari/IFCtoLBD/releases/tag/2.43.5">IFCtoLBD 2.43.5</a>. Debemos tener cuenta que este fichero utiliza vocabulario (clases y propiedades) previamente definidas en ontologías existentes en el ámbito de la construcción.</p>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Advertencia
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Se ha usado la configuración <strong>BOT + PRODUCT + PROPS, Level L1</strong>. Manualmente, se ha eliminado la referencia a 2 ontologías externas (OMG y MEP) para simplificar la práctica.</p>
+</div>
+</div>
+</section>
+<section id="uso-del-editor-de-ontologías-protégé" class="level2" data-number="5">
+<h2 data-number="5" class="anchored" data-anchor-id="uso-del-editor-de-ontologías-protégé"><span class="header-section-number">5</span> Uso del editor de ontologías Protégé</h2>
+<p>Para abrir el fichero <strong>Duplex.owl</strong> usaremos <a href="http://protege.stanford.edu">Protégé</a>, un editor de ontologías gratuito y con versiones para varios sistemas operativos,. Protégé no requiere instalación, basta descargar un fichero .zip, descomprimirlo y pinchar en el ejecutable.</p>
+<p>En el menú de opciones que hay bajo el título de la ontología (“Converters”), podemos elegir “Entities” para seleccionar los diferentes componentes de la ontología (ver <a href="#fig-protege" class="quarto-xref">Figura&nbsp;4</a> cuadro en color rojo): clases (“Classes”), propiedades cuyo valor es un objeto/individuo (“Object properties”), propiedades cuyo valor es un tipo de dato conocido por la máquina (“Data properties”), individuos (“Individuals”), etc.</p>
+<p>La <a href="#fig-protege" class="quarto-xref">Figura&nbsp;4</a> muestra el resultado de seleccionar “Clases” y, concretamente, “Edificio”. Obsérvese cómo la interfaz nos muestra que “Edificio” es una subclase de “Zona”.</p>
+<div id="fig-protege" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-protege-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../resources/lesson8/fig2.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-protege-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;4: Jerarquía de clases y detalle de la clase “Edificio”.
+</figcaption>
+</figure>
+</div>
+<p>[Vídeo tutorial: editor Protégé <a href="https://drive.google.com/file/d/1eHHxYrJRiQZni_7KKrtRFqu5KEwk9omW/view">The Coding Train</a>.]</p>
+<p>Dependiendo de la versión de la herramienta Protégé utilizada, es posible que importe automáticamente las ontologías desde Internet o que nos pida que aportemos ficheros locales para importar las ontologías. En este último caso, en “Active ontology → Ontology imports” pinchamos en el botón “+” para añadir los ficheros <a href="../resources/lesson8/beo.owl">⬇️ beo.owl</a> y <a href="../resources/lesson8/bot.owl">⬇️ bot.owl</a>.</p>
+<p>Como vemos en la <a href="#fig-protege" class="quarto-xref">Figura&nbsp;4</a>, algunos elementos de la ontología tienen asociadas varias anotaciones con etiquetas en múltiples idiomas. Por ejemplo, la clase “http://w3id.org/bot/Building” tiene etiquetas “Building”, “Edificio”, etc. Dependiendo de la configuración de nuestro ordenador (del idioma predeterminado), Protégé puede mostrarnos las etiquetas en un idioma u otro. En este guion, se asume que se muestran en castellano.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Nota</span>🧠 Ejercicio 2 - Encontrar elementos
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Navegar a través de la jerarquía de <strong>clases</strong> de la ontología y localizar la que permite representar las ventanas.</p>
+<p>Navegar a través de la jerarquía de <strong>propiedades</strong> de la ontología y localizar las que permiten representar la altura de una ventana y la anchura de una ventana.</p>
+<p>Navegar a través de los <strong>individuos</strong> de la ontología, localizar una ventana y comprobar el valor de sus propiedades. ¿Se corresponden con lo mostrado por OpenIFCViewer?</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Nota</span>🧠 Ejercicio 3 - Inferencia y consultar
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Para cargar un <strong>razonador</strong>, pinchamos en la opción del menú superior <strong>Reasoner</strong>. Según la versión de Protégé, puede haber uno o varios razonadores. Seleccionamos <strong>HermiT</strong> y pinchamos en <strong>Start reasoner</strong>. Si hacemos cambios en la ontología, tendremos que pinchar en <strong>Synchronize reasoner</strong>.</p>
+<p>Posteriormente, a través de la pestaña <strong>DL query</strong>, podemos hacer consultas al razonador. Recuperar las instancias de la clase que representa las <strong>ventanas</strong> (en inglés). Pinchando en alguna de ellas, podemos ver los valores de las propiedades (tanto los originales como los inferidos por el razonador, si los hubiera).</p>
+<p>Recuperar las superclases de la clase que representa las ventanas.</p>
+<p>Recuperar las instancias de alguna de las superclases obtenidas en el paso anterior, para comprobar que el razonador recupera las instancias indirectas.</p>
+<p>Recuperar nuevamente las instancias de la clase que representa las <strong>ventanas</strong>. Da click sobre el simbolo <strong>?</strong> en alguna instancia. El rasonador te dara al menos una explicación.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Nota</span>🧠 Ejercicio 3 - Consultas
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Para hacerlo aún más interesante, Protégé permite construir consultas complejas que involucran a varios elementos a la vez.</p>
+<p>Recuperar las instancias de “<strong>Espacio and ‘elemento adyacente’ some Window</strong>”, que es el conjunto de espacios que tienen un elemento tal adyacente que pertenece a la clase Ventana. ¿Cuántos individuos hay?</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Nota</span>🧠 Ejercicio 4 - Ontología incosistente
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Si la ontología es <strong>inconsistente</strong>, no se puede razonar con ella: el razonador avisa de ello y permite pinchar en el botón <strong>Explain</strong> para entender el motivo y poder resolverlo.</p>
+<p>Actualizar la ontología introduciendo una inconsistencia. Por ejemplo, añadiendo dos valores diferentes para la altura de una ventana. Primero, marcamos la propiedad como <strong>Functional</strong>. A continuación, buscamos la ventana y añadimos una <strong>Data property assertions</strong> con el botón <strong>+</strong>, eligiendo la propiedad que representa la altura y un valor diferente al que ya tenía (como 1234). Por último, debemos sincronizar el razonador.</p>
+</div>
+</div>
 
 
 </section>
