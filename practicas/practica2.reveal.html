@@ -320,7 +320,19 @@ Figura&nbsp;4: Espacio de trabajo de <em>Eclipse IDE</em>.
 <h3 id="crear-un-proyecto">Crear un proyecto</h3>
 <p>Para la realización de cada práctica se recomienda <strong>crear un proyecto nuevo</strong>. De esta forma se pueden agrupar los ficheros correspondientes a una determinada práctica dentro de un proyecto para compilar y ejecutar programas individuales con una configuración concreta.</p>
 <p>Los proyectos se crean a través de la opción <code>File &gt; New &gt; Java Project</code>. Para crear el nuevo proyecto hay que dotarlo de un nombre identificativo (por ejemplo, <code>practica2</code>). Dicho proyecto se guarda en un directorio del equipo, dentro del <em>workspace</em> seleccionado al lanzar <em>Eclipse</em>. Conviene seleccionar la opción <strong><em>Create separate source and output folders</em></strong>. En la <a href="#/fig-new_project" class="quarto-xref">Figura&nbsp;5</a> se pueden observar todas las propiedades que se deben definir en la creación del proyecto.</p>
-<div class="callout callout-warning callout-titled callout-style-default">
+</section>
+<section class="slide level2">
+
+<p>Teniendo en cuenta que nuestro entorno de trabajo se encuentra en <code>C:\practicasARQ</code>, el nuevo proyecto que has creado se encuentra en la carpeta:</p>
+<p><code>C:\practicasARQ\practica2</code></p>
+<p>Abre dicha carpeta en el explorador de archivos del sistema operativo y observa que se han creado dos subcarpetas. En <code>src</code> se almacenarán los ficheros con el código en lenguaje Java (<em>source</em>), mientras que en la carpeta <code>bin</code> se almacenan los ficheros binarios (<em>binaries</em>).</p>
+</section>
+<section class="slide level2">
+
+
+<img data-src="../resources/practica2/new_project.png" style="width:70.0%" class="r-stretch quarto-figure-center" id="fig-new_project"><p class="caption">
+Figura&nbsp;5: Propiedades que debemos configurar al crear un nuevo proyecto.
+</p><div class="callout callout-warning callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
 <div class="callout-icon-container">
@@ -334,15 +346,6 @@ Figura&nbsp;4: Espacio de trabajo de <em>Eclipse IDE</em>.
 </div>
 </div>
 </section>
-<section class="slide level2">
-
-<p>Teniendo en cuenta que nuestro entorno de trabajo se encuentra en <code>C:\practicasARQ</code>, el nuevo proyecto que has creado se encuentra en la carpeta:</p>
-<p><code>C:\practicasARQ\practica2</code></p>
-<p>Abre dicha carpeta en el explorador de archivos del sistema operativo y observa que se han creado dos subcarpetas. En <code>src</code> se almacenarán los ficheros con el código en lenguaje Java (<em>source</em>), mientras que en la carpeta <code>bin</code> se almacenan los ficheros binarios (<em>binaries</em>).</p>
-
-<img data-src="../resources/practica2/new_project.png" style="width:70.0%" class="r-stretch quarto-figure-center" id="fig-new_project"><p class="caption">
-Figura&nbsp;5: Propiedades que debemos configurar al crear un nuevo proyecto.
-</p></section>
 <section class="slide level2">
 
 <h3 id="crear-una-aplicación">Crear una aplicación</h3>
@@ -360,7 +363,7 @@ Figura&nbsp;7: Creación de una nueva clase de Java en <em>Eclipse IDE</em>.
 </p></section>
 <section class="slide level2">
 
-<p>Fijaos en que no hemos indicado el nombre de un paquete, por lo que la clase formará parte un paquete por defecto (<em>default</em>). En futuras sesiones de prácticas hablaremos de qué es un paquete, y cómo crearlo para estructurar las clases que creemos en cada proyecto.</p>
+<p>Fijaos en que <strong>no hemos indicado el nombre de un paquete, por lo que la clase formará parte un paquete por defecto (<em>default</em>)</strong>. En futuras sesiones de prácticas hablaremos de qué es un paquete, y cómo crearlo para estructurar las clases que creemos en cada proyecto.</p>
 <p>Al finalizar la creación, se generará automáticamente un pequeño esqueleto con el código inicial común a cada clase, que deberá completarse para contener el siguiente código:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode numberSource java number-lines code-with-copy"><code class="sourceCode java"><span id="cb1-1"><a></a><span class="kw">import</span> <span class="im">java</span><span class="op">.</span><span class="im">util</span><span class="op">.*;</span></span>
 <span id="cb1-2"><a></a></span>
@@ -646,6 +649,7 @@ Figura&nbsp;16: Generación de documentación con la herramienta javadoc.
 <p>Java proporciona una amplia y detallada documentación acerca de las <strong>herramientas que incluye el JDK</strong>, así como la especificación de la API (<em>Application Programming Interface</em>), es decir, la documentación de las bibliotecas disponibles por defecto en Java. Esta documentación se encuentra la página oficial de <em>Oracle</em> (ver <a href="#/fig-jdk_doc" class="quarto-xref">Figura&nbsp;17</a>), y lo mismo sucede para la documentación de la API (ver <a href="#/fig-api_doc" class="quarto-xref">Figura&nbsp;18</a>). Esta documentación puede descargarse para poder consultarla sin necesidad de acceder a Internet; el material descargado puede visualizarse con cualquier navegador web.</p>
 <p>Modifica la clase <code>Ejercicio</code> para que cada vez que se ejecute escriba por pantalla un número diferente. Para ello, modifica la instrucción <code>x = 1</code> con métodos de la clase <code>Math</code> que permitan obtener un número entero aleatorio: primero se obtendrá un número real aleatorio y luego se redondeará a un número entero. Puede buscarse dicho método en la documentación de la clase <a href="https://docs.oracle.com/en/java/javase/25/docs/api/java.base/java/lang/Math.html"><code>java.lang.Math</code></a>.</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode numberSource java number-lines code-with-copy"><code class="sourceCode java"><span id="cb9-1"><a></a>x <span class="op">=</span> <span class="op">(</span><span class="dt">int</span><span class="op">)</span> <span class="bu">Math</span><span class="op">.???(</span><span class="bu">Math</span><span class="op">.???());</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode numberSource java number-lines code-with-copy"><code class="sourceCode java"><span id="cb10-1"><a></a><span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span><span class="st">"Fibonacci("</span> <span class="op">+</span> n <span class="op">+</span> <span class="st">") = "</span> <span class="op">+</span> x<span class="op">);</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 <section class="slide level2">
 
