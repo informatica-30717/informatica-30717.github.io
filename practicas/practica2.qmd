@@ -15,35 +15,37 @@ Los objetivos de la segunda práctica de la asignatura son los siguientes:
 - Familiarizarse con el ordenador y los elementos básicos de su sistema operativo.
 - Familiarizarse con el entorno de desarrollo Java Eclipse.
 
+---
+
 ## El entorno de desarrollo Eclipse
 
 Para facilitar el desarrollo de programas, existen entornos que permiten trabajar más cómodamente, tales como NetBeans, Eclipse o IntelliJ. Nosotros recomendamos el uso de ***Eclipse***, un entorno de desarrollo de libre distribución.
 
 Inicia *Eclipse* haciendo doble clic sobre el ejecutable *Eclipse* en la carpeta `software_disponible`, o bien buscando *Eclipse* en la barra de tareas. Para instalar esta aplicación en otros ordenadores puede consultarse el [Apéndice](#appendix-installation). Al iniciar *Eclipse* aparecerá la pantalla de bienvenida que se muestra en la @fig-init_eclipse.
 
-![Pantalla de bienvenida.](../resources/practica2/init_eclipse.png){#fig-init_eclipse}
+![Pantalla de bienvenida.](../resources/practica2/images/init_eclipse.png){#fig-init_eclipse}
+
+---
 
 Para poder comenzar a trabajar con el entorno de desarrollo será necesario definir un espacio de trabajo o *workspace*, tal y como se muestra en la @fig-workspace_eclipse. Simplemente se trata de una carpeta donde guardaremos nuestros proyectos. Por ejemplo, se puede establecer el directorio `C:/PracticasARQ` como directorio de trabajo.
 
-![Configuración del directorio de trabajo.](../resources/practica2/workspace_eclipse.png){#fig-workspace_eclipse}
+![Configuración del directorio de trabajo.](../resources/practica2/images/workspace_eclipse.png){#fig-workspace_eclipse}
 
 En los siguientes subapartados aparecen solo algunas de las características de *Eclipse* o recomendaciones acerca de su uso. Si tienes más dudas sobre cómo utilizar *Eclipse*, deberás consultar la ayuda en línea (opción de menú `Help > Help Contents`), o bien accediendo a su [página web](http://help.eclipse.org/), donde se encuentra también toda la documentación del programa.
 
+---
+
 ### Pantalla de bienvenida
 
-La primera vez que se utiliza *Eclipse*, aparecerá un mensaje preguntándonos si queremos excluir *Eclipse* del análisis del antivirus de Windows. Como aparece en la @fig-antivirus_eclipse, podemos indicar que se excluya *Eclipse* de dichos análisis para evitar ralentizar la aplicación.
+Al abrir *Eclipse*, nos aparecerá una ventana de bienvenida (@fig-welcome_eclipse) con varias opciones, de las cuales cabe destacar las siguientes:
 
-![Pregunta de exclusión de Eclipse IDE respecto del sistema antivirus de Windows.](../resources/practica2/antivirus.png){#fig-antivirus_eclipse}
-
-Una vez seleccionada una opción, nos aparecerá una ventana de bienvenida (@fig-welcome_eclipse) con varias opciones, de las cuales cabe destacar las siguientes:
-
-![Pantalla de bienvenida.](../resources/practica2/welcome_eclipse.png){#fig-welcome_eclipse}
+![Pantalla de bienvenida.](../resources/practica2/images/welcome_eclipse.png){#fig-welcome_eclipse}
 
 ::: {.card .shadow-sm .mb-3}
 ::: {.card-body .d-flex .align-items-start}
 
 ::: {style="width: 7%; min-width: 50px; flex-shrink: 0;"}
-![](../resources/practica2/overview.svg){width=100%}
+![](../resources/practica2/images/overview.svg){width=100%}
 :::
 
 ::: {.ms-3}
@@ -57,7 +59,7 @@ Una vez seleccionada una opción, nos aparecerá una ventana de bienvenida (@fig
 ::: {.card-body .d-flex .align-items-start}
 
 ::: {style="width: 7%; min-width: 50px; flex-shrink: 0;"}
-![](../resources/practica2/tutorials.svg){width=100%}
+![](../resources/practica2/images/tutorials.svg){width=100%}
 :::
 
 ::: {.ms-3}
@@ -71,7 +73,7 @@ Una vez seleccionada una opción, nos aparecerá una ventana de bienvenida (@fig
 ::: {.card-body .d-flex .align-items-start}
 
 ::: {style="width: 7%; min-width: 50px; flex-shrink: 0;"}
-![](../resources/practica2/samples.svg){width=100%}
+![](../resources/practica2/images/samples.svg){width=100%}
 :::
 
 ::: {.ms-3}
@@ -85,7 +87,7 @@ Una vez seleccionada una opción, nos aparecerá una ventana de bienvenida (@fig
 ::: {.card-body .d-flex .align-items-start}
 
 ::: {style="width: 7%; min-width: 50px; flex-shrink: 0;"}
-![](../resources/practica2/new.svg){width=100%}
+![](../resources/practica2/images/new.svg){width=100%}
 :::
 
 ::: {.ms-3}
@@ -99,7 +101,7 @@ Una vez seleccionada una opción, nos aparecerá una ventana de bienvenida (@fig
 ::: {.card-body .d-flex .align-items-start}
 
 ::: {style="width: 7%; min-width: 50px; flex-shrink: 0;"}
-![](../resources/practica2/workbench.png){width=100%}
+![](../resources/practica2/images/workbench.png){width=100%}
 :::
 
 ::: {.ms-3}
@@ -109,9 +111,13 @@ Una vez seleccionada una opción, nos aparecerá una ventana de bienvenida (@fig
 :::
 :::
 
+---
+
 Dentro de las opciones que se muestran en la pantalla de bienvendia encontramos *Create a Java project*. Utilizaremos esta opción cada vez que queramos crear un nuevo proyecto, por ejemplo, para cada práctica de programación en Java de este curso. Para esta práctica, podemos crear un nuevo proyecto al que llamaremos `practica2`.
 
 Si cerramos la pestaña de bienvenida (*Welcome*, arriba a la izquierda), nos conduce al entorno de trabajo que se explica en la siguiente sección.
+
+---
 
 ### Entorno de trabajo
 
@@ -124,7 +130,11 @@ Las diferentes partes en las que está dividida la interfaz son:
 - En la **zona de la derecha**, hay un resumen (*Outline*) que nos indica la **estructura del fichero activo** en el editor (clases, métodos, variables, etc.).
 - En la **parte inferior del editor** se encuentran algunas utilidades que nos permiten conocer el estado del proyecto, incluyendo **errores** (pestaña *Problems*) y la **salida** obtenida en los programas ejecutados (pestaña *Console*).
 
-![Espacio de trabajo de *Eclipse IDE*.](../resources/practica2/workbench_eclipse.png){#fig-workbench_eclipse}
+---
+
+![Espacio de trabajo de *Eclipse IDE*.](../resources/practica2/images/workbench_eclipse.png){#fig-workbench_eclipse}
+
+---
 
 ### Crear un proyecto
 
@@ -132,11 +142,7 @@ Para la realización de cada práctica se recomienda **crear un proyecto nuevo**
 
 Los proyectos se crean a través de la opción `File > New > Java Project`. Para crear el nuevo proyecto hay que dotarlo de un nombre identificativo (por ejemplo, `practica2`). Dicho proyecto se guarda en un directorio del equipo, dentro del *workspace* seleccionado al lanzar *Eclipse*. Conviene seleccionar la opción ***Create separate source and output folders***. En la @fig-new_project se pueden observar todas las propiedades que se deben definir en la creación del proyecto.
 
-::: {.callout-warning}
-### Configuración del proyecto
-
-Recuerda **desmarcar la opción *Create module-info.java*** y **marcar la opción *Create separate source and output folders*** para que se cree una carpeta para el código fuente y otra para los ficheros binarios.
-:::
+---
 
 Teniendo en cuenta que nuestro entorno de trabajo se encuentra en `C:\practicasARQ`, el nuevo proyecto que has creado se encuentra en la carpeta:
 
@@ -144,19 +150,33 @@ Teniendo en cuenta que nuestro entorno de trabajo se encuentra en `C:\practicasA
 
 Abre dicha carpeta en el explorador de archivos del sistema operativo y observa que se han creado dos subcarpetas. En `src` se almacenarán los ficheros con el código en lenguaje Java (*source*), mientras que en la carpeta `bin` se almacenan los ficheros binarios (*binaries*).
 
-![Propiedades que debemos configurar al crear un nuevo proyecto.](../resources/practica2/new_project.png){#fig-new_project width=70%}
+---
+
+![Propiedades que debemos configurar al crear un nuevo proyecto.](../resources/practica2/images/new_project.png){#fig-new_project width=70%}
+
+::: {.callout-warning}
+### Configuración del proyecto
+
+Recuerda **desmarcar la opción *Create module-info.java*** y **marcar la opción *Create separate source and output folders*** para que se cree una carpeta para el código fuente y otra para los ficheros binarios.
+:::
+
+---
 
 ### Crear una aplicación
 
 Los lenguajes orientados a objetos, como Java, giran en torno al concepto de clase. Todas las variables y métodos de Java deben pertenecer a una **clase**. Una clase es una colección de datos (variables) y de métodos (funciones) que operan sobre dichos datos. Cada clase pública debe ir en un fichero con extensión `.java`, cuyo nombre es exactamente igual que el de la clase. Por ejemplo, en un fichero `HolaMundo.java`, definiremos una clase *HolaMundo*.
 
-![Ejemplo de estructura de una clase Java.](../resources/practica2/class_skeleton.png){#fig-class_skeleton}
+![Ejemplo de estructura de una clase Java.](../resources/practica2/images/class_skeleton.png){#fig-class_skeleton}
+
+---
 
 Para **añadir nuevas clases** al proyecto utilizaremos la opción de menú `File > New > Class`. Selecciona `src` como subcarpeta e introduce `HolaMundo` como nombre del archivo que contendrá el programa (clase) que deberás escribir a continuación. La opción `public static void main(String[] args)` debe marcarse para que la clase sea ejecutable, ejecutándose por tanto el método *main* de la clase. La @fig-new_class muestra la configuración de nuestra nueva clase Java.
 
-![Creación de una nueva clase de Java en *Eclipse IDE*.](../resources/practica2/new_class.png){#fig-new_class width=60%}
+![Creación de una nueva clase de Java en *Eclipse IDE*.](../resources/practica2/images/new_class.png){#fig-new_class width=60%}
 
-Fijaos en que no hemos indicado el nombre de un paquete, por lo que la clase formará parte un paquete por defecto (*default*). En futuras sesiones de prácticas hablaremos de qué es un paquete, y cómo crearlo para estructurar las clases que creemos en cada proyecto.
+---
+
+Fijaos en que **no hemos indicado el nombre de un paquete, por lo que la clase formará parte un paquete por defecto (*default*)**. En futuras sesiones de prácticas hablaremos de qué es un paquete, y cómo crearlo para estructurar las clases que creemos en cada proyecto.
 
 Al finalizar la creación, se generará automáticamente un pequeño esqueleto con el código inicial común a cada clase, que deberá completarse para contener el siguiente código:
 
@@ -182,6 +202,8 @@ public class HolaMundo
 }
 ```
 
+---
+
 ::: {.callout-warning}
 ## Errores de compilación
 
@@ -190,13 +212,21 @@ El código anterior contiene algunos **errores introducidos intencionadamente** 
 
 El editor de *Eclipse* es un editor típico del entorno Windows: se puede copiar, cortar, pegar, buscar y sustituir. Tiene un sistema de tabulación inteligente que facilita la tarea de escritura. Se puede conseguir aumentar o disminuir la **tabulación de una porción de código seleccionando** dicha porción y pulsando tabulador (`TAB`) o mayúsculas-tabulador (`Shift + TAB`), respectivamente. Además, el editor de *Eclipse* tiene un sistema de **autocompletado** que se activa pulsando `Ctrl + Space` y que facilita la escritura de código, por ejemplo, para completar el nombre de una clase o método a partir de las primeras letras escritas.
 
-**Guarda los cambios** que hemos introducido pulsando los iconos con disquetes que hay en la barra de herramientas superior (![](../resources/practica2/save.svg){width=1em}![](../resources/practica2/save_all.svg){width=1em}), pulsando `Ctrl-S` o bien con `File > Save`.
+**Guarda los cambios** que hemos introducido pulsando los iconos con disquetes que hay en la barra de herramientas superior (![](../resources/practica2/images/save.svg){width=1em}![](../resources/practica2/images/save_all.svg){width=1em}), pulsando `Ctrl-S` o bien con `File > Save`.
+
+---
 
 ### Compilación de aplicaciones
 
 Para compilar un programa, es necesario **traducir el código fuente escrito en lenguaje Java a un código binario** que pueda ser interpretado por la máquina virtual de Java. En el entorno *Eclipse*, la compilación se realiza **automáticamente cada vez que se guarda un fichero**, aunque también es posible compilar manualmente utilizando la opción de menú `Project > Build Project`. Si el programa contiene errores de compilación, *Eclipse* nos lo indicará en la zona inferior del editor, en la subpestaña ***Problems*** (ver @fig-compilation_errors). En esta subpestaña se nos informará sobre el proceso de compilación indicando los posibles errores. **Puedes seleccionar cada error mediante doble click, y se indicará dentro del código dónde se encuentra el error**.
 
-![Compilación de un programa con errores.](../resources/practica2/compilation_errors.png){#fig-compilation_errors}
+![Proceso de ejecución de un programa.](../resources/practica2/images/file_types.png){#fig-file_types}
+
+--- 
+
+![Compilación de un programa con errores.](../resources/practica2/images/compilation_errors.png){#fig-compilation_errors}
+
+---
 
 Si trabajásemos sin un entorno de desarrollo, sería equivalente a abrir una ventana de órdenes del sistema operativo y teclear:
 
@@ -206,12 +236,14 @@ javac HolaMundo.java
 
 ::: {.callout-note}
 ## Resolución de errores de compilación
-El primer error se produce porque el nombre correcto del método es `nextLine`; el segundo porque se ha escrito mal la variable `nombre`. Corrige ambos errores y recompila con `Project > Build project`. Ahora no te deberá mostrar ningún error. El fichero compilado se llama `HolaMundo.class` y se habrá creado en la subcarpeta `bin`.
+El primer error se produce porque el nombre correcto del método es `nextLine`; el segundo porque se ha escrito mal la variable `nombre`. Corrige ambos errores y recompila guardando el fichero (`Ctrl-S`) o utilizando la opción `Project > Build project`. Ahora no te deberá mostrar ningún error. El fichero compilado se llama `HolaMundo.class` y se habrá creado en la subcarpeta `bin`.
 :::
+
+---
 
 ### Ejecución de aplicaciones
 
-Una vez que el programa se ha compilado correctamente, es posible ejecutarlo. Para ello, en el entorno Eclipse se utiliza la opción de menú **`Run > Run as: Java Application`** o bien el icono de **ejecutar** ![](../resources/practica2/play.svg){width=1em} en la barra de herramientas superior. Si el programa se ejecuta correctamente, aparecerá una nueva pestaña llamada *Console* en la parte inferior del editor, donde se mostrará la salida del programa.
+Una vez que el programa se ha compilado correctamente, es posible ejecutarlo. Para ello, en el entorno Eclipse se utiliza la opción de menú **`Run > Run as: Java Application`** o bien el icono de **ejecutar** ![](../resources/practica2/images/play.svg){width=1em} en la barra de herramientas superior. Si el programa se ejecuta correctamente, aparecerá una nueva pestaña llamada *Console* en la parte inferior del editor, donde se mostrará la salida del programa.
 
 ::: {.callout-note}
 ## Ejecución sin un entorno de desarrollo
@@ -223,6 +255,8 @@ java HolaMundo
 ```
 :::
 
+---
+
 ### Depuración de errores
 
 En el proceso de desarrollo de un programa, es habitual que se produzcan errores de ejecución. Para solucionar estos errores, es necesario **depurar el programa**, es decir, **ejecutar el programa paso a paso** para observar el estado de las variables y comprender mejor el funcionamiento real del programa (ver @fig-debug_eclipse).
@@ -233,13 +267,19 @@ En el proceso de desarrollo de un programa, es habitual que se produzcan errores
 La opción `Step into` ejecuta el código *instrucción a instrucción*, mientras que `Step over` *ejecuta las llamadas a métodos como sentencias simples* (sin entrar a ejecutar paso a paso cada instrucción dentro del método).
 :::
 
-![Depuración de un programa en Eclipse.](../resources/practica2/debugging.png){#fig-debug_eclipse}
+---
+
+![Depuración de un programa en Eclipse.](../resources/practica2/images/debugging.png){#fig-debug_eclipse}
+
+---
 
 Para ello, seguimos los siguientes pasos:
 
 - Utiliza la opción de menú `Run > Toggle line breakpoint` para establecer (o eliminar) puntos de parada sobre el código que queremos ejecutar paso a paso. La ejecución paso a paso comenzará en la línea que contenga el punto de ruptura. También se puede utilizar el menú desplegable que aparece al pulsar el botón derecho del ratón sobre el margen izquierdo de la ventana que muestra el código de una clase Java, justo al lado del número de línea.
-- Utiliza la opción `Run > Debug`, o `Debug` ![](../resources/practica2/debug.svg){width=1em}  en la barra de herramientas superior, para lanzar la ejecución en modo depuración de errores. Aparecerá una ventana de *debugger* (depurador) con el estado de todas las variables.
+- Utiliza la opción `Run > Debug`, o `Debug` ![](../resources/practica2/images/debug.svg){width=1em}  en la barra de herramientas superior, para lanzar la ejecución en modo depuración de errores. Aparecerá una ventana de *debugger* (depurador) con el estado de todas las variables.
 - Utiliza `Run > Step into (F5)` y `Run > Step over (F6)` para ejecutar el código instrucción a instrucción. `Step over` ejecuta las llamadas a métodos como sentencias simples (sin entrar a ejecutar paso a paso cada instrucción dentro del método).
+
+---
 
 Para practicar todo lo visto hasta ahora, haz lo siguiente:
 
@@ -280,6 +320,8 @@ public class Ejercicio
 - Soluciona todos los errores de compilación en el programa anterior.
 - Ejecuta el programa paso a paso para observar cuál es el valor que toma la variable `x` justo antes de finalizar el programa.
 
+---
+
 ### Exportar proyectos
 
 Las opciones de **exportar e importar proyectos** sirven para **transferir proyectos de un ordenador a otro**. Por ejemplo, podemos exportar un proyecto *Eclipse* a una carpeta de una memoria USB y, en otro ordenador, importar la carpeta.
@@ -288,7 +330,9 @@ Para exportar un proyecto de *Eclipse* a una carpeta de ficheros, haremos lo sig
 
 - Utiliza la opción de menú `File > Export` y elegir `General > File system` (ver @fig-export_project).
 
-![Exportación de proyectos a una carpeta de ficheros.](../resources/practica2/export_workspace.png){#fig-export_project}
+![Exportación de proyectos a una carpeta de ficheros.](../resources/practica2/images/export_workspace.png){#fig-export_project}
+
+---
 
 - Marcaremos el proyecto a exportar y todos sus elementos (carpetas en la parte izquierda, ficheros concretos en la parte derecha). En general, sólo se suele exportar la carpeta `src`, dado que los ficheros binarios (*bin*) se generan a partir de la compilación.
 - En la zona `To directory` se indicará el nombre de la carpeta que vamos a crear.
@@ -297,6 +341,8 @@ Para exportar un proyecto de *Eclipse* a una carpeta de ficheros, haremos lo sig
 Si ha ido todo bien, habrás generado una carpeta con la estructura de subcarpetas del proyecto actual. Existen otras maneras de exportar proyectos, pero esta es la más sencilla.
 Por otro lado, no es estrictamente necesario exportar el proyecto, sino que es suficiente con guardar los ficheros `.java` ubicados en la carpeta `src`.
 
+---
+
 ### Importar proyectos
 
 Por otro lado, para importar un proyecto tenemos varias alternativas:
@@ -304,17 +350,21 @@ Por otro lado, para importar un proyecto tenemos varias alternativas:
 - Copiamos la carpeta de ficheros exportada en el *workspace* del ordenador. Si existe otra carpeta con una versión previa del proyecto (por ejemplo, si estamos practicando la exportación y la importación en el mismo ordenador), deberemos borrar la versión previa para poder importarla correctamente.
 - Utilizamos la opción `File > Import` y a continuación seleccionamos `General > Existing projects into workspace` (ver @fig-import_project). De esta manera, se importará el proyecto completo, incluyendo la configuración de compilación y ejecución. Esta es la opción recomendada para importar proyectos a *Eclipse*.
 
-![Importación de proyectos en un *workspace*.](../resources/practica2/import_workspace.png){#fig-import_project}
+![Importación de proyectos en un *workspace*.](../resources/practica2/images/import_workspace.png){#fig-import_project}
 
 - Crear un nuevo proyecto a partir de clases Java existentes utilizando la opción `Import  > General > File system`. De esta manera, podríamos importar únicamente los ficheros `.java` sin necesidad de considerar el resto del proyecto.
 
 Por ahora recomendamos utilizar la opción **`General > Existing projects into workspace`**.
 
+---
+
 ### Crear biblioteca
 
 Cuando se quiere distribuir una aplicación desarrollada en Java que incluye un número considerable de clases y paquetes, conviene generar una **biblioteca**. Las bibliotecas en Java son archivos con extensión **`.jar`** que comprimen, de manera similar a un `.zip`, un conjunto de clases ya compiladas (ficheros `.class`) y organizadas en paquetes. Se puede explorar el contenido de un fichero `.jar` con programas de compresión de ficheros como *WinZip*.
 
-![Ejemplo de usos de importación y exportación de bibliotecas.](../resources/practica2/import_export_scheme.png){#fig-import_export_scheme}
+![Ejemplo de usos de importación y exportación de bibliotecas.](../resources/practica2/images/import_export_scheme.png){#fig-import_export_scheme}
+
+---
 
 Para crear una biblioteca en el entorno *Eclipse* debemos seleccionar el proyecto que queremos exportar, utilizar la opción de menú `File > Export`, seleccionar `Java > Runnable JAR File` y seguir los siguientes pasos, ilustrados en la Ilustración 12:
 
@@ -322,7 +372,9 @@ Para crear una biblioteca en el entorno *Eclipse* debemos seleccionar el proyect
 - En `Export destination` se indica el nombre del fichero que vamos a crear y la ruta donde se va a almacenar dicho fichero.
 - Pulsa `Finish` para finalizar. Si ha ido todo bien, se habrá generado un fichero `.jar`.
 
-![Creación de una biblioteca .jar a partir de un proyecto.](../resources/practica2/jar.png){#fig-create_jar}
+![Creación de una biblioteca .jar a partir de un proyecto.](../resources/practica2/images/jar.png){#fig-create_jar}
+
+---
 
 ::: {.callout-note}
 ## Ejecución de un programa a partir de un fichero .jar
@@ -340,6 +392,8 @@ cd /
 ```
 :::
 
+---
+
 ### Añadir bibliotecas a un proyecto
 
 Si queremos utilizar alguna de las clases ya definidas en Java, simplemente es necesario añadir una sentencia en nuestro programa para **importar la biblioteca** correspondiente. Por ejemplo, para utilizar las clases definidas en el paquete `java.util`, hemos añadido en nuestro programa la siguiente instrucción:
@@ -354,6 +408,8 @@ El proceso de incluir bibliotecas diferentes a las incluidas por defecto en Java
 - Si tenemos las clases compiladas pero no un fichero `.jar`, nos puede interesar incluir el directorio con clases compiladas.
 - Si vamos a utilizar una biblioteca común, es recomendable crear una variable e incluirla como biblioteca.
 
+---
+
 En este apartado vamos a describir el primer escenario. Para ello, vamos a importar a modo de ejemplo la biblioteca `.jar` incluida en Moodle, `biblioteca.jar`.
 
 [[Descargar Fichero JAR](../resources/practica2/biblioteca.jar)]
@@ -366,20 +422,28 @@ Practicas.escribeMensaje();
 
 Al compilar, se nos informa de un error: **la clase *Practicas* no ha sido definida todavía**. Para solucionarlo, vamos a importar una biblioteca donde se define dicha clase. Debemos hacer click derecho sobre el nombre del proyecto y seleccionar `Properties > Java Build Path`. Obtendremos una ventana como la de la @fig-add_jar, donde se pueden configurar las bibliotecas que se van a utilizar en el proyecto.
 
+---
+
 A continuación, hacemos click sobre `Add External JARs` y seleccionamos el fichero a importar.  Una vez hecho esto, podemos comprobar que es posible ejecutar nuestro programa sin ningún tipo de problemas, pues el código necesario se obtiene en el fichero importado.
 
-![Añadir una biblioteca.jar a un proyecto.](../resources/practica2/add_jar.png){#fig-add_jar}
+![Añadir una biblioteca.jar a un proyecto.](../resources/practica2/images/add_jar.png){#fig-add_jar}
+
+---
 
 ### Generar documentación
 
 Para generar la documentación de las clases y paquetes desarrollados se utiliza la herramienta ***javadoc***, incluida en la JDK. Desde el entorno de *Eclipse*, se facilita la utilización de esta herramienta a través de la opción de menú `Project > Generate Javadoc` (@fig-javadoc). Al seleccionar esta opción, se muestra una ventana donde se deben configurar algunos parámetros para generar la documentación.
+
+---
 
 En primer lugar, seleccionamos la ubicación del ejecutable *javadoc* con el botón `Configure`. Normalmente, *Eclipse* detecta automáticamente su ubicación y rellena este campo por nosotros, por lo que no necesitamos hacer nada.
 
 A continuación, se debe configurar el directorio de salida de la documentación utilizando la caja de texto `Destination` y el botón `Browse` asociado.
 Por último, se pulsará el botón `Finish` para finalizar y generar la documentación. La documentación podrá abrirse con cualquier navegador HTML. Pruébalo para la clase `HolaMundo`.
 
-![Generación de documentación con la herramienta javadoc.](../resources/practica2/javadoc.png){#fig-javadoc}
+![Generación de documentación con la herramienta javadoc.](../resources/practica2/images/javadoc.png){#fig-javadoc}
+
+---
 
 ### Acceso a la documentación del JDK
 
@@ -391,9 +455,21 @@ Modifica la clase `Ejercicio` para que cada vez que se ejecute escriba por panta
 x = (int) Math.???(Math.???());
 ```
 
-![Acceso a la documentación del JDK.](../resources/practica2/jdk_doc.png){#fig-jdk_doc}
+También, modifica la última instrucción del programa para que imprima el valor de `x` con un mensaje descriptivo, por ejemplo:
 
-![Acceso a la documentación de la API de Java.](../resources/practica2/api_doc.png){#fig-api_doc}
+```java
+System.out.println("Fibonacci(" + n + ") = " + x);
+```
+
+---
+
+![Acceso a la documentación del JDK.](../resources/practica2/images/jdk_doc.png){#fig-jdk_doc}
+
+---
+
+![Acceso a la documentación de la API de Java.](../resources/practica2/images/api_doc.png){#fig-api_doc}
+
+---
 
 ## Apéndice. Instalación de Eclipse y JDK {#appendix-installation}
 
@@ -406,19 +482,29 @@ En este apéndice explicaremos el proceso de instalación del software necesario
 - Localiza el panel de *Eclipse Installer* (@fig-installer). Debemos reconocer nuestro sistema operativo (*Windows*, *Linux* o *macOS*), y pulsar sobre `x86_64`.
 - Una vez descargado el instalador, lo ejecutamos.
 
+---
+
 El instalador permite obtener múltiples herramientas de Eclipse, aunque nosotros sólo necesitamos el entorno de desarrollo para Java. La instalación es bastante automática, y simplemente tendremos que seleccionar Eclipse IDE for Java Developers (@fig-suite_tools) y pulsar el botón `Install` para iniciar la instalación.
 
-![Panel de descarga del instalador de Eclipse.](../resources/practica2/eclipse_suite_installation.png){#fig-installer}
+![Panel de descarga del instalador de Eclipse.](../resources/practica2/images/eclipse_suite_installation.png){#fig-installer}
 
-![Herramientas disponibles en la suite de Eclipse.](../resources/practica2/eclipse_suite.png){#fig-suite_tools width=60%}
+---
+
+![Herramientas disponibles en la suite de Eclipse.](../resources/practica2/images/eclipse_suite.png){#fig-suite_tools width=60%}
+
+---
 
 Una vez seleccionada dicha opción, se nos dirige a una pantalla como la que se muestra en la @fig-jre_installation. El objetivo es configurar dos rutas: la localización de las herramientas de desarrollo para Java y la ruta de instalación de Eclipse. Podéis personalizar ambas rutas, pero no es recomendable hacerlo. En particular, la primera ruta apunta a un *Java Development Kit* (JDK), que, si no queremos descargar junto con Eclipse, deberá instalarse por separado. Esta última opción, aunque es menos sencilla, se describe en el siguiente punto y, entre otras ventajas, permite probar los comandos java y javac en la terminal del ordenador.
 
-![Instalación de Eclipse para Java, indicando que queremos descargar un JRE.](../resources/practica2/jre_installation.png){#fig-jre_installation width=75%}
+![Instalación de Eclipse para Java, indicando que queremos descargar un JRE.](../resources/practica2/images/jre_installation.png){#fig-jre_installation width=75%}
+
+---
 
 Una opción alternativa consiste en indicar la ruta de un *Java Runtime Environment* (JRE) (versión 21 o superior) previamente instalado (ver @fig-jdk_installation). Para la descarga e instalación del JDK de Java, por favor, dirígete a la sección B.1 del Apéndice. Por ejemplo, en la siguiente imagen, se ha detectado una instalación en la ruta `C:/Program Files/Java/jdk-25`, que es la ruta de instalación por defecto de un JDK.
 
-![Instalación de Eclipse para Java, indicando que queremos utilizar un JDK previamente instalado.](../resources/practica2/jdk_installation.png){#fig-jdk_installation width=75%}
+![Instalación de Eclipse para Java, indicando que queremos utilizar un JDK previamente instalado.](../resources/practica2/images/jdk_installation.png){#fig-jdk_installation width=75%}
+
+---
 
 ### Instalación alternativa de Eclipse sin instalador
 
@@ -430,15 +516,31 @@ Para comenzar, debemos descargar la última versión del JDK de la página web d
 - Debemos seleccionar el sistema operativo de nuestro ordenador personal (*Linux*, *macOS* o *Windows*) y descargar un instalador. En *Windows*, podemos descargar tanto `x64 Installer` como `x64 MSI Installer`.
 - Una vez descargado, abrimos el archivo para comenzar el proceso de instalación. El proceso es completamente automático y no habrá que hacer nada, salvo utilizar el botón `Next` para avanzar al siguiente paso. La ruta de instalación por defecto en Windows es `C:/Program Files/Java/jdk-25`. **Se recomienda no modificar esta ruta, salvo que no tengamos espacio en `C:`**.
 
-![Paso intermedio de la instalación del JDK. Se muestra la ruta de instalación por defecto, la cual no modificaremos.](../resources/practica2/jdk_installation_standalone.png){#fig-jdk_installation2}
+---
+
+![Paso intermedio de la instalación del JDK. Se muestra la ruta de instalación por defecto, la cual no modificaremos.](../resources/practica2/images/jdk_installation_standalone.png){#fig-jdk_installation2}
+
+---
 
 #### Instalación de Eclipse
 
 - Visita la página web oficial de *Eclipse*.
 - Localiza el botón de `Download`; nos llevará a la página de descargas.
 
-![Panel de descarga de Eclipse sin instalador.](../resources/practica2/eclipse_ide_download.png){#fig-eclipse_download}
+![Panel de descarga de Eclipse sin instalador.](../resources/practica2/images/eclipse_ide_download.png){#fig-eclipse_download}
+
+---
 
 - Partiendo de un panel similar al de la @fig-eclipse_download, reconocemos nuestro sistema operativo y pulsamos sobre `x86_64`. Se descargará un `.zip` con una carpeta dentro llamada `eclipse` (ver @fig-eclipse_files). Podemos situar dicha carpeta en cualquier directorio de nuestra elección, por ejemplo, en la unidad `C:`. Ten en cuenta que esta opción no requiere instalación, y por tanto, accederemos siempre a dicha carpeta cuando queramos iniciar *Eclipse* haciendo click sobre `eclipse.exe`. En la @fig-eclipse_files se muestra el contenido del fichero `.zip` descomprimido.
 
-![Ficheros contenidos en el directorio eclipse, tras descomprimir el fichero .zip descargado de la página oficial de Eclipse.](../resources/practica2/filesystem.png){#fig-eclipse_files}
+![Ficheros contenidos en el directorio eclipse, tras descomprimir el fichero .zip descargado de la página oficial de Eclipse.](../resources/practica2/images/filesystem.png){#fig-eclipse_files}
+
+---
+
+### Pantalla de bienvenida
+
+La primera vez que se utiliza *Eclipse*, aparecerá un mensaje preguntándonos si queremos excluir *Eclipse* del análisis del antivirus de Windows. Como aparece en la @fig-antivirus_eclipse, podemos indicar que se excluya *Eclipse* de dichos análisis para evitar ralentizar la aplicación.
+
+![Pregunta de exclusión de Eclipse IDE respecto del sistema antivirus de Windows.](../resources/practica2/images/antivirus.png){#fig-antivirus_eclipse}
+
+---
