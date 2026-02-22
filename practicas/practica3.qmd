@@ -12,8 +12,9 @@ execute:
 
 ## Objetivos de la práctica
 
-- Algoritmos para la resolución de problemas.
-- Implementar algoritmos en Java.
+Los objetivos de la segunda práctica de la asignatura son los siguientes:
+
+- Desarrollar algoritmos en Java.
 - Ejecutar algoritmos en el entorno Eclipse.
 
 ## Raíces de una ecuación de segundo grado
