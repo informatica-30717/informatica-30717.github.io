@@ -23,11 +23,32 @@ La **criba de Eratóstenes** es un algoritmo eficiente para **encontrar todos lo
 
 1. Se guardan en un vector todos los números desde 2 hasta el número dado.
 2. Se comienza con el primer número primo (2) y se descartan todos los múltiplos de ese número.
-3. Se repite el proceso con el siguiente número primo en la lista hasta que se hayan procesado todos los números.
+3. Se repite el proceso con el siguiente número primo en el vector hasta que se hayan procesado todos los números.
 
 Por ejemplo, para encontrar los números primos menores o iguales a 30, el algoritmo eliminaría los múltiplos de 2 (4, 6, 8, ...), luego los múltiplos de 3 (6, 9, 12, ...), y así sucesivamente, dejando solo los números primos (2, 3, 5, 7, 11, 13, 17, 19, 23, 29).
 
-## Implementación en Java
+## Vectores en Java
+
+A modo de recordatorio, un **vector en Java** es una estructura de datos que almacena una colección de elementos del mismo tipo. Se puede declarar e inicializar de la siguiente manera:
+
+```java
+// Declaración e inicialización de un vector de enteros con 10 elementos
+int[] vector = new int[10];
+
+// Asignación de valores a los elementos del vector
+vector[0] = 1;
+vector[1] = 2;  
+
+// Acceso a los elementos del vector
+int valor = vector[0]; // valor es igual a 1
+
+// Asignación de valores utilizando un bucle
+for (int i = 0; i < vector.length; i++) {
+    vector[i] = i + 1; // Asigna el valor i+1 a cada posición del vector
+}
+```
+
+## Ejercicios
 
 Ten en cuenta que la criba de Eratóstenes se puede implementar de varias maneras, dependiendo de cómo se manejen los datos y se optimice el proceso. A continuación, se presentan cuatro posibles soluciones para implementar la criba de Eratóstenes en Java. Cada solución se deberá implementar en una clase separada, de nombre `Solucion1.java`, `Solucion2.java`, `Solucion3.java` y `Solucion4.java`, respectivamente.
 
@@ -40,7 +61,9 @@ El objetivo es modificar cada una de las implementaciones para **contar el núme
 
 Ten en cuenta que para valores de $n$ muy grandes, es posible que el programa no tenga suficiente memoria para ejecutar la criba de Eratóstenes, especialmente en las implementaciones que utilizan un vector de enteros. En ese caso, puedes intentar aumentar la memoria asignada a Java. Para ello, accede a `Run > Run Configurations...` en *Eclipse*, selecciona tu clase principal, ve a la pestaña `Arguments` y en el campo `VM arguments` añade la siguiente línea:
 
-```-Xmx4g```
+```bash
+-Xmx4g
+```
 
 Esto asignará un máximo de 4 GB de memoria a tu programa. Si sigues teniendo problemas de memoria, puedes intentar aumentar aún más este valor, aunque ten en cuenta que esto dependerá de la cantidad de memoria RAM disponible en tu ordenador.
 :::
@@ -61,20 +84,22 @@ System.out.println("Tiempo de ejecución: " + duration + " milisegundos");
 
 ### Solución 1: Implementación básica
 
-En esta implementación, se utiliza un vector de números enteros para representar los números desde 0 hasta n, donde cada posición indica si el número correspondiente es primo o no. Se itera a través de los números y se marcan como no primos los múltiplos de cada número primo encontrado.
+En esta implementación, se utiliza un **vector de números enteros para representar los números desde 0 hasta $n$**, donde cada posición indica si el número correspondiente es primo o no. **Se itera a través de los números y se marcan como no primos los múltiplos de cada número primo encontrado**.
 
 Un número será primo si su posición en el vector no es cero, sino igual a su propio valor. Por ejemplo, si `numero[5]` es igual a 5, entonces 5 es un número primo. Si `numero[6]` es igual a 0, entonces 6 no es un número primo.
 
-Formalmente, al final de la criba de Eratóstenes, cada número `i`, donde `2 <= i <= n`, tendrá el siguiente valor en el vector:
+Formalmente, al final de la criba de Eratóstenes, cada número $i$, donde $2 <= i <= n$, tendrá el siguiente valor en el vector:
 $$
 numero[i] = \begin{cases} i & \text{si } i \text{ es primo} \\ 0 & \text{si } i \text{ no es primo} \end{cases}
 $$
 
+<details>
+<summary>Ejemplo de la criba de Eratóstenes sin optimizar</summary>
 ::: {.card .shadow-sm .mb-4}
 ::: {.card-body}
 
 ```{ojs}
-// define a custom slider function
+// definimos la función global una sola vez para usarla en todos los bloques
 cleanSlider = (range, config) => {
   const input = Inputs.range(range, config);
   const numberBox = input.querySelector("input[type=number]");
@@ -84,24 +109,24 @@ cleanSlider = (range, config) => {
   input.style.width = "100%";
   return input;
 };
-
-viewof N = cleanSlider([10, 50], { value: 30, step: 1, label: "Valor N (Sin optimizar): " })
 ```
 
 ```{ojs}
-steps2 = {
-  const max = N;
+viewof N1 = cleanSlider([10, 50], { value: 30, step: 1, label: "Valor N: " })
+```
+
+```{ojs}
+steps1 = {
+  const max = N1;
   let state = Array(max + 1).fill("candidate");
   state[0] = state[1] = "discarded";
 
   const out = [];
 
-  // 1. Modificado: p llega hasta max en lugar de detenerse en la raíz cuadrada
   for (let p = 2; p <= max; p++) {
     if (state[p] === "candidate") {
       out.push({ type: "prime", p, state: [...state] });
 
-      // 2. Modificado: k empieza en p * 2 en lugar de p * p para mostrar redundancia
       for (let k = p * 2; k <= max; k += p) {
         if (state[k] === "candidate") {
           state[k] = "discarded";
@@ -117,26 +142,24 @@ steps2 = {
 ```
 
 ```{ojs}
-maxStep2 = steps2.length - 1
+maxStep1 = steps1.length - 1
+```
 
-viewof step2 = cleanSlider([0, maxStep2], {
-  value: 0,
-  step: 1,
-  label: "Paso de la criba: "
-})
+```{ojs}
+viewof step1 = cleanSlider([0, maxStep1], { value: 0, step: 1, label: "Paso de la criba: " })
 ```
 
 ```{ojs}
 {
-  if (!steps2 || steps2.length === 0) return html`<div>Cargando...</div>`;
+  if (!steps1 || steps1.length === 0) return html`<div>Cargando...</div>`;
 
-  const safeStep = Math.min(step2, steps2.length - 1);
-  const s = steps2[safeStep];
+  const safeStep = Math.min(step1, steps1.length - 1);
+  const s = steps1[safeStep];
 
   if (!s) return html`<div>Cargando...</div>`;
 
   const arr = s.state;
-  const max = N;
+  const max = N1;
   const cols = Math.ceil(Math.sqrt(max));
   
   const currentPrime = s.p;
@@ -150,60 +173,31 @@ viewof step2 = cleanSlider([0, maxStep2], {
     else if (arr[i] === "discarded") bgColor = "#e63946";
 
     return {
-      n: i,
-      x: i % cols,
-      y: Math.floor(i / cols),
-      state: arr[i],
-      color: bgColor,
-      textColor: i < 2 ? "#333" : "white" 
+      n: i, x: i % cols, y: Math.floor(i / cols), state: arr[i],
+      color: bgColor, textColor: i < 2 ? "#333" : "white" 
     };
   });
 
   return html`
     <div style="margin-top:15px;">
       ${Plot.plot({
-        height: Math.ceil(max / cols) * 35 + 20, 
-        margin: 10,
-        x: { axis: null },
-        y: { axis: null, reverse: true },
-        color: { type: "identity" }, 
+        height: Math.ceil(max / cols) * 35 + 20, margin: 10,
+        x: { axis: null }, y: { axis: null, reverse: true }, color: { type: "identity" }, 
         marks: [
-          Plot.rect(grid, {
-            x1: d => d.x - 0.45,
-            x2: d => d.x + 0.45,
-            y1: d => d.y - 0.45,
-            y2: d => d.y + 0.45,
-            fill: "color",
-            stroke: "white",
-            rx: 4 
-          }),
-          Plot.text(grid, {
-            x: "x",
-            y: "y",
-            text: "n",
-            fill: "textColor",
-            fontSize: 13,
-            fontWeight: "bold"
-          })
+          Plot.rect(grid, { x1: d => d.x - 0.45, x2: d => d.x + 0.45, y1: d => d.y - 0.45, y2: d => d.y + 0.45, fill: "color", stroke: "white", rx: 4 }),
+          Plot.text(grid, { x: "x", y: "y", text: "n", fill: "textColor", fontSize: 13, fontWeight: "bold" })
         ]
       })}
-
       <div style="margin-top:15px; font-size: 1.1em; height: 1.5em;">
-        ${
-          s.type === "prime"
-            ? html`🔎 Probando primo <b>${currentPrime}</b>`
-            : s.type === "discard"
-            ? html`❌ ${lastDiscard} es múltiplo de <b>${currentPrime}</b>`
-            : html`✅ Criba completada`
-        }
+        ${s.type === "prime" ? html`🔎 Probando primo <b>${currentPrime}</b>` : s.type === "discard" ? html`❌ ${lastDiscard} es múltiplo de <b>${currentPrime}</b>` : html`✅ Criba completada`}
       </div>
     </div>
   `;
 }
 ```
-
 :::
 :::
+</details>
 
 La implementación básica se puede realizar de la siguiente manera:
 ```java
@@ -245,31 +239,31 @@ System.out.println("Total: " + contadorPrimos + " números primos");
 
 ::: {.callout-note}
 ## Tamaño del vector
-
 Cada entero ocupa 4 bytes en Java, por lo que el vector utilizado para la criba de Eratóstenes ocupará un total de `4 * (n + 1)` bytes, donde `n` es el número hasta el cual se desea encontrar los números primos. Por ejemplo, si `n` es 100, el vector ocupará `4 * (100 + 1) = 404` bytes.
 :::
 
 ### Solución 2: Optimización utilizando la raíz cuadrada de n
 
-**En la solución previa se itera hasta `n` para encontrar los números primos, lo cual es ineficiente**. En esta solución, **se optimiza el proceso iterando solo hasta la raíz cuadrada de `n`**, ya que si un número `n` tiene un factor mayor que su raíz cuadrada, entonces necesariamente tendrá un factor menor que la raíz cuadrada.
+**En la solución previa se itera hasta `n` para encontrar los números primos, lo cual es ineficiente**. En esta solución, **se optimiza el proceso iterando solo hasta la raíz cuadrada de `n`**.
 
 ::: {.callout-warning}
 ## Optimización con la raíz cuadrada 🧮
-
 **Lema**: Si $n ∈ ℕ+$ admite la factorización $n = a*b$, con $a, b ∈ ℤ$, entonces $a ≤ \sqrt{n}$ o $b ≤ \sqrt{n}$.
 
 **Corolarios**: Si $n$ no es primo, uno de sus factores $d$ cumple $1 ≤ d ≤ \sqrt{n}$. Si $n$ no tiene factores $d$ con $1 ≤ d ≤ \sqrt{n}$, entonces es primo. Por tanto, $n$ es primo si y solo si es divisible por algún primo menor o igual a $\sqrt{n}$.
 :::
 
+<details>
+<summary>Ejemplo de la criba de Eratóstenes optimizada con la raíz cuadrada</summary>
 ::: {.card .shadow-sm .mb-4}
 ::: {.card-body}
 
 ```{ojs}
-// use it for the N parameter
-viewof N2 = cleanSlider([10, 50], { value: 30, step: 1, label: "Valor N: " })
+viewof N2 = cleanSlider([10, 150], { value: 60, step: 1, label: "Valor N: " })
+```
 
-// compute the steps of the sieve
-steps = {
+```{ojs}
+steps2 = {
   const max = N2;
   let state = Array(max + 1).fill("candidate");
   state[0] = state[1] = "discarded";
@@ -292,22 +286,22 @@ steps = {
   out.push({ type: "final", state: [...state] });
   return out;
 }
+```
 
-maxStep = steps.length - 1
+```{ojs}
+maxStep2 = steps2.length - 1
+```
 
-// use it for the step timeline
-viewof step = cleanSlider([0, maxStep], {
-  value: 0,
-  step: 1,
-  label: "Paso de la criba: "
-})
+```{ojs}
+viewof step2 = cleanSlider([0, maxStep2], { value: 0, step: 1, label: "Paso de la criba: " })
+```
 
-// render the plot
+```{ojs}
 {
-  if (!steps || steps.length === 0) return html`<div>Cargando...</div>`;
+  if (!steps2 || steps2.length === 0) return html`<div>Cargando...</div>`;
 
-  const safeStep = Math.min(step, steps.length - 1);
-  const s = steps[safeStep];
+  const safeStep = Math.min(step2, steps2.length - 1);
+  const s = steps2[safeStep];
 
   if (!s) return html`<div>Cargando...</div>`;
 
@@ -326,60 +320,31 @@ viewof step = cleanSlider([0, maxStep], {
     else if (arr[i] === "discarded") bgColor = "#e63946";
 
     return {
-      n: i,
-      x: i % cols,
-      y: Math.floor(i / cols),
-      state: arr[i],
-      color: bgColor,
-      textColor: i < 2 ? "#333" : "white" 
+      n: i, x: i % cols, y: Math.floor(i / cols), state: arr[i],
+      color: bgColor, textColor: i < 2 ? "#333" : "white" 
     };
   });
 
   return html`
     <div style="margin-top:15px;">
       ${Plot.plot({
-        height: Math.ceil(max / cols) * 35 + 20, 
-        margin: 10,
-        x: { axis: null },
-        y: { axis: null, reverse: true },
-        color: { type: "identity" }, 
+        height: Math.ceil(max / cols) * 35 + 20, margin: 10,
+        x: { axis: null }, y: { axis: null, reverse: true }, color: { type: "identity" }, 
         marks: [
-          Plot.rect(grid, {
-            x1: d => d.x - 0.45,
-            x2: d => d.x + 0.45,
-            y1: d => d.y - 0.45,
-            y2: d => d.y + 0.45,
-            fill: "color",
-            stroke: "white",
-            rx: 4 
-          }),
-          Plot.text(grid, {
-            x: "x",
-            y: "y",
-            text: "n",
-            fill: "textColor",
-            fontSize: 13,
-            fontWeight: "bold"
-          })
+          Plot.rect(grid, { x1: d => d.x - 0.45, x2: d => d.x + 0.45, y1: d => d.y - 0.45, y2: d => d.y + 0.45, fill: "color", stroke: "white", rx: 4 }),
+          Plot.text(grid, { x: "x", y: "y", text: "n", fill: "textColor", fontSize: 13, fontWeight: "bold" })
         ]
       })}
-
       <div style="margin-top:15px; font-size: 1.1em; height: 1.5em;">
-        ${
-          s.type === "prime"
-            ? html`🔎 Probando primo <b>${currentPrime}</b>`
-            : s.type === "discard"
-            ? html`❌ ${lastDiscard} es múltiplo de <b>${currentPrime}</b>`
-            : html`✅ Criba completada`
-        }
+        ${s.type === "prime" ? html`🔎 Probando primo <b>${currentPrime}</b>` : s.type === "discard" ? html`❌ ${lastDiscard} es múltiplo de <b>${currentPrime}</b>` : html`✅ Criba completada`}
       </div>
     </div>
   `;
 }
 ```
-
 :::
 :::
+</details>
 
 La implementación de esta optimización se puede realizar de la siguiente manera:
 ```java
@@ -395,7 +360,7 @@ for (int i = 0; i <= n; i++) {
 int salto;
 int j = 0;
 
-for (int i = 2; **i * i <= n**; i++) {
+for (int i = 2; i * i <= n; i++) {
     if (numero[i] != 0) {
         salto = i;
         j = i + salto;
@@ -427,7 +392,7 @@ En esta solución, el vector utilizado para la criba de Eratóstenes seguirá oc
 
 ### Solución 3: Implementación utilizando un vector de booleanos
 
-En esta implementación, se utiliza un vector de booleanos para representar si cada número es primo o no. El vector se inicializa con `true` para todos los números desde 2 hasta n, y luego se marcan como `false` los múltiplos de cada número primo encontrado. Al final del proceso, los números que siguen siendo `true` en el vector son los números primos.
+En esta implementación, se utiliza un vector de booleanos para representar si cada número es primo o no. El vector se inicializa con `true` para todos los números desde 2 hasta $n$, y luego se marcan como `false` los múltiplos de cada número primo encontrado. Al final del proceso, los números que siguen siendo `true` en el vector son los números primos.
 
 La implementación de esta solución se puede realizar de la siguiente manera:
 ```java
@@ -470,9 +435,9 @@ System.out.println("Total: " + contadorPrimos + " números primos");
 ::: {.callout-note}
 ## Tamaño del vector
 
-En esta solución, el vector utilizado para la criba de Eratóstenes ocupará `1 * (n + 1)` bytes, ya que se utiliza un vector de booleanos para representar si cada número es primo o no. Cada booleano ocupa 1 byte en Java, por lo que el tamaño del vector será significativamente menor que en las soluciones anteriores que utilizaban enteros. Sin embargo, el rendimiento del algoritmo puede ser similar al de la solución anterior, ya que el número de iteraciones realizadas para marcar los múltiplos de cada número primo seguirá siendo el mismo.
+En esta solución, el vector utilizado para la criba de Eratóstenes ocupará $1 * (n + 1)$ bytes, ya que se utiliza un vector de booleanos para representar si cada número es primo o no. Cada booleano ocupa 1 byte en Java, por lo que el tamaño del vector será significativamente menor que en las soluciones anteriores que utilizaban enteros. Sin embargo, el rendimiento del algoritmo puede ser similar al de la solución anterior, ya que el número de iteraciones realizadas para marcar los múltiplos de cada número primo seguirá siendo el mismo.
 
-Por ejemplo, si `n` es 100, el vector ocupará `1 * (100 + 1) = 101` bytes, un tamaño mucho menor que los `404` bytes de la solución con enteros.
+Por ejemplo, si $n$ es 100, el vector ocupará $1 * (100 + 1) = 101$ bytes, un tamaño mucho menor que los $404$ bytes de la solución con enteros.
 :::
 
 ### Solución 4: Implementación con optimización utilizando un vector de booleanos y solo números impares
@@ -535,31 +500,35 @@ System.out.print("2 es primo \n");
 for (int i = 0; i <= ...; i++) {
     if (numero[i] != false) {
         contadorPrimos = contadorPrimos + 1;
-        System.out.print(... + " es primo \n");
+        System.out.println(... + " es primo");
     }
 }
 
-System.out.print("\nTotal: " + contadorPrimos + " números primos\n");
+System.out.println();
+System.out.println("Total: " + contadorPrimos + " números primos");
 ```
 
+<details>
+<summary>Ejemplo de la criba de Eratóstenes optimizada con un vector de booleanos y solo números impares</summary>
 ::: {.card .shadow-sm .mb-4 .mt-4}
 ::: {.card-body}
 
 ```{ojs}
-// reusing cleanSlider from the first block
-viewof N3 = cleanSlider([10, 150], { value: 60, step: 1, label: "Valor N: " })
+//| echo: false
+viewof N4 = cleanSlider([10, 150], { value: 60, step: 1, label: "Valor N: " })
+```
 
-steps3 = {
-  const max = N3;
+```{ojs}
+//| echo: false
+steps4 = {
+  const max = N4;
   if (max < 3) return [{ type: "final", state: [] }];
 
-  // 1. Array size: floor((n-3)/2) + 1
   const size = Math.floor((max - 3) / 2) + 1;
   let state = Array(size).fill("candidate");
 
   const out = [];
 
-  // 2. Loop only over odds: p = 2i + 3
   for (let i = 0; ; i++) {
     let p = 2 * i + 3;
     if (p * p > max) break;
@@ -567,9 +536,8 @@ steps3 = {
     if (state[i] === "candidate") {
       out.push({ type: "prime", p, state: [...state] });
 
-      // jump by 2p to only hit odd multiples
       for (let mult = p * p; mult <= max; mult += 2 * p) {
-        let idx = (mult - 3) / 2; // convert value back to array index
+        let idx = (mult - 3) / 2; 
         if (state[idx] === "candidate") {
           state[idx] = "discarded";
           out.push({ type: "discard", p, k: mult, state: [...state] });
@@ -581,34 +549,39 @@ steps3 = {
   out.push({ type: "final", state: [...state] });
   return out;
 }
+```
 
-maxStep3 = steps3.length - 1
+```{ojs}
+//| echo: false
+maxStep4 = steps4.length - 1
+```
 
-viewof step3 = cleanSlider([0, maxStep3], {
-  value: 0,
-  step: 1,
-  label: "Paso de la criba: "
-})
+```{ojs}
+//| echo: false
+viewof step4 = cleanSlider([0, maxStep4], { value: 0, step: 1, label: "Paso de la criba: " })
+```
+
+```{ojs}
+//| echo: false
 {
-  if (!steps3 || steps3.length === 0) return html`<div>Cargando...</div>`;
+  if (!steps4 || steps4.length === 0) return html`<div>Cargando...</div>`;
 
-  const safeStep = Math.min(step3, steps3.length - 1);
-  const s = steps3[safeStep];
+  const safeStep = Math.min(step4, steps4.length - 1);
+  const s = steps4[safeStep];
 
   if (!s) return html`<div>Cargando...</div>`;
 
   const arr = s.state;
-  const max = N3;
+  const max = N4;
   
-  // Grid size calculations
   const size = Math.floor((max - 3) / 2) + 1;
-  const cols = Math.ceil(Math.sqrt(size)); // The grid will visibly be smaller!
+  const cols = Math.ceil(Math.sqrt(size)); 
   
   const currentPrime = s.p;
   const lastDiscard = s.k;
 
   const grid = Array.from({ length: size }, (_, i) => {
-    const num = 2 * i + 3; // Decode the actual number from the index
+    const num = 2 * i + 3; 
     let bgColor = "#2a9d8f"; 
     
     if (num === currentPrime) bgColor = "#457b9d";
@@ -616,13 +589,8 @@ viewof step3 = cleanSlider([0, maxStep3], {
     else if (arr[i] === "discarded") bgColor = "#e63946";
 
     return {
-      idx: i,
-      n: num,
-      x: i % cols,
-      y: Math.floor(i / cols),
-      state: arr[i],
-      color: bgColor,
-      textColor: "white" 
+      idx: i, n: num, x: i % cols, y: Math.floor(i / cols), state: arr[i],
+      color: bgColor, textColor: "white" 
     };
   });
 
@@ -633,40 +601,15 @@ viewof step3 = cleanSlider([0, maxStep3], {
       </div>
 
       ${Plot.plot({
-        height: Math.ceil(size / cols) * 35 + 20, 
-        margin: 10,
-        x: { axis: null },
-        y: { axis: null, reverse: true },
-        color: { type: "identity" }, 
+        height: Math.ceil(size / cols) * 35 + 20, margin: 10,
+        x: { axis: null }, y: { axis: null, reverse: true }, color: { type: "identity" }, 
         marks: [
-          Plot.rect(grid, {
-            x1: d => d.x - 0.45,
-            x2: d => d.x + 0.45,
-            y1: d => d.y - 0.45,
-            y2: d => d.y + 0.45,
-            fill: "color",
-            stroke: "white",
-            rx: 4 
-          }),
-          Plot.text(grid, {
-            x: "x",
-            y: "y",
-            text: "n",
-            fill: "textColor",
-            fontSize: 13,
-            fontWeight: "bold"
-          })
+          Plot.rect(grid, { x1: d => d.x - 0.45, x2: d => d.x + 0.45, y1: d => d.y - 0.45, y2: d => d.y + 0.45, fill: "color", stroke: "white", rx: 4 }),
+          Plot.text(grid, { x: "x", y: "y", text: "n", fill: "textColor", fontSize: 13, fontWeight: "bold" })
         ]
       })}
-
       <div style="margin-top:15px; font-size: 1.1em; height: 1.5em;">
-        ${
-          s.type === "prime"
-            ? html`🔎 Probando primo impar <b>${currentPrime}</b>`
-            : s.type === "discard"
-            ? html`❌ ${lastDiscard} es múltiplo impar de <b>${currentPrime}</b>`
-            : html`✅ Criba completada (Tamaño del vector: ${size} posiciones)`
-        }
+        ${s.type === "prime" ? html`🔎 Probando primo impar <b>${currentPrime}</b>` : s.type === "discard" ? html`❌ ${lastDiscard} es múltiplo impar de <b>${currentPrime}</b>` : html`✅ Criba completada (Tamaño del vector: ${size} posiciones)`}
       </div>
     </div>
   `;
@@ -674,10 +617,10 @@ viewof step3 = cleanSlider([0, maxStep3], {
 ```
 :::
 :::
+</details>
 
 ::: {.callout-note}
 ## Tamaño del vector
 
 En esta solución, el vector utilizado para la criba de Eratóstenes ocupará `1 * (⌊(n-3)/2⌋ + 1)` bytes, ya que se utiliza un vector de booleanos para representar si cada número impar es primo o no. Cada booleano ocupa 1 byte en Java, por lo que el tamaño del vector será significativamente menor que en las soluciones anteriores que utilizaban enteros y que consideraban tanto números pares como impares. Por ejemplo, si `n` es 100, el vector ocupará `1 * (⌊(100-3)/2⌋ + 1) = 49` bytes, lo que representa aproximadamente el 12% del tamaño del vector utilizado en la solución con enteros que consideraba todos los números (404 bytes).
 :::
-
