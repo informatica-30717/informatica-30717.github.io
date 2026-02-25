@@ -9,54 +9,60 @@ format:
 execute:
   echo: false
 ---
+
 ## Objetivos de la práctica
+
 Los objetivos de esta práctica son los siguientes:
 
-- Mostrar algunas de las capacidades más interesantes de la hoja de cálculo como herramienta de ayuda a la resolución de problemas. **No se pretende impartir un curso
-de Excel**, sino despertar el interés por este tipo de herramientas, de enorme utilidad.
-- **Aplicar** algunos de los **conocimientos de programación** aprendidos de esta asignatura
-
+- Mostrar algunas de las capacidades más interesantes de una hoja de cálculo como herramienta para la resolución de problemas. **No se pretende impartir un curso
+de Excel**, sino despertar el interés por herramientas de enorme utilidad.
+- **Aplicar** algunos de los **conocimientos de programación** aprendidos en esta asignatura.
 
 ## Introducción
 
-La **hoja de cálculo** es una herramienta de gran utilidad en la **resolución de problemas en ingeniería** ya que, además de permitir manejar una gran cantidad de datos y realizar
-operaciones complejas de forma interactiva, proporciona una potente herramienta de
-representación gráfica de datos, fácil de utilizar. De hecho, hay una gran cantidad de
-problemas que pueden ser resueltos y analizados con una simple hoja de cálculo, de una
-**manera rápida y eficaz**, sin tener que recurrir al desarrollo de aplicaciones específicas o al
-uso de otras aplicaciones de cálculo comerciales más potentes, pero más costosas y
-complejas de utilizar.
+Una **hoja de cálculo** es una herramienta de gran utilidad en la **resolución de problemas en ingeniería** dado que, además de permitir manejar una gran cantidad de datos y realizar operaciones complejas de forma interactiva, proporciona una potente herramienta de representación gráfica de datos, fácil de utilizar. De hecho, hay una gran cantidad de problemas que pueden ser resueltos y analizados con una simple hoja de cálculo, de una **manera rápida y eficaz**, sin tener que recurrir al desarrollo de aplicaciones específicas o al uso de otras aplicaciones de cálculo comerciales más potentes, pero más costosas y complejas de utilizar.
 
-Nos centraremos en los siguientes contenidos, remitiendo al alumno interesado a la bibliografía de la asignatura para ampliar la información:
+Nos centraremos en los siguientes contenidos, aunque para profundizar en ellos se recomienda consultar la documentación oficial de Excel y la bibliografía recomendada:
 
-- Representación de datos simples
-- Cálculo mediante fórmulas complejas
-- Funciones definidas en Excel
-- Composición condicional
-- Composición de repetición para crear tablas de datos
-- Referencias absolutas y relativas
-- Creación de gráficos
-- Creación de macros
+- Representación de datos simples.
+- Cálculo mediante fórmulas complejas.
+- Funciones definidas en Excel.
+- Composición condicional.
+- Composición de repetición para crear tablas de datos.
+- Referencias absolutas y relativas.
+- Creación de gráficos.
+- Creación de macros.
 
-Hay muchos problemas matemáticos donde no se conoce un método analítico para calcular
-una solución exacta o bien la obtención de la solución es tan costosa en tiempo que no
-resulta una opción válida en la práctica. En dichos casos, una alternativa es utilizar un método
-numérico que aproxime la solución.
+## Ecuaciones no lineales y métodos iterativos
 
-En esta práctica vamos a considerar la **resolución de ecuaciones no lineales** por **métodos iterativos** y, a modo de ejemplo, consideraremos el caso de las **curvas catenarias**. Una curva catenaria es la que describe un cable que está fijo por sus dos extremos y no está sometido a otras fuerzas distintas que su propio peso. Como es bien sabido, una **curva catenaria invertida** es un trazado útil para un **arco en arquitectura**.
+::: {layout="[60, 40]"}
+::: {.column}
+Hay muchos problemas matemáticos donde **no se conoce un método analítico para calcular una solución exacta o bien la obtención de la solución es tan costosa en tiempo que no
+resulta una opción válida** en la práctica. En dichos casos, una alternativa es utilizar un método numérico que **aproxime** la solución.
 
-![[El arquitecto Gaudí y la catenaria ](https://apuntesdearquitecturadigital.blogspot.com/2019/10/el-arquitecto-gaudi-y-la-catenaria-las.html)](../resources/practica4/curva.jpg){#fig-curva}
+En esta práctica vamos a considerar la **resolución de ecuaciones no lineales** por **métodos iterativos** y, a modo de ejemplo, consideraremos el caso de las **curvas catenarias**. Una curva catenaria es la que describe un cable que está fijo por sus dos extremos y no está sometido a otras fuerzas distintas además de su propio peso. Como es bien sabido, una **curva catenaria invertida** es un trazado útil para un **arco en arquitectura**. Por ejemplo, el arquitecto **Gaudí** utilizó esta curva para diseñar la **Sagrada Familia** en Barcelona, como se muestra en la @fig-curva.
+:::
+::: {.column}
+![[Ejemplos de catenarias en arquitectura.](https://apuntesdearquitecturadigital.blogspot.com/2019/10/el-arquitecto-gaudi-y-la-catenaria-las.html)](../resources/practica4/curva.jpg){#fig-curva}
+:::
+:::
 
+Podéis encontrar más información sobre las curvas catenarias en el siguiente vídeo:
 
-La curva que describe un cable suspendido de **dos puntos** a la misma altura y cuyo **punto mínimo** es el punto **(0, $a$)** se puede escribir como:
+{{< video https://www.youtube.com/watch?v=NnjnlxfB_D8 >}}
+
+### Curva catenaria
+
+La curva que describe un cable suspendido de **dos puntos** a la misma altura y cuyo **punto mínimo** es el punto $(0, a)$ se puede escribir como:
 $$
 \begin{aligned}
-y = a  \cdot  cosh \frac{x}{a} =a\frac{e^\frac{x}{a}+e^\frac{-x}{a}}{2}
+y = a  \cdot  cosh \frac{x}{a} = a\frac{e^\frac{x}{a}+e^\frac{-x}{a}}{2}
 \end{aligned}
 $$
 
+En esta práctica vamos a resolver la ecuación $y = b$, para un número real $b$. Para ello, consideraremos la función $f(x) = y  -  b$ y buscaremos la solución a la ecuación $f(x) = 0$.
 
-La siguiente gráfica muestra catenarias para distintos valores de $a$ :
+Podéis interactuar con la curva catenaria en la siguiente visualización, modificando el valor de la constante $a$ para ver cómo afecta a la forma de la curva. El punto mínimo de la curva se llama **vértice** y se muestra marcado en el gráfico.
 
 ::: {.card .shadow-sm .mb-4 .mt-4}
 ::: {.card-body}
@@ -86,7 +92,7 @@ viewof params = {
     </div>`;
   };
 
-  const form = htl.html`<div style="display: flex; flex-wrap: wrap; justify-content: center; width: 50%; padding-bottom: 20px; border-bottom: 1px solid #eee; margin: 0 auto 20px auto;">
+  const form = htl.html`<div style="display: flex; flex-wrap: wrap; justify-content: center; width: 50%; padding-bottom: 5px; border-bottom: 1px solid #eee; margin: 0 auto 20px auto;">
     ${col(ia, "Constante a")}
   </div>`;
 
@@ -125,7 +131,7 @@ a = params.a
   }
 
   const curve_plot = Plot.plot({
-    height: 400,
+    height: 250,
     grid: true,
     marginLeft: 40, 
     marginRight: 20,
@@ -163,125 +169,107 @@ a = params.a
 ```
 :::
 :::
-En esta práctica vamos a resolver la ecuación $y = b$, para un número real $b$. Para ello,
-consideraremos la función $f(x) = y  –  b$ y buscaremos la solución a la ecuación $f(x) = 0$.
 
-## Obtención gráfica de la solución
+## Representación gráfica de la solución
 
-1. Abrir Excel y la opción un Libro en blanco.
+Los pasos a seguir para representar gráficamente la función $f$ y obtener una aproximación de la solución a la ecuación $f(x) = 0$ son los siguientes:
 
-2. En las celdas **B2 , C2** escribiremos los valores de **a** y **b**. Por ejemplo, **a = 2** y **b = 5**.
-Podemos utilizar la columna **B1** y **C1** para añadir texto que permita explicar el significado de las celdas de abajo, escribiendo los nombres **a** y **b**. 
+1. Abrir *Excel* y crear un `Libro en blanco`.
 
-3. Buscaremos un intervalo de valores entre los que sepamos que se encuentra la solución,
-de manera que en ambos extremos del intervalo la función cambie de signo. Como la
-función $f$ es continua, esto implica que existe un valor intermedio donde la función toma un
-valor nulo. Por ejemplo, la @fig-curva anterior muestra que el valor de $x$ donde $f(x) = 5$ está en
-$[2, 4]$, y además $f(2) < 0$ y $f(4) > 0$. Por tanto, los valores de $x$ irán en el rango $[2, 4]$, con un incremento de $0,1$ entre cada valor.
+2. En las celdas `B2`, `C2` escribiremos los valores de $a$ y $b$. Por ejemplo, $a = 2$ y $b = 5$. Asimismo, podemos utilizar las columnas `B1` y `C1` para añadir texto que permita explicar el significado de las celdas de abajo, escribiendo **a** y **b**. Fijaros en la @fig-graf1 para ver un ejemplo de cómo debería quedar la hoja de cálculo en este punto.
 
-4. Crear una tabla con los valores de $f(x)$ en función de $x$, en las celdas $D2-E22$. Esto se
-realizará en los pasos 5. al 7. No basta con crear la tabla, es obligatorio utilizar correctamente referencias absolutas y relativas.
+3. Buscaremos un intervalo de valores entre los que sepamos que se encuentra la solución, de manera que en ambos extremos del intervalo la función cambie de signo. Como la función $f$ es continua, esto implica que entre dicho valor existe un valor intermedio donde la función toma el valor $0$. Por ejemplo, la @fig-curva anterior muestra que el valor de $x$ donde $f(x) = 5$ está en $[2, 4]$, y además $f(2) < 0$ y $f(4) > 0$. Por tanto, los valores de $x$ irán en el rango $[2, 4]$, con un incremento de $0,1$ entre cada valor.
 
-5. Para rellenar los valores de $x$, se introduce el primer valor **2** en la celda **D2**, se
-marca junto a las celdas a rellenar **D2-D22** y se selecciona la opción del menú:
-`Inicio > Rellenar > Series`, indicando el **Incremento** de valor deseado (en este
-caso, **0,1**). En **D1** dejar **x** y en **E1** dejar **y**.
+4. Crea una tabla con los valores de $f(x)$ en función de $x$, en las celdas `D2-E22`. Esto es lo que haremos en los pasos **5, 6 y 7**. No basta con crear la tabla, es obligatorio utilizar correctamente referencias absolutas y relativas.
 
-6. Introducir en la celda **E2** la fórmula para calcular $f(x)$ a partir del valor de $x$ en la
-celda a su izquierda (**D2**). Excel incluye la función **COSH** para calcular un coseno
-hiperbólico.
+5. Para rellenar los valores de $x$, se introduce el primer valor, $2$, en la celda `D2`. Después, marcamos las celdas a rellenar, `D2-D22` y utilizamos la opción
+`Inicio > Rellenar > Series`, indicando el **incremento** de valor deseado (en este caso, **0.1**). Igual que antes, podemos indicar en `D1` y `E1` el significado de cada columna, escribiendo **x** y **y**, respectivamente.
 
-7. Copiar el valor de la celda **E2** en las celdas **E3-E22**. 
+6. Introducir en la celda `E2` la fórmula para calcular $f(x)$ a partir del valor de $x$ en la celda a su izquierda (`D2`). *Excel* incluye la función **COSH** para calcular un coseno hiperbólico.
 
+7. Copiar el valor de la celda `E2` en las celdas `E3-E22`. 
 
 ::: {.callout-warning}
 ## Error de actualización
 
-Excel ha ajustado
-automáticamente la fórmula, pero el resultado no es correcto: $x$ se ha actualizado
-correctamente, pero las referencias a los valores de **a** y **b** también.
-
+*Excel* ajusta automáticamente la fórmula, pero el resultado no es correcto; $x$ se ha actualizado correctamente, pero las referencias a los valores de $a$ y $b$ también. 
 :::
 
-8. Para solucionar esto, modificaremos la fórmula en **E2** combinando el uso de
-**referencias absolutas** (que se mantendrán constantes al copiar la celda) y **relativas**
-(que se actualizarán al ser copiadas). 
-Para hacer referencias absolutas (de modo que no cambien automáticamente al copiarse la celda) se añade un carácter **$** entre la letra del nombre de la celda o usar el atajo de teclado con ``F4`` o ``Fn+F4``, por ejemplo la celda **\$B\$2** . Haz los cabios correspondientes con el resto de referencias absolutas.
+8. Para solucionar esto, modificaremos la fórmula en `E2` combinando el uso de **referencias absolutas** (que se mantendrán constantes al copiar la celda) y **relativas**
+(que se actualizarán al ser copiadas). Para crear referencias absolutas, de modo que no cambien automáticamente al copiarse la celda, se añade un carácter `$` entre la letra y el número (por ejemplo, `$B$2`). También podéis usar el atajo de teclado con `F4` o `Fn+F4 . Haz los cambios correspondientes al resto de referencias absolutas.
 
-9. Ahora sí, volver a copiar el valor de la celda **E2** en las celdas de la tabla **E3-E22**.
+9. Ahora sí, volver a copiar el valor de la celda `E2` en las celdas de la tabla `E3-E22`.
 
-10. Seleccionar **D2-E22** e insertar un gráfico **XY Dispersión**. Pinchando en cada eje,
-podemos cambiar el rango de valores mostrado, como ilustra la @fig-graf1:
+10. Seleccionamos `D2-E22` e insertamos un gráfico de tipo **XY Dispersión**. Pinchando en cada eje, podemos cambiar el rango de valores mostrado, como ilustra la @fig-graf1:
 
-![Actualizar ejes en el gráfico](../resources/practica4/snapshot1.png){#fig-graf1}
+![Actualización de ejes en el gráfico.](../resources/practica4/snapshot1.png){#fig-graf1}
 
+11. Podemos observar en la @fig-graf2 que el valor cero de $f(x)$ se alcanza en **[3.1, 3.2]**. Si se repite el proceso con valores de $x$ en el intervalo **$[2, 4]$**, el resultado será más preciso. Para ello, habría que reducir también el incremento, por ejemplo, a **0.01**.
 
-11. Podemos observar en la @fig-graf2  que el resultado está en **[3,1, 3,2]**. Si se repite el proceso
-con valores de $x$ en ese rango en vez de en el rango **[2, 4]**, el resultado será más preciso
-(también habría que reducir también el incremento a, por ejemplo **0,01**).
+![Gráfico de tipo XY Dispersión.](../resources/practica4/snapshot0.png){#fig-graf2}
 
-![Gráfico: XY Dispersión](../resources/practica4/snapshot0.png){#fig-graf2}
-
-12. Guardar el fichero de Excel con extensión *.xlsx  ejemplo: `practica4.xlsx` .
+12. Guarda el fichero de *Excel* con extensión `*.xlsx`, por ejemplo, `practica4.xlsx`.
 
 ## Automatización mediante el método de bisección
 
-En lugar de repetir el proceso a mano, vamos a automatizarlo: comenzaremos con un intervalo e iremos reduciéndolo por el **método de bisección** hasta obtener una solución que
+En lugar de repetir el proceso a mano, vamos a automatizarlo. Comenzaremos con un intervalo e iremos reduciéndolo por el **método de bisección** hasta obtener una solución que
 nos parezca suficientemente buena.
 
-1. En las celdas **G1-J1** escribiremos los nombres **Xmin** (valor mínimo del intervalo),
+1. En las celdas `G1-J1` escribiremos los nombres **Xmin** (valor mínimo del intervalo),
 **Xmax** (valor máximo), **Xmedio** (valor del punto medio) y **f(x)** (valor de la función $f$ en el
 punto **Xmedio**).
 
+2. En las celdas `G2` y `H2` escribiremos los extremos del intervalo inicial, tales que $f(G2)$ y $f(H2)$ tengan distinto signo: $f(3.1) < 0$ y $f(3.2) > 0$. Es decir en  `G2` poner **3.1** y `H2` poner **3.2**.
 
-2. En las celdas **G2** y **H2** escribiremos los extremos del intervalo inicial, tales que **f(G2)** y
-**f(H2)** tengan distinto signo: $f(3,1) < 0$ y $f(3,2) > 0$. Es decir en  **G2** poner **3,1** y **H2** poner **3,2**.
+3. En la celda `I2` escribiremos una fórmula para **calcular el punto medio del intervalo**. Es decir la media de `G2` y `H2`.
 
-3. En la celda **I2** escribiremos una fórmula para **calcular el punto medio del intervalo**. Es decir la media de  **G2** y **H2**.
+4. En la celda `J2` calculamos el resultado de evaluar la función $f$ en el punto indicado en la celda `I2`. El valor de `a` y `b` se mantienen para evaluar $f$. 
 
-4. En la celda **J2** calculamos el resultado de evaluar la función $f$ en el punto indicado en
-la celda **I2**. El valor de **a** y **b** se mantienen para evaluar $f$. 
+5. En la fila **3** (celdas `G3` y `H3`) definiremos un nuevo extremo para el intervalo. **Si f(xMedio) es negativo**, seleccionaremos el intervalo **[xMedio, xMax]** en la siguiente iteración. **Si es positivo**, seleccionaremos **[xMin, xMedio]**. Usar la funcion `=SI`.
 
-5. En la fila **3** (celdas **G3** y **H3**) definiremos un nuevo extremo para el intervalo. **Si f(xMedio) es negativo**, seleccionaremos el rango **[xMedio, xMax]** en la siguiente iteración. **Si es positivo**, seleccionaremos **[xMin, xMedio]**. Usar la funcion **=SI**.
-
-6. Copiar las celdas **I2** y **J2** en **I3** y **J3**, respectivamente.
+6. Copia las celdas `I2` y `J2` en `I3` y `J3`, respectivamente.
 
 7. Copiar la fila **3** en la fila **4** y repetir este proceso hasta que se obtenga una solución suficientemente buena. Con **20 filas** obtendremos un resultado suficientemente bueno.
 
 ![Método de bisección](../resources/practica4/snapshot2.png){#fig-graf3}
 
-
 12. Guardar cambios sobre el fichero `practica4.xlsx` .
 
 ## Creación de una macro
 
-Por último, vamos a crear una **macro** que permita calcular nuestra función $f$.
+::: {layout="[50,50]"}
+::: {.column}
+Por último, vamos a crear una **macro** que permita calcular nuestra función $f$. Por ejemplo, esto nos permitirá escribir una **fórmula para evaluar la función en un punto** dado por la celda `E2` (función `EvaluarF`), suponiendo que `B2` contiene el valor de $a$ y que `C2` contiene el valor de $b$ y `D2` el valor de $x$. Es decir, nuestra función recibirá 3 parámetros de entrada: los valores de $x$, $a$ y $b$ (fíjate en la @fig-graf4).
 
-1. En un nuevo fichero de Excel y Libro. Por ejemplo, esto
-nos permitirá escribir una **fórmula para evaluar la función en el punto indicado** por la
-celda **E2** (función EvaluarF)), suponiendo que **B2** contiene el valor de **a** y que **C2** contiene el valor de **b** y **D2** el valor de **x**. Es decir, nuestra función recibirá 3 parámetros de entrada: los valores de $x$, $a$ y $b$ (Ver @fig-graf4).
-
+1. Crea un nuevo libro de *Excel* y en la celda `E2` escribe la fórmula `=EvaluarF(D2, B2, C2)`.
+:::
+::: {.column}
 ![Ejemplo: EvaluarF](../resources/practica4/snapshot4.png){#fig-graf4}
+:::
+:::
 
 ::: {.callout-warning}
 ## Error de función
-Excel no encuentra la función llamada **EvaluarF**, intenta ahora usar la función **SUMA** y darle algun rango de celdas. Las funciones inician con el carácter **=**.
 
-![Error: función no reconocida](../resources/practica4/snapshot4_0_1.png){#fig-graf5}
+Excel no encuentra la función llamada `EvaluarF`. Intenta ahora usar la función `SUMA` y especifica un rango de celdas. Las funciones deben comenzar con el carácter `=`.
+
+![Error indicando que la función es desconocida.](../resources/practica4/snapshot4_0_1.png){#fig-graf5}
 :::
 
-2. Vamos a crear nuestra función **EvaluarF**. Ir al menú de  `Archivo > Opciones > Personalizar cinta de opciones`. Dar click en la opcion **Desarrollador** o **Programador** (Ver @fig-graf6)
+2. Creamos nuestra función `EvaluarF`. Ir al menú de  `Archivo > Opciones > Personalizar cinta de opciones`. Dar click en la opcion **Desarrollador** o **Programador** (Ver @fig-graf6)
 
 ![](../resources/practica4/snapshot3.png){#fig-graf6}
 
 
-3. En el menú  `desarrollador > Visual Basic` , aparecera una nueva pantalla (de Visual Basic) ahora hacer click en el menú `Insertar > módulo`, copiar y pegar el código de abajo (Ver @fig-graf7).
+3. En la opción del menú `Desarrollador > Visual Basic` aparecerá una nueva ventana. Al utilizar la opción `Insertar > módulo`, copia y pega el código de abajo (ver @fig-graf7).
+
 ```java
 Function EvaluarF(x, a, b)
   EvaluarF = ...
 End Function
 ```
-Los `...` indican que falta por completar el código de la función. Completa (teniendo en cuenta que en Visual Basic hay una función **Exp(x)** para calcular una exponencial, pero no una función **COSH** para calcular el coseno hiperbólico):
+
+Los `...` indican el código que debéis completar en la función, teniendo en cuenta que en *Visual Basic* hay una función exponencial `Exp(x)`, pero no una función **COSH** para calcular el coseno hiperbólico, por lo que tendréis que escribir la fórmula de la función $f$ utilizando la función `Exp` para calcular el coseno hiperbólico:
 
 ![Visual Basic](../resources/practica4/snapshot4_1.png){#fig-graf7}
 
@@ -289,17 +277,21 @@ Los `...` indican que falta por completar el código de la función. Completa (t
 <summary>💡 Solución</summary>
 ![Función](../resources/practica4/snapshot5.png){#fig-graf8}
 </details>
-:::
 
-4. Cerra la ventana de **Visual Basic**,  Guardar el fichero de Excel con extensión *.xlsm  ejemplo: `practica4_macro.xlsm` .
+4. Cierra la ventana de ***Visual Basic*** y guarda el fichero de *Excel* con extensión `*.xlsm`. Por ejemplo, con el nombre `practica4_macro.xlsm`.
 
-5. Una vez guardado el fichero de Excel, probaremos sobre **E2** la función **EvaluarF**. Haz lo mismo para las celdas **E3-E22**. Tener cuidado nuevamente con las referencias absolutas.
+5. Una vez guardado el fichero de *Excel*, probaremos sobre `E2` la función `EvaluarF`. Haz lo mismo para las celdas `E3-E22`. Tened cuidado nuevamente con las referencias absolutas.
 
 <details>
 <summary>💡 Solución</summary>
 ![función: EvaluarF](../resources/practica4/snapshot6.png){#fig-graf9}
 </details>
 
-## Ficheros dentro de un zip (practica4.zip)
+## Entrega
+
+Sube a Moodle un fichero comprimido en formato `*.zip` que contenga los siguientes archivos:
+
 - `practica4.xlsx`
 - `practica4_macro.xlsm`
+
+**Sólo lo debe entregar un miembro del grupo**. 
