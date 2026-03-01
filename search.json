@@ -117,7 +117,7 @@
     "href": "practicas/practica5.html#vectores-en-java",
     "title": "Práctica 5: Resolución de problemas en Java (II)",
     "section": "3 Vectores en Java",
-    "text": "3 Vectores en Java\nA modo de recordatorio, un vector en Java es una estructura de datos que almacena una colección de elementos del mismo tipo. Se puede declarar e inicializar de la siguiente manera:\n// Declaración e inicialización de un vector de enteros con 10 elementos\nint[] vector = new int[10];\n\n// Asignación de valores a los elementos del vector\nvector[0] = 1;\nvector[1] = 2;  \n\n// Acceso a los elementos del vector\nint valor = vector[0]; // valor es igual a 1\n\n// Asignación de valores utilizando un bucle\nfor (int i = 0; i &lt; vector.length; i++) {\n    vector[i] = i + 1; // Asigna el valor i+1 a cada posición del vector\n}",
+    "text": "3 Vectores en Java\nA modo de recordatorio, un vector en Java es una colección de elementos del mismo tipo. Se puede declarar y utilizar un vector de números enteros de la siguiente manera:\n// Declaración e inicialización de un vector de enteros con 10 elementos\nint[] vector = new int[10];\n\n// Asignación de valores a los elementos del vector\nvector[0] = 1;\nvector[1] = 2;  \n\n// Acceso a los elementos del vector\nint valor = vector[0]; // valor es igual a 1\n\n// Asignación de valores utilizando un bucle\nfor (int i = 0; i &lt; vector.length; i++) {\n    vector[i] = i + 1; // Asigna el valor i+1 a cada posición del vector\n}",
     "crumbs": [
       "![](../resources/unizar_white.png){width=95px}",
       "Prácticas",
@@ -155,7 +155,7 @@
     "href": "practicas/practica5.reveal.html#vectores-en-java",
     "title": "Práctica 5: Resolución de problemas en Java (II)",
     "section": "Vectores en Java",
-    "text": "Vectores en Java\nA modo de recordatorio, un vector en Java es una estructura de datos que almacena una colección de elementos del mismo tipo. Se puede declarar e inicializar de la siguiente manera:\n// Declaración e inicialización de un vector de enteros con 10 elementos\nint[] vector = new int[10];\n\n// Asignación de valores a los elementos del vector\nvector[0] = 1;\nvector[1] = 2;  \n\n// Acceso a los elementos del vector\nint valor = vector[0]; // valor es igual a 1\n\n// Asignación de valores utilizando un bucle\nfor (int i = 0; i &lt; vector.length; i++) {\n    vector[i] = i + 1; // Asigna el valor i+1 a cada posición del vector\n}"
+    "text": "Vectores en Java\nA modo de recordatorio, un vector en Java es una colección de elementos del mismo tipo. Se puede declarar y utilizar un vector de números enteros de la siguiente manera:\n// Declaración e inicialización de un vector de enteros con 10 elementos\nint[] vector = new int[10];\n\n// Asignación de valores a los elementos del vector\nvector[0] = 1;\nvector[1] = 2;  \n\n// Acceso a los elementos del vector\nint valor = vector[0]; // valor es igual a 1\n\n// Asignación de valores utilizando un bucle\nfor (int i = 0; i &lt; vector.length; i++) {\n    vector[i] = i + 1; // Asigna el valor i+1 a cada posición del vector\n}"
   },
   {
     "objectID": "practicas/practica5.reveal.html#ejercicios",
