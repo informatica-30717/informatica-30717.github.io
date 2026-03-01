@@ -17,6 +17,8 @@ Los objetivos de la segunda práctica de la asignatura son los siguientes:
 - Desarrollar algoritmos en Java.
 - Ejecutar algoritmos en el entorno Eclipse.
 
+---
+
 ## Raíces de una ecuación de segundo grado
 
 Como bien sabemos, una ecuación de segundo grado tiene la forma:
@@ -34,6 +36,8 @@ Por ejemplo, los siguientes coeficientes generan diferentes números de solucion
 - $a=1$, $b=-3$, $c=2$ → dos soluciones reales ($x=1$ y $x=2$).
 - $a=1$, $b=-2$, $c=1$ → una solución real ($x=1$).
 - $a=1$, $b=0$, $c=1$ → no soluciones reales.
+
+---
 
 ::: {.card .shadow-sm .mb-4 .mt-4}
 ::: {.card-body}
@@ -139,6 +143,8 @@ $$
 
 El valor dentro de la raíz cuadrada, $b^2 - 4ac$, se llama **discriminante** ($\Delta$) y determina el número de soluciones reales que tiene la ecuación:
 
+---
+
 ### Clase 1: dos soluciones reales
 
 **Si $\Delta > 0$, la ecuación tiene dos soluciones reales distintas**, que se calculan con la fórmula general utilizando el símbolo $+$ para una raíz y el símbolo $-$ para la otra raíz.
@@ -164,6 +170,8 @@ public class NombreDeLaClase {
 ```
 :::
 
+--- 
+
 ::: {.callout-note}
 ## Imprimir resultados en Java
 Utiliza la impresión por consola para mostrar los resultados de las soluciones, por ejemplo:
@@ -171,6 +179,8 @@ Utiliza la impresión por consola para mostrar los resultados de las soluciones,
 System.out.println("La solución es: " + x);
 ```
 :::
+
+---
 
 ### Clase 2: una solución real
 
@@ -183,6 +193,8 @@ Verifica que la solución es correcta utilizando los siguientes coeficientes:
 
 - $a=1, \quad b=-2, \quad c=1$ → una solución real ($x=1$).
 :::
+
+---
 
 ### Clase 3: no soluciones reales
 Si $\Delta < 0$, la ecuación no tiene soluciones reales, ya que la raíz cuadrada de un número negativo no es un número real. En este caso, se pueden calcular las soluciones complejas utilizando números imaginarios de la siguiente forma:
@@ -197,6 +209,8 @@ $$
 x_1 = \frac{-b + i\sqrt{4ac - b^2}}{2a} \quad \text{y} \quad x_2 = \frac{-b - i\sqrt{4ac - b^2}}{2a}
 $$
 
+---
+
 ::: {.callout-tip}
 ## Solución compleja
 
@@ -205,6 +219,8 @@ Verifica que la solución es correcta utilizando los siguientes coeficientes:
 $a=1, \quad b=0, \quad c=1$
 
 Las soluciones son:
-$$x_1 = 0 + 1i$$
-$$x_2 = 0 - 1i$$
+$$x_1 = 1i$$
+$$x_2 = -1i$$
 :::
+
+---

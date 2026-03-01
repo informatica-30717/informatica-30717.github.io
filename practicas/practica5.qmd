@@ -246,11 +246,11 @@ Cada entero ocupa 4 bytes en Java, por lo que el vector utilizado para la criba 
 
 **En la solución previa se itera hasta `n` para encontrar los números primos, lo cual es ineficiente**. En esta solución, **se optimiza el proceso iterando solo hasta la raíz cuadrada de `n`**.
 
-::: {.callout-warning}
+::: {.callout-warning collapse="true"}
 ## Optimización con la raíz cuadrada 🧮
 **Lema**: Si $n ∈ ℕ+$ admite la factorización $n = a*b$, con $a, b ∈ ℤ$, entonces $a ≤ \sqrt{n}$ o $b ≤ \sqrt{n}$.
 
-**Corolarios**: Si $n$ no es primo, uno de sus factores $d$ cumple $1 ≤ d ≤ \sqrt{n}$. Si $n$ no tiene factores $d$ con $1 ≤ d ≤ \sqrt{n}$, entonces es primo. Por tanto, $n$ es primo si y solo si es divisible por algún primo menor o igual a $\sqrt{n}$.
+**Corolario**: Si $n$ no es primo, uno de sus factores $d$ cumple $1 ≤ d ≤ \sqrt{n}$. Si $n$ no tiene factores $d$ con $1 ≤ d ≤ \sqrt{n}$, entonces es primo. Por tanto, $n$ es primo si y solo si es divisible por algún primo menor o igual a $\sqrt{n}$.
 :::
 
 <details>

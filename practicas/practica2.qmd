@@ -544,3 +544,7 @@ La primera vez que se utiliza *Eclipse*, aparecerá un mensaje preguntándonos s
 ![Pregunta de exclusión de Eclipse IDE respecto del sistema antivirus de Windows.](../resources/practica2/images/antivirus.png){#fig-antivirus_eclipse}
 
 ---
+
+## Entrega de la práctica
+
+**Sólo debe realizar la entrega un miembro del grupo**. Sube a Moodle el fichero `Ejercicio.java` con el código de la clase `Ejercicio`. No es necesario subir el proyecto completo ni ningún otro fichero.
