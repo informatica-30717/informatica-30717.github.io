@@ -54,7 +54,18 @@ Ten en cuenta que la criba de Eratóstenes se puede implementar de varias manera
 
 El objetivo es modificar cada una de las implementaciones para **contar el número de "tachones" (números descartados)** que realiza cada una de las implementaciones de la criba, y **medir su tiempo de ejecución**.
 
-**Anota el tiempo de ejecución en Microsoft Excel para cada una de las implementaciones, y cuatro valores de $n$ diferentes**: $10^4$, $10^5$, $10^6$ y $10^7$. Los valores de $n$ se representarán en el eje $X$ de un gráfico, y el tiempo de ejecución en el eje $Y$. Dibuja una gráfica similar a la ilustrada a continuación:
+**Anota el tiempo de ejecución en Microsoft Excel para cada una de las implementaciones, y cuatro valores de $n$ diferentes**: $10^3$, $10^4$, $10^5$ y $10^6$. Los valores de $n$ se representarán en el eje $X$ de un gráfico, y el tiempo de ejecución en el eje $Y$. Dibuja una gráfica similar a la ilustrada a continuación:
+
+![Gráfica de tiempo de ejecución de las diferentes implementaciones de la criba de Eratóstenes.](../resources/practica5/tiempos.svg){#fig-graph width=75%}
+
+```{python}
+import pandas as pd
+import numpy as np
+
+df = pd.read_excel('../resources/practica5/tiempos.xlsx')
+df.columns.values[0] = ""
+df
+```
 
 ::: {.callout-warning}
 ## Posible falta de memoria
@@ -73,9 +84,11 @@ Esto asignará un máximo de 4 GB de memoria a tu programa. Si sigues teniendo p
 Para medir el tiempo de ejecución de cada implementación, puedes utilizar la clase `System` de Java para obtener el tiempo antes y después de ejecutar el algoritmo, y luego calcular la diferencia. Aquí tienes un ejemplo de cómo hacerlo:
 
 ```java
+// Pide al usuario que introduzca el valor de n
+
 long startTime = System.currentTimeMillis();
 
-// Llama a tu método de la criba de Eratóstenes aquí
+// Introduce la implementación de la criba de Eratóstenes aquí
 
 long endTime = System.currentTimeMillis();
 long duration = endTime - startTime;
@@ -93,11 +106,8 @@ $$
 numero[i] = \begin{cases} i & \text{si } i \text{ es primo} \\ 0 & \text{si } i \text{ no es primo} \end{cases}
 $$
 
-<details>
-<summary>Ejemplo de la criba de Eratóstenes sin optimizar</summary>
 ::: {.card .shadow-sm .mb-4}
 ::: {.card-body}
-
 ```{ojs}
 // definimos la función global una sola vez para usarla en todos los bloques
 cleanSlider = (range, config) => {
@@ -197,7 +207,6 @@ viewof step1 = cleanSlider([0, maxStep1], { value: 0, step: 1, label: "Paso de l
 ```
 :::
 :::
-</details>
 
 La implementación básica se puede realizar de la siguiente manera:
 ```java
@@ -237,7 +246,7 @@ System.out.println();
 System.out.println("Total: " + contadorPrimos + " números primos");
 ```
 
-::: {.callout-note}
+::: {.callout-note collapse="true"}
 ## Tamaño del vector
 Cada entero ocupa 4 bytes en Java, por lo que el vector utilizado para la criba de Eratóstenes ocupará un total de `4 * (n + 1)` bytes, donde `n` es el número hasta el cual se desea encontrar los números primos. Por ejemplo, si `n` es 100, el vector ocupará `4 * (100 + 1) = 404` bytes.
 :::
@@ -253,8 +262,6 @@ Cada entero ocupa 4 bytes en Java, por lo que el vector utilizado para la criba 
 **Corolario**: Si $n$ no es primo, uno de sus factores $d$ cumple $1 ≤ d ≤ \sqrt{n}$. Si $n$ no tiene factores $d$ con $1 ≤ d ≤ \sqrt{n}$, entonces es primo. Por tanto, $n$ es primo si y solo si es divisible por algún primo menor o igual a $\sqrt{n}$.
 :::
 
-<details>
-<summary>Ejemplo de la criba de Eratóstenes optimizada con la raíz cuadrada</summary>
 ::: {.card .shadow-sm .mb-4}
 ::: {.card-body}
 
@@ -344,7 +351,6 @@ viewof step2 = cleanSlider([0, maxStep2], { value: 0, step: 1, label: "Paso de l
 ```
 :::
 :::
-</details>
 
 La implementación de esta optimización se puede realizar de la siguiente manera:
 ```java
@@ -384,7 +390,7 @@ System.out.println();
 System.out.println("Total: " + contadorPrimos + " números primos");
 ```
 
-::: {.callout-note}
+::: {.callout-note collapse="true"}
 ## Tamaño del vector
 
 En esta solución, el vector utilizado para la criba de Eratóstenes seguirá ocupando `4 * (n + 1)` bytes, ya que se sigue utilizando un vector de enteros para representar los números desde 0 hasta n. Sin embargo, el número de iteraciones realizadas para marcar los múltiplos de cada número primo será significativamente menor, lo que puede mejorar el rendimiento del algoritmo.
@@ -392,7 +398,7 @@ En esta solución, el vector utilizado para la criba de Eratóstenes seguirá oc
 
 ### Solución 3: Implementación utilizando un vector de booleanos
 
-En esta implementación, se utiliza un vector de booleanos para representar si cada número es primo o no. El vector se inicializa con `true` para todos los números desde 2 hasta $n$, y luego se marcan como `false` los múltiplos de cada número primo encontrado. Al final del proceso, los números que siguen siendo `true` en el vector son los números primos.
+En esta implementación, se utiliza un **vector de booleanos** para representar si cada número es primo o no. El vector se inicializa con `true` para todos los números desde 2 hasta $n$, y luego se marcan como `false` los múltiplos de cada número primo encontrado. Al final del proceso, los números que siguen siendo `true` en el vector son los números primos.
 
 La implementación de esta solución se puede realizar de la siguiente manera:
 ```java
@@ -432,7 +438,7 @@ System.out.println();
 System.out.println("Total: " + contadorPrimos + " números primos");
 ```
 
-::: {.callout-note}
+::: {.callout-note collapse="true"}
 ## Tamaño del vector
 
 En esta solución, el vector utilizado para la criba de Eratóstenes ocupará $1 * (n + 1)$ bytes, ya que se utiliza un vector de booleanos para representar si cada número es primo o no. Cada booleano ocupa 1 byte en Java, por lo que el tamaño del vector será significativamente menor que en las soluciones anteriores que utilizaban enteros. Sin embargo, el rendimiento del algoritmo puede ser similar al de la solución anterior, ya que el número de iteraciones realizadas para marcar los múltiplos de cada número primo seguirá siendo el mismo.
@@ -442,7 +448,7 @@ Por ejemplo, si $n$ es 100, el vector ocupará $1 * (100 + 1) = 101$ bytes, un t
 
 ### Solución 4: Implementación con optimización utilizando un vector de booleanos y solo números impares
 
-En esta implementación, se utiliza un vector de booleanos para representar si cada número impar es primo o no, ya que el único número par que es primo es el 2. De esta manera, se reduce a la mitad el tamaño del vector y se optimiza el proceso de marcado de múltiplos, ya que solo se consideran los números impares.
+En esta implementación, se utiliza un **vector de booleanos** para representar si cada número **impar es primo o no**, ya que el único número par que es primo es el 2. De esta manera, se reduce a la mitad el tamaño del vector y se optimiza el proceso de marcado de múltiplos, ya que solo se consideran los números impares.
 
 En resumen, los cambios introducidos en esta solución son los siguientes:
 
@@ -488,7 +494,7 @@ for (int i = 0; i <= max; i++) {
 
 for (int i = 0; ... <= n; i++) {   // <--- iterar solo sobre números impares
     int k = ...;
-    while ( ... <= n) {
+    while (... <= n) {
         numero[...] = false;    // <--- marcar múltiplos impares de i como no primos
         k++;
     }
@@ -508,8 +514,6 @@ System.out.println();
 System.out.println("Total: " + contadorPrimos + " números primos");
 ```
 
-<details>
-<summary>Ejemplo de la criba de Eratóstenes optimizada con un vector de booleanos y solo números impares</summary>
 ::: {.card .shadow-sm .mb-4 .mt-4}
 ::: {.card-body}
 
@@ -596,10 +600,6 @@ viewof step4 = cleanSlider([0, maxStep4], { value: 0, step: 1, label: "Paso de l
 
   return html`
     <div style="margin-top:15px;">
-      <div style="margin-bottom:10px; font-size: 0.95em; color: #666;">
-        <i>Nota: El número 2 es primo implícito. El vector solo contiene posiciones para $\lfloor(N-3)/2\rfloor + 1$ impares.</i>
-      </div>
-
       ${Plot.plot({
         height: Math.ceil(size / cols) * 35 + 20, margin: 10,
         x: { axis: null }, y: { axis: null, reverse: true }, color: { type: "identity" }, 
@@ -609,7 +609,7 @@ viewof step4 = cleanSlider([0, maxStep4], { value: 0, step: 1, label: "Paso de l
         ]
       })}
       <div style="margin-top:15px; font-size: 1.1em; height: 1.5em;">
-        ${s.type === "prime" ? html`🔎 Probando primo impar <b>${currentPrime}</b>` : s.type === "discard" ? html`❌ ${lastDiscard} es múltiplo impar de <b>${currentPrime}</b>` : html`✅ Criba completada (Tamaño del vector: ${size} posiciones)`}
+        ${s.type === "prime" ? html`🔎 Probando primo impar <b>${currentPrime}</b>` : s.type === "discard" ? html`❌ ${lastDiscard} es múltiplo impar de <b>${currentPrime}</b>` : html`✅ Criba completada`}
       </div>
     </div>
   `;
@@ -617,10 +617,9 @@ viewof step4 = cleanSlider([0, maxStep4], { value: 0, step: 1, label: "Paso de l
 ```
 :::
 :::
-</details>
 
-::: {.callout-note}
+::: {.callout-note collapse="true"}
 ## Tamaño del vector
 
-En esta solución, el vector utilizado para la criba de Eratóstenes ocupará `1 * (⌊(n-3)/2⌋ + 1)` bytes, ya que se utiliza un vector de booleanos para representar si cada número impar es primo o no. Cada booleano ocupa 1 byte en Java, por lo que el tamaño del vector será significativamente menor que en las soluciones anteriores que utilizaban enteros y que consideraban tanto números pares como impares. Por ejemplo, si `n` es 100, el vector ocupará `1 * (⌊(100-3)/2⌋ + 1) = 49` bytes, lo que representa aproximadamente el 12% del tamaño del vector utilizado en la solución con enteros que consideraba todos los números (404 bytes).
+En esta solución, el vector utilizado para la criba de Eratóstenes ocupará `1 * (⌊(n-3)/2⌋ + 1)` bytes, ya que se utiliza un vector de booleanos para representar si cada número impar es primo o no. Cada booleano ocupa 1 byte en Java, por lo que el tamaño del vector será significativamente menor que en las soluciones anteriores que utilizaban enteros y que consideraban tanto números pares como impares. Por ejemplo, si `n` es 100, el vector ocupará `1 * (⌊(100-3)/2⌋ + 1) = 49` bytes, lo que representa aproximadamente el **12% del tamaño del vector utilizado en la solución con enteros que consideraba todos los números (404 bytes)**.
 :::
