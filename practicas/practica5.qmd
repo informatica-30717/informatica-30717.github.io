@@ -29,8 +29,7 @@ Por ejemplo, para encontrar los números primos menores o iguales a 30, el algor
 
 ## Vectores en Java
 
-A modo de recordatorio, un **vector en Java** es una estructura de datos que almacena una colección de elementos del mismo tipo. Se puede declarar e inicializar de la siguiente manera:
-
+A modo de recordatorio, un **vector en Java** es una colección de elementos del mismo tipo. Se puede declarar y utilizar un vector de números enteros de la siguiente manera:
 ```java
 // Declaración e inicialización de un vector de enteros con 10 elementos
 int[] vector = new int[10];
@@ -59,6 +58,8 @@ El objetivo es modificar cada una de las implementaciones para **contar el núme
 ![Gráfica de tiempo de ejecución de las diferentes implementaciones de la criba de Eratóstenes.](../resources/practica5/tiempos.svg){#fig-graph width=75%}
 
 ```{python}
+#| tbl-cap: "Tabla de tiempos de ejecución en milisegundos de las diferentes implementaciones de la criba de Eratóstenes."
+
 import pandas as pd
 import numpy as np
 
