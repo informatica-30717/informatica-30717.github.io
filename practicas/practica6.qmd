@@ -17,23 +17,29 @@ Los objetivos de la sexta práctica de la asignatura son los siguientes:
 - Desarrollar algoritmos en Java.
 - Ejecutar algoritmos en el entorno *Eclipse*.
 
+---
+
 ## Algoritmos de ordenación
 
-Dado un vector de $n$ números enteros, el objetivo de esta práctica es implementar dos algoritmos de ordenación: el algoritmo de ordenación de burbuja (*bubble sort*) y el algoritmo de selección (*selection sort*). Ambos algoritmos son métodos sencillos para ordenar una lista de elementos, aunque no son los más eficientes para grandes conjuntos de datos. Sin embargo, son útiles para entender los conceptos básicos de la ordenación y la complejidad algorítmica.
+Dado un vector de $n$ números enteros, el objetivo de esta práctica es implementar dos algoritmos de ordenación: el algoritmo de **ordenación de burbuja** (*bubble sort*) y el algoritmo de **selección** (*selection sort*). Ambos algoritmos son métodos sencillos para ordenar una lista de elementos, aunque no son los más eficientes para grandes conjuntos de datos. Sin embargo, son útiles para entender los conceptos básicos de ordenación y complejidad algorítmica.
+
+---
 
 ### *Bubble sort* u ordenación de burbuja
 
-El algoritmo de ordenación de burbuja funciona comparando cada par de elementos adyacentes y los intercambia si están en el orden incorrecto. Este proceso se repite hasta que la lista está completamente ordenada.
+El algoritmo de **ordenación de burbuja** funciona **comparando cada par de elementos adyacentes** e **intercambiándolos si están en el orden incorrecto**. Este proceso se repite hasta que la lista está completamente ordenada.
 
 Por ejemplo, dado un vector de $n$ números enteros, el proceso a seguir sería el siguiente:
 
-- **Comparamos el primer elemento $v[0]$ con el segundo $v[1]$ y, si es mayor que él, los intercambiamos**.
-- **Comparamos el segundo elemento $v[1]$ con el tercero $v[2]$ y, si es mayor que él, los intercambiamos**.
-- **Repetimos para todo el vector, hasta comparar $v[n-2]$ y $v[n-1]$**.
+- Comparamos el primer elemento $v[0]$ con el segundo $v[1]$ y, si es mayor que él, los intercambiamos.
+- Comparamos el segundo elemento $v[1]$ con el tercero $v[2]$ y, si es mayor que él, los intercambiamos.
+- Repetimos para todo el vector, hasta comparar $v[n-2]$ y $v[n-1]$.
 - En ese momento, la última posición ya está ordenada.
 - Repetimos el proceso hasta tener todo el vector ordenado.
 - En el peor caso, tendríamos que repetir $n-1$ veces.
 - Si en algún momento recorremos todo el vector sin que haya ningún intercambio, el vector ya estará ordenado.
+
+---
 
 A continuación se muestra un ejemplo del algoritmo de ordenación de burbuja para visualizar el proceso de ordenación paso a paso.
 
@@ -141,7 +147,7 @@ viewof stepBS = {
         } else {
           btn.click(); 
         }
-      }, 1500); 
+      }, 1100); 
     } else {
       clearInterval(timer);
     }
@@ -211,9 +217,11 @@ viewof stepBS = {
 :::
 :::
 
+---
+
 ### *Selection sort* u ordenación por selección
 
-El algoritmo de ordenación por selección funciona dividiendo la lista en dos partes: la parte ordenada y la parte no ordenada. En cada iteración, el algoritmo selecciona el elemento más pequeño de la parte no ordenada y lo intercambia con el primer elemento de esa parte, moviendo así el límite entre las partes ordenada y no ordenada.
+El algoritmo de ordenación por **selección** funciona **dividiendo la lista en dos partes**: la parte **ordenada** y la parte **no ordenada**. En cada iteración, el algoritmo selecciona el elemento más pequeño de la parte no ordenada y lo intercambia con el primer elemento de esa parte, moviendo así el límite entre las partes ordenada y no ordenada.
 
 Dado un vector de $n$ números enteros, **el proceso a seguir sería el siguiente**:
 
@@ -221,7 +229,9 @@ Dado un vector de $n$ números enteros, **el proceso a seguir sería el siguient
 - Luego, **buscamos el elemento más pequeño en el resto del vector** (excluyendo el primer elemento) **y lo intercambiamos con el segundo elemento**.
 - **Repetimos este proceso** hasta que todo el vector esté ordenado.
 
-A continuación se muestra un ejemplo del algoritmo de ordenación por selección para visualizar el proceso de ordenación paso a paso.
+---
+
+A continuación se muestra una animación paso a paso del algoritmo de ordenación por selección para visualizar el proceso de ordenación.
 
 ::: {.card .shadow-sm .mb-4}
 ::: {.card-body}
@@ -337,7 +347,7 @@ viewof stepSS = {
         } else {
           btn.click(); 
         }
-      }, 1500); 
+      }, 1100); 
     } else {
       clearInterval(timer);
     }
@@ -413,14 +423,18 @@ viewof stepSS = {
 :::
 :::
 
+---
+
 ## Ejercicios
 
-Implementa los algoritmos de ordenación de burbuja y selección en Java en dos clases diferentes, `OrdenacionBurbuja.java` y `OrdenacionSeleccion.java`. A continuación se muestra un ejemplo de cómo podría ser la estructura de la clase `OrdenacionBurbuja.java`:
+Implementa los algoritmos de ordenación de burbuja y selección en Java utilizando dos clases diferentes, `OrdenacionBurbuja.java` y `OrdenacionSeleccion.java`. A continuación se muestra un ejemplo de cómo podría ser la estructura de la clase `OrdenacionBurbuja.java`:
 
 ```java
 public class OrdenacionBurbuja {
   public static void ordenar(int[] v) {
     // Tu código aquí
+    // Recuerda que puedes acceder al tamaño del vector 
+    // con v.length y a cada elemento con v[i]
   }
 
   public static void main(String[] args) {
@@ -451,7 +465,26 @@ public class OrdenacionBurbuja {
 }
 ```
 
-Ejecuta paso a paso los algoritmos utilizando el depurador de *Eclipse* para entender cómo funciona el proceso de ordenación. Utiliza un tamaño de vector pequeño (por ejemplo, 20 elementos) para facilitar la visualización del proceso. Además, debes **medir el tiempo de ejecución de los algoritmos utilizando cuatro valores de $n$ diferentes**: $10^4$, $10^5$, $10^5$ / 2 y $10^6$. Los valores de $n$ se representarán en el eje $X$ de un gráfico, y el tiempo de ejecución en el eje $Y$. Dibuja una gráfica similar a la ilustrada a continuación:
+---
+
+Ejecuta paso a paso los algoritmos utilizando el depurador de *Eclipse* para entender cómo funciona el proceso de ordenación. Utiliza un tamaño de vector pequeño (por ejemplo, 20 elementos) para facilitar la visualización del proceso. Además, debes **medir el tiempo de ejecución de los algoritmos utilizando cuatro valores de $n$ diferentes**: $10^2$, $10^3$, $10^4$ y $10^5$. Los valores de $n$ se representarán en el eje $X$ de un gráfico, y el tiempo de ejecución en el eje $Y$. Dibuja una gráfica similar a la ilustrada a continuación:
+
+![Gráfica de tiempo de ejecución de ambos algoritmos de ordenación.](../resources/practica6/tiempos.svg){#fig-graph width=75%}
+
+---
+
+```{python}
+#| tbl-cap: "Tabla de tiempos de ejecución en milisegundos de los algoritmos de ordenación."
+
+import pandas as pd
+import numpy as np
+
+df = pd.read_excel('../resources/practica6/tiempos.xlsx')
+df.columns.values[0] = ""
+df
+```
+
+---
 
 ::: {.callout-warning}
 ## Posible falta de memoria
@@ -465,16 +498,30 @@ Ten en cuenta que para valores de $n$ muy grandes, es posible que el programa no
 Esto asignará un máximo de 1 GB de memoria a tu programa. Si sigues teniendo problemas de memoria, puedes intentar aumentar aún más este valor, aunque ten en cuenta que esto dependerá de la cantidad de memoria RAM disponible en tu ordenador.
 :::
 
+---
+
 ### Medición de tiempo de ejecución
 
 Para medir el tiempo de ejecución de cada implementación, puedes utilizar la clase `System` de Java para obtener el tiempo antes y después de ejecutar el algoritmo, y luego calcular la diferencia. Aquí tienes un ejemplo de cómo hacerlo:
 
 ```java
+// Selección del tamaño del vector
+
 long startTime = System.currentTimeMillis();
 
-// Llama a tu método de ordenación aquí
+ordenar(v);
 
 long endTime = System.currentTimeMillis();
 long duration = endTime - startTime;
 System.out.println("Tiempo de ejecución: " + duration + " milisegundos");
 ```
+
+---
+
+## Entrega de la solución
+
+**Sólo debe realizar la entrega un miembro del grupo**. Sube a Moodle un **fichero comprimido `practica6.zip`** que contenga los siguientes archivos:
+
+- `OrdenacionBurbuja.java`: Implementación del algoritmo de ordenación de burbuja.
+- `OrdenacionSeleccion.java`: Implementación del algoritmo de ordenación por selección.
+

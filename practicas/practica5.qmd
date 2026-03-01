@@ -624,3 +624,12 @@ viewof step4 = cleanSlider([0, maxStep4], { value: 0, step: 1, label: "Paso de l
 
 En esta solución, el vector utilizado para la criba de Eratóstenes ocupará `1 * (⌊(n-3)/2⌋ + 1)` bytes, ya que se utiliza un vector de booleanos para representar si cada número impar es primo o no. Cada booleano ocupa 1 byte en Java, por lo que el tamaño del vector será significativamente menor que en las soluciones anteriores que utilizaban enteros y que consideraban tanto números pares como impares. Por ejemplo, si `n` es 100, el vector ocupará `1 * (⌊(100-3)/2⌋ + 1) = 49` bytes, lo que representa aproximadamente el **12% del tamaño del vector utilizado en la solución con enteros que consideraba todos los números (404 bytes)**.
 :::
+
+## Entrega de la solución
+
+**Sólo debe realizar la entrega un miembro del grupo**. Sube a Moodle un fichero comprimido en formato ZIP que contenga las cuatro clases Java con las implementaciones de la criba de Eratóstenes:
+
+- `Solucion1.java`: Implementación básica utilizando un vector de enteros.
+- `Solucion2.java`: Optimización utilizando la raíz cuadrada de n.
+- `Solucion3.java`: Implementación utilizando un vector de booleanos.
+- `Solucion4.java`: Implementación con optimización utilizando un vector de booleanos y solo números impares.

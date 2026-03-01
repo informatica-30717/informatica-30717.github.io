@@ -545,6 +545,6 @@ La primera vez que se utiliza *Eclipse*, aparecerá un mensaje preguntándonos s
 
 ---
 
-## Entrega de la práctica
+## Entrega de la solución
 
 **Sólo debe realizar la entrega un miembro del grupo**. Sube a Moodle el fichero `Ejercicio.java` con el código de la clase `Ejercicio`. No es necesario subir el proyecto completo ni ningún otro fichero.

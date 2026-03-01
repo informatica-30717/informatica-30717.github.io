@@ -407,7 +407,7 @@ Al igual que en Java, nuestra función en *Visual Basic* debe utilizar operacion
 
 ---
 
-## Entrega
+## Entrega de la solución
 
 **Sólo debe realizar la entrega un miembro del grupo**. Sube a Moodle un **fichero comprimido `practica4.zip`** que contenga los siguientes archivos:
 
