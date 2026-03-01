@@ -18,55 +18,80 @@ Los objetivos de esta práctica son los siguientes:
 de Excel**, sino despertar el interés por herramientas de enorme utilidad.
 - **Aplicar** algunos de los **conocimientos de programación** aprendidos en esta asignatura.
 
+---
+
 ## Introducción
 
 Una **hoja de cálculo** es una herramienta de gran utilidad en la **resolución de problemas en ingeniería** dado que, además de permitir manejar una gran cantidad de datos y realizar operaciones complejas de forma interactiva, proporciona una potente herramienta de representación gráfica de datos, fácil de utilizar. De hecho, hay una gran cantidad de problemas que pueden ser resueltos y analizados con una simple hoja de cálculo, de una **manera rápida y eficaz**, sin tener que recurrir al desarrollo de aplicaciones específicas o al uso de otras aplicaciones de cálculo comerciales más potentes, pero más costosas y complejas de utilizar.
 
-Nos centraremos en los siguientes contenidos, aunque para profundizar en ellos se recomienda consultar la documentación oficial de Excel y la bibliografía recomendada:
+---
+
+Nos centraremos en los siguientes puntos, aunque para profundizar en ellos se recomienda consultar la documentación oficial de Excel y la bibliografía recomendada:
 
 - Representación de datos simples.
 - Cálculo mediante fórmulas complejas.
-- Funciones definidas en Excel.
-- Composición condicional.
-- Composición de repetición para crear tablas de datos.
+- Funciones de Excel.
+- Estructuras condicionales.
+- Repetición para crear tablas de datos.
 - Referencias absolutas y relativas.
 - Creación de gráficos.
 - Creación de macros.
 
+---
+
 ## Ecuaciones no lineales y métodos iterativos
 
-::: {layout="[60, 40]"}
-::: {.column}
-Hay muchos problemas matemáticos donde **no se conoce un método analítico para calcular una solución exacta o bien la obtención de la solución es tan costosa en tiempo que no
-resulta una opción válida** en la práctica. En dichos casos, una alternativa es utilizar un método numérico que **aproxime** la solución.
+Hay muchos problemas matemáticos donde **no se conoce un método analítico para calcular una solución exacta o bien el método para obtener la solución es tan costoso que no resulta una opción válida** para obtener un resultado con un tiempo de respuesta bajo. En dichos casos, una alternativa es utilizar un método numérico que **aproxime** la solución.
 
-En esta práctica vamos a considerar la **resolución de ecuaciones no lineales** por **métodos iterativos** y, a modo de ejemplo, consideraremos el caso de las **curvas catenarias**. Una curva catenaria es la que describe un cable que está fijo por sus dos extremos y no está sometido a otras fuerzas distintas además de su propio peso. Como es bien sabido, una **curva catenaria invertida** es un trazado útil para un **arco en arquitectura**. Por ejemplo, el arquitecto **Gaudí** utilizó esta curva para diseñar la **Sagrada Familia** en Barcelona, como se muestra en la @fig-curva.
+---
+
+Como caso de estudio consideraremos la **curva catenaria**. Desde el punto de vista físico, una catenaria describe la forma que adopta un cable suspendido por sus extremos y sometido exclusivamente a la acción de su propio peso. La **catenaria invertida**, obtenida al reflejar la curva respecto de un eje horizontal, presenta una propiedad estructural especialmente relevante en arquitectura: bajo cargas gravitatorias uniformes, el esfuerzo interno es predominantemente de compresión, lo que la convierte en una forma óptima para el diseño de arcos y bóvedas.
+
+::: {.column-margin}
+![[Ejemplos de catenarias en arquitectura.](https://apuntesdearquitecturadigital.blogspot.com/2019/10/el-arquitecto-gaudi-y-la-catenaria-las.html)](../resources/practica4/ejemplos_catenarias.jpg){#fig-ejemplos-catenarias}
 :::
-::: {.column}
-![[Ejemplos de catenarias en arquitectura.](https://apuntesdearquitecturadigital.blogspot.com/2019/10/el-arquitecto-gaudi-y-la-catenaria-las.html)](../resources/practica4/curva.jpg){#fig-curva}
-:::
-:::
+
+---
+
+Un ejemplo de su aplicación es la obra del arquitecto **Antonio Gaudí**, quien empleó modelos físicos de catenarias invertidas para el diseño de la **Sagrada Familia** en Barcelona, tal como se ilustra en la @fig-ejemplos-catenarias.
 
 Podéis encontrar más información sobre las curvas catenarias en el siguiente vídeo:
 
 {{< video https://www.youtube.com/watch?v=NnjnlxfB_D8 >}}
 
+---
+
 ### Curva catenaria
 
-La curva que describe un cable suspendido de **dos puntos** a la misma altura y cuyo **punto mínimo** es el punto $(0, a)$ se puede escribir como:
+La curva que describe un cable suspendido de **dos puntos a la misma altura** y cuyo **punto mínimo** es el punto $(0,a)$ se puede escribir como:
+
 $$
-\begin{aligned}
-y = a  \cdot  cosh \frac{x}{a} = a\frac{e^\frac{x}{a}+e^\frac{-x}{a}}{2}
-\end{aligned}
+y = a \cosh\left(\frac{x}{a}\right)
+  = a \frac{e^{x/a} + e^{-x/a}}{2}
 $$
 
-En esta práctica vamos a resolver la ecuación $y = b$, para un número real $b$. Para ello, consideraremos la función $f(x) = y  -  b$ y buscaremos la solución a la ecuación $f(x) = 0$.
+donde $a > 0$ es un parámetro real que controla la forma de la curva y la tensión del cable. Valores mayores de $a$ producen una curva más ancha y menos tensa, mientras que valores menores de $a$ producen una curva más estrecha y más tensa.
 
-Podéis interactuar con la curva catenaria en la siguiente visualización, modificando el valor de la constante $a$ para ver cómo afecta a la forma de la curva. El punto mínimo de la curva se llama **vértice** y se muestra marcado en el gráfico.
+---
 
+En esta práctica vamos a resolver la ecuación $y = b$, para un número real $b$. Para ello, consideraremos la función:
+
+$$
+f(x) = a \cosh\left(\frac{x}{a}\right) - b
+$$
+
+y buscaremos las soluciones de la ecuación $f(x) = 0$.
+
+Podéis interactuar con la curva catenaria a continuación, modificando el valor de la constante $a$ para ver cómo afecta a la forma de la curva. También podéis modificar el valor de $b$ para ver cómo afecta a la posición de la línea horizontal y a las soluciones de la ecuación $f(x) = 0$. El punto mínimo de la curva se denomina **vértice** y aparece marcado como un punto naranja. Las soluciones de la ecuación $f(x) = 0$ aparecen marcadas como puntos rojos.
+
+---
+
+::: {.column-page-inset}
 ::: {.card .shadow-sm .mb-4 .mt-4}
 ::: {.card-body}
 
+<div style="display: flex; gap: 30px; align-items: flex-start;">
+<div style="flex: 0 0 20%;">
 ```{ojs}
 viewof params = {
   const cleanSlider = (range, config) => {
@@ -80,95 +105,99 @@ viewof params = {
   };
 
   const ia = cleanSlider([0.1, 5], { value: 1, step: 0.1 });
+  const ib = cleanSlider([0, 6], { value: 2, step: 0.1 });
 
   const col = (input, label) => {
-    const val = htl.html`<div style="font-family: monospace; color: #555; margin-top: 4px;">${input.value.toFixed(1)}</div>`;
-    input.addEventListener("input", () => val.textContent = input.value.toFixed(1));
-    
-    return htl.html`<div style="display: flex; flex-direction: column; align-items: center; margin: 0 10px; flex: 1; min-width: 120px;">
-      <div style="font-weight: bold; font-size: 0.9rem; margin-bottom: 5px; white-space: nowrap;">${label}</div>
-      <div style="width: 100%">${input}</div>
-      ${val}
+    const val = htl.html`<div style="font-family: monospace; color: #555; margin-top: 4px;">
+      ${input.value.toFixed(1)}
     </div>`;
+    input.addEventListener("input", () => 
+      val.textContent = input.value.toFixed(1)
+    );
+    
+    return htl.html`
+      <div style="display: flex; flex-direction: column; margin-bottom: 20px;">
+        <div style="font-weight: bold; font-size: 0.9rem; margin-bottom: 5px;">
+          ${label}
+        </div>
+        ${input}
+        ${val}
+      </div>`;
   };
 
-  const form = htl.html`<div style="display: flex; flex-wrap: wrap; justify-content: center; width: 50%; padding-bottom: 5px; border-bottom: 1px solid #eee; margin: 0 auto 20px auto;">
-    ${col(ia, "Constante a")}
-  </div>`;
+  const form = htl.html`
+    <div style="width: 100%;">
+      ${col(ia, "Constante a")}
+      ${col(ib, "Nivel b")}
+    </div>`;
 
-  form.oninput = () => form.value = { a: ia.value };
-  form.value = { a: ia.value };
+  form.oninput = () => form.value = { a: ia.value, b: ib.value };
+  form.value = { a: ia.value, b: ib.value };
   return form;
 }
 ```
 
 ```{ojs}
-// Extracted to its own block for proper reactivity
 a = params.a
+b = params.b
 ```
-
+</div> 
+  <!-- Right column -->
+  <div style="flex: 1;">
 ```{ojs}
 {
   const curve = Array.from({ length: 401 }, (_, i) => {
     const x = -10 + i * 0.05;
-    
-    // THE FIX: Clamp the max y-value to 20 so it gracefully goes off-screen 
-    // without crashing the SVG `<path>` renderer.
     const y = Math.min(20, a * Math.cosh(x / a));
-    
     return { x, y };
   });
 
   const points = [];
-  
   if (a !== 0) {
     points.push({ 
       x: 0, 
       y: a, 
-      type: "Vertex", 
       label: `V=(0, ${a.toFixed(2)})` 
     });
   }
 
+  const yline = [{ x: -4, y: b }, { x: 4, y: b }];
+  const intersections = [];
+  if (b >= a) {
+    const xsol = a * Math.acosh(b / a);
+    intersections.push({ x: xsol, y: b });
+    if (xsol !== 0) {
+      intersections.push({ x: -xsol, y: b });
+    }
+  }
+
   const curve_plot = Plot.plot({
-    height: 250,
+    height: 300,
     grid: true,
-    marginLeft: 40, 
-    marginRight: 20,
+    marginLeft: 40,
     x: { domain: [-4, 4], label: "x axis" },
-    y: { domain: [-0, 6], label: "y axis" }, 
+    y: { domain: [0, 6], label: "y axis" },
     marks: [
-      Plot.ruleY([0], { stroke: "#888", strokeWidth: 1.5 }),
-      Plot.ruleX([0], { stroke: "#888", strokeWidth: 1.5 }),
+      Plot.ruleY([0], { stroke: "#888" }),
+      Plot.ruleX([0], { stroke: "#888" }),
       Plot.line(curve, { x: "x", y: "y", stroke: "steelblue", strokeWidth: 3 }),
-      Plot.dot(points, { 
-        x: "x", 
-        y: "y", 
-        fill: "#f49e61", 
-        r: 6, 
-        stroke: "white", 
-        strokeWidth: 2 
-      }),
-      Plot.text(points, { 
-        x: "x", 
-        y: "y", 
-        text: "label", 
-        dy: -15, 
-        fill: "currentColor", 
-        stroke: "white", 
-        strokeWidth: 4, 
-        fontWeight: "bold", 
-        fontSize: 12 
-      })
+      Plot.dot(points, { x: "x", y: "y", fill: "#f49e61", r: 6 }),
+      Plot.text(points, { x: "x", y: "y", text: "label", dy: -15 }),
+      Plot.line(yline, { x: "x", y: "y", stroke: "red", strokeDasharray: "4 4" }),
+      Plot.dot(intersections, { x: "x", y: "y", fill: "red", r: 5 })
     ]
   });
-  
+
   curve_plot.style.width = "100%";
   return curve_plot;
 }
 ```
+</div></div>
 :::
 :::
+:::
+
+---
 
 ## Representación gráfica de la solución
 
@@ -176,18 +205,76 @@ Los pasos a seguir para representar gráficamente la función $f$ y obtener una 
 
 1. Abrir *Excel* y crear un `Libro en blanco`.
 
-2. En las celdas `B2`, `C2` escribiremos los valores de $a$ y $b$. Por ejemplo, $a = 2$ y $b = 5$. Asimismo, podemos utilizar las columnas `B1` y `C1` para añadir texto que permita explicar el significado de las celdas de abajo, escribiendo **a** y **b**. Fijaros en la @fig-graf1 para ver un ejemplo de cómo debería quedar la hoja de cálculo en este punto.
+2. En las celdas `B2`, `C2` escribiremos los valores de $a$ y $b$. Por ejemplo, $a = 2$ y $b = 5$. Asimismo, podemos utilizar las columnas `B1` y `C1` para añadir texto que permita explicar el significado de las celdas de abajo, escribiendo **a** y **b**. Fijaros en la @fig-grafico-limites-ejes para ver un ejemplo de cómo debería quedar la hoja de cálculo en este punto.
 
-3. Buscaremos un intervalo de valores entre los que sepamos que se encuentra la solución, de manera que en ambos extremos del intervalo la función cambie de signo. Como la función $f$ es continua, esto implica que entre dicho valor existe un valor intermedio donde la función toma el valor $0$. Por ejemplo, la @fig-curva anterior muestra que el valor de $x$ donde $f(x) = 5$ está en $[2, 4]$, y además $f(2) < 0$ y $f(4) > 0$. Por tanto, los valores de $x$ irán en el rango $[2, 4]$, con un incremento de $0,1$ entre cada valor.
+3. Buscaremos un intervalo de valores entre los que sepamos que se encuentra la solución, de manera que en ambos extremos del intervalo la función cambie de signo. Como la función $f$ es continua, esto implica que entre dicho valor existe un valor intermedio donde la función toma el valor $0$. Por ejemplo, la gráfica de la derecha muestra que el valor de $x$ donde $f(x) = 5$ está en $[2, 4]$, y además $f(2) < 0$ y $f(4) > 0$. Por tanto, los valores de $x$ irán en el rango $[2, 4]$, con un incremento de $0,1$ entre cada valor.
 
-4. Crea una tabla con los valores de $f(x)$ en función de $x$, en las celdas `D2-E22`. Esto es lo que haremos en los pasos **5, 6 y 7**. No basta con crear la tabla, es obligatorio utilizar correctamente referencias absolutas y relativas.
+---
 
-5. Para rellenar los valores de $x$, se introduce el primer valor, $2$, en la celda `D2`. Después, marcamos las celdas a rellenar, `D2-D22` y utilizamos la opción
-`Inicio > Rellenar > Series`, indicando el **incremento** de valor deseado (en este caso, **0.1**). Igual que antes, podemos indicar en `D1` y `E1` el significado de cada columna, escribiendo **x** y **y**, respectivamente.
+```{ojs}
+//| column: margin
 
-6. Introducir en la celda `E2` la fórmula para calcular $f(x)$ a partir del valor de $x$ en la celda a su izquierda (`D2`). *Excel* incluye la función **COSH** para calcular un coseno hiperbólico.
+{
+  const a = 2;
+  const b = 5;
 
-7. Copiar el valor de la celda `E2` en las celdas `E3-E22`. 
+  const curve = Array.from({ length: 401 }, (_, i) => {
+    const x = -6 + i * 0.03;
+    const y = Math.min(20, a * Math.cosh(x / a));
+    return { x, y };
+  });
+
+  // Horizontal line y = b
+  const yline = [{ x: -6, y: b }, { x: 6, y: b }];
+
+  // Intersections
+  const intersections = [];
+  if (b >= a) {
+    const xsol = a * Math.acosh(b / a);
+    intersections.push({ x: xsol, y: b });
+    if (xsol !== 0) {
+      intersections.push({ x: -xsol, y: b });
+    }
+  }
+
+  return Plot.plot({
+    height: 450,
+    grid: true,
+    marginLeft: 40,
+    x: { domain: [-6, 6] },
+    y: { domain: [0, 8] },
+    style: { fontSize: "1.4em" },
+    marks: [
+      Plot.rect(
+        [{ x1: 2, x2: 4, y1: 0, y2: 8 }],
+        {
+          x1: "x1",
+          x2: "x2",
+          y1: "y1",
+          y2: "y2",
+          fill: "orange",
+          fillOpacity: 0.15
+        }
+      ),
+      Plot.ruleY([0], { stroke: "#888" }),
+      Plot.ruleX([0], { stroke: "#888" }),
+      Plot.line(curve, { x: "x", y: "y", stroke: "steelblue", strokeWidth: 3 }),
+      Plot.line(yline, { x: "x", y: "y", stroke: "red", strokeDasharray: "4 4" }),
+      Plot.dot(intersections, { x: "x", y: "y", fill: "red", r: 5 })
+    ]
+  });
+}
+```
+
+---
+
+4. A continuación, en los pasos **5, 6 y 7**, crearemos una tabla con los valores de $f(x)$ en función de $x$, en las celdas `D2-E22`. No basta con crear la tabla, es obligatorio utilizar correctamente referencias absolutas y relativas.
+
+5. Para rellenar los valores de $x$, se introduce el primer valor, $2$, en la celda `D2`. Después, marcamos las celdas a rellenar, `D2-D22` y utilizamos la opción `Inicio > Rellenar > Series` (sección de `Edición`), indicando el **incremento** de valor deseado (en este caso, **0,1**). Igual que antes, podemos indicar en `D1` y `E1` el significado de cada columna, escribiendo **x** y **y**, respectivamente.
+
+6. Introduce en la celda `E2` la fórmula para calcular $f(x)$ a partir del valor de $x$ en la celda 'D2'. *Excel* incluye la función **COSH** para calcular un coseno hiperbólico.
+
+7. Copia el valor de la celda `E2` en las celdas `E3-E22`. 
 
 ::: {.callout-warning}
 ## Error de actualización
@@ -195,20 +282,29 @@ Los pasos a seguir para representar gráficamente la función $f$ y obtener una 
 *Excel* ajusta automáticamente la fórmula, pero el resultado no es correcto; $x$ se ha actualizado correctamente, pero las referencias a los valores de $a$ y $b$ también. 
 :::
 
-8. Para solucionar esto, modificaremos la fórmula en `E2` combinando el uso de **referencias absolutas** (que se mantendrán constantes al copiar la celda) y **relativas**
-(que se actualizarán al ser copiadas). Para crear referencias absolutas, de modo que no cambien automáticamente al copiarse la celda, se añade un carácter `$` entre la letra y el número (por ejemplo, `$B$2`). También podéis usar el atajo de teclado con `F4` o `Fn+F4 . Haz los cambios correspondientes al resto de referencias absolutas.
+---
 
-9. Ahora sí, volver a copiar el valor de la celda `E2` en las celdas de la tabla `E3-E22`.
+8. Para solucionar el problema anterior, modificaremos la fórmula en `E2` combinando el uso de **referencias absolutas** (que se mantendrán constantes al copiar la celda) y **relativas** (que se actualizarán al ser copiadas). Para crear referencias absolutas, de modo que no cambien automáticamente al copiarse la celda, se añade un carácter `$` entre la letra y el número (por ejemplo, `$B$2`). También podéis usar el atajo de teclado con `F4` o `Fn+F4`. Haz los cambios correspondientes para utilizar referencias absolutas para los valores de $a$ y $b$ (celdas `B2` y `C2`) y referencias relativas para el valor de $x$ (celda `D2`).
 
-10. Seleccionamos `D2-E22` e insertamos un gráfico de tipo **XY Dispersión**. Pinchando en cada eje, podemos cambiar el rango de valores mostrado, como ilustra la @fig-graf1:
+9. Ahora sí, propagad el valor de la celda `E2` a las celdas `E3-E22`.
 
-![Actualización de ejes en el gráfico.](../resources/practica4/snapshot1.png){#fig-graf1}
+---
 
-11. Podemos observar en la @fig-graf2 que el valor cero de $f(x)$ se alcanza en **[3.1, 3.2]**. Si se repite el proceso con valores de $x$ en el intervalo **$[2, 4]$**, el resultado será más preciso. Para ello, habría que reducir también el incremento, por ejemplo, a **0.01**.
+10. Seleccionamos `D2-E22` e insertamos un gráfico de tipo **XY Dispersión** (abrid el menú de gráficos, pinchando en la esquina inferior derecha). Haciendo click en cada eje podemos cambiar el rango de valores mostrado, como muestra la @fig-grafico-limites-ejes:
 
-![Gráfico de tipo XY Dispersión.](../resources/practica4/snapshot0.png){#fig-graf2}
+![Actualización de ejes en el gráfico.](../resources/practica4/limites_ejes.png){#fig-grafico-limites-ejes}
 
-12. Guarda el fichero de *Excel* con extensión `*.xlsx`, por ejemplo, `practica4.xlsx`.
+---
+
+11. Podemos observar en la @fig-grafico-xy-dispersion que el valor cero de $f(x)$ se alcanza en **[3.1, 3.2]**. Si se repite el proceso con valores de $x$ en el intervalo **$[2, 4]$** e incremento **0.01**, el resultado será más preciso. 
+
+![Gráfico de tipo XY Dispersión.](../resources/practica4/grafico_xy_dispersion.png){width="65%" #fig-grafico-xy-dispersion}
+
+---
+
+12. Guarda el fichero de *Excel* con extensión `.xlsx`, por ejemplo, `practica4.xlsx`.
+
+---
 
 ## Automatización mediante el método de bisección
 
@@ -219,49 +315,59 @@ nos parezca suficientemente buena.
 **Xmax** (valor máximo), **Xmedio** (valor del punto medio) y **f(x)** (valor de la función $f$ en el
 punto **Xmedio**).
 
-2. En las celdas `G2` y `H2` escribiremos los extremos del intervalo inicial, tales que $f(G2)$ y $f(H2)$ tengan distinto signo: $f(3.1) < 0$ y $f(3.2) > 0$. Es decir en  `G2` poner **3.1** y `H2` poner **3.2**.
+2. En las celdas `G2` y `H2` escribiremos los extremos del intervalo inicial, tales que $f(G2)$ y $f(H2)$ tengan distinto signo: $f(3.1) < 0$ y $f(3.2) > 0$. Es decir, en `G2` escribimos **3,1** y en `H2` **3,2**.
 
-3. En la celda `I2` escribiremos una fórmula para **calcular el punto medio del intervalo**. Es decir la media de `G2` y `H2`.
+3. En la celda `I2` escribimos la fórmula para **calcular el punto medio del intervalo**, es decir, la media de `G2` y `H2`.
 
-4. En la celda `J2` calculamos el resultado de evaluar la función $f$ en el punto indicado en la celda `I2`. El valor de `a` y `b` se mantienen para evaluar $f$. 
+---
 
-5. En la fila **3** (celdas `G3` y `H3`) definiremos un nuevo extremo para el intervalo. **Si f(xMedio) es negativo**, seleccionaremos el intervalo **[xMedio, xMax]** en la siguiente iteración. **Si es positivo**, seleccionaremos **[xMin, xMedio]**. Usar la funcion `=SI`.
+4. En la celda `J2` calculamos el resultado de evaluar la función $f$ en el punto indicado en la celda `I2`. El valor de `a` y `b` se mantiene para evaluar $f$. 
+
+5. En la fila **3** (celdas `G3` y `H3`) definimos un nuevo extremo para el intervalo. **Si f(xMedio) es negativo**, seleccionamos el intervalo **[xMedio, xMax]** en la siguiente iteración. **Si es positivo**, utilizamos **[xMin, xMedio]**. Usa la funcion `=SI` para resolver esta composición condicional.
 
 6. Copia las celdas `I2` y `J2` en `I3` y `J3`, respectivamente.
 
-7. Copiar la fila **3** en la fila **4** y repetir este proceso hasta que se obtenga una solución suficientemente buena. Con **20 filas** obtendremos un resultado suficientemente bueno.
+---
 
-![Método de bisección](../resources/practica4/snapshot2.png){#fig-graf3}
+7. Copia la fila **3** en la fila **4** y repite este proceso hasta que se obtenga una solución suficientemente buena. Con **20 filas** debería ser suficiente para obtener una aproximación de la solución con un error menor a $10^{-6}$.
 
-12. Guardar cambios sobre el fichero `practica4.xlsx` .
+![Resultados obtenidos al aplicar el método de bisección. A la derecha, en $f(x)$, se puede observar que no se ha alcanzado el valor cero, pero el error es inferior a $10^{-6}$.](../resources/practica4/biseccion.png){#fig-biseccion}
+
+8. Guarda los cambios en el fichero `practica4.xlsx`.
+
+---
 
 ## Creación de una macro
 
-::: {layout="[50,50]"}
-::: {.column}
-Por último, vamos a crear una **macro** que permita calcular nuestra función $f$. Por ejemplo, esto nos permitirá escribir una **fórmula para evaluar la función en un punto** dado por la celda `E2` (función `EvaluarF`), suponiendo que `B2` contiene el valor de $a$ y que `C2` contiene el valor de $b$ y `D2` el valor de $x$. Es decir, nuestra función recibirá 3 parámetros de entrada: los valores de $x$, $a$ y $b$ (fíjate en la @fig-graf4).
+Por último, vamos a crear una **macro** que permita calcular nuestra función $f$. Una **macro** no es más que una función que nos permitirá escribir una **fórmula para evaluar la función en un punto** dado por la celda `E2` (función `EvaluarF`), suponiendo que `B2` contiene el valor de $a$ y que `C2` contiene el valor de $b$ y `D2` el valor de $x$. Es decir, nuestra función recibirá 3 parámetros de entrada: los valores de $x$, $a$ y $b$ (fíjate en la @fig-ejemplo-evaluarf).
 
 1. Crea un nuevo libro de *Excel* y en la celda `E2` escribe la fórmula `=EvaluarF(D2, B2, C2)`.
+  
+---
+
+::: {.column-margin}
+![Ejemplo de uso de la macro `EvaluarF`.](../resources/practica4/ejemplo_evaluarf.png){#fig-ejemplo-evaluarf}
 :::
-::: {.column}
-![Ejemplo: EvaluarF](../resources/practica4/snapshot4.png){#fig-graf4}
-:::
-:::
+
+---
 
 ::: {.callout-warning}
-## Error de función
+## Error de función no definida
 
-Excel no encuentra la función llamada `EvaluarF`. Intenta ahora usar la función `SUMA` y especifica un rango de celdas. Las funciones deben comenzar con el carácter `=`.
+Por ahora, *Excel* no encuentra la función llamada `EvaluarF`. En su lugar, intenta utilizar la función `SUMA` y especifica un rango de celdas. Las funciones deben comenzar con el carácter `=`.
 
-![Error indicando que la función es desconocida.](../resources/practica4/snapshot4_0_1.png){#fig-graf5}
+![Error indicando que la función `EvaluarF` no está definida.](../resources/practica4/error_evaluarf.png){width="50%" #fig-error-evaluarf}
 :::
 
-2. Creamos nuestra función `EvaluarF`. Ir al menú de  `Archivo > Opciones > Personalizar cinta de opciones`. Dar click en la opcion **Desarrollador** o **Programador** (Ver @fig-graf6)
+---
 
-![](../resources/practica4/snapshot3.png){#fig-graf6}
+2. Creamos la función `EvaluarF`. Para ello, utilizamos la opción del menú `Archivo > Opciones > Personalizar cinta de opciones` y activamos **Desarrollador** o **Programador** (ver @fig-programador).
 
+![Activación de las opciones de Programador.](../resources/practica4/programador.png){#fig-programador}
 
-3. En la opción del menú `Desarrollador > Visual Basic` aparecerá una nueva ventana. Al utilizar la opción `Insertar > módulo`, copia y pega el código de abajo (ver @fig-graf7).
+---
+
+3. En la opción del menú `Desarrollador > Visual Basic` aparecerá una nueva ventana. Después de utilizar la opción `Insertar > módulo`, copia y pega el código siguiente (ver @fig-evaluarf_macro).
 
 ```java
 Function EvaluarF(x, a, b)
@@ -269,29 +375,43 @@ Function EvaluarF(x, a, b)
 End Function
 ```
 
-Los `...` indican el código que debéis completar en la función, teniendo en cuenta que en *Visual Basic* hay una función exponencial `Exp(x)`, pero no una función **COSH** para calcular el coseno hiperbólico, por lo que tendréis que escribir la fórmula de la función $f$ utilizando la función `Exp` para calcular el coseno hiperbólico:
+Los puntos suspensivos `...` indican el código que debéis completar en la función, teniendo en cuenta que en *Visual Basic* hay una función exponencial `Exp(x)`, pero no una función **COSH** para calcular el coseno hiperbólico, por lo que tendréis que escribir la fórmula de la función $f$ utilizando `Exp` para calcular el coseno hiperbólico.
 
-![Visual Basic](../resources/practica4/snapshot4_1.png){#fig-graf7}
+::: {.callout-tip}
+## Programación en *Visual Basic*
+
+Al igual que en Java, nuestra función en *Visual Basic* debe utilizar operaciones como la suma (`+`), la resta (`-`), la multiplicación (`*`) y la división (`/`). Rercuerda además que los paréntesis se utilizan para indicar el orden de las operaciones. De nuevo, recuerda que la curva catenaria se define como $f(x) = a \frac{e^{x/a} + e^{-x/a}}{2} - b$.
+:::
+
+---
+
+![Ejemplo de definición de la función EvaluarF en *Visual Basic*.](../resources/practica4/evaluarf_macro.png){#fig-evaluarf_macro}
+
+<!--<details>
+<summary>💡 Solución</summary>
+![Implementación de la función EvaluarF.](../resources/practica4/solucion-evaluarf.png){#fig-solucion-evaluarf}
+</details>-->
+
+---
+
+4. Cierra la ventana de ***Visual Basic*** y guarda el fichero de *Excel* con extensión `.xlsm`. Por ejemplo, guárdalo con el nombre `practica4_macro.xlsm`.
+
+5. Una vez guardado el fichero de *Excel*, probaremos sobre `E2` la macro `EvaluarF`. Haz lo mismo para las celdas `E3-E22`. Tened cuidado nuevamente con las referencias absolutas.
+
+---
 
 <details>
 <summary>💡 Solución</summary>
-![Función](../resources/practica4/snapshot5.png){#fig-graf8}
+![función: EvaluarF](../resources/practica4/resultado_evaluarf.png){#fig-resultado_evaluarf}
 </details>
 
-4. Cierra la ventana de ***Visual Basic*** y guarda el fichero de *Excel* con extensión `*.xlsm`. Por ejemplo, con el nombre `practica4_macro.xlsm`.
-
-5. Una vez guardado el fichero de *Excel*, probaremos sobre `E2` la función `EvaluarF`. Haz lo mismo para las celdas `E3-E22`. Tened cuidado nuevamente con las referencias absolutas.
-
-<details>
-<summary>💡 Solución</summary>
-![función: EvaluarF](../resources/practica4/snapshot6.png){#fig-graf9}
-</details>
+---
 
 ## Entrega
 
-Sube a Moodle un fichero comprimido en formato `*.zip` que contenga los siguientes archivos:
+**Sólo debe realizar la entrega un miembro del grupo**. Sube a Moodle un **fichero comprimido `practica4.zip`** que contenga los siguientes archivos:
 
 - `practica4.xlsx`
-- `practica4_macro.xlsm`
+- `practica4_macro.xlsx`
 
-**Sólo lo debe entregar un miembro del grupo**. 
+---
