@@ -270,6 +270,18 @@
     ]
   },
   {
+    "objectID": "practicas/practica2.html#entrega-de-la-práctica",
+    "href": "practicas/practica2.html#entrega-de-la-práctica",
+    "title": "Práctica 2: Un entorno de programación en Java",
+    "section": "4 Entrega de la práctica",
+    "text": "4 Entrega de la práctica\nSólo debe realizar la entrega un miembro del grupo. Sube a Moodle el fichero Ejercicio.java con el código de la clase Ejercicio. No es necesario subir el proyecto completo ni ningún otro fichero.",
+    "crumbs": [
+      "![](../resources/unizar_white.png){width=95px}",
+      "Prácticas",
+      "Práctica 2: Un entorno de programación en Java"
+    ]
+  },
+  {
     "objectID": "practicas/practica2.reveal.html#objetivos-de-la-práctica",
     "href": "practicas/practica2.reveal.html#objetivos-de-la-práctica",
     "title": "Práctica 2: Un entorno de programación en Java",
@@ -289,6 +301,13 @@
     "title": "Práctica 2: Un entorno de programación en Java",
     "section": "Apéndice. Instalación de Eclipse y JDK",
     "text": "Apéndice. Instalación de Eclipse y JDK\nEn este apéndice explicaremos el proceso de instalación del software necesario para realizar las prácticas de Informática en los ordenadores personales. Existen al menos dos maneras de instalar el software:\nInstalación de Eclipse mediante un instalador\n\nVisita la página web oficial de Eclipse.\nLocaliza el botón de Download. Nos llevará a la página de descargas.\nLocaliza el panel de Eclipse Installer (Figura 19). Debemos reconocer nuestro sistema operativo (Windows, Linux o macOS), y pulsar sobre x86_64.\nUna vez descargado el instalador, lo ejecutamos."
+  },
+  {
+    "objectID": "practicas/practica2.reveal.html#entrega-de-la-práctica",
+    "href": "practicas/practica2.reveal.html#entrega-de-la-práctica",
+    "title": "Práctica 2: Un entorno de programación en Java",
+    "section": "Entrega de la práctica",
+    "text": "Entrega de la práctica\nSólo debe realizar la entrega un miembro del grupo. Sube a Moodle el fichero Ejercicio.java con el código de la clase Ejercicio. No es necesario subir el proyecto completo ni ningún otro fichero."
   },
   {
     "objectID": "index.html",
