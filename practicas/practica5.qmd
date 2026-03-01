@@ -123,7 +123,7 @@ cleanSlider = (range, config) => {
 ```
 
 ```{ojs}
-viewof N1 = cleanSlider([10, 50], { value: 30, step: 1, label: "Valor N: " })
+viewof N1 = cleanSlider([10, 50], { value: 29, step: 1, label: "Valor N: " })
 ```
 
 ```{ojs}
@@ -267,7 +267,7 @@ Cada entero ocupa 4 bytes en Java, por lo que el vector utilizado para la criba 
 ::: {.card-body}
 
 ```{ojs}
-viewof N2 = cleanSlider([10, 150], { value: 60, step: 1, label: "Valor N: " })
+viewof N2 = cleanSlider([10, 150], { value: 31, step: 1, label: "Valor N: " })
 ```
 
 ```{ojs}
@@ -520,7 +520,7 @@ System.out.println("Total: " + contadorPrimos + " números primos");
 
 ```{ojs}
 //| echo: false
-viewof N4 = cleanSlider([10, 150], { value: 60, step: 1, label: "Valor N: " })
+viewof N4 = cleanSlider([10, 150], { value: 49, step: 1, label: "Valor N: " })
 ```
 
 ```{ojs}
