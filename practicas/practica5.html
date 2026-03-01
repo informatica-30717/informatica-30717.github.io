@@ -1,0 +1,1433 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.8.27">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Práctica 5: Resolución de problemas en Java (II) – Informática (30717) - Grado en Estudios en Arquitectura</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-029b10fc0dc652dab2ec1ac156c1a037.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No se han encontrado resultados",
+    "search-matching-documents-text": "documentos encontrados",
+    "search-copy-link-title": "Copiar el enlace en la búsqueda",
+    "search-hide-matches-text": "Ocultar resultados adicionales",
+    "search-more-match-text": "resultado adicional en este documento",
+    "search-more-matches-text": "resultados adicionales en este documento",
+    "search-clear-button-title": "Borrar",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancelar",
+    "search-submit-button-title": "Enviar",
+    "search-label": "Buscar"
+  }
+}</script>
+<script type="module" src="../site_libs/quarto-ojs/quarto-ojs-runtime.js"></script>
+<link href="../site_libs/quarto-ojs/quarto-ojs.css" rel="stylesheet">
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="../styles.css">
+<meta property="og:title" content="Práctica 5: Resolución de problemas en Java (II) – Informática (30717) - Grado en Estudios en Arquitectura">
+<meta property="og:description" content="Material de prácticas del curso 2025-2026.">
+<meta property="og:site_name" content="Informática (30717) - Grado en Estudios en Arquitectura">
+<meta name="twitter:title" content="Práctica 5: Resolución de problemas en Java (II) – Informática (30717) - Grado en Estudios en Arquitectura">
+<meta name="twitter:description" content="Material de prácticas del curso 2025-2026.">
+<meta name="twitter:card" content="summary">
+</head>
+
+<body class="nav-sidebar floating nav-fixed quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../index.html">
+    <span class="navbar-title">Informática (30717) - Grado en Estudios en Arquitectura</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Buscar"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Navegación de palanca" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="https://moodle.unizar.es/add/course/view.php?id=153600"> 
+<span class="menu-text"><img src="../resources/unizar_white.png" class="img-fluid" width="95"></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+  <a href="" class="quarto-reader-toggle quarto-navigation-tool px-1" onclick="window.quartoToggleReader(); return false;" title="Alternar modo lector">
+  <div class="quarto-reader-toggle-btn">
+  <i class="bi"></i>
+  </div>
+</a>
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Práctica 5: Resolución de problemas en Java (II)</li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+      <a href="../index.html" class="sidebar-logo-link">
+      <img src="../../resources/unizar.png" alt="" class="sidebar-logo light-content py-0 d-lg-inline d-none">
+      <img src="../../resources/unizar.png" alt="" class="sidebar-logo dark-content py-0 d-lg-inline d-none">
+      </a>
+      </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
+ <span class="menu-text">Información</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Alternar sección">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">📌 Información general</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../calendar.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">📅 Calendario</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
+ <span class="menu-text">Prácticas</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Alternar sección">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../practicas/practica1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Práctica 1: Introducción a Processing</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../practicas/practica2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Práctica 2: Un entorno de programación en Java</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../practicas/practica3.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Práctica 3: Resolución de problemas en Java (I)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../practicas/practica4.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Práctica 4: Aspectos avanzados de Excel</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">En esta página</h2>
+   
+  <ul>
+  <li><a href="#objetivos-de-la-práctica" id="toc-objetivos-de-la-práctica" class="nav-link active" data-scroll-target="#objetivos-de-la-práctica"><span class="header-section-number">1</span> Objetivos de la práctica</a></li>
+  <li><a href="#criba-de-eratóstenes" id="toc-criba-de-eratóstenes" class="nav-link" data-scroll-target="#criba-de-eratóstenes"><span class="header-section-number">2</span> Criba de Eratóstenes</a></li>
+  <li><a href="#vectores-en-java" id="toc-vectores-en-java" class="nav-link" data-scroll-target="#vectores-en-java"><span class="header-section-number">3</span> Vectores en Java</a></li>
+  <li><a href="#ejercicios" id="toc-ejercicios" class="nav-link" data-scroll-target="#ejercicios"><span class="header-section-number">4</span> Ejercicios</a>
+  <ul class="collapse">
+  <li><a href="#medición-de-tiempo-de-ejecución" id="toc-medición-de-tiempo-de-ejecución" class="nav-link" data-scroll-target="#medición-de-tiempo-de-ejecución"><span class="header-section-number">4.1</span> Medición de tiempo de ejecución</a></li>
+  <li><a href="#solución-1-implementación-básica" id="toc-solución-1-implementación-básica" class="nav-link" data-scroll-target="#solución-1-implementación-básica"><span class="header-section-number">4.2</span> Solución 1: Implementación básica</a></li>
+  <li><a href="#solución-2-optimización-utilizando-la-raíz-cuadrada-de-n" id="toc-solución-2-optimización-utilizando-la-raíz-cuadrada-de-n" class="nav-link" data-scroll-target="#solución-2-optimización-utilizando-la-raíz-cuadrada-de-n"><span class="header-section-number">4.3</span> Solución 2: Optimización utilizando la raíz cuadrada de n</a></li>
+  <li><a href="#solución-3-implementación-utilizando-un-vector-de-booleanos" id="toc-solución-3-implementación-utilizando-un-vector-de-booleanos" class="nav-link" data-scroll-target="#solución-3-implementación-utilizando-un-vector-de-booleanos"><span class="header-section-number">4.4</span> Solución 3: Implementación utilizando un vector de booleanos</a></li>
+  <li><a href="#solución-4-implementación-con-optimización-utilizando-un-vector-de-booleanos-y-solo-números-impares" id="toc-solución-4-implementación-con-optimización-utilizando-un-vector-de-booleanos-y-solo-números-impares" class="nav-link" data-scroll-target="#solución-4-implementación-con-optimización-utilizando-un-vector-de-booleanos-y-solo-números-impares"><span class="header-section-number">4.5</span> Solución 4: Implementación con optimización utilizando un vector de booleanos y solo números impares</a></li>
+  </ul></li>
+  </ul>
+<div class="quarto-alternate-formats"><h2>Otros formatos</h2><ul><li><a href="practica5.reveal.html"><i class="bi bi-file-slides"></i>RevealJS</a></li></ul></div></nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Práctica 5: Resolución de problemas en Java (II)</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="objetivos-de-la-práctica" class="level2" data-number="1">
+<h2 data-number="1" class="anchored" data-anchor-id="objetivos-de-la-práctica"><span class="header-section-number">1</span> Objetivos de la práctica</h2>
+<p>Los objetivos de la quinta práctica de la asignatura son los siguientes:</p>
+<ul>
+<li>Desarrollar algoritmos en Java.</li>
+<li>Ejecutar algoritmos en el entorno <em>Eclipse</em>.</li>
+</ul>
+</section>
+<section id="criba-de-eratóstenes" class="level2" data-number="2">
+<h2 data-number="2" class="anchored" data-anchor-id="criba-de-eratóstenes"><span class="header-section-number">2</span> Criba de Eratóstenes</h2>
+<p>La <strong>criba de Eratóstenes</strong> es un algoritmo eficiente para <strong>encontrar todos los números primos menores o iguales a un número dado</strong>. El algoritmo funciona de la siguiente manera:</p>
+<ol type="1">
+<li>Se guardan en un vector todos los números desde 2 hasta el número dado.</li>
+<li>Se comienza con el primer número primo (2) y se descartan todos los múltiplos de ese número.</li>
+<li>Se repite el proceso con el siguiente número primo en el vector hasta que se hayan procesado todos los números.</li>
+</ol>
+<p>Por ejemplo, para encontrar los números primos menores o iguales a 30, el algoritmo eliminaría los múltiplos de 2 (4, 6, 8, …), luego los múltiplos de 3 (6, 9, 12, …), y así sucesivamente, dejando solo los números primos (2, 3, 5, 7, 11, 13, 17, 19, 23, 29).</p>
+</section>
+<section id="vectores-en-java" class="level2" data-number="3">
+<h2 data-number="3" class="anchored" data-anchor-id="vectores-en-java"><span class="header-section-number">3</span> Vectores en Java</h2>
+<p>A modo de recordatorio, un <strong>vector en Java</strong> es una estructura de datos que almacena una colección de elementos del mismo tipo. Se puede declarar e inicializar de la siguiente manera:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode java code-with-copy"><code class="sourceCode java"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">// Declaración e inicialización de un vector de enteros con 10 elementos</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="dt">int</span><span class="op">[]</span> vector <span class="op">=</span> <span class="kw">new</span> <span class="dt">int</span><span class="op">[</span><span class="dv">10</span><span class="op">];</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co">// Asignación de valores a los elementos del vector</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>vector<span class="op">[</span><span class="dv">0</span><span class="op">]</span> <span class="op">=</span> <span class="dv">1</span><span class="op">;</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>vector<span class="op">[</span><span class="dv">1</span><span class="op">]</span> <span class="op">=</span> <span class="dv">2</span><span class="op">;</span>  </span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="co">// Acceso a los elementos del vector</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="dt">int</span> valor <span class="op">=</span> vector<span class="op">[</span><span class="dv">0</span><span class="op">];</span> <span class="co">// valor es igual a 1</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="co">// Asignación de valores utilizando un bucle</span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> <span class="op">(</span><span class="dt">int</span> i <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> i <span class="op">&lt;</span> vector<span class="op">.</span><span class="fu">length</span><span class="op">;</span> i<span class="op">++)</span> <span class="op">{</span></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>    vector<span class="op">[</span>i<span class="op">]</span> <span class="op">=</span> i <span class="op">+</span> <span class="dv">1</span><span class="op">;</span> <span class="co">// Asigna el valor i+1 a cada posición del vector</span></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="ejercicios" class="level2" data-number="4">
+<h2 data-number="4" class="anchored" data-anchor-id="ejercicios"><span class="header-section-number">4</span> Ejercicios</h2>
+<p>Ten en cuenta que la criba de Eratóstenes se puede implementar de varias maneras, dependiendo de cómo se manejen los datos y se optimice el proceso. A continuación, se presentan cuatro posibles soluciones para implementar la criba de Eratóstenes en Java. Cada solución se deberá implementar en una clase separada, de nombre <code>Solucion1.java</code>, <code>Solucion2.java</code>, <code>Solucion3.java</code> y <code>Solucion4.java</code>, respectivamente.</p>
+<p>El objetivo es modificar cada una de las implementaciones para <strong>contar el número de “tachones” (números descartados)</strong> que realiza cada una de las implementaciones de la criba, y <strong>medir su tiempo de ejecución</strong>.</p>
+<p><strong>Anota el tiempo de ejecución en Microsoft Excel para cada una de las implementaciones, y cuatro valores de <span class="math inline">\(n\)</span> diferentes</strong>: <span class="math inline">\(10^4\)</span>, <span class="math inline">\(10^5\)</span>, <span class="math inline">\(10^6\)</span> y <span class="math inline">\(10^7\)</span>. Los valores de <span class="math inline">\(n\)</span> se representarán en el eje <span class="math inline">\(X\)</span> de un gráfico, y el tiempo de ejecución en el eje <span class="math inline">\(Y\)</span>. Dibuja una gráfica similar a la ilustrada a continuación:</p>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Advertencia</span>Posible falta de memoria
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Ten en cuenta que para valores de <span class="math inline">\(n\)</span> muy grandes, es posible que el programa no tenga suficiente memoria para ejecutar la criba de Eratóstenes, especialmente en las implementaciones que utilizan un vector de enteros. En ese caso, puedes intentar aumentar la memoria asignada a Java. Para ello, accede a <code>Run &gt; Run Configurations...</code> en <em>Eclipse</em>, selecciona tu clase principal, ve a la pestaña <code>Arguments</code> y en el campo <code>VM arguments</code> añade la siguiente línea:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">-Xmx4g</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Esto asignará un máximo de 4 GB de memoria a tu programa. Si sigues teniendo problemas de memoria, puedes intentar aumentar aún más este valor, aunque ten en cuenta que esto dependerá de la cantidad de memoria RAM disponible en tu ordenador.</p>
+</div>
+</div>
+<section id="medición-de-tiempo-de-ejecución" class="level3" data-number="4.1">
+<h3 data-number="4.1" class="anchored" data-anchor-id="medición-de-tiempo-de-ejecución"><span class="header-section-number">4.1</span> Medición de tiempo de ejecución</h3>
+<p>Para medir el tiempo de ejecución de cada implementación, puedes utilizar la clase <code>System</code> de Java para obtener el tiempo antes y después de ejecutar el algoritmo, y luego calcular la diferencia. Aquí tienes un ejemplo de cómo hacerlo:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode java code-with-copy"><code class="sourceCode java"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="dt">long</span> startTime <span class="op">=</span> <span class="bu">System</span><span class="op">.</span><span class="fu">currentTimeMillis</span><span class="op">();</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="co">// Llama a tu método de la criba de Eratóstenes aquí</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="dt">long</span> endTime <span class="op">=</span> <span class="bu">System</span><span class="op">.</span><span class="fu">currentTimeMillis</span><span class="op">();</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="dt">long</span> duration <span class="op">=</span> endTime <span class="op">-</span> startTime<span class="op">;</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span><span class="st">"Tiempo de ejecución: "</span> <span class="op">+</span> duration <span class="op">+</span> <span class="st">" milisegundos"</span><span class="op">);</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="solución-1-implementación-básica" class="level3" data-number="4.2">
+<h3 data-number="4.2" class="anchored" data-anchor-id="solución-1-implementación-básica"><span class="header-section-number">4.2</span> Solución 1: Implementación básica</h3>
+<p>En esta implementación, se utiliza un <strong>vector de números enteros para representar los números desde 0 hasta <span class="math inline">\(n\)</span></strong>, donde cada posición indica si el número correspondiente es primo o no. <strong>Se itera a través de los números y se marcan como no primos los múltiplos de cada número primo encontrado</strong>.</p>
+<p>Un número será primo si su posición en el vector no es cero, sino igual a su propio valor. Por ejemplo, si <code>numero[5]</code> es igual a 5, entonces 5 es un número primo. Si <code>numero[6]</code> es igual a 0, entonces 6 no es un número primo.</p>
+<p>Formalmente, al final de la criba de Eratóstenes, cada número <span class="math inline">\(i\)</span>, donde <span class="math inline">\(2 &lt;= i &lt;= n\)</span>, tendrá el siguiente valor en el vector: <span class="math display">\[
+numero[i] = \begin{cases} i &amp; \text{si } i \text{ es primo} \\ 0 &amp; \text{si } i \text{ no es primo} \end{cases}
+\]</span></p>
+<details>
+<summary>
+Ejemplo de la criba de Eratóstenes sin optimizar
+</summary>
+<div class="card shadow-sm mb-4">
+<div class="card-body">
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb4" data-startfrom="101" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 100;"><span id="cb4-101"><a href="#cb4-101" aria-hidden="true" tabindex="-1"></a><span class="co">// definimos la función global una sola vez para usarla en todos los bloques</span></span>
+<span id="cb4-102"><a href="#cb4-102" aria-hidden="true" tabindex="-1"></a>cleanSlider <span class="op">=</span> (range<span class="op">,</span> config) <span class="kw">=&gt;</span> {</span>
+<span id="cb4-103"><a href="#cb4-103" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> input <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">range</span>(range<span class="op">,</span> config)<span class="op">;</span></span>
+<span id="cb4-104"><a href="#cb4-104" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> numberBox <span class="op">=</span> input<span class="op">.</span><span class="fu">querySelector</span>(<span class="st">"input[type=number]"</span>)<span class="op">;</span></span>
+<span id="cb4-105"><a href="#cb4-105" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (numberBox) numberBox<span class="op">.</span><span class="at">style</span><span class="op">.</span><span class="at">display</span> <span class="op">=</span> <span class="st">"none"</span><span class="op">;</span></span>
+<span id="cb4-106"><a href="#cb4-106" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> rangeSlider <span class="op">=</span> input<span class="op">.</span><span class="fu">querySelector</span>(<span class="st">"input[type=range]"</span>)<span class="op">;</span></span>
+<span id="cb4-107"><a href="#cb4-107" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (rangeSlider) rangeSlider<span class="op">.</span><span class="at">style</span><span class="op">.</span><span class="at">width</span> <span class="op">=</span> <span class="st">"100%"</span><span class="op">;</span></span>
+<span id="cb4-108"><a href="#cb4-108" aria-hidden="true" tabindex="-1"></a>  input<span class="op">.</span><span class="at">style</span><span class="op">.</span><span class="at">width</span> <span class="op">=</span> <span class="st">"100%"</span><span class="op">;</span></span>
+<span id="cb4-109"><a href="#cb4-109" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> input<span class="op">;</span></span>
+<span id="cb4-110"><a href="#cb4-110" aria-hidden="true" tabindex="-1"></a>}<span class="op">;</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div id="ojs-cell-1" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb5" data-startfrom="114" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 113;"><span id="cb5-114"><a href="#cb5-114" aria-hidden="true" tabindex="-1"></a>viewof N1 <span class="op">=</span> <span class="fu">cleanSlider</span>([<span class="dv">10</span><span class="op">,</span> <span class="dv">50</span>]<span class="op">,</span> { <span class="dt">value</span><span class="op">:</span> <span class="dv">30</span><span class="op">,</span> <span class="dt">step</span><span class="op">:</span> <span class="dv">1</span><span class="op">,</span> <span class="dt">label</span><span class="op">:</span> <span class="st">"Valor N: "</span> })</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div id="ojs-cell-2" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb6" data-startfrom="118" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 117;"><span id="cb6-118"><a href="#cb6-118" aria-hidden="true" tabindex="-1"></a>steps1 <span class="op">=</span> {</span>
+<span id="cb6-119"><a href="#cb6-119" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> max <span class="op">=</span> N1<span class="op">;</span></span>
+<span id="cb6-120"><a href="#cb6-120" aria-hidden="true" tabindex="-1"></a>  <span class="kw">let</span> state <span class="op">=</span> <span class="bu">Array</span>(max <span class="op">+</span> <span class="dv">1</span>)<span class="op">.</span><span class="fu">fill</span>(<span class="st">"candidate"</span>)<span class="op">;</span></span>
+<span id="cb6-121"><a href="#cb6-121" aria-hidden="true" tabindex="-1"></a>  state[<span class="dv">0</span>] <span class="op">=</span> state[<span class="dv">1</span>] <span class="op">=</span> <span class="st">"discarded"</span><span class="op">;</span></span>
+<span id="cb6-122"><a href="#cb6-122" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-123"><a href="#cb6-123" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> out <span class="op">=</span> []<span class="op">;</span></span>
+<span id="cb6-124"><a href="#cb6-124" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-125"><a href="#cb6-125" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> (<span class="kw">let</span> p <span class="op">=</span> <span class="dv">2</span><span class="op">;</span> p <span class="op">&lt;=</span> max<span class="op">;</span> p<span class="op">++</span>) {</span>
+<span id="cb6-126"><a href="#cb6-126" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (state[p] <span class="op">===</span> <span class="st">"candidate"</span>) {</span>
+<span id="cb6-127"><a href="#cb6-127" aria-hidden="true" tabindex="-1"></a>      out<span class="op">.</span><span class="fu">push</span>({ <span class="dt">type</span><span class="op">:</span> <span class="st">"prime"</span><span class="op">,</span> p<span class="op">,</span> <span class="dt">state</span><span class="op">:</span> [<span class="op">...</span>state] })<span class="op">;</span></span>
+<span id="cb6-128"><a href="#cb6-128" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-129"><a href="#cb6-129" aria-hidden="true" tabindex="-1"></a>      <span class="cf">for</span> (<span class="kw">let</span> k <span class="op">=</span> p <span class="op">*</span> <span class="dv">2</span><span class="op">;</span> k <span class="op">&lt;=</span> max<span class="op">;</span> k <span class="op">+=</span> p) {</span>
+<span id="cb6-130"><a href="#cb6-130" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> (state[k] <span class="op">===</span> <span class="st">"candidate"</span>) {</span>
+<span id="cb6-131"><a href="#cb6-131" aria-hidden="true" tabindex="-1"></a>          state[k] <span class="op">=</span> <span class="st">"discarded"</span><span class="op">;</span></span>
+<span id="cb6-132"><a href="#cb6-132" aria-hidden="true" tabindex="-1"></a>          out<span class="op">.</span><span class="fu">push</span>({ <span class="dt">type</span><span class="op">:</span> <span class="st">"discard"</span><span class="op">,</span> p<span class="op">,</span> k<span class="op">,</span> <span class="dt">state</span><span class="op">:</span> [<span class="op">...</span>state] })<span class="op">;</span></span>
+<span id="cb6-133"><a href="#cb6-133" aria-hidden="true" tabindex="-1"></a>        }</span>
+<span id="cb6-134"><a href="#cb6-134" aria-hidden="true" tabindex="-1"></a>      }</span>
+<span id="cb6-135"><a href="#cb6-135" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb6-136"><a href="#cb6-136" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb6-137"><a href="#cb6-137" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-138"><a href="#cb6-138" aria-hidden="true" tabindex="-1"></a>  out<span class="op">.</span><span class="fu">push</span>({ <span class="dt">type</span><span class="op">:</span> <span class="st">"final"</span><span class="op">,</span> <span class="dt">state</span><span class="op">:</span> [<span class="op">...</span>state] })<span class="op">;</span></span>
+<span id="cb6-139"><a href="#cb6-139" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> out<span class="op">;</span></span>
+<span id="cb6-140"><a href="#cb6-140" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div id="ojs-cell-3" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb7" data-startfrom="144" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 143;"><span id="cb7-144"><a href="#cb7-144" aria-hidden="true" tabindex="-1"></a>maxStep1 <span class="op">=</span> steps1<span class="op">.</span><span class="at">length</span> <span class="op">-</span> <span class="dv">1</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div id="ojs-cell-4" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb8" data-startfrom="148" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 147;"><span id="cb8-148"><a href="#cb8-148" aria-hidden="true" tabindex="-1"></a>viewof step1 <span class="op">=</span> <span class="fu">cleanSlider</span>([<span class="dv">0</span><span class="op">,</span> maxStep1]<span class="op">,</span> { <span class="dt">value</span><span class="op">:</span> <span class="dv">0</span><span class="op">,</span> <span class="dt">step</span><span class="op">:</span> <span class="dv">1</span><span class="op">,</span> <span class="dt">label</span><span class="op">:</span> <span class="st">"Paso de la criba: "</span> })</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div id="ojs-cell-5" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb9" data-startfrom="152" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 151;"><span id="cb9-152"><a href="#cb9-152" aria-hidden="true" tabindex="-1"></a>{</span>
+<span id="cb9-153"><a href="#cb9-153" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (<span class="op">!</span>steps1 <span class="op">||</span> steps1<span class="op">.</span><span class="at">length</span> <span class="op">===</span> <span class="dv">0</span>) <span class="cf">return</span> <span class="fu">html</span><span class="vs">`&lt;div&gt;Cargando...&lt;/div&gt;`</span><span class="op">;</span></span>
+<span id="cb9-154"><a href="#cb9-154" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-155"><a href="#cb9-155" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> safeStep <span class="op">=</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">min</span>(step1<span class="op">,</span> steps1<span class="op">.</span><span class="at">length</span> <span class="op">-</span> <span class="dv">1</span>)<span class="op">;</span></span>
+<span id="cb9-156"><a href="#cb9-156" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> s <span class="op">=</span> steps1[safeStep]<span class="op">;</span></span>
+<span id="cb9-157"><a href="#cb9-157" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-158"><a href="#cb9-158" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (<span class="op">!</span>s) <span class="cf">return</span> <span class="fu">html</span><span class="vs">`&lt;div&gt;Cargando...&lt;/div&gt;`</span><span class="op">;</span></span>
+<span id="cb9-159"><a href="#cb9-159" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-160"><a href="#cb9-160" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> arr <span class="op">=</span> s<span class="op">.</span><span class="at">state</span><span class="op">;</span></span>
+<span id="cb9-161"><a href="#cb9-161" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> max <span class="op">=</span> N1<span class="op">;</span></span>
+<span id="cb9-162"><a href="#cb9-162" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> cols <span class="op">=</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">ceil</span>(<span class="bu">Math</span><span class="op">.</span><span class="fu">sqrt</span>(max))<span class="op">;</span></span>
+<span id="cb9-163"><a href="#cb9-163" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb9-164"><a href="#cb9-164" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> currentPrime <span class="op">=</span> s<span class="op">.</span><span class="at">p</span><span class="op">;</span></span>
+<span id="cb9-165"><a href="#cb9-165" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> lastDiscard <span class="op">=</span> s<span class="op">.</span><span class="at">k</span><span class="op">;</span></span>
+<span id="cb9-166"><a href="#cb9-166" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-167"><a href="#cb9-167" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> grid <span class="op">=</span> <span class="bu">Array</span><span class="op">.</span><span class="fu">from</span>({ <span class="dt">length</span><span class="op">:</span> max <span class="op">+</span> <span class="dv">1</span> }<span class="op">,</span> (_<span class="op">,</span> i) <span class="kw">=&gt;</span> {</span>
+<span id="cb9-168"><a href="#cb9-168" aria-hidden="true" tabindex="-1"></a>    <span class="kw">let</span> bgColor <span class="op">=</span> <span class="st">"#2a9d8f"</span><span class="op">;</span> </span>
+<span id="cb9-169"><a href="#cb9-169" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (i <span class="op">&lt;</span> <span class="dv">2</span>) bgColor <span class="op">=</span> <span class="st">"#ddd"</span><span class="op">;</span></span>
+<span id="cb9-170"><a href="#cb9-170" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span> <span class="cf">if</span> (i <span class="op">===</span> currentPrime) bgColor <span class="op">=</span> <span class="st">"#457b9d"</span><span class="op">;</span></span>
+<span id="cb9-171"><a href="#cb9-171" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span> <span class="cf">if</span> (i <span class="op">===</span> lastDiscard) bgColor <span class="op">=</span> <span class="st">"#f4a261"</span><span class="op">;</span></span>
+<span id="cb9-172"><a href="#cb9-172" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span> <span class="cf">if</span> (arr[i] <span class="op">===</span> <span class="st">"discarded"</span>) bgColor <span class="op">=</span> <span class="st">"#e63946"</span><span class="op">;</span></span>
+<span id="cb9-173"><a href="#cb9-173" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-174"><a href="#cb9-174" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> {</span>
+<span id="cb9-175"><a href="#cb9-175" aria-hidden="true" tabindex="-1"></a>      <span class="dt">n</span><span class="op">:</span> i<span class="op">,</span> <span class="dt">x</span><span class="op">:</span> i <span class="op">%</span> cols<span class="op">,</span> <span class="dt">y</span><span class="op">:</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">floor</span>(i <span class="op">/</span> cols)<span class="op">,</span> <span class="dt">state</span><span class="op">:</span> arr[i]<span class="op">,</span></span>
+<span id="cb9-176"><a href="#cb9-176" aria-hidden="true" tabindex="-1"></a>      <span class="dt">color</span><span class="op">:</span> bgColor<span class="op">,</span> <span class="dt">textColor</span><span class="op">:</span> i <span class="op">&lt;</span> <span class="dv">2</span> <span class="op">?</span> <span class="st">"#333"</span> <span class="op">:</span> <span class="st">"white"</span> </span>
+<span id="cb9-177"><a href="#cb9-177" aria-hidden="true" tabindex="-1"></a>    }<span class="op">;</span></span>
+<span id="cb9-178"><a href="#cb9-178" aria-hidden="true" tabindex="-1"></a>  })<span class="op">;</span></span>
+<span id="cb9-179"><a href="#cb9-179" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-180"><a href="#cb9-180" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> <span class="fu">html</span><span class="vs">`</span></span>
+<span id="cb9-181"><a href="#cb9-181" aria-hidden="true" tabindex="-1"></a><span class="vs">    &lt;div style="margin-top:15px;"&gt;</span></span>
+<span id="cb9-182"><a href="#cb9-182" aria-hidden="true" tabindex="-1"></a><span class="vs">      </span><span class="sc">${</span>Plot<span class="op">.</span><span class="fu">plot</span>({</span>
+<span id="cb9-183"><a href="#cb9-183" aria-hidden="true" tabindex="-1"></a>        <span class="dt">height</span><span class="op">:</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">ceil</span>(max <span class="op">/</span> cols) <span class="op">*</span> <span class="dv">35</span> <span class="op">+</span> <span class="dv">20</span><span class="op">,</span> <span class="dt">margin</span><span class="op">:</span> <span class="dv">10</span><span class="op">,</span></span>
+<span id="cb9-184"><a href="#cb9-184" aria-hidden="true" tabindex="-1"></a>        <span class="dt">x</span><span class="op">:</span> { <span class="dt">axis</span><span class="op">:</span> <span class="kw">null</span> }<span class="op">,</span> <span class="dt">y</span><span class="op">:</span> { <span class="dt">axis</span><span class="op">:</span> <span class="kw">null</span><span class="op">,</span> <span class="dt">reverse</span><span class="op">:</span> <span class="kw">true</span> }<span class="op">,</span> <span class="dt">color</span><span class="op">:</span> { <span class="dt">type</span><span class="op">:</span> <span class="st">"identity"</span> }<span class="op">,</span> </span>
+<span id="cb9-185"><a href="#cb9-185" aria-hidden="true" tabindex="-1"></a>        <span class="dt">marks</span><span class="op">:</span> [</span>
+<span id="cb9-186"><a href="#cb9-186" aria-hidden="true" tabindex="-1"></a>          Plot<span class="op">.</span><span class="fu">rect</span>(grid<span class="op">,</span> { <span class="dt">x1</span><span class="op">:</span> d <span class="kw">=&gt;</span> d<span class="op">.</span><span class="at">x</span> <span class="op">-</span> <span class="fl">0.45</span><span class="op">,</span> <span class="dt">x2</span><span class="op">:</span> d <span class="kw">=&gt;</span> d<span class="op">.</span><span class="at">x</span> <span class="op">+</span> <span class="fl">0.45</span><span class="op">,</span> <span class="dt">y1</span><span class="op">:</span> d <span class="kw">=&gt;</span> d<span class="op">.</span><span class="at">y</span> <span class="op">-</span> <span class="fl">0.45</span><span class="op">,</span> <span class="dt">y2</span><span class="op">:</span> d <span class="kw">=&gt;</span> d<span class="op">.</span><span class="at">y</span> <span class="op">+</span> <span class="fl">0.45</span><span class="op">,</span> <span class="dt">fill</span><span class="op">:</span> <span class="st">"color"</span><span class="op">,</span> <span class="dt">stroke</span><span class="op">:</span> <span class="st">"white"</span><span class="op">,</span> <span class="dt">rx</span><span class="op">:</span> <span class="dv">4</span> })<span class="op">,</span></span>
+<span id="cb9-187"><a href="#cb9-187" aria-hidden="true" tabindex="-1"></a>          Plot<span class="op">.</span><span class="fu">text</span>(grid<span class="op">,</span> { <span class="dt">x</span><span class="op">:</span> <span class="st">"x"</span><span class="op">,</span> <span class="dt">y</span><span class="op">:</span> <span class="st">"y"</span><span class="op">,</span> <span class="dt">text</span><span class="op">:</span> <span class="st">"n"</span><span class="op">,</span> <span class="dt">fill</span><span class="op">:</span> <span class="st">"textColor"</span><span class="op">,</span> <span class="dt">fontSize</span><span class="op">:</span> <span class="dv">13</span><span class="op">,</span> <span class="dt">fontWeight</span><span class="op">:</span> <span class="st">"bold"</span> })</span>
+<span id="cb9-188"><a href="#cb9-188" aria-hidden="true" tabindex="-1"></a>        ]</span>
+<span id="cb9-189"><a href="#cb9-189" aria-hidden="true" tabindex="-1"></a>      })<span class="sc">}</span></span>
+<span id="cb9-190"><a href="#cb9-190" aria-hidden="true" tabindex="-1"></a><span class="vs">      &lt;div style="margin-top:15px; font-size: 1.1em; height: 1.5em;"&gt;</span></span>
+<span id="cb9-191"><a href="#cb9-191" aria-hidden="true" tabindex="-1"></a><span class="vs">        </span><span class="sc">${</span>s<span class="op">.</span><span class="at">type</span> <span class="op">===</span> <span class="st">"prime"</span> <span class="op">?</span> <span class="fu">html</span><span class="vs">`🔎 Probando primo &lt;b&gt;</span><span class="sc">${</span>currentPrime<span class="sc">}</span><span class="vs">&lt;/b&gt;`</span> <span class="op">:</span> s<span class="op">.</span><span class="at">type</span> <span class="op">===</span> <span class="st">"discard"</span> <span class="op">?</span> <span class="fu">html</span><span class="vs">`❌ </span><span class="sc">${</span>lastDiscard<span class="sc">}</span><span class="vs"> es múltiplo de &lt;b&gt;</span><span class="sc">${</span>currentPrime<span class="sc">}</span><span class="vs">&lt;/b&gt;`</span> <span class="op">:</span> <span class="fu">html</span><span class="vs">`✅ Criba completada`</span><span class="sc">}</span></span>
+<span id="cb9-192"><a href="#cb9-192" aria-hidden="true" tabindex="-1"></a><span class="vs">      &lt;/div&gt;</span></span>
+<span id="cb9-193"><a href="#cb9-193" aria-hidden="true" tabindex="-1"></a><span class="vs">    &lt;/div&gt;</span></span>
+<span id="cb9-194"><a href="#cb9-194" aria-hidden="true" tabindex="-1"></a><span class="vs">  `</span><span class="op">;</span></span>
+<span id="cb9-195"><a href="#cb9-195" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div id="ojs-cell-6" data-nodetype="expression">
+
+</div>
+</div>
+</div>
+</div>
+</div>
+</details>
+<p>La implementación básica se puede realizar de la siguiente manera:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode java code-with-copy"><code class="sourceCode java"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="bu">Scanner</span> sc <span class="op">=</span> <span class="kw">new</span> <span class="bu">Scanner</span><span class="op">(</span><span class="bu">System</span><span class="op">.</span><span class="fu">in</span><span class="op">);</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">print</span><span class="op">(</span><span class="st">"Introduce un numero entero: "</span><span class="op">);</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="dt">int</span> n <span class="op">=</span> sc<span class="op">.</span><span class="fu">nextInt</span><span class="op">();</span></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="dt">int</span><span class="op">[]</span> numero <span class="op">=</span> <span class="kw">new</span> <span class="dt">int</span><span class="op">[</span>n <span class="op">+</span> <span class="dv">1</span><span class="op">];</span></span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> <span class="op">(</span><span class="dt">int</span> i <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> i <span class="op">&lt;=</span> n<span class="op">;</span> i<span class="op">++)</span> <span class="op">{</span></span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>    numero<span class="op">[</span>i<span class="op">]</span> <span class="op">=</span> i<span class="op">;</span></span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a><span class="dt">int</span> salto<span class="op">;</span></span>
+<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a><span class="dt">int</span> j <span class="op">=</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> <span class="op">(</span><span class="dt">int</span> i <span class="op">=</span> <span class="dv">2</span><span class="op">;</span> i <span class="op">&lt;=</span> n<span class="op">;</span> i<span class="op">++)</span> <span class="op">{</span></span>
+<span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="op">(</span>numero<span class="op">[</span>i<span class="op">]</span> <span class="op">!=</span> <span class="dv">0</span><span class="op">)</span> <span class="op">{</span></span>
+<span id="cb10-15"><a href="#cb10-15" aria-hidden="true" tabindex="-1"></a>        salto <span class="op">=</span> i<span class="op">;</span></span>
+<span id="cb10-16"><a href="#cb10-16" aria-hidden="true" tabindex="-1"></a>        j <span class="op">=</span> i <span class="op">+</span> salto<span class="op">;</span></span>
+<span id="cb10-17"><a href="#cb10-17" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb10-18"><a href="#cb10-18" aria-hidden="true" tabindex="-1"></a>        <span class="cf">while</span> <span class="op">(</span>j <span class="op">&lt;=</span> n<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb10-19"><a href="#cb10-19" aria-hidden="true" tabindex="-1"></a>            numero<span class="op">[</span>j<span class="op">]</span> <span class="op">=</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb10-20"><a href="#cb10-20" aria-hidden="true" tabindex="-1"></a>            j <span class="op">=</span> j <span class="op">+</span> salto<span class="op">;</span></span>
+<span id="cb10-21"><a href="#cb10-21" aria-hidden="true" tabindex="-1"></a>        <span class="op">}</span></span>
+<span id="cb10-22"><a href="#cb10-22" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb10-23"><a href="#cb10-23" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span>
+<span id="cb10-24"><a href="#cb10-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-25"><a href="#cb10-25" aria-hidden="true" tabindex="-1"></a><span class="dt">int</span> contadorPrimos <span class="op">=</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb10-26"><a href="#cb10-26" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> <span class="op">(</span><span class="dt">int</span> i <span class="op">=</span> <span class="dv">2</span><span class="op">;</span> i <span class="op">&lt;=</span> n<span class="op">;</span> i<span class="op">++)</span> <span class="op">{</span></span>
+<span id="cb10-27"><a href="#cb10-27" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="op">(</span>numero<span class="op">[</span>i<span class="op">]</span> <span class="op">!=</span> <span class="dv">0</span><span class="op">)</span> <span class="op">{</span></span>
+<span id="cb10-28"><a href="#cb10-28" aria-hidden="true" tabindex="-1"></a>        contadorPrimos<span class="op">++;</span> </span>
+<span id="cb10-29"><a href="#cb10-29" aria-hidden="true" tabindex="-1"></a>        <span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span>i <span class="op">+</span> <span class="st">" es primo"</span><span class="op">);</span></span>
+<span id="cb10-30"><a href="#cb10-30" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb10-31"><a href="#cb10-31" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span>
+<span id="cb10-32"><a href="#cb10-32" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-33"><a href="#cb10-33" aria-hidden="true" tabindex="-1"></a><span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">();</span></span>
+<span id="cb10-34"><a href="#cb10-34" aria-hidden="true" tabindex="-1"></a><span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span><span class="st">"Total: "</span> <span class="op">+</span> contadorPrimos <span class="op">+</span> <span class="st">" números primos"</span><span class="op">);</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Nota</span>Tamaño del vector
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Cada entero ocupa 4 bytes en Java, por lo que el vector utilizado para la criba de Eratóstenes ocupará un total de <code>4 * (n + 1)</code> bytes, donde <code>n</code> es el número hasta el cual se desea encontrar los números primos. Por ejemplo, si <code>n</code> es 100, el vector ocupará <code>4 * (100 + 1) = 404</code> bytes.</p>
+</div>
+</div>
+</section>
+<section id="solución-2-optimización-utilizando-la-raíz-cuadrada-de-n" class="level3" data-number="4.3">
+<h3 data-number="4.3" class="anchored" data-anchor-id="solución-2-optimización-utilizando-la-raíz-cuadrada-de-n"><span class="header-section-number">4.3</span> Solución 2: Optimización utilizando la raíz cuadrada de n</h3>
+<p><strong>En la solución previa se itera hasta <code>n</code> para encontrar los números primos, lo cual es ineficiente</strong>. En esta solución, <strong>se optimiza el proceso iterando solo hasta la raíz cuadrada de <code>n</code></strong>.</p>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Advertencia</span>Optimización con la raíz cuadrada 🧮
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-3" class="callout-3-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><strong>Lema</strong>: Si <span class="math inline">\(n ∈ ℕ+\)</span> admite la factorización <span class="math inline">\(n = a*b\)</span>, con <span class="math inline">\(a, b ∈ ℤ\)</span>, entonces <span class="math inline">\(a ≤ \sqrt{n}\)</span> o <span class="math inline">\(b ≤ \sqrt{n}\)</span>.</p>
+<p><strong>Corolario</strong>: Si <span class="math inline">\(n\)</span> no es primo, uno de sus factores <span class="math inline">\(d\)</span> cumple <span class="math inline">\(1 ≤ d ≤ \sqrt{n}\)</span>. Si <span class="math inline">\(n\)</span> no tiene factores <span class="math inline">\(d\)</span> con <span class="math inline">\(1 ≤ d ≤ \sqrt{n}\)</span>, entonces es primo. Por tanto, <span class="math inline">\(n\)</span> es primo si y solo si es divisible por algún primo menor o igual a <span class="math inline">\(\sqrt{n}\)</span>.</p>
+</div>
+</div>
+</div>
+<details>
+<summary>
+Ejemplo de la criba de Eratóstenes optimizada con la raíz cuadrada
+</summary>
+<div class="card shadow-sm mb-4">
+<div class="card-body">
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb11" data-startfrom="261" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 260;"><span id="cb11-261"><a href="#cb11-261" aria-hidden="true" tabindex="-1"></a>viewof N2 <span class="op">=</span> <span class="fu">cleanSlider</span>([<span class="dv">10</span><span class="op">,</span> <span class="dv">150</span>]<span class="op">,</span> { <span class="dt">value</span><span class="op">:</span> <span class="dv">60</span><span class="op">,</span> <span class="dt">step</span><span class="op">:</span> <span class="dv">1</span><span class="op">,</span> <span class="dt">label</span><span class="op">:</span> <span class="st">"Valor N: "</span> })</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div id="ojs-cell-7" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb12" data-startfrom="265" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 264;"><span id="cb12-265"><a href="#cb12-265" aria-hidden="true" tabindex="-1"></a>steps2 <span class="op">=</span> {</span>
+<span id="cb12-266"><a href="#cb12-266" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> max <span class="op">=</span> N2<span class="op">;</span></span>
+<span id="cb12-267"><a href="#cb12-267" aria-hidden="true" tabindex="-1"></a>  <span class="kw">let</span> state <span class="op">=</span> <span class="bu">Array</span>(max <span class="op">+</span> <span class="dv">1</span>)<span class="op">.</span><span class="fu">fill</span>(<span class="st">"candidate"</span>)<span class="op">;</span></span>
+<span id="cb12-268"><a href="#cb12-268" aria-hidden="true" tabindex="-1"></a>  state[<span class="dv">0</span>] <span class="op">=</span> state[<span class="dv">1</span>] <span class="op">=</span> <span class="st">"discarded"</span><span class="op">;</span></span>
+<span id="cb12-269"><a href="#cb12-269" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-270"><a href="#cb12-270" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> out <span class="op">=</span> []<span class="op">;</span></span>
+<span id="cb12-271"><a href="#cb12-271" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-272"><a href="#cb12-272" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> (<span class="kw">let</span> p <span class="op">=</span> <span class="dv">2</span><span class="op">;</span> p <span class="op">*</span> p <span class="op">&lt;=</span> max<span class="op">;</span> p<span class="op">++</span>) {</span>
+<span id="cb12-273"><a href="#cb12-273" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (state[p] <span class="op">===</span> <span class="st">"candidate"</span>) {</span>
+<span id="cb12-274"><a href="#cb12-274" aria-hidden="true" tabindex="-1"></a>      out<span class="op">.</span><span class="fu">push</span>({ <span class="dt">type</span><span class="op">:</span> <span class="st">"prime"</span><span class="op">,</span> p<span class="op">,</span> <span class="dt">state</span><span class="op">:</span> [<span class="op">...</span>state] })<span class="op">;</span></span>
+<span id="cb12-275"><a href="#cb12-275" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-276"><a href="#cb12-276" aria-hidden="true" tabindex="-1"></a>      <span class="cf">for</span> (<span class="kw">let</span> k <span class="op">=</span> p <span class="op">*</span> p<span class="op">;</span> k <span class="op">&lt;=</span> max<span class="op">;</span> k <span class="op">+=</span> p) {</span>
+<span id="cb12-277"><a href="#cb12-277" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> (state[k] <span class="op">===</span> <span class="st">"candidate"</span>) {</span>
+<span id="cb12-278"><a href="#cb12-278" aria-hidden="true" tabindex="-1"></a>          state[k] <span class="op">=</span> <span class="st">"discarded"</span><span class="op">;</span></span>
+<span id="cb12-279"><a href="#cb12-279" aria-hidden="true" tabindex="-1"></a>          out<span class="op">.</span><span class="fu">push</span>({ <span class="dt">type</span><span class="op">:</span> <span class="st">"discard"</span><span class="op">,</span> p<span class="op">,</span> k<span class="op">,</span> <span class="dt">state</span><span class="op">:</span> [<span class="op">...</span>state] })<span class="op">;</span></span>
+<span id="cb12-280"><a href="#cb12-280" aria-hidden="true" tabindex="-1"></a>        }</span>
+<span id="cb12-281"><a href="#cb12-281" aria-hidden="true" tabindex="-1"></a>      }</span>
+<span id="cb12-282"><a href="#cb12-282" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb12-283"><a href="#cb12-283" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb12-284"><a href="#cb12-284" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-285"><a href="#cb12-285" aria-hidden="true" tabindex="-1"></a>  out<span class="op">.</span><span class="fu">push</span>({ <span class="dt">type</span><span class="op">:</span> <span class="st">"final"</span><span class="op">,</span> <span class="dt">state</span><span class="op">:</span> [<span class="op">...</span>state] })<span class="op">;</span></span>
+<span id="cb12-286"><a href="#cb12-286" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> out<span class="op">;</span></span>
+<span id="cb12-287"><a href="#cb12-287" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div id="ojs-cell-8" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb13" data-startfrom="291" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 290;"><span id="cb13-291"><a href="#cb13-291" aria-hidden="true" tabindex="-1"></a>maxStep2 <span class="op">=</span> steps2<span class="op">.</span><span class="at">length</span> <span class="op">-</span> <span class="dv">1</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div id="ojs-cell-9" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb14" data-startfrom="295" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 294;"><span id="cb14-295"><a href="#cb14-295" aria-hidden="true" tabindex="-1"></a>viewof step2 <span class="op">=</span> <span class="fu">cleanSlider</span>([<span class="dv">0</span><span class="op">,</span> maxStep2]<span class="op">,</span> { <span class="dt">value</span><span class="op">:</span> <span class="dv">0</span><span class="op">,</span> <span class="dt">step</span><span class="op">:</span> <span class="dv">1</span><span class="op">,</span> <span class="dt">label</span><span class="op">:</span> <span class="st">"Paso de la criba: "</span> })</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div id="ojs-cell-10" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb15" data-startfrom="299" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 298;"><span id="cb15-299"><a href="#cb15-299" aria-hidden="true" tabindex="-1"></a>{</span>
+<span id="cb15-300"><a href="#cb15-300" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (<span class="op">!</span>steps2 <span class="op">||</span> steps2<span class="op">.</span><span class="at">length</span> <span class="op">===</span> <span class="dv">0</span>) <span class="cf">return</span> <span class="fu">html</span><span class="vs">`&lt;div&gt;Cargando...&lt;/div&gt;`</span><span class="op">;</span></span>
+<span id="cb15-301"><a href="#cb15-301" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-302"><a href="#cb15-302" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> safeStep <span class="op">=</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">min</span>(step2<span class="op">,</span> steps2<span class="op">.</span><span class="at">length</span> <span class="op">-</span> <span class="dv">1</span>)<span class="op">;</span></span>
+<span id="cb15-303"><a href="#cb15-303" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> s <span class="op">=</span> steps2[safeStep]<span class="op">;</span></span>
+<span id="cb15-304"><a href="#cb15-304" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-305"><a href="#cb15-305" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (<span class="op">!</span>s) <span class="cf">return</span> <span class="fu">html</span><span class="vs">`&lt;div&gt;Cargando...&lt;/div&gt;`</span><span class="op">;</span></span>
+<span id="cb15-306"><a href="#cb15-306" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-307"><a href="#cb15-307" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> arr <span class="op">=</span> s<span class="op">.</span><span class="at">state</span><span class="op">;</span></span>
+<span id="cb15-308"><a href="#cb15-308" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> max <span class="op">=</span> N2<span class="op">;</span></span>
+<span id="cb15-309"><a href="#cb15-309" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> cols <span class="op">=</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">ceil</span>(<span class="bu">Math</span><span class="op">.</span><span class="fu">sqrt</span>(max))<span class="op">;</span></span>
+<span id="cb15-310"><a href="#cb15-310" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb15-311"><a href="#cb15-311" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> currentPrime <span class="op">=</span> s<span class="op">.</span><span class="at">p</span><span class="op">;</span></span>
+<span id="cb15-312"><a href="#cb15-312" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> lastDiscard <span class="op">=</span> s<span class="op">.</span><span class="at">k</span><span class="op">;</span></span>
+<span id="cb15-313"><a href="#cb15-313" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-314"><a href="#cb15-314" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> grid <span class="op">=</span> <span class="bu">Array</span><span class="op">.</span><span class="fu">from</span>({ <span class="dt">length</span><span class="op">:</span> max <span class="op">+</span> <span class="dv">1</span> }<span class="op">,</span> (_<span class="op">,</span> i) <span class="kw">=&gt;</span> {</span>
+<span id="cb15-315"><a href="#cb15-315" aria-hidden="true" tabindex="-1"></a>    <span class="kw">let</span> bgColor <span class="op">=</span> <span class="st">"#2a9d8f"</span><span class="op">;</span> </span>
+<span id="cb15-316"><a href="#cb15-316" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (i <span class="op">&lt;</span> <span class="dv">2</span>) bgColor <span class="op">=</span> <span class="st">"#ddd"</span><span class="op">;</span></span>
+<span id="cb15-317"><a href="#cb15-317" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span> <span class="cf">if</span> (i <span class="op">===</span> currentPrime) bgColor <span class="op">=</span> <span class="st">"#457b9d"</span><span class="op">;</span></span>
+<span id="cb15-318"><a href="#cb15-318" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span> <span class="cf">if</span> (i <span class="op">===</span> lastDiscard) bgColor <span class="op">=</span> <span class="st">"#f4a261"</span><span class="op">;</span></span>
+<span id="cb15-319"><a href="#cb15-319" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span> <span class="cf">if</span> (arr[i] <span class="op">===</span> <span class="st">"discarded"</span>) bgColor <span class="op">=</span> <span class="st">"#e63946"</span><span class="op">;</span></span>
+<span id="cb15-320"><a href="#cb15-320" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-321"><a href="#cb15-321" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> {</span>
+<span id="cb15-322"><a href="#cb15-322" aria-hidden="true" tabindex="-1"></a>      <span class="dt">n</span><span class="op">:</span> i<span class="op">,</span> <span class="dt">x</span><span class="op">:</span> i <span class="op">%</span> cols<span class="op">,</span> <span class="dt">y</span><span class="op">:</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">floor</span>(i <span class="op">/</span> cols)<span class="op">,</span> <span class="dt">state</span><span class="op">:</span> arr[i]<span class="op">,</span></span>
+<span id="cb15-323"><a href="#cb15-323" aria-hidden="true" tabindex="-1"></a>      <span class="dt">color</span><span class="op">:</span> bgColor<span class="op">,</span> <span class="dt">textColor</span><span class="op">:</span> i <span class="op">&lt;</span> <span class="dv">2</span> <span class="op">?</span> <span class="st">"#333"</span> <span class="op">:</span> <span class="st">"white"</span> </span>
+<span id="cb15-324"><a href="#cb15-324" aria-hidden="true" tabindex="-1"></a>    }<span class="op">;</span></span>
+<span id="cb15-325"><a href="#cb15-325" aria-hidden="true" tabindex="-1"></a>  })<span class="op">;</span></span>
+<span id="cb15-326"><a href="#cb15-326" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-327"><a href="#cb15-327" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> <span class="fu">html</span><span class="vs">`</span></span>
+<span id="cb15-328"><a href="#cb15-328" aria-hidden="true" tabindex="-1"></a><span class="vs">    &lt;div style="margin-top:15px;"&gt;</span></span>
+<span id="cb15-329"><a href="#cb15-329" aria-hidden="true" tabindex="-1"></a><span class="vs">      </span><span class="sc">${</span>Plot<span class="op">.</span><span class="fu">plot</span>({</span>
+<span id="cb15-330"><a href="#cb15-330" aria-hidden="true" tabindex="-1"></a>        <span class="dt">height</span><span class="op">:</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">ceil</span>(max <span class="op">/</span> cols) <span class="op">*</span> <span class="dv">35</span> <span class="op">+</span> <span class="dv">20</span><span class="op">,</span> <span class="dt">margin</span><span class="op">:</span> <span class="dv">10</span><span class="op">,</span></span>
+<span id="cb15-331"><a href="#cb15-331" aria-hidden="true" tabindex="-1"></a>        <span class="dt">x</span><span class="op">:</span> { <span class="dt">axis</span><span class="op">:</span> <span class="kw">null</span> }<span class="op">,</span> <span class="dt">y</span><span class="op">:</span> { <span class="dt">axis</span><span class="op">:</span> <span class="kw">null</span><span class="op">,</span> <span class="dt">reverse</span><span class="op">:</span> <span class="kw">true</span> }<span class="op">,</span> <span class="dt">color</span><span class="op">:</span> { <span class="dt">type</span><span class="op">:</span> <span class="st">"identity"</span> }<span class="op">,</span> </span>
+<span id="cb15-332"><a href="#cb15-332" aria-hidden="true" tabindex="-1"></a>        <span class="dt">marks</span><span class="op">:</span> [</span>
+<span id="cb15-333"><a href="#cb15-333" aria-hidden="true" tabindex="-1"></a>          Plot<span class="op">.</span><span class="fu">rect</span>(grid<span class="op">,</span> { <span class="dt">x1</span><span class="op">:</span> d <span class="kw">=&gt;</span> d<span class="op">.</span><span class="at">x</span> <span class="op">-</span> <span class="fl">0.45</span><span class="op">,</span> <span class="dt">x2</span><span class="op">:</span> d <span class="kw">=&gt;</span> d<span class="op">.</span><span class="at">x</span> <span class="op">+</span> <span class="fl">0.45</span><span class="op">,</span> <span class="dt">y1</span><span class="op">:</span> d <span class="kw">=&gt;</span> d<span class="op">.</span><span class="at">y</span> <span class="op">-</span> <span class="fl">0.45</span><span class="op">,</span> <span class="dt">y2</span><span class="op">:</span> d <span class="kw">=&gt;</span> d<span class="op">.</span><span class="at">y</span> <span class="op">+</span> <span class="fl">0.45</span><span class="op">,</span> <span class="dt">fill</span><span class="op">:</span> <span class="st">"color"</span><span class="op">,</span> <span class="dt">stroke</span><span class="op">:</span> <span class="st">"white"</span><span class="op">,</span> <span class="dt">rx</span><span class="op">:</span> <span class="dv">4</span> })<span class="op">,</span></span>
+<span id="cb15-334"><a href="#cb15-334" aria-hidden="true" tabindex="-1"></a>          Plot<span class="op">.</span><span class="fu">text</span>(grid<span class="op">,</span> { <span class="dt">x</span><span class="op">:</span> <span class="st">"x"</span><span class="op">,</span> <span class="dt">y</span><span class="op">:</span> <span class="st">"y"</span><span class="op">,</span> <span class="dt">text</span><span class="op">:</span> <span class="st">"n"</span><span class="op">,</span> <span class="dt">fill</span><span class="op">:</span> <span class="st">"textColor"</span><span class="op">,</span> <span class="dt">fontSize</span><span class="op">:</span> <span class="dv">13</span><span class="op">,</span> <span class="dt">fontWeight</span><span class="op">:</span> <span class="st">"bold"</span> })</span>
+<span id="cb15-335"><a href="#cb15-335" aria-hidden="true" tabindex="-1"></a>        ]</span>
+<span id="cb15-336"><a href="#cb15-336" aria-hidden="true" tabindex="-1"></a>      })<span class="sc">}</span></span>
+<span id="cb15-337"><a href="#cb15-337" aria-hidden="true" tabindex="-1"></a><span class="vs">      &lt;div style="margin-top:15px; font-size: 1.1em; height: 1.5em;"&gt;</span></span>
+<span id="cb15-338"><a href="#cb15-338" aria-hidden="true" tabindex="-1"></a><span class="vs">        </span><span class="sc">${</span>s<span class="op">.</span><span class="at">type</span> <span class="op">===</span> <span class="st">"prime"</span> <span class="op">?</span> <span class="fu">html</span><span class="vs">`🔎 Probando primo &lt;b&gt;</span><span class="sc">${</span>currentPrime<span class="sc">}</span><span class="vs">&lt;/b&gt;`</span> <span class="op">:</span> s<span class="op">.</span><span class="at">type</span> <span class="op">===</span> <span class="st">"discard"</span> <span class="op">?</span> <span class="fu">html</span><span class="vs">`❌ </span><span class="sc">${</span>lastDiscard<span class="sc">}</span><span class="vs"> es múltiplo de &lt;b&gt;</span><span class="sc">${</span>currentPrime<span class="sc">}</span><span class="vs">&lt;/b&gt;`</span> <span class="op">:</span> <span class="fu">html</span><span class="vs">`✅ Criba completada`</span><span class="sc">}</span></span>
+<span id="cb15-339"><a href="#cb15-339" aria-hidden="true" tabindex="-1"></a><span class="vs">      &lt;/div&gt;</span></span>
+<span id="cb15-340"><a href="#cb15-340" aria-hidden="true" tabindex="-1"></a><span class="vs">    &lt;/div&gt;</span></span>
+<span id="cb15-341"><a href="#cb15-341" aria-hidden="true" tabindex="-1"></a><span class="vs">  `</span><span class="op">;</span></span>
+<span id="cb15-342"><a href="#cb15-342" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div id="ojs-cell-11" data-nodetype="expression">
+
+</div>
+</div>
+</div>
+</div>
+</div>
+</details>
+<p>La implementación de esta optimización se puede realizar de la siguiente manera:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb16"><pre class="sourceCode java code-with-copy"><code class="sourceCode java"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="bu">Scanner</span> sc <span class="op">=</span> <span class="kw">new</span> <span class="bu">Scanner</span><span class="op">(</span><span class="bu">System</span><span class="op">.</span><span class="fu">in</span><span class="op">);</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">print</span><span class="op">(</span><span class="st">"Introduce un numero entero: "</span><span class="op">);</span></span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="dt">int</span> n <span class="op">=</span> sc<span class="op">.</span><span class="fu">nextInt</span><span class="op">();</span></span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a><span class="dt">int</span><span class="op">[]</span> numero <span class="op">=</span> <span class="kw">new</span> <span class="dt">int</span><span class="op">[</span>n <span class="op">+</span> <span class="dv">1</span><span class="op">];</span></span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> <span class="op">(</span><span class="dt">int</span> i <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> i <span class="op">&lt;=</span> n<span class="op">;</span> i<span class="op">++)</span> <span class="op">{</span></span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>    numero<span class="op">[</span>i<span class="op">]</span> <span class="op">=</span> i<span class="op">;</span></span>
+<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span>
+<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a><span class="dt">int</span> salto<span class="op">;</span></span>
+<span id="cb16-11"><a href="#cb16-11" aria-hidden="true" tabindex="-1"></a><span class="dt">int</span> j <span class="op">=</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb16-12"><a href="#cb16-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-13"><a href="#cb16-13" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> <span class="op">(</span><span class="dt">int</span> i <span class="op">=</span> <span class="dv">2</span><span class="op">;</span> i <span class="op">*</span> i <span class="op">&lt;=</span> n<span class="op">;</span> i<span class="op">++)</span> <span class="op">{</span></span>
+<span id="cb16-14"><a href="#cb16-14" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="op">(</span>numero<span class="op">[</span>i<span class="op">]</span> <span class="op">!=</span> <span class="dv">0</span><span class="op">)</span> <span class="op">{</span></span>
+<span id="cb16-15"><a href="#cb16-15" aria-hidden="true" tabindex="-1"></a>        salto <span class="op">=</span> i<span class="op">;</span></span>
+<span id="cb16-16"><a href="#cb16-16" aria-hidden="true" tabindex="-1"></a>        j <span class="op">=</span> i <span class="op">+</span> salto<span class="op">;</span></span>
+<span id="cb16-17"><a href="#cb16-17" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb16-18"><a href="#cb16-18" aria-hidden="true" tabindex="-1"></a>        <span class="cf">while</span> <span class="op">(</span>j <span class="op">&lt;=</span> n<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb16-19"><a href="#cb16-19" aria-hidden="true" tabindex="-1"></a>            numero<span class="op">[</span>j<span class="op">]</span> <span class="op">=</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb16-20"><a href="#cb16-20" aria-hidden="true" tabindex="-1"></a>            j <span class="op">=</span> j <span class="op">+</span> salto<span class="op">;</span></span>
+<span id="cb16-21"><a href="#cb16-21" aria-hidden="true" tabindex="-1"></a>        <span class="op">}</span></span>
+<span id="cb16-22"><a href="#cb16-22" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb16-23"><a href="#cb16-23" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span>
+<span id="cb16-24"><a href="#cb16-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-25"><a href="#cb16-25" aria-hidden="true" tabindex="-1"></a><span class="dt">int</span> contadorPrimos <span class="op">=</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb16-26"><a href="#cb16-26" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> <span class="op">(</span><span class="dt">int</span> i <span class="op">=</span> <span class="dv">2</span><span class="op">;</span> i <span class="op">&lt;=</span> n<span class="op">;</span> i<span class="op">++)</span> <span class="op">{</span></span>
+<span id="cb16-27"><a href="#cb16-27" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="op">(</span>numero<span class="op">[</span>i<span class="op">]</span> <span class="op">!=</span> <span class="dv">0</span><span class="op">)</span> <span class="op">{</span></span>
+<span id="cb16-28"><a href="#cb16-28" aria-hidden="true" tabindex="-1"></a>        contadorPrimos<span class="op">++;</span> </span>
+<span id="cb16-29"><a href="#cb16-29" aria-hidden="true" tabindex="-1"></a>        <span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span>i <span class="op">+</span> <span class="st">" es primo"</span><span class="op">);</span></span>
+<span id="cb16-30"><a href="#cb16-30" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb16-31"><a href="#cb16-31" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span>
+<span id="cb16-32"><a href="#cb16-32" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-33"><a href="#cb16-33" aria-hidden="true" tabindex="-1"></a><span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">();</span></span>
+<span id="cb16-34"><a href="#cb16-34" aria-hidden="true" tabindex="-1"></a><span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span><span class="st">"Total: "</span> <span class="op">+</span> contadorPrimos <span class="op">+</span> <span class="st">" números primos"</span><span class="op">);</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Nota</span>Tamaño del vector
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>En esta solución, el vector utilizado para la criba de Eratóstenes seguirá ocupando <code>4 * (n + 1)</code> bytes, ya que se sigue utilizando un vector de enteros para representar los números desde 0 hasta n.&nbsp;Sin embargo, el número de iteraciones realizadas para marcar los múltiplos de cada número primo será significativamente menor, lo que puede mejorar el rendimiento del algoritmo.</p>
+</div>
+</div>
+</section>
+<section id="solución-3-implementación-utilizando-un-vector-de-booleanos" class="level3" data-number="4.4">
+<h3 data-number="4.4" class="anchored" data-anchor-id="solución-3-implementación-utilizando-un-vector-de-booleanos"><span class="header-section-number">4.4</span> Solución 3: Implementación utilizando un vector de booleanos</h3>
+<p>En esta implementación, se utiliza un vector de booleanos para representar si cada número es primo o no. El vector se inicializa con <code>true</code> para todos los números desde 2 hasta <span class="math inline">\(n\)</span>, y luego se marcan como <code>false</code> los múltiplos de cada número primo encontrado. Al final del proceso, los números que siguen siendo <code>true</code> en el vector son los números primos.</p>
+<p>La implementación de esta solución se puede realizar de la siguiente manera:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb17"><pre class="sourceCode java code-with-copy"><code class="sourceCode java"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="bu">Scanner</span> sc <span class="op">=</span> <span class="kw">new</span> <span class="bu">Scanner</span><span class="op">(</span><span class="bu">System</span><span class="op">.</span><span class="fu">in</span><span class="op">);</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">print</span><span class="op">(</span><span class="st">"Introduce un numero entero: "</span><span class="op">);</span></span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a><span class="dt">int</span> n <span class="op">=</span> sc<span class="op">.</span><span class="fu">nextInt</span><span class="op">();</span></span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a><span class="dt">boolean</span><span class="op">[]</span> esPrimo <span class="op">=</span> <span class="kw">new</span> <span class="dt">boolean</span><span class="op">[</span>n <span class="op">+</span> <span class="dv">1</span><span class="op">];</span></span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> <span class="op">(</span><span class="dt">int</span> i <span class="op">=</span> <span class="dv">2</span><span class="op">;</span> i <span class="op">&lt;=</span> n<span class="op">;</span> i<span class="op">++)</span> <span class="op">{</span></span>
+<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a>    esPrimo<span class="op">[</span>i<span class="op">]</span> <span class="op">=</span> <span class="kw">true</span><span class="op">;</span></span>
+<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span>
+<span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-10"><a href="#cb17-10" aria-hidden="true" tabindex="-1"></a><span class="dt">int</span> salto<span class="op">;</span></span>
+<span id="cb17-11"><a href="#cb17-11" aria-hidden="true" tabindex="-1"></a><span class="dt">int</span> j <span class="op">=</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb17-12"><a href="#cb17-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-13"><a href="#cb17-13" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> <span class="op">(</span><span class="dt">int</span> i <span class="op">=</span> <span class="dv">2</span><span class="op">;</span> i <span class="op">*</span> i <span class="op">&lt;=</span> n<span class="op">;</span> i<span class="op">++)</span> <span class="op">{</span></span>
+<span id="cb17-14"><a href="#cb17-14" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="op">(</span>esPrimo<span class="op">[</span>i<span class="op">])</span> <span class="op">{</span></span>
+<span id="cb17-15"><a href="#cb17-15" aria-hidden="true" tabindex="-1"></a>        salto <span class="op">=</span> i<span class="op">;</span></span>
+<span id="cb17-16"><a href="#cb17-16" aria-hidden="true" tabindex="-1"></a>        j <span class="op">=</span> i <span class="op">+</span> salto<span class="op">;</span></span>
+<span id="cb17-17"><a href="#cb17-17" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb17-18"><a href="#cb17-18" aria-hidden="true" tabindex="-1"></a>        <span class="cf">while</span> <span class="op">(</span>j <span class="op">&lt;=</span> n<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb17-19"><a href="#cb17-19" aria-hidden="true" tabindex="-1"></a>            esPrimo<span class="op">[</span>j<span class="op">]</span> <span class="op">=</span> <span class="kw">false</span><span class="op">;</span></span>
+<span id="cb17-20"><a href="#cb17-20" aria-hidden="true" tabindex="-1"></a>            j <span class="op">=</span> j <span class="op">+</span> salto<span class="op">;</span></span>
+<span id="cb17-21"><a href="#cb17-21" aria-hidden="true" tabindex="-1"></a>        <span class="op">}</span></span>
+<span id="cb17-22"><a href="#cb17-22" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb17-23"><a href="#cb17-23" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span>
+<span id="cb17-24"><a href="#cb17-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-25"><a href="#cb17-25" aria-hidden="true" tabindex="-1"></a><span class="dt">int</span> contadorPrimos <span class="op">=</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb17-26"><a href="#cb17-26" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> <span class="op">(</span><span class="dt">int</span> i <span class="op">=</span> <span class="dv">2</span><span class="op">;</span> i <span class="op">&lt;=</span> n<span class="op">;</span> i<span class="op">++)</span> <span class="op">{</span></span>
+<span id="cb17-27"><a href="#cb17-27" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="op">(</span>esPrimo<span class="op">[</span>i<span class="op">])</span> <span class="op">{</span></span>
+<span id="cb17-28"><a href="#cb17-28" aria-hidden="true" tabindex="-1"></a>        contadorPrimos<span class="op">++;</span> </span>
+<span id="cb17-29"><a href="#cb17-29" aria-hidden="true" tabindex="-1"></a>        <span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span>i <span class="op">+</span> <span class="st">" es primo"</span><span class="op">);</span></span>
+<span id="cb17-30"><a href="#cb17-30" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb17-31"><a href="#cb17-31" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span>
+<span id="cb17-32"><a href="#cb17-32" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-33"><a href="#cb17-33" aria-hidden="true" tabindex="-1"></a><span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">();</span></span>
+<span id="cb17-34"><a href="#cb17-34" aria-hidden="true" tabindex="-1"></a><span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span><span class="st">"Total: "</span> <span class="op">+</span> contadorPrimos <span class="op">+</span> <span class="st">" números primos"</span><span class="op">);</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Nota</span>Tamaño del vector
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>En esta solución, el vector utilizado para la criba de Eratóstenes ocupará <span class="math inline">\(1 * (n + 1)\)</span> bytes, ya que se utiliza un vector de booleanos para representar si cada número es primo o no. Cada booleano ocupa 1 byte en Java, por lo que el tamaño del vector será significativamente menor que en las soluciones anteriores que utilizaban enteros. Sin embargo, el rendimiento del algoritmo puede ser similar al de la solución anterior, ya que el número de iteraciones realizadas para marcar los múltiplos de cada número primo seguirá siendo el mismo.</p>
+<p>Por ejemplo, si <span class="math inline">\(n\)</span> es 100, el vector ocupará <span class="math inline">\(1 * (100 + 1) = 101\)</span> bytes, un tamaño mucho menor que los <span class="math inline">\(404\)</span> bytes de la solución con enteros.</p>
+</div>
+</div>
+</section>
+<section id="solución-4-implementación-con-optimización-utilizando-un-vector-de-booleanos-y-solo-números-impares" class="level3" data-number="4.5">
+<h3 data-number="4.5" class="anchored" data-anchor-id="solución-4-implementación-con-optimización-utilizando-un-vector-de-booleanos-y-solo-números-impares"><span class="header-section-number">4.5</span> Solución 4: Implementación con optimización utilizando un vector de booleanos y solo números impares</h3>
+<p>En esta implementación, se utiliza un vector de booleanos para representar si cada número impar es primo o no, ya que el único número par que es primo es el 2. De esta manera, se reduce a la mitad el tamaño del vector y se optimiza el proceso de marcado de múltiplos, ya que solo se consideran los números impares.</p>
+<p>En resumen, los cambios introducidos en esta solución son los siguientes:</p>
+<ul>
+<li><p>El número <strong>2</strong> es el único número par que es primo, por lo que podemos ignorar todos los números pares mayores que 2.</p></li>
+<li><p>Por tanto, solo necesitamos analizar los <strong>números impares</strong> mayores que 2: <span class="math display">\[
+3, 5, 7, 9, \ldots, n \quad (\text{o } n-1 \text{ si } n \text{ es par})
+\]</span></p></li>
+<li><p>Estos números pueden escribirse como<br>
+<span class="math display">\[
+p = 2i + 3 \quad \text{con } i = 0, 1, 2, \ldots, \left\lfloor \frac{n-3}{2} \right\rfloor
+\]</span></p></li>
+<li><p>Por ello, el vector solo necesita<br>
+<span class="math display">\[
+\left\lfloor \frac{n-3}{2} \right\rfloor + 1
+\]</span> posiciones (una por cada impar).</p></li>
+<li><p>Para cada primo <span class="math inline">\(p = 2i + 3\)</span> menor que <span class="math inline">\(n\)</span>, eliminamos sus <strong>múltiplos impares</strong> menores que <span class="math inline">\(n\)</span>:<br>
+<span class="math display">\[
+3p, 5p, 7p, \ldots
+\]</span></p></li>
+<li><p>En general, estos múltiplos pueden escribirse como<br>
+<span class="math display">\[
+(2k+1)p \quad \text{con } k = i+1, i+2, \ldots
+\]</span></p></li>
+</ul>
+<p>La implementación de esta solución se puede realizar de la siguiente manera:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb18"><pre class="sourceCode java code-with-copy"><code class="sourceCode java"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="bu">Scanner</span> sc <span class="op">=</span> <span class="kw">new</span> <span class="bu">Scanner</span><span class="op">(</span><span class="bu">System</span><span class="op">.</span><span class="fu">in</span><span class="op">);</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">print</span><span class="op">(</span><span class="st">"Introduce un numero entero: "</span><span class="op">);</span></span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a><span class="dt">int</span> n <span class="op">=</span> sc<span class="op">.</span><span class="fu">nextInt</span><span class="op">();</span></span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a><span class="dt">int</span> max <span class="op">=</span> <span class="kw">...</span><span class="op">;</span>     <span class="co">// &lt;--- calcular el tamaño del vector para solo números impares</span></span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a><span class="dt">boolean</span><span class="op">[]</span> numero <span class="op">=</span> <span class="kw">new</span> <span class="dt">boolean</span><span class="op">[</span>max <span class="op">+</span> <span class="dv">1</span><span class="op">];</span></span>
+<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> <span class="op">(</span><span class="dt">int</span> i <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> i <span class="op">&lt;=</span> max<span class="op">;</span> i<span class="op">++)</span> <span class="op">{</span></span>
+<span id="cb18-9"><a href="#cb18-9" aria-hidden="true" tabindex="-1"></a>    numero<span class="op">[</span>i<span class="op">]</span> <span class="op">=</span> <span class="kw">true</span><span class="op">;</span></span>
+<span id="cb18-10"><a href="#cb18-10" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span>
+<span id="cb18-11"><a href="#cb18-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-12"><a href="#cb18-12" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> <span class="op">(</span><span class="dt">int</span> i <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> <span class="kw">...</span> <span class="op">&lt;=</span> n<span class="op">;</span> i<span class="op">++)</span> <span class="op">{</span>   <span class="co">// &lt;--- iterar solo sobre números impares</span></span>
+<span id="cb18-13"><a href="#cb18-13" aria-hidden="true" tabindex="-1"></a>    <span class="dt">int</span> k <span class="op">=</span> <span class="kw">...</span><span class="op">;</span></span>
+<span id="cb18-14"><a href="#cb18-14" aria-hidden="true" tabindex="-1"></a>    <span class="cf">while</span> <span class="op">(</span> <span class="kw">...</span> <span class="op">&lt;=</span> n<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb18-15"><a href="#cb18-15" aria-hidden="true" tabindex="-1"></a>        numero<span class="op">[</span><span class="kw">...</span><span class="op">]</span> <span class="op">=</span> <span class="kw">false</span><span class="op">;</span>    <span class="co">// &lt;--- marcar múltiplos impares de i como no primos</span></span>
+<span id="cb18-16"><a href="#cb18-16" aria-hidden="true" tabindex="-1"></a>        k<span class="op">++;</span></span>
+<span id="cb18-17"><a href="#cb18-17" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb18-18"><a href="#cb18-18" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span>
+<span id="cb18-19"><a href="#cb18-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-20"><a href="#cb18-20" aria-hidden="true" tabindex="-1"></a><span class="dt">int</span> contadorPrimos <span class="op">=</span> <span class="dv">1</span><span class="op">;</span></span>
+<span id="cb18-21"><a href="#cb18-21" aria-hidden="true" tabindex="-1"></a><span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">print</span><span class="op">(</span><span class="st">"2 es primo </span><span class="sc">\n</span><span class="st">"</span><span class="op">);</span></span>
+<span id="cb18-22"><a href="#cb18-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-23"><a href="#cb18-23" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> <span class="op">(</span><span class="dt">int</span> i <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> i <span class="op">&lt;=</span> <span class="kw">...</span><span class="op">;</span> i<span class="op">++)</span> <span class="op">{</span></span>
+<span id="cb18-24"><a href="#cb18-24" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="op">(</span>numero<span class="op">[</span>i<span class="op">]</span> <span class="op">!=</span> <span class="kw">false</span><span class="op">)</span> <span class="op">{</span></span>
+<span id="cb18-25"><a href="#cb18-25" aria-hidden="true" tabindex="-1"></a>        contadorPrimos <span class="op">=</span> contadorPrimos <span class="op">+</span> <span class="dv">1</span><span class="op">;</span></span>
+<span id="cb18-26"><a href="#cb18-26" aria-hidden="true" tabindex="-1"></a>        <span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span><span class="kw">...</span> <span class="op">+</span> <span class="st">" es primo"</span><span class="op">);</span></span>
+<span id="cb18-27"><a href="#cb18-27" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb18-28"><a href="#cb18-28" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span>
+<span id="cb18-29"><a href="#cb18-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-30"><a href="#cb18-30" aria-hidden="true" tabindex="-1"></a><span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">();</span></span>
+<span id="cb18-31"><a href="#cb18-31" aria-hidden="true" tabindex="-1"></a><span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span><span class="st">"Total: "</span> <span class="op">+</span> contadorPrimos <span class="op">+</span> <span class="st">" números primos"</span><span class="op">);</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<details>
+<summary>
+Ejemplo de la criba de Eratóstenes optimizada con un vector de booleanos y solo números impares
+</summary>
+<div class="card shadow-sm mb-4 mt-4">
+<div class="card-body">
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb19" data-startfrom="517" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 516;"><span id="cb19-517"><a href="#cb19-517" aria-hidden="true" tabindex="-1"></a>viewof N4 <span class="op">=</span> <span class="fu">cleanSlider</span>([<span class="dv">10</span><span class="op">,</span> <span class="dv">150</span>]<span class="op">,</span> { <span class="dt">value</span><span class="op">:</span> <span class="dv">60</span><span class="op">,</span> <span class="dt">step</span><span class="op">:</span> <span class="dv">1</span><span class="op">,</span> <span class="dt">label</span><span class="op">:</span> <span class="st">"Valor N: "</span> })</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div id="ojs-cell-12" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb20" data-startfrom="522" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 521;"><span id="cb20-522"><a href="#cb20-522" aria-hidden="true" tabindex="-1"></a>steps4 <span class="op">=</span> {</span>
+<span id="cb20-523"><a href="#cb20-523" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> max <span class="op">=</span> N4<span class="op">;</span></span>
+<span id="cb20-524"><a href="#cb20-524" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (max <span class="op">&lt;</span> <span class="dv">3</span>) <span class="cf">return</span> [{ <span class="dt">type</span><span class="op">:</span> <span class="st">"final"</span><span class="op">,</span> <span class="dt">state</span><span class="op">:</span> [] }]<span class="op">;</span></span>
+<span id="cb20-525"><a href="#cb20-525" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-526"><a href="#cb20-526" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> size <span class="op">=</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">floor</span>((max <span class="op">-</span> <span class="dv">3</span>) <span class="op">/</span> <span class="dv">2</span>) <span class="op">+</span> <span class="dv">1</span><span class="op">;</span></span>
+<span id="cb20-527"><a href="#cb20-527" aria-hidden="true" tabindex="-1"></a>  <span class="kw">let</span> state <span class="op">=</span> <span class="bu">Array</span>(size)<span class="op">.</span><span class="fu">fill</span>(<span class="st">"candidate"</span>)<span class="op">;</span></span>
+<span id="cb20-528"><a href="#cb20-528" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-529"><a href="#cb20-529" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> out <span class="op">=</span> []<span class="op">;</span></span>
+<span id="cb20-530"><a href="#cb20-530" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-531"><a href="#cb20-531" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> (<span class="kw">let</span> i <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> <span class="op">;</span> i<span class="op">++</span>) {</span>
+<span id="cb20-532"><a href="#cb20-532" aria-hidden="true" tabindex="-1"></a>    <span class="kw">let</span> p <span class="op">=</span> <span class="dv">2</span> <span class="op">*</span> i <span class="op">+</span> <span class="dv">3</span><span class="op">;</span></span>
+<span id="cb20-533"><a href="#cb20-533" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (p <span class="op">*</span> p <span class="op">&gt;</span> max) <span class="cf">break</span><span class="op">;</span></span>
+<span id="cb20-534"><a href="#cb20-534" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-535"><a href="#cb20-535" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (state[i] <span class="op">===</span> <span class="st">"candidate"</span>) {</span>
+<span id="cb20-536"><a href="#cb20-536" aria-hidden="true" tabindex="-1"></a>      out<span class="op">.</span><span class="fu">push</span>({ <span class="dt">type</span><span class="op">:</span> <span class="st">"prime"</span><span class="op">,</span> p<span class="op">,</span> <span class="dt">state</span><span class="op">:</span> [<span class="op">...</span>state] })<span class="op">;</span></span>
+<span id="cb20-537"><a href="#cb20-537" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-538"><a href="#cb20-538" aria-hidden="true" tabindex="-1"></a>      <span class="cf">for</span> (<span class="kw">let</span> mult <span class="op">=</span> p <span class="op">*</span> p<span class="op">;</span> mult <span class="op">&lt;=</span> max<span class="op">;</span> mult <span class="op">+=</span> <span class="dv">2</span> <span class="op">*</span> p) {</span>
+<span id="cb20-539"><a href="#cb20-539" aria-hidden="true" tabindex="-1"></a>        <span class="kw">let</span> idx <span class="op">=</span> (mult <span class="op">-</span> <span class="dv">3</span>) <span class="op">/</span> <span class="dv">2</span><span class="op">;</span> </span>
+<span id="cb20-540"><a href="#cb20-540" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> (state[idx] <span class="op">===</span> <span class="st">"candidate"</span>) {</span>
+<span id="cb20-541"><a href="#cb20-541" aria-hidden="true" tabindex="-1"></a>          state[idx] <span class="op">=</span> <span class="st">"discarded"</span><span class="op">;</span></span>
+<span id="cb20-542"><a href="#cb20-542" aria-hidden="true" tabindex="-1"></a>          out<span class="op">.</span><span class="fu">push</span>({ <span class="dt">type</span><span class="op">:</span> <span class="st">"discard"</span><span class="op">,</span> p<span class="op">,</span> <span class="dt">k</span><span class="op">:</span> mult<span class="op">,</span> <span class="dt">state</span><span class="op">:</span> [<span class="op">...</span>state] })<span class="op">;</span></span>
+<span id="cb20-543"><a href="#cb20-543" aria-hidden="true" tabindex="-1"></a>        }</span>
+<span id="cb20-544"><a href="#cb20-544" aria-hidden="true" tabindex="-1"></a>      }</span>
+<span id="cb20-545"><a href="#cb20-545" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb20-546"><a href="#cb20-546" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb20-547"><a href="#cb20-547" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-548"><a href="#cb20-548" aria-hidden="true" tabindex="-1"></a>  out<span class="op">.</span><span class="fu">push</span>({ <span class="dt">type</span><span class="op">:</span> <span class="st">"final"</span><span class="op">,</span> <span class="dt">state</span><span class="op">:</span> [<span class="op">...</span>state] })<span class="op">;</span></span>
+<span id="cb20-549"><a href="#cb20-549" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> out<span class="op">;</span></span>
+<span id="cb20-550"><a href="#cb20-550" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div id="ojs-cell-13" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb21" data-startfrom="555" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 554;"><span id="cb21-555"><a href="#cb21-555" aria-hidden="true" tabindex="-1"></a>maxStep4 <span class="op">=</span> steps4<span class="op">.</span><span class="at">length</span> <span class="op">-</span> <span class="dv">1</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div id="ojs-cell-14" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb22" data-startfrom="560" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 559;"><span id="cb22-560"><a href="#cb22-560" aria-hidden="true" tabindex="-1"></a>viewof step4 <span class="op">=</span> <span class="fu">cleanSlider</span>([<span class="dv">0</span><span class="op">,</span> maxStep4]<span class="op">,</span> { <span class="dt">value</span><span class="op">:</span> <span class="dv">0</span><span class="op">,</span> <span class="dt">step</span><span class="op">:</span> <span class="dv">1</span><span class="op">,</span> <span class="dt">label</span><span class="op">:</span> <span class="st">"Paso de la criba: "</span> })</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div id="ojs-cell-15" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb23" data-startfrom="565" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 564;"><span id="cb23-565"><a href="#cb23-565" aria-hidden="true" tabindex="-1"></a>{</span>
+<span id="cb23-566"><a href="#cb23-566" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (<span class="op">!</span>steps4 <span class="op">||</span> steps4<span class="op">.</span><span class="at">length</span> <span class="op">===</span> <span class="dv">0</span>) <span class="cf">return</span> <span class="fu">html</span><span class="vs">`&lt;div&gt;Cargando...&lt;/div&gt;`</span><span class="op">;</span></span>
+<span id="cb23-567"><a href="#cb23-567" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-568"><a href="#cb23-568" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> safeStep <span class="op">=</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">min</span>(step4<span class="op">,</span> steps4<span class="op">.</span><span class="at">length</span> <span class="op">-</span> <span class="dv">1</span>)<span class="op">;</span></span>
+<span id="cb23-569"><a href="#cb23-569" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> s <span class="op">=</span> steps4[safeStep]<span class="op">;</span></span>
+<span id="cb23-570"><a href="#cb23-570" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-571"><a href="#cb23-571" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (<span class="op">!</span>s) <span class="cf">return</span> <span class="fu">html</span><span class="vs">`&lt;div&gt;Cargando...&lt;/div&gt;`</span><span class="op">;</span></span>
+<span id="cb23-572"><a href="#cb23-572" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-573"><a href="#cb23-573" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> arr <span class="op">=</span> s<span class="op">.</span><span class="at">state</span><span class="op">;</span></span>
+<span id="cb23-574"><a href="#cb23-574" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> max <span class="op">=</span> N4<span class="op">;</span></span>
+<span id="cb23-575"><a href="#cb23-575" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb23-576"><a href="#cb23-576" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> size <span class="op">=</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">floor</span>((max <span class="op">-</span> <span class="dv">3</span>) <span class="op">/</span> <span class="dv">2</span>) <span class="op">+</span> <span class="dv">1</span><span class="op">;</span></span>
+<span id="cb23-577"><a href="#cb23-577" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> cols <span class="op">=</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">ceil</span>(<span class="bu">Math</span><span class="op">.</span><span class="fu">sqrt</span>(size))<span class="op">;</span> </span>
+<span id="cb23-578"><a href="#cb23-578" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb23-579"><a href="#cb23-579" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> currentPrime <span class="op">=</span> s<span class="op">.</span><span class="at">p</span><span class="op">;</span></span>
+<span id="cb23-580"><a href="#cb23-580" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> lastDiscard <span class="op">=</span> s<span class="op">.</span><span class="at">k</span><span class="op">;</span></span>
+<span id="cb23-581"><a href="#cb23-581" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-582"><a href="#cb23-582" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> grid <span class="op">=</span> <span class="bu">Array</span><span class="op">.</span><span class="fu">from</span>({ <span class="dt">length</span><span class="op">:</span> size }<span class="op">,</span> (_<span class="op">,</span> i) <span class="kw">=&gt;</span> {</span>
+<span id="cb23-583"><a href="#cb23-583" aria-hidden="true" tabindex="-1"></a>    <span class="kw">const</span> num <span class="op">=</span> <span class="dv">2</span> <span class="op">*</span> i <span class="op">+</span> <span class="dv">3</span><span class="op">;</span> </span>
+<span id="cb23-584"><a href="#cb23-584" aria-hidden="true" tabindex="-1"></a>    <span class="kw">let</span> bgColor <span class="op">=</span> <span class="st">"#2a9d8f"</span><span class="op">;</span> </span>
+<span id="cb23-585"><a href="#cb23-585" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb23-586"><a href="#cb23-586" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (num <span class="op">===</span> currentPrime) bgColor <span class="op">=</span> <span class="st">"#457b9d"</span><span class="op">;</span></span>
+<span id="cb23-587"><a href="#cb23-587" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span> <span class="cf">if</span> (num <span class="op">===</span> lastDiscard) bgColor <span class="op">=</span> <span class="st">"#f4a261"</span><span class="op">;</span></span>
+<span id="cb23-588"><a href="#cb23-588" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span> <span class="cf">if</span> (arr[i] <span class="op">===</span> <span class="st">"discarded"</span>) bgColor <span class="op">=</span> <span class="st">"#e63946"</span><span class="op">;</span></span>
+<span id="cb23-589"><a href="#cb23-589" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-590"><a href="#cb23-590" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> {</span>
+<span id="cb23-591"><a href="#cb23-591" aria-hidden="true" tabindex="-1"></a>      <span class="dt">idx</span><span class="op">:</span> i<span class="op">,</span> <span class="dt">n</span><span class="op">:</span> num<span class="op">,</span> <span class="dt">x</span><span class="op">:</span> i <span class="op">%</span> cols<span class="op">,</span> <span class="dt">y</span><span class="op">:</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">floor</span>(i <span class="op">/</span> cols)<span class="op">,</span> <span class="dt">state</span><span class="op">:</span> arr[i]<span class="op">,</span></span>
+<span id="cb23-592"><a href="#cb23-592" aria-hidden="true" tabindex="-1"></a>      <span class="dt">color</span><span class="op">:</span> bgColor<span class="op">,</span> <span class="dt">textColor</span><span class="op">:</span> <span class="st">"white"</span> </span>
+<span id="cb23-593"><a href="#cb23-593" aria-hidden="true" tabindex="-1"></a>    }<span class="op">;</span></span>
+<span id="cb23-594"><a href="#cb23-594" aria-hidden="true" tabindex="-1"></a>  })<span class="op">;</span></span>
+<span id="cb23-595"><a href="#cb23-595" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-596"><a href="#cb23-596" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> <span class="fu">html</span><span class="vs">`</span></span>
+<span id="cb23-597"><a href="#cb23-597" aria-hidden="true" tabindex="-1"></a><span class="vs">    &lt;div style="margin-top:15px;"&gt;</span></span>
+<span id="cb23-598"><a href="#cb23-598" aria-hidden="true" tabindex="-1"></a><span class="vs">      &lt;div style="margin-bottom:10px; font-size: 0.95em; color: #666;"&gt;</span></span>
+<span id="cb23-599"><a href="#cb23-599" aria-hidden="true" tabindex="-1"></a><span class="vs">        &lt;i&gt;Nota: El número 2 es primo implícito. El vector solo contiene posiciones para $</span><span class="sc">\l</span><span class="vs">floor(N-3)/2</span><span class="sc">\r</span><span class="vs">floor + 1$ impares.&lt;/i&gt;</span></span>
+<span id="cb23-600"><a href="#cb23-600" aria-hidden="true" tabindex="-1"></a><span class="vs">      &lt;/div&gt;</span></span>
+<span id="cb23-601"><a href="#cb23-601" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-602"><a href="#cb23-602" aria-hidden="true" tabindex="-1"></a><span class="vs">      </span><span class="sc">${</span>Plot<span class="op">.</span><span class="fu">plot</span>({</span>
+<span id="cb23-603"><a href="#cb23-603" aria-hidden="true" tabindex="-1"></a>        <span class="dt">height</span><span class="op">:</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">ceil</span>(size <span class="op">/</span> cols) <span class="op">*</span> <span class="dv">35</span> <span class="op">+</span> <span class="dv">20</span><span class="op">,</span> <span class="dt">margin</span><span class="op">:</span> <span class="dv">10</span><span class="op">,</span></span>
+<span id="cb23-604"><a href="#cb23-604" aria-hidden="true" tabindex="-1"></a>        <span class="dt">x</span><span class="op">:</span> { <span class="dt">axis</span><span class="op">:</span> <span class="kw">null</span> }<span class="op">,</span> <span class="dt">y</span><span class="op">:</span> { <span class="dt">axis</span><span class="op">:</span> <span class="kw">null</span><span class="op">,</span> <span class="dt">reverse</span><span class="op">:</span> <span class="kw">true</span> }<span class="op">,</span> <span class="dt">color</span><span class="op">:</span> { <span class="dt">type</span><span class="op">:</span> <span class="st">"identity"</span> }<span class="op">,</span> </span>
+<span id="cb23-605"><a href="#cb23-605" aria-hidden="true" tabindex="-1"></a>        <span class="dt">marks</span><span class="op">:</span> [</span>
+<span id="cb23-606"><a href="#cb23-606" aria-hidden="true" tabindex="-1"></a>          Plot<span class="op">.</span><span class="fu">rect</span>(grid<span class="op">,</span> { <span class="dt">x1</span><span class="op">:</span> d <span class="kw">=&gt;</span> d<span class="op">.</span><span class="at">x</span> <span class="op">-</span> <span class="fl">0.45</span><span class="op">,</span> <span class="dt">x2</span><span class="op">:</span> d <span class="kw">=&gt;</span> d<span class="op">.</span><span class="at">x</span> <span class="op">+</span> <span class="fl">0.45</span><span class="op">,</span> <span class="dt">y1</span><span class="op">:</span> d <span class="kw">=&gt;</span> d<span class="op">.</span><span class="at">y</span> <span class="op">-</span> <span class="fl">0.45</span><span class="op">,</span> <span class="dt">y2</span><span class="op">:</span> d <span class="kw">=&gt;</span> d<span class="op">.</span><span class="at">y</span> <span class="op">+</span> <span class="fl">0.45</span><span class="op">,</span> <span class="dt">fill</span><span class="op">:</span> <span class="st">"color"</span><span class="op">,</span> <span class="dt">stroke</span><span class="op">:</span> <span class="st">"white"</span><span class="op">,</span> <span class="dt">rx</span><span class="op">:</span> <span class="dv">4</span> })<span class="op">,</span></span>
+<span id="cb23-607"><a href="#cb23-607" aria-hidden="true" tabindex="-1"></a>          Plot<span class="op">.</span><span class="fu">text</span>(grid<span class="op">,</span> { <span class="dt">x</span><span class="op">:</span> <span class="st">"x"</span><span class="op">,</span> <span class="dt">y</span><span class="op">:</span> <span class="st">"y"</span><span class="op">,</span> <span class="dt">text</span><span class="op">:</span> <span class="st">"n"</span><span class="op">,</span> <span class="dt">fill</span><span class="op">:</span> <span class="st">"textColor"</span><span class="op">,</span> <span class="dt">fontSize</span><span class="op">:</span> <span class="dv">13</span><span class="op">,</span> <span class="dt">fontWeight</span><span class="op">:</span> <span class="st">"bold"</span> })</span>
+<span id="cb23-608"><a href="#cb23-608" aria-hidden="true" tabindex="-1"></a>        ]</span>
+<span id="cb23-609"><a href="#cb23-609" aria-hidden="true" tabindex="-1"></a>      })<span class="sc">}</span></span>
+<span id="cb23-610"><a href="#cb23-610" aria-hidden="true" tabindex="-1"></a><span class="vs">      &lt;div style="margin-top:15px; font-size: 1.1em; height: 1.5em;"&gt;</span></span>
+<span id="cb23-611"><a href="#cb23-611" aria-hidden="true" tabindex="-1"></a><span class="vs">        </span><span class="sc">${</span>s<span class="op">.</span><span class="at">type</span> <span class="op">===</span> <span class="st">"prime"</span> <span class="op">?</span> <span class="fu">html</span><span class="vs">`🔎 Probando primo impar &lt;b&gt;</span><span class="sc">${</span>currentPrime<span class="sc">}</span><span class="vs">&lt;/b&gt;`</span> <span class="op">:</span> s<span class="op">.</span><span class="at">type</span> <span class="op">===</span> <span class="st">"discard"</span> <span class="op">?</span> <span class="fu">html</span><span class="vs">`❌ </span><span class="sc">${</span>lastDiscard<span class="sc">}</span><span class="vs"> es múltiplo impar de &lt;b&gt;</span><span class="sc">${</span>currentPrime<span class="sc">}</span><span class="vs">&lt;/b&gt;`</span> <span class="op">:</span> <span class="fu">html</span><span class="vs">`✅ Criba completada (Tamaño del vector: </span><span class="sc">${</span>size<span class="sc">}</span><span class="vs"> posiciones)`</span><span class="sc">}</span></span>
+<span id="cb23-612"><a href="#cb23-612" aria-hidden="true" tabindex="-1"></a><span class="vs">      &lt;/div&gt;</span></span>
+<span id="cb23-613"><a href="#cb23-613" aria-hidden="true" tabindex="-1"></a><span class="vs">    &lt;/div&gt;</span></span>
+<span id="cb23-614"><a href="#cb23-614" aria-hidden="true" tabindex="-1"></a><span class="vs">  `</span><span class="op">;</span></span>
+<span id="cb23-615"><a href="#cb23-615" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div id="ojs-cell-16" data-nodetype="expression">
+
+</div>
+</div>
+</div>
+</div>
+</div>
+</details>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Nota</span>Tamaño del vector
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>En esta solución, el vector utilizado para la criba de Eratóstenes ocupará <code>1 * (⌊(n-3)/2⌋ + 1)</code> bytes, ya que se utiliza un vector de booleanos para representar si cada número impar es primo o no. Cada booleano ocupa 1 byte en Java, por lo que el tamaño del vector será significativamente menor que en las soluciones anteriores que utilizaban enteros y que consideraban tanto números pares como impares. Por ejemplo, si <code>n</code> es 100, el vector ocupará <code>1 * (⌊(100-3)/2⌋ + 1) = 49</code> bytes, lo que representa aproximadamente el 12% del tamaño del vector utilizado en la solución con enteros que consideraba todos los números (404 bytes).</p>
+</div>
+</div>
+
+
+</section>
+</section>
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Reutilización</h2><div class="quarto-appendix-contents"><div><a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.es">CC BY-NC-SA 4.0</a></div></div></section></div></main> <!-- /main -->
+<script type="ojs-module-contents">
+eyJjb250ZW50cyI6W3sibWV0aG9kTmFtZSI6ImludGVycHJldCIsImNlbGxOYW1lIjoib2pzLWNlbGwtMSIsImlubGluZSI6ZmFsc2UsInNvdXJjZSI6Ii8vIGRlZmluaW1vcyBsYSBmdW5jacOzbiBnbG9iYWwgdW5hIHNvbGEgdmV6IHBhcmEgdXNhcmxhIGVuIHRvZG9zIGxvcyBibG9xdWVzXHJcbmNsZWFuU2xpZGVyID0gKHJhbmdlLCBjb25maWcpID0+IHtcclxuICBjb25zdCBpbnB1dCA9IElucHV0cy5yYW5nZShyYW5nZSwgY29uZmlnKTtcclxuICBjb25zdCBudW1iZXJCb3ggPSBpbnB1dC5xdWVyeVNlbGVjdG9yKFwiaW5wdXRbdHlwZT1udW1iZXJdXCIpO1xyXG4gIGlmIChudW1iZXJCb3gpIG51bWJlckJveC5zdHlsZS5kaXNwbGF5ID0gXCJub25lXCI7XHJcbiAgY29uc3QgcmFuZ2VTbGlkZXIgPSBpbnB1dC5xdWVyeVNlbGVjdG9yKFwiaW5wdXRbdHlwZT1yYW5nZV1cIik7XHJcbiAgaWYgKHJhbmdlU2xpZGVyKSByYW5nZVNsaWRlci5zdHlsZS53aWR0aCA9IFwiMTAwJVwiO1xyXG4gIGlucHV0LnN0eWxlLndpZHRoID0gXCIxMDAlXCI7XHJcbiAgcmV0dXJuIGlucHV0O1xyXG59O1xyXG4ifSx7Im1ldGhvZE5hbWUiOiJpbnRlcnByZXQiLCJjZWxsTmFtZSI6Im9qcy1jZWxsLTIiLCJpbmxpbmUiOmZhbHNlLCJzb3VyY2UiOiJ2aWV3b2YgTjEgPSBjbGVhblNsaWRlcihbMTAsIDUwXSwgeyB2YWx1ZTogMzAsIHN0ZXA6IDEsIGxhYmVsOiBcIlZhbG9yIE46IFwiIH0pXHJcbiJ9LHsibWV0aG9kTmFtZSI6ImludGVycHJldCIsImNlbGxOYW1lIjoib2pzLWNlbGwtMyIsImlubGluZSI6ZmFsc2UsInNvdXJjZSI6InN0ZXBzMSA9IHtcclxuICBjb25zdCBtYXggPSBOMTtcclxuICBsZXQgc3RhdGUgPSBBcnJheShtYXggKyAxKS5maWxsKFwiY2FuZGlkYXRlXCIpO1xyXG4gIHN0YXRlWzBdID0gc3RhdGVbMV0gPSBcImRpc2NhcmRlZFwiO1xyXG5cclxuICBjb25zdCBvdXQgPSBbXTtcclxuXHJcbiAgZm9yIChsZXQgcCA9IDI7IHAgPD0gbWF4OyBwKyspIHtcclxuICAgIGlmIChzdGF0ZVtwXSA9PT0gXCJjYW5kaWRhdGVcIikge1xyXG4gICAgICBvdXQucHVzaCh7IHR5cGU6IFwicHJpbWVcIiwgcCwgc3RhdGU6IFsuLi5zdGF0ZV0gfSk7XHJcblxyXG4gICAgICBmb3IgKGxldCBrID0gcCAqIDI7IGsgPD0gbWF4OyBrICs9IHApIHtcclxuICAgICAgICBpZiAoc3RhdGVba10gPT09IFwiY2FuZGlkYXRlXCIpIHtcclxuICAgICAgICAgIHN0YXRlW2tdID0gXCJkaXNjYXJkZWRcIjtcclxuICAgICAgICAgIG91dC5wdXNoKHsgdHlwZTogXCJkaXNjYXJkXCIsIHAsIGssIHN0YXRlOiBbLi4uc3RhdGVdIH0pO1xyXG4gICAgICAgIH1cclxuICAgICAgfVxyXG4gICAgfVxyXG4gIH1cclxuXHJcbiAgb3V0LnB1c2goeyB0eXBlOiBcImZpbmFsXCIsIHN0YXRlOiBbLi4uc3RhdGVdIH0pO1xyXG4gIHJldHVybiBvdXQ7XHJcbn1cclxuIn0seyJtZXRob2ROYW1lIjoiaW50ZXJwcmV0IiwiY2VsbE5hbWUiOiJvanMtY2VsbC00IiwiaW5saW5lIjpmYWxzZSwic291cmNlIjoibWF4U3RlcDEgPSBzdGVwczEubGVuZ3RoIC0gMVxyXG4ifSx7Im1ldGhvZE5hbWUiOiJpbnRlcnByZXQiLCJjZWxsTmFtZSI6Im9qcy1jZWxsLTUiLCJpbmxpbmUiOmZhbHNlLCJzb3VyY2UiOiJ2aWV3b2Ygc3RlcDEgPSBjbGVhblNsaWRlcihbMCwgbWF4U3RlcDFdLCB7IHZhbHVlOiAwLCBzdGVwOiAxLCBsYWJlbDogXCJQYXNvIGRlIGxhIGNyaWJhOiBcIiB9KVxyXG4ifSx7Im1ldGhvZE5hbWUiOiJpbnRlcnByZXQiLCJjZWxsTmFtZSI6Im9qcy1jZWxsLTYiLCJpbmxpbmUiOmZhbHNlLCJzb3VyY2UiOiJ7XHJcbiAgaWYgKCFzdGVwczEgfHwgc3RlcHMxLmxlbmd0aCA9PT0gMCkgcmV0dXJuIGh0bWxgPGRpdj5DYXJnYW5kby4uLjwvZGl2PmA7XHJcblxyXG4gIGNvbnN0IHNhZmVTdGVwID0gTWF0aC5taW4oc3RlcDEsIHN0ZXBzMS5sZW5ndGggLSAxKTtcclxuICBjb25zdCBzID0gc3RlcHMxW3NhZmVTdGVwXTtcclxuXHJcbiAgaWYgKCFzKSByZXR1cm4gaHRtbGA8ZGl2PkNhcmdhbmRvLi4uPC9kaXY+YDtcclxuXHJcbiAgY29uc3QgYXJyID0gcy5zdGF0ZTtcclxuICBjb25zdCBtYXggPSBOMTtcclxuICBjb25zdCBjb2xzID0gTWF0aC5jZWlsKE1hdGguc3FydChtYXgpKTtcclxuICBcclxuICBjb25zdCBjdXJyZW50UHJpbWUgPSBzLnA7XHJcbiAgY29uc3QgbGFzdERpc2NhcmQgPSBzLms7XHJcblxyXG4gIGNvbnN0IGdyaWQgPSBBcnJheS5mcm9tKHsgbGVuZ3RoOiBtYXggKyAxIH0sIChfLCBpKSA9PiB7XHJcbiAgICBsZXQgYmdDb2xvciA9IFwiIzJhOWQ4ZlwiOyBcclxuICAgIGlmIChpIDwgMikgYmdDb2xvciA9IFwiI2RkZFwiO1xyXG4gICAgZWxzZSBpZiAoaSA9PT0gY3VycmVudFByaW1lKSBiZ0NvbG9yID0gXCIjNDU3YjlkXCI7XHJcbiAgICBlbHNlIGlmIChpID09PSBsYXN0RGlzY2FyZCkgYmdDb2xvciA9IFwiI2Y0YTI2MVwiO1xyXG4gICAgZWxzZSBpZiAoYXJyW2ldID09PSBcImRpc2NhcmRlZFwiKSBiZ0NvbG9yID0gXCIjZTYzOTQ2XCI7XHJcblxyXG4gICAgcmV0dXJuIHtcclxuICAgICAgbjogaSwgeDogaSAlIGNvbHMsIHk6IE1hdGguZmxvb3IoaSAvIGNvbHMpLCBzdGF0ZTogYXJyW2ldLFxyXG4gICAgICBjb2xvcjogYmdDb2xvciwgdGV4dENvbG9yOiBpIDwgMiA/IFwiIzMzM1wiIDogXCJ3aGl0ZVwiIFxyXG4gICAgfTtcclxuICB9KTtcclxuXHJcbiAgcmV0dXJuIGh0bWxgXHJcbiAgICA8ZGl2IHN0eWxlPVwibWFyZ2luLXRvcDoxNXB4O1wiPlxyXG4gICAgICAke1Bsb3QucGxvdCh7XHJcbiAgICAgICAgaGVpZ2h0OiBNYXRoLmNlaWwobWF4IC8gY29scykgKiAzNSArIDIwLCBtYXJnaW46IDEwLFxyXG4gICAgICAgIHg6IHsgYXhpczogbnVsbCB9LCB5OiB7IGF4aXM6IG51bGwsIHJldmVyc2U6IHRydWUgfSwgY29sb3I6IHsgdHlwZTogXCJpZGVudGl0eVwiIH0sIFxyXG4gICAgICAgIG1hcmtzOiBbXHJcbiAgICAgICAgICBQbG90LnJlY3QoZ3JpZCwgeyB4MTogZCA9PiBkLnggLSAwLjQ1LCB4MjogZCA9PiBkLnggKyAwLjQ1LCB5MTogZCA9PiBkLnkgLSAwLjQ1LCB5MjogZCA9PiBkLnkgKyAwLjQ1LCBmaWxsOiBcImNvbG9yXCIsIHN0cm9rZTogXCJ3aGl0ZVwiLCByeDogNCB9KSxcclxuICAgICAgICAgIFBsb3QudGV4dChncmlkLCB7IHg6IFwieFwiLCB5OiBcInlcIiwgdGV4dDogXCJuXCIsIGZpbGw6IFwidGV4dENvbG9yXCIsIGZvbnRTaXplOiAxMywgZm9udFdlaWdodDogXCJib2xkXCIgfSlcclxuICAgICAgICBdXHJcbiAgICAgIH0pfVxyXG4gICAgICA8ZGl2IHN0eWxlPVwibWFyZ2luLXRvcDoxNXB4OyBmb250LXNpemU6IDEuMWVtOyBoZWlnaHQ6IDEuNWVtO1wiPlxyXG4gICAgICAgICR7cy50eXBlID09PSBcInByaW1lXCIgPyBodG1sYPCflI4gUHJvYmFuZG8gcHJpbW8gPGI+JHtjdXJyZW50UHJpbWV9PC9iPmAgOiBzLnR5cGUgPT09IFwiZGlzY2FyZFwiID8gaHRtbGDinYwgJHtsYXN0RGlzY2FyZH0gZXMgbcO6bHRpcGxvIGRlIDxiPiR7Y3VycmVudFByaW1lfTwvYj5gIDogaHRtbGDinIUgQ3JpYmEgY29tcGxldGFkYWB9XHJcbiAgICAgIDwvZGl2PlxyXG4gICAgPC9kaXY+XHJcbiAgYDtcclxufVxyXG4ifSx7Im1ldGhvZE5hbWUiOiJpbnRlcnByZXQiLCJjZWxsTmFtZSI6Im9qcy1jZWxsLTciLCJpbmxpbmUiOmZhbHNlLCJzb3VyY2UiOiJ2aWV3b2YgTjIgPSBjbGVhblNsaWRlcihbMTAsIDE1MF0sIHsgdmFsdWU6IDYwLCBzdGVwOiAxLCBsYWJlbDogXCJWYWxvciBOOiBcIiB9KVxyXG4ifSx7Im1ldGhvZE5hbWUiOiJpbnRlcnByZXQiLCJjZWxsTmFtZSI6Im9qcy1jZWxsLTgiLCJpbmxpbmUiOmZhbHNlLCJzb3VyY2UiOiJzdGVwczIgPSB7XHJcbiAgY29uc3QgbWF4ID0gTjI7XHJcbiAgbGV0IHN0YXRlID0gQXJyYXkobWF4ICsgMSkuZmlsbChcImNhbmRpZGF0ZVwiKTtcclxuICBzdGF0ZVswXSA9IHN0YXRlWzFdID0gXCJkaXNjYXJkZWRcIjtcclxuXHJcbiAgY29uc3Qgb3V0ID0gW107XHJcblxyXG4gIGZvciAobGV0IHAgPSAyOyBwICogcCA8PSBtYXg7IHArKykge1xyXG4gICAgaWYgKHN0YXRlW3BdID09PSBcImNhbmRpZGF0ZVwiKSB7XHJcbiAgICAgIG91dC5wdXNoKHsgdHlwZTogXCJwcmltZVwiLCBwLCBzdGF0ZTogWy4uLnN0YXRlXSB9KTtcclxuXHJcbiAgICAgIGZvciAobGV0IGsgPSBwICogcDsgayA8PSBtYXg7IGsgKz0gcCkge1xyXG4gICAgICAgIGlmIChzdGF0ZVtrXSA9PT0gXCJjYW5kaWRhdGVcIikge1xyXG4gICAgICAgICAgc3RhdGVba10gPSBcImRpc2NhcmRlZFwiO1xyXG4gICAgICAgICAgb3V0LnB1c2goeyB0eXBlOiBcImRpc2NhcmRcIiwgcCwgaywgc3RhdGU6IFsuLi5zdGF0ZV0gfSk7XHJcbiAgICAgICAgfVxyXG4gICAgICB9XHJcbiAgICB9XHJcbiAgfVxyXG5cclxuICBvdXQucHVzaCh7IHR5cGU6IFwiZmluYWxcIiwgc3RhdGU6IFsuLi5zdGF0ZV0gfSk7XHJcbiAgcmV0dXJuIG91dDtcclxufVxyXG4ifSx7Im1ldGhvZE5hbWUiOiJpbnRlcnByZXQiLCJjZWxsTmFtZSI6Im9qcy1jZWxsLTkiLCJpbmxpbmUiOmZhbHNlLCJzb3VyY2UiOiJtYXhTdGVwMiA9IHN0ZXBzMi5sZW5ndGggLSAxXHJcbiJ9LHsibWV0aG9kTmFtZSI6ImludGVycHJldCIsImNlbGxOYW1lIjoib2pzLWNlbGwtMTAiLCJpbmxpbmUiOmZhbHNlLCJzb3VyY2UiOiJ2aWV3b2Ygc3RlcDIgPSBjbGVhblNsaWRlcihbMCwgbWF4U3RlcDJdLCB7IHZhbHVlOiAwLCBzdGVwOiAxLCBsYWJlbDogXCJQYXNvIGRlIGxhIGNyaWJhOiBcIiB9KVxyXG4ifSx7Im1ldGhvZE5hbWUiOiJpbnRlcnByZXQiLCJjZWxsTmFtZSI6Im9qcy1jZWxsLTExIiwiaW5saW5lIjpmYWxzZSwic291cmNlIjoie1xyXG4gIGlmICghc3RlcHMyIHx8IHN0ZXBzMi5sZW5ndGggPT09IDApIHJldHVybiBodG1sYDxkaXY+Q2FyZ2FuZG8uLi48L2Rpdj5gO1xyXG5cclxuICBjb25zdCBzYWZlU3RlcCA9IE1hdGgubWluKHN0ZXAyLCBzdGVwczIubGVuZ3RoIC0gMSk7XHJcbiAgY29uc3QgcyA9IHN0ZXBzMltzYWZlU3RlcF07XHJcblxyXG4gIGlmICghcykgcmV0dXJuIGh0bWxgPGRpdj5DYXJnYW5kby4uLjwvZGl2PmA7XHJcblxyXG4gIGNvbnN0IGFyciA9IHMuc3RhdGU7XHJcbiAgY29uc3QgbWF4ID0gTjI7XHJcbiAgY29uc3QgY29scyA9IE1hdGguY2VpbChNYXRoLnNxcnQobWF4KSk7XHJcbiAgXHJcbiAgY29uc3QgY3VycmVudFByaW1lID0gcy5wO1xyXG4gIGNvbnN0IGxhc3REaXNjYXJkID0gcy5rO1xyXG5cclxuICBjb25zdCBncmlkID0gQXJyYXkuZnJvbSh7IGxlbmd0aDogbWF4ICsgMSB9LCAoXywgaSkgPT4ge1xyXG4gICAgbGV0IGJnQ29sb3IgPSBcIiMyYTlkOGZcIjsgXHJcbiAgICBpZiAoaSA8IDIpIGJnQ29sb3IgPSBcIiNkZGRcIjtcclxuICAgIGVsc2UgaWYgKGkgPT09IGN1cnJlbnRQcmltZSkgYmdDb2xvciA9IFwiIzQ1N2I5ZFwiO1xyXG4gICAgZWxzZSBpZiAoaSA9PT0gbGFzdERpc2NhcmQpIGJnQ29sb3IgPSBcIiNmNGEyNjFcIjtcclxuICAgIGVsc2UgaWYgKGFycltpXSA9PT0gXCJkaXNjYXJkZWRcIikgYmdDb2xvciA9IFwiI2U2Mzk0NlwiO1xyXG5cclxuICAgIHJldHVybiB7XHJcbiAgICAgIG46IGksIHg6IGkgJSBjb2xzLCB5OiBNYXRoLmZsb29yKGkgLyBjb2xzKSwgc3RhdGU6IGFycltpXSxcclxuICAgICAgY29sb3I6IGJnQ29sb3IsIHRleHRDb2xvcjogaSA8IDIgPyBcIiMzMzNcIiA6IFwid2hpdGVcIiBcclxuICAgIH07XHJcbiAgfSk7XHJcblxyXG4gIHJldHVybiBodG1sYFxyXG4gICAgPGRpdiBzdHlsZT1cIm1hcmdpbi10b3A6MTVweDtcIj5cclxuICAgICAgJHtQbG90LnBsb3Qoe1xyXG4gICAgICAgIGhlaWdodDogTWF0aC5jZWlsKG1heCAvIGNvbHMpICogMzUgKyAyMCwgbWFyZ2luOiAxMCxcclxuICAgICAgICB4OiB7IGF4aXM6IG51bGwgfSwgeTogeyBheGlzOiBudWxsLCByZXZlcnNlOiB0cnVlIH0sIGNvbG9yOiB7IHR5cGU6IFwiaWRlbnRpdHlcIiB9LCBcclxuICAgICAgICBtYXJrczogW1xyXG4gICAgICAgICAgUGxvdC5yZWN0KGdyaWQsIHsgeDE6IGQgPT4gZC54IC0gMC40NSwgeDI6IGQgPT4gZC54ICsgMC40NSwgeTE6IGQgPT4gZC55IC0gMC40NSwgeTI6IGQgPT4gZC55ICsgMC40NSwgZmlsbDogXCJjb2xvclwiLCBzdHJva2U6IFwid2hpdGVcIiwgcng6IDQgfSksXHJcbiAgICAgICAgICBQbG90LnRleHQoZ3JpZCwgeyB4OiBcInhcIiwgeTogXCJ5XCIsIHRleHQ6IFwiblwiLCBmaWxsOiBcInRleHRDb2xvclwiLCBmb250U2l6ZTogMTMsIGZvbnRXZWlnaHQ6IFwiYm9sZFwiIH0pXHJcbiAgICAgICAgXVxyXG4gICAgICB9KX1cclxuICAgICAgPGRpdiBzdHlsZT1cIm1hcmdpbi10b3A6MTVweDsgZm9udC1zaXplOiAxLjFlbTsgaGVpZ2h0OiAxLjVlbTtcIj5cclxuICAgICAgICAke3MudHlwZSA9PT0gXCJwcmltZVwiID8gaHRtbGDwn5SOIFByb2JhbmRvIHByaW1vIDxiPiR7Y3VycmVudFByaW1lfTwvYj5gIDogcy50eXBlID09PSBcImRpc2NhcmRcIiA/IGh0bWxg4p2MICR7bGFzdERpc2NhcmR9IGVzIG3Dumx0aXBsbyBkZSA8Yj4ke2N1cnJlbnRQcmltZX08L2I+YCA6IGh0bWxg4pyFIENyaWJhIGNvbXBsZXRhZGFgfVxyXG4gICAgICA8L2Rpdj5cclxuICAgIDwvZGl2PlxyXG4gIGA7XHJcbn1cclxuIn0seyJtZXRob2ROYW1lIjoiaW50ZXJwcmV0IiwiY2VsbE5hbWUiOiJvanMtY2VsbC0xMiIsImlubGluZSI6ZmFsc2UsInNvdXJjZSI6InZpZXdvZiBONCA9IGNsZWFuU2xpZGVyKFsxMCwgMTUwXSwgeyB2YWx1ZTogNjAsIHN0ZXA6IDEsIGxhYmVsOiBcIlZhbG9yIE46IFwiIH0pXHJcbiJ9LHsibWV0aG9kTmFtZSI6ImludGVycHJldCIsImNlbGxOYW1lIjoib2pzLWNlbGwtMTMiLCJpbmxpbmUiOmZhbHNlLCJzb3VyY2UiOiJzdGVwczQgPSB7XHJcbiAgY29uc3QgbWF4ID0gTjQ7XHJcbiAgaWYgKG1heCA8IDMpIHJldHVybiBbeyB0eXBlOiBcImZpbmFsXCIsIHN0YXRlOiBbXSB9XTtcclxuXHJcbiAgY29uc3Qgc2l6ZSA9IE1hdGguZmxvb3IoKG1heCAtIDMpIC8gMikgKyAxO1xyXG4gIGxldCBzdGF0ZSA9IEFycmF5KHNpemUpLmZpbGwoXCJjYW5kaWRhdGVcIik7XHJcblxyXG4gIGNvbnN0IG91dCA9IFtdO1xyXG5cclxuICBmb3IgKGxldCBpID0gMDsgOyBpKyspIHtcclxuICAgIGxldCBwID0gMiAqIGkgKyAzO1xyXG4gICAgaWYgKHAgKiBwID4gbWF4KSBicmVhaztcclxuXHJcbiAgICBpZiAoc3RhdGVbaV0gPT09IFwiY2FuZGlkYXRlXCIpIHtcclxuICAgICAgb3V0LnB1c2goeyB0eXBlOiBcInByaW1lXCIsIHAsIHN0YXRlOiBbLi4uc3RhdGVdIH0pO1xyXG5cclxuICAgICAgZm9yIChsZXQgbXVsdCA9IHAgKiBwOyBtdWx0IDw9IG1heDsgbXVsdCArPSAyICogcCkge1xyXG4gICAgICAgIGxldCBpZHggPSAobXVsdCAtIDMpIC8gMjsgXHJcbiAgICAgICAgaWYgKHN0YXRlW2lkeF0gPT09IFwiY2FuZGlkYXRlXCIpIHtcclxuICAgICAgICAgIHN0YXRlW2lkeF0gPSBcImRpc2NhcmRlZFwiO1xyXG4gICAgICAgICAgb3V0LnB1c2goeyB0eXBlOiBcImRpc2NhcmRcIiwgcCwgazogbXVsdCwgc3RhdGU6IFsuLi5zdGF0ZV0gfSk7XHJcbiAgICAgICAgfVxyXG4gICAgICB9XHJcbiAgICB9XHJcbiAgfVxyXG5cclxuICBvdXQucHVzaCh7IHR5cGU6IFwiZmluYWxcIiwgc3RhdGU6IFsuLi5zdGF0ZV0gfSk7XHJcbiAgcmV0dXJuIG91dDtcclxufVxyXG4ifSx7Im1ldGhvZE5hbWUiOiJpbnRlcnByZXQiLCJjZWxsTmFtZSI6Im9qcy1jZWxsLTE0IiwiaW5saW5lIjpmYWxzZSwic291cmNlIjoibWF4U3RlcDQgPSBzdGVwczQubGVuZ3RoIC0gMVxyXG4ifSx7Im1ldGhvZE5hbWUiOiJpbnRlcnByZXQiLCJjZWxsTmFtZSI6Im9qcy1jZWxsLTE1IiwiaW5saW5lIjpmYWxzZSwic291cmNlIjoidmlld29mIHN0ZXA0ID0gY2xlYW5TbGlkZXIoWzAsIG1heFN0ZXA0XSwgeyB2YWx1ZTogMCwgc3RlcDogMSwgbGFiZWw6IFwiUGFzbyBkZSBsYSBjcmliYTogXCIgfSlcclxuIn0seyJtZXRob2ROYW1lIjoiaW50ZXJwcmV0IiwiY2VsbE5hbWUiOiJvanMtY2VsbC0xNiIsImlubGluZSI6ZmFsc2UsInNvdXJjZSI6IntcclxuICBpZiAoIXN0ZXBzNCB8fCBzdGVwczQubGVuZ3RoID09PSAwKSByZXR1cm4gaHRtbGA8ZGl2PkNhcmdhbmRvLi4uPC9kaXY+YDtcclxuXHJcbiAgY29uc3Qgc2FmZVN0ZXAgPSBNYXRoLm1pbihzdGVwNCwgc3RlcHM0Lmxlbmd0aCAtIDEpO1xyXG4gIGNvbnN0IHMgPSBzdGVwczRbc2FmZVN0ZXBdO1xyXG5cclxuICBpZiAoIXMpIHJldHVybiBodG1sYDxkaXY+Q2FyZ2FuZG8uLi48L2Rpdj5gO1xyXG5cclxuICBjb25zdCBhcnIgPSBzLnN0YXRlO1xyXG4gIGNvbnN0IG1heCA9IE40O1xyXG4gIFxyXG4gIGNvbnN0IHNpemUgPSBNYXRoLmZsb29yKChtYXggLSAzKSAvIDIpICsgMTtcclxuICBjb25zdCBjb2xzID0gTWF0aC5jZWlsKE1hdGguc3FydChzaXplKSk7IFxyXG4gIFxyXG4gIGNvbnN0IGN1cnJlbnRQcmltZSA9IHMucDtcclxuICBjb25zdCBsYXN0RGlzY2FyZCA9IHMuaztcclxuXHJcbiAgY29uc3QgZ3JpZCA9IEFycmF5LmZyb20oeyBsZW5ndGg6IHNpemUgfSwgKF8sIGkpID0+IHtcclxuICAgIGNvbnN0IG51bSA9IDIgKiBpICsgMzsgXHJcbiAgICBsZXQgYmdDb2xvciA9IFwiIzJhOWQ4ZlwiOyBcclxuICAgIFxyXG4gICAgaWYgKG51bSA9PT0gY3VycmVudFByaW1lKSBiZ0NvbG9yID0gXCIjNDU3YjlkXCI7XHJcbiAgICBlbHNlIGlmIChudW0gPT09IGxhc3REaXNjYXJkKSBiZ0NvbG9yID0gXCIjZjRhMjYxXCI7XHJcbiAgICBlbHNlIGlmIChhcnJbaV0gPT09IFwiZGlzY2FyZGVkXCIpIGJnQ29sb3IgPSBcIiNlNjM5NDZcIjtcclxuXHJcbiAgICByZXR1cm4ge1xyXG4gICAgICBpZHg6IGksIG46IG51bSwgeDogaSAlIGNvbHMsIHk6IE1hdGguZmxvb3IoaSAvIGNvbHMpLCBzdGF0ZTogYXJyW2ldLFxyXG4gICAgICBjb2xvcjogYmdDb2xvciwgdGV4dENvbG9yOiBcIndoaXRlXCIgXHJcbiAgICB9O1xyXG4gIH0pO1xyXG5cclxuICByZXR1cm4gaHRtbGBcclxuICAgIDxkaXYgc3R5bGU9XCJtYXJnaW4tdG9wOjE1cHg7XCI+XHJcbiAgICAgIDxkaXYgc3R5bGU9XCJtYXJnaW4tYm90dG9tOjEwcHg7IGZvbnQtc2l6ZTogMC45NWVtOyBjb2xvcjogIzY2NjtcIj5cclxuICAgICAgICA8aT5Ob3RhOiBFbCBuw7ptZXJvIDIgZXMgcHJpbW8gaW1wbMOtY2l0by4gRWwgdmVjdG9yIHNvbG8gY29udGllbmUgcG9zaWNpb25lcyBwYXJhICRcXGxmbG9vcihOLTMpLzJcXHJmbG9vciArIDEkIGltcGFyZXMuPC9pPlxyXG4gICAgICA8L2Rpdj5cclxuXHJcbiAgICAgICR7UGxvdC5wbG90KHtcclxuICAgICAgICBoZWlnaHQ6IE1hdGguY2VpbChzaXplIC8gY29scykgKiAzNSArIDIwLCBtYXJnaW46IDEwLFxyXG4gICAgICAgIHg6IHsgYXhpczogbnVsbCB9LCB5OiB7IGF4aXM6IG51bGwsIHJldmVyc2U6IHRydWUgfSwgY29sb3I6IHsgdHlwZTogXCJpZGVudGl0eVwiIH0sIFxyXG4gICAgICAgIG1hcmtzOiBbXHJcbiAgICAgICAgICBQbG90LnJlY3QoZ3JpZCwgeyB4MTogZCA9PiBkLnggLSAwLjQ1LCB4MjogZCA9PiBkLnggKyAwLjQ1LCB5MTogZCA9PiBkLnkgLSAwLjQ1LCB5MjogZCA9PiBkLnkgKyAwLjQ1LCBmaWxsOiBcImNvbG9yXCIsIHN0cm9rZTogXCJ3aGl0ZVwiLCByeDogNCB9KSxcclxuICAgICAgICAgIFBsb3QudGV4dChncmlkLCB7IHg6IFwieFwiLCB5OiBcInlcIiwgdGV4dDogXCJuXCIsIGZpbGw6IFwidGV4dENvbG9yXCIsIGZvbnRTaXplOiAxMywgZm9udFdlaWdodDogXCJib2xkXCIgfSlcclxuICAgICAgICBdXHJcbiAgICAgIH0pfVxyXG4gICAgICA8ZGl2IHN0eWxlPVwibWFyZ2luLXRvcDoxNXB4OyBmb250LXNpemU6IDEuMWVtOyBoZWlnaHQ6IDEuNWVtO1wiPlxyXG4gICAgICAgICR7cy50eXBlID09PSBcInByaW1lXCIgPyBodG1sYPCflI4gUHJvYmFuZG8gcHJpbW8gaW1wYXIgPGI+JHtjdXJyZW50UHJpbWV9PC9iPmAgOiBzLnR5cGUgPT09IFwiZGlzY2FyZFwiID8gaHRtbGDinYwgJHtsYXN0RGlzY2FyZH0gZXMgbcO6bHRpcGxvIGltcGFyIGRlIDxiPiR7Y3VycmVudFByaW1lfTwvYj5gIDogaHRtbGDinIUgQ3JpYmEgY29tcGxldGFkYSAoVGFtYcOxbyBkZWwgdmVjdG9yOiAke3NpemV9IHBvc2ljaW9uZXMpYH1cclxuICAgICAgPC9kaXY+XHJcbiAgICA8L2Rpdj5cclxuICBgO1xyXG59XHJcbiJ9LHsibWV0aG9kTmFtZSI6ImludGVycHJldFF1aWV0Iiwic291cmNlIjoic2hpbnlJbnB1dCgnTjEnKSJ9LHsibWV0aG9kTmFtZSI6ImludGVycHJldFF1aWV0Iiwic291cmNlIjoic2hpbnlJbnB1dCgnc3RlcDEnKSJ9LHsibWV0aG9kTmFtZSI6ImludGVycHJldFF1aWV0Iiwic291cmNlIjoic2hpbnlJbnB1dCgnTjInKSJ9LHsibWV0aG9kTmFtZSI6ImludGVycHJldFF1aWV0Iiwic291cmNlIjoic2hpbnlJbnB1dCgnc3RlcDInKSJ9LHsibWV0aG9kTmFtZSI6ImludGVycHJldFF1aWV0Iiwic291cmNlIjoic2hpbnlJbnB1dCgnTjQnKSJ9LHsibWV0aG9kTmFtZSI6ImludGVycHJldFF1aWV0Iiwic291cmNlIjoic2hpbnlJbnB1dCgnc3RlcDQnKSJ9XX0=
+</script>
+<script type="module">
+if (window.location.protocol === "file:") { alert("The OJS runtime does not work with file:// URLs. Please use a web server to view this document."); }
+window._ojs.paths.runtimeToDoc = "../../practicas";
+window._ojs.paths.runtimeToRoot = "../..";
+window._ojs.paths.docToRoot = "..";
+window._ojs.selfContained = false;
+window._ojs.runtime.interpretFromScriptTags();
+</script>
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copiado");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copiado");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/informatica-30717\.github\.io\/");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p>© 2026 Alfonso López, Ignacio Huitzil, Yamilka Toca<br>
+Universidad de Zaragoza</p>
+</div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    </div>
+    <div class="nav-footer-right">
+<p>Material docente protegido.<br>
+Licencia <strong>CC BY-NC-SA 4.0</strong> <img src="https://mirrors.creativecommons.org/presskit/buttons/88x31/png/by-nc-sa.png" class="img-fluid" width="80"><br>
+Uso docente no comercial permitido con atribución y licencia compartida.</p>
+</div>
+  </div>
+</footer>
+
+
+
+
+</body></html>
