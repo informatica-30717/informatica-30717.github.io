@@ -447,7 +447,7 @@ public class OrdenacionBurbuja {
     int[] v = new int[size];
     for (int i = 0; i < size; i++) {
       int x = r.nextInt();
-      x = Math.abs(x) % 50;     // Limitamos el rango de números para facilitar la visualización
+      x = Math.abs(x) % 50;     // Limitamos el rango para facilitar la visualización
       v[i] = x;
     }
     
