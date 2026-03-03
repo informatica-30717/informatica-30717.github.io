@@ -143,16 +143,6 @@ $$
 
 El valor dentro de la raíz cuadrada, $b^2 - 4ac$, se llama **discriminante** ($\Delta$) y determina el número de soluciones reales que tiene la ecuación:
 
----
-
-### Clase 1: dos soluciones reales
-
-**Si $\Delta > 0$, la ecuación tiene dos soluciones reales distintas**, que se calculan con la fórmula general utilizando el símbolo $+$ para una raíz y el símbolo $-$ para la otra raíz.
-
-Verifica que la solución es correcta utilizando los siguientes coeficientes:
-
-- $a=1, \quad b=-3, \quad c=2$ → dos soluciones reales ($x=1$ y $x=2$).
-
 ::: {.callout-tip}
 ## Clases en Java
 
@@ -170,7 +160,15 @@ public class NombreDeLaClase {
 ```
 :::
 
---- 
+::: {.callout-note}
+## Leer datos en Java
+Utiliza la clase `Scanner` para leer los coeficientes del polinomio desde la entrada estándar, por ejemplo:
+```java
+Scanner scanner = new Scanner(System.in);
+System.out.print("Introduce el coeficiente a: ");
+double a = scanner.nextDouble();
+```
+:::
 
 ::: {.callout-note}
 ## Imprimir resultados en Java
@@ -182,9 +180,99 @@ System.out.println("La solución es: " + x);
 
 ---
 
-### Clase 2: una solución real
+### Clase 1: dos soluciones reales
+
+**Si $\Delta > 0$, la ecuación tiene dos soluciones reales distintas**, que se calculan con la fórmula general utilizando el símbolo $+$ para una raíz y el símbolo $-$ para la otra raíz.
+
+::: {.callout-note}
+## Notas para resolver el problema
+
+- Supondremos que sólo hay raíces reales.
+- Acciones a realizar:
+  - Leer los coeficientes del polinomio.
+  - Aplicar las fórmulas para calcular las dos soluciones.
+  - Escribir las soluciones por pantalla.
+- Posibles mejoras:
+  - Cálculo previo del discriminante ($\Delta$), en lugar de calcularlo dos veces.
+  - Cálculo previo del denominador ($2a$), en lugar de calcularlo dos veces.
+:::
+
+A continuación se muestra una posible solución en pseudocódigo:
+```{.java}
+Programa Raices1   { Funciona si sólo hay raíces reales }
+
+Definición de variables
+    reales: coefA, coefB, coefC;
+    reales: discriminante, denominador;
+    reales: raiz1, raiz2;
+
+Principio del algoritmo
+
+    lee(coefA, coefB, coefC);
+
+    discriminante := pow(coefB, 2) - (4.0 * coefA * coefC);
+    denominador := 2.0 * coefA;
+
+    raiz1 := (-coefB + sqrt(discriminante)) / denominador;
+    raiz2 := (-coefB - sqrt(discriminante)) / denominador;
+
+    escribe(raiz1, raiz2);
+
+fin
+```
+
+Verifica que la solución es correcta utilizando los siguientes coeficientes:
+
+- $a=1, \quad b=-3, \quad c=2$ → dos soluciones reales ($x=1$ y $x=2$).
+
+---
+
+### Clase 2: una solución real o dos soluciones reales
 
 Si $\Delta = 0$, la ecuación tiene una única solución real, que se calcula con la fórmula general utilizando cualquiera de los símbolos $+$ o $-$, ya que ambos darán el mismo resultado.
+
+::: {.callout-note}
+## Notas para resolver el problema
+
+- Calcula las raíces cuando sólo hay raíces reales ($\Delta \geq 0$), pero en caso contrario se escribe un mensaje explicativo.
+- Acciones a realizar:
+  - Leer los coeficientes del polinomio.
+  - Calcular el discriminante.
+  - Si el discriminante es mayor o igual a cero:
+    - Aplicar las fórmulas para calcular las dos soluciones.
+    - Escribir las soluciones por pantalla.
+  - Si el discriminante es menor que cero:
+    - Escribir un texto indicando que no hay raíces.
+- Posibles mejoras:
+  - Cálculo previo del denominador ($2a$), en lugar de calcularlo dos veces.
+:::
+
+```{.java}
+Programa Raices2   { Funciona si hay raíces reales; si no, mensaje de error }
+
+Definición de variables
+    reales: coefA, coefB, coefC;
+    reales: discriminante, denominador;
+    reales: raiz1, raiz2;
+
+Principio del algoritmo
+
+    lee(coefA, coefB, coefC);
+
+    discriminante := pow(coefB, 2) - (4.0 * coefA * coefC);
+
+    si discriminante >= 0.0 entonces
+        principio
+            denominador := 2.0 * coefA;
+            raiz1 := (-coefB + sqrt(discriminante)) / denominador;
+            raiz2 := (-coefB - sqrt(discriminante)) / denominador;
+            escribe(raiz1, raiz2);
+        fin
+    sino
+        escribe("Este polinomio no tiene raíces reales");
+    fin
+fin
+```
 
 ::: {.callout-tip}
 ## Solución única
@@ -196,7 +284,8 @@ Verifica que la solución es correcta utilizando los siguientes coeficientes:
 
 ---
 
-### Clase 3: no soluciones reales
+### Clase 3: solución completa
+
 Si $\Delta < 0$, la ecuación no tiene soluciones reales, ya que la raíz cuadrada de un número negativo no es un número real. En este caso, se pueden calcular las soluciones complejas utilizando números imaginarios de la siguiente forma:
 $$
 x = \frac{-b \pm i\sqrt{-(b^2 - 4ac)}}{2a} = \frac{-b \pm i\sqrt{4ac - b^2}}{2a}
@@ -206,8 +295,61 @@ de tal manera que el número imaginario $i$ se define como la raíz cuadrada de 
 
 Por tanto, las dos soluciones complejas conjugadas se pueden expresar como:
 $$
-x_1 = \frac{-b + i\sqrt{4ac - b^2}}{2a} \quad \text{y} \quad x_2 = \frac{-b - i\sqrt{4ac - b^2}}{2a}
+\begin{aligned}
+x_1 &= \frac{-b + i\sqrt{4ac - b^2}}{2a} = \frac{-b}{2a} + i\frac{\sqrt{4ac - b^2}}{2a} \\
+x_2 &= \frac{-b - i\sqrt{4ac - b^2}}{2a} = \frac{-b}{2a} - i\frac{\sqrt{4ac - b^2}}{2a}
+\end{aligned}
 $$
+
+::: {.callout-note}
+## Notas para resolver el problema
+
+- Calcula las raíces en todos los casos.
+- Acciones a realizar:
+  - Leer los coeficientes del polinomio.
+  - Calcular el discriminante.
+  - Si el discriminante es mayor o igual a cero:
+    - Aplicar las fórmulas para calcular soluciones reales.
+    - Escribir las soluciones por pantalla.
+  - Si el discriminante es menor que cero:
+    - Aplicar las fórmulas para calcular soluciones complejas.
+    - Escribir las soluciones por pantalla.
+- Mejora para escribir más cómodamente las soluciones:
+  - Cálculo previo del denominador ($2a$), en lugar de calcularlo dos veces.
+:::
+
+```{.java}
+Programa Raices3   { Funciona si hay raíces reales o complejas }
+
+Definición de variables
+    reales: coefA, coefB, coefC;
+    reales: discriminante, denominador;
+    reales: raiz1, raiz2, parteReal, parteImaginaria;
+
+Principio del algoritmo
+
+    lee(coefA, coefB, coefC);
+
+    discriminante := pow(coefB, 2) - (4.0 * coefA * coefC);
+    denominador := 2.0 * coefA;
+
+    si discriminante >= 0.0 entonces   { Raíces reales }
+        principio
+            raiz1 := (-coefB + sqrt(discriminante)) / denominador;
+            raiz2 := (-coefB - sqrt(discriminante)) / denominador;
+            escribe(raiz1, raiz2);
+        fin
+    sino   { Raíces complejas }
+        principio
+            parteReal := -coefB / denominador;
+            parteImaginaria := sqrt(-discriminante) / denominador;
+
+            escribe("(", parteReal, " + ", parteImaginaria, "i)");
+            escribe("(", parteReal, " - ", parteImaginaria, "i)");
+        fin
+    fin
+fin
+```
 
 ---
 
@@ -224,3 +366,13 @@ $$x_2 = -1i$$
 :::
 
 ---
+
+## Entrega de la práctica
+
+La práctica se entregará a través de la plataforma de la asignatura, con un fichero **.zip** que contenga las tres clases Java implementadas. 
+
+- `Solucion1.java` para el caso de dos soluciones reales.
+- `Solucion2.java` para el caso de discriminante no negativo (una o dos soluciones reales).
+- `Solucion3.java` para el caso de cualquier tipo de solución (reales o complejas).
+
+**Sólo realizará la entrega de la práctica un miembro del grupo**.
