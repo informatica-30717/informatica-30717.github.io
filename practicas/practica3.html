@@ -287,8 +287,8 @@ window.Quarto = {
   <li><a href="#resolución-de-la-práctica" id="toc-resolución-de-la-práctica" class="nav-link" data-scroll-target="#resolución-de-la-práctica"><span class="header-section-number">3</span> Resolución de la práctica</a>
   <ul class="collapse">
   <li><a href="#clase-1-dos-soluciones-reales" id="toc-clase-1-dos-soluciones-reales" class="nav-link" data-scroll-target="#clase-1-dos-soluciones-reales"><span class="header-section-number">3.1</span> Clase 1: dos soluciones reales</a></li>
-  <li><a href="#clase-2-una-solución-real" id="toc-clase-2-una-solución-real" class="nav-link" data-scroll-target="#clase-2-una-solución-real"><span class="header-section-number">3.2</span> Clase 2: una solución real</a></li>
-  <li><a href="#clase-3-no-soluciones-reales" id="toc-clase-3-no-soluciones-reales" class="nav-link" data-scroll-target="#clase-3-no-soluciones-reales"><span class="header-section-number">3.3</span> Clase 3: no soluciones reales</a></li>
+  <li><a href="#clase-2-una-solución-real-o-dos-soluciones-reales" id="toc-clase-2-una-solución-real-o-dos-soluciones-reales" class="nav-link" data-scroll-target="#clase-2-una-solución-real-o-dos-soluciones-reales"><span class="header-section-number">3.2</span> Clase 2: una solución real o dos soluciones reales</a></li>
+  <li><a href="#clase-3-solución-completa" id="toc-clase-3-solución-completa" class="nav-link" data-scroll-target="#clase-3-solución-completa"><span class="header-section-number">3.3</span> Clase 3: solución completa</a></li>
   </ul></li>
   <li><a href="#entrega-de-la-práctica" id="toc-entrega-de-la-práctica" class="nav-link" data-scroll-target="#entrega-de-la-práctica"><span class="header-section-number">4</span> Entrega de la práctica</a></li>
   </ul>
@@ -471,14 +471,6 @@ ax^2 + bx + c = 0
 x = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a} = \frac{-b \pm \sqrt{\Delta}}{2a}
 \]</span></p>
 <p>El valor dentro de la raíz cuadrada, <span class="math inline">\(b^2 - 4ac\)</span>, se llama <strong>discriminante</strong> (<span class="math inline">\(\Delta\)</span>) y determina el número de soluciones reales que tiene la ecuación:</p>
-<hr>
-<section id="clase-1-dos-soluciones-reales" class="level3" data-number="3.1">
-<h3 data-number="3.1" class="anchored" data-anchor-id="clase-1-dos-soluciones-reales"><span class="header-section-number">3.1</span> Clase 1: dos soluciones reales</h3>
-<p><strong>Si <span class="math inline">\(\Delta &gt; 0\)</span>, la ecuación tiene dos soluciones reales distintas</strong>, que se calculan con la fórmula general utilizando el símbolo <span class="math inline">\(+\)</span> para una raíz y el símbolo <span class="math inline">\(-\)</span> para la otra raíz.</p>
-<p>Verifica que la solución es correcta utilizando los siguientes coeficientes:</p>
-<ul>
-<li><span class="math inline">\(a=1, \quad b=-3, \quad c=2\)</span> → dos soluciones reales (<span class="math inline">\(x=1\)</span> y <span class="math inline">\(x=2\)</span>).</li>
-</ul>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -501,7 +493,22 @@ x = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a} = \frac{-b \pm \sqrt{\Delta}}{2a}
 <span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
-<hr>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Nota</span>Leer datos en Java
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Utiliza la clase <code>Scanner</code> para leer los coeficientes del polinomio desde la entrada estándar, por ejemplo:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode java code-with-copy"><code class="sourceCode java"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="bu">Scanner</span> scanner <span class="op">=</span> <span class="kw">new</span> <span class="bu">Scanner</span><span class="op">(</span><span class="bu">System</span><span class="op">.</span><span class="fu">in</span><span class="op">);</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">print</span><span class="op">(</span><span class="st">"Introduce el coeficiente a: "</span><span class="op">);</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="dt">double</span> a <span class="op">=</span> scanner<span class="op">.</span><span class="fu">nextDouble</span><span class="op">();</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</div>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -513,14 +520,126 @@ x = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a} = \frac{-b \pm \sqrt{\Delta}}{2a}
 </div>
 <div class="callout-body-container callout-body">
 <p>Utiliza la impresión por consola para mostrar los resultados de las soluciones, por ejemplo:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode java code-with-copy"><code class="sourceCode java"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span><span class="st">"La solución es: "</span> <span class="op">+</span> x<span class="op">);</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode java code-with-copy"><code class="sourceCode java"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span><span class="st">"La solución es: "</span> <span class="op">+</span> x<span class="op">);</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 <hr>
+<section id="clase-1-dos-soluciones-reales" class="level3" data-number="3.1">
+<h3 data-number="3.1" class="anchored" data-anchor-id="clase-1-dos-soluciones-reales"><span class="header-section-number">3.1</span> Clase 1: dos soluciones reales</h3>
+<p><strong>Si <span class="math inline">\(\Delta &gt; 0\)</span>, la ecuación tiene dos soluciones reales distintas</strong>, que se calculan con la fórmula general utilizando el símbolo <span class="math inline">\(+\)</span> para una raíz y el símbolo <span class="math inline">\(-\)</span> para la otra raíz.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Nota</span>Notas para resolver el problema
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li>Supondremos que sólo hay raíces reales.</li>
+<li>Acciones a realizar:
+<ul>
+<li>Leer los coeficientes del polinomio.</li>
+<li>Aplicar las fórmulas para calcular las dos soluciones.</li>
+<li>Escribir las soluciones por pantalla.</li>
+</ul></li>
+<li>Posibles mejoras:
+<ul>
+<li>Cálculo previo del discriminante (<span class="math inline">\(\Delta\)</span>), en lugar de calcularlo dos veces.</li>
+<li>Cálculo previo del denominador (<span class="math inline">\(2a\)</span>), en lugar de calcularlo dos veces.</li>
+</ul></li>
+</ul>
+</div>
+</div>
+<p>A continuación se muestra una posible solución en pseudocódigo:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode java code-with-copy"><code class="sourceCode java"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>Programa Raices1   <span class="op">{</span> Funciona si sólo hay raíces reales <span class="op">}</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>Definición de variables</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>    reales<span class="op">:</span> coefA<span class="op">,</span> coefB<span class="op">,</span> coefC<span class="op">;</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>    reales<span class="op">:</span> discriminante<span class="op">,</span> denominador<span class="op">;</span></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>    reales<span class="op">:</span> raiz1<span class="op">,</span> raiz2<span class="op">;</span></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>Principio del algoritmo</span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">lee</span><span class="op">(</span>coefA<span class="op">,</span> coefB<span class="op">,</span> coefC<span class="op">);</span></span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>    discriminante <span class="op">:=</span> <span class="fu">pow</span><span class="op">(</span>coefB<span class="op">,</span> <span class="dv">2</span><span class="op">)</span> <span class="op">-</span> <span class="op">(</span><span class="fl">4.0</span> <span class="op">*</span> coefA <span class="op">*</span> coefC<span class="op">);</span></span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>    denominador <span class="op">:=</span> <span class="fl">2.0</span> <span class="op">*</span> coefA<span class="op">;</span></span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a>    raiz1 <span class="op">:=</span> <span class="op">(-</span>coefB <span class="op">+</span> <span class="fu">sqrt</span><span class="op">(</span>discriminante<span class="op">))</span> <span class="op">/</span> denominador<span class="op">;</span></span>
+<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a>    raiz2 <span class="op">:=</span> <span class="op">(-</span>coefB <span class="op">-</span> <span class="fu">sqrt</span><span class="op">(</span>discriminante<span class="op">))</span> <span class="op">/</span> denominador<span class="op">;</span></span>
+<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a>    <span class="fu">escribe</span><span class="op">(</span>raiz1<span class="op">,</span> raiz2<span class="op">);</span></span>
+<span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-20"><a href="#cb6-20" aria-hidden="true" tabindex="-1"></a>fin</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Verifica que la solución es correcta utilizando los siguientes coeficientes:</p>
+<ul>
+<li><span class="math inline">\(a=1, \quad b=-3, \quad c=2\)</span> → dos soluciones reales (<span class="math inline">\(x=1\)</span> y <span class="math inline">\(x=2\)</span>).</li>
+</ul>
+<hr>
 </section>
-<section id="clase-2-una-solución-real" class="level3" data-number="3.2">
-<h3 data-number="3.2" class="anchored" data-anchor-id="clase-2-una-solución-real"><span class="header-section-number">3.2</span> Clase 2: una solución real</h3>
+<section id="clase-2-una-solución-real-o-dos-soluciones-reales" class="level3" data-number="3.2">
+<h3 data-number="3.2" class="anchored" data-anchor-id="clase-2-una-solución-real-o-dos-soluciones-reales"><span class="header-section-number">3.2</span> Clase 2: una solución real o dos soluciones reales</h3>
 <p>Si <span class="math inline">\(\Delta = 0\)</span>, la ecuación tiene una única solución real, que se calcula con la fórmula general utilizando cualquiera de los símbolos <span class="math inline">\(+\)</span> o <span class="math inline">\(-\)</span>, ya que ambos darán el mismo resultado.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Nota</span>Notas para resolver el problema
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li>Calcula las raíces cuando sólo hay raíces reales (<span class="math inline">\(\Delta \geq 0\)</span>), pero en caso contrario se escribe un mensaje explicativo.</li>
+<li>Acciones a realizar:
+<ul>
+<li>Leer los coeficientes del polinomio.</li>
+<li>Calcular el discriminante.</li>
+<li>Si el discriminante es mayor o igual a cero:
+<ul>
+<li>Aplicar las fórmulas para calcular las dos soluciones.</li>
+<li>Escribir las soluciones por pantalla.</li>
+</ul></li>
+<li>Si el discriminante es menor que cero:
+<ul>
+<li>Escribir un texto indicando que no hay raíces.</li>
+</ul></li>
+</ul></li>
+<li>Posibles mejoras:
+<ul>
+<li>Cálculo previo del denominador (<span class="math inline">\(2a\)</span>), en lugar de calcularlo dos veces.</li>
+</ul></li>
+</ul>
+</div>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode java code-with-copy"><code class="sourceCode java"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>Programa Raices2   <span class="op">{</span> Funciona si hay raíces reales<span class="op">;</span> si no<span class="op">,</span> mensaje de error <span class="op">}</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>Definición de variables</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>    reales<span class="op">:</span> coefA<span class="op">,</span> coefB<span class="op">,</span> coefC<span class="op">;</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>    reales<span class="op">:</span> discriminante<span class="op">,</span> denominador<span class="op">;</span></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>    reales<span class="op">:</span> raiz1<span class="op">,</span> raiz2<span class="op">;</span></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>Principio del algoritmo</span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">lee</span><span class="op">(</span>coefA<span class="op">,</span> coefB<span class="op">,</span> coefC<span class="op">);</span></span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>    discriminante <span class="op">:=</span> <span class="fu">pow</span><span class="op">(</span>coefB<span class="op">,</span> <span class="dv">2</span><span class="op">)</span> <span class="op">-</span> <span class="op">(</span><span class="fl">4.0</span> <span class="op">*</span> coefA <span class="op">*</span> coefC<span class="op">);</span></span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a>    si discriminante <span class="op">&gt;=</span> <span class="fl">0.0</span> entonces</span>
+<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a>        principio</span>
+<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a>            denominador <span class="op">:=</span> <span class="fl">2.0</span> <span class="op">*</span> coefA<span class="op">;</span></span>
+<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a>            raiz1 <span class="op">:=</span> <span class="op">(-</span>coefB <span class="op">+</span> <span class="fu">sqrt</span><span class="op">(</span>discriminante<span class="op">))</span> <span class="op">/</span> denominador<span class="op">;</span></span>
+<span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a>            raiz2 <span class="op">:=</span> <span class="op">(-</span>coefB <span class="op">-</span> <span class="fu">sqrt</span><span class="op">(</span>discriminante<span class="op">))</span> <span class="op">/</span> denominador<span class="op">;</span></span>
+<span id="cb7-19"><a href="#cb7-19" aria-hidden="true" tabindex="-1"></a>            <span class="fu">escribe</span><span class="op">(</span>raiz1<span class="op">,</span> raiz2<span class="op">);</span></span>
+<span id="cb7-20"><a href="#cb7-20" aria-hidden="true" tabindex="-1"></a>        fin</span>
+<span id="cb7-21"><a href="#cb7-21" aria-hidden="true" tabindex="-1"></a>    sino</span>
+<span id="cb7-22"><a href="#cb7-22" aria-hidden="true" tabindex="-1"></a>        <span class="fu">escribe</span><span class="op">(</span><span class="st">"Este polinomio no tiene raíces reales"</span><span class="op">);</span></span>
+<span id="cb7-23"><a href="#cb7-23" aria-hidden="true" tabindex="-1"></a>    fin</span>
+<span id="cb7-24"><a href="#cb7-24" aria-hidden="true" tabindex="-1"></a>fin</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -539,15 +658,82 @@ x = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a} = \frac{-b \pm \sqrt{\Delta}}{2a}
 </div>
 <hr>
 </section>
-<section id="clase-3-no-soluciones-reales" class="level3" data-number="3.3">
-<h3 data-number="3.3" class="anchored" data-anchor-id="clase-3-no-soluciones-reales"><span class="header-section-number">3.3</span> Clase 3: no soluciones reales</h3>
+<section id="clase-3-solución-completa" class="level3" data-number="3.3">
+<h3 data-number="3.3" class="anchored" data-anchor-id="clase-3-solución-completa"><span class="header-section-number">3.3</span> Clase 3: solución completa</h3>
 <p>Si <span class="math inline">\(\Delta &lt; 0\)</span>, la ecuación no tiene soluciones reales, ya que la raíz cuadrada de un número negativo no es un número real. En este caso, se pueden calcular las soluciones complejas utilizando números imaginarios de la siguiente forma: <span class="math display">\[
 x = \frac{-b \pm i\sqrt{-(b^2 - 4ac)}}{2a} = \frac{-b \pm i\sqrt{4ac - b^2}}{2a}
 \]</span></p>
 <p>de tal manera que el número imaginario <span class="math inline">\(i\)</span> se define como la raíz cuadrada de <span class="math inline">\(-1\)</span>.</p>
 <p>Por tanto, las dos soluciones complejas conjugadas se pueden expresar como: <span class="math display">\[
-x_1 = \frac{-b + i\sqrt{4ac - b^2}}{2a} \quad \text{y} \quad x_2 = \frac{-b - i\sqrt{4ac - b^2}}{2a}
+\begin{aligned}
+x_1 &amp;= \frac{-b + i\sqrt{4ac - b^2}}{2a} = \frac{-b}{2a} + i\frac{\sqrt{4ac - b^2}}{2a} \\
+x_2 &amp;= \frac{-b - i\sqrt{4ac - b^2}}{2a} = \frac{-b}{2a} - i\frac{\sqrt{4ac - b^2}}{2a}
+\end{aligned}
 \]</span></p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Nota</span>Notas para resolver el problema
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li>Calcula las raíces en todos los casos.</li>
+<li>Acciones a realizar:
+<ul>
+<li>Leer los coeficientes del polinomio.</li>
+<li>Calcular el discriminante.</li>
+<li>Si el discriminante es mayor o igual a cero:
+<ul>
+<li>Aplicar las fórmulas para calcular soluciones reales.</li>
+<li>Escribir las soluciones por pantalla.</li>
+</ul></li>
+<li>Si el discriminante es menor que cero:
+<ul>
+<li>Aplicar las fórmulas para calcular soluciones complejas.</li>
+<li>Escribir las soluciones por pantalla.</li>
+</ul></li>
+</ul></li>
+<li>Mejora para escribir más cómodamente las soluciones:
+<ul>
+<li>Cálculo previo del denominador (<span class="math inline">\(2a\)</span>), en lugar de calcularlo dos veces.</li>
+</ul></li>
+</ul>
+</div>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode java code-with-copy"><code class="sourceCode java"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>Programa Raices3   <span class="op">{</span> Funciona si hay raíces reales o complejas <span class="op">}</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>Definición de variables</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>    reales<span class="op">:</span> coefA<span class="op">,</span> coefB<span class="op">,</span> coefC<span class="op">;</span></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>    reales<span class="op">:</span> discriminante<span class="op">,</span> denominador<span class="op">;</span></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>    reales<span class="op">:</span> raiz1<span class="op">,</span> raiz2<span class="op">,</span> parteReal<span class="op">,</span> parteImaginaria<span class="op">;</span></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>Principio del algoritmo</span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">lee</span><span class="op">(</span>coefA<span class="op">,</span> coefB<span class="op">,</span> coefC<span class="op">);</span></span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a>    discriminante <span class="op">:=</span> <span class="fu">pow</span><span class="op">(</span>coefB<span class="op">,</span> <span class="dv">2</span><span class="op">)</span> <span class="op">-</span> <span class="op">(</span><span class="fl">4.0</span> <span class="op">*</span> coefA <span class="op">*</span> coefC<span class="op">);</span></span>
+<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a>    denominador <span class="op">:=</span> <span class="fl">2.0</span> <span class="op">*</span> coefA<span class="op">;</span></span>
+<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a>    si discriminante <span class="op">&gt;=</span> <span class="fl">0.0</span> entonces   <span class="op">{</span> Raíces reales <span class="op">}</span></span>
+<span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a>        principio</span>
+<span id="cb8-17"><a href="#cb8-17" aria-hidden="true" tabindex="-1"></a>            raiz1 <span class="op">:=</span> <span class="op">(-</span>coefB <span class="op">+</span> <span class="fu">sqrt</span><span class="op">(</span>discriminante<span class="op">))</span> <span class="op">/</span> denominador<span class="op">;</span></span>
+<span id="cb8-18"><a href="#cb8-18" aria-hidden="true" tabindex="-1"></a>            raiz2 <span class="op">:=</span> <span class="op">(-</span>coefB <span class="op">-</span> <span class="fu">sqrt</span><span class="op">(</span>discriminante<span class="op">))</span> <span class="op">/</span> denominador<span class="op">;</span></span>
+<span id="cb8-19"><a href="#cb8-19" aria-hidden="true" tabindex="-1"></a>            <span class="fu">escribe</span><span class="op">(</span>raiz1<span class="op">,</span> raiz2<span class="op">);</span></span>
+<span id="cb8-20"><a href="#cb8-20" aria-hidden="true" tabindex="-1"></a>        fin</span>
+<span id="cb8-21"><a href="#cb8-21" aria-hidden="true" tabindex="-1"></a>    sino   <span class="op">{</span> Raíces complejas <span class="op">}</span></span>
+<span id="cb8-22"><a href="#cb8-22" aria-hidden="true" tabindex="-1"></a>        principio</span>
+<span id="cb8-23"><a href="#cb8-23" aria-hidden="true" tabindex="-1"></a>            parteReal <span class="op">:=</span> <span class="op">-</span>coefB <span class="op">/</span> denominador<span class="op">;</span></span>
+<span id="cb8-24"><a href="#cb8-24" aria-hidden="true" tabindex="-1"></a>            parteImaginaria <span class="op">:=</span> <span class="fu">sqrt</span><span class="op">(-</span>discriminante<span class="op">)</span> <span class="op">/</span> denominador<span class="op">;</span></span>
+<span id="cb8-25"><a href="#cb8-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-26"><a href="#cb8-26" aria-hidden="true" tabindex="-1"></a>            <span class="fu">escribe</span><span class="op">(</span><span class="st">"("</span><span class="op">,</span> parteReal<span class="op">,</span> <span class="st">" + "</span><span class="op">,</span> parteImaginaria<span class="op">,</span> <span class="st">"i)"</span><span class="op">);</span></span>
+<span id="cb8-27"><a href="#cb8-27" aria-hidden="true" tabindex="-1"></a>            <span class="fu">escribe</span><span class="op">(</span><span class="st">"("</span><span class="op">,</span> parteReal<span class="op">,</span> <span class="st">" - "</span><span class="op">,</span> parteImaginaria<span class="op">,</span> <span class="st">"i)"</span><span class="op">);</span></span>
+<span id="cb8-28"><a href="#cb8-28" aria-hidden="true" tabindex="-1"></a>        fin</span>
+<span id="cb8-29"><a href="#cb8-29" aria-hidden="true" tabindex="-1"></a>    fin</span>
+<span id="cb8-30"><a href="#cb8-30" aria-hidden="true" tabindex="-1"></a>fin</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 <hr>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -569,11 +755,11 @@ x_1 = \frac{-b + i\sqrt{4ac - b^2}}{2a} \quad \text{y} \quad x_2 = \frac{-b - i\
 </section>
 <section id="entrega-de-la-práctica" class="level2" data-number="4">
 <h2 data-number="4" class="anchored" data-anchor-id="entrega-de-la-práctica"><span class="header-section-number">4</span> Entrega de la práctica</h2>
-<p>La práctica se entregará a través de la plataforma de la asignatura, en formato <strong>.zip</strong> que contenga las tres clases Java implementadas.</p>
+<p>La práctica se entregará a través de la plataforma de la asignatura, con un fichero <strong>.zip</strong> que contenga las tres clases Java implementadas.</p>
 <ul>
 <li><code>Solucion1.java</code> para el caso de dos soluciones reales.</li>
-<li><code>Solucion2.java</code> para el caso de una solución real.</li>
-<li><code>Solucion3.java</code> para el caso de no soluciones reales (soluciones complejas).</li>
+<li><code>Solucion2.java</code> para el caso de discriminante no negativo (una o dos soluciones reales).</li>
+<li><code>Solucion3.java</code> para el caso de cualquier tipo de solución (reales o complejas).</li>
 </ul>
 <p><strong>Sólo realizará la entrega de la práctica un miembro del grupo</strong>.</p>
 
