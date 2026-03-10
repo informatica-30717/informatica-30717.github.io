@@ -315,6 +315,293 @@ Los pasos a seguir para representar gráficamente la función $f$ y obtener una 
 En lugar de repetir el proceso a mano, vamos a automatizarlo. Comenzaremos con un intervalo e iremos reduciéndolo por el **método de bisección** hasta obtener una solución que
 nos parezca suficientemente buena.
 
+El **método de bisección** es un método numérico para encontrar soluciones de funciones continuas. El método se basa en el teorema del valor intermedio, que establece que si una función cambia de signo en un intervalo, entonces debe tener al menos una solución en ese intervalo. El método de bisección consiste en dividir el intervalo en dos partes iguales y determinar en cuál de las dos partes se encuentra la raíz, repitiendo este proceso iterativamente hasta alcanzar la precisión deseada. 
+
+::: {.column-page-inset}
+::: {.card .shadow-sm .mb-4 .mt-4}
+::: {.card-body}
+
+<div style="display: flex; gap: 28px; align-items: flex-start; flex-wrap: wrap;">
+<div style="flex: 0 0 260px; min-width: 230px;">
+```{ojs}
+viewof bisectParams = {
+  function cleanSlider(range, config) {
+    const input = Inputs.range(range, config);
+    const numberBox = input.querySelector("input[type=number]");
+    if (numberBox) numberBox.style.display = "none";
+
+    const rangeSlider = input.querySelector("input[type=range]");
+    if (rangeSlider) {
+      rangeSlider.style.width = "100%";
+      rangeSlider.style.accentColor = "#2563eb";
+    }
+
+    input.style.width = "100%";
+    return input;
+  }
+
+  function makeControl(input, label, fmt = x => x.toFixed(1), color = "#2563eb") {
+    const value = htl.html`<div style="
+      margin-top: 8px;
+      display: inline-block;
+      padding: 4px 10px;
+      border-radius: 999px;
+      background: ${color};
+      color: white;
+      font-family: monospace;
+      font-size: 0.90rem;
+      font-weight: 700;
+    ">${fmt(input.value)}</div>`;
+
+    input.addEventListener("input", () => {
+      value.textContent = fmt(input.value);
+    });
+
+    return htl.html`
+      <div style="
+        margin-bottom: 18px;
+        padding: 14px 14px 12px 14px;
+        border: 1px solid #e5e7eb;
+        border-radius: 14px;
+        background: linear-gradient(180deg, #ffffff 0%, #f8fafc 100%);
+      ">
+        <div style="
+          font-weight: 700;
+          font-size: 0.93rem;
+          margin-bottom: 8px;
+          color: #1f2937;
+        ">${label}</div>
+        ${input}
+        ${value}
+      </div>
+    `;
+  }
+
+  const aSlider = cleanSlider([0.5, 5], { value: 2.0, step: 0.1 });
+  const bSlider = cleanSlider([0.5, 8], { value: 5.0, step: 0.1 });
+  const stepSlider = cleanSlider([0, 5], { value: 0, step: 1 });
+
+  const form = htl.html`
+    <div style="width: 100%;">
+      <div style="
+        font-size: 1rem;
+        font-weight: 800;
+        margin-bottom: 14px;
+        color: #111827;
+      ">
+        Método de bisección
+      </div>
+
+      ${makeControl(aSlider, "Constante a", x => x.toFixed(1), "#2563eb")}
+      ${makeControl(bSlider, "Nivel b", x => x.toFixed(1), "#dc2626")}
+      ${makeControl(stepSlider, "Iteración", x => `${x}`, "#7c3aed")}
+    </div>
+  `;
+
+  form.oninput = () => {
+    form.value = {
+      a: +aSlider.value,
+      b: +bSlider.value,
+      step: +stepSlider.value
+    };
+  };
+
+  form.value = {
+    a: +aSlider.value,
+    b: +bSlider.value,
+    step: +stepSlider.value
+  };
+
+  return form;
+}
+
+aBis = bisectParams.a
+bBis = bisectParams.b
+stepBis = bisectParams.step
+```
+</div>
+<div style="flex: 1 1 520px; min-width: 320px;">
+```{ojs}
+{
+  function f(x, a, b) {
+    return a * Math.cosh(x / a) - b;
+  }
+
+  function bracketRoot(a, b) {
+    const xmin = 2;
+    const xmax = 4;
+
+    if (f(xmin, a, b) * f(xmax, a, b) > 0) return null;
+    return { xmin, xmax };
+  }
+
+  const bracket = bracketRoot(aBis, bBis);
+
+  if (!bracket) {
+    return htl.html`<div style="
+      padding: 18px;
+      border-radius: 14px;
+      background: #fff7ed;
+      border: 1px solid #fed7aa;
+      color: #9a3412;
+      font-weight: 600;
+    ">
+      No hay cambio de signo en el intervalo <span style="font-family: monospace;">[2,4]</span>.
+    </div>`;
+  }
+
+  let xmin = bracket.xmin;
+  let xmax = bracket.xmax;
+
+  for (let i = 0; i < stepBis; ++i) {
+    const xmid = 0.5 * (xmin + xmax);
+    const fxmin = f(xmin, aBis, bBis);
+    const fxmid = f(xmid, aBis, bBis);
+
+    if (fxmin * fxmid <= 0) xmax = xmid;
+    else xmin = xmid;
+  }
+
+  const xmid = 0.5 * (xmin + xmax);
+
+  const curveXMin = 2;
+  const curveXMax = 4;
+
+  const curve = Array.from({ length: 400 }, (_, i) => {
+    const x = curveXMin + (curveXMax - curveXMin) * i / 399;
+    return { x, y: f(x, aBis, bBis) };
+  });
+
+  const yValues = curve.map(d => Math.abs(d.y));
+  const yLim = Math.max(...yValues, 1e-3) * 1.1;
+
+  const band = [{
+    x1: xmin,
+    x2: xmax,
+    y1: -yLim,
+    y2: yLim
+  }];
+
+  const endpointGuides = [
+    { x: xmin },
+    { x: xmax }
+  ];
+
+  const midpointGuide = [
+    { x: xmid }
+  ];
+
+  const endPoints = [
+    { x: xmin, y: f(xmin, aBis, bBis) },
+    { x: xmax, y: f(xmax, aBis, bBis) }
+  ];
+
+  const midPoint = [
+    { x: xmid, y: f(xmid, aBis, bBis) }
+  ];
+
+  const overlayLabels = [
+    { x: 2.18, y: yLim * 0.88, text: `xmin = ${xmin.toFixed(3)}`, color: "#b45309" },
+    { x: 2.7, y: yLim * 0.88, text: `f(xMedio) = ${f(xmid, aBis, bBis).toExponential(2)}`, color: "#1d4ed8" },
+    { x: 3.68, y: yLim * 0.88, text: `xmax = ${xmax.toFixed(3)}`, color: "#b45309" }
+  ];
+
+  const plot = Plot.plot({
+    height: 350,
+    marginLeft: 52,
+    marginRight: 18,
+    marginTop: 18,
+    marginBottom: 40,
+    grid: true,
+    x: {
+      domain: [curveXMin, curveXMax],
+      label: "x"
+    },
+    y: {
+      domain: [-yLim, yLim],
+      label: "f(x)"
+    },
+    marks: [
+      Plot.rect(band, {
+        x1: "x1",
+        x2: "x2",
+        y1: "y1",
+        y2: "y2",
+        fill: "#f59e0b",
+        fillOpacity: 0.12
+      }),
+
+      Plot.ruleY([0], {
+        stroke: "#9ca3af",
+        strokeWidth: 1.2
+      }),
+
+      Plot.ruleX([0], {
+        stroke: "#d1d5db",
+        strokeWidth: 1
+      }),
+
+      Plot.line(curve, {
+        x: "x",
+        y: "y",
+        stroke: "#2563eb",
+        strokeWidth: 3.2
+      }),
+
+      Plot.ruleX(endpointGuides, {
+        x: "x",
+        stroke: "#f59e0b",
+        strokeOpacity: 0.45,
+        strokeDasharray: "4 4"
+      }),
+
+      Plot.ruleX(midpointGuide, {
+        x: "x",
+        stroke: "#7c3aed",
+        strokeOpacity: 0.7,
+        strokeDasharray: "6 4",
+        strokeWidth: 2
+      }),
+
+      Plot.dot(endPoints, {
+        x: "x",
+        y: "y",
+        r: 7,
+        fill: "#f59e0b",
+        stroke: "white",
+        strokeWidth: 2
+      }),
+
+      Plot.dot(midPoint, {
+        x: "x",
+        y: "y",
+        r: 8.5,
+        fill: "#dc2626",
+        stroke: "white",
+        strokeWidth: 2.5
+      }),
+
+      Plot.text(overlayLabels, {
+        x: "x",
+        y: "y",
+        text: "text",
+        fill: "color",
+        fontSize: 13,
+        fontWeight: 600
+      })
+    ]
+  });
+
+  plot.style.width = "100%";
+  return plot;
+}
+```
+</div></div>
+
+:::
+:::
+:::
+
 1. En las celdas `G1-J1` escribiremos los nombres **Xmin** (valor mínimo del intervalo),
 **Xmax** (valor máximo), **Xmedio** (valor del punto medio) y **f(x)** (valor de la función $f$ en el
 punto **Xmedio**).
