@@ -73,3 +73,46 @@ main ol ol, main ul ul, main ol ul, main ul ol {
 hr {
   display: none;
 }
+
+.quarto-title-banner {
+  position: relative;
+  overflow: hidden;
+  min-height: 550px;
+  display: flex;
+  align-items: flex-end;
+  background-size: cover;
+  background-position: center top;
+}
+
+.quarto-title-banner::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(0,0,0,0.08) 0%,
+    rgba(0,0,0,0.14) 35%,
+    rgba(0,0,0,0.28) 58%,
+    rgba(255,255,255,0.8) 94%,
+    rgba(255,255,255,1.00) 100%
+  );
+}
+
+.quarto-title-banner .quarto-title,
+.quarto-title-banner .quarto-title-block,
+#title-block-header .quarto-title-banner .quarto-title-block {
+  position: relative;
+  z-index: 2;
+}
+
+#title-block-header.quarto-title-banner .title,
+#title-block-header.quarto-title-banner h1,
+#title-block-header.quarto-title-banner .subtitle,
+#title-block-header.quarto-title-banner .quarto-title-meta {
+  position: relative;
+  z-index: 3;
+  color: #222 !important;
+  text-shadow: none !important;
+}

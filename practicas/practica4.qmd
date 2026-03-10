@@ -1,5 +1,7 @@
 ---
 title: "Práctica 4: Aspectos avanzados de Excel"
+title-block-banner: ../resources/practica4/gateway-arch.jpg
+title-block-banner-color: "#464646"
 format:
   html: 
     toc: true
@@ -55,7 +57,9 @@ Como caso de estudio consideraremos la **curva catenaria**. Desde el punto de vi
 
 Un ejemplo de su aplicación es la obra del arquitecto **Antonio Gaudí**, quien empleó modelos físicos de catenarias invertidas para el diseño de la **Sagrada Familia** en Barcelona, tal como se ilustra en la @fig-ejemplos-catenarias.
 
-Podéis encontrar más información sobre las curvas catenarias en el siguiente vídeo:
+Podéis utilizar la web [**WikiArchitect**](https://es.wikiarquitectura.com/) para explorar información sobre edificios, arquitectos y obras de distintos lugares del mundo. Su principal ventaja es que permite buscar proyectos mediante distintos criterios, como el país, el tipo de edificio o el nombre de una obra concreta. En el contexto de esta práctica, puede ser especialmente útil para localizar ejemplos arquitectónicos en los que aparezcan arcos, bóvedas o formas relacionadas con la curva **catenaria**, y así relacionar el modelo matemático que vamos a trabajar en clase con aplicaciones reales en arquitectura.
+
+También podéis encontrar más información sobre las curvas catenarias en el siguiente vídeo:
 
 {{< video https://www.youtube.com/watch?v=NnjnlxfB_D8 >}}
 
