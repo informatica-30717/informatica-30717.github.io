@@ -487,7 +487,7 @@ f(x) = a \cosh\left(\frac{x}{a}\right) - b
 <ol start="4" type="1">
 <li class="fragment"><p>A continuación, en los pasos <strong>5, 6 y 7</strong>, crearemos una tabla con los valores de <span class="math inline">\(f(x)\)</span> en función de <span class="math inline">\(x\)</span>, en las celdas <code>D2-E22</code>. No basta con crear la tabla, es obligatorio utilizar correctamente referencias absolutas y relativas.</p></li>
 <li class="fragment"><p>Para rellenar los valores de <span class="math inline">\(x\)</span>, se introduce el primer valor, <span class="math inline">\(2\)</span>, en la celda <code>D2</code>. Después, marcamos las celdas a rellenar, <code>D2-D22</code> y utilizamos la opción <code>Inicio &gt; Rellenar &gt; Series</code> (sección de <code>Edición</code>), indicando el <strong>incremento</strong> de valor deseado (en este caso, <strong>0,1</strong>). Igual que antes, podemos indicar en <code>D1</code> y <code>E1</code> el significado de cada columna, escribiendo <strong>x</strong> y <strong>y</strong>, respectivamente.</p></li>
-<li class="fragment"><p>Introduce en la celda <code>E2</code> la fórmula para calcular <span class="math inline">\(f(x)\)</span> a partir del valor de <span class="math inline">\(x\)</span> en la celda ‘D2’. <em>Excel</em> incluye la función <strong>COSH</strong> para calcular un coseno hiperbólico.</p></li>
+<li class="fragment"><p>Introduce en la celda <code>E2</code> la fórmula para calcular <span class="math inline">\(f(x)\)</span> a partir del valor de <span class="math inline">\(x\)</span> en la celda ‘D2’. <em>Excel</em> incluye la función <code>COSH</code> para calcular un coseno hiperbólico.</p></li>
 <li class="fragment"><p>Copia el valor de la celda <code>E2</code> en las celdas <code>E3-E22</code>.</p></li>
 </ol>
 <div class="callout callout-warning callout-titled callout-style-default">
@@ -946,7 +946,7 @@ Figura&nbsp;7: Activación de las opciones de Programador.
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode numberSource java number-lines code-with-copy"><code class="sourceCode java"><span id="cb7-1"><a></a>Function <span class="fu">EvaluarF</span><span class="op">(</span>x<span class="op">,</span> a<span class="op">,</span> b<span class="op">)</span></span>
 <span id="cb7-2"><a></a>  EvaluarF <span class="op">=</span> <span class="kw">...</span></span>
 <span id="cb7-3"><a></a>End Function</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
-<p>Los puntos suspensivos <code>...</code> indican el código que debéis completar en la función, teniendo en cuenta que en <em>Visual Basic</em> hay una función exponencial <code>Exp(x)</code>, pero no una función <strong>COSH</strong> para calcular el coseno hiperbólico, por lo que tendréis que escribir la fórmula de la función <span class="math inline">\(f\)</span> utilizando <code>Exp</code> para calcular el coseno hiperbólico.</p>
+<p>Los puntos suspensivos <code>...</code> indican el código que debéis completar en la función, teniendo en cuenta que en <em>Visual Basic</em> hay una función exponencial <code>Exp(x)</code>, pero no una función <code>COSH</code> para calcular el coseno hiperbólico, por lo que tendréis que escribir la fórmula de la función <span class="math inline">\(f\)</span> utilizando <code>Exp</code> para calcular el coseno hiperbólico.</p>
 <div class="callout callout-tip callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
