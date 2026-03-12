@@ -276,7 +276,7 @@ Los pasos a seguir para representar gráficamente la función $f$ y obtener una 
 
 5. Para rellenar los valores de $x$, se introduce el primer valor, $2$, en la celda `D2`. Después, marcamos las celdas a rellenar, `D2-D22` y utilizamos la opción `Inicio > Rellenar > Series` (sección de `Edición`), indicando el **incremento** de valor deseado (en este caso, **0,1**). Igual que antes, podemos indicar en `D1` y `E1` el significado de cada columna, escribiendo **x** y **y**, respectivamente.
 
-6. Introduce en la celda `E2` la fórmula para calcular $f(x)$ a partir del valor de $x$ en la celda 'D2'. *Excel* incluye la función **COSH** para calcular un coseno hiperbólico.
+6. Introduce en la celda `E2` la fórmula para calcular $f(x)$ a partir del valor de $x$ en la celda 'D2'. *Excel* incluye la función `COSH` para calcular un coseno hiperbólico.
 
 7. Copia el valor de la celda `E2` en las celdas `E3-E22`. 
 
@@ -428,8 +428,8 @@ stepBis = bisectParams.step
   }
 
   function bracketRoot(a, b) {
-    const xmin = 2;
-    const xmax = 4;
+    const xmin = 3.1;
+    const xmax = 3.2;
 
     if (f(xmin, a, b) * f(xmax, a, b) > 0) return null;
     return { xmin, xmax };
@@ -464,8 +464,8 @@ stepBis = bisectParams.step
 
   const xmid = 0.5 * (xmin + xmax);
 
-  const curveXMin = 2;
-  const curveXMax = 4;
+  const curveXMin = 3.05;
+  const curveXMax = 3.25;
 
   const curve = Array.from({ length: 400 }, (_, i) => {
     const x = curveXMin + (curveXMax - curveXMin) * i / 399;
@@ -603,8 +603,7 @@ stepBis = bisectParams.step
 :::
 
 1. En las celdas `G1-J1` escribiremos los nombres **Xmin** (valor mínimo del intervalo),
-**Xmax** (valor máximo), **Xmedio** (valor del punto medio) y **f(x)** (valor de la función $f$ en el
-punto **Xmedio**).
+**Xmax** (valor máximo), **Xmedio** (valor del punto medio) y **f(x)** (valor de la función $f$ en el punto **Xmedio**).
 
 2. En las celdas `G2` y `H2` escribiremos los extremos del intervalo inicial, tales que $f(G2)$ y $f(H2)$ tengan distinto signo: $f(3.1) < 0$ y $f(3.2) > 0$. Es decir, en `G2` escribimos **3,1** y en `H2` **3,2**.
 
@@ -666,7 +665,7 @@ Function EvaluarF(x, a, b)
 End Function
 ```
 
-Los puntos suspensivos `...` indican el código que debéis completar en la función, teniendo en cuenta que en *Visual Basic* hay una función exponencial `Exp(x)`, pero no una función **COSH** para calcular el coseno hiperbólico, por lo que tendréis que escribir la fórmula de la función $f$ utilizando `Exp` para calcular el coseno hiperbólico.
+Los puntos suspensivos `...` indican el código que debéis completar en la función, teniendo en cuenta que en *Visual Basic* hay una función exponencial `Exp(x)`, pero no una función `COSH` para calcular el coseno hiperbólico, por lo que tendréis que escribir la fórmula de la función $f$ utilizando `Exp` para calcular el coseno hiperbólico.
 
 ::: {.callout-tip}
 ## Programación en *Visual Basic*
@@ -703,6 +702,6 @@ Al igual que en Java, nuestra función en *Visual Basic* debe utilizar operacion
 **Sólo debe realizar la entrega un miembro del grupo**. Sube a Moodle un **fichero comprimido `practica4.zip`** que contenga los siguientes archivos:
 
 - `practica4.xlsx`
-- `practica4_macro.xlsx`
+- `practica4_macro.xlsm`
 
 ---
