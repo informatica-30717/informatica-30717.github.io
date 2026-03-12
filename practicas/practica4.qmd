@@ -276,7 +276,7 @@ Los pasos a seguir para representar gráficamente la función $f$ y obtener una 
 
 5. Para rellenar los valores de $x$, se introduce el primer valor, $2$, en la celda `D2`. Después, marcamos las celdas a rellenar, `D2-D22` y utilizamos la opción `Inicio > Rellenar > Series` (sección de `Edición`), indicando el **incremento** de valor deseado (en este caso, **0,1**). Igual que antes, podemos indicar en `D1` y `E1` el significado de cada columna, escribiendo **x** y **y**, respectivamente.
 
-6. Introduce en la celda `E2` la fórmula para calcular $f(x)$ a partir del valor de $x$ en la celda 'D2'. *Excel* incluye la función `COSH` para calcular un coseno hiperbólico.
+6. Introduce en la celda `E2` la fórmula para calcular $f(x)$ a partir del valor de $x$ en la celda `D2`. *Excel* incluye la función `COSH` para calcular un coseno hiperbólico.
 
 7. Copia el valor de la celda `E2` en las celdas `E3-E22`. 
 
@@ -316,6 +316,8 @@ En lugar de repetir el proceso a mano, vamos a automatizarlo. Comenzaremos con u
 nos parezca suficientemente buena.
 
 El **método de bisección** es un método numérico para encontrar soluciones de funciones continuas. El método se basa en el teorema del valor intermedio, que establece que si una función cambia de signo en un intervalo, entonces debe tener al menos una solución en ese intervalo. El método de bisección consiste en dividir el intervalo en dos partes iguales y determinar en cuál de las dos partes se encuentra la raíz, repitiendo este proceso iterativamente hasta alcanzar la precisión deseada. 
+
+---
 
 ::: {.column-page-inset}
 ::: {.card .shadow-sm .mb-4 .mt-4}
@@ -602,6 +604,8 @@ stepBis = bisectParams.step
 :::
 :::
 
+---
+
 1. En las celdas `G1-J1` escribiremos los nombres **Xmin** (valor mínimo del intervalo),
 **Xmax** (valor máximo), **Xmedio** (valor del punto medio) y **f(x)** (valor de la función $f$ en el punto **Xmedio**).
 
@@ -623,7 +627,7 @@ stepBis = bisectParams.step
 
 ![Resultados obtenidos al aplicar el método de bisección. A la derecha, en $f(x)$, se puede observar que no se ha alcanzado el valor cero, pero el error es inferior a $10^{-6}$.](../resources/practica4/biseccion.png){#fig-biseccion}
 
-8. Guarda los cambios en el fichero `practica4.xlsx`.
+8. Guarda los cambios en el fichero `practica4.xlsm`.
 
 ---
 
