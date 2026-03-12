@@ -77,7 +77,7 @@ hr {
 .quarto-title-banner {
   position: relative;
   overflow: hidden;
-  min-height: 550px;
+  min-height: 400px;
   display: flex;
   align-items: flex-end;
   background-size: cover;
