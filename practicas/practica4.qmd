@@ -627,7 +627,7 @@ stepBis = bisectParams.step
 
 ![Resultados obtenidos al aplicar el método de bisección. A la derecha, en $f(x)$, se puede observar que no se ha alcanzado el valor cero, pero el error es inferior a $10^{-6}$.](../resources/practica4/biseccion.png){#fig-biseccion}
 
-8. Guarda los cambios en el fichero `practica4.xlsm`.
+8. Guarda los cambios en el fichero `practica4.xlsx`.
 
 ---
 
@@ -635,7 +635,7 @@ stepBis = bisectParams.step
 
 Por último, vamos a crear una **macro** que permita calcular nuestra función $f$. Una **macro** no es más que una función que nos permitirá escribir una **fórmula para evaluar la función en un punto** dado por la celda `E2` (función `EvaluarF`), suponiendo que `B2` contiene el valor de $a$ y que `C2` contiene el valor de $b$ y `D2` el valor de $x$. Es decir, nuestra función recibirá 3 parámetros de entrada: los valores de $x$, $a$ y $b$ (fíjate en la @fig-ejemplo-evaluarf).
 
-1. Crea un nuevo libro de *Excel* y en la celda `E2` escribe la fórmula `=EvaluarF(D2, B2, C2)`.
+1. Crea un nuevo libro de *Excel* y en la celda `E2` escribe la fórmula `=EvaluarF(D2; B2; C2)`.
   
 ---
 
