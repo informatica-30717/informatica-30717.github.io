@@ -382,6 +382,32 @@ x = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a} = \frac{-b \pm \sqrt{\Delta}}{2a}
 </div>
 </div>
 </div>
+</section>
+<section class="slide level2">
+
+<h3 id="clase-1-dos-soluciones-reales">Clase 1: dos soluciones reales</h3>
+<p><strong>Si <span class="math inline">\(\Delta &gt; 0\)</span>, la ecuación tiene dos soluciones reales distintas</strong>, que se calculan con la fórmula general utilizando el símbolo <span class="math inline">\(+\)</span> para una raíz y el símbolo <span class="math inline">\(-\)</span> para la otra raíz.</p>
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Notas para resolver el problema</strong></p>
+</div>
+<div class="callout-content">
+<ul>
+<li class="fragment">Supondremos que sólo hay raíces reales.</li>
+<li class="fragment">Acciones a realizar:
+<ul>
+<li class="fragment">Leer los coeficientes del polinomio.</li>
+<li class="fragment">Aplicar las fórmulas para calcular las dos soluciones.</li>
+<li class="fragment">Escribir las soluciones por pantalla.</li>
+</ul></li>
+</ul>
+</div>
+</div>
+</div>
 <div class="callout callout-note callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
@@ -412,37 +438,6 @@ x = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a} = \frac{-b \pm \sqrt{\Delta}}{2a}
 </div>
 </div>
 </div>
-</section>
-<section class="slide level2">
-
-<h3 id="clase-1-dos-soluciones-reales">Clase 1: dos soluciones reales</h3>
-<p><strong>Si <span class="math inline">\(\Delta &gt; 0\)</span>, la ecuación tiene dos soluciones reales distintas</strong>, que se calculan con la fórmula general utilizando el símbolo <span class="math inline">\(+\)</span> para una raíz y el símbolo <span class="math inline">\(-\)</span> para la otra raíz.</p>
-<div class="callout callout-note callout-titled callout-style-default">
-<div class="callout-body">
-<div class="callout-title">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<p><strong>Notas para resolver el problema</strong></p>
-</div>
-<div class="callout-content">
-<ul>
-<li class="fragment">Supondremos que sólo hay raíces reales.</li>
-<li class="fragment">Acciones a realizar:
-<ul>
-<li class="fragment">Leer los coeficientes del polinomio.</li>
-<li class="fragment">Aplicar las fórmulas para calcular las dos soluciones.</li>
-<li class="fragment">Escribir las soluciones por pantalla.</li>
-</ul></li>
-<li class="fragment">Posibles mejoras:
-<ul>
-<li class="fragment">Cálculo previo del discriminante (<span class="math inline">\(\Delta\)</span>), en lugar de calcularlo dos veces.</li>
-<li class="fragment">Cálculo previo del denominador (<span class="math inline">\(2a\)</span>), en lugar de calcularlo dos veces.</li>
-</ul></li>
-</ul>
-</div>
-</div>
-</div>
 <p>A continuación se muestra una posible solución en pseudocódigo:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode numberSource java number-lines code-with-copy"><code class="sourceCode java"><span id="cb6-1"><a></a>Programa Raices1   <span class="op">{</span> Funciona si sólo hay raíces reales <span class="op">}</span></span>
 <span id="cb6-2"><a></a></span>
@@ -464,10 +459,22 @@ x = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a} = \frac{-b \pm \sqrt{\Delta}}{2a}
 <span id="cb6-18"><a></a>    <span class="fu">escribe</span><span class="op">(</span>raiz1<span class="op">,</span> raiz2<span class="op">);</span></span>
 <span id="cb6-19"><a></a></span>
 <span id="cb6-20"><a></a>fin</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="callout callout-tip callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Solución única</strong></p>
+</div>
+<div class="callout-content">
 <p>Verifica que la solución es correcta utilizando los siguientes coeficientes:</p>
 <ul>
 <li class="fragment"><span class="math inline">\(a=1, \quad b=-3, \quad c=2\)</span> → dos soluciones reales (<span class="math inline">\(x=1\)</span> y <span class="math inline">\(x=2\)</span>).</li>
 </ul>
+</div>
+</div>
+</div>
 </section>
 <section class="slide level2">
 
@@ -488,19 +495,20 @@ x = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a} = \frac{-b \pm \sqrt{\Delta}}{2a}
 <ul>
 <li class="fragment">Leer los coeficientes del polinomio.</li>
 <li class="fragment">Calcular el discriminante.</li>
-<li class="fragment">Si el discriminante es mayor o igual a cero:
+<li class="fragment">Si el discriminante es mayor que cero:
 <ul>
 <li class="fragment">Aplicar las fórmulas para calcular las dos soluciones.</li>
 <li class="fragment">Escribir las soluciones por pantalla.</li>
+</ul></li>
+<li class="fragment">Si el discriminante es igual a cero:
+<ul>
+<li class="fragment">Aplicar la fórmula para calcular la única solución.</li>
+<li class="fragment">Escribir la solución por pantalla.</li>
 </ul></li>
 <li class="fragment">Si el discriminante es menor que cero:
 <ul>
 <li class="fragment">Escribir un texto indicando que no hay raíces.</li>
 </ul></li>
-</ul></li>
-<li class="fragment">Posibles mejoras:
-<ul>
-<li class="fragment">Cálculo previo del denominador (<span class="math inline">\(2a\)</span>), en lugar de calcularlo dos veces.</li>
 </ul></li>
 </ul>
 </div>
@@ -519,17 +527,23 @@ x = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a} = \frac{-b \pm \sqrt{\Delta}}{2a}
 <span id="cb7-11"><a></a></span>
 <span id="cb7-12"><a></a>    discriminante <span class="op">:=</span> <span class="fu">pow</span><span class="op">(</span>coefB<span class="op">,</span> <span class="dv">2</span><span class="op">)</span> <span class="op">-</span> <span class="op">(</span><span class="fl">4.0</span> <span class="op">*</span> coefA <span class="op">*</span> coefC<span class="op">);</span></span>
 <span id="cb7-13"><a></a></span>
-<span id="cb7-14"><a></a>    si discriminante <span class="op">&gt;=</span> <span class="fl">0.0</span> entonces</span>
+<span id="cb7-14"><a></a>    si discriminante <span class="op">&gt;</span> <span class="fl">0.0</span> entonces</span>
 <span id="cb7-15"><a></a>        principio</span>
 <span id="cb7-16"><a></a>            denominador <span class="op">:=</span> <span class="fl">2.0</span> <span class="op">*</span> coefA<span class="op">;</span></span>
 <span id="cb7-17"><a></a>            raiz1 <span class="op">:=</span> <span class="op">(-</span>coefB <span class="op">+</span> <span class="fu">sqrt</span><span class="op">(</span>discriminante<span class="op">))</span> <span class="op">/</span> denominador<span class="op">;</span></span>
 <span id="cb7-18"><a></a>            raiz2 <span class="op">:=</span> <span class="op">(-</span>coefB <span class="op">-</span> <span class="fu">sqrt</span><span class="op">(</span>discriminante<span class="op">))</span> <span class="op">/</span> denominador<span class="op">;</span></span>
 <span id="cb7-19"><a></a>            <span class="fu">escribe</span><span class="op">(</span>raiz1<span class="op">,</span> raiz2<span class="op">);</span></span>
 <span id="cb7-20"><a></a>        fin</span>
-<span id="cb7-21"><a></a>    sino</span>
-<span id="cb7-22"><a></a>        <span class="fu">escribe</span><span class="op">(</span><span class="st">"Este polinomio no tiene raíces reales"</span><span class="op">);</span></span>
-<span id="cb7-23"><a></a>    fin</span>
-<span id="cb7-24"><a></a>fin</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb7-21"><a></a>    sino si discriminante <span class="op">==</span> <span class="fl">0.0</span> entonces</span>
+<span id="cb7-22"><a></a>        principio</span>
+<span id="cb7-23"><a></a>            denominador <span class="op">:=</span> <span class="fl">2.0</span> <span class="op">*</span> coefA<span class="op">;</span></span>
+<span id="cb7-24"><a></a>            raiz1 <span class="op">:=</span> <span class="op">-</span>coefB <span class="op">/</span> denominador<span class="op">;</span></span>
+<span id="cb7-25"><a></a>            <span class="fu">escribe</span><span class="op">(</span>raiz1<span class="op">);</span></span>
+<span id="cb7-26"><a></a>        fin</span>
+<span id="cb7-27"><a></a>    sino</span>
+<span id="cb7-28"><a></a>        <span class="fu">escribe</span><span class="op">(</span><span class="st">"Este polinomio no tiene raíces reales"</span><span class="op">);</span></span>
+<span id="cb7-29"><a></a>    fin</span>
+<span id="cb7-30"><a></a>fin</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="callout callout-tip callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
@@ -575,20 +589,21 @@ x_2 &amp;= \frac{-b - i\sqrt{4ac - b^2}}{2a} = \frac{-b}{2a} - i\frac{\sqrt{4ac 
 <ul>
 <li class="fragment">Leer los coeficientes del polinomio.</li>
 <li class="fragment">Calcular el discriminante.</li>
-<li class="fragment">Si el discriminante es mayor o igual a cero:
+<li class="fragment">Si el discriminante es mayor que cero:
 <ul>
 <li class="fragment">Aplicar las fórmulas para calcular soluciones reales.</li>
 <li class="fragment">Escribir las soluciones por pantalla.</li>
+</ul></li>
+<li class="fragment">Si el discriminante es igual a cero:
+<ul>
+<li class="fragment">Aplicar las fórmulas para calcular la única solución real.</li>
+<li class="fragment">Escribir la solución por pantalla.</li>
 </ul></li>
 <li class="fragment">Si el discriminante es menor que cero:
 <ul>
 <li class="fragment">Aplicar las fórmulas para calcular soluciones complejas.</li>
 <li class="fragment">Escribir las soluciones por pantalla.</li>
 </ul></li>
-</ul></li>
-<li class="fragment">Mejora para escribir más cómodamente las soluciones:
-<ul>
-<li class="fragment">Cálculo previo del denominador (<span class="math inline">\(2a\)</span>), en lugar de calcularlo dos veces.</li>
 </ul></li>
 </ul>
 </div>
@@ -608,22 +623,27 @@ x_2 &amp;= \frac{-b - i\sqrt{4ac - b^2}}{2a} = \frac{-b}{2a} - i\frac{\sqrt{4ac 
 <span id="cb8-12"><a></a>    discriminante <span class="op">:=</span> <span class="fu">pow</span><span class="op">(</span>coefB<span class="op">,</span> <span class="dv">2</span><span class="op">)</span> <span class="op">-</span> <span class="op">(</span><span class="fl">4.0</span> <span class="op">*</span> coefA <span class="op">*</span> coefC<span class="op">);</span></span>
 <span id="cb8-13"><a></a>    denominador <span class="op">:=</span> <span class="fl">2.0</span> <span class="op">*</span> coefA<span class="op">;</span></span>
 <span id="cb8-14"><a></a></span>
-<span id="cb8-15"><a></a>    si discriminante <span class="op">&gt;=</span> <span class="fl">0.0</span> entonces   <span class="op">{</span> Raíces reales <span class="op">}</span></span>
+<span id="cb8-15"><a></a>    si discriminante <span class="op">&gt;</span> <span class="fl">0.0</span> entonces   <span class="op">{</span> Raíces reales <span class="op">}</span></span>
 <span id="cb8-16"><a></a>        principio</span>
 <span id="cb8-17"><a></a>            raiz1 <span class="op">:=</span> <span class="op">(-</span>coefB <span class="op">+</span> <span class="fu">sqrt</span><span class="op">(</span>discriminante<span class="op">))</span> <span class="op">/</span> denominador<span class="op">;</span></span>
 <span id="cb8-18"><a></a>            raiz2 <span class="op">:=</span> <span class="op">(-</span>coefB <span class="op">-</span> <span class="fu">sqrt</span><span class="op">(</span>discriminante<span class="op">))</span> <span class="op">/</span> denominador<span class="op">;</span></span>
 <span id="cb8-19"><a></a>            <span class="fu">escribe</span><span class="op">(</span>raiz1<span class="op">,</span> raiz2<span class="op">);</span></span>
 <span id="cb8-20"><a></a>        fin</span>
-<span id="cb8-21"><a></a>    sino   <span class="op">{</span> Raíces complejas <span class="op">}</span></span>
+<span id="cb8-21"><a></a>    sino si discriminante <span class="op">==</span> <span class="fl">0.0</span> entonces   <span class="op">{</span> Raíz única real <span class="op">}</span></span>
 <span id="cb8-22"><a></a>        principio</span>
-<span id="cb8-23"><a></a>            parteReal <span class="op">:=</span> <span class="op">-</span>coefB <span class="op">/</span> denominador<span class="op">;</span></span>
-<span id="cb8-24"><a></a>            parteImaginaria <span class="op">:=</span> <span class="fu">sqrt</span><span class="op">(-</span>discriminante<span class="op">)</span> <span class="op">/</span> denominador<span class="op">;</span></span>
-<span id="cb8-25"><a></a></span>
-<span id="cb8-26"><a></a>            <span class="fu">escribe</span><span class="op">(</span><span class="st">"("</span><span class="op">,</span> parteReal<span class="op">,</span> <span class="st">" + "</span><span class="op">,</span> parteImaginaria<span class="op">,</span> <span class="st">"i)"</span><span class="op">);</span></span>
-<span id="cb8-27"><a></a>            <span class="fu">escribe</span><span class="op">(</span><span class="st">"("</span><span class="op">,</span> parteReal<span class="op">,</span> <span class="st">" - "</span><span class="op">,</span> parteImaginaria<span class="op">,</span> <span class="st">"i)"</span><span class="op">);</span></span>
-<span id="cb8-28"><a></a>        fin</span>
-<span id="cb8-29"><a></a>    fin</span>
-<span id="cb8-30"><a></a>fin</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb8-23"><a></a>            raiz1 <span class="op">:=</span> <span class="op">-</span>coefB <span class="op">/</span> denominador<span class="op">;</span></span>
+<span id="cb8-24"><a></a>            <span class="fu">escribe</span><span class="op">(</span>raiz1<span class="op">);</span></span>
+<span id="cb8-25"><a></a>        fin</span>
+<span id="cb8-26"><a></a>    sino   <span class="op">{</span> Raíces complejas <span class="op">}</span></span>
+<span id="cb8-27"><a></a>        principio</span>
+<span id="cb8-28"><a></a>            parteReal <span class="op">:=</span> <span class="op">-</span>coefB <span class="op">/</span> denominador<span class="op">;</span></span>
+<span id="cb8-29"><a></a>            parteImaginaria <span class="op">:=</span> <span class="fu">sqrt</span><span class="op">(-</span>discriminante<span class="op">)</span> <span class="op">/</span> denominador<span class="op">;</span></span>
+<span id="cb8-30"><a></a></span>
+<span id="cb8-31"><a></a>            <span class="fu">escribe</span><span class="op">(</span><span class="st">"("</span><span class="op">,</span> parteReal<span class="op">,</span> <span class="st">" + "</span><span class="op">,</span> parteImaginaria<span class="op">,</span> <span class="st">"i)"</span><span class="op">);</span></span>
+<span id="cb8-32"><a></a>            <span class="fu">escribe</span><span class="op">(</span><span class="st">"("</span><span class="op">,</span> parteReal<span class="op">,</span> <span class="st">" - "</span><span class="op">,</span> parteImaginaria<span class="op">,</span> <span class="st">"i)"</span><span class="op">);</span></span>
+<span id="cb8-33"><a></a>        fin</span>
+<span id="cb8-34"><a></a>    fin</span>
+<span id="cb8-35"><a></a>fin</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 <section class="slide level2">
 

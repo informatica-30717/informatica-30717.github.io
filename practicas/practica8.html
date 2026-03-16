@@ -30,6 +30,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
+<link href="../practicas/practica6.html" rel="prev">
 <script src="../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
@@ -122,7 +123,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Práctica 8: BIM semántico</li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../practicas/practica1.html">Prácticas</a></li><li class="breadcrumb-item"><a href="../practicas/practica8.html">Práctica 8: BIM semántico</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
@@ -208,6 +209,12 @@ ul.task-list li input[type="checkbox"] {
  <span class="menu-text">Práctica 6: Resolución de problemas en Java (III)</span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../practicas/practica8.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Práctica 8: BIM semántico</span></a>
+  </div>
+</li>
       </ul>
   </li>
     </ul>
@@ -225,13 +232,17 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#uso-de-un-software-visualizador-bim" id="toc-uso-de-un-software-visualizador-bim" class="nav-link" data-scroll-target="#uso-de-un-software-visualizador-bim"><span class="header-section-number">3</span> Uso de un software visualizador BIM</a></li>
   <li><a href="#conversión-a-modelo-semántico" id="toc-conversión-a-modelo-semántico" class="nav-link" data-scroll-target="#conversión-a-modelo-semántico"><span class="header-section-number">4</span> Conversión a modelo semántico</a></li>
   <li><a href="#uso-del-editor-de-ontologías-protégé" id="toc-uso-del-editor-de-ontologías-protégé" class="nav-link" data-scroll-target="#uso-del-editor-de-ontologías-protégé"><span class="header-section-number">5</span> Uso del editor de ontologías Protégé</a></li>
+  <li><a href="#ejercicio-2-encontrar-elementos" id="toc-ejercicio-2-encontrar-elementos" class="nav-link" data-scroll-target="#ejercicio-2-encontrar-elementos"><span class="header-section-number">6</span> Ejercicio 2: encontrar elementos</a></li>
+  <li><a href="#ejercicio-3-inferencia" id="toc-ejercicio-3-inferencia" class="nav-link" data-scroll-target="#ejercicio-3-inferencia"><span class="header-section-number">7</span> Ejercicio 3: inferencia</a></li>
+  <li><a href="#ejercicio-4-consultas" id="toc-ejercicio-4-consultas" class="nav-link" data-scroll-target="#ejercicio-4-consultas"><span class="header-section-number">8</span> Ejercicio 4: consultas</a></li>
+  <li><a href="#ejercicio-5-ontología-inconsistente" id="toc-ejercicio-5-ontología-inconsistente" class="nav-link" data-scroll-target="#ejercicio-5-ontología-inconsistente"><span class="header-section-number">9</span> Ejercicio 5: ontología inconsistente</a></li>
   </ul>
-<div class="quarto-alternate-formats"><h2>Otros formatos</h2><ul><li><a href="practica8.reveal.html"><i class="bi bi-file-slides"></i>RevealJS</a></li></ul></div></nav>
+<div class="quarto-alternate-formats"><h2>Otros formatos</h2><ul><li><a href="practica8.reveal.html"><i class="bi bi-file-slides"></i>RevealJS</a></li><li><a href="practica8.pdf"><i class="bi bi-file-pdf"></i>PDF</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default">
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../practicas/practica1.html">Prácticas</a></li><li class="breadcrumb-item"><a href="../practicas/practica8.html">Práctica 8: BIM semántico</a></li></ol></nav>
 <div class="quarto-title">
 <h1 class="title">Práctica 8: BIM semántico</h1>
 </div>
@@ -306,8 +317,7 @@ Figura&nbsp;3: Modelo Duplex en BIMvision.
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>¿Cuántas ventanas hay?</p>
-<p>¿Qué identificador, alturas y anchura tiene cada una?</p>
+<p>¿Cuántas ventanas hay? ¿Qué identificador, alturas y anchura tiene cada una?</p>
 </div>
 </div>
 </section>
@@ -346,16 +356,9 @@ Figura&nbsp;4: Jerarquía de clases y detalle de la clase “Edificio”.
 <p>![Vídeo tutorial: editor Protégé <a href="https://drive.google.com/file/d/1eHHxYrJRiQZni_7KKrtRFqu5KEwk9omW/view">The Coding Train</a>.]</p>
 <p>Dependiendo de la versión de la herramienta Protégé utilizada, es posible que importe automáticamente las ontologías desde Internet o que nos pida que aportemos ficheros locales para importar las ontologías. En este último caso, en <strong>Active ontology → Ontology imports</strong> pinchamos en el botón <strong>+</strong> para añadir los ficheros <a href="../resources/practica8/beo.owl">⬇️ beo.owl</a> y <a href="../resources/practica8/bot.owl">⬇️ bot.owl</a>.</p>
 <p>Como vemos en la <a href="#fig-protege" class="quarto-xref">Figura&nbsp;4</a>, algunos elementos de la ontología tienen asociadas varias anotaciones con etiquetas en múltiples idiomas. Por ejemplo, la clase <strong>http://w3id.org/bot/Building</strong> tiene etiquetas <strong>Building</strong>, <strong>Edificio</strong>, etc. Dependiendo de la configuración de nuestro ordenador (del idioma predeterminado), Protégé puede mostrarnos las etiquetas en un idioma u otro. En este guion, se asume que se muestran en castellano.</p>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Nota</span>🧠 Ejercicio 2 - Encontrar elementos
-</div>
-</div>
-<div class="callout-body-container callout-body">
+</section>
+<section id="ejercicio-2-encontrar-elementos" class="level2" data-number="6">
+<h2 data-number="6" class="anchored" data-anchor-id="ejercicio-2-encontrar-elementos"><span class="header-section-number">6</span> Ejercicio 2: encontrar elementos</h2>
 <p>Navegar a través de la jerarquía de <strong>clases</strong> de la ontología y localizar la que permite representar las ventanas.</p>
 <p>Navegar a través de la jerarquía de <strong>propiedades</strong> de la ontología y localizar las que permiten representar la altura de una ventana y la anchura de una ventana.</p>
 <p>Navegar a través de los <strong>individuos</strong> de la ontología, localizar una ventana y comprobar el valor de sus propiedades. ¿Se corresponden con lo mostrado por OpenIFCViewer?</p>
@@ -414,18 +417,9 @@ Figura&nbsp;8: Visualizar Individuos.
 </figure>
 </div>
 </details>
-</div>
-</div>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Nota</span>🧠 Ejercicio 3 - Inferencia y consultar
-</div>
-</div>
-<div class="callout-body-container callout-body">
+</section>
+<section id="ejercicio-3-inferencia" class="level2" data-number="7">
+<h2 data-number="7" class="anchored" data-anchor-id="ejercicio-3-inferencia"><span class="header-section-number">7</span> Ejercicio 3: inferencia</h2>
 <p>Para cargar un <strong>razonador</strong>, pinchamos en la opción del menú superior <strong>Reasoner</strong>. Según la versión de Protégé, puede haber uno o varios razonadores. Seleccionamos <strong>HermiT</strong> y pinchamos en <strong>Start reasoner</strong>. Si hacemos cambios en la ontología, tendremos que pinchar en <strong>Synchronize reasoner</strong>.</p>
 <p>Posteriormente, a través de la pestaña <strong>DL query</strong>, podemos hacer consultas al razonador. Recuperar las instancias de la clase que representa las <strong>ventanas</strong> (en inglés). Pinchando en alguna de ellas, podemos ver los valores de las propiedades (tanto los originales como los inferidos por el razonador, si los hubiera).</p>
 <p>Recuperar las superclases de la clase que representa las ventanas.</p>
@@ -437,32 +431,14 @@ Figura&nbsp;8: Visualizar Individuos.
 </summary>
 <img src="../resources/practica8/stairs_example_DL.png" id="fig-str1" class="img-fluid" alt="Visualizar consulta DL."> <img src="../resources/practica8/stair_explanation.png" id="fig-str2" class="img-fluid" alt="Visualizar Explicación.">
 </details>
-</div>
-</div>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Nota</span>🧠 Ejercicio 3 - Consultas
-</div>
-</div>
-<div class="callout-body-container callout-body">
+</section>
+<section id="ejercicio-4-consultas" class="level2" data-number="8">
+<h2 data-number="8" class="anchored" data-anchor-id="ejercicio-4-consultas"><span class="header-section-number">8</span> Ejercicio 4: consultas</h2>
 <p>Para hacerlo aún más interesante, Protégé permite construir consultas complejas que involucran a varios elementos a la vez.</p>
 <p>Recuperar las instancias de “<strong>Espacio and ‘elemento adyacente’ some Window</strong>”, que es el conjunto de espacios que tienen un elemento tal adyacente que pertenece a la clase Ventana. ¿Cuántos individuos hay?</p>
-</div>
-</div>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Nota</span>🧠 Ejercicio 4 - Ontología incosistente
-</div>
-</div>
-<div class="callout-body-container callout-body">
+</section>
+<section id="ejercicio-5-ontología-inconsistente" class="level2" data-number="9">
+<h2 data-number="9" class="anchored" data-anchor-id="ejercicio-5-ontología-inconsistente"><span class="header-section-number">9</span> Ejercicio 5: ontología inconsistente</h2>
 <p>Si la ontología es <strong>inconsistente</strong>, no se puede razonar con ella: el razonador avisa de ello y permite pinchar en el botón <strong>Explain</strong> para entender el motivo y poder resolverlo.</p>
 <p>Actualizar la ontología introduciendo una inconsistencia. Por ejemplo, añadiendo dos valores diferentes para la altura de una ventana. Primero, marcamos la propiedad como <strong>Functional</strong>. A continuación, buscamos la ventana y añadimos una <strong>Data property assertions</strong> con el botón <strong>+</strong>, eligiendo la propiedad que representa la altura y un valor diferente al que ya tenía (como 1234). Por último, debemos sincronizar el razonador.</p>
 <details>
@@ -510,8 +486,6 @@ Figura&nbsp;12: Explicación
 </figure>
 </div>
 </details>
-</div>
-</div>
 
 
 </section>
@@ -917,11 +891,20 @@ Figura&nbsp;12: Explicación
     }
   });
   </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="../practicas/practica6.html" class="pagination-link" aria-label="Práctica 6: Resolución de problemas en Java (III)">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Práctica 6: Resolución de problemas en Java (III)</span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+  </div>
+</nav>
 </div> <!-- /content -->
 <footer class="footer">
   <div class="nav-footer">
     <div class="nav-footer-left">
-<p>© 2026 Alfonso López, Ignacio Huitzil, Yamilka Toca, Fernando Bobillo Universidad de Zaragoza</p>
+<p>© 2026 A. López, I. Huitzil, Y. Toca, F. Bobillo Universidad de Zaragoza</p>
 </div>   
     <div class="nav-footer-center">
       &nbsp;

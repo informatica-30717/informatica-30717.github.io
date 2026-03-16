@@ -185,8 +185,7 @@ Figura&nbsp;3: Modelo Duplex en BIMvision.
 <p><strong>🧠 Ejercicio 1 - Encontrar elementos</strong></p>
 </div>
 <div class="callout-content">
-<p>¿Cuántas ventanas hay?</p>
-<p>¿Qué identificador, alturas y anchura tiene cada una?</p>
+<p>¿Cuántas ventanas hay? ¿Qué identificador, alturas y anchura tiene cada una?</p>
 </div>
 </div>
 </div>
@@ -213,28 +212,15 @@ Figura&nbsp;3: Modelo Duplex en BIMvision.
 <p>Para abrir el fichero <strong>Duplex.owl</strong> usaremos <a href="http://protege.stanford.edu">Protégé</a>, un editor de ontologías gratuito y con versiones para varios sistemas operativos,. Protégé no requiere instalación, basta descargar un fichero .zip, descomprimirlo y pinchar en el ejecutable.</p>
 <p>En el menú de opciones que hay bajo el título de la ontología (“Converters”), podemos elegir <strong>Entities</strong> para seleccionar los diferentes componentes de la ontología (ver <a href="#/fig-protege" class="quarto-xref">Figura&nbsp;4</a> cuadro en color rojo): clases (<strong>Classes</strong>), propiedades cuyo valor es un objeto/individuo (<strong>Object properties</strong>), propiedades cuyo valor es un tipo de dato conocido por la máquina (<strong>Data properties</strong>), individuos (<strong>Individuals</strong>), etc.</p>
 <p>La <a href="#/fig-protege" class="quarto-xref">Figura&nbsp;4</a> muestra el resultado de seleccionar <strong>Clases</strong> y, concretamente, <strong>Edificio</strong>. Obsérvese cómo la interfaz nos muestra que <strong>Edificio</strong> es una subclase de <strong>Zona</strong>.</p>
-<div id="fig-protege" class="quarto-float quarto-figure quarto-figure-center">
-<figure class="quarto-float quarto-float-fig">
-<div aria-describedby="fig-protege-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img data-src="../resources/practica8/fig2.png">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-protege-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+
+<img data-src="../resources/practica8/fig2.png" class="r-stretch quarto-figure-center" id="fig-protege"><p class="caption">
 Figura&nbsp;4: Jerarquía de clases y detalle de la clase “Edificio”.
-</figcaption>
-</figure>
-</div>
-<p>![Vídeo tutorial: editor Protégé <a href="https://drive.google.com/file/d/1eHHxYrJRiQZni_7KKrtRFqu5KEwk9omW/view">The Coding Train</a>.]</p>
+</p><p>![Vídeo tutorial: editor Protégé <a href="https://drive.google.com/file/d/1eHHxYrJRiQZni_7KKrtRFqu5KEwk9omW/view">The Coding Train</a>.]</p>
 <p>Dependiendo de la versión de la herramienta Protégé utilizada, es posible que importe automáticamente las ontologías desde Internet o que nos pida que aportemos ficheros locales para importar las ontologías. En este último caso, en <strong>Active ontology → Ontology imports</strong> pinchamos en el botón <strong>+</strong> para añadir los ficheros <a href="../resources/practica8/beo.owl">⬇️ beo.owl</a> y <a href="../resources/practica8/bot.owl">⬇️ bot.owl</a>.</p>
 <p>Como vemos en la <a href="#/fig-protege" class="quarto-xref">Figura&nbsp;4</a>, algunos elementos de la ontología tienen asociadas varias anotaciones con etiquetas en múltiples idiomas. Por ejemplo, la clase <strong>http://w3id.org/bot/Building</strong> tiene etiquetas <strong>Building</strong>, <strong>Edificio</strong>, etc. Dependiendo de la configuración de nuestro ordenador (del idioma predeterminado), Protégé puede mostrarnos las etiquetas en un idioma u otro. En este guion, se asume que se muestran en castellano.</p>
-<div class="callout callout-note callout-titled callout-style-default">
-<div class="callout-body">
-<div class="callout-title">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<p><strong>🧠 Ejercicio 2 - Encontrar elementos</strong></p>
-</div>
-<div class="callout-content">
+</section>
+<section id="ejercicio-2-encontrar-elementos" class="slide level2">
+<h2>Ejercicio 2: encontrar elementos</h2>
 <p>Navegar a través de la jerarquía de <strong>clases</strong> de la ontología y localizar la que permite representar las ventanas.</p>
 <p>Navegar a través de la jerarquía de <strong>propiedades</strong> de la ontología y localizar las que permiten representar la altura de una ventana y la anchura de una ventana.</p>
 <p>Navegar a través de los <strong>individuos</strong> de la ontología, localizar una ventana y comprobar el valor de sus propiedades. ¿Se corresponden con lo mostrado por OpenIFCViewer?</p>
@@ -293,18 +279,9 @@ Figura&nbsp;8: Visualizar Individuos.
 </figure>
 </div>
 </details>
-</div>
-</div>
-</div>
-<div class="callout callout-note callout-titled callout-style-default">
-<div class="callout-body">
-<div class="callout-title">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<p><strong>🧠 Ejercicio 3 - Inferencia y consultar</strong></p>
-</div>
-<div class="callout-content">
+</section>
+<section id="ejercicio-3-inferencia" class="slide level2">
+<h2>Ejercicio 3: inferencia</h2>
 <p>Para cargar un <strong>razonador</strong>, pinchamos en la opción del menú superior <strong>Reasoner</strong>. Según la versión de Protégé, puede haber uno o varios razonadores. Seleccionamos <strong>HermiT</strong> y pinchamos en <strong>Start reasoner</strong>. Si hacemos cambios en la ontología, tendremos que pinchar en <strong>Synchronize reasoner</strong>.</p>
 <p>Posteriormente, a través de la pestaña <strong>DL query</strong>, podemos hacer consultas al razonador. Recuperar las instancias de la clase que representa las <strong>ventanas</strong> (en inglés). Pinchando en alguna de ellas, podemos ver los valores de las propiedades (tanto los originales como los inferidos por el razonador, si los hubiera).</p>
 <p>Recuperar las superclases de la clase que representa las ventanas.</p>
@@ -316,32 +293,14 @@ Figura&nbsp;8: Visualizar Individuos.
 </summary>
 <img data-src="../resources/practica8/stairs_example_DL.png" id="fig-str1" alt="Visualizar consulta DL."> <img data-src="../resources/practica8/stair_explanation.png" id="fig-str2" alt="Visualizar Explicación.">
 </details>
-</div>
-</div>
-</div>
-<div class="callout callout-note callout-titled callout-style-default">
-<div class="callout-body">
-<div class="callout-title">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<p><strong>🧠 Ejercicio 3 - Consultas</strong></p>
-</div>
-<div class="callout-content">
+</section>
+<section id="ejercicio-4-consultas" class="slide level2">
+<h2>Ejercicio 4: consultas</h2>
 <p>Para hacerlo aún más interesante, Protégé permite construir consultas complejas que involucran a varios elementos a la vez.</p>
 <p>Recuperar las instancias de “<strong>Espacio and ‘elemento adyacente’ some Window</strong>”, que es el conjunto de espacios que tienen un elemento tal adyacente que pertenece a la clase Ventana. ¿Cuántos individuos hay?</p>
-</div>
-</div>
-</div>
-<div class="callout callout-note callout-titled callout-style-default">
-<div class="callout-body">
-<div class="callout-title">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<p><strong>🧠 Ejercicio 4 - Ontología incosistente</strong></p>
-</div>
-<div class="callout-content">
+</section>
+<section id="ejercicio-5-ontología-inconsistente" class="slide level2">
+<h2>Ejercicio 5: ontología inconsistente</h2>
 <p>Si la ontología es <strong>inconsistente</strong>, no se puede razonar con ella: el razonador avisa de ello y permite pinchar en el botón <strong>Explain</strong> para entender el motivo y poder resolverlo.</p>
 <p>Actualizar la ontología introduciendo una inconsistencia. Por ejemplo, añadiendo dos valores diferentes para la altura de una ventana. Primero, marcamos la propiedad como <strong>Functional</strong>. A continuación, buscamos la ventana y añadimos una <strong>Data property assertions</strong> con el botón <strong>+</strong>, eligiendo la propiedad que representa la altura y un valor diferente al que ya tenía (como 1234). Por último, debemos sincronizar el razonador.</p>
 <details>
@@ -389,9 +348,6 @@ Figura&nbsp;12: Explicación
 </figure>
 </div>
 </details>
-</div>
-</div>
-</div>
 
 
 </section>
