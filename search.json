@@ -4,120 +4,70 @@
     "href": "practicas/practica8.html",
     "title": "Práctica 8: BIM semántico",
     "section": "",
-    "text": "Conocer la representación de modelos BIM usando ontologías\nHacer consultas al modelo BIM usando un razonador semántico.",
-    "crumbs": [
-      "![](../resources/unizar_white.png){width=95px}",
-      "Prácticas",
-      "Práctica 8: BIM semántico"
-    ]
+    "text": "Conocer la representación de modelos BIM usando ontologías\nHacer consultas al modelo BIM usando un razonador semántico."
   },
   {
     "objectID": "practicas/practica8.html#objetivos-de-la-práctica",
     "href": "practicas/practica8.html#objetivos-de-la-práctica",
     "title": "Práctica 8: BIM semántico",
     "section": "",
-    "text": "Conocer la representación de modelos BIM usando ontologías\nHacer consultas al modelo BIM usando un razonador semántico.",
-    "crumbs": [
-      "![](../resources/unizar_white.png){width=95px}",
-      "Prácticas",
-      "Práctica 8: BIM semántico"
-    ]
+    "text": "Conocer la representación de modelos BIM usando ontologías\nHacer consultas al modelo BIM usando un razonador semántico."
   },
   {
     "objectID": "practicas/practica8.html#qué-es-bim",
     "href": "practicas/practica8.html#qué-es-bim",
     "title": "Práctica 8: BIM semántico",
     "section": "2 ¿Qué es BIM?",
-    "text": "2 ¿Qué es BIM?\nEl Modelado de Información de Construcción (BIM en inglés) es un proceso colaborativo para gestionar la información en un proyecto de construcción (Ver Figura 1).\n\n\n\n\n\n\nFigura 1: Youtube Autodesk Building Solutions What Is BIM (Building Information Modeling)?.\n\n\n\nBIM se basa en la representación digital de un edificio para integrar el diseño, el modelado, la planificación y la operación durante todo su ciclo de vida, desde el diseño hasta el demolición (Ver Figura 2). Los modelos BIM incluyen numerosos datos interconectados, como un modelo geométrico 3D de los elementos del edificio, una descripción de los materiales utilizados y sus propiedades, etc. Las ventajas de usar BIM incluyen la optimización de los costes de construcción y mantenimiento, la mejora de la transparencia y la colaboración entre las diferentes partes interesadas, la gestión de proyectos complejos y la flexibilidad para adaptarse rápidamente a los requisitos cambiantes. Por lo tanto, BIM es un elemento clave en la digitalización del sector de la construcción.\n\n\n\n\n\n\nFigura 2: Ciclo de vida de la edificación.",
-    "crumbs": [
-      "![](../resources/unizar_white.png){width=95px}",
-      "Prácticas",
-      "Práctica 8: BIM semántico"
-    ]
+    "text": "2 ¿Qué es BIM?\nEl Modelado de Información de Construcción (BIM en inglés) es un proceso colaborativo para gestionar la información en un proyecto de construcción (Ver Figura 1).\n\n\n\n\n\n\nFigura 1: Youtube Autodesk Building Solutions What Is BIM (Building Information Modeling)?.\n\n\n\nBIM se basa en la representación digital de un edificio para integrar el diseño, el modelado, la planificación y la operación durante todo su ciclo de vida, desde el diseño hasta el demolición (Ver Figura 2). Los modelos BIM incluyen numerosos datos interconectados, como un modelo geométrico 3D de los elementos del edificio, una descripción de los materiales utilizados y sus propiedades, etc. Las ventajas de usar BIM incluyen la optimización de los costes de construcción y mantenimiento, la mejora de la transparencia y la colaboración entre las diferentes partes interesadas, la gestión de proyectos complejos y la flexibilidad para adaptarse rápidamente a los requisitos cambiantes. Por lo tanto, BIM es un elemento clave en la digitalización del sector de la construcción.\n\n\n\n\n\n\nFigura 2: Ciclo de vida de la edificación."
   },
   {
     "objectID": "practicas/practica8.html#uso-de-un-software-visualizador-bim",
     "href": "practicas/practica8.html#uso-de-un-software-visualizador-bim",
     "title": "Práctica 8: BIM semántico",
     "section": "3 Uso de un software visualizador BIM",
-    "text": "3 Uso de un software visualizador BIM\nEn esta práctica considerararemos diferentes versiones de un modelo BIM públicamente disponible correspondiente a un apartamento dúplex. La versión original (⬇️ Duplex.ifc) está en IFC (concretamente, 2x3). La versión semántica (⬇️ Duplex.owl) está en el lenguaje OWL.\nEl primer paso de la práctica es usar BIMvision u otro visualizador BIM para abrir el fichero Duplex.ifc y familiarizarse con el modelo. La Figura 3 muestra el detalle de una ventana de la planta baja (Level 1).\n\n\n\n\n\n\nFigura 3: Modelo Duplex en BIMvision.\n\n\n\n\n\n\n\n\n\nNota🧠 Ejercicio 1 - Encontrar elementos\n\n\n\n¿Cuántas ventanas hay? ¿Qué identificador, alturas y anchura tiene cada una?",
-    "crumbs": [
-      "![](../resources/unizar_white.png){width=95px}",
-      "Prácticas",
-      "Práctica 8: BIM semántico"
-    ]
+    "text": "3 Uso de un software visualizador BIM\nEn esta práctica considerararemos diferentes versiones de un modelo BIM públicamente disponible correspondiente a un apartamento dúplex. La versión original (⬇️ Duplex.ifc) está en IFC (concretamente, 2x3). La versión semántica (⬇️ Duplex.owl) está en el lenguaje OWL.\nEl primer paso de la práctica es usar BIMvision u otro visualizador BIM para abrir el fichero Duplex.ifc y familiarizarse con el modelo. La Figura 3 muestra el detalle de una ventana de la planta baja (Level 1).\n\n\n\n\n\n\nFigura 3: Modelo Duplex en BIMvision.\n\n\n\n\n\n\n\n\n\nNota🧠 Ejercicio 1 - Encontrar elementos\n\n\n\n¿Cuántas ventanas hay? ¿Qué identificador, alturas y anchura tiene cada una?"
   },
   {
     "objectID": "practicas/practica8.html#conversión-a-modelo-semántico",
     "href": "practicas/practica8.html#conversión-a-modelo-semántico",
     "title": "Práctica 8: BIM semántico",
     "section": "4 Conversión a modelo semántico",
-    "text": "4 Conversión a modelo semántico\nEste apartado es opcional, puesto que el objetivo es obtener el fichero Duplex.owl que ya está disponible, pero en todo caso vamos a describir mejor el proceso seguido para obtener el fichero. Aunque existen varias herramientas que permiten traducir un fichero de entrada en IFC a un fichero de salida en OWL, en nuestro caso se ha usado en particular IFCtoLBD 2.43.5. Debemos tener cuenta que este fichero utiliza vocabulario (clases y propiedades) previamente definidas en ontologías existentes en el ámbito de la construcción.\n\n\n\n\n\n\nAdvertencia\n\n\n\nSe ha usado la configuración BOT + PRODUCT + PROPS, Level L1. Manualmente, se ha eliminado la referencia a 2 ontologías externas (OMG y MEP) para simplificar la práctica.",
-    "crumbs": [
-      "![](../resources/unizar_white.png){width=95px}",
-      "Prácticas",
-      "Práctica 8: BIM semántico"
-    ]
+    "text": "4 Conversión a modelo semántico\nEste apartado es opcional, puesto que el objetivo es obtener el fichero Duplex.owl que ya está disponible, pero en todo caso vamos a describir mejor el proceso seguido para obtener el fichero. Aunque existen varias herramientas que permiten traducir un fichero de entrada en IFC a un fichero de salida en OWL, en nuestro caso se ha usado en particular IFCtoLBD 2.43.5. Debemos tener cuenta que este fichero utiliza vocabulario (clases y propiedades) previamente definidas en ontologías existentes en el ámbito de la construcción.\n\n\n\n\n\n\nAdvertencia\n\n\n\nSe ha usado la configuración BOT + PRODUCT + PROPS, Level L1. Manualmente, se ha eliminado la referencia a 2 ontologías externas (OMG y MEP) para simplificar la práctica."
   },
   {
     "objectID": "practicas/practica8.html#uso-del-editor-de-ontologías-protégé",
     "href": "practicas/practica8.html#uso-del-editor-de-ontologías-protégé",
     "title": "Práctica 8: BIM semántico",
     "section": "5 Uso del editor de ontologías Protégé",
-    "text": "5 Uso del editor de ontologías Protégé\nPara abrir el fichero Duplex.owl usaremos Protégé, un editor de ontologías gratuito y con versiones para varios sistemas operativos,. Protégé no requiere instalación, basta descargar un fichero .zip, descomprimirlo y pinchar en el ejecutable.\nEn el menú de opciones que hay bajo el título de la ontología (“Converters”), podemos elegir Entities para seleccionar los diferentes componentes de la ontología (ver Figura 4 cuadro en color rojo): clases (Classes), propiedades cuyo valor es un objeto/individuo (Object properties), propiedades cuyo valor es un tipo de dato conocido por la máquina (Data properties), individuos (Individuals), etc.\nLa Figura 4 muestra el resultado de seleccionar Clases y, concretamente, Edificio. Obsérvese cómo la interfaz nos muestra que Edificio es una subclase de Zona.\n\n\n\n\n\n\nFigura 4: Jerarquía de clases y detalle de la clase “Edificio”.\n\n\n\n![Vídeo tutorial: editor Protégé The Coding Train.]\nDependiendo de la versión de la herramienta Protégé utilizada, es posible que importe automáticamente las ontologías desde Internet o que nos pida que aportemos ficheros locales para importar las ontologías. En este último caso, en Active ontology → Ontology imports pinchamos en el botón + para añadir los ficheros ⬇️ beo.owl y ⬇️ bot.owl.\nComo vemos en la Figura 4, algunos elementos de la ontología tienen asociadas varias anotaciones con etiquetas en múltiples idiomas. Por ejemplo, la clase http://w3id.org/bot/Building tiene etiquetas Building, Edificio, etc. Dependiendo de la configuración de nuestro ordenador (del idioma predeterminado), Protégé puede mostrarnos las etiquetas en un idioma u otro. En este guion, se asume que se muestran en castellano.",
-    "crumbs": [
-      "![](../resources/unizar_white.png){width=95px}",
-      "Prácticas",
-      "Práctica 8: BIM semántico"
-    ]
+    "text": "5 Uso del editor de ontologías Protégé\nPara abrir el fichero Duplex.owl usaremos Protégé, un editor de ontologías gratuito y con versiones para varios sistemas operativos,. Protégé no requiere instalación, basta descargar un fichero .zip, descomprimirlo y pinchar en el ejecutable.\nEn el menú de opciones que hay bajo el título de la ontología (“Converters”), podemos elegir Entities para seleccionar los diferentes componentes de la ontología (ver Figura 4 cuadro en color rojo): clases (Classes), propiedades cuyo valor es un objeto/individuo (Object properties), propiedades cuyo valor es un tipo de dato conocido por la máquina (Data properties), individuos (Individuals), etc.\nLa Figura 4 muestra el resultado de seleccionar Clases y, concretamente, Edificio. Obsérvese cómo la interfaz nos muestra que Edificio es una subclase de Zona.\n\n\n\n\n\n\nFigura 4: Jerarquía de clases y detalle de la clase “Edificio”.\n\n\n\n![Vídeo tutorial: editor Protégé The Coding Train.]\nDependiendo de la versión de la herramienta Protégé utilizada, es posible que importe automáticamente las ontologías desde Internet o que nos pida que aportemos ficheros locales para importar las ontologías. En este último caso, en Active ontology → Ontology imports pinchamos en el botón + para añadir los ficheros ⬇️ beo.owl y ⬇️ bot.owl.\nComo vemos en la Figura 4, algunos elementos de la ontología tienen asociadas varias anotaciones con etiquetas en múltiples idiomas. Por ejemplo, la clase http://w3id.org/bot/Building tiene etiquetas Building, Edificio, etc. Dependiendo de la configuración de nuestro ordenador (del idioma predeterminado), Protégé puede mostrarnos las etiquetas en un idioma u otro. En este guion, se asume que se muestran en castellano."
   },
   {
     "objectID": "practicas/practica8.html#ejercicio-2-encontrar-elementos",
     "href": "practicas/practica8.html#ejercicio-2-encontrar-elementos",
     "title": "Práctica 8: BIM semántico",
     "section": "6 Ejercicio 2: encontrar elementos",
-    "text": "6 Ejercicio 2: encontrar elementos\nNavegar a través de la jerarquía de clases de la ontología y localizar la que permite representar las ventanas.\nNavegar a través de la jerarquía de propiedades de la ontología y localizar las que permiten representar la altura de una ventana y la anchura de una ventana.\nNavegar a través de los individuos de la ontología, localizar una ventana y comprobar el valor de sus propiedades. ¿Se corresponden con lo mostrado por OpenIFCViewer?\n\n\n💡 Solución Classes\n\n\n\n\n\n\n\nFigura 5: Visualizar Clases.\n\n\n\n\n\n\n💡 Solución Propiedades\n\n\n\n\n\n\n\nFigura 6: Visualizar Object properties.\n\n\n\n\n\n\n\n\n\nFigura 7: Visualizar Data properties.\n\n\n\n\n\n\n💡 Solución Individuos\n\n\n\n\n\n\n\nFigura 8: Visualizar Individuos.",
-    "crumbs": [
-      "![](../resources/unizar_white.png){width=95px}",
-      "Prácticas",
-      "Práctica 8: BIM semántico"
-    ]
+    "text": "6 Ejercicio 2: encontrar elementos\nNavegar a través de la jerarquía de clases de la ontología y localizar la que permite representar las ventanas.\nNavegar a través de la jerarquía de propiedades de la ontología y localizar las que permiten representar la altura de una ventana y la anchura de una ventana.\nNavegar a través de los individuos de la ontología, localizar una ventana y comprobar el valor de sus propiedades. ¿Se corresponden con lo mostrado por OpenIFCViewer?\n\n\n💡 Solución Classes\n\n\n\n\n\n\n\nFigura 5: Visualizar Clases.\n\n\n\n\n\n\n💡 Solución Propiedades\n\n\n\n\n\n\n\nFigura 6: Visualizar Object properties.\n\n\n\n\n\n\n\n\n\nFigura 7: Visualizar Data properties.\n\n\n\n\n\n\n💡 Solución Individuos\n\n\n\n\n\n\n\nFigura 8: Visualizar Individuos."
   },
   {
     "objectID": "practicas/practica8.html#ejercicio-3-inferencia",
     "href": "practicas/practica8.html#ejercicio-3-inferencia",
     "title": "Práctica 8: BIM semántico",
     "section": "7 Ejercicio 3: inferencia",
-    "text": "7 Ejercicio 3: inferencia\nPara cargar un razonador, pinchamos en la opción del menú superior Reasoner. Según la versión de Protégé, puede haber uno o varios razonadores. Seleccionamos HermiT y pinchamos en Start reasoner. Si hacemos cambios en la ontología, tendremos que pinchar en Synchronize reasoner.\nPosteriormente, a través de la pestaña DL query, podemos hacer consultas al razonador. Recuperar las instancias de la clase que representa las ventanas (en inglés). Pinchando en alguna de ellas, podemos ver los valores de las propiedades (tanto los originales como los inferidos por el razonador, si los hubiera).\nRecuperar las superclases de la clase que representa las ventanas.\nRecuperar las instancias de alguna de las superclases obtenidas en el paso anterior, para comprobar que el razonador recupera las instancias indirectas.\nRecuperar nuevamente las instancias de la clase que representa las ventanas. Da click sobre el simbolo ? en alguna instancia. El rasonador te dara al menos una explicación.\n\n\n💡 Ejemplo: Escalera",
-    "crumbs": [
-      "![](../resources/unizar_white.png){width=95px}",
-      "Prácticas",
-      "Práctica 8: BIM semántico"
-    ]
+    "text": "7 Ejercicio 3: inferencia\nPara cargar un razonador, pinchamos en la opción del menú superior Reasoner. Según la versión de Protégé, puede haber uno o varios razonadores. Seleccionamos HermiT y pinchamos en Start reasoner. Si hacemos cambios en la ontología, tendremos que pinchar en Synchronize reasoner.\nPosteriormente, a través de la pestaña DL query, podemos hacer consultas al razonador. Recuperar las instancias de la clase que representa las ventanas (en inglés). Pinchando en alguna de ellas, podemos ver los valores de las propiedades (tanto los originales como los inferidos por el razonador, si los hubiera).\nRecuperar las superclases de la clase que representa las ventanas.\nRecuperar las instancias de alguna de las superclases obtenidas en el paso anterior, para comprobar que el razonador recupera las instancias indirectas.\nRecuperar nuevamente las instancias de la clase que representa las ventanas. Da click sobre el simbolo ? en alguna instancia. El rasonador te dara al menos una explicación.\n\n\n💡 Ejemplo: Escalera"
   },
   {
     "objectID": "practicas/practica8.html#ejercicio-4-consultas",
     "href": "practicas/practica8.html#ejercicio-4-consultas",
     "title": "Práctica 8: BIM semántico",
     "section": "8 Ejercicio 4: consultas",
-    "text": "8 Ejercicio 4: consultas\nPara hacerlo aún más interesante, Protégé permite construir consultas complejas que involucran a varios elementos a la vez.\nRecuperar las instancias de “Espacio and ‘elemento adyacente’ some Window”, que es el conjunto de espacios que tienen un elemento tal adyacente que pertenece a la clase Ventana. ¿Cuántos individuos hay?",
-    "crumbs": [
-      "![](../resources/unizar_white.png){width=95px}",
-      "Prácticas",
-      "Práctica 8: BIM semántico"
-    ]
+    "text": "8 Ejercicio 4: consultas\nPara hacerlo aún más interesante, Protégé permite construir consultas complejas que involucran a varios elementos a la vez.\nRecuperar las instancias de “Espacio and ‘elemento adyacente’ some Window”, que es el conjunto de espacios que tienen un elemento tal adyacente que pertenece a la clase Ventana. ¿Cuántos individuos hay?"
   },
   {
     "objectID": "practicas/practica8.html#ejercicio-5-ontología-inconsistente",
     "href": "practicas/practica8.html#ejercicio-5-ontología-inconsistente",
     "title": "Práctica 8: BIM semántico",
     "section": "9 Ejercicio 5: ontología inconsistente",
-    "text": "9 Ejercicio 5: ontología inconsistente\nSi la ontología es inconsistente, no se puede razonar con ella: el razonador avisa de ello y permite pinchar en el botón Explain para entender el motivo y poder resolverlo.\nActualizar la ontología introduciendo una inconsistencia. Por ejemplo, añadiendo dos valores diferentes para la altura de una ventana. Primero, marcamos la propiedad como Functional. A continuación, buscamos la ventana y añadimos una Data property assertions con el botón +, eligiendo la propiedad que representa la altura y un valor diferente al que ya tenía (como 1234). Por último, debemos sincronizar el razonador.\n\n\n💡 Solución Funcional\n\n\n\n\n\n\n\nFigura 9: Propiedad funcional.\n\n\n\n\n\n\n\n\n\nFigura 10: Añadir propiedad y valor\n\n\n\n\n\n\n\n\n\nFigura 11: Explicar\n\n\n\n\n\n\n\n\n\nFigura 12: Explicación",
-    "crumbs": [
-      "![](../resources/unizar_white.png){width=95px}",
-      "Prácticas",
-      "Práctica 8: BIM semántico"
-    ]
+    "text": "9 Ejercicio 5: ontología inconsistente\nSi la ontología es inconsistente, no se puede razonar con ella: el razonador avisa de ello y permite pinchar en el botón Explain para entender el motivo y poder resolverlo.\nActualizar la ontología introduciendo una inconsistencia. Por ejemplo, añadiendo dos valores diferentes para la altura de una ventana. Primero, marcamos la propiedad como Functional. A continuación, buscamos la ventana y añadimos una Data property assertions con el botón +, eligiendo la propiedad que representa la altura y un valor diferente al que ya tenía (como 1234). Por último, debemos sincronizar el razonador.\n\n\n💡 Solución Funcional\n\n\n\n\n\n\n\nFigura 9: Propiedad funcional.\n\n\n\n\n\n\n\n\n\nFigura 10: Añadir propiedad y valor\n\n\n\n\n\n\n\n\n\nFigura 11: Explicar\n\n\n\n\n\n\n\n\n\nFigura 12: Explicación"
   },
   {
     "objectID": "practicas/practica8.reveal.html#objetivos-de-la-práctica",
