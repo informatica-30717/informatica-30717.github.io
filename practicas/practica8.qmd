@@ -6,6 +6,8 @@ format:
     number-sections: true
   revealjs: 
     output-ext: "reveal.html"
+  pdf: 
+    output-ext: "pdf"
 execute:
   echo: false
 ---
@@ -37,11 +39,10 @@ detalle de una ventana de la planta baja (Level 1).
 
 ::: {.callout-note}
 ## 🧠 Ejercicio 1 - Encontrar elementos
-¿Cuántas ventanas hay? 
 
+¿Cuántas ventanas hay? 
 ¿Qué identificador, alturas y anchura tiene cada una?
 :::
-
 
 ##  Conversión a modelo semántico
 Este apartado es opcional, puesto que el objetivo es obtener el fichero Duplex.owl que ya
@@ -86,8 +87,8 @@ configuración de nuestro ordenador (del idioma predeterminado), Protégé puede
 las etiquetas en un idioma u otro. En este guion, se asume que se muestran en castellano. 
 
 
-::: {.callout-note}
-## 🧠 Ejercicio 2 - Encontrar elementos
+## Ejercicio 2: encontrar elementos
+
 Navegar a través de la jerarquía de **clases** de la ontología y localizar la que permite
 representar las ventanas.
 
@@ -102,7 +103,6 @@ valor de sus propiedades. ¿Se corresponden con lo mostrado por OpenIFCViewer?
 ![ Visualizar Clases.](../resources/practica8/classes.png){#fig-clas}
 </details>
 
-
 <details>
 <summary>💡 Solución Propiedades</summary>
 ![ Visualizar Object properties.](../resources/practica8/property1.png){#fig-prop1}
@@ -114,10 +114,9 @@ valor de sus propiedades. ¿Se corresponden con lo mostrado por OpenIFCViewer?
 <summary>💡 Solución Individuos</summary>
 ![ Visualizar Individuos.](../resources/practica8/individuals.png){#fig-ind}
 </details>
-:::
 
-::: {.callout-note}
-## 🧠 Ejercicio 3 - Inferencia y consultar
+## Ejercicio 3: inferencia
+
 Para cargar un **razonador**, pinchamos en la opción del menú superior **Reasoner**. Según la
 versión de Protégé, puede haber uno o varios razonadores. Seleccionamos **HermiT** y
 pinchamos en **Start reasoner**. Si hacemos cambios en la ontología, tendremos que pinchar
@@ -140,19 +139,15 @@ Recuperar nuevamente las instancias de la clase que representa las **ventanas**.
 ![ Visualizar Explicación.](../resources/practica8/stair_explanation.png){#fig-str2}
 </details>
 
-:::
-
-::: {.callout-note}
-## 🧠 Ejercicio 3 - Consultas
+## Ejercicio 4: consultas
 Para hacerlo aún más interesante, Protégé permite construir consultas complejas que involucran a varios elementos a la vez. 
 
 Recuperar las instancias de “**Espacio and 'elemento adyacente' some Window**”, que es el conjunto de espacios que tienen un elemento tal adyacente que pertenece a la clase Ventana. 
 ¿Cuántos individuos hay?
 
-:::
 
-::: {.callout-note}
-## 🧠 Ejercicio 4 - Ontología incosistente
+## Ejercicio 5: ontología inconsistente
+
 Si la ontología es **inconsistente**, no se puede razonar con ella: el razonador avisa de ello y permite pinchar en el botón **Explain** para entender el motivo y poder resolverlo.
 
 Actualizar la ontología introduciendo una inconsistencia. Por ejemplo, añadiendo dos
@@ -167,11 +162,7 @@ diferente al que ya tenía (como 1234). Por último, debemos sincronizar el razo
 
 ![ Añadir propiedad y valor](../resources/practica8/property_value.png){#fig-val}
 
-
 ![Explicar](../resources/practica8/explain.png){#fig-exp1}
 
 ![Explicación](../resources/practica8/explanation.png){#fig-exp2}
-
-
 </details>
-:::

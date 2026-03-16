@@ -160,6 +160,22 @@ public class NombreDeLaClase {
 ```
 :::
 
+---
+
+### Clase 1: dos soluciones reales
+
+**Si $\Delta > 0$, la ecuación tiene dos soluciones reales distintas**, que se calculan con la fórmula general utilizando el símbolo $+$ para una raíz y el símbolo $-$ para la otra raíz.
+
+::: {.callout-note}
+## Notas para resolver el problema
+
+- Supondremos que sólo hay raíces reales.
+- Acciones a realizar:
+  - Leer los coeficientes del polinomio.
+  - Aplicar las fórmulas para calcular las dos soluciones.
+  - Escribir las soluciones por pantalla.
+:::
+
 ::: {.callout-note}
 ## Leer datos en Java
 Utiliza la clase `Scanner` para leer los coeficientes del polinomio desde la entrada estándar, por ejemplo:
@@ -176,25 +192,6 @@ Utiliza la impresión por consola para mostrar los resultados de las soluciones,
 ```java
 System.out.println("La solución es: " + x);
 ```
-:::
-
----
-
-### Clase 1: dos soluciones reales
-
-**Si $\Delta > 0$, la ecuación tiene dos soluciones reales distintas**, que se calculan con la fórmula general utilizando el símbolo $+$ para una raíz y el símbolo $-$ para la otra raíz.
-
-::: {.callout-note}
-## Notas para resolver el problema
-
-- Supondremos que sólo hay raíces reales.
-- Acciones a realizar:
-  - Leer los coeficientes del polinomio.
-  - Aplicar las fórmulas para calcular las dos soluciones.
-  - Escribir las soluciones por pantalla.
-- Posibles mejoras:
-  - Cálculo previo del discriminante ($\Delta$), en lugar de calcularlo dos veces.
-  - Cálculo previo del denominador ($2a$), en lugar de calcularlo dos veces.
 :::
 
 A continuación se muestra una posible solución en pseudocódigo:
@@ -221,9 +218,14 @@ Principio del algoritmo
 fin
 ```
 
+::: {.callout-tip}
+## Solución única
+
 Verifica que la solución es correcta utilizando los siguientes coeficientes:
 
 - $a=1, \quad b=-3, \quad c=2$ → dos soluciones reales ($x=1$ y $x=2$).
+
+:::
 
 ---
 
@@ -238,13 +240,14 @@ Si $\Delta = 0$, la ecuación tiene una única solución real, que se calcula co
 - Acciones a realizar:
   - Leer los coeficientes del polinomio.
   - Calcular el discriminante.
-  - Si el discriminante es mayor o igual a cero:
+  - Si el discriminante es mayor que cero:
     - Aplicar las fórmulas para calcular las dos soluciones.
     - Escribir las soluciones por pantalla.
+  - Si el discriminante es igual a cero:
+    - Aplicar la fórmula para calcular la única solución.
+    - Escribir la solución por pantalla.
   - Si el discriminante es menor que cero:
     - Escribir un texto indicando que no hay raíces.
-- Posibles mejoras:
-  - Cálculo previo del denominador ($2a$), en lugar de calcularlo dos veces.
 :::
 
 ```{.java}
@@ -261,12 +264,18 @@ Principio del algoritmo
 
     discriminante := pow(coefB, 2) - (4.0 * coefA * coefC);
 
-    si discriminante >= 0.0 entonces
+    si discriminante > 0.0 entonces
         principio
             denominador := 2.0 * coefA;
             raiz1 := (-coefB + sqrt(discriminante)) / denominador;
             raiz2 := (-coefB - sqrt(discriminante)) / denominador;
             escribe(raiz1, raiz2);
+        fin
+    sino si discriminante == 0.0 entonces
+        principio
+            denominador := 2.0 * coefA;
+            raiz1 := -coefB / denominador;
+            escribe(raiz1);
         fin
     sino
         escribe("Este polinomio no tiene raíces reales");
@@ -308,14 +317,15 @@ $$
 - Acciones a realizar:
   - Leer los coeficientes del polinomio.
   - Calcular el discriminante.
-  - Si el discriminante es mayor o igual a cero:
+  - Si el discriminante es mayor que cero:
     - Aplicar las fórmulas para calcular soluciones reales.
     - Escribir las soluciones por pantalla.
+  - Si el discriminante es igual a cero:
+    - Aplicar las fórmulas para calcular la única solución real.
+    - Escribir la solución por pantalla.
   - Si el discriminante es menor que cero:
     - Aplicar las fórmulas para calcular soluciones complejas.
     - Escribir las soluciones por pantalla.
-- Mejora para escribir más cómodamente las soluciones:
-  - Cálculo previo del denominador ($2a$), en lugar de calcularlo dos veces.
 :::
 
 ```{.java}
@@ -333,11 +343,16 @@ Principio del algoritmo
     discriminante := pow(coefB, 2) - (4.0 * coefA * coefC);
     denominador := 2.0 * coefA;
 
-    si discriminante >= 0.0 entonces   { Raíces reales }
+    si discriminante > 0.0 entonces   { Raíces reales }
         principio
             raiz1 := (-coefB + sqrt(discriminante)) / denominador;
             raiz2 := (-coefB - sqrt(discriminante)) / denominador;
             escribe(raiz1, raiz2);
+        fin
+    sino si discriminante == 0.0 entonces   { Raíz única real }
+        principio
+            raiz1 := -coefB / denominador;
+            escribe(raiz1);
         fin
     sino   { Raíces complejas }
         principio
