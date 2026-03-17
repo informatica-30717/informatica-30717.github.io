@@ -633,3 +633,4 @@ En esta solución, el vector utilizado para la criba de Eratóstenes ocupará `1
 - `Solucion2.java`: Optimización utilizando la raíz cuadrada de n.
 - `Solucion3.java`: Implementación utilizando un vector de booleanos.
 - `Solucion4.java`: Implementación con optimización utilizando un vector de booleanos y solo números impares.
+- `tiempos.xlsx`: Fichero de Excel con los tiempos de ejecución de cada implementación para los valores de $n$ indicados.

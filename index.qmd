@@ -3,6 +3,8 @@ title: "📌 Información general"
 image: https://course.fast.ai/www/social.png
 description: Información básica de la asignatura de Informática (30717) para el Grado en Estudios en Arquitectura de la Universidad de Zaragoza.
 authors:
+  - name: "Fernando Bobillo Ortega"
+    url: https://webdiis.unizar.es/~fbobillo/
   - name: "Alfonso López Ruiz"
     url: https://alfonsolrz.github.io
   - name: "Ignacio Huitzil Velasco"
