@@ -755,7 +755,7 @@
     "href": "practicas/practica6.reveal.html#entrega-de-la-solución",
     "title": "Práctica 6: Resolución de problemas en Java (III)",
     "section": "Entrega de la solución",
-    "text": "Entrega de la solución\nSólo debe realizar la entrega un miembro del grupo. Sube a Moodle un fichero comprimido practica6.zip que contenga los siguientes archivos:\n\nOrdenacionBurbuja.java: Implementación del algoritmo de ordenación de burbuja.\nOrdenacionSeleccion.java: Implementación del algoritmo de ordenación por selección."
+    "text": "Entrega de la solución\nSólo debe realizar la entrega un miembro del grupo. Sube a Moodle un fichero comprimido practica6.zip que contenga los siguientes archivos:\n\nOrdenacionBurbuja.java: Implementación del algoritmo de ordenación de burbuja.\nOrdenacionSeleccion.java: Implementación del algoritmo de ordenación por selección.\ntiempos.xlsx: Archivo de Excel con los tiempos de ejecución medidos para ambos algoritmos y los diferentes tamaños de vector."
   },
   {
     "objectID": "practicas/practica6.html",
@@ -810,7 +810,7 @@
     "href": "practicas/practica6.html#entrega-de-la-solución",
     "title": "Práctica 6: Resolución de problemas en Java (III)",
     "section": "4 Entrega de la solución",
-    "text": "4 Entrega de la solución\nSólo debe realizar la entrega un miembro del grupo. Sube a Moodle un fichero comprimido practica6.zip que contenga los siguientes archivos:\n\nOrdenacionBurbuja.java: Implementación del algoritmo de ordenación de burbuja.\nOrdenacionSeleccion.java: Implementación del algoritmo de ordenación por selección.",
+    "text": "4 Entrega de la solución\nSólo debe realizar la entrega un miembro del grupo. Sube a Moodle un fichero comprimido practica6.zip que contenga los siguientes archivos:\n\nOrdenacionBurbuja.java: Implementación del algoritmo de ordenación de burbuja.\nOrdenacionSeleccion.java: Implementación del algoritmo de ordenación por selección.\ntiempos.xlsx: Archivo de Excel con los tiempos de ejecución medidos para ambos algoritmos y los diferentes tamaños de vector.",
     "crumbs": [
       "![](../resources/unizar_white.png){width=95px}",
       "Prácticas",
