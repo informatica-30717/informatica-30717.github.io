@@ -34,12 +34,16 @@ website:
     logo: ../resources/unizar.png
   page-footer:
     left: |
-      © 2026 A. López, I. Huitzil, Y. Toca, F. Bobillo
+      © 2026 F. Bobillo, A. López, I. Huitzil, Y. Toca 
       Universidad de Zaragoza
     right: |
       Material docente protegido.  
       Licencia **CC BY-NC-SA 4.0** ![](https://mirrors.creativecommons.org/presskit/buttons/88x31/png/by-nc-sa.png){width=80px}  
       Uso docente no comercial permitido con atribución y licencia compartida.
+  google-analytics: 
+    tracking-id: "G-KJSTYN212D"
+    anonymize-ip: false
+    storage: none
 
 license: "CC BY-NC-SA 4.0"
 

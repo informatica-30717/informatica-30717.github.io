@@ -53,9 +53,13 @@ Ten en cuenta que la criba de Eratóstenes se puede implementar de varias manera
 
 El objetivo es modificar cada una de las implementaciones para **contar el número de "tachones" (números descartados)** que realiza cada una de las implementaciones de la criba, y **medir su tiempo de ejecución**.
 
+---
+
 **Anota el tiempo de ejecución en Microsoft Excel para cada una de las implementaciones, y cuatro valores de $n$ diferentes**: $10^3$, $10^4$, $10^5$ y $10^6$. Los valores de $n$ se representarán en el eje $X$ de un gráfico, y el tiempo de ejecución en el eje $Y$. Dibuja una gráfica similar a la ilustrada a continuación:
 
 ![Gráfica de tiempo de ejecución de las diferentes implementaciones de la criba de Eratóstenes.](../resources/practica5/tiempos.svg){#fig-graph width=75%}
+
+---
 
 ```{python}
 #| tbl-cap: "Tabla de tiempos de ejecución en milisegundos de las diferentes implementaciones de la criba de Eratóstenes."
@@ -68,6 +72,8 @@ df.columns.values[0] = ""
 df
 ```
 
+---
+
 ::: {.callout-warning}
 ## Posible falta de memoria
 
@@ -79,6 +85,8 @@ Ten en cuenta que para valores de $n$ muy grandes, es posible que el programa no
 
 Esto asignará un máximo de 4 GB de memoria a tu programa. Si sigues teniendo problemas de memoria, puedes intentar aumentar aún más este valor, aunque ten en cuenta que esto dependerá de la cantidad de memoria RAM disponible en tu ordenador.
 :::
+
+---
 
 ### Medición de tiempo de ejecución
 
@@ -96,6 +104,8 @@ long duration = endTime - startTime;
 System.out.println("Tiempo de ejecución: " + duration + " milisegundos");
 ```
 
+---
+
 ### Solución 1: Implementación básica
 
 En esta implementación, se utiliza un **vector de números enteros para representar los números desde 0 hasta $n$**, donde cada posición indica si el número correspondiente es primo o no. **Se itera a través de los números y se marcan como no primos los múltiplos de cada número primo encontrado**.
@@ -106,6 +116,8 @@ Formalmente, al final de la criba de Eratóstenes, cada número $i$, donde $2 <=
 $$
 numero[i] = \begin{cases} i & \text{si } i \text{ es primo} \\ 0 & \text{si } i \text{ no es primo} \end{cases}
 $$
+
+---
 
 ::: {.card .shadow-sm .mb-4}
 ::: {.card-body}
@@ -209,6 +221,8 @@ viewof step1 = cleanSlider([0, maxStep1], { value: 0, step: 1, label: "Paso de l
 :::
 :::
 
+---
+
 La implementación básica se puede realizar de la siguiente manera:
 ```java
 Scanner sc = new Scanner(System.in);
@@ -220,17 +234,13 @@ for (int i = 0; i <= n; i++) {
     numero[i] = i;
 }
 
-int salto;
-int j = 0;
-
 for (int i = 2; i <= n; i++) {
     if (numero[i] != 0) {
-        salto = i;
-        j = i + salto;
+        int j = 2;
         
-        while (j <= n) {
-            numero[j] = 0;
-            j = j + salto;
+        while (i * j <= n) {
+            numero[i * j] = 0;
+            j = j + 1;
         }
     }
 }
@@ -252,6 +262,8 @@ System.out.println("Total: " + contadorPrimos + " números primos");
 Cada entero ocupa 4 bytes en Java, por lo que el vector utilizado para la criba de Eratóstenes ocupará un total de `4 * (n + 1)` bytes, donde `n` es el número hasta el cual se desea encontrar los números primos. Por ejemplo, si `n` es 100, el vector ocupará `4 * (100 + 1) = 404` bytes.
 :::
 
+---
+
 ### Solución 2: Optimización utilizando la raíz cuadrada de n
 
 **En la solución previa se itera hasta `n` para encontrar los números primos, lo cual es ineficiente**. En esta solución, **se optimiza el proceso iterando solo hasta la raíz cuadrada de `n`**.
@@ -262,6 +274,8 @@ Cada entero ocupa 4 bytes en Java, por lo que el vector utilizado para la criba 
 
 **Corolario**: Si $n$ no es primo, uno de sus factores $d$ cumple $1 ≤ d ≤ \sqrt{n}$. Si $n$ no tiene factores $d$ con $1 ≤ d ≤ \sqrt{n}$, entonces es primo. Por tanto, $n$ es primo si y solo si es divisible por algún primo menor o igual a $\sqrt{n}$.
 :::
+
+---
 
 ::: {.card .shadow-sm .mb-4}
 ::: {.card-body}
@@ -353,6 +367,8 @@ viewof step2 = cleanSlider([0, maxStep2], { value: 0, step: 1, label: "Paso de l
 :::
 :::
 
+---
+
 La implementación de esta optimización se puede realizar de la siguiente manera:
 ```java
 Scanner sc = new Scanner(System.in);
@@ -364,17 +380,13 @@ for (int i = 0; i <= n; i++) {
     numero[i] = i;
 }
 
-int salto;
-int j = 0;
-
 for (int i = 2; i * i <= n; i++) {
     if (numero[i] != 0) {
-        salto = i;
-        j = i + salto;
+        int j = 2;
         
-        while (j <= n) {
-            numero[j] = 0;
-            j = j + salto;
+        while (i * j <= n) {
+            numero[i * j] = 0;
+            j = j + 1;
         }
     }
 }
@@ -397,11 +409,12 @@ System.out.println("Total: " + contadorPrimos + " números primos");
 En esta solución, el vector utilizado para la criba de Eratóstenes seguirá ocupando `4 * (n + 1)` bytes, ya que se sigue utilizando un vector de enteros para representar los números desde 0 hasta n. Sin embargo, el número de iteraciones realizadas para marcar los múltiplos de cada número primo será significativamente menor, lo que puede mejorar el rendimiento del algoritmo.
 :::
 
+---
+
 ### Solución 3: Implementación utilizando un vector de booleanos
 
 En esta implementación, se utiliza un **vector de booleanos** para representar si cada número es primo o no. El vector se inicializa con `true` para todos los números desde 2 hasta $n$, y luego se marcan como `false` los múltiplos de cada número primo encontrado. Al final del proceso, los números que siguen siendo `true` en el vector son los números primos.
 
-La implementación de esta solución se puede realizar de la siguiente manera:
 ```java
 Scanner sc = new Scanner(System.in);
 System.out.print("Introduce un numero entero: ");
@@ -412,17 +425,13 @@ for (int i = 2; i <= n; i++) {
     esPrimo[i] = true;
 }
 
-int salto;
-int j = 0;
-
 for (int i = 2; i * i <= n; i++) {
     if (esPrimo[i]) {
-        salto = i;
-        j = i + salto;
+        int j = 2;
         
-        while (j <= n) {
-            esPrimo[j] = false;
-            j = j + salto;
+        while (i * j <= n) {
+            esPrimo[i * j] = false;
+            j = j + 1;
         }
     }
 }
@@ -439,6 +448,8 @@ System.out.println();
 System.out.println("Total: " + contadorPrimos + " números primos");
 ```
 
+---
+
 ::: {.callout-note collapse="true"}
 ## Tamaño del vector
 
@@ -447,9 +458,13 @@ En esta solución, el vector utilizado para la criba de Eratóstenes ocupará $1
 Por ejemplo, si $n$ es 100, el vector ocupará $1 * (100 + 1) = 101$ bytes, un tamaño mucho menor que los $404$ bytes de la solución con enteros.
 :::
 
+---
+
 ### Solución 4: Implementación con optimización utilizando un vector de booleanos y solo números impares
 
 En esta implementación, se utiliza un **vector de booleanos** para representar si cada número **impar es primo o no**, ya que el único número par que es primo es el 2. De esta manera, se reduce a la mitad el tamaño del vector y se optimiza el proceso de marcado de múltiplos, ya que solo se consideran los números impares.
+
+---
 
 En resumen, los cambios introducidos en esta solución son los siguientes:
 
@@ -480,6 +495,8 @@ En resumen, los cambios introducidos en esta solución son los siguientes:
   (2k+1)p \quad \text{con } k = i+1, i+2, \ldots
   $$
 
+---
+
 La implementación de esta solución se puede realizar de la siguiente manera:
 ```java
 Scanner sc = new Scanner(System.in);
@@ -497,7 +514,7 @@ for (int i = 0; ... <= n; i++) {   // <--- iterar solo sobre números impares
     int k = ...;
     while (... <= n) {
         numero[...] = false;    // <--- marcar múltiplos impares de i como no primos
-        k++;
+        k = k + 1;
     }
 }
 
@@ -514,6 +531,8 @@ for (int i = 0; i <= ...; i++) {
 System.out.println();
 System.out.println("Total: " + contadorPrimos + " números primos");
 ```
+
+---
 
 ::: {.card .shadow-sm .mb-4 .mt-4}
 ::: {.card-body}
@@ -624,6 +643,8 @@ viewof step4 = cleanSlider([0, maxStep4], { value: 0, step: 1, label: "Paso de l
 
 En esta solución, el vector utilizado para la criba de Eratóstenes ocupará `1 * (⌊(n-3)/2⌋ + 1)` bytes, ya que se utiliza un vector de booleanos para representar si cada número impar es primo o no. Cada booleano ocupa 1 byte en Java, por lo que el tamaño del vector será significativamente menor que en las soluciones anteriores que utilizaban enteros y que consideraban tanto números pares como impares. Por ejemplo, si `n` es 100, el vector ocupará `1 * (⌊(100-3)/2⌋ + 1) = 49` bytes, lo que representa aproximadamente el **12% del tamaño del vector utilizado en la solución con enteros que consideraba todos los números (404 bytes)**.
 :::
+
+---
 
 ## Entrega de la solución
 

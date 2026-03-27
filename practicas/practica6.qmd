@@ -524,4 +524,5 @@ System.out.println("Tiempo de ejecución: " + duration + " milisegundos");
 
 - `OrdenacionBurbuja.java`: Implementación del algoritmo de ordenación de burbuja.
 - `OrdenacionSeleccion.java`: Implementación del algoritmo de ordenación por selección.
+- `tiempos.xlsx`: Archivo de Excel con los tiempos de ejecución medidos para ambos algoritmos y los diferentes tamaños de vector.
 
