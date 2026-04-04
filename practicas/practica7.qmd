@@ -1,0 +1,40 @@
+---
+title: "Práctica 7: Introducción a Grasshopper"
+format:
+  html: 
+    toc: true
+    number-sections: true
+  revealjs: 
+    output-ext: "reveal.html"
+execute:
+  echo: false
+---
+
+## Objetivos de la práctica
+
+Los objetivos de la sexta práctica de la asignatura son los siguientes:
+
+- Conocer las operaciones básicas de Grasshopper.
+- Buscar información para solucionar dudas relacionadas con Grasshopper. 
+
+---
+
+## Introducción a Grasshopper
+
+Grasshopper es un lenguaje de programación visual integrado en el software de modelado CAD Rhino3D. Por tanto, la salida o salidas de Grasshopper se pueden utilizar en Rhino3D. 
+
+### Descarga
+
+En su [web](https://www.rhino3d.com/download/) se puede descargar una versión de evaluación de 90 días, a contar desde la fecha de descarga. Después de dicho periodo, Rhino3D no dejará guardar ficheros, pero sí visualizarlos. 
+
+### Ejercicio de modelado
+
+El objetivo de esta práctica es modelar unas tazas de té utilizando Grasshopper, siguiendo el tutorial de [Modelab](https://modelab.gitbooks.io/grasshopper-primer/content/). Podéis también utilizar de ayuda el siguiente vídeo:
+
+{{< video http://youtu.be/svhn73Yvww0 >}}
+
+
+
+## Entrega
+
+La entrega de esta práctica serán ficheros OBJ, resultado de exportar las tazas de té creadas 
