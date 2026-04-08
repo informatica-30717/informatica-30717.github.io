@@ -678,39 +678,41 @@
 <section id="ejercicios" class="slide level2">
 <h2>Ejercicios</h2>
 <p>Implementa los algoritmos de ordenación de burbuja y selección en Java utilizando dos clases diferentes, <code>OrdenacionBurbuja.java</code> y <code>OrdenacionSeleccion.java</code>. A continuación se muestra un ejemplo de cómo podría ser la estructura de la clase <code>OrdenacionBurbuja.java</code>:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="sourceCode numberSource java number-lines code-with-copy"><code class="sourceCode java"><span id="cb11-1"><a></a><span class="kw">public</span> <span class="kw">class</span> OrdenacionBurbuja <span class="op">{</span></span>
-<span id="cb11-2"><a></a>  <span class="kw">public</span> <span class="dt">static</span> <span class="dt">void</span> <span class="fu">ordenar</span><span class="op">(</span><span class="dt">int</span><span class="op">[]</span> v<span class="op">)</span> <span class="op">{</span></span>
-<span id="cb11-3"><a></a>    <span class="co">// Tu código aquí</span></span>
-<span id="cb11-4"><a></a>    <span class="co">// Recuerda que puedes acceder al tamaño del vector </span></span>
-<span id="cb11-5"><a></a>    <span class="co">// con v.length y a cada elemento con v[i]</span></span>
-<span id="cb11-6"><a></a>  <span class="op">}</span></span>
-<span id="cb11-7"><a></a></span>
-<span id="cb11-8"><a></a>  <span class="kw">public</span> <span class="dt">static</span> <span class="dt">void</span> <span class="fu">main</span><span class="op">(</span><span class="bu">String</span><span class="op">[]</span> args<span class="op">)</span> <span class="op">{</span></span>
-<span id="cb11-9"><a></a>    <span class="bu">Random</span> r <span class="op">=</span> <span class="kw">new</span> <span class="bu">Random</span><span class="op">();</span></span>
-<span id="cb11-10"><a></a>    <span class="bu">Scanner</span> sc <span class="op">=</span> <span class="kw">new</span> <span class="bu">Scanner</span><span class="op">(</span><span class="bu">System</span><span class="op">.</span><span class="fu">in</span><span class="op">);</span></span>
-<span id="cb11-11"><a></a>    </span>
-<span id="cb11-12"><a></a>    <span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">print</span><span class="op">(</span><span class="st">"Dimensión de la lista de números: "</span><span class="op">);</span></span>
-<span id="cb11-13"><a></a>    <span class="dt">int</span> size <span class="op">=</span> sc<span class="op">.</span><span class="fu">nextInt</span><span class="op">();</span></span>
-<span id="cb11-14"><a></a>    </span>
-<span id="cb11-15"><a></a>    <span class="dt">int</span><span class="op">[]</span> v <span class="op">=</span> <span class="kw">new</span> <span class="dt">int</span><span class="op">[</span>size<span class="op">];</span></span>
-<span id="cb11-16"><a></a>    <span class="cf">for</span> <span class="op">(</span><span class="dt">int</span> i <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> i <span class="op">&lt;</span> size<span class="op">;</span> i<span class="op">++)</span> <span class="op">{</span></span>
-<span id="cb11-17"><a></a>      <span class="dt">int</span> x <span class="op">=</span> r<span class="op">.</span><span class="fu">nextInt</span><span class="op">();</span></span>
-<span id="cb11-18"><a></a>      x <span class="op">=</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">abs</span><span class="op">(</span>x<span class="op">)</span> <span class="op">%</span> <span class="dv">50</span><span class="op">;</span>     <span class="co">// Limitamos el rango para facilitar la visualización</span></span>
-<span id="cb11-19"><a></a>      v<span class="op">[</span>i<span class="op">]</span> <span class="op">=</span> x<span class="op">;</span></span>
-<span id="cb11-20"><a></a>    <span class="op">}</span></span>
-<span id="cb11-21"><a></a>    </span>
-<span id="cb11-22"><a></a>    <span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span><span class="st">"Vector inicial"</span><span class="op">);</span></span>
-<span id="cb11-23"><a></a>    <span class="cf">for</span> <span class="op">(</span><span class="dt">int</span> i <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> i <span class="op">&lt;</span> size<span class="op">;</span> i<span class="op">++)</span></span>
-<span id="cb11-24"><a></a>      <span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">print</span><span class="op">(</span>v<span class="op">[</span>i<span class="op">]</span> <span class="op">+</span> <span class="st">"</span><span class="sc">\t</span><span class="st">"</span><span class="op">);</span></span>
-<span id="cb11-25"><a></a>    </span>
-<span id="cb11-26"><a></a>    <span class="fu">ordenar</span><span class="op">(</span>v<span class="op">);</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="sourceCode numberSource java number-lines code-with-copy"><code class="sourceCode java"><span id="cb11-1"><a></a><span class="kw">import</span> <span class="im">java</span><span class="op">.</span><span class="im">util</span><span class="op">.*;</span></span>
+<span id="cb11-2"><a></a></span>
+<span id="cb11-3"><a></a><span class="kw">public</span> <span class="kw">class</span> OrdenacionBurbuja <span class="op">{</span></span>
+<span id="cb11-4"><a></a>  <span class="kw">public</span> <span class="dt">static</span> <span class="dt">void</span> <span class="fu">ordenar</span><span class="op">(</span><span class="dt">int</span><span class="op">[]</span> v<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb11-5"><a></a>    <span class="co">// Tu código aquí</span></span>
+<span id="cb11-6"><a></a>    <span class="co">// Recuerda que puedes acceder al tamaño del vector </span></span>
+<span id="cb11-7"><a></a>    <span class="co">// con v.length y a cada elemento con v[i]</span></span>
+<span id="cb11-8"><a></a>  <span class="op">}</span></span>
+<span id="cb11-9"><a></a></span>
+<span id="cb11-10"><a></a>  <span class="kw">public</span> <span class="dt">static</span> <span class="dt">void</span> <span class="fu">main</span><span class="op">(</span><span class="bu">String</span><span class="op">[]</span> args<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb11-11"><a></a>    <span class="bu">Random</span> r <span class="op">=</span> <span class="kw">new</span> <span class="bu">Random</span><span class="op">();</span></span>
+<span id="cb11-12"><a></a>    <span class="bu">Scanner</span> sc <span class="op">=</span> <span class="kw">new</span> <span class="bu">Scanner</span><span class="op">(</span><span class="bu">System</span><span class="op">.</span><span class="fu">in</span><span class="op">);</span></span>
+<span id="cb11-13"><a></a>    </span>
+<span id="cb11-14"><a></a>    <span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">print</span><span class="op">(</span><span class="st">"Dimensión de la lista de números: "</span><span class="op">);</span></span>
+<span id="cb11-15"><a></a>    <span class="dt">int</span> size <span class="op">=</span> sc<span class="op">.</span><span class="fu">nextInt</span><span class="op">();</span></span>
+<span id="cb11-16"><a></a>    </span>
+<span id="cb11-17"><a></a>    <span class="dt">int</span><span class="op">[]</span> v <span class="op">=</span> <span class="kw">new</span> <span class="dt">int</span><span class="op">[</span>size<span class="op">];</span></span>
+<span id="cb11-18"><a></a>    <span class="cf">for</span> <span class="op">(</span><span class="dt">int</span> i <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> i <span class="op">&lt;</span> size<span class="op">;</span> i<span class="op">++)</span> <span class="op">{</span></span>
+<span id="cb11-19"><a></a>      <span class="dt">int</span> x <span class="op">=</span> r<span class="op">.</span><span class="fu">nextInt</span><span class="op">();</span></span>
+<span id="cb11-20"><a></a>      x <span class="op">=</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">abs</span><span class="op">(</span>x<span class="op">)</span> <span class="op">%</span> <span class="dv">50</span><span class="op">;</span>     <span class="co">// Limitamos el rango para facilitar la visualización</span></span>
+<span id="cb11-21"><a></a>      v<span class="op">[</span>i<span class="op">]</span> <span class="op">=</span> x<span class="op">;</span></span>
+<span id="cb11-22"><a></a>    <span class="op">}</span></span>
+<span id="cb11-23"><a></a>    </span>
+<span id="cb11-24"><a></a>    <span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span><span class="st">"Vector inicial"</span><span class="op">);</span></span>
+<span id="cb11-25"><a></a>    <span class="cf">for</span> <span class="op">(</span><span class="dt">int</span> i <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> i <span class="op">&lt;</span> size<span class="op">;</span> i<span class="op">++)</span></span>
+<span id="cb11-26"><a></a>      <span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">print</span><span class="op">(</span>v<span class="op">[</span>i<span class="op">]</span> <span class="op">+</span> <span class="st">"</span><span class="sc">\t</span><span class="st">"</span><span class="op">);</span></span>
 <span id="cb11-27"><a></a>    </span>
-<span id="cb11-28"><a></a>    <span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">();</span></span>
-<span id="cb11-29"><a></a>    <span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span><span class="st">"Vector ordenado"</span><span class="op">);</span></span>
-<span id="cb11-30"><a></a>    <span class="cf">for</span> <span class="op">(</span><span class="dt">int</span> i <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> i <span class="op">&lt;</span> size<span class="op">;</span> i<span class="op">++)</span></span>
-<span id="cb11-31"><a></a>      <span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">print</span><span class="op">(</span>v<span class="op">[</span>i<span class="op">]</span> <span class="op">+</span> <span class="st">"</span><span class="sc">\t</span><span class="st">"</span><span class="op">);</span></span>
-<span id="cb11-32"><a></a>  <span class="op">}</span></span>
-<span id="cb11-33"><a></a><span class="op">}</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb11-28"><a></a>    <span class="fu">ordenar</span><span class="op">(</span>v<span class="op">);</span></span>
+<span id="cb11-29"><a></a>    </span>
+<span id="cb11-30"><a></a>    <span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">();</span></span>
+<span id="cb11-31"><a></a>    <span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span><span class="st">"Vector ordenado"</span><span class="op">);</span></span>
+<span id="cb11-32"><a></a>    <span class="cf">for</span> <span class="op">(</span><span class="dt">int</span> i <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> i <span class="op">&lt;</span> size<span class="op">;</span> i<span class="op">++)</span></span>
+<span id="cb11-33"><a></a>      <span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">print</span><span class="op">(</span>v<span class="op">[</span>i<span class="op">]</span> <span class="op">+</span> <span class="st">"</span><span class="sc">\t</span><span class="st">"</span><span class="op">);</span></span>
+<span id="cb11-34"><a></a>  <span class="op">}</span></span>
+<span id="cb11-35"><a></a><span class="op">}</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 <section class="slide level2">
 
