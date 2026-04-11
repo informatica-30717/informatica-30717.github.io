@@ -6,10 +6,12 @@
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="../site_libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/quarto-contrib/videojs/video.min.js"></script>
+<link href="../site_libs/quarto-contrib/videojs/video-js.css" rel="stylesheet"><meta charset="utf-8">
   <meta name="generator" content="quarto-1.8.27">
 
-  <title>Informática (30717) - Grado en Estudios en Arquitectura – Práctica 8: BIM semántico</title>
+  <title>Informática (30717) - Grado en Estudios en Arquitectura – Práctica 7: Introducción a Grasshopper</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -135,9 +137,9 @@
       margin-right: 0; 
     }
   </style>
-<meta property="og:title" content="Práctica 8: BIM semántico – Informática (30717) - Grado en Estudios en Arquitectura">
+<meta property="og:title" content="Práctica 7: Introducción a Grasshopper – Informática (30717) - Grado en Estudios en Arquitectura">
 <meta property="og:site_name" content="Informática (30717) - Grado en Estudios en Arquitectura">
-<meta name="twitter:title" content="Práctica 8: BIM semántico – Informática (30717) - Grado en Estudios en Arquitectura">
+<meta name="twitter:title" content="Práctica 7: Introducción a Grasshopper – Informática (30717) - Grado en Estudios en Arquitectura">
 <meta name="twitter:card" content="summary">
 </head>
 <body class="quarto-light">
@@ -145,7 +147,7 @@
     <div class="slides">
 
 <section id="title-slide" class="quarto-title-block center">
-  <h1 class="title">Práctica 8: BIM semántico</h1>
+  <h1 class="title">Práctica 7: Introducción a Grasshopper</h1>
 
 <div class="quarto-title-authors">
 </div>
@@ -153,215 +155,28 @@
 </section>
 <section id="objetivos-de-la-práctica" class="slide level2">
 <h2>Objetivos de la práctica</h2>
+<p>Los objetivos de la sexta práctica de la asignatura son los siguientes:</p>
 <ul>
-<li class="fragment">Conocer la representación de modelos BIM usando ontologías</li>
-<li class="fragment">Hacer consultas al modelo BIM usando un razonador semántico.</li>
+<li class="fragment">Conocer las operaciones básicas de Grasshopper.</li>
+<li class="fragment">Buscar información para solucionar dudas relacionadas con Grasshopper.</li>
 </ul>
 </section>
-<section id="qué-es-bim" class="slide level2">
-<h2>¿Qué es BIM?</h2>
-<p>El <strong>Modelado de Información de Construcción</strong> (<strong>BIM</strong> en inglés) es un proceso colaborativo para gestionar la información en un proyecto de construcción (Ver <a href="#/fig-BIM" class="quarto-xref">Figura&nbsp;1</a>).</p>
-<div id="fig-BIM" class="quarto-float quarto-figure quarto-figure-center">
-<figure class="quarto-float quarto-float-fig">
-<div aria-describedby="fig-BIM-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img data-src="../resources/practica8/bim1.png">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-BIM-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figura&nbsp;1: Youtube <a href="https://www.youtube.com/watch?v=suNadRnHy-Un">Autodesk Building Solutions What Is BIM (Building Information Modeling)?</a>.
-</figcaption>
-</figure>
-</div>
-<p>BIM se basa en la representación digital de un edificio para integrar el diseño, el modelado, la planificación y la operación durante todo su <strong>ciclo de vida</strong>, desde el diseño hasta el demolición (Ver <a href="#/fig-edif" class="quarto-xref">Figura&nbsp;2</a>). Los modelos BIM incluyen numerosos datos interconectados, como un modelo geométrico 3D de los elementos del edificio, una descripción de los materiales utilizados y sus propiedades, etc. Las <strong>ventajas</strong> de usar BIM incluyen la optimización de los costes de construcción y mantenimiento, la mejora de la transparencia y la colaboración entre las diferentes partes interesadas, la gestión de proyectos complejos y la flexibilidad para adaptarse rápidamente a los requisitos cambiantes. Por lo tanto, BIM es un elemento clave en la <strong>digitalización</strong> del <strong>sector de la construcción</strong>.</p>
-<div id="fig-edif" class="quarto-float quarto-figure quarto-figure-center">
-<figure class="quarto-float quarto-float-fig">
-<div aria-describedby="fig-edif-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img data-src="../resources/practica8/bim2.png">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-edif-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figura&nbsp;2: Ciclo de vida de la edificación.
-</figcaption>
-</figure>
-</div>
-</section>
-<section id="uso-de-un-software-visualizador-bim" class="slide level2">
-<h2>Uso de un software visualizador BIM</h2>
-<p>En esta práctica considerararemos diferentes versiones de un modelo BIM públicamente disponible correspondiente a un apartamento dúplex. La versión original (<a href="../resources/practica8/Duplex.ifc">⬇️ Duplex.ifc</a>) está en IFC (concretamente, 2x3). La versión semántica (<a href="../resources/practica8/Duplex.owl">⬇️ Duplex.owl</a>) está en el <strong>lenguaje OWL</strong>.</p>
-<p>El primer paso de la práctica es usar <a href="https://bimvision.eu">BIMvision</a> u otro visualizador BIM para abrir el fichero <strong>Duplex.ifc</strong> y familiarizarse con el modelo. La <a href="#/fig-visor" class="quarto-xref">Figura&nbsp;3</a> muestra el detalle de una ventana de la planta baja (Level 1).</p>
+<section id="introducción-a-grasshopper" class="slide level2">
+<h2>Introducción a Grasshopper</h2>
+<p>Grasshopper es un lenguaje de programación visual integrado en el software de modelado CAD Rhino3D. Por tanto, la salida o salidas de Grasshopper se pueden utilizar en Rhino3D.</p>
+<p>Grasshopper es un software de modelado paramétrico, lo que significa que permite crear modelos 3D a través de la manipulación de parámetros. Esto facilita la creación de diseños complejos y la exploración de diferentes opciones de diseño de manera rápida y eficiente. También es un lenguaje de programación visual, lo que significa que los usuarios pueden crear algoritmos y procesos de diseño sin necesidad de escribir código tradicional, sino utilizando una interfaz gráfica basada en nodos y conexiones.</p>
+<h3 id="descarga">Descarga</h3>
+<p>Se puede descargar una versión de evaluación de 90 días desde su <a href="https://www.rhino3d.com/download/">web</a>, a contar desde la fecha de descarga. Después de dicho periodo, Rhino3D no dejará guardar ficheros, pero sí visualizarlos.</p>
+<p>Una vez descargado e instalado Rhino3D, debería aparecer una pantalla como la que se muestra a continuación:</p>
 
-<img data-src="../resources/practica8/fig1.png" class="r-stretch quarto-figure-center" id="fig-visor"><p class="caption">
-Figura&nbsp;3: Modelo Duplex en BIMvision.
-</p><div class="callout callout-note callout-titled callout-style-default">
-<div class="callout-body">
-<div class="callout-title">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<p><strong>🧠 Ejercicio 1 - Encontrar elementos</strong></p>
-</div>
-<div class="callout-content">
-<p>¿Cuántas ventanas hay? ¿Qué identificador, alturas y anchura tiene cada una?</p>
-</div>
-</div>
-</div>
+<img data-src="../resources/practica7/rhino3d.png" class="r-stretch quarto-figure-center"><p class="caption">Rhino3D</p><p>Una vez dentro, se puede acceder a Grasshopper escribiendo “Grasshopper” en la barra de comandos de Rhino3D. Esto abrirá la interfaz de Grasshopper, donde se pueden crear y manipular modelos paramétricos.</p>
+<h3 id="ejercicio-de-modelado">Ejercicio de modelado</h3>
+<p>El objetivo de esta práctica es modelar unas tazas de té utilizando Grasshopper, siguiendo el tutorial de <a href="https://modelab.gitbooks.io/grasshopper-primer/content/">Modelab</a>. Para ello, utilizad el siguiente video en YouTube:</p>
+<video id="video_shortcode_videojs_video1" class="video-js vjs-default-skin vjs-fluid" controls="" preload="auto" data-setup="{}" title=""><source src="http://youtu.be/svhn73Yvww0"></video>
 </section>
-<section id="conversión-a-modelo-semántico" class="slide level2">
-<h2>Conversión a modelo semántico</h2>
-<p>Este apartado es opcional, puesto que el objetivo es obtener el fichero Duplex.owl que ya está disponible, pero en todo caso vamos a describir mejor el proceso seguido para obtener el fichero. Aunque existen varias herramientas que permiten traducir un fichero de entrada en IFC a un fichero de salida en OWL, en nuestro caso se ha usado en particular <a href="https://github.com/jyrkioraskari/IFCtoLBD/releases/tag/2.43.5">IFCtoLBD 2.43.5</a>. Debemos tener cuenta que este fichero utiliza vocabulario (clases y propiedades) previamente definidas en ontologías existentes en el ámbito de la construcción.</p>
-<div class="callout callout-warning callout-titled callout-style-default">
-<div class="callout-body">
-<div class="callout-title">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<p><strong>Advertencia</strong></p>
-</div>
-<div class="callout-content">
-<p>Se ha usado la configuración <strong>BOT + PRODUCT + PROPS, Level L1</strong>. Manualmente, se ha eliminado la referencia a 2 ontologías externas (OMG y MEP) para simplificar la práctica.</p>
-</div>
-</div>
-</div>
-</section>
-<section id="uso-del-editor-de-ontologías-protégé" class="slide level2">
-<h2>Uso del editor de ontologías Protégé</h2>
-<p>Para abrir el fichero <strong>Duplex.owl</strong> usaremos <a href="http://protege.stanford.edu">Protégé</a>, un editor de ontologías gratuito y con versiones para varios sistemas operativos,. Protégé no requiere instalación, basta descargar un fichero .zip, descomprimirlo y pinchar en el ejecutable.</p>
-<p>En el menú de opciones que hay bajo el título de la ontología (“Converters”), podemos elegir <strong>Entities</strong> para seleccionar los diferentes componentes de la ontología (ver <a href="#/fig-protege" class="quarto-xref">Figura&nbsp;4</a> cuadro en color rojo): clases (<strong>Classes</strong>), propiedades cuyo valor es un objeto/individuo (<strong>Object properties</strong>), propiedades cuyo valor es un tipo de dato conocido por la máquina (<strong>Data properties</strong>), individuos (<strong>Individuals</strong>), etc.</p>
-<p>La <a href="#/fig-protege" class="quarto-xref">Figura&nbsp;4</a> muestra el resultado de seleccionar <strong>Clases</strong> y, concretamente, <strong>Edificio</strong>. Obsérvese cómo la interfaz nos muestra que <strong>Edificio</strong> es una subclase de <strong>Zona</strong>.</p>
-
-<img data-src="../resources/practica8/fig2.png" class="r-stretch quarto-figure-center" id="fig-protege"><p class="caption">
-Figura&nbsp;4: Jerarquía de clases y detalle de la clase “Edificio”.
-</p><p>![Vídeo tutorial: editor Protégé <a href="https://drive.google.com/file/d/1eHHxYrJRiQZni_7KKrtRFqu5KEwk9omW/view">The Coding Train</a>.]</p>
-<p>Dependiendo de la versión de la herramienta Protégé utilizada, es posible que importe automáticamente las ontologías desde Internet o que nos pida que aportemos ficheros locales para importar las ontologías. En este último caso, en <strong>Active ontology → Ontology imports</strong> pinchamos en el botón <strong>+</strong> para añadir los ficheros <a href="../resources/practica8/beo.owl">⬇️ beo.owl</a> y <a href="../resources/practica8/bot.owl">⬇️ bot.owl</a>.</p>
-<p>Como vemos en la <a href="#/fig-protege" class="quarto-xref">Figura&nbsp;4</a>, algunos elementos de la ontología tienen asociadas varias anotaciones con etiquetas en múltiples idiomas. Por ejemplo, la clase <strong>http://w3id.org/bot/Building</strong> tiene etiquetas <strong>Building</strong>, <strong>Edificio</strong>, etc. Dependiendo de la configuración de nuestro ordenador (del idioma predeterminado), Protégé puede mostrarnos las etiquetas en un idioma u otro. En este guion, se asume que se muestran en castellano.</p>
-</section>
-<section id="ejercicio-2-encontrar-elementos" class="slide level2">
-<h2>Ejercicio 2: encontrar elementos</h2>
-<p>Navegar a través de la jerarquía de <strong>clases</strong> de la ontología y localizar la que permite representar las ventanas.</p>
-<p>Navegar a través de la jerarquía de <strong>propiedades</strong> de la ontología y localizar las que permiten representar la altura de una ventana y la anchura de una ventana.</p>
-<p>Navegar a través de los <strong>individuos</strong> de la ontología, localizar una ventana y comprobar el valor de sus propiedades. ¿Se corresponden con lo mostrado por OpenIFCViewer?</p>
-<details>
-<summary>
-💡 Solución Classes
-</summary>
-<div id="fig-clas" class="quarto-float quarto-figure quarto-figure-center">
-<figure class="quarto-float quarto-float-fig">
-<div aria-describedby="fig-clas-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img data-src="../resources/practica8/classes.png">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-clas-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figura&nbsp;5: Visualizar Clases.
-</figcaption>
-</figure>
-</div>
-</details>
-<details>
-<summary>
-💡 Solución Propiedades
-</summary>
-<div id="fig-prop1" class="quarto-float quarto-figure quarto-figure-center">
-<figure class="quarto-float quarto-float-fig">
-<div aria-describedby="fig-prop1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img data-src="../resources/practica8/property1.png">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-prop1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figura&nbsp;6: Visualizar Object properties.
-</figcaption>
-</figure>
-</div>
-<div id="fig-prop2" class="quarto-float quarto-figure quarto-figure-center">
-<figure class="quarto-float quarto-float-fig">
-<div aria-describedby="fig-prop2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img data-src="../resources/practica8/property2.png">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-prop2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figura&nbsp;7: Visualizar Data properties.
-</figcaption>
-</figure>
-</div>
-</details>
-<details>
-<summary>
-💡 Solución Individuos
-</summary>
-<div id="fig-ind" class="quarto-float quarto-figure quarto-figure-center">
-<figure class="quarto-float quarto-float-fig">
-<div aria-describedby="fig-ind-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img data-src="../resources/practica8/individuals.png">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-ind-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figura&nbsp;8: Visualizar Individuos.
-</figcaption>
-</figure>
-</div>
-</details>
-</section>
-<section id="ejercicio-3-inferencia" class="slide level2">
-<h2>Ejercicio 3: inferencia</h2>
-<p>Para cargar un <strong>razonador</strong>, pinchamos en la opción del menú superior <strong>Reasoner</strong>. Según la versión de Protégé, puede haber uno o varios razonadores. Seleccionamos <strong>HermiT</strong> y pinchamos en <strong>Start reasoner</strong>. Si hacemos cambios en la ontología, tendremos que pinchar en <strong>Synchronize reasoner</strong>.</p>
-<p>Posteriormente, a través de la pestaña <strong>DL query</strong>, podemos hacer consultas al razonador. Recuperar las instancias de la clase que representa las <strong>ventanas</strong> (en inglés). Pinchando en alguna de ellas, podemos ver los valores de las propiedades (tanto los originales como los inferidos por el razonador, si los hubiera).</p>
-<p>Recuperar las superclases de la clase que representa las ventanas.</p>
-<p>Recuperar las instancias de alguna de las superclases obtenidas en el paso anterior, para comprobar que el razonador recupera las instancias indirectas.</p>
-<p>Recuperar nuevamente las instancias de la clase que representa las <strong>ventanas</strong>. Da click sobre el simbolo <strong>?</strong> en alguna instancia. El rasonador te dara al menos una explicación.</p>
-<details>
-<summary>
-💡 Ejemplo: Escalera
-</summary>
-<img data-src="../resources/practica8/stairs_example_DL.png" id="fig-str1" alt="Visualizar consulta DL."> <img data-src="../resources/practica8/stair_explanation.png" id="fig-str2" alt="Visualizar Explicación.">
-</details>
-</section>
-<section id="ejercicio-4-consultas" class="slide level2">
-<h2>Ejercicio 4: consultas</h2>
-<p>Para hacerlo aún más interesante, Protégé permite construir consultas complejas que involucran a varios elementos a la vez.</p>
-<p>Recuperar las instancias de “<strong>Espacio and ‘elemento adyacente’ some Window</strong>”, que es el conjunto de espacios que tienen un elemento tal adyacente que pertenece a la clase Ventana. ¿Cuántos individuos hay?</p>
-</section>
-<section id="ejercicio-5-ontología-inconsistente" class="slide level2">
-<h2>Ejercicio 5: ontología inconsistente</h2>
-<p>Si la ontología es <strong>inconsistente</strong>, no se puede razonar con ella: el razonador avisa de ello y permite pinchar en el botón <strong>Explain</strong> para entender el motivo y poder resolverlo.</p>
-<p>Actualizar la ontología introduciendo una inconsistencia. Por ejemplo, añadiendo dos valores diferentes para la altura de una ventana. Primero, marcamos la propiedad como <strong>Functional</strong>. A continuación, buscamos la ventana y añadimos una <strong>Data property assertions</strong> con el botón <strong>+</strong>, eligiendo la propiedad que representa la altura y un valor diferente al que ya tenía (como 1234). Por último, debemos sincronizar el razonador.</p>
-<details>
-<summary>
-💡 Solución Funcional
-</summary>
-<div id="fig-fnl" class="quarto-float quarto-figure quarto-figure-center">
-<figure class="quarto-float quarto-float-fig">
-<div aria-describedby="fig-fnl-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img data-src="../resources/practica8/functional_property.png">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-fnl-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figura&nbsp;9: Propiedad funcional.
-</figcaption>
-</figure>
-</div>
-<div id="fig-val" class="quarto-float quarto-figure quarto-figure-center">
-<figure class="quarto-float quarto-float-fig">
-<div aria-describedby="fig-val-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img data-src="../resources/practica8/property_value.png">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-val-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figura&nbsp;10: Añadir propiedad y valor
-</figcaption>
-</figure>
-</div>
-<div id="fig-exp1" class="quarto-float quarto-figure quarto-figure-center">
-<figure class="quarto-float quarto-float-fig">
-<div aria-describedby="fig-exp1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img data-src="../resources/practica8/explain.png">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-exp1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figura&nbsp;11: Explicar
-</figcaption>
-</figure>
-</div>
-<div id="fig-exp2" class="quarto-float quarto-figure quarto-figure-center">
-<figure class="quarto-float quarto-float-fig">
-<div aria-describedby="fig-exp2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img data-src="../resources/practica8/explanation.png">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-exp2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figura&nbsp;12: Explicación
-</figcaption>
-</figure>
-</div>
-</details>
+<section id="entrega" class="slide level2">
+<h2>Entrega</h2>
+<p>La entrega de esta práctica serán ficheros OBJ, resultado de exportar las tazas de té creadas</p>
 
 
 </section>
@@ -748,6 +563,7 @@ Figura&nbsp;12: Explicación
         }
       });
       </script>
+    <script>videojs(video_shortcode_videojs_video1);</script>
     
 
 </body></html>

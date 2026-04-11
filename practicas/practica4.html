@@ -112,7 +112,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 window.dataLayer = window.dataLayer || [];
 function gtag(){dataLayer.push(arguments);}
 gtag('js', new Date());
-gtag('config', 'G-KJSTYN212D', { 'anonymize_ip': true});
+ 
+  gtag('consent', 'default', {
+    'ad_storage': 'denied',
+    'analytics_storage': 'denied'
+  });
+gtag('config', 'G-KJSTYN212D', { 'anonymize_ip': false});
 </script>
 <style>
 
@@ -313,6 +318,12 @@ window.Quarto = {
   <div class="sidebar-item-container"> 
   <a href="../practicas/practica6.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Práctica 6: Resolución de problemas en Java (III)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../practicas/practica7.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Práctica 7: Introducción a Grasshopper</span></a>
   </div>
 </li>
       </ul>
