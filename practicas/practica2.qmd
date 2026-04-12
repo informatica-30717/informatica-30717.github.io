@@ -8,6 +8,10 @@ format:
     output-ext: "reveal.html"
 ---
 
+<div class="reading-time-pill">
+	<span class="badge rounded-pill text-bg-secondary">~19 min de lectura</span>
+</div>
+
 ## Objetivos de la práctica
 
 Los objetivos de la segunda práctica de la asignatura son los siguientes:

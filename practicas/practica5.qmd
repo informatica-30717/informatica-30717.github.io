@@ -10,6 +10,10 @@ execute:
   echo: false
 ---
 
+<div class="reading-time-pill">
+  <span class="badge rounded-pill text-bg-secondary">~8 min de lectura</span>
+</div>
+
 ## Objetivos de la práctica
 
 Los objetivos de la quinta práctica de la asignatura son los siguientes:

@@ -12,6 +12,10 @@ execute:
   echo: false
 ---
 
+<div class="reading-time-pill">
+  <span class="badge rounded-pill text-bg-secondary">~6 min de lectura</span>
+</div>
+
 ## Objetivos de la práctica
 
 - Conocer la representación de modelos BIM usando ontologías

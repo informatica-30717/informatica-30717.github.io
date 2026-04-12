@@ -8,6 +8,10 @@ format:
     output-ext: "reveal.html"
 ---
 
+<div class="reading-time-pill">
+  <span class="badge rounded-pill text-bg-secondary">~15 min de lectura</span>
+</div>
+
 ## Objetivos de la práctica
 
 Los objetivos de esta práctica son los siguientes:
