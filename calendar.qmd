@@ -37,16 +37,16 @@ document.addEventListener("DOMContentLoaded", () => {
       summary: "Ordenación de números.",
       dates: ["2026-04-08", "2026-04-09"] },
 
-    { id: 7, title: "Visualizador de elementos gráficos", icon: "bi-display",
-      summary: "Identificación de elementos de un visualizador. Gestión de aplicaciones complejas desarrolladas en Java.",
+    { id: 7, title: "Introducción a Grasshopper", icon: "bi-diagram-3",
+      summary: "Programación visual y generación paramétrica de geometría.",
       dates: ["2026-04-15", "2026-04-16"] },
 
     { id: 8, title: "BIM semántico", icon: "bi-building",
       summary: "Introducción al modelado BIM y gestión de información asociada.",
       dates: ["2026-04-22", "2026-04-30"] },
 
-    { id: 9, title: "Introducción a Grasshopper", icon: "bi-diagram-3",
-      summary: "Programación visual y generación paramétrica de geometría.",
+    { id: 9, title: "Visualizador de elementos gráficos", icon: "bi-display",
+      summary: "Identificación de elementos de un visualizador. Gestión de aplicaciones complejas desarrolladas en Java.",
       dates: ["2026-05-06", "2026-05-07"] }
   ];
 

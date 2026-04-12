@@ -1,5 +1,6 @@
 ---
 title: "Práctica 3: Resolución de problemas en Java (I)"
+subtitle: "<span class='badge rounded-pill text-bg-secondary'>~5 min de lectura</span>"
 format:
   html: 
     toc: true
@@ -9,10 +10,6 @@ format:
 execute:
   echo: false
 ---
-
-<div class="reading-time-pill">
-  <span class="badge rounded-pill text-bg-secondary">~5 min de lectura</span>
-</div>
 
 ## Objetivos de la práctica
 

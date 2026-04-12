@@ -1,5 +1,6 @@
 ---
 title: "Práctica 7: Introducción a Grasshopper"
+subtitle: "<span class='badge rounded-pill text-bg-secondary'>~10 min de lectura</span>"
 title-block-banner: ../resources/practica7/teaser_horizontal.jpg
 title-block-banner-color: "#464646"
 format:
@@ -11,10 +12,6 @@ format:
 execute:
   echo: false
 ---
-
-<div class="reading-time-pill">
-  <span class="badge rounded-pill text-bg-secondary">~10 min de lectura</span>
-</div>
 
 ## Objetivos de la práctica
 
