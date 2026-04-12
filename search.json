@@ -11,7 +11,7 @@
     "href": "practicas/practica7.html",
     "title": "Práctica 7: Introducción a Grasshopper",
     "section": "",
-    "text": "~10 min de lectura",
+    "text": "En esta práctica vamos a dar los primeros pasos con Grasshopper aplicándolo a un ejercicio sencillo de diseño paramétrico. Al finalizar, deberías ser capaz de:\n\nConocer algunas operaciones básicas de Grasshopper.\nUtilizar recursos de Inteligencia Artificial integrados en Grasshopper para facilitar el proceso de generación de imágenes.\nBuscar información para solucionar dudas relacionadas con Grasshopper.",
     "crumbs": [
       "![](../resources/unizar_white.png){width=95px}",
       "Prácticas",
@@ -22,8 +22,8 @@
     "objectID": "practicas/practica7.html#objetivos-de-la-práctica",
     "href": "practicas/practica7.html#objetivos-de-la-práctica",
     "title": "Práctica 7: Introducción a Grasshopper",
-    "section": "1 Objetivos de la práctica",
-    "text": "1 Objetivos de la práctica\nEn esta práctica vamos a dar los primeros pasos con Grasshopper aplicándolo a un ejercicio sencillo de diseño paramétrico. Al finalizar, deberías ser capaz de:\n\nConocer algunas operaciones básicas de Grasshopper.\nUtilizar recursos de Inteligencia Artificial integrados en Grasshopper para facilitar el proceso de generación de imágenes.\nBuscar información para solucionar dudas relacionadas con Grasshopper.",
+    "section": "",
+    "text": "En esta práctica vamos a dar los primeros pasos con Grasshopper aplicándolo a un ejercicio sencillo de diseño paramétrico. Al finalizar, deberías ser capaz de:\n\nConocer algunas operaciones básicas de Grasshopper.\nUtilizar recursos de Inteligencia Artificial integrados en Grasshopper para facilitar el proceso de generación de imágenes.\nBuscar información para solucionar dudas relacionadas con Grasshopper.",
     "crumbs": [
       "![](../resources/unizar_white.png){width=95px}",
       "Prácticas",
@@ -156,7 +156,7 @@
     "href": "practicas/practica5.html",
     "title": "Práctica 5: Resolución de problemas en Java (II)",
     "section": "",
-    "text": "~8 min de lectura",
+    "text": "Los objetivos de la quinta práctica de la asignatura son los siguientes:\n\nDesarrollar algoritmos en Java.\nEjecutar algoritmos en el entorno Eclipse.",
     "crumbs": [
       "![](../resources/unizar_white.png){width=95px}",
       "Prácticas",
@@ -167,8 +167,8 @@
     "objectID": "practicas/practica5.html#objetivos-de-la-práctica",
     "href": "practicas/practica5.html#objetivos-de-la-práctica",
     "title": "Práctica 5: Resolución de problemas en Java (II)",
-    "section": "1 Objetivos de la práctica",
-    "text": "1 Objetivos de la práctica\nLos objetivos de la quinta práctica de la asignatura son los siguientes:\n\nDesarrollar algoritmos en Java.\nEjecutar algoritmos en el entorno Eclipse.",
+    "section": "",
+    "text": "Los objetivos de la quinta práctica de la asignatura son los siguientes:\n\nDesarrollar algoritmos en Java.\nEjecutar algoritmos en el entorno Eclipse.",
     "crumbs": [
       "![](../resources/unizar_white.png){width=95px}",
       "Prácticas",
@@ -263,7 +263,7 @@
     "href": "practicas/practica3.html",
     "title": "Práctica 3: Resolución de problemas en Java (I)",
     "section": "",
-    "text": "~5 min de lectura",
+    "text": "Los objetivos de la segunda práctica de la asignatura son los siguientes:\n\nDesarrollar algoritmos en Java.\nEjecutar algoritmos en el entorno Eclipse.",
     "crumbs": [
       "![](../resources/unizar_white.png){width=95px}",
       "Prácticas",
@@ -274,8 +274,8 @@
     "objectID": "practicas/practica3.html#objetivos-de-la-práctica",
     "href": "practicas/practica3.html#objetivos-de-la-práctica",
     "title": "Práctica 3: Resolución de problemas en Java (I)",
-    "section": "1 Objetivos de la práctica",
-    "text": "1 Objetivos de la práctica\nLos objetivos de la segunda práctica de la asignatura son los siguientes:\n\nDesarrollar algoritmos en Java.\nEjecutar algoritmos en el entorno Eclipse.",
+    "section": "",
+    "text": "Los objetivos de la segunda práctica de la asignatura son los siguientes:\n\nDesarrollar algoritmos en Java.\nEjecutar algoritmos en el entorno Eclipse.",
     "crumbs": [
       "![](../resources/unizar_white.png){width=95px}",
       "Prácticas",
@@ -351,7 +351,7 @@
     "href": "practicas/practica1.html",
     "title": "Práctica 1: Introducción a Processing",
     "section": "",
-    "text": "~15 min de lectura",
+    "text": "Los objetivos de esta práctica son los siguientes:\n\nFamiliarización con el ordenador y los elementos básicos de un sistema operativo.\nFamiliarización con el entorno de desarrollo Processing.\nFamiliarización con aspectos básicos de programación a través de programas en Processing.",
     "crumbs": [
       "![](../resources/unizar_white.png){width=95px}",
       "Prácticas",
@@ -362,8 +362,8 @@
     "objectID": "practicas/practica1.html#objetivos-de-la-práctica",
     "href": "practicas/practica1.html#objetivos-de-la-práctica",
     "title": "Práctica 1: Introducción a Processing",
-    "section": "1 Objetivos de la práctica",
-    "text": "1 Objetivos de la práctica\nLos objetivos de esta práctica son los siguientes:\n\nFamiliarización con el ordenador y los elementos básicos de un sistema operativo.\nFamiliarización con el entorno de desarrollo Processing.\nFamiliarización con aspectos básicos de programación a través de programas en Processing.",
+    "section": "",
+    "text": "Los objetivos de esta práctica son los siguientes:\n\nFamiliarización con el ordenador y los elementos básicos de un sistema operativo.\nFamiliarización con el entorno de desarrollo Processing.\nFamiliarización con aspectos básicos de programación a través de programas en Processing.",
     "crumbs": [
       "![](../resources/unizar_white.png){width=95px}",
       "Prácticas",
@@ -548,7 +548,7 @@
     "href": "practicas/practica2.html",
     "title": "Práctica 2: Un entorno de programación en Java",
     "section": "",
-    "text": "&lt;span class=\"badge rounded-pill text-bg-secondary\"&gt;~19 min de lectura&lt;/span&gt;",
+    "text": "Los objetivos de la segunda práctica de la asignatura son los siguientes:\n\nFamiliarizarse con el ordenador y los elementos básicos de su sistema operativo.\nFamiliarizarse con el entorno de desarrollo Java Eclipse.",
     "crumbs": [
       "![](../resources/unizar_white.png){width=95px}",
       "Prácticas",
@@ -559,8 +559,8 @@
     "objectID": "practicas/practica2.html#objetivos-de-la-práctica",
     "href": "practicas/practica2.html#objetivos-de-la-práctica",
     "title": "Práctica 2: Un entorno de programación en Java",
-    "section": "1 Objetivos de la práctica",
-    "text": "1 Objetivos de la práctica\nLos objetivos de la segunda práctica de la asignatura son los siguientes:\n\nFamiliarizarse con el ordenador y los elementos básicos de su sistema operativo.\nFamiliarizarse con el entorno de desarrollo Java Eclipse.",
+    "section": "",
+    "text": "Los objetivos de la segunda práctica de la asignatura son los siguientes:\n\nFamiliarizarse con el ordenador y los elementos básicos de su sistema operativo.\nFamiliarizarse con el entorno de desarrollo Java Eclipse.",
     "crumbs": [
       "![](../resources/unizar_white.png){width=95px}",
       "Prácticas",
@@ -657,7 +657,7 @@
     "href": "practicas/practica4.html",
     "title": "Práctica 4: Aspectos avanzados de Excel",
     "section": "",
-    "text": "~11 min de lectura",
+    "text": "Los objetivos de esta práctica son los siguientes:\n\nMostrar algunas de las capacidades más interesantes de una hoja de cálculo como herramienta para la resolución de problemas. No se pretende impartir un curso de Excel, sino despertar el interés por herramientas de enorme utilidad.\nAplicar algunos de los conocimientos de programación aprendidos en esta asignatura.",
     "crumbs": [
       "![](../resources/unizar_white.png){width=95px}",
       "Prácticas",
@@ -668,8 +668,8 @@
     "objectID": "practicas/practica4.html#objetivos-de-la-práctica",
     "href": "practicas/practica4.html#objetivos-de-la-práctica",
     "title": "Práctica 4: Aspectos avanzados de Excel",
-    "section": "1 Objetivos de la práctica",
-    "text": "1 Objetivos de la práctica\nLos objetivos de esta práctica son los siguientes:\n\nMostrar algunas de las capacidades más interesantes de una hoja de cálculo como herramienta para la resolución de problemas. No se pretende impartir un curso de Excel, sino despertar el interés por herramientas de enorme utilidad.\nAplicar algunos de los conocimientos de programación aprendidos en esta asignatura.",
+    "section": "",
+    "text": "Los objetivos de esta práctica son los siguientes:\n\nMostrar algunas de las capacidades más interesantes de una hoja de cálculo como herramienta para la resolución de problemas. No se pretende impartir un curso de Excel, sino despertar el interés por herramientas de enorme utilidad.\nAplicar algunos de los conocimientos de programación aprendidos en esta asignatura.",
     "crumbs": [
       "![](../resources/unizar_white.png){width=95px}",
       "Prácticas",
@@ -781,7 +781,7 @@
     "href": "practicas/practica6.html",
     "title": "Práctica 6: Resolución de problemas en Java (III)",
     "section": "",
-    "text": "~4 min de lectura",
+    "text": "Los objetivos de la sexta práctica de la asignatura son los siguientes:\n\nDesarrollar algoritmos en Java.\nEjecutar algoritmos en el entorno Eclipse.",
     "crumbs": [
       "![](../resources/unizar_white.png){width=95px}",
       "Prácticas",
@@ -792,8 +792,8 @@
     "objectID": "practicas/practica6.html#objetivos-de-la-práctica",
     "href": "practicas/practica6.html#objetivos-de-la-práctica",
     "title": "Práctica 6: Resolución de problemas en Java (III)",
-    "section": "1 Objetivos de la práctica",
-    "text": "1 Objetivos de la práctica\nLos objetivos de la sexta práctica de la asignatura son los siguientes:\n\nDesarrollar algoritmos en Java.\nEjecutar algoritmos en el entorno Eclipse.",
+    "section": "",
+    "text": "Los objetivos de la sexta práctica de la asignatura son los siguientes:\n\nDesarrollar algoritmos en Java.\nEjecutar algoritmos en el entorno Eclipse.",
     "crumbs": [
       "![](../resources/unizar_white.png){width=95px}",
       "Prácticas",
@@ -904,14 +904,14 @@
     "href": "practicas/practica8.html",
     "title": "Práctica 8: BIM semántico",
     "section": "",
-    "text": "~6 min de lectura"
+    "text": "Conocer la representación de modelos BIM usando ontologías\nHacer consultas al modelo BIM usando un razonador semántico."
   },
   {
     "objectID": "practicas/practica8.html#objetivos-de-la-práctica",
     "href": "practicas/practica8.html#objetivos-de-la-práctica",
     "title": "Práctica 8: BIM semántico",
-    "section": "1 Objetivos de la práctica",
-    "text": "1 Objetivos de la práctica\n\nConocer la representación de modelos BIM usando ontologías\nHacer consultas al modelo BIM usando un razonador semántico."
+    "section": "",
+    "text": "Conocer la representación de modelos BIM usando ontologías\nHacer consultas al modelo BIM usando un razonador semántico."
   },
   {
     "objectID": "practicas/practica8.html#qué-es-bim",
