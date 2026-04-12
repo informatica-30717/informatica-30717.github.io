@@ -225,6 +225,12 @@
 </div>
 
 </section>
+<section class="slide level2">
+
+<div class="reading-time-pill">
+<p><span class="badge rounded-pill text-bg-secondary">~8 min de lectura</span></p>
+</div>
+</section>
 <section id="objetivos-de-la-práctica" class="slide level2">
 <h2>Objetivos de la práctica</h2>
 <p>Los objetivos de la quinta práctica de la asignatura son los siguientes:</p>
@@ -390,16 +396,16 @@ numero[i] = \begin{cases} i &amp; \text{si } i \text{ es primo} \\ 0 &amp; \text
 <div class="card shadow-sm mb-4">
 <div class="card-body">
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb4" data-startfrom="124" data-source-offset="0"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 123;"><span id="cb4-124"><a></a><span class="co">// definimos la función global una sola vez para usarla en todos los bloques</span></span>
-<span id="cb4-125"><a></a>cleanSlider <span class="op">=</span> (range<span class="op">,</span> config) <span class="kw">=&gt;</span> {</span>
-<span id="cb4-126"><a></a>  <span class="kw">const</span> input <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">range</span>(range<span class="op">,</span> config)<span class="op">;</span></span>
-<span id="cb4-127"><a></a>  <span class="kw">const</span> numberBox <span class="op">=</span> input<span class="op">.</span><span class="fu">querySelector</span>(<span class="st">"input[type=number]"</span>)<span class="op">;</span></span>
-<span id="cb4-128"><a></a>  <span class="cf">if</span> (numberBox) numberBox<span class="op">.</span><span class="at">style</span><span class="op">.</span><span class="at">display</span> <span class="op">=</span> <span class="st">"none"</span><span class="op">;</span></span>
-<span id="cb4-129"><a></a>  <span class="kw">const</span> rangeSlider <span class="op">=</span> input<span class="op">.</span><span class="fu">querySelector</span>(<span class="st">"input[type=range]"</span>)<span class="op">;</span></span>
-<span id="cb4-130"><a></a>  <span class="cf">if</span> (rangeSlider) rangeSlider<span class="op">.</span><span class="at">style</span><span class="op">.</span><span class="at">width</span> <span class="op">=</span> <span class="st">"100%"</span><span class="op">;</span></span>
-<span id="cb4-131"><a></a>  input<span class="op">.</span><span class="at">style</span><span class="op">.</span><span class="at">width</span> <span class="op">=</span> <span class="st">"100%"</span><span class="op">;</span></span>
-<span id="cb4-132"><a></a>  <span class="cf">return</span> input<span class="op">;</span></span>
-<span id="cb4-133"><a></a>}<span class="op">;</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb4" data-startfrom="128" data-source-offset="0"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 127;"><span id="cb4-128"><a></a><span class="co">// definimos la función global una sola vez para usarla en todos los bloques</span></span>
+<span id="cb4-129"><a></a>cleanSlider <span class="op">=</span> (range<span class="op">,</span> config) <span class="kw">=&gt;</span> {</span>
+<span id="cb4-130"><a></a>  <span class="kw">const</span> input <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">range</span>(range<span class="op">,</span> config)<span class="op">;</span></span>
+<span id="cb4-131"><a></a>  <span class="kw">const</span> numberBox <span class="op">=</span> input<span class="op">.</span><span class="fu">querySelector</span>(<span class="st">"input[type=number]"</span>)<span class="op">;</span></span>
+<span id="cb4-132"><a></a>  <span class="cf">if</span> (numberBox) numberBox<span class="op">.</span><span class="at">style</span><span class="op">.</span><span class="at">display</span> <span class="op">=</span> <span class="st">"none"</span><span class="op">;</span></span>
+<span id="cb4-133"><a></a>  <span class="kw">const</span> rangeSlider <span class="op">=</span> input<span class="op">.</span><span class="fu">querySelector</span>(<span class="st">"input[type=range]"</span>)<span class="op">;</span></span>
+<span id="cb4-134"><a></a>  <span class="cf">if</span> (rangeSlider) rangeSlider<span class="op">.</span><span class="at">style</span><span class="op">.</span><span class="at">width</span> <span class="op">=</span> <span class="st">"100%"</span><span class="op">;</span></span>
+<span id="cb4-135"><a></a>  input<span class="op">.</span><span class="at">style</span><span class="op">.</span><span class="at">width</span> <span class="op">=</span> <span class="st">"100%"</span><span class="op">;</span></span>
+<span id="cb4-136"><a></a>  <span class="cf">return</span> input<span class="op">;</span></span>
+<span id="cb4-137"><a></a>}<span class="op">;</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
 <div id="ojs-cell-1" data-nodetype="declaration">
 
@@ -407,7 +413,7 @@ numero[i] = \begin{cases} i &amp; \text{si } i \text{ es primo} \\ 0 &amp; \text
 </div>
 </div>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb5" data-startfrom="137" data-source-offset="0"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 136;"><span id="cb5-137"><a></a>viewof N1 <span class="op">=</span> <span class="fu">cleanSlider</span>([<span class="dv">10</span><span class="op">,</span> <span class="dv">50</span>]<span class="op">,</span> { <span class="dt">value</span><span class="op">:</span> <span class="dv">29</span><span class="op">,</span> <span class="dt">step</span><span class="op">:</span> <span class="dv">1</span><span class="op">,</span> <span class="dt">label</span><span class="op">:</span> <span class="st">"Valor N: "</span> })</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb5" data-startfrom="141" data-source-offset="0"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 140;"><span id="cb5-141"><a></a>viewof N1 <span class="op">=</span> <span class="fu">cleanSlider</span>([<span class="dv">10</span><span class="op">,</span> <span class="dv">50</span>]<span class="op">,</span> { <span class="dt">value</span><span class="op">:</span> <span class="dv">29</span><span class="op">,</span> <span class="dt">step</span><span class="op">:</span> <span class="dv">1</span><span class="op">,</span> <span class="dt">label</span><span class="op">:</span> <span class="st">"Valor N: "</span> })</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
 <div id="ojs-cell-2" data-nodetype="declaration">
 
@@ -415,29 +421,29 @@ numero[i] = \begin{cases} i &amp; \text{si } i \text{ es primo} \\ 0 &amp; \text
 </div>
 </div>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb6" data-startfrom="141" data-source-offset="0"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 140;"><span id="cb6-141"><a></a>steps1 <span class="op">=</span> {</span>
-<span id="cb6-142"><a></a>  <span class="kw">const</span> max <span class="op">=</span> N1<span class="op">;</span></span>
-<span id="cb6-143"><a></a>  <span class="kw">let</span> state <span class="op">=</span> <span class="bu">Array</span>(max <span class="op">+</span> <span class="dv">1</span>)<span class="op">.</span><span class="fu">fill</span>(<span class="st">"candidate"</span>)<span class="op">;</span></span>
-<span id="cb6-144"><a></a>  state[<span class="dv">0</span>] <span class="op">=</span> state[<span class="dv">1</span>] <span class="op">=</span> <span class="st">"discarded"</span><span class="op">;</span></span>
-<span id="cb6-145"><a></a></span>
-<span id="cb6-146"><a></a>  <span class="kw">const</span> out <span class="op">=</span> []<span class="op">;</span></span>
-<span id="cb6-147"><a></a></span>
-<span id="cb6-148"><a></a>  <span class="cf">for</span> (<span class="kw">let</span> p <span class="op">=</span> <span class="dv">2</span><span class="op">;</span> p <span class="op">&lt;=</span> max<span class="op">;</span> p<span class="op">++</span>) {</span>
-<span id="cb6-149"><a></a>    <span class="cf">if</span> (state[p] <span class="op">===</span> <span class="st">"candidate"</span>) {</span>
-<span id="cb6-150"><a></a>      out<span class="op">.</span><span class="fu">push</span>({ <span class="dt">type</span><span class="op">:</span> <span class="st">"prime"</span><span class="op">,</span> p<span class="op">,</span> <span class="dt">state</span><span class="op">:</span> [<span class="op">...</span>state] })<span class="op">;</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb6" data-startfrom="145" data-source-offset="0"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 144;"><span id="cb6-145"><a></a>steps1 <span class="op">=</span> {</span>
+<span id="cb6-146"><a></a>  <span class="kw">const</span> max <span class="op">=</span> N1<span class="op">;</span></span>
+<span id="cb6-147"><a></a>  <span class="kw">let</span> state <span class="op">=</span> <span class="bu">Array</span>(max <span class="op">+</span> <span class="dv">1</span>)<span class="op">.</span><span class="fu">fill</span>(<span class="st">"candidate"</span>)<span class="op">;</span></span>
+<span id="cb6-148"><a></a>  state[<span class="dv">0</span>] <span class="op">=</span> state[<span class="dv">1</span>] <span class="op">=</span> <span class="st">"discarded"</span><span class="op">;</span></span>
+<span id="cb6-149"><a></a></span>
+<span id="cb6-150"><a></a>  <span class="kw">const</span> out <span class="op">=</span> []<span class="op">;</span></span>
 <span id="cb6-151"><a></a></span>
-<span id="cb6-152"><a></a>      <span class="cf">for</span> (<span class="kw">let</span> k <span class="op">=</span> p <span class="op">*</span> <span class="dv">2</span><span class="op">;</span> k <span class="op">&lt;=</span> max<span class="op">;</span> k <span class="op">+=</span> p) {</span>
-<span id="cb6-153"><a></a>        <span class="cf">if</span> (state[k] <span class="op">===</span> <span class="st">"candidate"</span>) {</span>
-<span id="cb6-154"><a></a>          state[k] <span class="op">=</span> <span class="st">"discarded"</span><span class="op">;</span></span>
-<span id="cb6-155"><a></a>          out<span class="op">.</span><span class="fu">push</span>({ <span class="dt">type</span><span class="op">:</span> <span class="st">"discard"</span><span class="op">,</span> p<span class="op">,</span> k<span class="op">,</span> <span class="dt">state</span><span class="op">:</span> [<span class="op">...</span>state] })<span class="op">;</span></span>
-<span id="cb6-156"><a></a>        }</span>
-<span id="cb6-157"><a></a>      }</span>
-<span id="cb6-158"><a></a>    }</span>
-<span id="cb6-159"><a></a>  }</span>
-<span id="cb6-160"><a></a></span>
-<span id="cb6-161"><a></a>  out<span class="op">.</span><span class="fu">push</span>({ <span class="dt">type</span><span class="op">:</span> <span class="st">"final"</span><span class="op">,</span> <span class="dt">state</span><span class="op">:</span> [<span class="op">...</span>state] })<span class="op">;</span></span>
-<span id="cb6-162"><a></a>  <span class="cf">return</span> out<span class="op">;</span></span>
-<span id="cb6-163"><a></a>}</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb6-152"><a></a>  <span class="cf">for</span> (<span class="kw">let</span> p <span class="op">=</span> <span class="dv">2</span><span class="op">;</span> p <span class="op">&lt;=</span> max<span class="op">;</span> p<span class="op">++</span>) {</span>
+<span id="cb6-153"><a></a>    <span class="cf">if</span> (state[p] <span class="op">===</span> <span class="st">"candidate"</span>) {</span>
+<span id="cb6-154"><a></a>      out<span class="op">.</span><span class="fu">push</span>({ <span class="dt">type</span><span class="op">:</span> <span class="st">"prime"</span><span class="op">,</span> p<span class="op">,</span> <span class="dt">state</span><span class="op">:</span> [<span class="op">...</span>state] })<span class="op">;</span></span>
+<span id="cb6-155"><a></a></span>
+<span id="cb6-156"><a></a>      <span class="cf">for</span> (<span class="kw">let</span> k <span class="op">=</span> p <span class="op">*</span> <span class="dv">2</span><span class="op">;</span> k <span class="op">&lt;=</span> max<span class="op">;</span> k <span class="op">+=</span> p) {</span>
+<span id="cb6-157"><a></a>        <span class="cf">if</span> (state[k] <span class="op">===</span> <span class="st">"candidate"</span>) {</span>
+<span id="cb6-158"><a></a>          state[k] <span class="op">=</span> <span class="st">"discarded"</span><span class="op">;</span></span>
+<span id="cb6-159"><a></a>          out<span class="op">.</span><span class="fu">push</span>({ <span class="dt">type</span><span class="op">:</span> <span class="st">"discard"</span><span class="op">,</span> p<span class="op">,</span> k<span class="op">,</span> <span class="dt">state</span><span class="op">:</span> [<span class="op">...</span>state] })<span class="op">;</span></span>
+<span id="cb6-160"><a></a>        }</span>
+<span id="cb6-161"><a></a>      }</span>
+<span id="cb6-162"><a></a>    }</span>
+<span id="cb6-163"><a></a>  }</span>
+<span id="cb6-164"><a></a></span>
+<span id="cb6-165"><a></a>  out<span class="op">.</span><span class="fu">push</span>({ <span class="dt">type</span><span class="op">:</span> <span class="st">"final"</span><span class="op">,</span> <span class="dt">state</span><span class="op">:</span> [<span class="op">...</span>state] })<span class="op">;</span></span>
+<span id="cb6-166"><a></a>  <span class="cf">return</span> out<span class="op">;</span></span>
+<span id="cb6-167"><a></a>}</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
 <div id="ojs-cell-3" data-nodetype="declaration">
 
@@ -445,7 +451,7 @@ numero[i] = \begin{cases} i &amp; \text{si } i \text{ es primo} \\ 0 &amp; \text
 </div>
 </div>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb7" data-startfrom="167" data-source-offset="0"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 166;"><span id="cb7-167"><a></a>maxStep1 <span class="op">=</span> steps1<span class="op">.</span><span class="at">length</span> <span class="op">-</span> <span class="dv">1</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb7" data-startfrom="171" data-source-offset="0"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 170;"><span id="cb7-171"><a></a>maxStep1 <span class="op">=</span> steps1<span class="op">.</span><span class="at">length</span> <span class="op">-</span> <span class="dv">1</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
 <div id="ojs-cell-4" data-nodetype="declaration">
 
@@ -453,7 +459,7 @@ numero[i] = \begin{cases} i &amp; \text{si } i \text{ es primo} \\ 0 &amp; \text
 </div>
 </div>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb8" data-startfrom="171" data-source-offset="0"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 170;"><span id="cb8-171"><a></a>viewof step1 <span class="op">=</span> <span class="fu">cleanSlider</span>([<span class="dv">0</span><span class="op">,</span> maxStep1]<span class="op">,</span> { <span class="dt">value</span><span class="op">:</span> <span class="dv">0</span><span class="op">,</span> <span class="dt">step</span><span class="op">:</span> <span class="dv">1</span><span class="op">,</span> <span class="dt">label</span><span class="op">:</span> <span class="st">"Paso de la criba: "</span> })</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb8" data-startfrom="175" data-source-offset="0"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 174;"><span id="cb8-175"><a></a>viewof step1 <span class="op">=</span> <span class="fu">cleanSlider</span>([<span class="dv">0</span><span class="op">,</span> maxStep1]<span class="op">,</span> { <span class="dt">value</span><span class="op">:</span> <span class="dv">0</span><span class="op">,</span> <span class="dt">step</span><span class="op">:</span> <span class="dv">1</span><span class="op">,</span> <span class="dt">label</span><span class="op">:</span> <span class="st">"Paso de la criba: "</span> })</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
 <div id="ojs-cell-5" data-nodetype="declaration">
 
@@ -461,50 +467,50 @@ numero[i] = \begin{cases} i &amp; \text{si } i \text{ es primo} \\ 0 &amp; \text
 </div>
 </div>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb9" data-startfrom="175" data-source-offset="0"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 174;"><span id="cb9-175"><a></a>{</span>
-<span id="cb9-176"><a></a>  <span class="cf">if</span> (<span class="op">!</span>steps1 <span class="op">||</span> steps1<span class="op">.</span><span class="at">length</span> <span class="op">===</span> <span class="dv">0</span>) <span class="cf">return</span> <span class="fu">html</span><span class="vs">`&lt;div&gt;Cargando...&lt;/div&gt;`</span><span class="op">;</span></span>
-<span id="cb9-177"><a></a></span>
-<span id="cb9-178"><a></a>  <span class="kw">const</span> safeStep <span class="op">=</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">min</span>(step1<span class="op">,</span> steps1<span class="op">.</span><span class="at">length</span> <span class="op">-</span> <span class="dv">1</span>)<span class="op">;</span></span>
-<span id="cb9-179"><a></a>  <span class="kw">const</span> s <span class="op">=</span> steps1[safeStep]<span class="op">;</span></span>
-<span id="cb9-180"><a></a></span>
-<span id="cb9-181"><a></a>  <span class="cf">if</span> (<span class="op">!</span>s) <span class="cf">return</span> <span class="fu">html</span><span class="vs">`&lt;div&gt;Cargando...&lt;/div&gt;`</span><span class="op">;</span></span>
-<span id="cb9-182"><a></a></span>
-<span id="cb9-183"><a></a>  <span class="kw">const</span> arr <span class="op">=</span> s<span class="op">.</span><span class="at">state</span><span class="op">;</span></span>
-<span id="cb9-184"><a></a>  <span class="kw">const</span> max <span class="op">=</span> N1<span class="op">;</span></span>
-<span id="cb9-185"><a></a>  <span class="kw">const</span> cols <span class="op">=</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">ceil</span>(<span class="bu">Math</span><span class="op">.</span><span class="fu">sqrt</span>(max))<span class="op">;</span></span>
-<span id="cb9-186"><a></a>  </span>
-<span id="cb9-187"><a></a>  <span class="kw">const</span> currentPrime <span class="op">=</span> s<span class="op">.</span><span class="at">p</span><span class="op">;</span></span>
-<span id="cb9-188"><a></a>  <span class="kw">const</span> lastDiscard <span class="op">=</span> s<span class="op">.</span><span class="at">k</span><span class="op">;</span></span>
-<span id="cb9-189"><a></a></span>
-<span id="cb9-190"><a></a>  <span class="kw">const</span> grid <span class="op">=</span> <span class="bu">Array</span><span class="op">.</span><span class="fu">from</span>({ <span class="dt">length</span><span class="op">:</span> max <span class="op">+</span> <span class="dv">1</span> }<span class="op">,</span> (_<span class="op">,</span> i) <span class="kw">=&gt;</span> {</span>
-<span id="cb9-191"><a></a>    <span class="kw">let</span> bgColor <span class="op">=</span> <span class="st">"#2a9d8f"</span><span class="op">;</span> </span>
-<span id="cb9-192"><a></a>    <span class="cf">if</span> (i <span class="op">&lt;</span> <span class="dv">2</span>) bgColor <span class="op">=</span> <span class="st">"#ddd"</span><span class="op">;</span></span>
-<span id="cb9-193"><a></a>    <span class="cf">else</span> <span class="cf">if</span> (i <span class="op">===</span> currentPrime) bgColor <span class="op">=</span> <span class="st">"#457b9d"</span><span class="op">;</span></span>
-<span id="cb9-194"><a></a>    <span class="cf">else</span> <span class="cf">if</span> (i <span class="op">===</span> lastDiscard) bgColor <span class="op">=</span> <span class="st">"#f4a261"</span><span class="op">;</span></span>
-<span id="cb9-195"><a></a>    <span class="cf">else</span> <span class="cf">if</span> (arr[i] <span class="op">===</span> <span class="st">"discarded"</span>) bgColor <span class="op">=</span> <span class="st">"#e63946"</span><span class="op">;</span></span>
-<span id="cb9-196"><a></a></span>
-<span id="cb9-197"><a></a>    <span class="cf">return</span> {</span>
-<span id="cb9-198"><a></a>      <span class="dt">n</span><span class="op">:</span> i<span class="op">,</span> <span class="dt">x</span><span class="op">:</span> i <span class="op">%</span> cols<span class="op">,</span> <span class="dt">y</span><span class="op">:</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">floor</span>(i <span class="op">/</span> cols)<span class="op">,</span> <span class="dt">state</span><span class="op">:</span> arr[i]<span class="op">,</span></span>
-<span id="cb9-199"><a></a>      <span class="dt">color</span><span class="op">:</span> bgColor<span class="op">,</span> <span class="dt">textColor</span><span class="op">:</span> i <span class="op">&lt;</span> <span class="dv">2</span> <span class="op">?</span> <span class="st">"#333"</span> <span class="op">:</span> <span class="st">"white"</span> </span>
-<span id="cb9-200"><a></a>    }<span class="op">;</span></span>
-<span id="cb9-201"><a></a>  })<span class="op">;</span></span>
-<span id="cb9-202"><a></a></span>
-<span id="cb9-203"><a></a>  <span class="cf">return</span> <span class="fu">html</span><span class="vs">`</span></span>
-<span id="cb9-204"><a></a><span class="vs">    &lt;div style="margin-top:15px;"&gt;</span></span>
-<span id="cb9-205"><a></a><span class="vs">      </span><span class="sc">${</span>Plot<span class="op">.</span><span class="fu">plot</span>({</span>
-<span id="cb9-206"><a></a>        <span class="dt">height</span><span class="op">:</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">ceil</span>(max <span class="op">/</span> cols) <span class="op">*</span> <span class="dv">35</span> <span class="op">+</span> <span class="dv">20</span><span class="op">,</span> <span class="dt">margin</span><span class="op">:</span> <span class="dv">10</span><span class="op">,</span></span>
-<span id="cb9-207"><a></a>        <span class="dt">x</span><span class="op">:</span> { <span class="dt">axis</span><span class="op">:</span> <span class="kw">null</span> }<span class="op">,</span> <span class="dt">y</span><span class="op">:</span> { <span class="dt">axis</span><span class="op">:</span> <span class="kw">null</span><span class="op">,</span> <span class="dt">reverse</span><span class="op">:</span> <span class="kw">true</span> }<span class="op">,</span> <span class="dt">color</span><span class="op">:</span> { <span class="dt">type</span><span class="op">:</span> <span class="st">"identity"</span> }<span class="op">,</span> </span>
-<span id="cb9-208"><a></a>        <span class="dt">marks</span><span class="op">:</span> [</span>
-<span id="cb9-209"><a></a>          Plot<span class="op">.</span><span class="fu">rect</span>(grid<span class="op">,</span> { <span class="dt">x1</span><span class="op">:</span> d <span class="kw">=&gt;</span> d<span class="op">.</span><span class="at">x</span> <span class="op">-</span> <span class="fl">0.45</span><span class="op">,</span> <span class="dt">x2</span><span class="op">:</span> d <span class="kw">=&gt;</span> d<span class="op">.</span><span class="at">x</span> <span class="op">+</span> <span class="fl">0.45</span><span class="op">,</span> <span class="dt">y1</span><span class="op">:</span> d <span class="kw">=&gt;</span> d<span class="op">.</span><span class="at">y</span> <span class="op">-</span> <span class="fl">0.45</span><span class="op">,</span> <span class="dt">y2</span><span class="op">:</span> d <span class="kw">=&gt;</span> d<span class="op">.</span><span class="at">y</span> <span class="op">+</span> <span class="fl">0.45</span><span class="op">,</span> <span class="dt">fill</span><span class="op">:</span> <span class="st">"color"</span><span class="op">,</span> <span class="dt">stroke</span><span class="op">:</span> <span class="st">"white"</span><span class="op">,</span> <span class="dt">rx</span><span class="op">:</span> <span class="dv">4</span> })<span class="op">,</span></span>
-<span id="cb9-210"><a></a>          Plot<span class="op">.</span><span class="fu">text</span>(grid<span class="op">,</span> { <span class="dt">x</span><span class="op">:</span> <span class="st">"x"</span><span class="op">,</span> <span class="dt">y</span><span class="op">:</span> <span class="st">"y"</span><span class="op">,</span> <span class="dt">text</span><span class="op">:</span> <span class="st">"n"</span><span class="op">,</span> <span class="dt">fill</span><span class="op">:</span> <span class="st">"textColor"</span><span class="op">,</span> <span class="dt">fontSize</span><span class="op">:</span> <span class="dv">13</span><span class="op">,</span> <span class="dt">fontWeight</span><span class="op">:</span> <span class="st">"bold"</span> })</span>
-<span id="cb9-211"><a></a>        ]</span>
-<span id="cb9-212"><a></a>      })<span class="sc">}</span></span>
-<span id="cb9-213"><a></a><span class="vs">      &lt;div style="margin-top:15px; font-size: 1.1em; height: 1.5em;"&gt;</span></span>
-<span id="cb9-214"><a></a><span class="vs">        </span><span class="sc">${</span>s<span class="op">.</span><span class="at">type</span> <span class="op">===</span> <span class="st">"prime"</span> <span class="op">?</span> <span class="fu">html</span><span class="vs">`🔎 Probando primo &lt;b&gt;</span><span class="sc">${</span>currentPrime<span class="sc">}</span><span class="vs">&lt;/b&gt;`</span> <span class="op">:</span> s<span class="op">.</span><span class="at">type</span> <span class="op">===</span> <span class="st">"discard"</span> <span class="op">?</span> <span class="fu">html</span><span class="vs">`❌ </span><span class="sc">${</span>lastDiscard<span class="sc">}</span><span class="vs"> es múltiplo de &lt;b&gt;</span><span class="sc">${</span>currentPrime<span class="sc">}</span><span class="vs">&lt;/b&gt;`</span> <span class="op">:</span> <span class="fu">html</span><span class="vs">`✅ Criba completada`</span><span class="sc">}</span></span>
-<span id="cb9-215"><a></a><span class="vs">      &lt;/div&gt;</span></span>
-<span id="cb9-216"><a></a><span class="vs">    &lt;/div&gt;</span></span>
-<span id="cb9-217"><a></a><span class="vs">  `</span><span class="op">;</span></span>
-<span id="cb9-218"><a></a>}</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb9" data-startfrom="179" data-source-offset="0"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 178;"><span id="cb9-179"><a></a>{</span>
+<span id="cb9-180"><a></a>  <span class="cf">if</span> (<span class="op">!</span>steps1 <span class="op">||</span> steps1<span class="op">.</span><span class="at">length</span> <span class="op">===</span> <span class="dv">0</span>) <span class="cf">return</span> <span class="fu">html</span><span class="vs">`&lt;div&gt;Cargando...&lt;/div&gt;`</span><span class="op">;</span></span>
+<span id="cb9-181"><a></a></span>
+<span id="cb9-182"><a></a>  <span class="kw">const</span> safeStep <span class="op">=</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">min</span>(step1<span class="op">,</span> steps1<span class="op">.</span><span class="at">length</span> <span class="op">-</span> <span class="dv">1</span>)<span class="op">;</span></span>
+<span id="cb9-183"><a></a>  <span class="kw">const</span> s <span class="op">=</span> steps1[safeStep]<span class="op">;</span></span>
+<span id="cb9-184"><a></a></span>
+<span id="cb9-185"><a></a>  <span class="cf">if</span> (<span class="op">!</span>s) <span class="cf">return</span> <span class="fu">html</span><span class="vs">`&lt;div&gt;Cargando...&lt;/div&gt;`</span><span class="op">;</span></span>
+<span id="cb9-186"><a></a></span>
+<span id="cb9-187"><a></a>  <span class="kw">const</span> arr <span class="op">=</span> s<span class="op">.</span><span class="at">state</span><span class="op">;</span></span>
+<span id="cb9-188"><a></a>  <span class="kw">const</span> max <span class="op">=</span> N1<span class="op">;</span></span>
+<span id="cb9-189"><a></a>  <span class="kw">const</span> cols <span class="op">=</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">ceil</span>(<span class="bu">Math</span><span class="op">.</span><span class="fu">sqrt</span>(max))<span class="op">;</span></span>
+<span id="cb9-190"><a></a>  </span>
+<span id="cb9-191"><a></a>  <span class="kw">const</span> currentPrime <span class="op">=</span> s<span class="op">.</span><span class="at">p</span><span class="op">;</span></span>
+<span id="cb9-192"><a></a>  <span class="kw">const</span> lastDiscard <span class="op">=</span> s<span class="op">.</span><span class="at">k</span><span class="op">;</span></span>
+<span id="cb9-193"><a></a></span>
+<span id="cb9-194"><a></a>  <span class="kw">const</span> grid <span class="op">=</span> <span class="bu">Array</span><span class="op">.</span><span class="fu">from</span>({ <span class="dt">length</span><span class="op">:</span> max <span class="op">+</span> <span class="dv">1</span> }<span class="op">,</span> (_<span class="op">,</span> i) <span class="kw">=&gt;</span> {</span>
+<span id="cb9-195"><a></a>    <span class="kw">let</span> bgColor <span class="op">=</span> <span class="st">"#2a9d8f"</span><span class="op">;</span> </span>
+<span id="cb9-196"><a></a>    <span class="cf">if</span> (i <span class="op">&lt;</span> <span class="dv">2</span>) bgColor <span class="op">=</span> <span class="st">"#ddd"</span><span class="op">;</span></span>
+<span id="cb9-197"><a></a>    <span class="cf">else</span> <span class="cf">if</span> (i <span class="op">===</span> currentPrime) bgColor <span class="op">=</span> <span class="st">"#457b9d"</span><span class="op">;</span></span>
+<span id="cb9-198"><a></a>    <span class="cf">else</span> <span class="cf">if</span> (i <span class="op">===</span> lastDiscard) bgColor <span class="op">=</span> <span class="st">"#f4a261"</span><span class="op">;</span></span>
+<span id="cb9-199"><a></a>    <span class="cf">else</span> <span class="cf">if</span> (arr[i] <span class="op">===</span> <span class="st">"discarded"</span>) bgColor <span class="op">=</span> <span class="st">"#e63946"</span><span class="op">;</span></span>
+<span id="cb9-200"><a></a></span>
+<span id="cb9-201"><a></a>    <span class="cf">return</span> {</span>
+<span id="cb9-202"><a></a>      <span class="dt">n</span><span class="op">:</span> i<span class="op">,</span> <span class="dt">x</span><span class="op">:</span> i <span class="op">%</span> cols<span class="op">,</span> <span class="dt">y</span><span class="op">:</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">floor</span>(i <span class="op">/</span> cols)<span class="op">,</span> <span class="dt">state</span><span class="op">:</span> arr[i]<span class="op">,</span></span>
+<span id="cb9-203"><a></a>      <span class="dt">color</span><span class="op">:</span> bgColor<span class="op">,</span> <span class="dt">textColor</span><span class="op">:</span> i <span class="op">&lt;</span> <span class="dv">2</span> <span class="op">?</span> <span class="st">"#333"</span> <span class="op">:</span> <span class="st">"white"</span> </span>
+<span id="cb9-204"><a></a>    }<span class="op">;</span></span>
+<span id="cb9-205"><a></a>  })<span class="op">;</span></span>
+<span id="cb9-206"><a></a></span>
+<span id="cb9-207"><a></a>  <span class="cf">return</span> <span class="fu">html</span><span class="vs">`</span></span>
+<span id="cb9-208"><a></a><span class="vs">    &lt;div style="margin-top:15px;"&gt;</span></span>
+<span id="cb9-209"><a></a><span class="vs">      </span><span class="sc">${</span>Plot<span class="op">.</span><span class="fu">plot</span>({</span>
+<span id="cb9-210"><a></a>        <span class="dt">height</span><span class="op">:</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">ceil</span>(max <span class="op">/</span> cols) <span class="op">*</span> <span class="dv">35</span> <span class="op">+</span> <span class="dv">20</span><span class="op">,</span> <span class="dt">margin</span><span class="op">:</span> <span class="dv">10</span><span class="op">,</span></span>
+<span id="cb9-211"><a></a>        <span class="dt">x</span><span class="op">:</span> { <span class="dt">axis</span><span class="op">:</span> <span class="kw">null</span> }<span class="op">,</span> <span class="dt">y</span><span class="op">:</span> { <span class="dt">axis</span><span class="op">:</span> <span class="kw">null</span><span class="op">,</span> <span class="dt">reverse</span><span class="op">:</span> <span class="kw">true</span> }<span class="op">,</span> <span class="dt">color</span><span class="op">:</span> { <span class="dt">type</span><span class="op">:</span> <span class="st">"identity"</span> }<span class="op">,</span> </span>
+<span id="cb9-212"><a></a>        <span class="dt">marks</span><span class="op">:</span> [</span>
+<span id="cb9-213"><a></a>          Plot<span class="op">.</span><span class="fu">rect</span>(grid<span class="op">,</span> { <span class="dt">x1</span><span class="op">:</span> d <span class="kw">=&gt;</span> d<span class="op">.</span><span class="at">x</span> <span class="op">-</span> <span class="fl">0.45</span><span class="op">,</span> <span class="dt">x2</span><span class="op">:</span> d <span class="kw">=&gt;</span> d<span class="op">.</span><span class="at">x</span> <span class="op">+</span> <span class="fl">0.45</span><span class="op">,</span> <span class="dt">y1</span><span class="op">:</span> d <span class="kw">=&gt;</span> d<span class="op">.</span><span class="at">y</span> <span class="op">-</span> <span class="fl">0.45</span><span class="op">,</span> <span class="dt">y2</span><span class="op">:</span> d <span class="kw">=&gt;</span> d<span class="op">.</span><span class="at">y</span> <span class="op">+</span> <span class="fl">0.45</span><span class="op">,</span> <span class="dt">fill</span><span class="op">:</span> <span class="st">"color"</span><span class="op">,</span> <span class="dt">stroke</span><span class="op">:</span> <span class="st">"white"</span><span class="op">,</span> <span class="dt">rx</span><span class="op">:</span> <span class="dv">4</span> })<span class="op">,</span></span>
+<span id="cb9-214"><a></a>          Plot<span class="op">.</span><span class="fu">text</span>(grid<span class="op">,</span> { <span class="dt">x</span><span class="op">:</span> <span class="st">"x"</span><span class="op">,</span> <span class="dt">y</span><span class="op">:</span> <span class="st">"y"</span><span class="op">,</span> <span class="dt">text</span><span class="op">:</span> <span class="st">"n"</span><span class="op">,</span> <span class="dt">fill</span><span class="op">:</span> <span class="st">"textColor"</span><span class="op">,</span> <span class="dt">fontSize</span><span class="op">:</span> <span class="dv">13</span><span class="op">,</span> <span class="dt">fontWeight</span><span class="op">:</span> <span class="st">"bold"</span> })</span>
+<span id="cb9-215"><a></a>        ]</span>
+<span id="cb9-216"><a></a>      })<span class="sc">}</span></span>
+<span id="cb9-217"><a></a><span class="vs">      &lt;div style="margin-top:15px; font-size: 1.1em; height: 1.5em;"&gt;</span></span>
+<span id="cb9-218"><a></a><span class="vs">        </span><span class="sc">${</span>s<span class="op">.</span><span class="at">type</span> <span class="op">===</span> <span class="st">"prime"</span> <span class="op">?</span> <span class="fu">html</span><span class="vs">`🔎 Probando primo &lt;b&gt;</span><span class="sc">${</span>currentPrime<span class="sc">}</span><span class="vs">&lt;/b&gt;`</span> <span class="op">:</span> s<span class="op">.</span><span class="at">type</span> <span class="op">===</span> <span class="st">"discard"</span> <span class="op">?</span> <span class="fu">html</span><span class="vs">`❌ </span><span class="sc">${</span>lastDiscard<span class="sc">}</span><span class="vs"> es múltiplo de &lt;b&gt;</span><span class="sc">${</span>currentPrime<span class="sc">}</span><span class="vs">&lt;/b&gt;`</span> <span class="op">:</span> <span class="fu">html</span><span class="vs">`✅ Criba completada`</span><span class="sc">}</span></span>
+<span id="cb9-219"><a></a><span class="vs">      &lt;/div&gt;</span></span>
+<span id="cb9-220"><a></a><span class="vs">    &lt;/div&gt;</span></span>
+<span id="cb9-221"><a></a><span class="vs">  `</span><span class="op">;</span></span>
+<span id="cb9-222"><a></a>}</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
 <div id="ojs-cell-6" data-nodetype="expression">
 
@@ -585,7 +591,7 @@ numero[i] = \begin{cases} i &amp; \text{si } i \text{ es primo} \\ 0 &amp; \text
 <div class="card shadow-sm mb-4">
 <div class="card-body">
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb11" data-startfrom="283" data-source-offset="0"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 282;"><span id="cb11-283"><a></a>viewof N2 <span class="op">=</span> <span class="fu">cleanSlider</span>([<span class="dv">10</span><span class="op">,</span> <span class="dv">150</span>]<span class="op">,</span> { <span class="dt">value</span><span class="op">:</span> <span class="dv">29</span><span class="op">,</span> <span class="dt">step</span><span class="op">:</span> <span class="dv">1</span><span class="op">,</span> <span class="dt">label</span><span class="op">:</span> <span class="st">"Valor N: "</span> })</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb11" data-startfrom="287" data-source-offset="0"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 286;"><span id="cb11-287"><a></a>viewof N2 <span class="op">=</span> <span class="fu">cleanSlider</span>([<span class="dv">10</span><span class="op">,</span> <span class="dv">150</span>]<span class="op">,</span> { <span class="dt">value</span><span class="op">:</span> <span class="dv">29</span><span class="op">,</span> <span class="dt">step</span><span class="op">:</span> <span class="dv">1</span><span class="op">,</span> <span class="dt">label</span><span class="op">:</span> <span class="st">"Valor N: "</span> })</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
 <div id="ojs-cell-7" data-nodetype="declaration">
 
@@ -593,29 +599,29 @@ numero[i] = \begin{cases} i &amp; \text{si } i \text{ es primo} \\ 0 &amp; \text
 </div>
 </div>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb12" data-startfrom="287" data-source-offset="0"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 286;"><span id="cb12-287"><a></a>steps2 <span class="op">=</span> {</span>
-<span id="cb12-288"><a></a>  <span class="kw">const</span> max <span class="op">=</span> N2<span class="op">;</span></span>
-<span id="cb12-289"><a></a>  <span class="kw">let</span> state <span class="op">=</span> <span class="bu">Array</span>(max <span class="op">+</span> <span class="dv">1</span>)<span class="op">.</span><span class="fu">fill</span>(<span class="st">"candidate"</span>)<span class="op">;</span></span>
-<span id="cb12-290"><a></a>  state[<span class="dv">0</span>] <span class="op">=</span> state[<span class="dv">1</span>] <span class="op">=</span> <span class="st">"discarded"</span><span class="op">;</span></span>
-<span id="cb12-291"><a></a></span>
-<span id="cb12-292"><a></a>  <span class="kw">const</span> out <span class="op">=</span> []<span class="op">;</span></span>
-<span id="cb12-293"><a></a></span>
-<span id="cb12-294"><a></a>  <span class="cf">for</span> (<span class="kw">let</span> p <span class="op">=</span> <span class="dv">2</span><span class="op">;</span> p <span class="op">*</span> p <span class="op">&lt;=</span> max<span class="op">;</span> p<span class="op">++</span>) {</span>
-<span id="cb12-295"><a></a>    <span class="cf">if</span> (state[p] <span class="op">===</span> <span class="st">"candidate"</span>) {</span>
-<span id="cb12-296"><a></a>      out<span class="op">.</span><span class="fu">push</span>({ <span class="dt">type</span><span class="op">:</span> <span class="st">"prime"</span><span class="op">,</span> p<span class="op">,</span> <span class="dt">state</span><span class="op">:</span> [<span class="op">...</span>state] })<span class="op">;</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb12" data-startfrom="291" data-source-offset="0"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 290;"><span id="cb12-291"><a></a>steps2 <span class="op">=</span> {</span>
+<span id="cb12-292"><a></a>  <span class="kw">const</span> max <span class="op">=</span> N2<span class="op">;</span></span>
+<span id="cb12-293"><a></a>  <span class="kw">let</span> state <span class="op">=</span> <span class="bu">Array</span>(max <span class="op">+</span> <span class="dv">1</span>)<span class="op">.</span><span class="fu">fill</span>(<span class="st">"candidate"</span>)<span class="op">;</span></span>
+<span id="cb12-294"><a></a>  state[<span class="dv">0</span>] <span class="op">=</span> state[<span class="dv">1</span>] <span class="op">=</span> <span class="st">"discarded"</span><span class="op">;</span></span>
+<span id="cb12-295"><a></a></span>
+<span id="cb12-296"><a></a>  <span class="kw">const</span> out <span class="op">=</span> []<span class="op">;</span></span>
 <span id="cb12-297"><a></a></span>
-<span id="cb12-298"><a></a>      <span class="cf">for</span> (<span class="kw">let</span> k <span class="op">=</span> p <span class="op">*</span> p<span class="op">;</span> k <span class="op">&lt;=</span> max<span class="op">;</span> k <span class="op">+=</span> p) {</span>
-<span id="cb12-299"><a></a>        <span class="cf">if</span> (state[k] <span class="op">===</span> <span class="st">"candidate"</span>) {</span>
-<span id="cb12-300"><a></a>          state[k] <span class="op">=</span> <span class="st">"discarded"</span><span class="op">;</span></span>
-<span id="cb12-301"><a></a>          out<span class="op">.</span><span class="fu">push</span>({ <span class="dt">type</span><span class="op">:</span> <span class="st">"discard"</span><span class="op">,</span> p<span class="op">,</span> k<span class="op">,</span> <span class="dt">state</span><span class="op">:</span> [<span class="op">...</span>state] })<span class="op">;</span></span>
-<span id="cb12-302"><a></a>        }</span>
-<span id="cb12-303"><a></a>      }</span>
-<span id="cb12-304"><a></a>    }</span>
-<span id="cb12-305"><a></a>  }</span>
-<span id="cb12-306"><a></a></span>
-<span id="cb12-307"><a></a>  out<span class="op">.</span><span class="fu">push</span>({ <span class="dt">type</span><span class="op">:</span> <span class="st">"final"</span><span class="op">,</span> <span class="dt">state</span><span class="op">:</span> [<span class="op">...</span>state] })<span class="op">;</span></span>
-<span id="cb12-308"><a></a>  <span class="cf">return</span> out<span class="op">;</span></span>
-<span id="cb12-309"><a></a>}</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb12-298"><a></a>  <span class="cf">for</span> (<span class="kw">let</span> p <span class="op">=</span> <span class="dv">2</span><span class="op">;</span> p <span class="op">*</span> p <span class="op">&lt;=</span> max<span class="op">;</span> p<span class="op">++</span>) {</span>
+<span id="cb12-299"><a></a>    <span class="cf">if</span> (state[p] <span class="op">===</span> <span class="st">"candidate"</span>) {</span>
+<span id="cb12-300"><a></a>      out<span class="op">.</span><span class="fu">push</span>({ <span class="dt">type</span><span class="op">:</span> <span class="st">"prime"</span><span class="op">,</span> p<span class="op">,</span> <span class="dt">state</span><span class="op">:</span> [<span class="op">...</span>state] })<span class="op">;</span></span>
+<span id="cb12-301"><a></a></span>
+<span id="cb12-302"><a></a>      <span class="cf">for</span> (<span class="kw">let</span> k <span class="op">=</span> p <span class="op">*</span> p<span class="op">;</span> k <span class="op">&lt;=</span> max<span class="op">;</span> k <span class="op">+=</span> p) {</span>
+<span id="cb12-303"><a></a>        <span class="cf">if</span> (state[k] <span class="op">===</span> <span class="st">"candidate"</span>) {</span>
+<span id="cb12-304"><a></a>          state[k] <span class="op">=</span> <span class="st">"discarded"</span><span class="op">;</span></span>
+<span id="cb12-305"><a></a>          out<span class="op">.</span><span class="fu">push</span>({ <span class="dt">type</span><span class="op">:</span> <span class="st">"discard"</span><span class="op">,</span> p<span class="op">,</span> k<span class="op">,</span> <span class="dt">state</span><span class="op">:</span> [<span class="op">...</span>state] })<span class="op">;</span></span>
+<span id="cb12-306"><a></a>        }</span>
+<span id="cb12-307"><a></a>      }</span>
+<span id="cb12-308"><a></a>    }</span>
+<span id="cb12-309"><a></a>  }</span>
+<span id="cb12-310"><a></a></span>
+<span id="cb12-311"><a></a>  out<span class="op">.</span><span class="fu">push</span>({ <span class="dt">type</span><span class="op">:</span> <span class="st">"final"</span><span class="op">,</span> <span class="dt">state</span><span class="op">:</span> [<span class="op">...</span>state] })<span class="op">;</span></span>
+<span id="cb12-312"><a></a>  <span class="cf">return</span> out<span class="op">;</span></span>
+<span id="cb12-313"><a></a>}</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
 <div id="ojs-cell-8" data-nodetype="declaration">
 
@@ -623,7 +629,7 @@ numero[i] = \begin{cases} i &amp; \text{si } i \text{ es primo} \\ 0 &amp; \text
 </div>
 </div>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb13" data-startfrom="313" data-source-offset="0"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 312;"><span id="cb13-313"><a></a>maxStep2 <span class="op">=</span> steps2<span class="op">.</span><span class="at">length</span> <span class="op">-</span> <span class="dv">1</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb13" data-startfrom="317" data-source-offset="0"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 316;"><span id="cb13-317"><a></a>maxStep2 <span class="op">=</span> steps2<span class="op">.</span><span class="at">length</span> <span class="op">-</span> <span class="dv">1</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
 <div id="ojs-cell-9" data-nodetype="declaration">
 
@@ -631,7 +637,7 @@ numero[i] = \begin{cases} i &amp; \text{si } i \text{ es primo} \\ 0 &amp; \text
 </div>
 </div>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb14" data-startfrom="317" data-source-offset="0"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 316;"><span id="cb14-317"><a></a>viewof step2 <span class="op">=</span> <span class="fu">cleanSlider</span>([<span class="dv">0</span><span class="op">,</span> maxStep2]<span class="op">,</span> { <span class="dt">value</span><span class="op">:</span> <span class="dv">0</span><span class="op">,</span> <span class="dt">step</span><span class="op">:</span> <span class="dv">1</span><span class="op">,</span> <span class="dt">label</span><span class="op">:</span> <span class="st">"Paso de la criba: "</span> })</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb14" data-startfrom="321" data-source-offset="0"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 320;"><span id="cb14-321"><a></a>viewof step2 <span class="op">=</span> <span class="fu">cleanSlider</span>([<span class="dv">0</span><span class="op">,</span> maxStep2]<span class="op">,</span> { <span class="dt">value</span><span class="op">:</span> <span class="dv">0</span><span class="op">,</span> <span class="dt">step</span><span class="op">:</span> <span class="dv">1</span><span class="op">,</span> <span class="dt">label</span><span class="op">:</span> <span class="st">"Paso de la criba: "</span> })</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
 <div id="ojs-cell-10" data-nodetype="declaration">
 
@@ -639,50 +645,50 @@ numero[i] = \begin{cases} i &amp; \text{si } i \text{ es primo} \\ 0 &amp; \text
 </div>
 </div>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb15" data-startfrom="321" data-source-offset="0"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 320;"><span id="cb15-321"><a></a>{</span>
-<span id="cb15-322"><a></a>  <span class="cf">if</span> (<span class="op">!</span>steps2 <span class="op">||</span> steps2<span class="op">.</span><span class="at">length</span> <span class="op">===</span> <span class="dv">0</span>) <span class="cf">return</span> <span class="fu">html</span><span class="vs">`&lt;div&gt;Cargando...&lt;/div&gt;`</span><span class="op">;</span></span>
-<span id="cb15-323"><a></a></span>
-<span id="cb15-324"><a></a>  <span class="kw">const</span> safeStep <span class="op">=</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">min</span>(step2<span class="op">,</span> steps2<span class="op">.</span><span class="at">length</span> <span class="op">-</span> <span class="dv">1</span>)<span class="op">;</span></span>
-<span id="cb15-325"><a></a>  <span class="kw">const</span> s <span class="op">=</span> steps2[safeStep]<span class="op">;</span></span>
-<span id="cb15-326"><a></a></span>
-<span id="cb15-327"><a></a>  <span class="cf">if</span> (<span class="op">!</span>s) <span class="cf">return</span> <span class="fu">html</span><span class="vs">`&lt;div&gt;Cargando...&lt;/div&gt;`</span><span class="op">;</span></span>
-<span id="cb15-328"><a></a></span>
-<span id="cb15-329"><a></a>  <span class="kw">const</span> arr <span class="op">=</span> s<span class="op">.</span><span class="at">state</span><span class="op">;</span></span>
-<span id="cb15-330"><a></a>  <span class="kw">const</span> max <span class="op">=</span> N2<span class="op">;</span></span>
-<span id="cb15-331"><a></a>  <span class="kw">const</span> cols <span class="op">=</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">ceil</span>(<span class="bu">Math</span><span class="op">.</span><span class="fu">sqrt</span>(max))<span class="op">;</span></span>
-<span id="cb15-332"><a></a>  </span>
-<span id="cb15-333"><a></a>  <span class="kw">const</span> currentPrime <span class="op">=</span> s<span class="op">.</span><span class="at">p</span><span class="op">;</span></span>
-<span id="cb15-334"><a></a>  <span class="kw">const</span> lastDiscard <span class="op">=</span> s<span class="op">.</span><span class="at">k</span><span class="op">;</span></span>
-<span id="cb15-335"><a></a></span>
-<span id="cb15-336"><a></a>  <span class="kw">const</span> grid <span class="op">=</span> <span class="bu">Array</span><span class="op">.</span><span class="fu">from</span>({ <span class="dt">length</span><span class="op">:</span> max <span class="op">+</span> <span class="dv">1</span> }<span class="op">,</span> (_<span class="op">,</span> i) <span class="kw">=&gt;</span> {</span>
-<span id="cb15-337"><a></a>    <span class="kw">let</span> bgColor <span class="op">=</span> <span class="st">"#2a9d8f"</span><span class="op">;</span> </span>
-<span id="cb15-338"><a></a>    <span class="cf">if</span> (i <span class="op">&lt;</span> <span class="dv">2</span>) bgColor <span class="op">=</span> <span class="st">"#ddd"</span><span class="op">;</span></span>
-<span id="cb15-339"><a></a>    <span class="cf">else</span> <span class="cf">if</span> (i <span class="op">===</span> currentPrime) bgColor <span class="op">=</span> <span class="st">"#457b9d"</span><span class="op">;</span></span>
-<span id="cb15-340"><a></a>    <span class="cf">else</span> <span class="cf">if</span> (i <span class="op">===</span> lastDiscard) bgColor <span class="op">=</span> <span class="st">"#f4a261"</span><span class="op">;</span></span>
-<span id="cb15-341"><a></a>    <span class="cf">else</span> <span class="cf">if</span> (arr[i] <span class="op">===</span> <span class="st">"discarded"</span>) bgColor <span class="op">=</span> <span class="st">"#e63946"</span><span class="op">;</span></span>
-<span id="cb15-342"><a></a></span>
-<span id="cb15-343"><a></a>    <span class="cf">return</span> {</span>
-<span id="cb15-344"><a></a>      <span class="dt">n</span><span class="op">:</span> i<span class="op">,</span> <span class="dt">x</span><span class="op">:</span> i <span class="op">%</span> cols<span class="op">,</span> <span class="dt">y</span><span class="op">:</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">floor</span>(i <span class="op">/</span> cols)<span class="op">,</span> <span class="dt">state</span><span class="op">:</span> arr[i]<span class="op">,</span></span>
-<span id="cb15-345"><a></a>      <span class="dt">color</span><span class="op">:</span> bgColor<span class="op">,</span> <span class="dt">textColor</span><span class="op">:</span> i <span class="op">&lt;</span> <span class="dv">2</span> <span class="op">?</span> <span class="st">"#333"</span> <span class="op">:</span> <span class="st">"white"</span> </span>
-<span id="cb15-346"><a></a>    }<span class="op">;</span></span>
-<span id="cb15-347"><a></a>  })<span class="op">;</span></span>
-<span id="cb15-348"><a></a></span>
-<span id="cb15-349"><a></a>  <span class="cf">return</span> <span class="fu">html</span><span class="vs">`</span></span>
-<span id="cb15-350"><a></a><span class="vs">    &lt;div style="margin-top:15px;"&gt;</span></span>
-<span id="cb15-351"><a></a><span class="vs">      </span><span class="sc">${</span>Plot<span class="op">.</span><span class="fu">plot</span>({</span>
-<span id="cb15-352"><a></a>        <span class="dt">height</span><span class="op">:</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">ceil</span>(max <span class="op">/</span> cols) <span class="op">*</span> <span class="dv">35</span> <span class="op">+</span> <span class="dv">20</span><span class="op">,</span> <span class="dt">margin</span><span class="op">:</span> <span class="dv">10</span><span class="op">,</span></span>
-<span id="cb15-353"><a></a>        <span class="dt">x</span><span class="op">:</span> { <span class="dt">axis</span><span class="op">:</span> <span class="kw">null</span> }<span class="op">,</span> <span class="dt">y</span><span class="op">:</span> { <span class="dt">axis</span><span class="op">:</span> <span class="kw">null</span><span class="op">,</span> <span class="dt">reverse</span><span class="op">:</span> <span class="kw">true</span> }<span class="op">,</span> <span class="dt">color</span><span class="op">:</span> { <span class="dt">type</span><span class="op">:</span> <span class="st">"identity"</span> }<span class="op">,</span> </span>
-<span id="cb15-354"><a></a>        <span class="dt">marks</span><span class="op">:</span> [</span>
-<span id="cb15-355"><a></a>          Plot<span class="op">.</span><span class="fu">rect</span>(grid<span class="op">,</span> { <span class="dt">x1</span><span class="op">:</span> d <span class="kw">=&gt;</span> d<span class="op">.</span><span class="at">x</span> <span class="op">-</span> <span class="fl">0.45</span><span class="op">,</span> <span class="dt">x2</span><span class="op">:</span> d <span class="kw">=&gt;</span> d<span class="op">.</span><span class="at">x</span> <span class="op">+</span> <span class="fl">0.45</span><span class="op">,</span> <span class="dt">y1</span><span class="op">:</span> d <span class="kw">=&gt;</span> d<span class="op">.</span><span class="at">y</span> <span class="op">-</span> <span class="fl">0.45</span><span class="op">,</span> <span class="dt">y2</span><span class="op">:</span> d <span class="kw">=&gt;</span> d<span class="op">.</span><span class="at">y</span> <span class="op">+</span> <span class="fl">0.45</span><span class="op">,</span> <span class="dt">fill</span><span class="op">:</span> <span class="st">"color"</span><span class="op">,</span> <span class="dt">stroke</span><span class="op">:</span> <span class="st">"white"</span><span class="op">,</span> <span class="dt">rx</span><span class="op">:</span> <span class="dv">4</span> })<span class="op">,</span></span>
-<span id="cb15-356"><a></a>          Plot<span class="op">.</span><span class="fu">text</span>(grid<span class="op">,</span> { <span class="dt">x</span><span class="op">:</span> <span class="st">"x"</span><span class="op">,</span> <span class="dt">y</span><span class="op">:</span> <span class="st">"y"</span><span class="op">,</span> <span class="dt">text</span><span class="op">:</span> <span class="st">"n"</span><span class="op">,</span> <span class="dt">fill</span><span class="op">:</span> <span class="st">"textColor"</span><span class="op">,</span> <span class="dt">fontSize</span><span class="op">:</span> <span class="dv">13</span><span class="op">,</span> <span class="dt">fontWeight</span><span class="op">:</span> <span class="st">"bold"</span> })</span>
-<span id="cb15-357"><a></a>        ]</span>
-<span id="cb15-358"><a></a>      })<span class="sc">}</span></span>
-<span id="cb15-359"><a></a><span class="vs">      &lt;div style="margin-top:15px; font-size: 1.1em; height: 1.5em;"&gt;</span></span>
-<span id="cb15-360"><a></a><span class="vs">        </span><span class="sc">${</span>s<span class="op">.</span><span class="at">type</span> <span class="op">===</span> <span class="st">"prime"</span> <span class="op">?</span> <span class="fu">html</span><span class="vs">`🔎 Probando primo &lt;b&gt;</span><span class="sc">${</span>currentPrime<span class="sc">}</span><span class="vs">&lt;/b&gt;`</span> <span class="op">:</span> s<span class="op">.</span><span class="at">type</span> <span class="op">===</span> <span class="st">"discard"</span> <span class="op">?</span> <span class="fu">html</span><span class="vs">`❌ </span><span class="sc">${</span>lastDiscard<span class="sc">}</span><span class="vs"> es múltiplo de &lt;b&gt;</span><span class="sc">${</span>currentPrime<span class="sc">}</span><span class="vs">&lt;/b&gt;`</span> <span class="op">:</span> <span class="fu">html</span><span class="vs">`✅ Criba completada`</span><span class="sc">}</span></span>
-<span id="cb15-361"><a></a><span class="vs">      &lt;/div&gt;</span></span>
-<span id="cb15-362"><a></a><span class="vs">    &lt;/div&gt;</span></span>
-<span id="cb15-363"><a></a><span class="vs">  `</span><span class="op">;</span></span>
-<span id="cb15-364"><a></a>}</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb15" data-startfrom="325" data-source-offset="0"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 324;"><span id="cb15-325"><a></a>{</span>
+<span id="cb15-326"><a></a>  <span class="cf">if</span> (<span class="op">!</span>steps2 <span class="op">||</span> steps2<span class="op">.</span><span class="at">length</span> <span class="op">===</span> <span class="dv">0</span>) <span class="cf">return</span> <span class="fu">html</span><span class="vs">`&lt;div&gt;Cargando...&lt;/div&gt;`</span><span class="op">;</span></span>
+<span id="cb15-327"><a></a></span>
+<span id="cb15-328"><a></a>  <span class="kw">const</span> safeStep <span class="op">=</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">min</span>(step2<span class="op">,</span> steps2<span class="op">.</span><span class="at">length</span> <span class="op">-</span> <span class="dv">1</span>)<span class="op">;</span></span>
+<span id="cb15-329"><a></a>  <span class="kw">const</span> s <span class="op">=</span> steps2[safeStep]<span class="op">;</span></span>
+<span id="cb15-330"><a></a></span>
+<span id="cb15-331"><a></a>  <span class="cf">if</span> (<span class="op">!</span>s) <span class="cf">return</span> <span class="fu">html</span><span class="vs">`&lt;div&gt;Cargando...&lt;/div&gt;`</span><span class="op">;</span></span>
+<span id="cb15-332"><a></a></span>
+<span id="cb15-333"><a></a>  <span class="kw">const</span> arr <span class="op">=</span> s<span class="op">.</span><span class="at">state</span><span class="op">;</span></span>
+<span id="cb15-334"><a></a>  <span class="kw">const</span> max <span class="op">=</span> N2<span class="op">;</span></span>
+<span id="cb15-335"><a></a>  <span class="kw">const</span> cols <span class="op">=</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">ceil</span>(<span class="bu">Math</span><span class="op">.</span><span class="fu">sqrt</span>(max))<span class="op">;</span></span>
+<span id="cb15-336"><a></a>  </span>
+<span id="cb15-337"><a></a>  <span class="kw">const</span> currentPrime <span class="op">=</span> s<span class="op">.</span><span class="at">p</span><span class="op">;</span></span>
+<span id="cb15-338"><a></a>  <span class="kw">const</span> lastDiscard <span class="op">=</span> s<span class="op">.</span><span class="at">k</span><span class="op">;</span></span>
+<span id="cb15-339"><a></a></span>
+<span id="cb15-340"><a></a>  <span class="kw">const</span> grid <span class="op">=</span> <span class="bu">Array</span><span class="op">.</span><span class="fu">from</span>({ <span class="dt">length</span><span class="op">:</span> max <span class="op">+</span> <span class="dv">1</span> }<span class="op">,</span> (_<span class="op">,</span> i) <span class="kw">=&gt;</span> {</span>
+<span id="cb15-341"><a></a>    <span class="kw">let</span> bgColor <span class="op">=</span> <span class="st">"#2a9d8f"</span><span class="op">;</span> </span>
+<span id="cb15-342"><a></a>    <span class="cf">if</span> (i <span class="op">&lt;</span> <span class="dv">2</span>) bgColor <span class="op">=</span> <span class="st">"#ddd"</span><span class="op">;</span></span>
+<span id="cb15-343"><a></a>    <span class="cf">else</span> <span class="cf">if</span> (i <span class="op">===</span> currentPrime) bgColor <span class="op">=</span> <span class="st">"#457b9d"</span><span class="op">;</span></span>
+<span id="cb15-344"><a></a>    <span class="cf">else</span> <span class="cf">if</span> (i <span class="op">===</span> lastDiscard) bgColor <span class="op">=</span> <span class="st">"#f4a261"</span><span class="op">;</span></span>
+<span id="cb15-345"><a></a>    <span class="cf">else</span> <span class="cf">if</span> (arr[i] <span class="op">===</span> <span class="st">"discarded"</span>) bgColor <span class="op">=</span> <span class="st">"#e63946"</span><span class="op">;</span></span>
+<span id="cb15-346"><a></a></span>
+<span id="cb15-347"><a></a>    <span class="cf">return</span> {</span>
+<span id="cb15-348"><a></a>      <span class="dt">n</span><span class="op">:</span> i<span class="op">,</span> <span class="dt">x</span><span class="op">:</span> i <span class="op">%</span> cols<span class="op">,</span> <span class="dt">y</span><span class="op">:</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">floor</span>(i <span class="op">/</span> cols)<span class="op">,</span> <span class="dt">state</span><span class="op">:</span> arr[i]<span class="op">,</span></span>
+<span id="cb15-349"><a></a>      <span class="dt">color</span><span class="op">:</span> bgColor<span class="op">,</span> <span class="dt">textColor</span><span class="op">:</span> i <span class="op">&lt;</span> <span class="dv">2</span> <span class="op">?</span> <span class="st">"#333"</span> <span class="op">:</span> <span class="st">"white"</span> </span>
+<span id="cb15-350"><a></a>    }<span class="op">;</span></span>
+<span id="cb15-351"><a></a>  })<span class="op">;</span></span>
+<span id="cb15-352"><a></a></span>
+<span id="cb15-353"><a></a>  <span class="cf">return</span> <span class="fu">html</span><span class="vs">`</span></span>
+<span id="cb15-354"><a></a><span class="vs">    &lt;div style="margin-top:15px;"&gt;</span></span>
+<span id="cb15-355"><a></a><span class="vs">      </span><span class="sc">${</span>Plot<span class="op">.</span><span class="fu">plot</span>({</span>
+<span id="cb15-356"><a></a>        <span class="dt">height</span><span class="op">:</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">ceil</span>(max <span class="op">/</span> cols) <span class="op">*</span> <span class="dv">35</span> <span class="op">+</span> <span class="dv">20</span><span class="op">,</span> <span class="dt">margin</span><span class="op">:</span> <span class="dv">10</span><span class="op">,</span></span>
+<span id="cb15-357"><a></a>        <span class="dt">x</span><span class="op">:</span> { <span class="dt">axis</span><span class="op">:</span> <span class="kw">null</span> }<span class="op">,</span> <span class="dt">y</span><span class="op">:</span> { <span class="dt">axis</span><span class="op">:</span> <span class="kw">null</span><span class="op">,</span> <span class="dt">reverse</span><span class="op">:</span> <span class="kw">true</span> }<span class="op">,</span> <span class="dt">color</span><span class="op">:</span> { <span class="dt">type</span><span class="op">:</span> <span class="st">"identity"</span> }<span class="op">,</span> </span>
+<span id="cb15-358"><a></a>        <span class="dt">marks</span><span class="op">:</span> [</span>
+<span id="cb15-359"><a></a>          Plot<span class="op">.</span><span class="fu">rect</span>(grid<span class="op">,</span> { <span class="dt">x1</span><span class="op">:</span> d <span class="kw">=&gt;</span> d<span class="op">.</span><span class="at">x</span> <span class="op">-</span> <span class="fl">0.45</span><span class="op">,</span> <span class="dt">x2</span><span class="op">:</span> d <span class="kw">=&gt;</span> d<span class="op">.</span><span class="at">x</span> <span class="op">+</span> <span class="fl">0.45</span><span class="op">,</span> <span class="dt">y1</span><span class="op">:</span> d <span class="kw">=&gt;</span> d<span class="op">.</span><span class="at">y</span> <span class="op">-</span> <span class="fl">0.45</span><span class="op">,</span> <span class="dt">y2</span><span class="op">:</span> d <span class="kw">=&gt;</span> d<span class="op">.</span><span class="at">y</span> <span class="op">+</span> <span class="fl">0.45</span><span class="op">,</span> <span class="dt">fill</span><span class="op">:</span> <span class="st">"color"</span><span class="op">,</span> <span class="dt">stroke</span><span class="op">:</span> <span class="st">"white"</span><span class="op">,</span> <span class="dt">rx</span><span class="op">:</span> <span class="dv">4</span> })<span class="op">,</span></span>
+<span id="cb15-360"><a></a>          Plot<span class="op">.</span><span class="fu">text</span>(grid<span class="op">,</span> { <span class="dt">x</span><span class="op">:</span> <span class="st">"x"</span><span class="op">,</span> <span class="dt">y</span><span class="op">:</span> <span class="st">"y"</span><span class="op">,</span> <span class="dt">text</span><span class="op">:</span> <span class="st">"n"</span><span class="op">,</span> <span class="dt">fill</span><span class="op">:</span> <span class="st">"textColor"</span><span class="op">,</span> <span class="dt">fontSize</span><span class="op">:</span> <span class="dv">13</span><span class="op">,</span> <span class="dt">fontWeight</span><span class="op">:</span> <span class="st">"bold"</span> })</span>
+<span id="cb15-361"><a></a>        ]</span>
+<span id="cb15-362"><a></a>      })<span class="sc">}</span></span>
+<span id="cb15-363"><a></a><span class="vs">      &lt;div style="margin-top:15px; font-size: 1.1em; height: 1.5em;"&gt;</span></span>
+<span id="cb15-364"><a></a><span class="vs">        </span><span class="sc">${</span>s<span class="op">.</span><span class="at">type</span> <span class="op">===</span> <span class="st">"prime"</span> <span class="op">?</span> <span class="fu">html</span><span class="vs">`🔎 Probando primo &lt;b&gt;</span><span class="sc">${</span>currentPrime<span class="sc">}</span><span class="vs">&lt;/b&gt;`</span> <span class="op">:</span> s<span class="op">.</span><span class="at">type</span> <span class="op">===</span> <span class="st">"discard"</span> <span class="op">?</span> <span class="fu">html</span><span class="vs">`❌ </span><span class="sc">${</span>lastDiscard<span class="sc">}</span><span class="vs"> es múltiplo de &lt;b&gt;</span><span class="sc">${</span>currentPrime<span class="sc">}</span><span class="vs">&lt;/b&gt;`</span> <span class="op">:</span> <span class="fu">html</span><span class="vs">`✅ Criba completada`</span><span class="sc">}</span></span>
+<span id="cb15-365"><a></a><span class="vs">      &lt;/div&gt;</span></span>
+<span id="cb15-366"><a></a><span class="vs">    &lt;/div&gt;</span></span>
+<span id="cb15-367"><a></a><span class="vs">  `</span><span class="op">;</span></span>
+<span id="cb15-368"><a></a>}</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
 <div id="ojs-cell-11" data-nodetype="expression">
 
@@ -862,7 +868,7 @@ p = 2i + 3 \quad \text{con } i = 0, 1, 2, \ldots, \left\lfloor \frac{n-3}{2} \ri
 <div class="card shadow-sm mb-4 mt-4">
 <div class="card-body">
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb19" data-startfrom="541" data-source-offset="0"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 540;"><span id="cb19-541"><a></a>viewof N4 <span class="op">=</span> <span class="fu">cleanSlider</span>([<span class="dv">10</span><span class="op">,</span> <span class="dv">150</span>]<span class="op">,</span> { <span class="dt">value</span><span class="op">:</span> <span class="dv">51</span><span class="op">,</span> <span class="dt">step</span><span class="op">:</span> <span class="dv">1</span><span class="op">,</span> <span class="dt">label</span><span class="op">:</span> <span class="st">"Valor N: "</span> })</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb19" data-startfrom="545" data-source-offset="0"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 544;"><span id="cb19-545"><a></a>viewof N4 <span class="op">=</span> <span class="fu">cleanSlider</span>([<span class="dv">10</span><span class="op">,</span> <span class="dv">150</span>]<span class="op">,</span> { <span class="dt">value</span><span class="op">:</span> <span class="dv">51</span><span class="op">,</span> <span class="dt">step</span><span class="op">:</span> <span class="dv">1</span><span class="op">,</span> <span class="dt">label</span><span class="op">:</span> <span class="st">"Valor N: "</span> })</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
 <div id="ojs-cell-12" data-nodetype="declaration">
 
@@ -870,35 +876,35 @@ p = 2i + 3 \quad \text{con } i = 0, 1, 2, \ldots, \left\lfloor \frac{n-3}{2} \ri
 </div>
 </div>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb20" data-startfrom="546" data-source-offset="0"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 545;"><span id="cb20-546"><a></a>steps4 <span class="op">=</span> {</span>
-<span id="cb20-547"><a></a>  <span class="kw">const</span> max <span class="op">=</span> N4<span class="op">;</span></span>
-<span id="cb20-548"><a></a>  <span class="cf">if</span> (max <span class="op">&lt;</span> <span class="dv">3</span>) <span class="cf">return</span> [{ <span class="dt">type</span><span class="op">:</span> <span class="st">"final"</span><span class="op">,</span> <span class="dt">state</span><span class="op">:</span> [] }]<span class="op">;</span></span>
-<span id="cb20-549"><a></a></span>
-<span id="cb20-550"><a></a>  <span class="kw">const</span> size <span class="op">=</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">floor</span>((max <span class="op">-</span> <span class="dv">3</span>) <span class="op">/</span> <span class="dv">2</span>) <span class="op">+</span> <span class="dv">1</span><span class="op">;</span></span>
-<span id="cb20-551"><a></a>  <span class="kw">let</span> state <span class="op">=</span> <span class="bu">Array</span>(size)<span class="op">.</span><span class="fu">fill</span>(<span class="st">"candidate"</span>)<span class="op">;</span></span>
-<span id="cb20-552"><a></a></span>
-<span id="cb20-553"><a></a>  <span class="kw">const</span> out <span class="op">=</span> []<span class="op">;</span></span>
-<span id="cb20-554"><a></a></span>
-<span id="cb20-555"><a></a>  <span class="cf">for</span> (<span class="kw">let</span> i <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> <span class="op">;</span> i<span class="op">++</span>) {</span>
-<span id="cb20-556"><a></a>    <span class="kw">let</span> p <span class="op">=</span> <span class="dv">2</span> <span class="op">*</span> i <span class="op">+</span> <span class="dv">3</span><span class="op">;</span></span>
-<span id="cb20-557"><a></a>    <span class="cf">if</span> (p <span class="op">*</span> p <span class="op">&gt;</span> max) <span class="cf">break</span><span class="op">;</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb20" data-startfrom="550" data-source-offset="0"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 549;"><span id="cb20-550"><a></a>steps4 <span class="op">=</span> {</span>
+<span id="cb20-551"><a></a>  <span class="kw">const</span> max <span class="op">=</span> N4<span class="op">;</span></span>
+<span id="cb20-552"><a></a>  <span class="cf">if</span> (max <span class="op">&lt;</span> <span class="dv">3</span>) <span class="cf">return</span> [{ <span class="dt">type</span><span class="op">:</span> <span class="st">"final"</span><span class="op">,</span> <span class="dt">state</span><span class="op">:</span> [] }]<span class="op">;</span></span>
+<span id="cb20-553"><a></a></span>
+<span id="cb20-554"><a></a>  <span class="kw">const</span> size <span class="op">=</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">floor</span>((max <span class="op">-</span> <span class="dv">3</span>) <span class="op">/</span> <span class="dv">2</span>) <span class="op">+</span> <span class="dv">1</span><span class="op">;</span></span>
+<span id="cb20-555"><a></a>  <span class="kw">let</span> state <span class="op">=</span> <span class="bu">Array</span>(size)<span class="op">.</span><span class="fu">fill</span>(<span class="st">"candidate"</span>)<span class="op">;</span></span>
+<span id="cb20-556"><a></a></span>
+<span id="cb20-557"><a></a>  <span class="kw">const</span> out <span class="op">=</span> []<span class="op">;</span></span>
 <span id="cb20-558"><a></a></span>
-<span id="cb20-559"><a></a>    <span class="cf">if</span> (state[i] <span class="op">===</span> <span class="st">"candidate"</span>) {</span>
-<span id="cb20-560"><a></a>      out<span class="op">.</span><span class="fu">push</span>({ <span class="dt">type</span><span class="op">:</span> <span class="st">"prime"</span><span class="op">,</span> p<span class="op">,</span> <span class="dt">state</span><span class="op">:</span> [<span class="op">...</span>state] })<span class="op">;</span></span>
-<span id="cb20-561"><a></a></span>
-<span id="cb20-562"><a></a>      <span class="cf">for</span> (<span class="kw">let</span> mult <span class="op">=</span> p <span class="op">*</span> p<span class="op">;</span> mult <span class="op">&lt;=</span> max<span class="op">;</span> mult <span class="op">+=</span> <span class="dv">2</span> <span class="op">*</span> p) {</span>
-<span id="cb20-563"><a></a>        <span class="kw">let</span> idx <span class="op">=</span> (mult <span class="op">-</span> <span class="dv">3</span>) <span class="op">/</span> <span class="dv">2</span><span class="op">;</span> </span>
-<span id="cb20-564"><a></a>        <span class="cf">if</span> (state[idx] <span class="op">===</span> <span class="st">"candidate"</span>) {</span>
-<span id="cb20-565"><a></a>          state[idx] <span class="op">=</span> <span class="st">"discarded"</span><span class="op">;</span></span>
-<span id="cb20-566"><a></a>          out<span class="op">.</span><span class="fu">push</span>({ <span class="dt">type</span><span class="op">:</span> <span class="st">"discard"</span><span class="op">,</span> p<span class="op">,</span> <span class="dt">k</span><span class="op">:</span> mult<span class="op">,</span> <span class="dt">state</span><span class="op">:</span> [<span class="op">...</span>state] })<span class="op">;</span></span>
-<span id="cb20-567"><a></a>        }</span>
-<span id="cb20-568"><a></a>      }</span>
-<span id="cb20-569"><a></a>    }</span>
-<span id="cb20-570"><a></a>  }</span>
-<span id="cb20-571"><a></a></span>
-<span id="cb20-572"><a></a>  out<span class="op">.</span><span class="fu">push</span>({ <span class="dt">type</span><span class="op">:</span> <span class="st">"final"</span><span class="op">,</span> <span class="dt">state</span><span class="op">:</span> [<span class="op">...</span>state] })<span class="op">;</span></span>
-<span id="cb20-573"><a></a>  <span class="cf">return</span> out<span class="op">;</span></span>
-<span id="cb20-574"><a></a>}</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb20-559"><a></a>  <span class="cf">for</span> (<span class="kw">let</span> i <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> <span class="op">;</span> i<span class="op">++</span>) {</span>
+<span id="cb20-560"><a></a>    <span class="kw">let</span> p <span class="op">=</span> <span class="dv">2</span> <span class="op">*</span> i <span class="op">+</span> <span class="dv">3</span><span class="op">;</span></span>
+<span id="cb20-561"><a></a>    <span class="cf">if</span> (p <span class="op">*</span> p <span class="op">&gt;</span> max) <span class="cf">break</span><span class="op">;</span></span>
+<span id="cb20-562"><a></a></span>
+<span id="cb20-563"><a></a>    <span class="cf">if</span> (state[i] <span class="op">===</span> <span class="st">"candidate"</span>) {</span>
+<span id="cb20-564"><a></a>      out<span class="op">.</span><span class="fu">push</span>({ <span class="dt">type</span><span class="op">:</span> <span class="st">"prime"</span><span class="op">,</span> p<span class="op">,</span> <span class="dt">state</span><span class="op">:</span> [<span class="op">...</span>state] })<span class="op">;</span></span>
+<span id="cb20-565"><a></a></span>
+<span id="cb20-566"><a></a>      <span class="cf">for</span> (<span class="kw">let</span> mult <span class="op">=</span> p <span class="op">*</span> p<span class="op">;</span> mult <span class="op">&lt;=</span> max<span class="op">;</span> mult <span class="op">+=</span> <span class="dv">2</span> <span class="op">*</span> p) {</span>
+<span id="cb20-567"><a></a>        <span class="kw">let</span> idx <span class="op">=</span> (mult <span class="op">-</span> <span class="dv">3</span>) <span class="op">/</span> <span class="dv">2</span><span class="op">;</span> </span>
+<span id="cb20-568"><a></a>        <span class="cf">if</span> (state[idx] <span class="op">===</span> <span class="st">"candidate"</span>) {</span>
+<span id="cb20-569"><a></a>          state[idx] <span class="op">=</span> <span class="st">"discarded"</span><span class="op">;</span></span>
+<span id="cb20-570"><a></a>          out<span class="op">.</span><span class="fu">push</span>({ <span class="dt">type</span><span class="op">:</span> <span class="st">"discard"</span><span class="op">,</span> p<span class="op">,</span> <span class="dt">k</span><span class="op">:</span> mult<span class="op">,</span> <span class="dt">state</span><span class="op">:</span> [<span class="op">...</span>state] })<span class="op">;</span></span>
+<span id="cb20-571"><a></a>        }</span>
+<span id="cb20-572"><a></a>      }</span>
+<span id="cb20-573"><a></a>    }</span>
+<span id="cb20-574"><a></a>  }</span>
+<span id="cb20-575"><a></a></span>
+<span id="cb20-576"><a></a>  out<span class="op">.</span><span class="fu">push</span>({ <span class="dt">type</span><span class="op">:</span> <span class="st">"final"</span><span class="op">,</span> <span class="dt">state</span><span class="op">:</span> [<span class="op">...</span>state] })<span class="op">;</span></span>
+<span id="cb20-577"><a></a>  <span class="cf">return</span> out<span class="op">;</span></span>
+<span id="cb20-578"><a></a>}</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
 <div id="ojs-cell-13" data-nodetype="declaration">
 
@@ -906,7 +912,7 @@ p = 2i + 3 \quad \text{con } i = 0, 1, 2, \ldots, \left\lfloor \frac{n-3}{2} \ri
 </div>
 </div>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb21" data-startfrom="579" data-source-offset="0"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 578;"><span id="cb21-579"><a></a>maxStep4 <span class="op">=</span> steps4<span class="op">.</span><span class="at">length</span> <span class="op">-</span> <span class="dv">1</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb21" data-startfrom="583" data-source-offset="0"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 582;"><span id="cb21-583"><a></a>maxStep4 <span class="op">=</span> steps4<span class="op">.</span><span class="at">length</span> <span class="op">-</span> <span class="dv">1</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
 <div id="ojs-cell-14" data-nodetype="declaration">
 
@@ -914,7 +920,7 @@ p = 2i + 3 \quad \text{con } i = 0, 1, 2, \ldots, \left\lfloor \frac{n-3}{2} \ri
 </div>
 </div>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb22" data-startfrom="584" data-source-offset="0"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 583;"><span id="cb22-584"><a></a>viewof step4 <span class="op">=</span> <span class="fu">cleanSlider</span>([<span class="dv">0</span><span class="op">,</span> maxStep4]<span class="op">,</span> { <span class="dt">value</span><span class="op">:</span> <span class="dv">0</span><span class="op">,</span> <span class="dt">step</span><span class="op">:</span> <span class="dv">1</span><span class="op">,</span> <span class="dt">label</span><span class="op">:</span> <span class="st">"Paso de la criba: "</span> })</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb22" data-startfrom="588" data-source-offset="0"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 587;"><span id="cb22-588"><a></a>viewof step4 <span class="op">=</span> <span class="fu">cleanSlider</span>([<span class="dv">0</span><span class="op">,</span> maxStep4]<span class="op">,</span> { <span class="dt">value</span><span class="op">:</span> <span class="dv">0</span><span class="op">,</span> <span class="dt">step</span><span class="op">:</span> <span class="dv">1</span><span class="op">,</span> <span class="dt">label</span><span class="op">:</span> <span class="st">"Paso de la criba: "</span> })</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
 <div id="ojs-cell-15" data-nodetype="declaration">
 
@@ -922,53 +928,53 @@ p = 2i + 3 \quad \text{con } i = 0, 1, 2, \ldots, \left\lfloor \frac{n-3}{2} \ri
 </div>
 </div>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb23" data-startfrom="589" data-source-offset="0"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 588;"><span id="cb23-589"><a></a>{</span>
-<span id="cb23-590"><a></a>  <span class="cf">if</span> (<span class="op">!</span>steps4 <span class="op">||</span> steps4<span class="op">.</span><span class="at">length</span> <span class="op">===</span> <span class="dv">0</span>) <span class="cf">return</span> <span class="fu">html</span><span class="vs">`&lt;div&gt;Cargando...&lt;/div&gt;`</span><span class="op">;</span></span>
-<span id="cb23-591"><a></a></span>
-<span id="cb23-592"><a></a>  <span class="kw">const</span> safeStep <span class="op">=</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">min</span>(step4<span class="op">,</span> steps4<span class="op">.</span><span class="at">length</span> <span class="op">-</span> <span class="dv">1</span>)<span class="op">;</span></span>
-<span id="cb23-593"><a></a>  <span class="kw">const</span> s <span class="op">=</span> steps4[safeStep]<span class="op">;</span></span>
-<span id="cb23-594"><a></a></span>
-<span id="cb23-595"><a></a>  <span class="cf">if</span> (<span class="op">!</span>s) <span class="cf">return</span> <span class="fu">html</span><span class="vs">`&lt;div&gt;Cargando...&lt;/div&gt;`</span><span class="op">;</span></span>
-<span id="cb23-596"><a></a></span>
-<span id="cb23-597"><a></a>  <span class="kw">const</span> arr <span class="op">=</span> s<span class="op">.</span><span class="at">state</span><span class="op">;</span></span>
-<span id="cb23-598"><a></a>  <span class="kw">const</span> max <span class="op">=</span> N4<span class="op">;</span></span>
-<span id="cb23-599"><a></a>  </span>
-<span id="cb23-600"><a></a>  <span class="kw">const</span> size <span class="op">=</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">floor</span>((max <span class="op">-</span> <span class="dv">3</span>) <span class="op">/</span> <span class="dv">2</span>) <span class="op">+</span> <span class="dv">1</span><span class="op">;</span></span>
-<span id="cb23-601"><a></a>  <span class="kw">const</span> cols <span class="op">=</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">ceil</span>(<span class="bu">Math</span><span class="op">.</span><span class="fu">sqrt</span>(size))<span class="op">;</span> </span>
-<span id="cb23-602"><a></a>  </span>
-<span id="cb23-603"><a></a>  <span class="kw">const</span> currentPrime <span class="op">=</span> s<span class="op">.</span><span class="at">p</span><span class="op">;</span></span>
-<span id="cb23-604"><a></a>  <span class="kw">const</span> lastDiscard <span class="op">=</span> s<span class="op">.</span><span class="at">k</span><span class="op">;</span></span>
-<span id="cb23-605"><a></a></span>
-<span id="cb23-606"><a></a>  <span class="kw">const</span> grid <span class="op">=</span> <span class="bu">Array</span><span class="op">.</span><span class="fu">from</span>({ <span class="dt">length</span><span class="op">:</span> size }<span class="op">,</span> (_<span class="op">,</span> i) <span class="kw">=&gt;</span> {</span>
-<span id="cb23-607"><a></a>    <span class="kw">const</span> num <span class="op">=</span> <span class="dv">2</span> <span class="op">*</span> i <span class="op">+</span> <span class="dv">3</span><span class="op">;</span> </span>
-<span id="cb23-608"><a></a>    <span class="kw">let</span> bgColor <span class="op">=</span> <span class="st">"#2a9d8f"</span><span class="op">;</span> </span>
-<span id="cb23-609"><a></a>    </span>
-<span id="cb23-610"><a></a>    <span class="cf">if</span> (num <span class="op">===</span> currentPrime) bgColor <span class="op">=</span> <span class="st">"#457b9d"</span><span class="op">;</span></span>
-<span id="cb23-611"><a></a>    <span class="cf">else</span> <span class="cf">if</span> (num <span class="op">===</span> lastDiscard) bgColor <span class="op">=</span> <span class="st">"#f4a261"</span><span class="op">;</span></span>
-<span id="cb23-612"><a></a>    <span class="cf">else</span> <span class="cf">if</span> (arr[i] <span class="op">===</span> <span class="st">"discarded"</span>) bgColor <span class="op">=</span> <span class="st">"#e63946"</span><span class="op">;</span></span>
-<span id="cb23-613"><a></a></span>
-<span id="cb23-614"><a></a>    <span class="cf">return</span> {</span>
-<span id="cb23-615"><a></a>      <span class="dt">idx</span><span class="op">:</span> i<span class="op">,</span> <span class="dt">n</span><span class="op">:</span> num<span class="op">,</span> <span class="dt">x</span><span class="op">:</span> i <span class="op">%</span> cols<span class="op">,</span> <span class="dt">y</span><span class="op">:</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">floor</span>(i <span class="op">/</span> cols)<span class="op">,</span> <span class="dt">state</span><span class="op">:</span> arr[i]<span class="op">,</span></span>
-<span id="cb23-616"><a></a>      <span class="dt">color</span><span class="op">:</span> bgColor<span class="op">,</span> <span class="dt">textColor</span><span class="op">:</span> <span class="st">"white"</span> </span>
-<span id="cb23-617"><a></a>    }<span class="op">;</span></span>
-<span id="cb23-618"><a></a>  })<span class="op">;</span></span>
-<span id="cb23-619"><a></a></span>
-<span id="cb23-620"><a></a>  <span class="cf">return</span> <span class="fu">html</span><span class="vs">`</span></span>
-<span id="cb23-621"><a></a><span class="vs">    &lt;div style="margin-top:15px;"&gt;</span></span>
-<span id="cb23-622"><a></a><span class="vs">      </span><span class="sc">${</span>Plot<span class="op">.</span><span class="fu">plot</span>({</span>
-<span id="cb23-623"><a></a>        <span class="dt">height</span><span class="op">:</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">ceil</span>(size <span class="op">/</span> cols) <span class="op">*</span> <span class="dv">35</span> <span class="op">+</span> <span class="dv">20</span><span class="op">,</span> <span class="dt">margin</span><span class="op">:</span> <span class="dv">10</span><span class="op">,</span></span>
-<span id="cb23-624"><a></a>        <span class="dt">x</span><span class="op">:</span> { <span class="dt">axis</span><span class="op">:</span> <span class="kw">null</span> }<span class="op">,</span> <span class="dt">y</span><span class="op">:</span> { <span class="dt">axis</span><span class="op">:</span> <span class="kw">null</span><span class="op">,</span> <span class="dt">reverse</span><span class="op">:</span> <span class="kw">true</span> }<span class="op">,</span> <span class="dt">color</span><span class="op">:</span> { <span class="dt">type</span><span class="op">:</span> <span class="st">"identity"</span> }<span class="op">,</span> </span>
-<span id="cb23-625"><a></a>        <span class="dt">marks</span><span class="op">:</span> [</span>
-<span id="cb23-626"><a></a>          Plot<span class="op">.</span><span class="fu">rect</span>(grid<span class="op">,</span> { <span class="dt">x1</span><span class="op">:</span> d <span class="kw">=&gt;</span> d<span class="op">.</span><span class="at">x</span> <span class="op">-</span> <span class="fl">0.45</span><span class="op">,</span> <span class="dt">x2</span><span class="op">:</span> d <span class="kw">=&gt;</span> d<span class="op">.</span><span class="at">x</span> <span class="op">+</span> <span class="fl">0.45</span><span class="op">,</span> <span class="dt">y1</span><span class="op">:</span> d <span class="kw">=&gt;</span> d<span class="op">.</span><span class="at">y</span> <span class="op">-</span> <span class="fl">0.45</span><span class="op">,</span> <span class="dt">y2</span><span class="op">:</span> d <span class="kw">=&gt;</span> d<span class="op">.</span><span class="at">y</span> <span class="op">+</span> <span class="fl">0.45</span><span class="op">,</span> <span class="dt">fill</span><span class="op">:</span> <span class="st">"color"</span><span class="op">,</span> <span class="dt">stroke</span><span class="op">:</span> <span class="st">"white"</span><span class="op">,</span> <span class="dt">rx</span><span class="op">:</span> <span class="dv">4</span> })<span class="op">,</span></span>
-<span id="cb23-627"><a></a>          Plot<span class="op">.</span><span class="fu">text</span>(grid<span class="op">,</span> { <span class="dt">x</span><span class="op">:</span> <span class="st">"x"</span><span class="op">,</span> <span class="dt">y</span><span class="op">:</span> <span class="st">"y"</span><span class="op">,</span> <span class="dt">text</span><span class="op">:</span> <span class="st">"n"</span><span class="op">,</span> <span class="dt">fill</span><span class="op">:</span> <span class="st">"textColor"</span><span class="op">,</span> <span class="dt">fontSize</span><span class="op">:</span> <span class="dv">13</span><span class="op">,</span> <span class="dt">fontWeight</span><span class="op">:</span> <span class="st">"bold"</span> })</span>
-<span id="cb23-628"><a></a>        ]</span>
-<span id="cb23-629"><a></a>      })<span class="sc">}</span></span>
-<span id="cb23-630"><a></a><span class="vs">      &lt;div style="margin-top:15px; font-size: 1.1em; height: 1.5em;"&gt;</span></span>
-<span id="cb23-631"><a></a><span class="vs">        </span><span class="sc">${</span>s<span class="op">.</span><span class="at">type</span> <span class="op">===</span> <span class="st">"prime"</span> <span class="op">?</span> <span class="fu">html</span><span class="vs">`🔎 Probando primo impar &lt;b&gt;</span><span class="sc">${</span>currentPrime<span class="sc">}</span><span class="vs">&lt;/b&gt;`</span> <span class="op">:</span> s<span class="op">.</span><span class="at">type</span> <span class="op">===</span> <span class="st">"discard"</span> <span class="op">?</span> <span class="fu">html</span><span class="vs">`❌ </span><span class="sc">${</span>lastDiscard<span class="sc">}</span><span class="vs"> es múltiplo impar de &lt;b&gt;</span><span class="sc">${</span>currentPrime<span class="sc">}</span><span class="vs">&lt;/b&gt;`</span> <span class="op">:</span> <span class="fu">html</span><span class="vs">`✅ Criba completada`</span><span class="sc">}</span></span>
-<span id="cb23-632"><a></a><span class="vs">      &lt;/div&gt;</span></span>
-<span id="cb23-633"><a></a><span class="vs">    &lt;/div&gt;</span></span>
-<span id="cb23-634"><a></a><span class="vs">  `</span><span class="op">;</span></span>
-<span id="cb23-635"><a></a>}</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb23" data-startfrom="593" data-source-offset="0"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 592;"><span id="cb23-593"><a></a>{</span>
+<span id="cb23-594"><a></a>  <span class="cf">if</span> (<span class="op">!</span>steps4 <span class="op">||</span> steps4<span class="op">.</span><span class="at">length</span> <span class="op">===</span> <span class="dv">0</span>) <span class="cf">return</span> <span class="fu">html</span><span class="vs">`&lt;div&gt;Cargando...&lt;/div&gt;`</span><span class="op">;</span></span>
+<span id="cb23-595"><a></a></span>
+<span id="cb23-596"><a></a>  <span class="kw">const</span> safeStep <span class="op">=</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">min</span>(step4<span class="op">,</span> steps4<span class="op">.</span><span class="at">length</span> <span class="op">-</span> <span class="dv">1</span>)<span class="op">;</span></span>
+<span id="cb23-597"><a></a>  <span class="kw">const</span> s <span class="op">=</span> steps4[safeStep]<span class="op">;</span></span>
+<span id="cb23-598"><a></a></span>
+<span id="cb23-599"><a></a>  <span class="cf">if</span> (<span class="op">!</span>s) <span class="cf">return</span> <span class="fu">html</span><span class="vs">`&lt;div&gt;Cargando...&lt;/div&gt;`</span><span class="op">;</span></span>
+<span id="cb23-600"><a></a></span>
+<span id="cb23-601"><a></a>  <span class="kw">const</span> arr <span class="op">=</span> s<span class="op">.</span><span class="at">state</span><span class="op">;</span></span>
+<span id="cb23-602"><a></a>  <span class="kw">const</span> max <span class="op">=</span> N4<span class="op">;</span></span>
+<span id="cb23-603"><a></a>  </span>
+<span id="cb23-604"><a></a>  <span class="kw">const</span> size <span class="op">=</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">floor</span>((max <span class="op">-</span> <span class="dv">3</span>) <span class="op">/</span> <span class="dv">2</span>) <span class="op">+</span> <span class="dv">1</span><span class="op">;</span></span>
+<span id="cb23-605"><a></a>  <span class="kw">const</span> cols <span class="op">=</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">ceil</span>(<span class="bu">Math</span><span class="op">.</span><span class="fu">sqrt</span>(size))<span class="op">;</span> </span>
+<span id="cb23-606"><a></a>  </span>
+<span id="cb23-607"><a></a>  <span class="kw">const</span> currentPrime <span class="op">=</span> s<span class="op">.</span><span class="at">p</span><span class="op">;</span></span>
+<span id="cb23-608"><a></a>  <span class="kw">const</span> lastDiscard <span class="op">=</span> s<span class="op">.</span><span class="at">k</span><span class="op">;</span></span>
+<span id="cb23-609"><a></a></span>
+<span id="cb23-610"><a></a>  <span class="kw">const</span> grid <span class="op">=</span> <span class="bu">Array</span><span class="op">.</span><span class="fu">from</span>({ <span class="dt">length</span><span class="op">:</span> size }<span class="op">,</span> (_<span class="op">,</span> i) <span class="kw">=&gt;</span> {</span>
+<span id="cb23-611"><a></a>    <span class="kw">const</span> num <span class="op">=</span> <span class="dv">2</span> <span class="op">*</span> i <span class="op">+</span> <span class="dv">3</span><span class="op">;</span> </span>
+<span id="cb23-612"><a></a>    <span class="kw">let</span> bgColor <span class="op">=</span> <span class="st">"#2a9d8f"</span><span class="op">;</span> </span>
+<span id="cb23-613"><a></a>    </span>
+<span id="cb23-614"><a></a>    <span class="cf">if</span> (num <span class="op">===</span> currentPrime) bgColor <span class="op">=</span> <span class="st">"#457b9d"</span><span class="op">;</span></span>
+<span id="cb23-615"><a></a>    <span class="cf">else</span> <span class="cf">if</span> (num <span class="op">===</span> lastDiscard) bgColor <span class="op">=</span> <span class="st">"#f4a261"</span><span class="op">;</span></span>
+<span id="cb23-616"><a></a>    <span class="cf">else</span> <span class="cf">if</span> (arr[i] <span class="op">===</span> <span class="st">"discarded"</span>) bgColor <span class="op">=</span> <span class="st">"#e63946"</span><span class="op">;</span></span>
+<span id="cb23-617"><a></a></span>
+<span id="cb23-618"><a></a>    <span class="cf">return</span> {</span>
+<span id="cb23-619"><a></a>      <span class="dt">idx</span><span class="op">:</span> i<span class="op">,</span> <span class="dt">n</span><span class="op">:</span> num<span class="op">,</span> <span class="dt">x</span><span class="op">:</span> i <span class="op">%</span> cols<span class="op">,</span> <span class="dt">y</span><span class="op">:</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">floor</span>(i <span class="op">/</span> cols)<span class="op">,</span> <span class="dt">state</span><span class="op">:</span> arr[i]<span class="op">,</span></span>
+<span id="cb23-620"><a></a>      <span class="dt">color</span><span class="op">:</span> bgColor<span class="op">,</span> <span class="dt">textColor</span><span class="op">:</span> <span class="st">"white"</span> </span>
+<span id="cb23-621"><a></a>    }<span class="op">;</span></span>
+<span id="cb23-622"><a></a>  })<span class="op">;</span></span>
+<span id="cb23-623"><a></a></span>
+<span id="cb23-624"><a></a>  <span class="cf">return</span> <span class="fu">html</span><span class="vs">`</span></span>
+<span id="cb23-625"><a></a><span class="vs">    &lt;div style="margin-top:15px;"&gt;</span></span>
+<span id="cb23-626"><a></a><span class="vs">      </span><span class="sc">${</span>Plot<span class="op">.</span><span class="fu">plot</span>({</span>
+<span id="cb23-627"><a></a>        <span class="dt">height</span><span class="op">:</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">ceil</span>(size <span class="op">/</span> cols) <span class="op">*</span> <span class="dv">35</span> <span class="op">+</span> <span class="dv">20</span><span class="op">,</span> <span class="dt">margin</span><span class="op">:</span> <span class="dv">10</span><span class="op">,</span></span>
+<span id="cb23-628"><a></a>        <span class="dt">x</span><span class="op">:</span> { <span class="dt">axis</span><span class="op">:</span> <span class="kw">null</span> }<span class="op">,</span> <span class="dt">y</span><span class="op">:</span> { <span class="dt">axis</span><span class="op">:</span> <span class="kw">null</span><span class="op">,</span> <span class="dt">reverse</span><span class="op">:</span> <span class="kw">true</span> }<span class="op">,</span> <span class="dt">color</span><span class="op">:</span> { <span class="dt">type</span><span class="op">:</span> <span class="st">"identity"</span> }<span class="op">,</span> </span>
+<span id="cb23-629"><a></a>        <span class="dt">marks</span><span class="op">:</span> [</span>
+<span id="cb23-630"><a></a>          Plot<span class="op">.</span><span class="fu">rect</span>(grid<span class="op">,</span> { <span class="dt">x1</span><span class="op">:</span> d <span class="kw">=&gt;</span> d<span class="op">.</span><span class="at">x</span> <span class="op">-</span> <span class="fl">0.45</span><span class="op">,</span> <span class="dt">x2</span><span class="op">:</span> d <span class="kw">=&gt;</span> d<span class="op">.</span><span class="at">x</span> <span class="op">+</span> <span class="fl">0.45</span><span class="op">,</span> <span class="dt">y1</span><span class="op">:</span> d <span class="kw">=&gt;</span> d<span class="op">.</span><span class="at">y</span> <span class="op">-</span> <span class="fl">0.45</span><span class="op">,</span> <span class="dt">y2</span><span class="op">:</span> d <span class="kw">=&gt;</span> d<span class="op">.</span><span class="at">y</span> <span class="op">+</span> <span class="fl">0.45</span><span class="op">,</span> <span class="dt">fill</span><span class="op">:</span> <span class="st">"color"</span><span class="op">,</span> <span class="dt">stroke</span><span class="op">:</span> <span class="st">"white"</span><span class="op">,</span> <span class="dt">rx</span><span class="op">:</span> <span class="dv">4</span> })<span class="op">,</span></span>
+<span id="cb23-631"><a></a>          Plot<span class="op">.</span><span class="fu">text</span>(grid<span class="op">,</span> { <span class="dt">x</span><span class="op">:</span> <span class="st">"x"</span><span class="op">,</span> <span class="dt">y</span><span class="op">:</span> <span class="st">"y"</span><span class="op">,</span> <span class="dt">text</span><span class="op">:</span> <span class="st">"n"</span><span class="op">,</span> <span class="dt">fill</span><span class="op">:</span> <span class="st">"textColor"</span><span class="op">,</span> <span class="dt">fontSize</span><span class="op">:</span> <span class="dv">13</span><span class="op">,</span> <span class="dt">fontWeight</span><span class="op">:</span> <span class="st">"bold"</span> })</span>
+<span id="cb23-632"><a></a>        ]</span>
+<span id="cb23-633"><a></a>      })<span class="sc">}</span></span>
+<span id="cb23-634"><a></a><span class="vs">      &lt;div style="margin-top:15px; font-size: 1.1em; height: 1.5em;"&gt;</span></span>
+<span id="cb23-635"><a></a><span class="vs">        </span><span class="sc">${</span>s<span class="op">.</span><span class="at">type</span> <span class="op">===</span> <span class="st">"prime"</span> <span class="op">?</span> <span class="fu">html</span><span class="vs">`🔎 Probando primo impar &lt;b&gt;</span><span class="sc">${</span>currentPrime<span class="sc">}</span><span class="vs">&lt;/b&gt;`</span> <span class="op">:</span> s<span class="op">.</span><span class="at">type</span> <span class="op">===</span> <span class="st">"discard"</span> <span class="op">?</span> <span class="fu">html</span><span class="vs">`❌ </span><span class="sc">${</span>lastDiscard<span class="sc">}</span><span class="vs"> es múltiplo impar de &lt;b&gt;</span><span class="sc">${</span>currentPrime<span class="sc">}</span><span class="vs">&lt;/b&gt;`</span> <span class="op">:</span> <span class="fu">html</span><span class="vs">`✅ Criba completada`</span><span class="sc">}</span></span>
+<span id="cb23-636"><a></a><span class="vs">      &lt;/div&gt;</span></span>
+<span id="cb23-637"><a></a><span class="vs">    &lt;/div&gt;</span></span>
+<span id="cb23-638"><a></a><span class="vs">  `</span><span class="op">;</span></span>
+<span id="cb23-639"><a></a>}</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
 <div id="ojs-cell-16" data-nodetype="expression">
 

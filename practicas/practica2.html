@@ -326,6 +326,9 @@ gtag('config', 'G-KJSTYN212D', { 'anonymize_ip': false});
 </header>
 
 
+<div class="reading-time-pill">
+<pre><code>&lt;span class="badge rounded-pill text-bg-secondary"&gt;~19 min de lectura&lt;/span&gt;</code></pre>
+</div>
 <section id="objetivos-de-la-práctica" class="level2" data-number="1">
 <h2 data-number="1" class="anchored" data-anchor-id="objetivos-de-la-práctica"><span class="header-section-number">1</span> Objetivos de la práctica</h2>
 <p>Los objetivos de la segunda práctica de la asignatura son los siguientes:</p>
@@ -516,25 +519,25 @@ Figura&nbsp;7: Creación de una nueva clase de Java en <em>Eclipse IDE</em>.
 <hr>
 <p>Fijaos en que <strong>no hemos indicado el nombre de un paquete, por lo que la clase formará parte un paquete por defecto (<em>default</em>)</strong>. En futuras sesiones de prácticas hablaremos de qué es un paquete, y cómo crearlo para estructurar las clases que creemos en cada proyecto.</p>
 <p>Al finalizar la creación, se generará automáticamente un pequeño esqueleto con el código inicial común a cada clase, que deberá completarse para contener el siguiente código:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode java code-with-copy"><code class="sourceCode java"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">import</span> <span class="im">java</span><span class="op">.</span><span class="im">util</span><span class="op">.*;</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co">/**</span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a> <span class="co">*</span> La clase HolaMundo ejemplifica el uso de Eclipse para programar en Java<span class="co">.</span></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a> <span class="co">*</span> <span class="an">@author</span> Fernando Bobillo<span class="co">,</span> Alfonso L<span class="co">ó</span>pez<span class="co">,</span> Ignacio Huitzil<span class="co">.</span></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a> <span class="co">*/</span></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="kw">public</span> <span class="kw">class</span> HolaMundo</span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="op">{</span></span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>    <span class="co">/**</span></span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>     <span class="co">*</span> El m<span class="co">é</span>todo main contiene el programa principal<span class="co">.</span></span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>     <span class="co">*</span> <span class="an">@param</span><span class="co"> </span><span class="an">args</span><span class="co"> </span>Puede recibir una lista de par<span class="co">á</span>metros como argumento<span class="co">.</span></span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>     <span class="co">*/</span></span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>    <span class="kw">public</span> <span class="dt">static</span> <span class="dt">void</span> <span class="fu">main</span><span class="op">(</span><span class="bu">String</span><span class="op">[]</span> args<span class="op">)</span></span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>    <span class="op">{</span></span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>        <span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">print</span><span class="op">(</span><span class="st">"Escribe tu nombre: "</span><span class="op">);</span></span>
-<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>        <span class="bu">String</span> nombre <span class="op">=</span> <span class="op">(</span><span class="kw">new</span> <span class="bu">Scanner</span><span class="op">(</span><span class="bu">System</span><span class="op">.</span><span class="fu">in</span><span class="op">)).</span><span class="fu">nextLinea</span><span class="op">();</span></span>
-<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>        <span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span><span class="st">"Hola "</span> <span class="op">+</span> nom <span class="op">+</span> <span class="st">", mucho gusto."</span><span class="op">);</span></span>
-<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
-<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode java code-with-copy"><code class="sourceCode java"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="kw">import</span> <span class="im">java</span><span class="op">.</span><span class="im">util</span><span class="op">.*;</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="co">/**</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a> <span class="co">*</span> La clase HolaMundo ejemplifica el uso de Eclipse para programar en Java<span class="co">.</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a> <span class="co">*</span> <span class="an">@author</span> Fernando Bobillo<span class="co">,</span> Alfonso L<span class="co">ó</span>pez<span class="co">,</span> Ignacio Huitzil<span class="co">.</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a> <span class="co">*/</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="kw">public</span> <span class="kw">class</span> HolaMundo</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="op">{</span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>    <span class="co">/**</span></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>     <span class="co">*</span> El m<span class="co">é</span>todo main contiene el programa principal<span class="co">.</span></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>     <span class="co">*</span> <span class="an">@param</span><span class="co"> </span><span class="an">args</span><span class="co"> </span>Puede recibir una lista de par<span class="co">á</span>metros como argumento<span class="co">.</span></span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>     <span class="co">*/</span></span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>    <span class="kw">public</span> <span class="dt">static</span> <span class="dt">void</span> <span class="fu">main</span><span class="op">(</span><span class="bu">String</span><span class="op">[]</span> args<span class="op">)</span></span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>    <span class="op">{</span></span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>        <span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">print</span><span class="op">(</span><span class="st">"Escribe tu nombre: "</span><span class="op">);</span></span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>        <span class="bu">String</span> nombre <span class="op">=</span> <span class="op">(</span><span class="kw">new</span> <span class="bu">Scanner</span><span class="op">(</span><span class="bu">System</span><span class="op">.</span><span class="fu">in</span><span class="op">)).</span><span class="fu">nextLinea</span><span class="op">();</span></span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>        <span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span><span class="st">"Hola "</span> <span class="op">+</span> nom <span class="op">+</span> <span class="st">", mucho gusto."</span><span class="op">);</span></span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 <hr>
 <div class="callout callout-style-default callout-warning callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -579,7 +582,7 @@ Figura&nbsp;9: Compilación de un programa con errores.
 </div>
 <hr>
 <p>Si trabajásemos sin un entorno de desarrollo, sería equivalente a abrir una ventana de órdenes del sistema operativo y teclear:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">javac</span> HolaMundo.java</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">javac</span> HolaMundo.java</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -609,7 +612,7 @@ Figura&nbsp;9: Compilación de un programa con errores.
 </div>
 <div class="callout-body-container callout-body">
 <p>Si trabajásemos directamente con el JDK deberíamos invocar al intérprete (comando <code>java</code>) pasándole como parámetro el fichero compilado sin poner la extensión <code>.class</code>. Así pues, en el intérprete de órdenes teclearíamos:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">java</span> HolaMundo</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">java</span> HolaMundo</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 <hr>
@@ -654,34 +657,34 @@ Figura&nbsp;10: Depuración de un programa en Eclipse.
 <li>Crea una nueva clase llamada <strong>Ejercicio</strong> (comenzando con una letra mayúscula).</li>
 <li>Pega el siguiente código en la clase creada.</li>
 </ul>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode java code-with-copy"><code class="sourceCode java"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="kw">public</span> <span class="kw">class</span> Ejercicio</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="op">{</span></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>        <span class="kw">public</span> <span class="dt">static</span> <span class="dt">void</span> <span class="fu">main</span><span class="op">(</span><span class="bu">String</span><span class="op">[]</span> args<span class="op">)</span></span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>        <span class="op">{</span></span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>            <span class="dt">int</span> n<span class="op">,</span> x<span class="op">,</span> y<span class="op">,</span> z<span class="op">;</span></span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>            n <span class="op">=</span> <span class="dv">10</span><span class="op">;</span></span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>            x <span class="op">=</span> <span class="dv">0</span><span class="op">;</span></span>
-<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>            y <span class="op">=</span> <span class="dv">1</span><span class="op">;</span></span>
-<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>            z <span class="op">=</span> <span class="dv">1</span><span class="op">;</span></span>
-<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> <span class="op">(</span>n <span class="op">==</span> <span class="dv">0</span><span class="op">)</span> <span class="op">||</span> <span class="op">(</span>n <span class="op">==</span> <span class="dv">1</span><span class="op">)</span></span>
-<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>            <span class="op">{</span></span>
-<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>                x <span class="op">=</span> <span class="dv">1</span></span>
-<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>            <span class="op">}</span></span>
-<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>            <span class="cf">else</span></span>
-<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>            <span class="op">{</span></span>
-<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>                <span class="cf">for</span> <span class="op">(</span>i<span class="op">=</span><span class="dv">2</span><span class="op">;</span> i<span class="op">&lt;=</span>n<span class="op">;</span> i<span class="op">++)</span></span>
-<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a>                <span class="op">{</span></span>
-<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a>                    <span class="dt">int</span> s <span class="op">=</span> y <span class="op">+</span> z<span class="op">;</span></span>
-<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a>                    x <span class="op">=</span> s<span class="op">;</span></span>
-<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a>                    z <span class="op">=</span> y<span class="op">;</span></span>
-<span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a>                    y <span class="op">=</span> x<span class="op">;</span></span>
-<span id="cb4-23"><a href="#cb4-23" aria-hidden="true" tabindex="-1"></a>                <span class="op">}</span></span>
-<span id="cb4-24"><a href="#cb4-24" aria-hidden="true" tabindex="-1"></a>            <span class="op">}</span></span>
-<span id="cb4-25"><a href="#cb4-25" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-26"><a href="#cb4-26" aria-hidden="true" tabindex="-1"></a>            <span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span>Programa terminado<span class="op">);</span></span>
-<span id="cb4-27"><a href="#cb4-27" aria-hidden="true" tabindex="-1"></a>        <span class="op">}</span></span>
-<span id="cb4-28"><a href="#cb4-28" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode java code-with-copy"><code class="sourceCode java"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="kw">public</span> <span class="kw">class</span> Ejercicio</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="op">{</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>        <span class="kw">public</span> <span class="dt">static</span> <span class="dt">void</span> <span class="fu">main</span><span class="op">(</span><span class="bu">String</span><span class="op">[]</span> args<span class="op">)</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>        <span class="op">{</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>            <span class="dt">int</span> n<span class="op">,</span> x<span class="op">,</span> y<span class="op">,</span> z<span class="op">;</span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>            n <span class="op">=</span> <span class="dv">10</span><span class="op">;</span></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>            x <span class="op">=</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>            y <span class="op">=</span> <span class="dv">1</span><span class="op">;</span></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>            z <span class="op">=</span> <span class="dv">1</span><span class="op">;</span></span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> <span class="op">(</span>n <span class="op">==</span> <span class="dv">0</span><span class="op">)</span> <span class="op">||</span> <span class="op">(</span>n <span class="op">==</span> <span class="dv">1</span><span class="op">)</span></span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>            <span class="op">{</span></span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>                x <span class="op">=</span> <span class="dv">1</span></span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>            <span class="op">}</span></span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>            <span class="cf">else</span></span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a>            <span class="op">{</span></span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a>                <span class="cf">for</span> <span class="op">(</span>i<span class="op">=</span><span class="dv">2</span><span class="op">;</span> i<span class="op">&lt;=</span>n<span class="op">;</span> i<span class="op">++)</span></span>
+<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a>                <span class="op">{</span></span>
+<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a>                    <span class="dt">int</span> s <span class="op">=</span> y <span class="op">+</span> z<span class="op">;</span></span>
+<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a>                    x <span class="op">=</span> s<span class="op">;</span></span>
+<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a>                    z <span class="op">=</span> y<span class="op">;</span></span>
+<span id="cb5-22"><a href="#cb5-22" aria-hidden="true" tabindex="-1"></a>                    y <span class="op">=</span> x<span class="op">;</span></span>
+<span id="cb5-23"><a href="#cb5-23" aria-hidden="true" tabindex="-1"></a>                <span class="op">}</span></span>
+<span id="cb5-24"><a href="#cb5-24" aria-hidden="true" tabindex="-1"></a>            <span class="op">}</span></span>
+<span id="cb5-25"><a href="#cb5-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-26"><a href="#cb5-26" aria-hidden="true" tabindex="-1"></a>            <span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span>Programa terminado<span class="op">);</span></span>
+<span id="cb5-27"><a href="#cb5-27" aria-hidden="true" tabindex="-1"></a>        <span class="op">}</span></span>
+<span id="cb5-28"><a href="#cb5-28" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 <ul>
 <li>Soluciona todos los errores de compilación en el programa anterior.</li>
 <li>Ejecuta el programa paso a paso para observar cuál es el valor que toma la variable <code>x</code> justo antes de finalizar el programa.</li>
@@ -779,9 +782,9 @@ Figura&nbsp;14: Creación de una biblioteca .jar a partir de un proyecto.
 </div>
 <div class="callout-body-container callout-body">
 <p>Si el programa se llama <code>HolaMundo.jar</code>, podrás ejecutarlo escribiendo en una terminal del sistema operativo lo siguiente:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="ex">java</span> –jar HolaMundo.jar</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="ex">java</span> –jar HolaMundo.jar</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Para abrir una terminal en <em>Windows</em>, hay que utilizar la barra de búsqueda e introducir <code>Símbolo del sistema</code>. Antes de poder ejecutar el <code>.jar</code> con la instrucción anterior, debemos posicionarnos en la carpeta que lo contenga. Para simplificar, guarda el fichero <code>.jar</code> en la carpeta raíz del disco duro, <code>C:</code>, y posteriormente escribe en la ventana de órdenes la siguiente instrucción:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> /</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> /</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 <hr>
@@ -789,7 +792,7 @@ Figura&nbsp;14: Creación de una biblioteca .jar a partir de un proyecto.
 <section id="añadir-bibliotecas-a-un-proyecto" class="level3" data-number="2.11">
 <h3 data-number="2.11" class="anchored" data-anchor-id="añadir-bibliotecas-a-un-proyecto"><span class="header-section-number">2.11</span> Añadir bibliotecas a un proyecto</h3>
 <p>Si queremos utilizar alguna de las clases ya definidas en Java, simplemente es necesario añadir una sentencia en nuestro programa para <strong>importar la biblioteca</strong> correspondiente. Por ejemplo, para utilizar las clases definidas en el paquete <code>java.util</code>, hemos añadido en nuestro programa la siguiente instrucción:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode java code-with-copy"><code class="sourceCode java"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="kw">import</span> <span class="im">java</span><span class="op">.</span><span class="im">util</span><span class="op">.*;</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode java code-with-copy"><code class="sourceCode java"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="kw">import</span> <span class="im">java</span><span class="op">.</span><span class="im">util</span><span class="op">.*;</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 <p>El proceso de incluir bibliotecas diferentes a las incluidas por defecto en Java puede no ser trivial, dado que hay varias maneras; entre ellas, las siguientes:</p>
 <ul>
 <li>Si tenemos un fichero <code>.jar</code> con las clases compiladas, podemos añadirlo directamente.</li>
@@ -800,7 +803,7 @@ Figura&nbsp;14: Creación de una biblioteca .jar a partir de un proyecto.
 <p>En este apartado vamos a describir el primer escenario. Para ello, vamos a importar a modo de ejemplo la biblioteca <code>.jar</code> incluida en Moodle, <code>biblioteca.jar</code>.</p>
 <p>[<a href="../resources/practica2/biblioteca.jar">Descargar Fichero JAR</a>]</p>
 <p>Antes de ello, vamos a escribir en nuestro programa la siguiente instrucción:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode java code-with-copy"><code class="sourceCode java"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>Practicas<span class="op">.</span><span class="fu">escribeMensaje</span><span class="op">();</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode java code-with-copy"><code class="sourceCode java"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>Practicas<span class="op">.</span><span class="fu">escribeMensaje</span><span class="op">();</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Al compilar, se nos informa de un error: <strong>la clase <em>Practicas</em> no ha sido definida todavía</strong>. Para solucionarlo, vamos a importar una biblioteca donde se define dicha clase. Debemos hacer click derecho sobre el nombre del proyecto y seleccionar <code>Properties &gt; Java Build Path</code>. Obtendremos una ventana como la de la <a href="#fig-add_jar" class="quarto-xref">Figura&nbsp;15</a>, donde se pueden configurar las bibliotecas que se van a utilizar en el proyecto.</p>
 <hr>
 <p>A continuación, hacemos click sobre <code>Add External JARs</code> y seleccionamos el fichero a importar. Una vez hecho esto, podemos comprobar que es posible ejecutar nuestro programa sin ningún tipo de problemas, pues el código necesario se obtiene en el fichero importado.</p>
@@ -838,9 +841,9 @@ Figura&nbsp;16: Generación de documentación con la herramienta javadoc.
 <h3 data-number="2.13" class="anchored" data-anchor-id="acceso-a-la-documentación-del-jdk"><span class="header-section-number">2.13</span> Acceso a la documentación del JDK</h3>
 <p>Java proporciona una amplia y detallada documentación acerca de las <strong>herramientas que incluye el JDK</strong>, así como la especificación de la API (<em>Application Programming Interface</em>), es decir, la documentación de las bibliotecas disponibles por defecto en Java. Esta documentación se encuentra la página oficial de <em>Oracle</em> (ver <a href="#fig-jdk_doc" class="quarto-xref">Figura&nbsp;17</a>), y lo mismo sucede para la documentación de la API (ver <a href="#fig-api_doc" class="quarto-xref">Figura&nbsp;18</a>). Esta documentación puede descargarse para poder consultarla sin necesidad de acceder a Internet; el material descargado puede visualizarse con cualquier navegador web.</p>
 <p>Modifica la clase <code>Ejercicio</code> para que cada vez que se ejecute escriba por pantalla un número diferente. Para ello, modifica la instrucción <code>x = 1</code> con métodos de la clase <code>Math</code> que permitan obtener un número entero aleatorio: primero se obtendrá un número real aleatorio y luego se redondeará a un número entero. Puede buscarse dicho método en la documentación de la clase <a href="https://docs.oracle.com/en/java/javase/25/docs/api/java.base/java/lang/Math.html"><code>java.lang.Math</code></a>.</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode java code-with-copy"><code class="sourceCode java"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> <span class="op">(</span><span class="dt">int</span><span class="op">)</span> <span class="bu">Math</span><span class="op">.???(</span><span class="bu">Math</span><span class="op">.???());</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode java code-with-copy"><code class="sourceCode java"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> <span class="op">(</span><span class="dt">int</span><span class="op">)</span> <span class="bu">Math</span><span class="op">.???(</span><span class="bu">Math</span><span class="op">.???());</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 <p>También, modifica la última instrucción del programa para que imprima el valor de <code>x</code> con un mensaje descriptivo, por ejemplo:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode java code-with-copy"><code class="sourceCode java"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span><span class="st">"Fibonacci("</span> <span class="op">+</span> n <span class="op">+</span> <span class="st">") = "</span> <span class="op">+</span> x<span class="op">);</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="sourceCode java code-with-copy"><code class="sourceCode java"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span><span class="st">"Fibonacci("</span> <span class="op">+</span> n <span class="op">+</span> <span class="st">") = "</span> <span class="op">+</span> x<span class="op">);</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 <hr>
 <div id="fig-jdk_doc" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">

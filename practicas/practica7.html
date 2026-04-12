@@ -42,8 +42,6 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="../site_libs/bootstrap/bootstrap-029b10fc0dc652dab2ec1ac156c1a037.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
-<script src="../site_libs/quarto-contrib/videojs/video.min.js"></script>
-<link href="../site_libs/quarto-contrib/videojs/video-js.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -85,6 +83,24 @@ gtag('js', new Date());
   });
 gtag('config', 'G-KJSTYN212D', { 'anonymize_ip': false});
 </script>
+<style>
+
+      .quarto-title-block .quarto-title-banner h1,
+      .quarto-title-block .quarto-title-banner h2,
+      .quarto-title-block .quarto-title-banner h3,
+      .quarto-title-block .quarto-title-banner h4,
+      .quarto-title-block .quarto-title-banner h5,
+      .quarto-title-block .quarto-title-banner h6
+      {
+        color: #464646;
+      }
+
+      .quarto-title-block .quarto-title-banner {
+        color: #464646;
+background-image: url(../resources/practica7/teaser_horizontal.jpg);
+background-size: cover;
+      }
+</style>
 
 
 <link rel="stylesheet" href="../styles.css">
@@ -105,7 +121,7 @@ gtag('config', 'G-KJSTYN212D', { 'anonymize_ip': false});
 <body class="nav-sidebar floating nav-fixed quarto-light">
 
 <div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top">
+  <header id="quarto-header" class="headroom fixed-top quarto-banner">
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
@@ -146,7 +162,23 @@ gtag('config', 'G-KJSTYN212D', { 'anonymize_ip': false});
   </nav>
 </header>
 <!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<header id="title-block-header" class="quarto-title-block default page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-body"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../practicas/practica1.html">Prácticas</a></li><li class="breadcrumb-item"><a href="../practicas/practica7.html">Práctica 7: Introducción a Grasshopper</a></li></ol></nav>
+      <h1 class="title">Práctica 7: Introducción a Grasshopper</h1>
+                      </div>
+  </div>
+    
+  
+  <div class="quarto-title-meta">
+
+      
+    
+      
+    </div>
+    
+  
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
@@ -247,68 +279,428 @@ gtag('config', 'G-KJSTYN212D', { 'anonymize_ip': false});
   <li><a href="#introducción-a-grasshopper" id="toc-introducción-a-grasshopper" class="nav-link" data-scroll-target="#introducción-a-grasshopper"><span class="header-section-number">2</span> Introducción a Grasshopper</a>
   <ul class="collapse">
   <li><a href="#descarga" id="toc-descarga" class="nav-link" data-scroll-target="#descarga"><span class="header-section-number">2.1</span> Descarga</a></li>
-  <li><a href="#ejercicio-de-modelado" id="toc-ejercicio-de-modelado" class="nav-link" data-scroll-target="#ejercicio-de-modelado"><span class="header-section-number">2.2</span> Ejercicio de modelado</a></li>
   </ul></li>
-  <li><a href="#entrega" id="toc-entrega" class="nav-link" data-scroll-target="#entrega"><span class="header-section-number">3</span> Entrega</a></li>
+  <li><a href="#ejercicio-1-modelado-de-una-taza" id="toc-ejercicio-1-modelado-de-una-taza" class="nav-link" data-scroll-target="#ejercicio-1-modelado-de-una-taza"><span class="header-section-number">3</span> Ejercicio 1: modelado de una taza</a>
+  <ul class="collapse">
+  <li><a href="#qué-debes-hacer" id="toc-qué-debes-hacer" class="nav-link" data-scroll-target="#qué-debes-hacer"><span class="header-section-number">3.1</span> Qué debes hacer</a></li>
+  <li><a href="#consejos-para-no-perderse" id="toc-consejos-para-no-perderse" class="nav-link" data-scroll-target="#consejos-para-no-perderse"><span class="header-section-number">3.2</span> Consejos para no perderse</a></li>
+  </ul></li>
+  <li><a href="#ejercicio-2-transformar-la-taza-en-una-vasija" id="toc-ejercicio-2-transformar-la-taza-en-una-vasija" class="nav-link" data-scroll-target="#ejercicio-2-transformar-la-taza-en-una-vasija"><span class="header-section-number">4</span> Ejercicio 2: transformar la taza en una vasija</a>
+  <ul class="collapse">
+  <li><a href="#añadir-una-variación-con-escala" id="toc-añadir-una-variación-con-escala" class="nav-link" data-scroll-target="#añadir-una-variación-con-escala"><span class="header-section-number">4.1</span> Añadir una variación con escala</a></li>
+  </ul></li>
+  <li><a href="#ejercicio-3-añadir-un-patrón-voronoi" id="toc-ejercicio-3-añadir-un-patrón-voronoi" class="nav-link" data-scroll-target="#ejercicio-3-añadir-un-patrón-voronoi"><span class="header-section-number">5</span> Ejercicio 3: añadir un patrón Voronoi</a>
+  <ul class="collapse">
+  <li><a href="#qué-debes-hacer-1" id="toc-qué-debes-hacer-1" class="nav-link" data-scroll-target="#qué-debes-hacer-1"><span class="header-section-number">5.1</span> Qué debes hacer</a></li>
+  </ul></li>
+  <li><a href="#ejercicio-4-generación-de-imágenes-con-modelos-de-difusión" id="toc-ejercicio-4-generación-de-imágenes-con-modelos-de-difusión" class="nav-link" data-scroll-target="#ejercicio-4-generación-de-imágenes-con-modelos-de-difusión"><span class="header-section-number">6</span> Ejercicio 4: generación de imágenes con modelos de difusión</a>
+  <ul class="collapse">
+  <li><a href="#cómo-usar-rhino-banana" id="toc-cómo-usar-rhino-banana" class="nav-link" data-scroll-target="#cómo-usar-rhino-banana"><span class="header-section-number">6.1</span> Cómo usar Rhino Banana</a></li>
+  </ul></li>
+  <li><a href="#qué-debes-entregar" id="toc-qué-debes-entregar" class="nav-link" data-scroll-target="#qué-debes-entregar"><span class="header-section-number">7</span> Qué debes entregar</a></li>
   </ul>
 <div class="quarto-alternate-formats"><h2>Otros formatos</h2><ul><li><a href="practica7.reveal.html"><i class="bi bi-file-slides"></i>RevealJS</a></li></ul></div></nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content">
+<main class="content quarto-banner-title-block" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../practicas/practica1.html">Prácticas</a></li><li class="breadcrumb-item"><a href="../practicas/practica7.html">Práctica 7: Introducción a Grasshopper</a></li></ol></nav>
-<div class="quarto-title">
-<h1 class="title">Práctica 7: Introducción a Grasshopper</h1>
+
+
+
+
+<div class="reading-time-pill">
+<p><span class="badge rounded-pill text-bg-secondary">~10 min de lectura</span></p>
 </div>
-
-
-
-<div class="quarto-title-meta">
-
-    
-  
-    
-  </div>
-  
-
-
-</header>
-
-
 <section id="objetivos-de-la-práctica" class="level2" data-number="1">
 <h2 data-number="1" class="anchored" data-anchor-id="objetivos-de-la-práctica"><span class="header-section-number">1</span> Objetivos de la práctica</h2>
-<p>Los objetivos de la sexta práctica de la asignatura son los siguientes:</p>
+<p>En esta práctica vamos a dar los primeros pasos con <em>Grasshopper</em> aplicándolo a un ejercicio sencillo de diseño paramétrico. Al finalizar, deberías ser capaz de:</p>
 <ul>
-<li>Conocer las operaciones básicas de Grasshopper.</li>
-<li>Buscar información para solucionar dudas relacionadas con Grasshopper.</li>
+<li>Conocer algunas operaciones básicas de <em>Grasshopper</em>.</li>
+<li>Utilizar recursos de Inteligencia Artificial integrados en <em>Grasshopper</em> para facilitar el proceso de generación de imágenes.</li>
+<li>Buscar información para solucionar dudas relacionadas con <em>Grasshopper</em>.</li>
 </ul>
 <hr>
 </section>
 <section id="introducción-a-grasshopper" class="level2" data-number="2">
 <h2 data-number="2" class="anchored" data-anchor-id="introducción-a-grasshopper"><span class="header-section-number">2</span> Introducción a Grasshopper</h2>
-<p>Grasshopper es un lenguaje de programación visual integrado en el software de modelado CAD Rhino3D. Por tanto, la salida o salidas de Grasshopper se pueden utilizar en Rhino3D.</p>
-<p>Grasshopper es un software de modelado paramétrico, lo que significa que permite crear modelos 3D a través de la manipulación de parámetros. Esto facilita la creación de diseños complejos y la exploración de diferentes opciones de diseño de manera rápida y eficiente. También es un lenguaje de programación visual, lo que significa que los usuarios pueden crear algoritmos y procesos de diseño sin necesidad de escribir código tradicional, sino utilizando una interfaz gráfica basada en nodos y conexiones.</p>
+<p><em>Grasshopper</em> es una herramienta de programación visual orientada al diseño paramétrico e integrada en <strong><em>Rhinoceros</em></strong>. En lugar de modelar dibujando directamente cada objeto, en <em>Grasshopper</em> se construye una <strong>definición</strong> formada por componentes conectados entre sí. Cada componente realiza una operación, y el resultado final depende de los parámetros que introducimos.</p>
+<p>Este modo de trabajo resulta especialmente útil cuando queremos probar variantes de una misma forma de manera rápida: por ejemplo, cambiar el tamaño de una base, la altura de una pieza o el número de divisiones de un patrón sin tener que rehacer el modelo desde cero.</p>
 <section id="descarga" class="level3" data-number="2.1">
 <h3 data-number="2.1" class="anchored" data-anchor-id="descarga"><span class="header-section-number">2.1</span> Descarga</h3>
-<p>Se puede descargar una versión de evaluación de 90 días desde su <a href="https://www.rhino3d.com/download/">web</a>, a contar desde la fecha de descarga. Después de dicho periodo, Rhino3D no dejará guardar ficheros, pero sí visualizarlos.</p>
-<p>Una vez descargado e instalado Rhino3D, debería aparecer una pantalla como la que se muestra a continuación:</p>
+<p>Se puede descargar una versión de evaluación de 90 días, a contar desde la fecha de descarga, desde su <a href="https://www.rhino3d.com/download/">web</a>. Después de ese periodo, <em>Rhino</em> no permitirá guardar ficheros nuevos, aunque sí abrirlos y visualizarlos.</p>
+<p>Una vez descargado e instalado <strong><em>Rhinoceros</em></strong>, debería aparecer una pantalla como la que se muestra a continuación:</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="../resources/practica7/rhino3d.png" class="img-fluid figure-img"></p>
-<figcaption>Rhino3D</figcaption>
+<figcaption>Pantalla de introducción en <em>Rhino</em> 8.</figcaption>
 </figure>
 </div>
-<p>Una vez dentro, se puede acceder a Grasshopper escribiendo “Grasshopper” en la barra de comandos de Rhino3D. Esto abrirá la interfaz de Grasshopper, donde se pueden crear y manipular modelos paramétricos.</p>
+<section id="instalación-de-complementos" class="level4" data-number="2.1.1">
+<h4 data-number="2.1.1" class="anchored" data-anchor-id="instalación-de-complementos"><span class="header-section-number">2.1.1</span> Instalación de complementos</h4>
+<p>Dentro de <em>Rhino</em> 8 es posible instalar complementos que añaden funcionalidades adicionales a la aplicación. Para esta práctica necesitaremos <strong><em>RhinoBanana</em></strong>, un complemento que permite generar imágenes a partir de modelos creados en <em>Rhino</em> usando modelos de difusión.</p>
+<p>Para instalarlo:</p>
+<ol type="1">
+<li>Abre <em>Rhino</em>.</li>
+<li>Ve a <code>Herramientas &gt; Administrar complementos</code>.</li>
+<li>Busca <strong>RhinoBanana</strong>.</li>
+<li>Pulsa <strong>Instalar</strong>.</li>
+</ol>
+<div id="fig-install-rhino-banana" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-install-rhino-banana-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../resources/practica7/rhino_banana_install.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-install-rhino-banana-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;1: Instalando el complemento RhinoBanana.
+</figcaption>
+</figure>
+</div>
 </section>
-<section id="ejercicio-de-modelado" class="level3" data-number="2.2">
-<h3 data-number="2.2" class="anchored" data-anchor-id="ejercicio-de-modelado"><span class="header-section-number">2.2</span> Ejercicio de modelado</h3>
-<p>El objetivo de esta práctica es modelar unas tazas de té utilizando Grasshopper, siguiendo el tutorial de <a href="https://modelab.gitbooks.io/grasshopper-primer/content/">Modelab</a>. Para ello, utilizad el siguiente video en YouTube:</p>
-<div class="quarto-video"><video id="video_shortcode_videojs_video1" class="video-js vjs-default-skin vjs-fluid" controls="" preload="auto" data-setup="{}" title=""><source src="http://youtu.be/svhn73Yvww0"></video></div>
+<section id="acceso-a-grasshopper" class="level4" data-number="2.1.2">
+<h4 data-number="2.1.2" class="anchored" data-anchor-id="acceso-a-grasshopper"><span class="header-section-number">2.1.2</span> Acceso a Grasshopper</h4>
+<p><em>Rhino</em> será nuestro visor principal, pero la construcción paramétrica de la geometría se hará en <em>Grasshopper</em>. Para abrirlo, escribe <code>Grasshopper</code> en la barra de comandos de <em>Rhino</em> 8 (ver <a href="#fig-command-line" class="quarto-xref">Figura&nbsp;2</a>) y pulsa Enter.</p>
+<div id="fig-command-line" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-command-line-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../resources/practica7/commands.png" class="img-fluid figure-img" style="width:50.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-command-line-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;2: Introduciendo “Grasshopper” en la barra de comandos de <em>Rhino</em> 8.
+</figcaption>
+</figure>
+</div>
+<p>También es posible acceder a <em>Grasshopper</em> mediante la opción <strong>Ejecutar Grasshopper</strong> de la barra de herramientas de <em>Rhino</em>.</p>
+<div id="fig-toolbar" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-toolbar-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../resources/practica7/toolbar.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-toolbar-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;3: Accediendo a Grasshopper a través de la barra de herramientas de <em>Rhino</em> 8.
+</figcaption>
+</figure>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Nota</span>Idea clave
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>En <em>Grasshopper</em> no estamos “dibujando” la pieza final directamente, sino definiendo una <strong>receta</strong> para generarla. Si modificamos un parámetro, la geometría se actualiza automáticamente.</p>
+</div>
+</div>
 </section>
 </section>
-<section id="entrega" class="level2" data-number="3">
-<h2 data-number="3" class="anchored" data-anchor-id="entrega"><span class="header-section-number">3</span> Entrega</h2>
-<p>La entrega de esta práctica serán ficheros OBJ, resultado de exportar las tazas de té creadas</p>
+</section>
+<section id="ejercicio-1-modelado-de-una-taza" class="level2" data-number="3">
+<h2 data-number="3" class="anchored" data-anchor-id="ejercicio-1-modelado-de-una-taza"><span class="header-section-number">3</span> Ejercicio 1: modelado de una taza</h2>
+<p>El primer objetivo práctico es modelar una taza sencilla en <em>Grasshopper</em> siguiendo el tutorial del siguiente vídeo:</p>
+<div class="quarto-video ratio ratio-16x9"><iframe data-external="1" src="https://www.youtube.com/embed/svhn73Yvww0" title="Tutorial de modelado de una taza en Grasshopper" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe></div>
+<p>Podéis encontrar también material complementario en algunos tutoriales disponibles en la web, como el de <a href="https://modelab.gitbooks.io/grasshopper-primer/content/">Modelab</a>.</p>
+<section id="qué-debes-hacer" class="level3" data-number="3.1">
+<h3 data-number="3.1" class="anchored" data-anchor-id="qué-debes-hacer"><span class="header-section-number">3.1</span> Qué debes hacer</h3>
+<p>Durante el tutorial, intenta no limitarte a copiar conexiones. Ve comprobando qué hace cada componente y qué ocurre cuando cambias sus parámetros. En particular:</p>
+<div class="quarto-layout-panel" data-layout="[60, 40]">
+<div class="quarto-layout-row">
+<div class="column quarto-layout-cell" style="flex-basis: 60.0%;justify-content: flex-start;">
+<ol type="1">
+<li>Crea los polígonos o perfiles base de la taza.</li>
+<li>Ajusta su tamaño con <em>sliders</em>.</li>
+<li>Colócalos a distintas alturas.</li>
+<li>Conéctalos para generar una superficie o un volumen.</li>
+<li>Observa cómo cambia el resultado al modificar radios, alturas o posiciones.</li>
+</ol>
+</div>
+<div class="column quarto-layout-cell" style="flex-basis: 40.0%;justify-content: center;">
+<p><img src="../resources/practica7/teacups.jpg" class="img-fluid"></p>
+</div>
+</div>
+</div>
+</section>
+<section id="consejos-para-no-perderse" class="level3" data-number="3.2">
+<h3 data-number="3.2" class="anchored" data-anchor-id="consejos-para-no-perderse"><span class="header-section-number">3.2</span> Consejos para no perderse</h3>
+<ul>
+<li>Trabaja con la ventana de <em>Rhino</em> y la de <em>Grasshopper</em> visibles al mismo tiempo, como en la <a href="#fig-split-screen" class="quarto-xref">Figura&nbsp;4</a>. De este modo, podrás ver cómo cada cambio en <em>Grasshopper</em> afecta a la geometría en <em>Rhino</em>.</li>
+<li>No busques medidas exactas: en esta práctica nos interesa más <strong>entender el flujo de trabajo</strong> que obtener una taza perfectamente precisa.</li>
+<li>Cambia a la vista de perspectiva y, si lo necesitas, utiliza el modo <strong>Renderizado</strong> para ver mejor la geometría (ver <a href="#fig-maximizar-renderizado" class="quarto-xref">Figura&nbsp;5</a>).</li>
+<li>Nombra los <em>sliders</em> más importantes para recordar qué controla cada uno.</li>
+</ul>
+<div id="fig-split-screen" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-split-screen-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../resources/practica7/split_screen.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-split-screen-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;4: Compartiendo la pantalla entre <em>Rhino</em> y <em>Grasshopper</em>.
+</figcaption>
+</figure>
+</div>
+<div id="fig-maximizar-renderizado" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-maximizar-renderizado-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../resources/practica7/maximizar_renderizado.png" class="img-fluid figure-img" style="width:80.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-maximizar-renderizado-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;5: Opciones de visualización en <em>Rhino</em>.
+</figcaption>
+</figure>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Comprueba que vas bien
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Antes de seguir, deberías tener una taza cuya forma cambie al modificar varios <em>sliders</em>. Si mueves un control y no ocurre nada, revisa si ese componente está realmente conectado al resto de la definición.</p>
+</div>
+</div>
+</section>
+</section>
+<section id="ejercicio-2-transformar-la-taza-en-una-vasija" class="level2" data-number="4">
+<h2 data-number="4" class="anchored" data-anchor-id="ejercicio-2-transformar-la-taza-en-una-vasija"><span class="header-section-number">4</span> Ejercicio 2: transformar la taza en una vasija</h2>
+<p>Una vez modelada la taza, el siguiente paso consiste en reutilizar la misma idea para crear una <strong>vasija</strong>. No se trata de empezar desde cero, sino de modificar la definición anterior para obtener una pieza más alta y con un perfil diferente.</p>
+<div class="quarto-layout-panel" data-layout="[60,40]">
+<div class="quarto-layout-row">
+<div class="column quarto-layout-cell" style="flex-basis: 60.0%;justify-content: flex-start;">
+<p>Para ello, puedes añadir un nuevo polígono en la parte superior y situarlo a una altura mayor que en la taza. Después, modifica su tamaño para que la silueta resultante sea más propia de una vasija: por ejemplo, con una base más estrecha y una parte superior más abierta, o al revés.</p>
+<p>Ten en cuenta que <em>Grasshopper</em> genera una geometría <strong>procedimental</strong>, pero esta no pasa a formar parte de la escena de <em>Rhino</em> hasta que la <strong>bakeamos</strong>. Por eso, cuando la pieza tenga el aspecto que buscas, deberás hacer clic derecho sobre el componente final y elegir <strong>Bake</strong> para incorporarla a <em>Rhino</em> y poder exportarla.</p>
+</div>
+<div class="column quarto-layout-cell" style="flex-basis: 40.0%;justify-content: flex-start;">
+<div id="fig-vasija" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-vasija-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../resources/practica7/vase.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-vasija-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;6: Taza y vasija.
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<p>Se recomienda <strong>bakear</strong> cada taza o vasija en una capa distinta, para mantener la escena organizada. Puedes crear una capa nueva en <em>Rhino</em> para cada objeto antes de realizar el <em>bake</em>.</p>
+<div id="fig-layers" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-layers-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../resources/practica7/new_layer.png" class="img-fluid figure-img" style="width:60.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-layers-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;7: Creando una nueva capa en <em>Rhino</em> para organizar la geometría generada por <em>Grasshopper</em>.
+</figcaption>
+</figure>
+</div>
+<section id="añadir-una-variación-con-escala" class="level3" data-number="4.1">
+<h3 data-number="4.1" class="anchored" data-anchor-id="añadir-una-variación-con-escala"><span class="header-section-number">4.1</span> Añadir una variación con escala</h3>
+<p>Para dar algo más de complejidad a la vasija, escalaremos el polígono superior para que su diámetro sea distinto al de los otros perfiles.</p>
+<div class="quarto-layout-panel" data-layout="[60,40]">
+<div class="quarto-layout-row">
+<div class="column quarto-layout-cell" style="flex-basis: 60.0%;justify-content: flex-start;">
+<p>Para ello, utilizaremos el componente <strong>“Scale”</strong> de <em>Grasshopper</em>, que permite escalar una geometría a partir de un centro y un factor de escala. El cambio puede ser muy sutil o muy pronunciado: basta con ajustar el valor del <em>slider</em> para obtener distintas variantes.</p>
+<p>Es importante <strong>escalar antes de trasladar</strong> el nuevo polígono con <strong>“Move”</strong>, para evitar que también se modifique la distancia del desplazamiento. Además, conviene controlar el factor de escala con un <em>slider</em>, igual que hicimos antes con radios y alturas.</p>
+</div>
+<div class="column quarto-layout-cell" style="flex-basis: 40.0%;justify-content: flex-start;">
+<div id="fig-vase-scale" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-vase-scale-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../resources/practica7/vase_scale.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-vase-scale-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;8: Esquema de vasija con escala en el polígono superior.
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<div id="fig-vasija-grafo" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-vasija-grafo-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../resources/practica7/scale_move_polygon.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-vasija-grafo-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;9: Definición del polígono superior de la vasija, con el nodo de escala.
+</figcaption>
+</figure>
+</div>
+<p>El componente <strong>“Merge”</strong> puede recibir cualquier número de entradas, por lo que puedes añadir tantos perfiles intermedios como necesites para generar formas más complejas.</p>
+<div id="fig-merge" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-merge-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../resources/practica7/merge.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-merge-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;10: Mezclando varios polígonos para crear formas más complejas.
+</figcaption>
+</figure>
+</div>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Advertencia</span>Error habitual
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Si la forma se deforma de manera extraña, revisa el orden de operaciones. En diseño paramétrico, hacer primero un <strong>Move</strong> y luego un <strong>Scale</strong> no suele dar el mismo resultado que hacerlo al revés.</p>
+</div>
+</div>
+</section>
+</section>
+<section id="ejercicio-3-añadir-un-patrón-voronoi" class="level2" data-number="5">
+<h2 data-number="5" class="anchored" data-anchor-id="ejercicio-3-añadir-un-patrón-voronoi"><span class="header-section-number">5</span> Ejercicio 3: añadir un patrón Voronoi</h2>
+<p>Una vez obtenida la vasija, podemos enriquecerla añadiendo un patrón a su superficie. Para ello, utilizaremos <strong>Voronoi</strong>, una técnica que divide el espacio en celdas a partir de un conjunto de puntos. Este tipo de patrón es muy habitual en diseño computacional y arquitectura porque permite generar de forma sencilla estructuras irregulares, perforaciones y efectos orgánicos.</p>
+<div id="fig-voronoi" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-voronoi-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../resources/practica7/voronoi.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-voronoi-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;11: Generando un patrón de celdas en la vasija utilizando Voronoi.
+</figcaption>
+</figure>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Nota</span>¿Qué es Voronoi?
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Un diagrama de <strong>Voronoi</strong> divide una región en varias celdas a partir de un conjunto de puntos. Cada celda contiene todos los puntos que están más cerca de su punto generador que de cualquier otro. En modelado paramétrico, este recurso se utiliza con frecuencia para crear patrones geométricos, perforaciones y estructuras decorativas.</p>
+</div>
+</div>
+<section id="qué-debes-hacer-1" class="level3" data-number="5.1">
+<h3 data-number="5.1" class="anchored" data-anchor-id="qué-debes-hacer-1"><span class="header-section-number">5.1</span> Qué debes hacer</h3>
+<p>Para conseguir este efecto en <em>Grasshopper</em>:</p>
+<ol type="1">
+<li>Genera puntos aleatorios en el interior de la geometría con <strong>“Populate Geometry”</strong>.</li>
+<li>Usa esos puntos como entrada de <strong>“Voronoi 3D”</strong>.</li>
+<li>Observa las celdas obtenidas y comprueba si su tamaño y densidad resultan adecuados.</li>
+<li>Resta esas celdas a la vasija mediante <strong>“Solid Difference”</strong>.</li>
+</ol>
+<p>El número de puntos influirá mucho en el resultado: con pocos puntos obtendrás un patrón más simple; con muchos, una perforación más densa y compleja.</p>
+<div id="fig-voronoi-grafo" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-voronoi-grafo-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../resources/practica7/voronoi_graph.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-voronoi-grafo-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;12: Definición de Grasshopper para generar un patrón Voronoi en la vasija.
+</figcaption>
+</figure>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Prueba y compara
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>No te quedes con una sola versión. Cambia el número de puntos, el tamaño de la vasija o la posición de los perfiles y compara varios resultados. En diseño paramétrico, explorar alternativas forma parte del propio ejercicio.</p>
+</div>
+</div>
+</section>
+</section>
+<section id="ejercicio-4-generación-de-imágenes-con-modelos-de-difusión" class="level2" data-number="6">
+<h2 data-number="6" class="anchored" data-anchor-id="ejercicio-4-generación-de-imágenes-con-modelos-de-difusión"><span class="header-section-number">6</span> Ejercicio 4: generación de imágenes con modelos de difusión</h2>
+<p>Una vez modeladas la taza y la vasija, podemos generar una imagen final más rica visualmente mediante un modelo de difusión. La idea no es modificar la geometría base, sino utilizar una vista del modelo como referencia para añadir materiales, iluminación, contexto y detalles que no estaban presentes en la escena original.</p>
+<p>De este modo, una geometría sencilla puede transformarse en una imagen más cercana a una visualización arquitectónica. A continuación se muestran algunos ejemplos obtenidos a partir de modelos generados durante la práctica:</p>
+<div class="quarto-layout-panel" data-layout="[30,30,30]">
+<div class="quarto-layout-row">
+<div class="column quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
+<p><img src="../resources/practica7/diffusion-images/building.jpg" class="img-fluid"></p>
+<div class="prompt-small">
+<p><strong>Prompt:</strong> <i>Photorealistic futuristic building inspired by the attached reference image, preserving its tall hexagonal silhouette and irregular cellular lattice structure. Reimagine it as a parametric architectural tower or pavilion with a metallic exoskeleton, glass walls, terraces, integrated base, and realistic architectural details. Set it in a modern urban plaza with soft landscaping and people for scale. Cinematic lighting, elegant materials, contemporary architecture, highly detailed, realistic reflections and shadows.</i></p>
+</div>
+</div>
+<div class="column quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
+<p><img src="../resources/practica7/diffusion-images/teacup.jpg" class="img-fluid"></p>
+<div class="prompt-small">
+<p><strong>Prompt:</strong> <i>The mesh is a metal teacup lying on a wooden table in a modern kitchen.</i></p>
+</div>
+</div>
+<div class="column quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
+<p><img src="../resources/practica7/diffusion-images/vase_flowers.jpg" class="img-fluid"></p>
+<div class="prompt-small">
+<p><strong>Prompt:</strong> <i>Photorealistic decorative vase inspired by the attached reference image, preserving its tall organic lattice structure and hexagonal opening. Refine it into a functional vase with an integrated base and a polished metallic material, such as brushed copper or glossy red metal. Fill it with a lush bouquet of large overflowing flowers — peonies, dahlias, roses, soft greenery, and trailing stems — creating an abundant, luxurious arrangement. Place it on a warm wooden table in a stylish kitchen, lit by soft natural window light, with realistic reflections, shadows, and an elegant editorial interior design aesthetic.</i></p>
+</div>
+</div>
+</div>
+</div>
+<section id="cómo-usar-rhino-banana" class="level3" data-number="6.1">
+<h3 data-number="6.1" class="anchored" data-anchor-id="cómo-usar-rhino-banana"><span class="header-section-number">6.1</span> Cómo usar Rhino Banana</h3>
+<p>Para comenzar a generar imágenes, abre <strong><em>RhinoBanana</em></strong> desde la línea de comandos de <em>Rhino</em> escribiendo <code>RhinoBanana</code> y pulsando Enter. Se abrirá una ventana como la que se muestra en la <a href="#fig-rhino-banana" class="quarto-xref">Figura&nbsp;13</a>.</p>
+<div id="fig-rhino-banana" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-rhino-banana-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../resources/practica7/rhino_banana.png" class="img-fluid figure-img" style="width:60.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-rhino-banana-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;13: Interfaz de RhinoBanana.
+</figcaption>
+</figure>
+</div>
+<p>En esta interfaz podrás:</p>
+<ul>
+<li>seleccionar la vista que se utilizará como referencia;</li>
+<li>elegir la proporción de la imagen final;</li>
+<li>escoger el modelo de difusión;</li>
+<li>escribir o refinar el <em>prompt</em>.</li>
+</ul>
+<p>Además, la herramienta incluye un <strong><em>Prompt agent</em></strong> que, a partir de una descripción breve, puede ayudarte a generar un <em>prompt</em> más largo y elaborado, o a ajustar los parámetros del proceso de generación para conseguir un resultado más cercano a lo que buscas.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Nota</span>Recomendación
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Empieza con un <em>prompt</em> simple y claro. Si el resultado no se parece a lo que buscas, añade después detalles sobre material, iluminación, contexto o estilo. Suele funcionar mejor que escribir desde el principio un texto muy largo sin saber qué parte está influyendo en la imagen.</p>
+</div>
+</div>
+</section>
+</section>
+<section id="qué-debes-entregar" class="level2" data-number="7">
+<h2 data-number="7" class="anchored" data-anchor-id="qué-debes-entregar"><span class="header-section-number">7</span> Qué debes entregar</h2>
+<p><strong>Sólo debe realizar la entrega un miembro del grupo.</strong> Sube a Moodle un fichero comprimido <code>practica7.zip</code> que contenga:</p>
+<ul>
+<li><code>taza.obj</code>, con la geometría de la taza modelada en <em>Grasshopper</em>;</li>
+<li><code>vasija.obj</code>, con la geometría de la vasija modelada en <em>Grasshopper</em>;</li>
+<li><code>diffusion.png</code>, una imagen generada con un modelo de difusión a partir de una vista de la vasija.</li>
+</ul>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Importante</span>Exportar la geometría
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Para exportar la geometría de la taza y la vasija, selecciona cada una de ellas en <em>Rhino</em> y ve a <code>Archivo &gt; Exportar selección</code>. Elige el formato <strong>Wavefront OBJ</strong> y guarda el fichero con el nombre correspondiente (<code>taza.obj</code> o <code>vasija.obj</code>).</p>
+</div>
+</div>
 
 
 </section>
@@ -739,7 +1131,6 @@ Uso docente no comercial permitido con atribución y licencia compartida.</p>
 </div>
   </div>
 </footer>
-<script>videojs(video_shortcode_videojs_video1);</script>
 
 
 
