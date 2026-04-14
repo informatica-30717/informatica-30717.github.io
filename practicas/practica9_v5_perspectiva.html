@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Práctica 9: Introducción a Grasshopper – Informática (30717) - Grado en Estudios en Arquitectura</title>
+<title>Práctica 9: Perspectiva interactiva – Informática (30717) - Grado en Estudios en Arquitectura</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -109,11 +109,11 @@ window.Quarto = {
 </script>
 
 <link rel="stylesheet" href="../styles.css">
-<meta property="og:title" content="Práctica 9: Introducción a Grasshopper – Informática (30717) - Grado en Estudios en Arquitectura">
-<meta property="og:description" content="~10 min de lectura">
+<meta property="og:title" content="Práctica 9: Perspectiva interactiva – Informática (30717) - Grado en Estudios en Arquitectura">
+<meta property="og:description" content="~8 min de lectura">
 <meta property="og:site_name" content="Informática (30717) - Grado en Estudios en Arquitectura">
-<meta name="twitter:title" content="Práctica 9: Introducción a Grasshopper – Informática (30717) - Grado en Estudios en Arquitectura">
-<meta name="twitter:description" content="~10 min de lectura">
+<meta name="twitter:title" content="Práctica 9: Perspectiva interactiva – Informática (30717) - Grado en Estudios en Arquitectura">
+<meta name="twitter:description" content="~8 min de lectura">
 <meta name="twitter:card" content="summary">
 </head>
 
@@ -154,7 +154,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Práctica 9: Introducción a Grasshopper</li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Práctica 9: Perspectiva interactiva</li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
@@ -258,17 +258,17 @@ window.Quarto = {
     <h2 id="toc-title">En esta página</h2>
    
   <ul>
-  <li><a href="#visor-3d-interactivo" id="toc-visor-3d-interactivo" class="nav-link active" data-scroll-target="#visor-3d-interactivo"><span class="header-section-number">1</span> Visor 3D interactivo</a></li>
+  <li><a href="#de-la-cámara-a-la-pantalla" id="toc-de-la-cámara-a-la-pantalla" class="nav-link active" data-scroll-target="#de-la-cámara-a-la-pantalla"><span class="header-section-number">1</span> De la cámara a la pantalla</a></li>
   </ul>
-<div class="quarto-alternate-formats"><h2>Otros formatos</h2><ul><li><a href="practica9.reveal.html"><i class="bi bi-file-slides"></i>RevealJS</a></li></ul></div></nav>
+<div class="quarto-alternate-formats"><h2>Otros formatos</h2><ul><li><a href="practica9_v5_perspectiva.reveal.html"><i class="bi bi-file-slides"></i>RevealJS</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Práctica 9: Introducción a Grasshopper</h1>
-<p class="subtitle lead"><span class="badge rounded-pill text-bg-secondary">~10 min de lectura</span></p>
+<h1 class="title">Práctica 9: Perspectiva interactiva</h1>
+<p class="subtitle lead"><span class="badge rounded-pill text-bg-secondary">~8 min de lectura</span></p>
 </div>
 
 
@@ -285,354 +285,778 @@ window.Quarto = {
 </header>
 
 
-<section id="visor-3d-interactivo" class="level2" data-number="1">
-<h2 data-number="1" class="anchored" data-anchor-id="visor-3d-interactivo"><span class="header-section-number">1</span> Visor 3D interactivo</h2>
+<section id="de-la-cámara-a-la-pantalla" class="level2" data-number="1">
+<h2 data-number="1" class="anchored" data-anchor-id="de-la-cámara-a-la-pantalla"><span class="header-section-number">1</span> De la cámara a la pantalla</h2>
+<p>La siguiente visualización interactiva muestra cómo actúa la transformación <code>perspectiva(fov, ar, n, f)</code> sobre un objeto tridimensional.</p>
 <p><span class="math display">\[
-C_p = k_a C_a + k_d C_l (n_p \cdot d_l) + k_s C_l (r_p \cdot v)^e
+M_p =
+\begin{pmatrix}
+(ar\tan(fov/2))^{-1} &amp; 0 &amp; 0 &amp; 0 \\
+0 &amp; \tan(fov/2)^{-1} &amp; 0 &amp; 0 \\
+0 &amp; 0 &amp; \frac{f}{f-n} &amp; -\frac{nf}{f-n} \\
+0 &amp; 0 &amp; 1 &amp; 0
+\end{pmatrix}
 \]</span></p>
 <style>
-#pt-uza{margin:1.2rem 0;border:1px solid #d8dde6;border-radius:18px;padding:1.1rem;background:#fafbfc;box-shadow:0 6px 24px rgba(0,0,0,.06)}
-#pt-uza .main-layout{display:grid;grid-template-columns:1fr;gap:1rem;align-items:start}
-#pt-uza .viewer-card{background:#fff;border:1px solid #e2e8f0;border-radius:16px;padding:0.6rem;min-width:0}
-#pt-uza .viewer{position:relative;width:100%;border-radius:14px;border:1px solid #d8dde6;overflow:hidden;background:#18181b}
-#pt-uza .viewer canvas{display:block;width:100%;height:auto;image-rendering:auto}
-#pt-uza .overlay{position:absolute;bottom:10px;left:12px;color:rgba(255,255,255,.8);font:13px/1.4 monospace;background:rgba(0,0,0,.45);padding:3px 10px;border-radius:6px;pointer-events:none}
-#pt-uza .sidebar{display:flex;flex-direction:column;gap:0.8rem}
-#pt-uza .card{background:#fff;border:1px solid #e2e8f0;border-radius:16px;padding:1rem 1.1rem}
-#pt-uza .card h4{margin:0 0 .7rem 0;font-size:1rem}
-#pt-uza .row{display:grid;grid-template-columns:1fr 60px;gap:.5rem;align-items:center;margin:.45rem 0}
-#pt-uza .row label{font-size:.9rem}
-#pt-uza .row.compact{grid-template-columns:1fr}
-#pt-uza input[type="range"]{width:100%}
-#pt-uza input[type="color"]{width:100%;min-width:48px;height:32px;padding:0;border:none;background:transparent}
-#pt-uza button{border:1px solid #cbd5e1;background:#fff;border-radius:10px;padding:.45rem .85rem;cursor:pointer;font-size:.93rem;margin-top:.4rem;width:100%}
-#pt-uza button:hover{background:#f1f5f9}
-#pt-uza .info{font-size:.85rem;color:#475569;margin-top:.3rem;line-height:1.4}
-#pt-uza .load-error{padding:1rem;color:#7f1d1d}
-@media(max-width:850px){
-  #pt-uza .main-layout{grid-template-columns:1fr}
-  #pt-uza .viewer{min-height:400px}
+#perspective-demo-uza {
+  margin: 1.2rem 0;
+  border: 1px solid #d8dde6;
+  border-radius: 18px;
+  padding: 1.15rem;
+  background: #fafbfc;
+  box-shadow: 0 6px 24px rgba(0,0,0,0.06);
+}
+
+#perspective-demo-uza .controls-grid,
+#perspective-demo-uza .panels-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(320px, 1fr));
+  gap: 1rem;
+}
+
+#perspective-demo-uza .controls-grid {
+  margin-bottom: 1rem;
+}
+
+#perspective-demo-uza .card {
+  background: white;
+  border: 1px solid #e2e8f0;
+  border-radius: 16px;
+  padding: 1rem 1.1rem;
+}
+
+#perspective-demo-uza .card h4 {
+  margin: 0 0 0.8rem 0;
+  font-size: 1rem;
+}
+
+#perspective-demo-uza .row {
+  display: grid;
+  grid-template-columns: 150px 1fr 62px;
+  gap: 0.8rem;
+  align-items: center;
+  margin: 0.62rem 0;
+}
+
+#perspective-demo-uza .row.compact {
+  grid-template-columns: 150px 1fr;
+}
+
+#perspective-demo-uza input[type="range"],
+#perspective-demo-uza select {
+  width: 100%;
+}
+
+#perspective-demo-uza button {
+  border: 1px solid #cbd5e1;
+  background: #ffffff;
+  border-radius: 999px;
+  padding: 0.48rem 0.9rem;
+  cursor: pointer;
+  font-size: 0.93rem;
+}
+
+#perspective-demo-uza button:hover {
+  background: #f8fafc;
+}
+
+#perspective-demo-uza .buttonline {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.55rem;
+}
+
+#perspective-demo-uza .viewer-wrap {
+  background: white;
+  border: 1px solid #e2e8f0;
+  border-radius: 16px;
+  padding: 0.85rem;
+}
+
+#perspective-demo-uza .viewer-title {
+  margin: 0 0 0.7rem 0;
+  font-size: 0.98rem;
+}
+
+#perspective-demo-uza canvas {
+  width: 100%;
+  height: auto;
+  display: block;
+  border: 1px solid #d8dde6;
+  border-radius: 14px;
+  background: linear-gradient(180deg, #f5f7fa 0%, #edf2f7 100%);
+}
+
+#perspective-demo-uza .matrix-box {
+  overflow-x: auto;
+}
+
+#perspective-demo-uza table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+#perspective-demo-uza th,
+#perspective-demo-uza td {
+  border: 1px solid #e2e8f0;
+  padding: 0.45rem 0.55rem;
+  text-align: center;
+  font-variant-numeric: tabular-nums;
+}
+
+#perspective-demo-uza .matrix td {
+  min-width: 74px;
+}
+
+#perspective-demo-uza .highlight {
+  background: #fff4cc;
+}
+
+#perspective-demo-uza .subtle {
+  color: #64748b;
+  font-size: 0.92rem;
+}
+
+#perspective-demo-uza .pill {
+  display: inline-block;
+  border-radius: 999px;
+  padding: 0.18rem 0.58rem;
+  background: #eef2ff;
+  border: 1px solid #c7d2fe;
+  font-size: 0.85rem;
+  margin-bottom: 0.65rem;
+}
+
+#perspective-demo-uza .pill.warn {
+  background: #fff7ed;
+  border-color: #fed7aa;
+}
+
+#perspective-demo-uza .formula-list {
+  margin: 0.8rem 0 0 0;
+  padding-left: 1.15rem;
+  color: #475569;
+}
+
+#perspective-demo-uza .formula-list li {
+  margin: 0.28rem 0;
+}
+
+@media (max-width: 950px) {
+  #perspective-demo-uza .controls-grid,
+  #perspective-demo-uza .panels-grid {
+    grid-template-columns: 1fr;
+  }
+
+  #perspective-demo-uza .row,
+  #perspective-demo-uza .row.compact {
+    grid-template-columns: 1fr;
+  }
 }
 </style>
 
-<div id="pt-uza">
-  <div class="main-layout">
-    <div class="viewer-card">
-      <div class="viewer" id="viewer-uza">
-        <canvas id="pt-canvas"></canvas>
-        <div class="overlay" id="pt-info">Cargando...</div>
+<div id="perspective-demo-uza">
+  <div class="controls-grid">
+    <div class="card">
+      <h4 class="anchored">Cámara</h4>
+
+      <div class="row">
+        <label for="fov-uza">fov</label>
+        <input id="fov-uza" type="range" min="20" max="110" step="1" value="60">
+        <span data-role="fov-val">60°</span>
+      </div>
+
+      <div class="row">
+        <label for="ar-uza">ar = h / w</label>
+        <input id="ar-uza" type="range" min="0.45" max="1.30" step="0.01" value="0.75">
+        <span data-role="ar-val">0.75</span>
+      </div>
+
+      <div class="row">
+        <label for="near-uza">n</label>
+        <input id="near-uza" type="range" min="0.50" max="4.00" step="0.05" value="1.00">
+        <span data-role="near-val">1.00</span>
+      </div>
+
+      <div class="row">
+        <label for="far-uza">f</label>
+        <input id="far-uza" type="range" min="6" max="24" step="0.2" value="14.0">
+        <span data-role="far-val">14.0</span>
       </div>
     </div>
-    <div class="sidebar">
-      <div class="card">
-        <h4 class="anchored">Parámetros de iluminación</h4>
-        <div class="row compact">
-          <label for="ca-uza">Color ambiente (C<sub>a</sub>)</label>
-          <input id="ca-uza" type="color" value="#fff4d8">
-        </div>
-        <div class="row compact">
-          <label for="cl-uza">Color luz (C<sub>l</sub>)</label>
-          <input id="cl-uza" type="color" value="#ffffff">
-        </div>
-        <label for="ka-uza" style="font-size:.9rem;margin-top:.4rem;display:block">k<sub>a</sub></label>
-        <div class="row">
-          <input id="ka-uza" type="range" min="0" max="1.2" step="0.01" value="0.30">
-          <span data-v="ka">0.30</span>
-        </div>
-        <label for="kd-uza" style="font-size:.9rem;display:block">k<sub>d</sub></label>
-        <div class="row">
-          <input id="kd-uza" type="range" min="0" max="1.5" step="0.01" value="1.00">
-          <span data-v="kd">1.00</span>
-        </div>
-        <label for="ks-uza" style="font-size:.9rem;display:block">k<sub>s</sub></label>
-        <div class="row">
-          <input id="ks-uza" type="range" min="0" max="1.5" step="0.01" value="0.55">
-          <span data-v="ks">0.55</span>
-        </div>
-        <label for="exp-uza" style="font-size:.9rem;display:block">Exponente (e)</label>
-        <div class="row">
-          <input id="exp-uza" type="range" min="1" max="256" step="1" value="60">
-          <span data-v="exp">60</span>
-        </div>
+
+    <div class="card">
+      <h4 class="anchored">Objeto</h4>
+
+      <div class="row">
+        <label for="ox-uza">x</label>
+        <input id="ox-uza" type="range" min="-3.0" max="3.0" step="0.05" value="0.55">
+        <span data-role="ox-val">0.55</span>
       </div>
+
+      <div class="row">
+        <label for="oy-uza">y</label>
+        <input id="oy-uza" type="range" min="-2.0" max="2.0" step="0.05" value="0.15">
+        <span data-role="oy-val">0.15</span>
+      </div>
+
+      <div class="row">
+        <label for="oz-uza">z</label>
+        <input id="oz-uza" type="range" min="2.2" max="18.0" step="0.1" value="6.5">
+        <span data-role="oz-val">6.5</span>
+      </div>
+
+      <div class="row">
+        <label for="rot-uza">rot. Y</label>
+        <input id="rot-uza" type="range" min="-65" max="65" step="1" value="25">
+        <span data-role="rot-val">25°</span>
+      </div>
+
+      <div class="row">
+        <label for="size-uza">tamaño</label>
+        <input id="size-uza" type="range" min="0.5" max="2.4" step="0.05" value="1.1">
+        <span data-role="size-val">1.10</span>
+      </div>
+    </div>
+
+    <div class="card">
+      <h4 class="anchored">Punto seguido</h4>
+
+      <div class="row compact">
+        <label for="vertex-uza">Vértice</label>
+        <select id="vertex-uza">
+          <option value="0">v0</option>
+          <option value="1">v1</option>
+          <option value="2">v2</option>
+          <option value="3">v3</option>
+          <option value="4">v4</option>
+          <option value="5">v5</option>
+          <option value="6">v6</option>
+          <option value="7">v7</option>
+        </select>
+      </div>
+
+      <div class="subtle">El punto seleccionado se resalta en el volumen de visión y en la pantalla final.</div>
+    </div>
+
+    <div class="card">
+      <h4 class="anchored">Preajustes</h4>
+      <div class="buttonline">
+        <button type="button" data-preset="wide">Gran angular</button>
+        <button type="button" data-preset="normal">Normal</button>
+        <button type="button" data-preset="tele">Teleobjetivo</button>
+        <button type="button" data-preset="clip">Recorte fuerte</button>
+        <button type="button" data-preset="reset">Restablecer</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="panels-grid">
+    <div class="viewer-wrap">
+      <h4 class="viewer-title anchored">Volumen de visión</h4>
+      <canvas id="frustum-canvas-uza" width="640" height="420"></canvas>
+    </div>
+
+    <div class="viewer-wrap">
+      <h4 class="viewer-title anchored">Pantalla final</h4>
+      <canvas id="screen-canvas-uza" width="640" height="420"></canvas>
+    </div>
+
+    <div class="card matrix-box">
+      <h4 class="anchored">Matriz de perspectiva</h4>
+      <div class="subtle">Se resaltan las entradas que más cambian con el último parámetro modificado.</div>
+      <table class="matrix" id="matrix-table-uza"></table>
+      <ul class="formula-list">
+        <li><code>m00 = 1 / (ar · tan(fov/2))</code></li>
+        <li><code>m11 = 1 / tan(fov/2)</code></li>
+        <li><code>m22 = f / (f - n)</code></li>
+        <li><code>m23 = -n f / (f - n)</code></li>
+        <li><code>w = z</code></li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h4 class="anchored">Recorrido de un punto</h4>
+      <div id="visibility-pill-uza" class="pill">Visible</div>
+      <table id="pipeline-table-uza"></table>
     </div>
   </div>
 </div>
 
 <script>
-(function(){
-'use strict';
-var viewer = document.getElementById('viewer-uza');
-var canvas = document.getElementById('pt-canvas');
-var overlay = document.getElementById('pt-info');
-var root = document.getElementById('pt-uza');
-if(!viewer||!canvas||!root){return;}
+(() => {
+  const root = document.getElementById("perspective-demo-uza");
 
-/* ---- resolution ---- */
-var W = 480, H = 360;
-canvas.width = W; canvas.height = H;
-var ctx = canvas.getContext('2d');
-if(!ctx){viewer.innerHTML='<div class="load-error">Canvas no disponible.</div>';return;}
-var imgData = ctx.createImageData(W, H);
-var pix = imgData.data;
+  const controls = {
+    fov: root.querySelector("#fov-uza"),
+    ar: root.querySelector("#ar-uza"),
+    near: root.querySelector("#near-uza"),
+    far: root.querySelector("#far-uza"),
+    ox: root.querySelector("#ox-uza"),
+    oy: root.querySelector("#oy-uza"),
+    oz: root.querySelector("#oz-uza"),
+    rot: root.querySelector("#rot-uza"),
+    size: root.querySelector("#size-uza"),
+    vertex: root.querySelector("#vertex-uza"),
 
-/* ---- vector helpers ---- */
-function dot(a,b){return a[0]*b[0]+a[1]*b[1]+a[2]*b[2];}
-function sub(a,b){return[a[0]-b[0],a[1]-b[1],a[2]-b[2]];}
-function addv(a,b){return[a[0]+b[0],a[1]+b[1],a[2]+b[2]];}
-function scl(a,s){return[a[0]*s,a[1]*s,a[2]*s];}
-function nrm(a){var l=Math.sqrt(dot(a,a));return l>1e-8?[a[0]/l,a[1]/l,a[2]/l]:[0,0,0];}
-function rfl(d,n){var c=2*dot(d,n);return[d[0]-c*n[0],d[1]-c*n[1],d[2]-c*n[2]];}
+    fovVal: root.querySelector('[data-role="fov-val"]'),
+    arVal: root.querySelector('[data-role="ar-val"]'),
+    nearVal: root.querySelector('[data-role="near-val"]'),
+    farVal: root.querySelector('[data-role="far-val"]'),
+    oxVal: root.querySelector('[data-role="ox-val"]'),
+    oyVal: root.querySelector('[data-role="oy-val"]'),
+    ozVal: root.querySelector('[data-role="oz-val"]'),
+    rotVal: root.querySelector('[data-role="rot-val"]'),
+    sizeVal: root.querySelector('[data-role="size-val"]')
+  };
 
-/* ---- intersections ---- */
-function hitSphere(ro,rd,cen,r){
-  var oc=sub(ro,cen),b=dot(oc,rd),c=dot(oc,oc)-r*r,h=b*b-c;
-  if(h<0)return-1;var t=-b-Math.sqrt(h);return t>0.002?t:-1;
-}
-function hitPlane(ro,rd,pp,pn){
-  var d=dot(rd,pn);if(Math.abs(d)<1e-4)return-1;
-  var t=(dot(pp,pn)-dot(ro,pn))/d;return t>0.002?t:-1;
-}
-function hitBox(ro,rd,mn,mx){
-  var e=1e-5,ix=1/(rd[0]+e),iy=1/(rd[1]+e),iz=1/(rd[2]+e);
-  var t1x=(mn[0]-ro[0])*ix,t2x=(mx[0]-ro[0])*ix;
-  var t1y=(mn[1]-ro[1])*iy,t2y=(mx[1]-ro[1])*iy;
-  var t1z=(mn[2]-ro[2])*iz,t2z=(mx[2]-ro[2])*iz;
-  var en=Math.max(Math.min(t1x,t2x),Math.max(Math.min(t1y,t2y),Math.min(t1z,t2z)));
-  var ex=Math.min(Math.max(t1x,t2x),Math.min(Math.max(t1y,t2y),Math.max(t1z,t2z)));
-  if(en>ex||ex<0.002)return-1;return en>0.002?en:ex;
-}
-function boxNml(p,mn,mx){
-  var cx=(mn[0]+mx[0])*0.5,cy=(mn[1]+mx[1])*0.5,cz=(mn[2]+mx[2])*0.5;
-  var dx=(mx[0]-mn[0])*0.5,dy=(mx[1]-mn[1])*0.5,dz=(mx[2]-mn[2])*0.5;
-  var rx=Math.abs((p[0]-cx)/dx),ry=Math.abs((p[1]-cy)/dy),rz=Math.abs((p[2]-cz)/dz);
-  if(rx>ry&&rx>rz)return[p[0]>cx?1:-1,0,0];
-  if(ry>rz)return[0,p[1]>cy?1:-1,0];
-  return[0,0,p[2]>cz?1:-1];
-}
+  const presetButtons = root.querySelectorAll("[data-preset]");
+  const frustumCanvas = root.querySelector("#frustum-canvas-uza");
+  const screenCanvas = root.querySelector("#screen-canvas-uza");
+  const fctx = frustumCanvas.getContext("2d");
+  const sctx = screenCanvas.getContext("2d");
+  const matrixTable = root.querySelector("#matrix-table-uza");
+  const pipelineTable = root.querySelector("#pipeline-table-uza");
+  const visibilityPill = root.querySelector("#visibility-pill-uza");
 
-/* ---- scene constants ---- */
-var SC=[-1.15,-1.7,-0.2],SR=0.8;
-var BMN=[0.3,-3,-0.1],BMX=[1.8,-0.3,1.4];
-var LP=[0,2.95,0];
-var MCOLORS=[[0.93,0.93,0.93],[0.72,0.14,0.12],[0.12,0.70,0.15],[0.85,0.64,0.38],[0.90,0.90,0.90]];
-var sphereRotY=0,sphereRotX=0;
+  let focusParam = "fov";
 
-function rotateSphere(p,ry,rx){
-  var sy=Math.sin(ry),cy=Math.cos(ry),sx=Math.sin(rx),cx=Math.cos(rx);
-  var px=p[0]*cy-p[2]*sy,pz=p[0]*sy+p[2]*cy;
-  var py=p[1]*cx-pz*sx,pz2=p[1]*sx+pz*cx;
-  return[px,py,pz2];
-}
+  const cubeEdges = [
+    [0,1],[1,2],[2,3],[3,0],
+    [4,5],[5,6],[6,7],[7,4],
+    [0,4],[1,5],[2,6],[3,7]
+  ];
 
-function castRay(ro,rd){
-  var best=1e9,mat=-1,t,p;
-  t=hitPlane(ro,rd,[0,-3,0],[0,1,0]);
-  if(t>0&&t<best){p=addv(ro,scl(rd,t));if(Math.abs(p[0])<=3&&Math.abs(p[2])<=3){best=t;mat=0;}}
-  t=hitPlane(ro,rd,[0,3,0],[0,-1,0]);
-  if(t>0&&t<best){p=addv(ro,scl(rd,t));if(Math.abs(p[0])<=3&&Math.abs(p[2])<=3){best=t;mat=(p[0]>=-0.7&&p[0]<=0.7&&p[2]>=-0.7&&p[2]<=0.7)?5:0;}}
-  t=hitPlane(ro,rd,[0,0,-3],[0,0,1]);
-  if(t>0&&t<best){p=addv(ro,scl(rd,t));if(Math.abs(p[0])<=3&&Math.abs(p[1])<=3){best=t;mat=0;}}
-  t=hitPlane(ro,rd,[-3,0,0],[1,0,0]);
-  if(t>0&&t<best){p=addv(ro,scl(rd,t));if(Math.abs(p[1])<=3&&Math.abs(p[2])<=3){best=t;mat=1;}}
-  t=hitPlane(ro,rd,[3,0,0],[-1,0,0]);
-  if(t>0&&t<best){p=addv(ro,scl(rd,t));if(Math.abs(p[1])<=3&&Math.abs(p[2])<=3){best=t;mat=2;}}
-  var rotSC=rotateSphere(SC,sphereRotY,sphereRotX);
-  t=hitSphere(ro,rd,rotSC,SR);
-  if(t>0&&t<best){best=t;mat=3;}
-  t=hitBox(ro,rd,BMN,BMX);
-  if(t>0&&t<best){best=t;mat=4;}
-  if(mat<0)return null;
-  p=addv(ro,scl(rd,best));
-  var n;
-  if(mat===0){
-    if(Math.abs(p[1]+3)<0.01)n=[0,1,0];
-    else if(Math.abs(p[1]-3)<0.01)n=[0,-1,0];
-    else n=[0,0,1];
-  }else if(mat===1)n=[1,0,0];
-  else if(mat===2)n=[-1,0,0];
-  else if(mat===3){
-    var rotSC2=rotateSphere(SC,sphereRotY,sphereRotX);
-    n=nrm(sub(p,rotSC2));
+  function clamp(v, a, b) {
+    return Math.max(a, Math.min(b, v));
   }
-  else if(mat===4)n=boxNml(p,BMN,BMX);
-  else n=[0,-1,0];
-  return{t:best,mat:mat,p:p,n:n,sc:mat<5?MCOLORS[mat]:[1,1,1]};
-}
 
-/* ---- camera ---- */
-var camT=0,camP=1.35,camR=7.8,dirty=true;
-var eye=[0,0,0],fwd=[0,0,-1],right=[1,0,0],up=[0,1,0];
-function syncCam(){
-  var sp=Math.sin(camP),cp=Math.cos(camP),st=Math.sin(camT),ct=Math.cos(camT);
-  eye=[camR*sp*st,camR*cp,camR*sp*ct];
-  var fl=Math.sqrt(eye[0]*eye[0]+eye[1]*eye[1]+eye[2]*eye[2]);
-  fwd=[-eye[0]/fl,-eye[1]/fl,-eye[2]/fl];
-  var rx=-fwd[2],rz=fwd[0],rl=Math.sqrt(rx*rx+rz*rz);
-  if(rl>0.001){rx/=rl;rz/=rl;}else{rx=1;rz=0;}
-  right=[rx,0,rz];
-  up=[-rz*fwd[1],rz*fwd[0]-rx*fwd[2],rx*fwd[1]];
-}
+  function degToRad(d) {
+    return d * Math.PI / 180;
+  }
 
-/* ---- orbit ---- */
-var drag=false,mx0=0,my0=0;
-canvas.addEventListener('mousedown',function(e){drag=true;mx0=e.clientX;my0=e.clientY;e.preventDefault();});
-canvas.addEventListener('mousemove',function(e){if(!drag)return;camT-=(e.clientX-mx0)*0.005;camP=Math.max(0.15,Math.min(Math.PI-0.15,camP-(e.clientY-my0)*0.005));mx0=e.clientX;my0=e.clientY;dirty=true;});
-window.addEventListener('mouseup',function(){drag=false;});
-canvas.addEventListener('touchstart',function(e){if(e.touches.length===1){drag=true;mx0=e.touches[0].clientX;my0=e.touches[0].clientY;e.preventDefault();}},{passive:false});
-canvas.addEventListener('touchmove',function(e){if(!drag||e.touches.length!==1)return;camT-=(e.touches[0].clientX-mx0)*0.005;camP=Math.max(0.15,Math.min(Math.PI-0.15,camP-(e.touches[0].clientY-my0)*0.005));mx0=e.touches[0].clientX;my0=e.touches[0].clientY;dirty=true;e.preventDefault();},{passive:false});
-canvas.addEventListener('touchend',function(){drag=false;});
+  function fmt(v, digits = 3) {
+    if (!Number.isFinite(v)) return "—";
+    const abs = Math.abs(v);
+    if (abs >= 1000) return v.toFixed(1);
+    if (abs >= 100) return v.toFixed(2);
+    return v.toFixed(digits);
+  }
 
-/* ---- UI ---- */
-var ui={ca:root.querySelector('#ca-uza'),cl:root.querySelector('#cl-uza'),ka:root.querySelector('#ka-uza'),kd:root.querySelector('#kd-uza'),ks:root.querySelector('#ks-uza'),exp:root.querySelector('#exp-uza')};
-function hex2gl(h){return[parseInt(h.slice(1,3),16)/255,parseInt(h.slice(3,5),16)/255,parseInt(h.slice(5,7),16)/255];}
-function updateLabels(){
-  root.querySelector('[data-v="ka"]').textContent=Number(ui.ka.value).toFixed(2);
-  root.querySelector('[data-v="kd"]').textContent=Number(ui.kd.value).toFixed(2);
-  root.querySelector('[data-v="ks"]').textContent=Number(ui.ks.value).toFixed(2);
-  root.querySelector('[data-v="exp"]').textContent=ui.exp.value;
-}
-function onParam(){dirty=true;updateLabels();}
-[ui.ca,ui.cl,ui.ka,ui.kd,ui.ks,ui.exp].forEach(function(el){el.addEventListener('input',onParam);el.addEventListener('change',onParam);});
-updateLabels();
+  function projectIso(p) {
+    const x = p[0], y = p[1], z = p[2];
+    return [
+      0.95 * x - 0.42 * z,
+      -1.0 * y - 0.18 * z
+    ];
+  }
 
-/* ---- path tracing ---- */
-function tonemap(v){
-  var a=2.51,b=0.03,c=2.43,d=0.59,e=0.14;
-  return(v*(a*v+b))/(v*(c*v+d)+e);
-}
+  function rotateY(p, angle) {
+    const c = Math.cos(angle);
+    const s = Math.sin(angle);
+    return [
+      c * p[0] + s * p[2],
+      p[1],
+      -s * p[0] + c * p[2]
+    ];
+  }
 
-function randomOnHemisphere(n){
-  var r1=Math.random(),r2=Math.random();
-  var theta=Math.acos(Math.sqrt(1-r1)),phi=2*Math.PI*r2;
-  var st=Math.sin(theta),ct=Math.cos(theta),sp=Math.sin(phi),cp=Math.cos(phi);
-  var x=st*cp,y=st*sp,z=ct;
-  var tx=Math.abs(n[2])>0.9?[0,1,0]:[0,0,1];
-  var right=nrm([n[1]*tx[2]-n[2]*tx[1],n[2]*tx[0]-n[0]*tx[2],n[0]*tx[1]-n[1]*tx[0]]);
-  var up=nrm([n[1]*right[2]-n[2]*right[1],n[2]*right[0]-n[0]*right[2],n[0]*right[1]-n[1]*right[0]]);
-  return nrm([x*right[0]+y*up[0]+z*n[0],x*right[1]+y*up[1]+z*n[1],x*right[2]+y*up[2]+z*n[2]]);
-}
+  function mulPerspective(p, camera) {
+    const t = Math.tan(camera.fov / 2);
+    const m00 = 1 / (camera.ar * t);
+    const m11 = 1 / t;
+    const m22 = camera.f / (camera.f - camera.n);
+    const m23 = -camera.n * camera.f / (camera.f - camera.n);
 
-function tracePath(ro,rd,depth){
-  if(depth>2)return[0,0,0];
-  var hit=castRay(ro,rd);
-  if(!hit)return[0,0,0];
-  if(hit.mat===5)return[8,8,8];
-  var r=0,g=0,b=0;
-  if(hit.mat===4){
-    var rd_refl=rfl(rd,hit.n);
-    var refl=tracePath(addv(hit.p,scl(hit.n,0.01)),rd_refl,depth+1);
-    r=refl[0]*0.9;g=refl[1]*0.9;b=refl[2]*0.9;
-  }else{
-    var toL=sub(LP,hit.p),dist2=dot(toL,toL),dist=Math.sqrt(dist2),ld=scl(toL,1/(dist+1e-6));
-    var ndl=Math.max(dot(hit.n,ld),0);
-    if(ndl>0){
-      var sh=castRay(addv(hit.p,scl(hit.n,0.01)),ld);
-      if(!sh||sh.t>dist-0.03||sh.mat===5){
-        var direct=curKd*24*ndl/(dist2+0.15);
-        r+=hit.sc[0]*curCl[0]*direct;
-        g+=hit.sc[1]*curCl[1]*direct;
-        b+=hit.sc[2]*curCl[2]*direct;
+    const x = p[0], y = p[1], z = p[2];
+    const xc = m00 * x;
+    const yc = m11 * y;
+    const zc = m22 * z + m23;
+    const wc = z;
+
+    return {
+      clip: [xc, yc, zc, wc],
+      matrix: [
+        [m00, 0, 0, 0],
+        [0, m11, 0, 0],
+        [0, 0, m22, m23],
+        [0, 0, 1, 0]
+      ]
+    };
+  }
+
+  function pointInFrustum(p, camera) {
+    if (p[2] <= camera.n || p[2] >= camera.f) return false;
+    const t = Math.tan(camera.fov / 2);
+    const halfH = p[2] * t;
+    const halfW = halfH / camera.ar;
+    return Math.abs(p[0]) <= halfW && Math.abs(p[1]) <= halfH;
+  }
+
+  function getObjectVertices() {
+    const ox = Number(controls.ox.value);
+    const oy = Number(controls.oy.value);
+    const oz = Number(controls.oz.value);
+    const rot = degToRad(Number(controls.rot.value));
+    const s = Number(controls.size.value);
+
+    const base = [
+      [-1,-1,-1], [ 1,-1,-1], [ 1, 1,-1], [-1, 1,-1],
+      [-1,-1, 1], [ 1,-1, 1], [ 1, 1, 1], [-1, 1, 1]
+    ];
+
+    return base.map(v => {
+      const r = rotateY([v[0] * s, v[1] * s, v[2] * s], rot);
+      return [r[0] + ox, r[1] + oy, r[2] + oz];
+    });
+  }
+
+  function updateLabels() {
+    controls.fovVal.textContent = `${controls.fov.value}°`;
+    controls.arVal.textContent = Number(controls.ar.value).toFixed(2);
+    controls.nearVal.textContent = Number(controls.near.value).toFixed(2);
+    controls.farVal.textContent = Number(controls.far.value).toFixed(1);
+    controls.oxVal.textContent = Number(controls.ox.value).toFixed(2);
+    controls.oyVal.textContent = Number(controls.oy.value).toFixed(2);
+    controls.ozVal.textContent = Number(controls.oz.value).toFixed(1);
+    controls.rotVal.textContent = `${controls.rot.value}°`;
+    controls.sizeVal.textContent = Number(controls.size.value).toFixed(2);
+  }
+
+  function clearCanvas(ctx, canvas, top = "#f5f7fa", bottom = "#edf2f7") {
+    const g = ctx.createLinearGradient(0, 0, 0, canvas.height);
+    g.addColorStop(0, top);
+    g.addColorStop(1, bottom);
+    ctx.fillStyle = g;
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+  }
+
+  function drawFrustumPanel(camera, verts, selectedIndex) {
+    clearCanvas(fctx, frustumCanvas);
+
+    const n = camera.n;
+    const f = camera.f;
+    const tn = Math.tan(camera.fov / 2);
+    const nearH = n * tn;
+    const farH = f * tn;
+    const nearW = nearH / camera.ar;
+    const farW = farH / camera.ar;
+
+    const frustumVerts = [
+      [-nearW,-nearH,n], [ nearW,-nearH,n], [ nearW, nearH,n], [-nearW, nearH,n],
+      [-farW,-farH,f],   [ farW,-farH,f],   [ farW, farH,f],   [-farW, farH,f]
+    ];
+
+    const allPoints2D = [...frustumVerts, ...verts, [0,0,0]].map(projectIso);
+    const xs = allPoints2D.map(p => p[0]);
+    const ys = allPoints2D.map(p => p[1]);
+    const minX = Math.min(...xs), maxX = Math.max(...xs);
+    const minY = Math.min(...ys), maxY = Math.max(...ys);
+    const pad = 26;
+    const scale = Math.min(
+      (frustumCanvas.width - 2 * pad) / Math.max(1e-6, maxX - minX),
+      (frustumCanvas.height - 2 * pad) / Math.max(1e-6, maxY - minY)
+    );
+
+    const toCanvas = (p) => {
+      const q = projectIso(p);
+      return [
+        pad + (q[0] - minX) * scale,
+        pad + (q[1] - minY) * scale
+      ];
+    };
+
+    const frustumEdges = [
+      [0,1],[1,2],[2,3],[3,0],
+      [4,5],[5,6],[6,7],[7,4],
+      [0,4],[1,5],[2,6],[3,7]
+    ];
+
+    fctx.lineWidth = 1.3;
+    fctx.strokeStyle = "#cbd5e1";
+    fctx.beginPath();
+    frustumEdges.forEach(([a,b]) => {
+      const p = toCanvas(frustumVerts[a]);
+      const q = toCanvas(frustumVerts[b]);
+      fctx.moveTo(p[0], p[1]);
+      fctx.lineTo(q[0], q[1]);
+    });
+    fctx.stroke();
+
+    const cam2d = toCanvas([0,0,0]);
+    fctx.fillStyle = "#0f172a";
+    fctx.beginPath();
+    fctx.arc(cam2d[0], cam2d[1], 4.5, 0, Math.PI * 2);
+    fctx.fill();
+    fctx.font = "13px sans-serif";
+    fctx.fillText("cámara", cam2d[0] + 8, cam2d[1] - 8);
+
+    const nearCenter = toCanvas([0,0,n]);
+    const farCenter = toCanvas([0,0,f]);
+    fctx.fillStyle = "#64748b";
+    fctx.fillText(`n = ${fmt(n,2)}`, nearCenter[0] + 8, nearCenter[1] - 6);
+    fctx.fillText(`f = ${fmt(f,1)}`, farCenter[0] + 8, farCenter[1] - 6);
+
+    fctx.strokeStyle = "#2563eb";
+    fctx.lineWidth = 2.0;
+    fctx.beginPath();
+    cubeEdges.forEach(([a,b]) => {
+      const p = toCanvas(verts[a]);
+      const q = toCanvas(verts[b]);
+      fctx.moveTo(p[0], p[1]);
+      fctx.lineTo(q[0], q[1]);
+    });
+    fctx.stroke();
+
+    const sp = toCanvas(verts[selectedIndex]);
+    fctx.strokeStyle = "#ef4444";
+    fctx.lineWidth = 1.8;
+    fctx.beginPath();
+    fctx.moveTo(cam2d[0], cam2d[1]);
+    fctx.lineTo(sp[0], sp[1]);
+    fctx.stroke();
+
+    fctx.fillStyle = "#ef4444";
+    fctx.beginPath();
+    fctx.arc(sp[0], sp[1], 5.2, 0, Math.PI * 2);
+    fctx.fill();
+    fctx.fillText(`v${selectedIndex}`, sp[0] + 8, sp[1] - 8);
+  }
+
+  function projectToScreen(p, camera, width, height) {
+    const out = mulPerspective(p, camera);
+    const [xc, yc, zc, wc] = out.clip;
+    const xndc = xc / wc;
+    const yndc = yc / wc;
+    const zndc = zc / wc;
+    const xp = (xndc + 1) * 0.5 * width;
+    const yp = (1 - (yndc + 1) * 0.5) * height;
+    return {
+      clip: out.clip,
+      ndc: [xndc, yndc, zndc],
+      pixel: [xp, yp],
+      matrix: out.matrix,
+      visible: pointInFrustum(p, camera)
+    };
+  }
+
+  function drawGrid(ctx, w, h) {
+    ctx.strokeStyle = "rgba(148,163,184,0.18)";
+    ctx.lineWidth = 1;
+    ctx.beginPath();
+    for (let x = 0; x <= w; x += 40) {
+      ctx.moveTo(x, 0);
+      ctx.lineTo(x, h);
+    }
+    for (let y = 0; y <= h; y += 40) {
+      ctx.moveTo(0, y);
+      ctx.lineTo(w, y);
+    }
+    ctx.stroke();
+
+    ctx.strokeStyle = "rgba(15,23,42,0.35)";
+    ctx.beginPath();
+    ctx.moveTo(w / 2, 0);
+    ctx.lineTo(w / 2, h);
+    ctx.moveTo(0, h / 2);
+    ctx.lineTo(w, h / 2);
+    ctx.stroke();
+  }
+
+  function drawScreenPanel(camera, verts, selectedIndex) {
+    clearCanvas(sctx, screenCanvas, "#f8fafc", "#eef2f7");
+    drawGrid(sctx, screenCanvas.width, screenCanvas.height);
+
+    const projected = verts.map(v => projectToScreen(v, camera, screenCanvas.width, screenCanvas.height));
+
+    sctx.strokeStyle = "#1d4ed8";
+    sctx.lineWidth = 2;
+    sctx.beginPath();
+    cubeEdges.forEach(([a,b]) => {
+      if (!projected[a].visible && !projected[b].visible) return;
+      const p = projected[a].pixel;
+      const q = projected[b].pixel;
+      sctx.moveTo(p[0], p[1]);
+      sctx.lineTo(q[0], q[1]);
+    });
+    sctx.stroke();
+
+    projected.forEach((proj, i) => {
+      const p = proj.pixel;
+      sctx.fillStyle = i === selectedIndex ? "#ef4444" : "#0f172a";
+      sctx.beginPath();
+      sctx.arc(p[0], p[1], i === selectedIndex ? 5.2 : 3.4, 0, Math.PI * 2);
+      sctx.fill();
+    });
+
+    const sp = projected[selectedIndex].pixel;
+    sctx.font = "13px sans-serif";
+    sctx.fillStyle = "#ef4444";
+    sctx.fillText(`v${selectedIndex}`, sp[0] + 8, sp[1] - 8);
+  }
+
+  function updateMatrixTable(matrix) {
+    const highlightCells = new Set();
+    if (focusParam === "fov") {
+      highlightCells.add("0-0");
+      highlightCells.add("1-1");
+    } else if (focusParam === "ar") {
+      highlightCells.add("0-0");
+    } else if (focusParam === "near" || focusParam === "far") {
+      highlightCells.add("2-2");
+      highlightCells.add("2-3");
+    }
+
+    let html = "<tr><th></th><th>c0</th><th>c1</th><th>c2</th><th>c3</th></tr>";
+    for (let r = 0; r < 4; r++) {
+      html += `<tr><th>r${r}</th>`;
+      for (let c = 0; c < 4; c++) {
+        const key = `${r}-${c}`;
+        const cls = highlightCells.has(key) ? "highlight" : "";
+        html += `<td class="${cls}">${fmt(matrix[r][c], 3)}</td>`;
       }
+      html += "</tr>";
     }
-    var diffuse_dir=randomOnHemisphere(hit.n);
-    var bounce=tracePath(addv(hit.p,scl(hit.n,0.01)),diffuse_dir,depth+1);
-    var bounceGain=(hit.mat===3)?0.70:0.82;
-    r+=hit.sc[0]*bounce[0]*bounceGain;
-    g+=hit.sc[1]*bounce[1]*bounceGain;
-    b+=hit.sc[2]*bounce[2]*bounceGain;
+    matrixTable.innerHTML = html;
   }
-  return[r,g,b];
-}
-var ROWS_PER_CHUNK = 40;  /* rows per animation frame */
-var SAMPLES_PER_FRAME = 1;  /* samples added per frame */
-var nextRow = 0;
-var rendering = false;
-var curKa,curKd,curKs,curXp,curCa,curCl;
-var accumBuffer=null;
-var sampleCountBuffer=null;
-var frameCount=0;
 
-function startRender(){
-  curKa=parseFloat(ui.ka.value);curKd=parseFloat(ui.kd.value);
-  curKs=parseFloat(ui.ks.value);curXp=parseFloat(ui.exp.value);
-  curCa=hex2gl(ui.ca.value);curCl=hex2gl(ui.cl.value);
-  syncCam();
-  accumBuffer=new Float32Array(W*H*3);
-  sampleCountBuffer=new Float32Array(W*H);
-  frameCount=0;
-  nextRow=0;rendering=true;
-  overlay.textContent='Renderizando...';
-  renderChunk();
-}
+  function updatePipelineTable(selected, selectedIndex) {
+    const [x, y, z] = selected.world;
+    const [xc, yc, zc, wc] = selected.clip;
+    const [xn, yn, zn] = selected.ndc;
+    const [xp, yp] = selected.pixel;
 
-function renderChunk(){
-  if(!rendering)return;
-  var asp=W/H;
-  var endRow=Math.min(nextRow+ROWS_PER_CHUNK,H);
-  for(var y=nextRow;y<endRow;y++){
-    for(var x=0;x<W;x++){
-      var jx=(Math.random()-0.5),jy=(Math.random()-0.5);
-      var u=((x+jx)/W*2-1)*asp,v=-((y+jy)/H*2-1);
-      var rd=nrm([fwd[0]+u*0.75*right[0]+v*0.75*up[0],
-                   fwd[1]+u*0.75*right[1]+v*0.75*up[1],
-                   fwd[2]+u*0.75*right[2]+v*0.75*up[2]]);
-      var col=tracePath(eye,rd,0);
-      var idx=(y*W+x)*3;
-      var sidx=(y*W+x);
-      accumBuffer[idx]+=col[0];
-      accumBuffer[idx+1]+=col[1];
-      accumBuffer[idx+2]+=col[2];
-      sampleCountBuffer[sidx]+=1;
+    const rows = [
+      ["Punto 3D", `v${selectedIndex} = (${fmt(x)}, ${fmt(y)}, ${fmt(z)})`],
+      ["Clip", `(${fmt(xc)}, ${fmt(yc)}, ${fmt(zc)}, ${fmt(wc)})`],
+      ["Tras dividir por w", `(${fmt(xn)}, ${fmt(yn)}, ${fmt(zn)})`],
+      ["Píxel", `(${fmt(xp,1)}, ${fmt(yp,1)})`]
+    ];
+
+    pipelineTable.innerHTML = rows.map(([a,b]) => `<tr><th>${a}</th><td>${b}</td></tr>`).join("");
+
+    visibilityPill.textContent = selected.visible ? "Visible" : "Fuera del volumen";
+    visibilityPill.className = selected.visible ? "pill" : "pill warn";
+  }
+
+  function render() {
+    updateLabels();
+
+    let nearVal = Number(controls.near.value);
+    let farVal = Number(controls.far.value);
+    if (farVal <= nearVal + 0.5) {
+      farVal = nearVal + 0.5;
+      controls.far.value = farVal.toFixed(1);
     }
-  }
-  nextRow=endRow;
-  if(nextRow>=H){
-    frameCount++;
-    nextRow=0;
-    updateDisplay();
-    var ms=performance.now()-window._rtStart;
-    overlay.textContent='Path tracer '+W+'\u00d7'+H+'  '+frameCount+' spp  ('+Math.round(ms)+'ms)';
-  }
-  requestAnimationFrame(renderChunk);
-}
 
-function updateDisplay(){
-  for(var y=0;y<H;y++){
-    for(var x=0;x<W;x++){
-      var idx=(y*W+x)*3;
-      var sidx=(y*W+x);
-      var spp=Math.max(sampleCountBuffer[sidx],1);
-      var r=accumBuffer[idx]/spp;
-      var g=accumBuffer[idx+1]/spp;
-      var b=accumBuffer[idx+2]/spp;
-      var exposure=1.35;
-      r*=exposure;g*=exposure;b*=exposure;
-      r=tonemap(r);g=tonemap(g);b=tonemap(b);
-      var pidx=(y*W+x)*4;
-      pix[pidx]=Math.min(255,r*255)|0;pix[pidx+1]=Math.min(255,g*255)|0;
-      pix[pidx+2]=Math.min(255,b*255)|0;pix[pidx+3]=255;
+    const camera = {
+      fov: degToRad(Number(controls.fov.value)),
+      ar: Number(controls.ar.value),
+      n: nearVal,
+      f: farVal
+    };
+
+    const verts = getObjectVertices();
+    const selectedIndex = Number(controls.vertex.value);
+
+    const selectedWorld = verts[selectedIndex];
+    const selectedProj = projectToScreen(selectedWorld, camera, screenCanvas.width, screenCanvas.height);
+
+    drawFrustumPanel(camera, verts, selectedIndex);
+    drawScreenPanel(camera, verts, selectedIndex);
+    updateMatrixTable(selectedProj.matrix);
+    updatePipelineTable({ ...selectedProj, world: selectedWorld }, selectedIndex);
+  }
+
+  function applyPreset(name) {
+    if (name === "wide") {
+      controls.fov.value = 95;
+      controls.ar.value = 0.75;
+      controls.near.value = 1.0;
+      controls.far.value = 14.0;
+      controls.ox.value = 0.4;
+      controls.oy.value = 0.15;
+      controls.oz.value = 5.5;
+      controls.rot.value = 25;
+      controls.size.value = 1.1;
+      focusParam = "fov";
+    } else if (name === "normal") {
+      controls.fov.value = 60;
+      controls.ar.value = 0.75;
+      controls.near.value = 1.0;
+      controls.far.value = 14.0;
+      controls.ox.value = 0.55;
+      controls.oy.value = 0.15;
+      controls.oz.value = 6.5;
+      controls.rot.value = 25;
+      controls.size.value = 1.1;
+      focusParam = "fov";
+    } else if (name === "tele") {
+      controls.fov.value = 24;
+      controls.ar.value = 0.75;
+      controls.near.value = 1.0;
+      controls.far.value = 18.0;
+      controls.ox.value = 0.55;
+      controls.oy.value = 0.15;
+      controls.oz.value = 10.5;
+      controls.rot.value = 25;
+      controls.size.value = 1.1;
+      focusParam = "fov";
+    } else if (name === "clip") {
+      controls.fov.value = 60;
+      controls.ar.value = 0.75;
+      controls.near.value = 3.0;
+      controls.far.value = 9.0;
+      controls.ox.value = 0.55;
+      controls.oy.value = 0.15;
+      controls.oz.value = 6.0;
+      controls.rot.value = 25;
+      controls.size.value = 1.1;
+      focusParam = "near";
+    } else {
+      controls.fov.value = 60;
+      controls.ar.value = 0.75;
+      controls.near.value = 1.0;
+      controls.far.value = 14.0;
+      controls.ox.value = 0.55;
+      controls.oy.value = 0.15;
+      controls.oz.value = 6.5;
+      controls.rot.value = 25;
+      controls.size.value = 1.1;
+      controls.vertex.value = 6;
+      focusParam = "fov";
     }
+    render();
   }
-  ctx.putImageData(imgData,0,0);
-}
 
-function tick(){
-  requestAnimationFrame(tick);
-  if(dirty){
-    dirty=false;
-    rendering=false; /* cancel in-progress render */
-    window._rtStart=performance.now();
-    startRender();
-  }else if(!rendering){
-    window._rtStart=performance.now();
-    startRender();
-  }
-}
-tick();
+  [
+    [controls.fov, "fov"],
+    [controls.ar, "ar"],
+    [controls.near, "near"],
+    [controls.far, "far"],
+    [controls.ox, "object"],
+    [controls.oy, "object"],
+    [controls.oz, "object"],
+    [controls.rot, "object"],
+    [controls.size, "object"],
+    [controls.vertex, "object"]
+  ].forEach(([el, kind]) => {
+    const handler = () => {
+      if (["fov", "ar", "near", "far"].includes(kind)) focusParam = kind;
+      render();
+    };
+    el.addEventListener("input", handler);
+    el.addEventListener("change", handler);
+  });
+
+  presetButtons.forEach(btn => {
+    btn.addEventListener("click", () => applyPreset(btn.dataset.preset));
+  });
+
+  controls.vertex.value = 6;
+  render();
 })();
 </script>
-<p>:::</p>
 
 
 </section>

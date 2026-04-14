@@ -36,12 +36,7 @@
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
-   
-    gtag('consent', 'default', {
-      'ad_storage': 'denied',
-      'analytics_storage': 'denied'
-    });
-  gtag('config', 'G-KJSTYN212D', { 'anonymize_ip': false});
+  gtag('config', 'G-KJSTYN212D', { 'anonymize_ip': true});
   </script>
   <link href="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
@@ -159,74 +154,71 @@
 <p><span class="math display">\[
 C_p = k_a C_a + k_d C_l (n_p \cdot d_l) + k_s C_l (r_p \cdot v)^e
 \]</span></p>
-<div class="column-page">
 <style>
 #pt-uza{margin:1.2rem 0;border:1px solid #d8dde6;border-radius:18px;padding:1.1rem;background:#fafbfc;box-shadow:0 6px 24px rgba(0,0,0,.06)}
-#pt-uza .controls-grid{display:grid;grid-template-columns:repeat(2,minmax(280px,1fr));gap:1rem;margin-bottom:1rem}
+#pt-uza .main-layout{display:grid;grid-template-columns:1fr;gap:1rem;align-items:start}
+#pt-uza .viewer-card{background:#fff;border:1px solid #e2e8f0;border-radius:16px;padding:0.6rem;min-width:0}
+#pt-uza .viewer{position:relative;width:100%;border-radius:14px;border:1px solid #d8dde6;overflow:hidden;background:#18181b}
+#pt-uza .viewer canvas{display:block;width:100%;height:auto;image-rendering:auto}
+#pt-uza .overlay{position:absolute;bottom:10px;left:12px;color:rgba(255,255,255,.8);font:13px/1.4 monospace;background:rgba(0,0,0,.45);padding:3px 10px;border-radius:6px;pointer-events:none}
+#pt-uza .sidebar{display:flex;flex-direction:column;gap:0.8rem}
 #pt-uza .card{background:#fff;border:1px solid #e2e8f0;border-radius:16px;padding:1rem 1.1rem}
 #pt-uza .card h4{margin:0 0 .7rem 0;font-size:1rem}
-#pt-uza .row{display:grid;grid-template-columns:160px 1fr 60px;gap:.8rem;align-items:center;margin:.55rem 0}
-#pt-uza .row.compact{grid-template-columns:160px 1fr}
+#pt-uza .row{display:grid;grid-template-columns:1fr 60px;gap:.5rem;align-items:center;margin:.45rem 0}
+#pt-uza .row label{font-size:.9rem}
+#pt-uza .row.compact{grid-template-columns:1fr}
 #pt-uza input[type="range"]{width:100%}
 #pt-uza input[type="color"]{width:100%;min-width:48px;height:32px;padding:0;border:none;background:transparent}
-#pt-uza button{border:1px solid #cbd5e1;background:#fff;border-radius:10px;padding:.45rem .85rem;cursor:pointer;font-size:.93rem;margin-top:.4rem}
+#pt-uza button{border:1px solid #cbd5e1;background:#fff;border-radius:10px;padding:.45rem .85rem;cursor:pointer;font-size:.93rem;margin-top:.4rem;width:100%}
 #pt-uza button:hover{background:#f1f5f9}
-#pt-uza .viewer-card{background:#fff;border:1px solid #e2e8f0;border-radius:16px;padding:1rem}
-#pt-uza .viewer{position:relative;width:100%;min-height:640px;border-radius:14px;border:1px solid #d8dde6;overflow:hidden;background:#18181b}
-#pt-uza .viewer canvas{display:block;width:100%;height:100%}
-#pt-uza .overlay{position:absolute;bottom:10px;left:12px;color:rgba(255,255,255,.8);font:13px/1.4 monospace;background:rgba(0,0,0,.45);padding:3px 10px;border-radius:6px;pointer-events:none}
-#pt-uza .info{font-size:.9rem;color:#475569;margin-top:.5rem;line-height:1.45}
+#pt-uza .info{font-size:.85rem;color:#475569;margin-top:.3rem;line-height:1.4}
 #pt-uza .load-error{padding:1rem;color:#7f1d1d}
 @media(max-width:850px){
-  #pt-uza .controls-grid{grid-template-columns:1fr}
-  #pt-uza .row,#pt-uza .row.compact{grid-template-columns:1fr}
-  #pt-uza .viewer{min-height:480px}
+  #pt-uza .main-layout{grid-template-columns:1fr}
+  #pt-uza .viewer{min-height:400px}
 }
 </style>
 
 <div id="pt-uza">
-  <div class="controls-grid">
-    <div class="card">
-      <h4>Parametros de iluminacion</h4>
-      <div class="row compact">
-        <label for="ca-uza">Color ambiente (C<sub>a</sub>)</label>
-        <input id="ca-uza" type="color" value="#fff4d8">
-      </div>
-      <div class="row compact">
-        <label for="cl-uza">Color luz (C<sub>l</sub>)</label>
-        <input id="cl-uza" type="color" value="#ffffff">
-      </div>
-      <div class="row">
-        <label for="ka-uza">k<sub>a</sub></label>
-        <input id="ka-uza" type="range" min="0" max="1.2" step="0.01" value="0.30">
-        <span data-v="ka">0.30</span>
-      </div>
-      <div class="row">
-        <label for="kd-uza">k<sub>d</sub></label>
-        <input id="kd-uza" type="range" min="0" max="1.5" step="0.01" value="1.00">
-        <span data-v="kd">1.00</span>
-      </div>
-      <div class="row">
-        <label for="ks-uza">k<sub>s</sub></label>
-        <input id="ks-uza" type="range" min="0" max="1.5" step="0.01" value="0.55">
-        <span data-v="ks">0.55</span>
-      </div>
-      <div class="row">
-        <label for="exp-uza">Exponente (e)</label>
-        <input id="exp-uza" type="range" min="1" max="256" step="1" value="60">
-        <span data-v="exp">60</span>
+  <div class="main-layout">
+    <div class="viewer-card">
+      <div class="viewer" id="viewer-uza">
+        <canvas id="pt-canvas"></canvas>
+        <div class="overlay" id="pt-info">Cargando...</div>
       </div>
     </div>
-    <div class="card">
-      <h4>Escena</h4>
-      <p class="info">Cornell box con esfera y cubo. Arrastra sobre el visor para orbitar la camara. La imagen converge progresivamente (path tracing).</p>
-      <button type="button" id="reset-uza">Reiniciar renderizado</button>
-    </div>
-  </div>
-  <div class="viewer-card">
-    <div class="viewer" id="viewer-uza">
-      <canvas id="pt-canvas"></canvas>
-      <div class="overlay" id="pt-info">Muestras: 0</div>
+    <div class="sidebar">
+      <div class="card">
+        <h4>Parámetros de iluminación</h4>
+        <div class="row compact">
+          <label for="ca-uza">Color ambiente (C<sub>a</sub>)</label>
+          <input id="ca-uza" type="color" value="#fff4d8">
+        </div>
+        <div class="row compact">
+          <label for="cl-uza">Color luz (C<sub>l</sub>)</label>
+          <input id="cl-uza" type="color" value="#ffffff">
+        </div>
+        <label for="ka-uza" style="font-size:.9rem;margin-top:.4rem;display:block">k<sub>a</sub></label>
+        <div class="row">
+          <input id="ka-uza" type="range" min="0" max="1.2" step="0.01" value="0.30">
+          <span data-v="ka">0.30</span>
+        </div>
+        <label for="kd-uza" style="font-size:.9rem;display:block">k<sub>d</sub></label>
+        <div class="row">
+          <input id="kd-uza" type="range" min="0" max="1.5" step="0.01" value="1.00">
+          <span data-v="kd">1.00</span>
+        </div>
+        <label for="ks-uza" style="font-size:.9rem;display:block">k<sub>s</sub></label>
+        <div class="row">
+          <input id="ks-uza" type="range" min="0" max="1.5" step="0.01" value="0.55">
+          <span data-v="ks">0.55</span>
+        </div>
+        <label for="exp-uza" style="font-size:.9rem;display:block">Exponente (e)</label>
+        <div class="row">
+          <input id="exp-uza" type="range" min="1" max="256" step="1" value="60">
+          <span data-v="exp">60</span>
+        </div>
+      </div>
     </div>
   </div>
 </div>
@@ -234,205 +226,129 @@ C_p = k_a C_a + k_d C_l (n_p \cdot d_l) + k_s C_l (r_p \cdot v)^e
 <script>
 (function(){
 'use strict';
-
 var viewer = document.getElementById('viewer-uza');
 var canvas = document.getElementById('pt-canvas');
 var overlay = document.getElementById('pt-info');
 var root = document.getElementById('pt-uza');
 if(!viewer||!canvas||!root){return;}
 
-var rect = viewer.getBoundingClientRect();
-canvas.width = Math.max(256, Math.floor(rect.width));
-canvas.height = Math.max(384, Math.floor(rect.height));
+/* ---- resolution ---- */
+var W = 480, H = 360;
+canvas.width = W; canvas.height = H;
+var ctx = canvas.getContext('2d');
+if(!ctx){viewer.innerHTML='<div class="load-error">Canvas no disponible.</div>';return;}
+var imgData = ctx.createImageData(W, H);
+var pix = imgData.data;
 
-/* Use WebGL 1 for maximum ANGLE/D3D11 compatibility */
-var gl = canvas.getContext('webgl', {antialias:false, preserveDrawingBuffer:true})
-       || canvas.getContext('experimental-webgl', {antialias:false, preserveDrawingBuffer:true});
-if(!gl){viewer.innerHTML='<div class="load-error">WebGL no disponible.</div>';return;}
+/* ---- vector helpers ---- */
+function dot(a,b){return a[0]*b[0]+a[1]*b[1]+a[2]*b[2];}
+function sub(a,b){return[a[0]-b[0],a[1]-b[1],a[2]-b[2]];}
+function addv(a,b){return[a[0]+b[0],a[1]+b[1],a[2]+b[2]];}
+function scl(a,s){return[a[0]*s,a[1]*s,a[2]*s];}
+function nrm(a){var l=Math.sqrt(dot(a,a));return l>1e-8?[a[0]/l,a[1]/l,a[2]/l]:[0,0,0];}
+function rfl(d,n){var c=2*dot(d,n);return[d[0]-c*n[0],d[1]-c*n[1],d[2]-c*n[2]];}
 
-var VS = ''
-+'attribute vec2 a_pos;\n'
-+'varying vec2 v_uv;\n'
-+'void main(){v_uv=a_pos*0.5+0.5;gl_Position=vec4(a_pos,0,1);}\n';
-
-var FS = ''
-+'precision mediump float;\n'
-+'varying vec2 v_uv;\n'
-+'uniform vec2 u_res;\n'
-+'uniform vec3 u_eye,u_fwd,u_right,u_up;\n'
-+'uniform float u_ka,u_kd,u_ks,u_exp;\n'
-+'uniform vec3 u_ca,u_cl;\n'
-+'\n'
-+'float hitPlane(vec3 ro,vec3 rd,vec3 pp,vec3 pn){\n'
-+'  float d=dot(rd,pn);\n'
-+'  if(abs(d)<0.0001)return -1.0;\n'
-+'  float t=dot(pp-ro,pn)/d;\n'
-+'  return t>0.002?t:-1.0;\n'
-+'}\n'
-+'\n'
-+'float hitSphere(vec3 ro,vec3 rd,vec3 sc,float sr){\n'
-+'  vec3 oc=ro-sc;\n'
-+'  float b=dot(oc,rd);\n'
-+'  float c=dot(oc,oc)-sr*sr;\n'
-+'  float h=b*b-c;\n'
-+'  if(h<0.0)return -1.0;\n'
-+'  float sq=sqrt(h);\n'
-+'  float t=-b-sq;\n'
-+'  if(t>0.002)return t;\n'
-+'  t=-b+sq;\n'
-+'  return t>0.002?t:-1.0;\n'
-+'}\n'
-+'\n'
-+'float hitBox(vec3 ro,vec3 rd,vec3 mn,vec3 mx){\n'
-+'  vec3 id=1.0/(rd+vec3(0.00001));\n'
-+'  vec3 t1=(mn-ro)*id,t2=(mx-ro)*id;\n'
-+'  vec3 tN=min(t1,t2),tF=max(t1,t2);\n'
-+'  float en=max(max(tN.x,tN.y),tN.z);\n'
-+'  float ex=min(min(tF.x,tF.y),tF.z);\n'
-+'  if(en>ex||ex<0.002)return -1.0;\n'
-+'  return en>0.002?en:ex;\n'
-+'}\n'
-+'\n'
-+'vec3 boxNml(vec3 p,vec3 mn,vec3 mx){\n'
-+'  vec3 c=(mn+mx)*0.5,d=(mx-mn)*0.5;\n'
-+'  vec3 r=abs((p-c)/d);\n'
-+'  if(r.x>r.y&&r.x>r.z)return vec3(sign(p.x-c.x),0,0);\n'
-+'  if(r.y>r.z)return vec3(0,sign(p.y-c.y),0);\n'
-+'  return vec3(0,0,sign(p.z-c.z));\n'
-+'}\n'
-+'\n'
-+'/* Returns: x=t, y=mat (-1=miss,0=white,1=red,2=green,3=sphere,4=cube,5=light) */\n'
-+'vec2 castRay(vec3 ro,vec3 rd){\n'
-+'  float best=100000.0,mat=-1.0;\n'
-+'  float t;vec3 p;\n'
-+'  t=hitPlane(ro,rd,vec3(0,-3,0),vec3(0,1,0));\n'
-+'  if(t>0.0&&t<best){p=ro+t*rd;if(abs(p.x)<=3.0&&abs(p.z)<=3.0){best=t;mat=0.0;}}\n'
-+'  t=hitPlane(ro,rd,vec3(0,3,0),vec3(0,-1,0));\n'
-+'  if(t>0.0&&t<best){p=ro+t*rd;if(abs(p.x)<=3.0&&abs(p.z)<=3.0){best=t;mat=(p.x>=-0.7&&p.x<=0.7&&p.z>=-0.7&&p.z<=0.7)?5.0:0.0;}}\n'
-+'  t=hitPlane(ro,rd,vec3(0,0,-3),vec3(0,0,1));\n'
-+'  if(t>0.0&&t<best){p=ro+t*rd;if(abs(p.x)<=3.0&&abs(p.y)<=3.0){best=t;mat=0.0;}}\n'
-+'  t=hitPlane(ro,rd,vec3(-3,0,0),vec3(1,0,0));\n'
-+'  if(t>0.0&&t<best){p=ro+t*rd;if(abs(p.y)<=3.0&&abs(p.z)<=3.0){best=t;mat=1.0;}}\n'
-+'  t=hitPlane(ro,rd,vec3(3,0,0),vec3(-1,0,0));\n'
-+'  if(t>0.0&&t<best){p=ro+t*rd;if(abs(p.y)<=3.0&&abs(p.z)<=3.0){best=t;mat=2.0;}}\n'
-+'  t=hitSphere(ro,rd,vec3(-1.15,-1.7,-0.2),1.3);\n'
-+'  if(t>0.0&&t<best){best=t;mat=3.0;}\n'
-+'  t=hitBox(ro,rd,vec3(0.3,-3.0,-0.1),vec3(1.8,-0.3,1.4));\n'
-+'  if(t>0.0&&t<best){best=t;mat=4.0;}\n'
-+'  return vec2(best,mat);\n'
-+'}\n'
-+'\n'
-+'vec3 getNormal(vec3 p,float mat){\n'
-+'  if(mat<0.5)return vec3(0,1,0);/* white walls - need correct normals per face */\n'
-+'  if(mat<1.5)return vec3(1,0,0);\n'
-+'  if(mat<2.5)return vec3(-1,0,0);\n'
-+'  if(mat<3.5)return normalize(p-vec3(-1.15,-1.7,-0.2));\n'
-+'  if(mat<4.5)return boxNml(p,vec3(0.3,-3.0,-0.1),vec3(1.8,-0.3,1.4));\n'
-+'  return vec3(0,-1,0);\n'
-+'}\n'
-+'\n'
-+'vec3 matColor(float m){\n'
-+'  if(m<0.5)return vec3(0.93);\n'
-+'  if(m<1.5)return vec3(0.72,0.14,0.12);\n'
-+'  if(m<2.5)return vec3(0.12,0.70,0.15);\n'
-+'  if(m<3.5)return vec3(0.85,0.64,0.38);\n'
-+'  return vec3(0.90);\n'
-+'}\n'
-+'\n'
-+'void main(){\n'
-+'  vec2 ndc=v_uv*2.0-1.0;\n'
-+'  ndc.x*=u_res.x/u_res.y;\n'
-+'  vec3 rd=normalize(u_fwd+ndc.x*0.75*u_right+ndc.y*0.75*u_up);\n'
-+'  vec2 h=castRay(u_eye,rd);\n'
-+'  vec3 col=vec3(0.0);\n'
-+'  if(h.y>4.5){\n'
-+'    col=u_cl*8.0;\n'
-+'  } else if(h.y>-0.5){\n'
-+'    vec3 p=u_eye+h.x*rd;\n'
-+'    vec3 n;\n'
-+'    /* compute normal based on which surface */\n'
-+'    if(h.y<0.5){\n'
-+'      /* white wall - determine which face from position */\n'
-+'      if(abs(p.y+3.0)<0.01)n=vec3(0,1,0);\n'
-+'      else if(abs(p.y-3.0)<0.01)n=vec3(0,-1,0);\n'
-+'      else n=vec3(0,0,1);\n'
-+'    } else if(h.y<1.5){n=vec3(1,0,0);}\n'
-+'    else if(h.y<2.5){n=vec3(-1,0,0);}\n'
-+'    else if(h.y<3.5){n=normalize(p-vec3(-1.15,-1.7,-0.2));}\n'
-+'    else{n=boxNml(p,vec3(0.3,-3.0,-0.1),vec3(1.8,-0.3,1.4));}\n'
-+'    vec3 sc=matColor(h.y);\n'
-+'    col+=u_ka*u_ca*sc;\n'
-+'    vec3 lp=vec3(0.0,2.95,0.0);\n'
-+'    vec3 toL=lp-p;\n'
-+'    float dist=length(toL);\n'
-+'    vec3 l=toL/dist;\n'
-+'    float NdL=dot(n,l);\n'
-+'    if(NdL>0.0){\n'
-+'      vec2 sh=castRay(p+n*0.01,l);\n'
-+'      if(sh.y>4.5||sh.x>dist){\n'
-+'        vec3 v=normalize(u_eye-p);\n'
-+'        vec3 r=reflect(-l,n);\n'
-+'        float RdV=max(dot(r,v),0.0);\n'
-+'        float atten=12.0/(dist*dist+0.1);\n'
-+'        col+=u_kd*u_cl*sc*NdL*atten;\n'
-+'        col+=u_ks*u_cl*pow(RdV,u_exp)*atten;\n'
-+'      }\n'
-+'    }\n'
-+'  }\n'
-+'  col=col/(col+1.0);\n'
-+'  col=pow(col,vec3(1.0/2.2));\n'
-+'  gl_FragColor=vec4(col,1.0);\n'
-+'}\n';
-
-/* compile */
-function mkS(t,s){var o=gl.createShader(t);gl.shaderSource(o,s);gl.compileShader(o);if(!gl.getShaderParameter(o,gl.COMPILE_STATUS)){console.error('Shader:',gl.getShaderInfoLog(o));overlay.textContent='Shader error - ver consola';return null;}return o;}
-var vs=mkS(gl.VERTEX_SHADER,VS),fs=mkS(gl.FRAGMENT_SHADER,FS);
-if(!vs||!fs)return;
-var prog=gl.createProgram();
-gl.attachShader(prog,vs);gl.attachShader(prog,fs);
-gl.bindAttribLocation(prog,0,'a_pos');
-gl.linkProgram(prog);
-if(!gl.getProgramParameter(prog,gl.LINK_STATUS)){console.error('Link:',gl.getProgramInfoLog(prog));overlay.textContent='Link error';return;}
-gl.useProgram(prog);
-console.log('Raytracer: shader OK');
-
-var uLoc={};
-['u_res','u_eye','u_fwd','u_right','u_up','u_ka','u_kd','u_ks','u_exp','u_ca','u_cl'].forEach(function(n){uLoc[n]=gl.getUniformLocation(prog,n);});
-
-var buf=gl.createBuffer();
-gl.bindBuffer(gl.ARRAY_BUFFER,buf);
-gl.bufferData(gl.ARRAY_BUFFER,new Float32Array([-1,-1,1,-1,-1,1,1,1]),gl.STATIC_DRAW);
-gl.enableVertexAttribArray(0);
-gl.vertexAttribPointer(0,2,gl.FLOAT,false,0,0);
-
-/* camera */
-var camT=0,camP=1.35,camR=7.8,dirty=true;
-
-function setCamera(){
-  var sp=Math.sin(camP),cp=Math.cos(camP),st=Math.sin(camT),ct=Math.cos(camT);
-  var ex=camR*sp*st,ey=camR*cp,ez=camR*sp*ct;
-  var fl=Math.sqrt(ex*ex+ey*ey+ez*ez);
-  var fx=-ex/fl,fy=-ey/fl,fz=-ez/fl;
-  var rx=-fz,rz=fx,rl=Math.sqrt(rx*rx+rz*rz);
-  if(rl>0.001){rx/=rl;rz/=rl;}else{rx=1;rz=0;}
-  var ux=-rz*fy,uy=rz*fx-rx*fz,uz=rx*fy;
-  gl.uniform3f(uLoc.u_eye,ex,ey,ez);
-  gl.uniform3f(uLoc.u_fwd,fx,fy,fz);
-  gl.uniform3f(uLoc.u_right,rx,0,rz);
-  gl.uniform3f(uLoc.u_up,ux,uy,uz);
+/* ---- intersections ---- */
+function hitSphere(ro,rd,cen,r){
+  var oc=sub(ro,cen),b=dot(oc,rd),c=dot(oc,oc)-r*r,h=b*b-c;
+  if(h<0)return-1;var t=-b-Math.sqrt(h);return t>0.002?t:-1;
+}
+function hitPlane(ro,rd,pp,pn){
+  var d=dot(rd,pn);if(Math.abs(d)<1e-4)return-1;
+  var t=(dot(pp,pn)-dot(ro,pn))/d;return t>0.002?t:-1;
+}
+function hitBox(ro,rd,mn,mx){
+  var e=1e-5,ix=1/(rd[0]+e),iy=1/(rd[1]+e),iz=1/(rd[2]+e);
+  var t1x=(mn[0]-ro[0])*ix,t2x=(mx[0]-ro[0])*ix;
+  var t1y=(mn[1]-ro[1])*iy,t2y=(mx[1]-ro[1])*iy;
+  var t1z=(mn[2]-ro[2])*iz,t2z=(mx[2]-ro[2])*iz;
+  var en=Math.max(Math.min(t1x,t2x),Math.max(Math.min(t1y,t2y),Math.min(t1z,t2z)));
+  var ex=Math.min(Math.max(t1x,t2x),Math.min(Math.max(t1y,t2y),Math.max(t1z,t2z)));
+  if(en>ex||ex<0.002)return-1;return en>0.002?en:ex;
+}
+function boxNml(p,mn,mx){
+  var cx=(mn[0]+mx[0])*0.5,cy=(mn[1]+mx[1])*0.5,cz=(mn[2]+mx[2])*0.5;
+  var dx=(mx[0]-mn[0])*0.5,dy=(mx[1]-mn[1])*0.5,dz=(mx[2]-mn[2])*0.5;
+  var rx=Math.abs((p[0]-cx)/dx),ry=Math.abs((p[1]-cy)/dy),rz=Math.abs((p[2]-cz)/dz);
+  if(rx>ry&&rx>rz)return[p[0]>cx?1:-1,0,0];
+  if(ry>rz)return[0,p[1]>cy?1:-1,0];
+  return[0,0,p[2]>cz?1:-1];
 }
 
-/* orbit */
-var drag=false,mx=0,my=0;
-canvas.addEventListener('mousedown',function(e){drag=true;mx=e.clientX;my=e.clientY;e.preventDefault();});
-canvas.addEventListener('mousemove',function(e){if(!drag)return;camT-=(e.clientX-mx)*0.005;camP=Math.max(0.15,Math.min(Math.PI-0.15,camP-(e.clientY-my)*0.005));mx=e.clientX;my=e.clientY;dirty=true;});
+/* ---- scene constants ---- */
+var SC=[-1.15,-1.7,-0.2],SR=0.8;
+var BMN=[0.3,-3,-0.1],BMX=[1.8,-0.3,1.4];
+var LP=[0,2.95,0];
+var MCOLORS=[[0.93,0.93,0.93],[0.72,0.14,0.12],[0.12,0.70,0.15],[0.85,0.64,0.38],[0.90,0.90,0.90]];
+var sphereRotY=0,sphereRotX=0;
+
+function rotateSphere(p,ry,rx){
+  var sy=Math.sin(ry),cy=Math.cos(ry),sx=Math.sin(rx),cx=Math.cos(rx);
+  var px=p[0]*cy-p[2]*sy,pz=p[0]*sy+p[2]*cy;
+  var py=p[1]*cx-pz*sx,pz2=p[1]*sx+pz*cx;
+  return[px,py,pz2];
+}
+
+function castRay(ro,rd){
+  var best=1e9,mat=-1,t,p;
+  t=hitPlane(ro,rd,[0,-3,0],[0,1,0]);
+  if(t>0&&t<best){p=addv(ro,scl(rd,t));if(Math.abs(p[0])<=3&&Math.abs(p[2])<=3){best=t;mat=0;}}
+  t=hitPlane(ro,rd,[0,3,0],[0,-1,0]);
+  if(t>0&&t<best){p=addv(ro,scl(rd,t));if(Math.abs(p[0])<=3&&Math.abs(p[2])<=3){best=t;mat=(p[0]>=-0.7&&p[0]<=0.7&&p[2]>=-0.7&&p[2]<=0.7)?5:0;}}
+  t=hitPlane(ro,rd,[0,0,-3],[0,0,1]);
+  if(t>0&&t<best){p=addv(ro,scl(rd,t));if(Math.abs(p[0])<=3&&Math.abs(p[1])<=3){best=t;mat=0;}}
+  t=hitPlane(ro,rd,[-3,0,0],[1,0,0]);
+  if(t>0&&t<best){p=addv(ro,scl(rd,t));if(Math.abs(p[1])<=3&&Math.abs(p[2])<=3){best=t;mat=1;}}
+  t=hitPlane(ro,rd,[3,0,0],[-1,0,0]);
+  if(t>0&&t<best){p=addv(ro,scl(rd,t));if(Math.abs(p[1])<=3&&Math.abs(p[2])<=3){best=t;mat=2;}}
+  var rotSC=rotateSphere(SC,sphereRotY,sphereRotX);
+  t=hitSphere(ro,rd,rotSC,SR);
+  if(t>0&&t<best){best=t;mat=3;}
+  t=hitBox(ro,rd,BMN,BMX);
+  if(t>0&&t<best){best=t;mat=4;}
+  if(mat<0)return null;
+  p=addv(ro,scl(rd,best));
+  var n;
+  if(mat===0){
+    if(Math.abs(p[1]+3)<0.01)n=[0,1,0];
+    else if(Math.abs(p[1]-3)<0.01)n=[0,-1,0];
+    else n=[0,0,1];
+  }else if(mat===1)n=[1,0,0];
+  else if(mat===2)n=[-1,0,0];
+  else if(mat===3){
+    var rotSC2=rotateSphere(SC,sphereRotY,sphereRotX);
+    n=nrm(sub(p,rotSC2));
+  }
+  else if(mat===4)n=boxNml(p,BMN,BMX);
+  else n=[0,-1,0];
+  return{t:best,mat:mat,p:p,n:n,sc:mat<5?MCOLORS[mat]:[1,1,1]};
+}
+
+/* ---- camera ---- */
+var camT=0,camP=1.35,camR=7.8,dirty=true;
+var eye=[0,0,0],fwd=[0,0,-1],right=[1,0,0],up=[0,1,0];
+function syncCam(){
+  var sp=Math.sin(camP),cp=Math.cos(camP),st=Math.sin(camT),ct=Math.cos(camT);
+  eye=[camR*sp*st,camR*cp,camR*sp*ct];
+  var fl=Math.sqrt(eye[0]*eye[0]+eye[1]*eye[1]+eye[2]*eye[2]);
+  fwd=[-eye[0]/fl,-eye[1]/fl,-eye[2]/fl];
+  var rx=-fwd[2],rz=fwd[0],rl=Math.sqrt(rx*rx+rz*rz);
+  if(rl>0.001){rx/=rl;rz/=rl;}else{rx=1;rz=0;}
+  right=[rx,0,rz];
+  up=[-rz*fwd[1],rz*fwd[0]-rx*fwd[2],rx*fwd[1]];
+}
+
+/* ---- orbit ---- */
+var drag=false,mx0=0,my0=0;
+canvas.addEventListener('mousedown',function(e){drag=true;mx0=e.clientX;my0=e.clientY;e.preventDefault();});
+canvas.addEventListener('mousemove',function(e){if(!drag)return;camT-=(e.clientX-mx0)*0.005;camP=Math.max(0.15,Math.min(Math.PI-0.15,camP-(e.clientY-my0)*0.005));mx0=e.clientX;my0=e.clientY;dirty=true;});
 window.addEventListener('mouseup',function(){drag=false;});
-canvas.addEventListener('touchstart',function(e){if(e.touches.length===1){drag=true;mx=e.touches[0].clientX;my=e.touches[0].clientY;e.preventDefault();}},{passive:false});
-canvas.addEventListener('touchmove',function(e){if(!drag||e.touches.length!==1)return;camT-=(e.touches[0].clientX-mx)*0.005;camP=Math.max(0.15,Math.min(Math.PI-0.15,camP-(e.touches[0].clientY-my)*0.005));mx=e.touches[0].clientX;my=e.touches[0].clientY;dirty=true;e.preventDefault();},{passive:false});
+canvas.addEventListener('touchstart',function(e){if(e.touches.length===1){drag=true;mx0=e.touches[0].clientX;my0=e.touches[0].clientY;e.preventDefault();}},{passive:false});
+canvas.addEventListener('touchmove',function(e){if(!drag||e.touches.length!==1)return;camT-=(e.touches[0].clientX-mx0)*0.005;camP=Math.max(0.15,Math.min(Math.PI-0.15,camP-(e.touches[0].clientY-my0)*0.005));mx0=e.touches[0].clientX;my0=e.touches[0].clientY;dirty=true;e.preventDefault();},{passive:false});
 canvas.addEventListener('touchend',function(){drag=false;});
 
-/* UI */
-var ui={ca:root.querySelector('#ca-uza'),cl:root.querySelector('#cl-uza'),ka:root.querySelector('#ka-uza'),kd:root.querySelector('#kd-uza'),ks:root.querySelector('#ks-uza'),exp:root.querySelector('#exp-uza'),reset:root.querySelector('#reset-uza')};
+/* ---- UI ---- */
+var ui={ca:root.querySelector('#ca-uza'),cl:root.querySelector('#cl-uza'),ka:root.querySelector('#ka-uza'),kd:root.querySelector('#kd-uza'),ks:root.querySelector('#ks-uza'),exp:root.querySelector('#exp-uza')};
 function hex2gl(h){return[parseInt(h.slice(1,3),16)/255,parseInt(h.slice(3,5),16)/255,parseInt(h.slice(5,7),16)/255];}
 function updateLabels(){
   root.querySelector('[data-v="ka"]').textContent=Number(ui.ka.value).toFixed(2);
@@ -442,41 +358,145 @@ function updateLabels(){
 }
 function onParam(){dirty=true;updateLabels();}
 [ui.ca,ui.cl,ui.ka,ui.kd,ui.ks,ui.exp].forEach(function(el){el.addEventListener('input',onParam);el.addEventListener('change',onParam);});
-ui.reset.addEventListener('click',function(){dirty=true;});
 updateLabels();
 
-/* resize */
-function resize(){
-  var r=viewer.getBoundingClientRect();
-  var w=Math.max(256,Math.floor(r.width)),h=Math.max(384,Math.floor(r.height));
-  if(canvas.width!==w||canvas.height!==h){canvas.width=w;canvas.height=h;dirty=true;}
+/* ---- path tracing ---- */
+function tonemap(v){
+  var a=2.51,b=0.03,c=2.43,d=0.59,e=0.14;
+  return(v*(a*v+b))/(v*(c*v+d)+e);
 }
-new ResizeObserver(resize).observe(viewer);
 
-/* render */
-function render(){
-  requestAnimationFrame(render);
-  if(!dirty)return;
-  dirty=false;
-  gl.viewport(0,0,canvas.width,canvas.height);
-  gl.uniform2f(uLoc.u_res,canvas.width,canvas.height);
-  setCamera();
-  var ca=hex2gl(ui.ca.value),cl=hex2gl(ui.cl.value);
-  gl.uniform1f(uLoc.u_ka,parseFloat(ui.ka.value));
-  gl.uniform1f(uLoc.u_kd,parseFloat(ui.kd.value));
-  gl.uniform1f(uLoc.u_ks,parseFloat(ui.ks.value));
-  gl.uniform1f(uLoc.u_exp,parseFloat(ui.exp.value));
-  gl.uniform3f(uLoc.u_ca,ca[0],ca[1],ca[2]);
-  gl.uniform3f(uLoc.u_cl,cl[0],cl[1],cl[2]);
-  gl.drawArrays(gl.TRIANGLE_STRIP,0,4);
-  var e=gl.getError();
-  if(e!==gl.NO_ERROR)console.error('GL error:',e);
-  overlay.textContent='Phong raytracer';
+function randomOnHemisphere(n){
+  var r1=Math.random(),r2=Math.random();
+  var theta=Math.acos(Math.sqrt(1-r1)),phi=2*Math.PI*r2;
+  var st=Math.sin(theta),ct=Math.cos(theta),sp=Math.sin(phi),cp=Math.cos(phi);
+  var x=st*cp,y=st*sp,z=ct;
+  var tx=Math.abs(n[2])>0.9?[0,1,0]:[0,0,1];
+  var right=nrm([n[1]*tx[2]-n[2]*tx[1],n[2]*tx[0]-n[0]*tx[2],n[0]*tx[1]-n[1]*tx[0]]);
+  var up=nrm([n[1]*right[2]-n[2]*right[1],n[2]*right[0]-n[0]*right[2],n[0]*right[1]-n[1]*right[0]]);
+  return nrm([x*right[0]+y*up[0]+z*n[0],x*right[1]+y*up[1]+z*n[1],x*right[2]+y*up[2]+z*n[2]]);
 }
-render();
+
+function tracePath(ro,rd,depth){
+  if(depth>2)return[0,0,0];
+  var hit=castRay(ro,rd);
+  if(!hit)return[0,0,0];
+  if(hit.mat===5)return[8,8,8];
+  var r=0,g=0,b=0;
+  if(hit.mat===4){
+    var rd_refl=rfl(rd,hit.n);
+    var refl=tracePath(addv(hit.p,scl(hit.n,0.01)),rd_refl,depth+1);
+    r=refl[0]*0.9;g=refl[1]*0.9;b=refl[2]*0.9;
+  }else{
+    var toL=sub(LP,hit.p),dist2=dot(toL,toL),dist=Math.sqrt(dist2),ld=scl(toL,1/(dist+1e-6));
+    var ndl=Math.max(dot(hit.n,ld),0);
+    if(ndl>0){
+      var sh=castRay(addv(hit.p,scl(hit.n,0.01)),ld);
+      if(!sh||sh.t>dist-0.03||sh.mat===5){
+        var direct=curKd*24*ndl/(dist2+0.15);
+        r+=hit.sc[0]*curCl[0]*direct;
+        g+=hit.sc[1]*curCl[1]*direct;
+        b+=hit.sc[2]*curCl[2]*direct;
+      }
+    }
+    var diffuse_dir=randomOnHemisphere(hit.n);
+    var bounce=tracePath(addv(hit.p,scl(hit.n,0.01)),diffuse_dir,depth+1);
+    var bounceGain=(hit.mat===3)?0.70:0.82;
+    r+=hit.sc[0]*bounce[0]*bounceGain;
+    g+=hit.sc[1]*bounce[1]*bounceGain;
+    b+=hit.sc[2]*bounce[2]*bounceGain;
+  }
+  return[r,g,b];
+}
+var ROWS_PER_CHUNK = 40;  /* rows per animation frame */
+var SAMPLES_PER_FRAME = 1;  /* samples added per frame */
+var nextRow = 0;
+var rendering = false;
+var curKa,curKd,curKs,curXp,curCa,curCl;
+var accumBuffer=null;
+var sampleCountBuffer=null;
+var frameCount=0;
+
+function startRender(){
+  curKa=parseFloat(ui.ka.value);curKd=parseFloat(ui.kd.value);
+  curKs=parseFloat(ui.ks.value);curXp=parseFloat(ui.exp.value);
+  curCa=hex2gl(ui.ca.value);curCl=hex2gl(ui.cl.value);
+  syncCam();
+  accumBuffer=new Float32Array(W*H*3);
+  sampleCountBuffer=new Float32Array(W*H);
+  frameCount=0;
+  nextRow=0;rendering=true;
+  overlay.textContent='Renderizando...';
+  renderChunk();
+}
+
+function renderChunk(){
+  if(!rendering)return;
+  var asp=W/H;
+  var endRow=Math.min(nextRow+ROWS_PER_CHUNK,H);
+  for(var y=nextRow;y<endRow;y++){
+    for(var x=0;x<W;x++){
+      var jx=(Math.random()-0.5),jy=(Math.random()-0.5);
+      var u=((x+jx)/W*2-1)*asp,v=-((y+jy)/H*2-1);
+      var rd=nrm([fwd[0]+u*0.75*right[0]+v*0.75*up[0],
+                   fwd[1]+u*0.75*right[1]+v*0.75*up[1],
+                   fwd[2]+u*0.75*right[2]+v*0.75*up[2]]);
+      var col=tracePath(eye,rd,0);
+      var idx=(y*W+x)*3;
+      var sidx=(y*W+x);
+      accumBuffer[idx]+=col[0];
+      accumBuffer[idx+1]+=col[1];
+      accumBuffer[idx+2]+=col[2];
+      sampleCountBuffer[sidx]+=1;
+    }
+  }
+  nextRow=endRow;
+  if(nextRow>=H){
+    frameCount++;
+    nextRow=0;
+    updateDisplay();
+    var ms=performance.now()-window._rtStart;
+    overlay.textContent='Path tracer '+W+'\u00d7'+H+'  '+frameCount+' spp  ('+Math.round(ms)+'ms)';
+  }
+  requestAnimationFrame(renderChunk);
+}
+
+function updateDisplay(){
+  for(var y=0;y<H;y++){
+    for(var x=0;x<W;x++){
+      var idx=(y*W+x)*3;
+      var sidx=(y*W+x);
+      var spp=Math.max(sampleCountBuffer[sidx],1);
+      var r=accumBuffer[idx]/spp;
+      var g=accumBuffer[idx+1]/spp;
+      var b=accumBuffer[idx+2]/spp;
+      var exposure=1.35;
+      r*=exposure;g*=exposure;b*=exposure;
+      r=tonemap(r);g=tonemap(g);b=tonemap(b);
+      var pidx=(y*W+x)*4;
+      pix[pidx]=Math.min(255,r*255)|0;pix[pidx+1]=Math.min(255,g*255)|0;
+      pix[pidx+2]=Math.min(255,b*255)|0;pix[pidx+3]=255;
+    }
+  }
+  ctx.putImageData(imgData,0,0);
+}
+
+function tick(){
+  requestAnimationFrame(tick);
+  if(dirty){
+    dirty=false;
+    rendering=false; /* cancel in-progress render */
+    window._rtStart=performance.now();
+    startRender();
+  }else if(!rendering){
+    window._rtStart=performance.now();
+    startRender();
+  }
+}
+tick();
 })();
 </script>
-</div>
+<p>:::</p>
 
 
 </section>
