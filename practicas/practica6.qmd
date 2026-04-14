@@ -431,6 +431,8 @@ viewof stepSS = {
 Implementa los algoritmos de ordenación de burbuja y selección en Java utilizando dos clases diferentes, `OrdenacionBurbuja.java` y `OrdenacionSeleccion.java`. A continuación se muestra un ejemplo de cómo podría ser la estructura de la clase `OrdenacionBurbuja.java`:
 
 ```java
+import java.util.*;
+
 public class OrdenacionBurbuja {
   public static void ordenar(int[] v) {
     // Tu código aquí
