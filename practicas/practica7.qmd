@@ -25,7 +25,7 @@ En esta práctica vamos a dar los primeros pasos con *Grasshopper* aplicándolo 
 
 ## Introducción a Grasshopper
 
-*Grasshopper* es una herramienta de programación visual orientada al diseño paramétrico e integrada en ***Rhinoceros***. En lugar de modelar dibujando directamente cada objeto, en *Grasshopper* se construye una **definición** formada por componentes conectados entre sí. Cada componente realiza una operación, y el resultado final depende de los parámetros que introducimos.
+***Grasshopper*** es una herramienta de programación visual orientada al diseño paramétrico e integrada en ***Rhinoceros***. En lugar de modelar dibujando directamente cada objeto, en *Grasshopper* se construye una **definición** formada por componentes conectados entre sí. Cada componente realiza una operación, y el resultado final depende de los parámetros que introducimos.
 
 Este modo de trabajo resulta especialmente útil cuando queremos probar variantes de una misma forma de manera rápida: por ejemplo, cambiar el tamaño de una base, la altura de una pieza o el número de divisiones de un patrón sin tener que rehacer el modelo desde cero.
 
@@ -48,7 +48,7 @@ Para instalarlo:
 3. Busca **RhinoBanana**.
 4. Pulsa **Instalar**.
 
-![Instalando el complemento RhinoBanana.](../resources/practica7/rhino_banana_install.png){#fig-install-rhino-banana}
+![Instalando el complemento RhinoBanana.](../resources/practica7/rhino_banana_install.png){#fig-install-rhino-banana width=70%}
 
 #### Acceso a Grasshopper
 
@@ -193,7 +193,7 @@ De este modo, una geometría sencilla puede transformarse en una imagen más cer
 
 :::: {layout="[30,30,30]"}
 ::: {.column}
-![](../resources/practica7/diffusion-images/building.jpg)
+![](../resources/practica7/diffusion-images/building_edited.jpg)
 
 <div class="prompt-small">
 <strong>Prompt:</strong> <i>Photorealistic futuristic building inspired by the attached reference image, preserving its tall hexagonal silhouette and irregular cellular lattice structure. Reimagine it as a parametric architectural tower or pavilion with a metallic exoskeleton, glass walls, terraces, integrated base, and realistic architectural details. Set it in a modern urban plaza with soft landscaping and people for scale. Cinematic lighting, elegant materials, contemporary architecture, highly detailed, realistic reflections and shadows.</i>
@@ -201,7 +201,7 @@ De este modo, una geometría sencilla puede transformarse en una imagen más cer
 :::
 
 ::: {.column}
-![](../resources/practica7/diffusion-images/teacup.jpg)
+![](../resources/practica7/diffusion-images/teacup_edited.jpg)
 
 <div class="prompt-small">
 <strong>Prompt:</strong> <i>The mesh is a metal teacup lying on a wooden table in a modern kitchen.</i>
@@ -209,7 +209,7 @@ De este modo, una geometría sencilla puede transformarse en una imagen más cer
 :::
 
 ::: {.column}
-![](../resources/practica7/diffusion-images/vase_flowers.jpg)
+![](../resources/practica7/diffusion-images/vase_flowers_edited.jpg)
 
 <div class="prompt-small">
 <strong>Prompt:</strong> <i>Photorealistic decorative vase inspired by the attached reference image, preserving its tall organic lattice structure and hexagonal opening. Refine it into a functional vase with an integrated base and a polished metallic material, such as brushed copper or glossy red metal. Fill it with a lush bouquet of large overflowing flowers — peonies, dahlias, roses, soft greenery, and trailing stems — creating an abundant, luxurious arrangement. Place it on a warm wooden table in a stylish kitchen, lit by soft natural window light, with realistic reflections, shadows, and an elegant editorial interior design aesthetic.</i>

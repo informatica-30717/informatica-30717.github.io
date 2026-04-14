@@ -1,0 +1,307 @@
+---
+title: "Práctica 9: Introducción a Grasshopper"
+subtitle: "<span class='badge rounded-pill text-bg-secondary'>~10 min de lectura</span>"
+format:
+  html:
+    toc: true
+    number-sections: true
+  revealjs:
+    output-ext: "reveal.html"
+execute:
+  echo: false
+---
+
+## Visor 3D interactivo
+
+$$
+C_p = k_a C_a + k_d C_l (n_p \cdot d_l) + k_s C_l (r_p \cdot v)^e
+$$
+
+:::{.column-page}
+
+```{=html}
+<style>
+#pt-uza{margin:1.2rem 0;border:1px solid #d8dde6;border-radius:18px;padding:1.1rem;background:#fafbfc;box-shadow:0 6px 24px rgba(0,0,0,.06)}
+#pt-uza .main-layout{display:grid;grid-template-columns:1fr 300px;gap:1rem;align-items:start}
+#pt-uza .viewer-card{background:#fff;border:1px solid #e2e8f0;border-radius:16px;padding:0.6rem;min-width:0}
+#pt-uza .viewer{position:relative;width:100%;border-radius:14px;border:1px solid #d8dde6;overflow:hidden;background:#18181b}
+#pt-uza .viewer canvas{display:block;width:100%;height:auto;image-rendering:auto}
+#pt-uza .overlay{position:absolute;bottom:10px;left:12px;color:rgba(255,255,255,.8);font:13px/1.4 monospace;background:rgba(0,0,0,.45);padding:3px 10px;border-radius:6px;pointer-events:none}
+#pt-uza .sidebar{display:flex;flex-direction:column;gap:0.8rem}
+#pt-uza .card{background:#fff;border:1px solid #e2e8f0;border-radius:16px;padding:1rem 1.1rem}
+#pt-uza .card h4{margin:0 0 .7rem 0;font-size:1rem}
+#pt-uza .row{display:grid;grid-template-columns:1fr 60px;gap:.5rem;align-items:center;margin:.45rem 0}
+#pt-uza .row label{font-size:.9rem}
+#pt-uza .row.compact{grid-template-columns:1fr}
+#pt-uza input[type="range"]{width:100%}
+#pt-uza input[type="color"]{width:100%;min-width:48px;height:32px;padding:0;border:none;background:transparent}
+#pt-uza button{border:1px solid #cbd5e1;background:#fff;border-radius:10px;padding:.45rem .85rem;cursor:pointer;font-size:.93rem;margin-top:.4rem;width:100%}
+#pt-uza button:hover{background:#f1f5f9}
+#pt-uza .info{font-size:.85rem;color:#475569;margin-top:.3rem;line-height:1.4}
+#pt-uza .load-error{padding:1rem;color:#7f1d1d}
+@media(max-width:850px){
+  #pt-uza .main-layout{grid-template-columns:1fr}
+  #pt-uza .viewer{min-height:400px}
+}
+</style>
+
+<div id="pt-uza">
+  <div class="main-layout">
+    <div class="viewer-card">
+      <div class="viewer" id="viewer-uza">
+        <canvas id="pt-canvas"></canvas>
+        <div class="overlay" id="pt-info">Cargando...</div>
+      </div>
+    </div>
+    <div class="sidebar">
+      <div class="card">
+        <h4>Parámetros de iluminación</h4>
+        <div class="row compact">
+          <label for="ca-uza">Color ambiente (C<sub>a</sub>)</label>
+          <input id="ca-uza" type="color" value="#fff4d8">
+        </div>
+        <div class="row compact">
+          <label for="cl-uza">Color luz (C<sub>l</sub>)</label>
+          <input id="cl-uza" type="color" value="#ffffff">
+        </div>
+        <label for="ka-uza" style="font-size:.9rem;margin-top:.4rem;display:block">k<sub>a</sub></label>
+        <div class="row">
+          <input id="ka-uza" type="range" min="0" max="1.2" step="0.01" value="0.30">
+          <span data-v="ka">0.30</span>
+        </div>
+        <label for="kd-uza" style="font-size:.9rem;display:block">k<sub>d</sub></label>
+        <div class="row">
+          <input id="kd-uza" type="range" min="0" max="1.5" step="0.01" value="1.00">
+          <span data-v="kd">1.00</span>
+        </div>
+        <label for="ks-uza" style="font-size:.9rem;display:block">k<sub>s</sub></label>
+        <div class="row">
+          <input id="ks-uza" type="range" min="0" max="1.5" step="0.01" value="0.55">
+          <span data-v="ks">0.55</span>
+        </div>
+        <label for="exp-uza" style="font-size:.9rem;display:block">Exponente (e)</label>
+        <div class="row">
+          <input id="exp-uza" type="range" min="1" max="256" step="1" value="60">
+          <span data-v="exp">60</span>
+        </div>
+      </div>
+      <div class="card">
+        <h4>Escena</h4>
+        <p class="info">Cornell box con esfera y cubo.<br>Arrastra sobre el visor para orbitar la cámara.</p>
+        <button type="button" id="reset-uza">Reiniciar vista</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+(function(){
+'use strict';
+var viewer = document.getElementById('viewer-uza');
+var canvas = document.getElementById('pt-canvas');
+var overlay = document.getElementById('pt-info');
+var root = document.getElementById('pt-uza');
+if(!viewer||!canvas||!root){return;}
+
+/* ---- resolution ---- */
+var W = 640, H = 480;
+canvas.width = W; canvas.height = H;
+var ctx = canvas.getContext('2d');
+if(!ctx){viewer.innerHTML='<div class="load-error">Canvas no disponible.</div>';return;}
+var imgData = ctx.createImageData(W, H);
+var pix = imgData.data;
+
+/* ---- vector helpers ---- */
+function dot(a,b){return a[0]*b[0]+a[1]*b[1]+a[2]*b[2];}
+function sub(a,b){return[a[0]-b[0],a[1]-b[1],a[2]-b[2]];}
+function addv(a,b){return[a[0]+b[0],a[1]+b[1],a[2]+b[2]];}
+function scl(a,s){return[a[0]*s,a[1]*s,a[2]*s];}
+function nrm(a){var l=Math.sqrt(dot(a,a));return l>1e-8?[a[0]/l,a[1]/l,a[2]/l]:[0,0,0];}
+function rfl(d,n){var c=2*dot(d,n);return[d[0]-c*n[0],d[1]-c*n[1],d[2]-c*n[2]];}
+
+/* ---- intersections ---- */
+function hitSphere(ro,rd,cen,r){
+  var oc=sub(ro,cen),b=dot(oc,rd),c=dot(oc,oc)-r*r,h=b*b-c;
+  if(h<0)return-1;var t=-b-Math.sqrt(h);return t>0.002?t:-1;
+}
+function hitPlane(ro,rd,pp,pn){
+  var d=dot(rd,pn);if(Math.abs(d)<1e-4)return-1;
+  var t=(dot(pp,pn)-dot(ro,pn))/d;return t>0.002?t:-1;
+}
+function hitBox(ro,rd,mn,mx){
+  var e=1e-5,ix=1/(rd[0]+e),iy=1/(rd[1]+e),iz=1/(rd[2]+e);
+  var t1x=(mn[0]-ro[0])*ix,t2x=(mx[0]-ro[0])*ix;
+  var t1y=(mn[1]-ro[1])*iy,t2y=(mx[1]-ro[1])*iy;
+  var t1z=(mn[2]-ro[2])*iz,t2z=(mx[2]-ro[2])*iz;
+  var en=Math.max(Math.min(t1x,t2x),Math.max(Math.min(t1y,t2y),Math.min(t1z,t2z)));
+  var ex=Math.min(Math.max(t1x,t2x),Math.min(Math.max(t1y,t2y),Math.max(t1z,t2z)));
+  if(en>ex||ex<0.002)return-1;return en>0.002?en:ex;
+}
+function boxNml(p,mn,mx){
+  var cx=(mn[0]+mx[0])*0.5,cy=(mn[1]+mx[1])*0.5,cz=(mn[2]+mx[2])*0.5;
+  var dx=(mx[0]-mn[0])*0.5,dy=(mx[1]-mn[1])*0.5,dz=(mx[2]-mn[2])*0.5;
+  var rx=Math.abs((p[0]-cx)/dx),ry=Math.abs((p[1]-cy)/dy),rz=Math.abs((p[2]-cz)/dz);
+  if(rx>ry&&rx>rz)return[p[0]>cx?1:-1,0,0];
+  if(ry>rz)return[0,p[1]>cy?1:-1,0];
+  return[0,0,p[2]>cz?1:-1];
+}
+
+/* ---- scene constants ---- */
+var SC=[-1.15,-1.7,-0.2],SR=1.3;
+var BMN=[0.3,-3,-0.1],BMX=[1.8,-0.3,1.4];
+var LP=[0,2.95,0];
+var MCOLORS=[[0.93,0.93,0.93],[0.72,0.14,0.12],[0.12,0.70,0.15],[0.85,0.64,0.38],[0.90,0.90,0.90]];
+
+function castRay(ro,rd){
+  var best=1e9,mat=-1,t,p;
+  t=hitPlane(ro,rd,[0,-3,0],[0,1,0]);
+  if(t>0&&t<best){p=addv(ro,scl(rd,t));if(Math.abs(p[0])<=3&&Math.abs(p[2])<=3){best=t;mat=0;}}
+  t=hitPlane(ro,rd,[0,3,0],[0,-1,0]);
+  if(t>0&&t<best){p=addv(ro,scl(rd,t));if(Math.abs(p[0])<=3&&Math.abs(p[2])<=3){best=t;mat=(p[0]>=-0.7&&p[0]<=0.7&&p[2]>=-0.7&&p[2]<=0.7)?5:0;}}
+  t=hitPlane(ro,rd,[0,0,-3],[0,0,1]);
+  if(t>0&&t<best){p=addv(ro,scl(rd,t));if(Math.abs(p[0])<=3&&Math.abs(p[1])<=3){best=t;mat=0;}}
+  t=hitPlane(ro,rd,[-3,0,0],[1,0,0]);
+  if(t>0&&t<best){p=addv(ro,scl(rd,t));if(Math.abs(p[1])<=3&&Math.abs(p[2])<=3){best=t;mat=1;}}
+  t=hitPlane(ro,rd,[3,0,0],[-1,0,0]);
+  if(t>0&&t<best){p=addv(ro,scl(rd,t));if(Math.abs(p[1])<=3&&Math.abs(p[2])<=3){best=t;mat=2;}}
+  t=hitSphere(ro,rd,SC,SR);
+  if(t>0&&t<best){best=t;mat=3;}
+  t=hitBox(ro,rd,BMN,BMX);
+  if(t>0&&t<best){best=t;mat=4;}
+  if(mat<0)return null;
+  p=addv(ro,scl(rd,best));
+  var n;
+  if(mat===0){
+    if(Math.abs(p[1]+3)<0.01)n=[0,1,0];
+    else if(Math.abs(p[1]-3)<0.01)n=[0,-1,0];
+    else n=[0,0,1];
+  }else if(mat===1)n=[1,0,0];
+  else if(mat===2)n=[-1,0,0];
+  else if(mat===3)n=nrm(sub(p,SC));
+  else if(mat===4)n=boxNml(p,BMN,BMX);
+  else n=[0,-1,0];
+  return{t:best,mat:mat,p:p,n:n,sc:mat<5?MCOLORS[mat]:[1,1,1]};
+}
+
+/* ---- camera ---- */
+var camT=0,camP=1.35,camR=7.8,dirty=true;
+var eye=[0,0,0],fwd=[0,0,-1],right=[1,0,0],up=[0,1,0];
+function syncCam(){
+  var sp=Math.sin(camP),cp=Math.cos(camP),st=Math.sin(camT),ct=Math.cos(camT);
+  eye=[camR*sp*st,camR*cp,camR*sp*ct];
+  var fl=Math.sqrt(eye[0]*eye[0]+eye[1]*eye[1]+eye[2]*eye[2]);
+  fwd=[-eye[0]/fl,-eye[1]/fl,-eye[2]/fl];
+  var rx=-fwd[2],rz=fwd[0],rl=Math.sqrt(rx*rx+rz*rz);
+  if(rl>0.001){rx/=rl;rz/=rl;}else{rx=1;rz=0;}
+  right=[rx,0,rz];
+  up=[-rz*fwd[1],rz*fwd[0]-rx*fwd[2],rx*fwd[1]];
+}
+
+/* ---- orbit ---- */
+var drag=false,mx0=0,my0=0;
+canvas.addEventListener('mousedown',function(e){drag=true;mx0=e.clientX;my0=e.clientY;e.preventDefault();});
+canvas.addEventListener('mousemove',function(e){if(!drag)return;camT-=(e.clientX-mx0)*0.005;camP=Math.max(0.15,Math.min(Math.PI-0.15,camP-(e.clientY-my0)*0.005));mx0=e.clientX;my0=e.clientY;dirty=true;});
+window.addEventListener('mouseup',function(){drag=false;});
+canvas.addEventListener('touchstart',function(e){if(e.touches.length===1){drag=true;mx0=e.touches[0].clientX;my0=e.touches[0].clientY;e.preventDefault();}},{passive:false});
+canvas.addEventListener('touchmove',function(e){if(!drag||e.touches.length!==1)return;camT-=(e.touches[0].clientX-mx0)*0.005;camP=Math.max(0.15,Math.min(Math.PI-0.15,camP-(e.touches[0].clientY-my0)*0.005));mx0=e.touches[0].clientX;my0=e.touches[0].clientY;dirty=true;e.preventDefault();},{passive:false});
+canvas.addEventListener('touchend',function(){drag=false;});
+
+/* ---- UI ---- */
+var ui={ca:root.querySelector('#ca-uza'),cl:root.querySelector('#cl-uza'),ka:root.querySelector('#ka-uza'),kd:root.querySelector('#kd-uza'),ks:root.querySelector('#ks-uza'),exp:root.querySelector('#exp-uza'),reset:root.querySelector('#reset-uza')};
+function hex2gl(h){return[parseInt(h.slice(1,3),16)/255,parseInt(h.slice(3,5),16)/255,parseInt(h.slice(5,7),16)/255];}
+function updateLabels(){
+  root.querySelector('[data-v="ka"]').textContent=Number(ui.ka.value).toFixed(2);
+  root.querySelector('[data-v="kd"]').textContent=Number(ui.kd.value).toFixed(2);
+  root.querySelector('[data-v="ks"]').textContent=Number(ui.ks.value).toFixed(2);
+  root.querySelector('[data-v="exp"]').textContent=ui.exp.value;
+}
+function onParam(){dirty=true;updateLabels();}
+[ui.ca,ui.cl,ui.ka,ui.kd,ui.ks,ui.exp].forEach(function(el){el.addEventListener('input',onParam);el.addEventListener('change',onParam);});
+ui.reset.addEventListener('click',function(){camT=0;camP=1.35;dirty=true;});
+updateLabels();
+
+/* ---- progressive render ---- */
+var ROWS_PER_CHUNK = 40;  /* rows per animation frame */
+var nextRow = 0;
+var rendering = false;
+var curKa,curKd,curKs,curXp,curCa,curCl;
+
+function startRender(){
+  curKa=parseFloat(ui.ka.value);curKd=parseFloat(ui.kd.value);
+  curKs=parseFloat(ui.ks.value);curXp=parseFloat(ui.exp.value);
+  curCa=hex2gl(ui.ca.value);curCl=hex2gl(ui.cl.value);
+  syncCam();
+  nextRow=0;rendering=true;
+  overlay.textContent='Renderizando...';
+  renderChunk();
+}
+
+function renderChunk(){
+  if(!rendering)return;
+  var t0=performance.now();
+  var asp=W/H;
+  var endRow=Math.min(nextRow+ROWS_PER_CHUNK,H);
+  for(var y=nextRow;y<endRow;y++){
+    for(var x=0;x<W;x++){
+      var u=(x/W*2-1)*asp,v=-(y/H*2-1);
+      var rd=nrm([fwd[0]+u*0.75*right[0]+v*0.75*up[0],
+                   fwd[1]+u*0.75*right[1]+v*0.75*up[1],
+                   fwd[2]+u*0.75*right[2]+v*0.75*up[2]]);
+      var r=0,g=0,b=0;
+      var hit=castRay(eye,rd);
+      if(hit){
+        if(hit.mat===5){r=curCl[0]*8;g=curCl[1]*8;b=curCl[2]*8;}
+        else{
+          r=curKa*curCa[0]*hit.sc[0];g=curKa*curCa[1]*hit.sc[1];b=curKa*curCa[2]*hit.sc[2];
+          var toL=sub(LP,hit.p),dist=Math.sqrt(dot(toL,toL)),ld=scl(toL,1/dist);
+          var NdL=dot(hit.n,ld);
+          if(NdL>0){
+            var sh=castRay(addv(hit.p,scl(hit.n,0.01)),ld);
+            if(!sh||sh.mat===5||sh.t>dist){
+              var vd=nrm(sub(eye,hit.p));
+              var rf=rfl(scl(ld,-1),hit.n);
+              var RdV=Math.max(dot(rf,vd),0);
+              var at=12/(dist*dist+0.1);
+              r+=curKd*curCl[0]*hit.sc[0]*NdL*at;
+              g+=curKd*curCl[1]*hit.sc[1]*NdL*at;
+              b+=curKd*curCl[2]*hit.sc[2]*NdL*at;
+              var pw=Math.pow(RdV,curXp);
+              r+=curKs*curCl[0]*pw*at;g+=curKs*curCl[1]*pw*at;b+=curKs*curCl[2]*pw*at;
+            }
+          }
+          r=r/(r+1);g=g/(g+1);b=b/(b+1);
+          r=Math.sqrt(r);g=Math.sqrt(g);b=Math.sqrt(b);
+        }
+      }
+      var idx=(y*W+x)*4;
+      pix[idx]=Math.min(255,r*255)|0;pix[idx+1]=Math.min(255,g*255)|0;
+      pix[idx+2]=Math.min(255,b*255)|0;pix[idx+3]=255;
+    }
+  }
+  ctx.putImageData(imgData,0,0);
+  nextRow=endRow;
+  if(nextRow<H){
+    var pct=Math.round(nextRow/H*100);
+    overlay.textContent='Renderizando... '+pct+'%';
+    requestAnimationFrame(renderChunk);
+  }else{
+    rendering=false;
+    var ms=performance.now()-window._rtStart;
+    overlay.textContent='Phong raytracer  '+W+'\u00d7'+H+'  ('+Math.round(ms)+'ms)';
+  }
+}
+
+function tick(){
+  requestAnimationFrame(tick);
+  if(!dirty)return;
+  dirty=false;
+  rendering=false; /* cancel in-progress render */
+  window._rtStart=performance.now();
+  startRender();
+}
+tick();
+})();
+</script>
+```
+
+:::
