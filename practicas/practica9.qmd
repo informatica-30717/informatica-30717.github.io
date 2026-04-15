@@ -17,12 +17,10 @@ $$
 C_p = k_a C_a + k_d C_l (n_p \cdot d_l) + k_s C_l (r_p \cdot v)^e
 $$
 
-:::{.column-page}
-
 ```{=html}
 <style>
 #pt-uza{margin:1.2rem 0;border:1px solid #d8dde6;border-radius:18px;padding:1.1rem;background:#fafbfc;box-shadow:0 6px 24px rgba(0,0,0,.06)}
-#pt-uza .main-layout{display:grid;grid-template-columns:1fr 300px;gap:1rem;align-items:start}
+#pt-uza .main-layout{display:grid;grid-template-columns:1fr;gap:1rem;align-items:start}
 #pt-uza .viewer-card{background:#fff;border:1px solid #e2e8f0;border-radius:16px;padding:0.6rem;min-width:0}
 #pt-uza .viewer{position:relative;width:100%;border-radius:14px;border:1px solid #d8dde6;overflow:hidden;background:#18181b}
 #pt-uza .viewer canvas{display:block;width:100%;height:auto;image-rendering:auto}
@@ -85,11 +83,6 @@ $$
           <span data-v="exp">60</span>
         </div>
       </div>
-      <div class="card">
-        <h4>Escena</h4>
-        <p class="info">Cornell box con esfera y cubo.<br>Arrastra sobre el visor para orbitar la cámara.</p>
-        <button type="button" id="reset-uza">Reiniciar vista</button>
-      </div>
     </div>
   </div>
 </div>
@@ -104,7 +97,7 @@ var root = document.getElementById('pt-uza');
 if(!viewer||!canvas||!root){return;}
 
 /* ---- resolution ---- */
-var W = 640, H = 480;
+var W = 480, H = 360;
 canvas.width = W; canvas.height = H;
 var ctx = canvas.getContext('2d');
 if(!ctx){viewer.innerHTML='<div class="load-error">Canvas no disponible.</div>';return;}
@@ -147,10 +140,18 @@ function boxNml(p,mn,mx){
 }
 
 /* ---- scene constants ---- */
-var SC=[-1.15,-1.7,-0.2],SR=1.3;
+var SC=[-1.15,-1.7,-0.2],SR=0.8;
 var BMN=[0.3,-3,-0.1],BMX=[1.8,-0.3,1.4];
 var LP=[0,2.95,0];
 var MCOLORS=[[0.93,0.93,0.93],[0.72,0.14,0.12],[0.12,0.70,0.15],[0.85,0.64,0.38],[0.90,0.90,0.90]];
+var sphereRotY=0,sphereRotX=0;
+
+function rotateSphere(p,ry,rx){
+  var sy=Math.sin(ry),cy=Math.cos(ry),sx=Math.sin(rx),cx=Math.cos(rx);
+  var px=p[0]*cy-p[2]*sy,pz=p[0]*sy+p[2]*cy;
+  var py=p[1]*cx-pz*sx,pz2=p[1]*sx+pz*cx;
+  return[px,py,pz2];
+}
 
 function castRay(ro,rd){
   var best=1e9,mat=-1,t,p;
@@ -164,7 +165,8 @@ function castRay(ro,rd){
   if(t>0&&t<best){p=addv(ro,scl(rd,t));if(Math.abs(p[1])<=3&&Math.abs(p[2])<=3){best=t;mat=1;}}
   t=hitPlane(ro,rd,[3,0,0],[-1,0,0]);
   if(t>0&&t<best){p=addv(ro,scl(rd,t));if(Math.abs(p[1])<=3&&Math.abs(p[2])<=3){best=t;mat=2;}}
-  t=hitSphere(ro,rd,SC,SR);
+  var rotSC=rotateSphere(SC,sphereRotY,sphereRotX);
+  t=hitSphere(ro,rd,rotSC,SR);
   if(t>0&&t<best){best=t;mat=3;}
   t=hitBox(ro,rd,BMN,BMX);
   if(t>0&&t<best){best=t;mat=4;}
@@ -177,7 +179,10 @@ function castRay(ro,rd){
     else n=[0,0,1];
   }else if(mat===1)n=[1,0,0];
   else if(mat===2)n=[-1,0,0];
-  else if(mat===3)n=nrm(sub(p,SC));
+  else if(mat===3){
+    var rotSC2=rotateSphere(SC,sphereRotY,sphereRotX);
+    n=nrm(sub(p,rotSC2));
+  }
   else if(mat===4)n=boxNml(p,BMN,BMX);
   else n=[0,-1,0];
   return{t:best,mat:mat,p:p,n:n,sc:mat<5?MCOLORS[mat]:[1,1,1]};
@@ -207,7 +212,7 @@ canvas.addEventListener('touchmove',function(e){if(!drag||e.touches.length!==1)r
 canvas.addEventListener('touchend',function(){drag=false;});
 
 /* ---- UI ---- */
-var ui={ca:root.querySelector('#ca-uza'),cl:root.querySelector('#cl-uza'),ka:root.querySelector('#ka-uza'),kd:root.querySelector('#kd-uza'),ks:root.querySelector('#ks-uza'),exp:root.querySelector('#exp-uza'),reset:root.querySelector('#reset-uza')};
+var ui={ca:root.querySelector('#ca-uza'),cl:root.querySelector('#cl-uza'),ka:root.querySelector('#ka-uza'),kd:root.querySelector('#kd-uza'),ks:root.querySelector('#ks-uza'),exp:root.querySelector('#exp-uza')};
 function hex2gl(h){return[parseInt(h.slice(1,3),16)/255,parseInt(h.slice(3,5),16)/255,parseInt(h.slice(5,7),16)/255];}
 function updateLabels(){
   root.querySelector('[data-v="ka"]').textContent=Number(ui.ka.value).toFixed(2);
@@ -217,20 +222,73 @@ function updateLabels(){
 }
 function onParam(){dirty=true;updateLabels();}
 [ui.ca,ui.cl,ui.ka,ui.kd,ui.ks,ui.exp].forEach(function(el){el.addEventListener('input',onParam);el.addEventListener('change',onParam);});
-ui.reset.addEventListener('click',function(){camT=0;camP=1.35;dirty=true;});
 updateLabels();
 
-/* ---- progressive render ---- */
+/* ---- path tracing ---- */
+function tonemap(v){
+  var a=2.51,b=0.03,c=2.43,d=0.59,e=0.14;
+  return(v*(a*v+b))/(v*(c*v+d)+e);
+}
+
+function randomOnHemisphere(n){
+  var r1=Math.random(),r2=Math.random();
+  var theta=Math.acos(Math.sqrt(1-r1)),phi=2*Math.PI*r2;
+  var st=Math.sin(theta),ct=Math.cos(theta),sp=Math.sin(phi),cp=Math.cos(phi);
+  var x=st*cp,y=st*sp,z=ct;
+  var tx=Math.abs(n[2])>0.9?[0,1,0]:[0,0,1];
+  var right=nrm([n[1]*tx[2]-n[2]*tx[1],n[2]*tx[0]-n[0]*tx[2],n[0]*tx[1]-n[1]*tx[0]]);
+  var up=nrm([n[1]*right[2]-n[2]*right[1],n[2]*right[0]-n[0]*right[2],n[0]*right[1]-n[1]*right[0]]);
+  return nrm([x*right[0]+y*up[0]+z*n[0],x*right[1]+y*up[1]+z*n[1],x*right[2]+y*up[2]+z*n[2]]);
+}
+
+function tracePath(ro,rd,depth){
+  if(depth>2)return[0,0,0];
+  var hit=castRay(ro,rd);
+  if(!hit)return[0,0,0];
+  if(hit.mat===5)return[8,8,8];
+  var r=0,g=0,b=0;
+  if(hit.mat===4){
+    var rd_refl=rfl(rd,hit.n);
+    var refl=tracePath(addv(hit.p,scl(hit.n,0.01)),rd_refl,depth+1);
+    r=refl[0]*0.9;g=refl[1]*0.9;b=refl[2]*0.9;
+  }else{
+    var toL=sub(LP,hit.p),dist2=dot(toL,toL),dist=Math.sqrt(dist2),ld=scl(toL,1/(dist+1e-6));
+    var ndl=Math.max(dot(hit.n,ld),0);
+    if(ndl>0){
+      var sh=castRay(addv(hit.p,scl(hit.n,0.01)),ld);
+      if(!sh||sh.t>dist-0.03||sh.mat===5){
+        var direct=curKd*24*ndl/(dist2+0.15);
+        r+=hit.sc[0]*curCl[0]*direct;
+        g+=hit.sc[1]*curCl[1]*direct;
+        b+=hit.sc[2]*curCl[2]*direct;
+      }
+    }
+    var diffuse_dir=randomOnHemisphere(hit.n);
+    var bounce=tracePath(addv(hit.p,scl(hit.n,0.01)),diffuse_dir,depth+1);
+    var bounceGain=(hit.mat===3)?0.70:0.82;
+    r+=hit.sc[0]*bounce[0]*bounceGain;
+    g+=hit.sc[1]*bounce[1]*bounceGain;
+    b+=hit.sc[2]*bounce[2]*bounceGain;
+  }
+  return[r,g,b];
+}
 var ROWS_PER_CHUNK = 40;  /* rows per animation frame */
+var SAMPLES_PER_FRAME = 1;  /* samples added per frame */
 var nextRow = 0;
 var rendering = false;
 var curKa,curKd,curKs,curXp,curCa,curCl;
+var accumBuffer=null;
+var sampleCountBuffer=null;
+var frameCount=0;
 
 function startRender(){
   curKa=parseFloat(ui.ka.value);curKd=parseFloat(ui.kd.value);
   curKs=parseFloat(ui.ks.value);curXp=parseFloat(ui.exp.value);
   curCa=hex2gl(ui.ca.value);curCl=hex2gl(ui.cl.value);
   syncCam();
+  accumBuffer=new Float32Array(W*H*3);
+  sampleCountBuffer=new Float32Array(W*H);
+  frameCount=0;
   nextRow=0;rendering=true;
   overlay.textContent='Renderizando...';
   renderChunk();
@@ -238,70 +296,69 @@ function startRender(){
 
 function renderChunk(){
   if(!rendering)return;
-  var t0=performance.now();
   var asp=W/H;
   var endRow=Math.min(nextRow+ROWS_PER_CHUNK,H);
   for(var y=nextRow;y<endRow;y++){
     for(var x=0;x<W;x++){
-      var u=(x/W*2-1)*asp,v=-(y/H*2-1);
+      var jx=(Math.random()-0.5),jy=(Math.random()-0.5);
+      var u=((x+jx)/W*2-1)*asp,v=-((y+jy)/H*2-1);
       var rd=nrm([fwd[0]+u*0.75*right[0]+v*0.75*up[0],
                    fwd[1]+u*0.75*right[1]+v*0.75*up[1],
                    fwd[2]+u*0.75*right[2]+v*0.75*up[2]]);
-      var r=0,g=0,b=0;
-      var hit=castRay(eye,rd);
-      if(hit){
-        if(hit.mat===5){r=curCl[0]*8;g=curCl[1]*8;b=curCl[2]*8;}
-        else{
-          r=curKa*curCa[0]*hit.sc[0];g=curKa*curCa[1]*hit.sc[1];b=curKa*curCa[2]*hit.sc[2];
-          var toL=sub(LP,hit.p),dist=Math.sqrt(dot(toL,toL)),ld=scl(toL,1/dist);
-          var NdL=dot(hit.n,ld);
-          if(NdL>0){
-            var sh=castRay(addv(hit.p,scl(hit.n,0.01)),ld);
-            if(!sh||sh.mat===5||sh.t>dist){
-              var vd=nrm(sub(eye,hit.p));
-              var rf=rfl(scl(ld,-1),hit.n);
-              var RdV=Math.max(dot(rf,vd),0);
-              var at=12/(dist*dist+0.1);
-              r+=curKd*curCl[0]*hit.sc[0]*NdL*at;
-              g+=curKd*curCl[1]*hit.sc[1]*NdL*at;
-              b+=curKd*curCl[2]*hit.sc[2]*NdL*at;
-              var pw=Math.pow(RdV,curXp);
-              r+=curKs*curCl[0]*pw*at;g+=curKs*curCl[1]*pw*at;b+=curKs*curCl[2]*pw*at;
-            }
-          }
-          r=r/(r+1);g=g/(g+1);b=b/(b+1);
-          r=Math.sqrt(r);g=Math.sqrt(g);b=Math.sqrt(b);
-        }
-      }
-      var idx=(y*W+x)*4;
-      pix[idx]=Math.min(255,r*255)|0;pix[idx+1]=Math.min(255,g*255)|0;
-      pix[idx+2]=Math.min(255,b*255)|0;pix[idx+3]=255;
+      var col=tracePath(eye,rd,0);
+      var idx=(y*W+x)*3;
+      var sidx=(y*W+x);
+      accumBuffer[idx]+=col[0];
+      accumBuffer[idx+1]+=col[1];
+      accumBuffer[idx+2]+=col[2];
+      sampleCountBuffer[sidx]+=1;
+    }
+  }
+  nextRow=endRow;
+  if(nextRow>=H){
+    frameCount++;
+    nextRow=0;
+    updateDisplay();
+    var ms=performance.now()-window._rtStart;
+    overlay.textContent='Path tracer '+W+'\u00d7'+H+'  '+frameCount+' spp  ('+Math.round(ms)+'ms)';
+  }
+  requestAnimationFrame(renderChunk);
+}
+
+function updateDisplay(){
+  for(var y=0;y<H;y++){
+    for(var x=0;x<W;x++){
+      var idx=(y*W+x)*3;
+      var sidx=(y*W+x);
+      var spp=Math.max(sampleCountBuffer[sidx],1);
+      var r=accumBuffer[idx]/spp;
+      var g=accumBuffer[idx+1]/spp;
+      var b=accumBuffer[idx+2]/spp;
+      var exposure=1.35;
+      r*=exposure;g*=exposure;b*=exposure;
+      r=tonemap(r);g=tonemap(g);b=tonemap(b);
+      var pidx=(y*W+x)*4;
+      pix[pidx]=Math.min(255,r*255)|0;pix[pidx+1]=Math.min(255,g*255)|0;
+      pix[pidx+2]=Math.min(255,b*255)|0;pix[pidx+3]=255;
     }
   }
   ctx.putImageData(imgData,0,0);
-  nextRow=endRow;
-  if(nextRow<H){
-    var pct=Math.round(nextRow/H*100);
-    overlay.textContent='Renderizando... '+pct+'%';
-    requestAnimationFrame(renderChunk);
-  }else{
-    rendering=false;
-    var ms=performance.now()-window._rtStart;
-    overlay.textContent='Phong raytracer  '+W+'\u00d7'+H+'  ('+Math.round(ms)+'ms)';
-  }
 }
 
 function tick(){
   requestAnimationFrame(tick);
-  if(!dirty)return;
-  dirty=false;
-  rendering=false; /* cancel in-progress render */
-  window._rtStart=performance.now();
-  startRender();
+  if(dirty){
+    dirty=false;
+    rendering=false; /* cancel in-progress render */
+    window._rtStart=performance.now();
+    startRender();
+  }else if(!rendering){
+    window._rtStart=performance.now();
+    startRender();
+  }
 }
 tick();
 })();
 </script>
 ```
-
 :::

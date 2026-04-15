@@ -187,7 +187,7 @@ No te quedes con una sola versión. Cambia el número de puntos, el tamaño de l
 
 ## Ejercicio 4: generación de imágenes con modelos de difusión
 
-Una vez modeladas la taza y la vasija, podemos generar una imagen final más rica visualmente mediante un modelo de difusión. La idea no es modificar la geometría base, sino utilizar una vista del modelo como referencia para añadir materiales, iluminación, contexto y detalles que no estaban presentes en la escena original.
+Una vez modeladas la taza y la vasija, podemos generar una imagen final más llamativa visualmente mediante un modelo de difusión. La idea no es modificar la geometría base, sino utilizar una vista del modelo como referencia para añadir materiales, iluminación, contexto y detalles que no estaban presentes en la escena original. Podéis convertir la vasija en cualquier otro objeto: un edificio, una lámpara, un jarrón decorativo... La clave está en escribir un *prompt* que describa con detalle el resultado que quieres obtener.
 
 De este modo, una geometría sencilla puede transformarse en una imagen más cercana a una visualización arquitectónica. A continuación se muestran algunos ejemplos obtenidos a partir de modelos generados durante la práctica:
 
@@ -244,7 +244,7 @@ Empieza con un *prompt* simple y claro. Si el resultado no se parece a lo que bu
 
 - `taza.obj`, con la geometría de la taza modelada en *Grasshopper*;
 - `vasija.obj`, con la geometría de la vasija modelada en *Grasshopper*;
-- `diffusion.png`, una imagen generada con un modelo de difusión a partir de una vista de la vasija.
+- `imagen.png`, una imagen generada con un modelo de difusión a partir de una vista de la vasija.
 
 ::: {.callout-important}
 ## Exportar la geometría
