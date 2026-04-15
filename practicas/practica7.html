@@ -101,15 +101,11 @@ background-size: cover;
 <link rel="stylesheet" href="../styles.css">
 <meta property="og:title" content="Práctica 7: Introducción a Grasshopper – Informática (30717) - Grado en Estudios en Arquitectura">
 <meta property="og:description" content="~10 min de lectura">
-<meta property="og:image" content="https://informatica-30717.github.io/resources/practica7/rhino3d.png">
+<meta property="og:image" content="https://informatica-30717.github.io/resources/practica7/scheme.svg">
 <meta property="og:site_name" content="Informática (30717) - Grado en Estudios en Arquitectura">
-<meta property="og:image:height" content="1020">
-<meta property="og:image:width" content="1920">
 <meta name="twitter:title" content="Práctica 7: Introducción a Grasshopper – Informática (30717) - Grado en Estudios en Arquitectura">
 <meta name="twitter:description" content="~10 min de lectura">
-<meta name="twitter:image" content="https://informatica-30717.github.io/resources/practica7/rhino3d.png">
-<meta name="twitter:image-height" content="1020">
-<meta name="twitter:image-width" content="1920">
+<meta name="twitter:image" content="https://informatica-30717.github.io/resources/practica7/scheme.svg">
 <meta name="twitter:card" content="summary_large_image">
 </head>
 
@@ -318,6 +314,16 @@ background-size: cover;
 <h2 data-number="2" class="anchored" data-anchor-id="introducción-a-grasshopper"><span class="header-section-number">2</span> Introducción a Grasshopper</h2>
 <p><strong><em>Grasshopper</em></strong> es una herramienta de programación visual orientada al diseño paramétrico e integrada en <strong><em>Rhinoceros</em></strong>. En lugar de modelar dibujando directamente cada objeto, en <em>Grasshopper</em> se construye una <strong>definición</strong> formada por componentes conectados entre sí. Cada componente realiza una operación, y el resultado final depende de los parámetros que introducimos.</p>
 <p>Este modo de trabajo resulta especialmente útil cuando queremos probar variantes de una misma forma de manera rápida: por ejemplo, cambiar el tamaño de una base, la altura de una pieza o el número de divisiones de un patrón sin tener que rehacer el modelo desde cero.</p>
+<div id="fig-scheme" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-scheme-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../resources/practica7/scheme.svg" class="img-fluid figure-img" style="width:80.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-scheme-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;1: Esquema de interacción entre Rhino y Grasshopper.
+</figcaption>
+</figure>
+</div>
 <section id="descarga" class="level3" data-number="2.1">
 <h3 data-number="2.1" class="anchored" data-anchor-id="descarga"><span class="header-section-number">2.1</span> Descarga</h3>
 <p>Se puede descargar una versión de evaluación de 90 días, a contar desde la fecha de descarga, desde su <a href="https://www.rhino3d.com/download/">web</a>. Después de ese periodo, <em>Rhino</em> no permitirá guardar ficheros nuevos, aunque sí abrirlos y visualizarlos.</p>
@@ -344,21 +350,21 @@ background-size: cover;
 <img src="../resources/practica7/rhino_banana_install.png" class="img-fluid figure-img" style="width:70.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-install-rhino-banana-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figura&nbsp;1: Instalando el complemento RhinoBanana.
+Figura&nbsp;2: Instalando el complemento RhinoBanana.
 </figcaption>
 </figure>
 </div>
 </section>
 <section id="acceso-a-grasshopper" class="level4" data-number="2.1.2">
 <h4 data-number="2.1.2" class="anchored" data-anchor-id="acceso-a-grasshopper"><span class="header-section-number">2.1.2</span> Acceso a Grasshopper</h4>
-<p><em>Rhino</em> será nuestro visor principal, pero la construcción paramétrica de la geometría se hará en <em>Grasshopper</em>. Para abrirlo, escribe <code>Grasshopper</code> en la barra de comandos de <em>Rhino</em> 8 (ver <a href="#fig-command-line" class="quarto-xref">Figura&nbsp;2</a>) y pulsa Enter.</p>
+<p><em>Rhino</em> será nuestro visor principal, pero la construcción paramétrica de la geometría se hará en <em>Grasshopper</em>. Para abrirlo, escribe <code>Grasshopper</code> en la barra de comandos de <em>Rhino</em> 8 (ver <a href="#fig-command-line" class="quarto-xref">Figura&nbsp;3</a>) y pulsa Enter.</p>
 <div id="fig-command-line" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-command-line-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="../resources/practica7/commands.png" class="img-fluid figure-img" style="width:50.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-command-line-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figura&nbsp;2: Introduciendo “Grasshopper” en la barra de comandos de <em>Rhino</em> 8.
+Figura&nbsp;3: Introduciendo “Grasshopper” en la barra de comandos de <em>Rhino</em> 8.
 </figcaption>
 </figure>
 </div>
@@ -369,7 +375,7 @@ Figura&nbsp;2: Introduciendo “Grasshopper” en la barra de comandos de <em>Rh
 <img src="../resources/practica7/toolbar.png" class="img-fluid figure-img">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-toolbar-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figura&nbsp;3: Accediendo a Grasshopper a través de la barra de herramientas de <em>Rhino</em> 8.
+Figura&nbsp;4: Accediendo a Grasshopper a través de la barra de herramientas de <em>Rhino</em> 8.
 </figcaption>
 </figure>
 </div>
@@ -417,9 +423,9 @@ Figura&nbsp;3: Accediendo a Grasshopper a través de la barra de herramientas de
 <section id="consejos-para-no-perderse" class="level3" data-number="3.2">
 <h3 data-number="3.2" class="anchored" data-anchor-id="consejos-para-no-perderse"><span class="header-section-number">3.2</span> Consejos para no perderse</h3>
 <ul>
-<li>Trabaja con la ventana de <em>Rhino</em> y la de <em>Grasshopper</em> visibles al mismo tiempo, como en la <a href="#fig-split-screen" class="quarto-xref">Figura&nbsp;4</a>. De este modo, podrás ver cómo cada cambio en <em>Grasshopper</em> afecta a la geometría en <em>Rhino</em>.</li>
+<li>Trabaja con la ventana de <em>Rhino</em> y la de <em>Grasshopper</em> visibles al mismo tiempo, como en la <a href="#fig-split-screen" class="quarto-xref">Figura&nbsp;5</a>. De este modo, podrás ver cómo cada cambio en <em>Grasshopper</em> afecta a la geometría en <em>Rhino</em>.</li>
 <li>No busques medidas exactas: en esta práctica nos interesa más <strong>entender el flujo de trabajo</strong> que obtener una taza perfectamente precisa.</li>
-<li>Cambia a la vista de perspectiva y, si lo necesitas, utiliza el modo <strong>Renderizado</strong> para ver mejor la geometría (ver <a href="#fig-maximizar-renderizado" class="quarto-xref">Figura&nbsp;5</a>).</li>
+<li>Cambia a la vista de perspectiva y, si lo necesitas, utiliza el modo <strong>Renderizado</strong> para ver mejor la geometría (ver <a href="#fig-maximizar-renderizado" class="quarto-xref">Figura&nbsp;6</a>).</li>
 <li>Nombra los <em>sliders</em> más importantes para recordar qué controla cada uno.</li>
 </ul>
 <div id="fig-split-screen" class="quarto-float quarto-figure quarto-figure-center anchored">
@@ -428,7 +434,7 @@ Figura&nbsp;3: Accediendo a Grasshopper a través de la barra de herramientas de
 <img src="../resources/practica7/split_screen.png" class="img-fluid figure-img">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-split-screen-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figura&nbsp;4: Compartiendo la pantalla entre <em>Rhino</em> y <em>Grasshopper</em>.
+Figura&nbsp;5: Compartiendo la pantalla entre <em>Rhino</em> y <em>Grasshopper</em>.
 </figcaption>
 </figure>
 </div>
@@ -438,7 +444,7 @@ Figura&nbsp;4: Compartiendo la pantalla entre <em>Rhino</em> y <em>Grasshopper</
 <img src="../resources/practica7/maximizar_renderizado.png" class="img-fluid figure-img" style="width:80.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-maximizar-renderizado-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figura&nbsp;5: Opciones de visualización en <em>Rhino</em>.
+Figura&nbsp;6: Opciones de visualización en <em>Rhino</em>.
 </figcaption>
 </figure>
 </div>
@@ -473,7 +479,7 @@ Figura&nbsp;5: Opciones de visualización en <em>Rhino</em>.
 <img src="../resources/practica7/vase.png" class="img-fluid figure-img">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-vasija-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figura&nbsp;6: Taza y vasija.
+Figura&nbsp;7: Taza y vasija.
 </figcaption>
 </figure>
 </div>
@@ -487,7 +493,7 @@ Figura&nbsp;6: Taza y vasija.
 <img src="../resources/practica7/new_layer.png" class="img-fluid figure-img" style="width:60.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-layers-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figura&nbsp;7: Creando una nueva capa en <em>Rhino</em> para organizar la geometría generada por <em>Grasshopper</em>.
+Figura&nbsp;8: Creando una nueva capa en <em>Rhino</em> para organizar la geometría generada por <em>Grasshopper</em>.
 </figcaption>
 </figure>
 </div>
@@ -507,7 +513,7 @@ Figura&nbsp;7: Creando una nueva capa en <em>Rhino</em> para organizar la geomet
 <img src="../resources/practica7/vase_scale.png" class="img-fluid figure-img">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-vase-scale-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figura&nbsp;8: Esquema de vasija con escala en el polígono superior.
+Figura&nbsp;9: Esquema de vasija con escala en el polígono superior.
 </figcaption>
 </figure>
 </div>
@@ -520,7 +526,7 @@ Figura&nbsp;8: Esquema de vasija con escala en el polígono superior.
 <img src="../resources/practica7/scale_move_polygon.png" class="img-fluid figure-img">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-vasija-grafo-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figura&nbsp;9: Definición del polígono superior de la vasija, con el nodo de escala.
+Figura&nbsp;10: Definición del polígono superior de la vasija, con el nodo de escala.
 </figcaption>
 </figure>
 </div>
@@ -531,7 +537,7 @@ Figura&nbsp;9: Definición del polígono superior de la vasija, con el nodo de e
 <img src="../resources/practica7/merge.png" class="img-fluid figure-img">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-merge-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figura&nbsp;10: Mezclando varios polígonos para crear formas más complejas.
+Figura&nbsp;11: Mezclando varios polígonos para crear formas más complejas.
 </figcaption>
 </figure>
 </div>
@@ -559,7 +565,7 @@ Figura&nbsp;10: Mezclando varios polígonos para crear formas más complejas.
 <img src="../resources/practica7/voronoi.png" class="img-fluid figure-img">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-voronoi-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figura&nbsp;11: Generando un patrón de celdas en la vasija utilizando Voronoi.
+Figura&nbsp;12: Generando un patrón de celdas en la vasija utilizando Voronoi.
 </figcaption>
 </figure>
 </div>
@@ -592,7 +598,7 @@ Figura&nbsp;11: Generando un patrón de celdas en la vasija utilizando Voronoi.
 <img src="../resources/practica7/voronoi_graph.png" class="img-fluid figure-img">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-voronoi-grafo-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figura&nbsp;12: Definición de Grasshopper para generar un patrón Voronoi en la vasija.
+Figura&nbsp;13: Definición de Grasshopper para generar un patrón Voronoi en la vasija.
 </figcaption>
 </figure>
 </div>
@@ -639,14 +645,14 @@ Figura&nbsp;12: Definición de Grasshopper para generar un patrón Voronoi en la
 </div>
 <section id="cómo-usar-rhino-banana" class="level3" data-number="6.1">
 <h3 data-number="6.1" class="anchored" data-anchor-id="cómo-usar-rhino-banana"><span class="header-section-number">6.1</span> Cómo usar Rhino Banana</h3>
-<p>Para comenzar a generar imágenes, abre <strong><em>RhinoBanana</em></strong> desde la línea de comandos de <em>Rhino</em> escribiendo <code>RhinoBanana</code> y pulsando Enter. Se abrirá una ventana como la que se muestra en la <a href="#fig-rhino-banana" class="quarto-xref">Figura&nbsp;13</a>.</p>
+<p>Para comenzar a generar imágenes, abre <strong><em>RhinoBanana</em></strong> desde la línea de comandos de <em>Rhino</em> escribiendo <code>RhinoBanana</code> y pulsando Enter. Se abrirá una ventana como la que se muestra en la <a href="#fig-rhino-banana" class="quarto-xref">Figura&nbsp;14</a>.</p>
 <div id="fig-rhino-banana" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-rhino-banana-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="../resources/practica7/rhino_banana.png" class="img-fluid figure-img" style="width:60.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-rhino-banana-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figura&nbsp;13: Interfaz de RhinoBanana.
+Figura&nbsp;14: Interfaz de RhinoBanana.
 </figcaption>
 </figure>
 </div>
