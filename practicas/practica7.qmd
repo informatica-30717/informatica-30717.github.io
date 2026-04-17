@@ -1,6 +1,5 @@
 ---
 title: "Práctica 7: Introducción a Grasshopper"
-subtitle: "<span class='badge rounded-pill text-bg-secondary'>~10 min de lectura</span>"
 title-block-banner: ../resources/practica7/teaser_horizontal.jpg
 title-block-banner-color: "#464646"
 format:
@@ -12,6 +11,16 @@ format:
 execute:
   echo: false
 ---
+
+<div>
+  <span class="badge rounded-pill text-bg-secondary read-time-pill">
+    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" viewBox="0 0 16 16" aria-hidden="true">
+      <path d="M8 3.5a.5.5 0 0 1 .5.5v3.207l2.146 1.147a.5.5 0 0 1-.472.882l-2.25-1.2A.5.5 0 0 1 7 8V4a.5.5 0 0 1 .5-.5z"/>
+      <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm0-1A7 7 0 1 1 8 1a7 7 0 0 1 0 14z"/>
+    </svg>
+    ~10 min de lectura
+  </span>
+</div>
 
 ## Objetivos de la práctica
 
@@ -29,7 +38,7 @@ En esta práctica vamos a dar los primeros pasos con *Grasshopper* aplicándolo 
 
 Este modo de trabajo resulta especialmente útil cuando queremos probar variantes de una misma forma de manera rápida: por ejemplo, cambiar el tamaño de una base, la altura de una pieza o el número de divisiones de un patrón sin tener que rehacer el modelo desde cero.
 
-![Esquema de interacción entre Rhino y Grasshopper.](../resources/practica7/scheme.svg){#fig-scheme width=80%}
+![Esquema de interacción entre Rhino y Grasshopper.](../resources/practica7/scheme.png){#fig-scheme width=80%}
 
 ### Descarga
 
@@ -246,7 +255,7 @@ Empieza con un *prompt* simple y claro. Si el resultado no se parece a lo que bu
 
 - `taza.obj`, con la geometría de la taza modelada en *Grasshopper*;
 - `vasija.obj`, con la geometría de la vasija modelada en *Grasshopper*;
-- `imagen.png`, una imagen generada con un modelo de difusión a partir de una vista de la vasija.
+- `imagen.jpeg`, una imagen generada con un modelo de difusión a partir de una vista de la vasija.
 
 ::: {.callout-important}
 ## Exportar la geometría

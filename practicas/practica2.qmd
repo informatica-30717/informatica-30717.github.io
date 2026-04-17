@@ -1,6 +1,5 @@
 ---
 title: "Práctica 2: Un entorno de programación en Java"
-subtitle: "<span class='badge rounded-pill text-bg-secondary'>~19 min de lectura</span>"
 format:
   html: 
     toc: true
@@ -8,6 +7,16 @@ format:
   revealjs: 
     output-ext: "reveal.html"
 ---
+
+<div>
+  <span class="badge rounded-pill text-bg-secondary read-time-pill">
+    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" viewBox="0 0 16 16" aria-hidden="true">
+      <path d="M8 3.5a.5.5 0 0 1 .5.5v3.207l2.146 1.147a.5.5 0 0 1-.472.882l-2.25-1.2A.5.5 0 0 1 7 8V4a.5.5 0 0 1 .5-.5z"/>
+      <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm0-1A7 7 0 1 1 8 1a7 7 0 0 1 0 14z"/>
+    </svg>
+    ~21 min de lectura
+  </span>
+</div>
 
 ## Objetivos de la práctica
 
@@ -167,7 +176,7 @@ Recuerda **desmarcar la opción *Create module-info.java*** y **marcar la opció
 
 Los lenguajes orientados a objetos, como Java, giran en torno al concepto de clase. Todas las variables y métodos de Java deben pertenecer a una **clase**. Una clase es una colección de datos (variables) y de métodos (funciones) que operan sobre dichos datos. Cada clase pública debe ir en un fichero con extensión `.java`, cuyo nombre es exactamente igual que el de la clase. Por ejemplo, en un fichero `HolaMundo.java`, definiremos una clase *HolaMundo*.
 
-![Ejemplo de estructura de una clase Java.](../resources/practica2/images/class_skeleton.png){#fig-class_skeleton}
+![Ejemplo de estructura de una clase Java.](../resources/practica2/images/class_skeleton.png){#fig-class_skeleton width=75%}
 
 ---
 
@@ -221,7 +230,7 @@ El editor de *Eclipse* es un editor típico del entorno Windows: se puede copiar
 
 Para compilar un programa, es necesario **traducir el código fuente escrito en lenguaje Java a un código binario** que pueda ser interpretado por la máquina virtual de Java. En el entorno *Eclipse*, la compilación se realiza **automáticamente cada vez que se guarda un fichero**, aunque también es posible compilar manualmente utilizando la opción de menú `Project > Build Project`. Si el programa contiene errores de compilación, *Eclipse* nos lo indicará en la zona inferior del editor, en la subpestaña ***Problems*** (ver @fig-compilation_errors). En esta subpestaña se nos informará sobre el proceso de compilación indicando los posibles errores. **Puedes seleccionar cada error mediante doble click, y se indicará dentro del código dónde se encuentra el error**.
 
-![Proceso de ejecución de un programa.](../resources/practica2/images/file_types.png){#fig-file_types}
+![Proceso de ejecución de un programa.](../resources/practica2/images/file_types.svg){#fig-file_types}
 
 --- 
 
@@ -363,7 +372,7 @@ Por ahora recomendamos utilizar la opción **`General > Existing projects into w
 
 Cuando se quiere distribuir una aplicación desarrollada en Java que incluye un número considerable de clases y paquetes, conviene generar una **biblioteca**. Las bibliotecas en Java son archivos con extensión **`.jar`** que comprimen, de manera similar a un `.zip`, un conjunto de clases ya compiladas (ficheros `.class`) y organizadas en paquetes. Se puede explorar el contenido de un fichero `.jar` con programas de compresión de ficheros como *WinZip*.
 
-![Ejemplo de usos de importación y exportación de bibliotecas.](../resources/practica2/images/import_export_scheme.png){#fig-import_export_scheme}
+![Ejemplo de usos de importación y exportación de bibliotecas.](../resources/practica2/images/import_export_scheme.svg){#fig-import_export_scheme}
 
 ---
 
