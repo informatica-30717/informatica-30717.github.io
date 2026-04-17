@@ -1,0 +1,384 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generado por Microsoft Visio, SVG Export file_types.svg Página-1 -->
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:ev="http://www.w3.org/2001/xml-events"
+		xmlns:v="http://schemas.microsoft.com/visio/2003/SVGExtensions/" width="13.085in" height="2.82641in"
+		viewBox="0 0 942.118 203.501" xml:space="preserve" color-interpolation-filters="sRGB" class="st20">
+	<v:documentProperties v:langID="3082" v:metric="true" v:viewMarkup="false"/>
+
+	<style type="text/css">
+	<![CDATA[
+		.st1 {fill:#fff2cc;stroke:#000000;stroke-linecap:round;stroke-linejoin:round;stroke-width:1}
+		.st2 {fill:#ffffff;stroke:none;stroke-linecap:round;stroke-linejoin:round;stroke-width:1}
+		.st3 {fill:#000000;font-family:TX-02;font-size:0.833336em}
+		.st4 {font-size:1em;font-weight:bold}
+		.st5 {fill:#f2f2f2;stroke:none;stroke-linecap:round;stroke-linejoin:round;stroke-width:1}
+		.st6 {fill:#000000;font-family:Segoe UI Emoji;font-size:1.16666em}
+		.st7 {font-family:TX-02;font-size:1em}
+		.st8 {font-family:TX-02;font-size:1em;font-weight:bold}
+		.st9 {fill:none;stroke:none;stroke-linecap:round;stroke-linejoin:round;stroke-width:2}
+		.st10 {fill:#000000;font-family:TX-02;font-size:1.16666em;font-weight:bold}
+		.st11 {fill:#e4eeef;stroke:#000000;stroke-linecap:round;stroke-linejoin:round;stroke-width:1}
+		.st12 {fill:#afcbcf;stroke:#000000;stroke-linecap:round;stroke-linejoin:round;stroke-width:1}
+		.st13 {fill:#d0e0e3;stroke:#000000;stroke-linecap:round;stroke-linejoin:round;stroke-width:1}
+		.st14 {marker-end:url(#mrkr4-32);stroke:#000000;stroke-linecap:round;stroke-linejoin:round;stroke-width:1}
+		.st15 {fill:#000000;fill-opacity:1;stroke:#000000;stroke-opacity:1;stroke-width:0.28409090909091}
+		.st16 {fill:#000000;font-family:Titillium Web;font-size:1.33333em;font-style:italic}
+		.st17 {font-size:1em}
+		.st18 {fill:#7f7f7f;font-family:TX-02;font-size:1.00001em;font-weight:bold}
+		.st19 {fill:#000000;font-family:Titillium Web;font-size:1.5em;font-weight:bold}
+		.st20 {fill:none;fill-rule:evenodd;font-size:12px;overflow:visible;stroke-linecap:square;stroke-miterlimit:3}
+	]]>
+	</style>
+
+	<defs id="Markers">
+		<g id="lend4">
+			<path d="M 2 1 L 0 0 L 2 -1 L 2 1 " style="stroke:none"/>
+		</g>
+		<marker id="mrkr4-32" class="st15" v:arrowType="4" v:arrowSize="2" v:setback="7.04" refX="-7.04" orient="auto"
+				markerUnits="strokeWidth" overflow="visible">
+			<use xlink:href="#lend4" transform="scale(-3.52,-3.52) "/>
+		</marker>
+	</defs>
+	<g v:mID="0" v:index="1" v:groupContext="foregroundPage">
+		<title>Página-1</title>
+		<v:pageProperties v:drawingScale="0.0393701" v:pageScale="0.0393701" v:drawingUnits="24" v:shadowOffsetX="8.50394"
+				v:shadowOffsetY="-8.50394"/>
+		<v:layer v:name="Conector" v:index="0"/>
+		<g id="shape68-1" v:mID="68" v:groupContext="shape" transform="translate(8.30149,-32.7718)">
+			<title>Recortar rectángulo de esquina sencilla.68</title>
+			<v:userDefs>
+				<v:ud v:nameU="CTypeTopLeftSnip" v:prompt="" v:val="VT0(0):5"/>
+				<v:ud v:nameU="CTypeTopRightSnip" v:prompt="" v:val="VT0(1):5"/>
+				<v:ud v:nameU="CTypeBotLeftSnip" v:prompt="" v:val="VT0(1):5"/>
+				<v:ud v:nameU="CTypeBotRightSnip" v:prompt="" v:val="VT0(0):5"/>
+				<v:ud v:nameU="CornerLockHoriz" v:prompt="" v:val="VT0(0):5"/>
+				<v:ud v:nameU="CornerLockVert" v:prompt="" v:val="VT0(0):5"/>
+				<v:ud v:nameU="CornerLockDiag" v:prompt="" v:val="VT0(0):5"/>
+				<v:ud v:nameU="TopLeftOffset" v:prompt="" v:val="VT0(0):24"/>
+				<v:ud v:nameU="TopRightOffset" v:prompt="" v:val="VT0(0.15748031496063):24"/>
+				<v:ud v:nameU="BotLeftOffset" v:prompt="" v:val="VT0(0):24"/>
+				<v:ud v:nameU="BotRightOffset" v:prompt="" v:val="VT0(0):24"/>
+				<v:ud v:nameU="visVersion" v:prompt="" v:val="VT0(15):26"/>
+				<v:ud v:nameU="visMasterStencil" v:prompt="" v:val="VT4(Basic_M.vssx)"/>
+				<v:ud v:nameU="TopRightOffset" v:prompt="" v:val="VT0(0.14100695655421):1"/>
+			</v:userDefs>
+			<path d="M0 203.5 L232.24 203.5 L232.24 105.9 L222.09 95.74 L0 95.74 L0 203.5 Z" class="st1"/>
+		</g>
+		<g id="shape69-3" v:mID="69" v:groupContext="shape" transform="translate(28.144,-50.63)">
+			<title>Recortar rectángulo de esquina sencilla.69</title>
+			<desc>package: default</desc>
+			<v:userDefs>
+				<v:ud v:nameU="CTypeTopLeftSnip" v:prompt="" v:val="VT0(0):5"/>
+				<v:ud v:nameU="CTypeTopRightSnip" v:prompt="" v:val="VT0(1):5"/>
+				<v:ud v:nameU="CTypeBotLeftSnip" v:prompt="" v:val="VT0(1):5"/>
+				<v:ud v:nameU="CTypeBotRightSnip" v:prompt="" v:val="VT0(0):5"/>
+				<v:ud v:nameU="CornerLockHoriz" v:prompt="" v:val="VT0(0):5"/>
+				<v:ud v:nameU="CornerLockVert" v:prompt="" v:val="VT0(0):5"/>
+				<v:ud v:nameU="CornerLockDiag" v:prompt="" v:val="VT0(0):5"/>
+				<v:ud v:nameU="TopLeftOffset" v:prompt="" v:val="VT0(0):24"/>
+				<v:ud v:nameU="TopRightOffset" v:prompt="" v:val="VT0(0.15748031496063):24"/>
+				<v:ud v:nameU="BotLeftOffset" v:prompt="" v:val="VT0(0):24"/>
+				<v:ud v:nameU="BotRightOffset" v:prompt="" v:val="VT0(0):24"/>
+				<v:ud v:nameU="visVersion" v:prompt="" v:val="VT0(15):26"/>
+				<v:ud v:nameU="visMasterStencil" v:prompt="" v:val="VT4(Basic_M.vssx)"/>
+				<v:ud v:nameU="TopRightOffset" v:prompt="" v:val="VT0(0.11777215759372):1"/>
+			</v:userDefs>
+			<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197" v:verticalAlign="0"/>
+			<v:textRect cx="96.9854" cy="166.894" width="193.98" height="73.2148"/>
+			<path d="M0 203.5 L193.97 203.5 L193.97 138.77 L185.49 130.29 L0 130.29 L0 203.5 Z" class="st2"/>
+			<text x="4" y="143.29" class="st3" v:langID="3082"><v:paragraph/><v:tabList/>package: <tspan class="st4">default</tspan></text>		</g>
+		<g id="shape70-7" v:mID="70" v:groupContext="shape" transform="translate(40.0494,-63.3859)">
+			<title>Recortar rectángulo de esquina sencilla.70</title>
+			<desc>📄HolaMundo.java</desc>
+			<v:userDefs>
+				<v:ud v:nameU="CTypeTopLeftSnip" v:prompt="" v:val="VT0(0):5"/>
+				<v:ud v:nameU="CTypeTopRightSnip" v:prompt="" v:val="VT0(1):5"/>
+				<v:ud v:nameU="CTypeBotLeftSnip" v:prompt="" v:val="VT0(1):5"/>
+				<v:ud v:nameU="CTypeBotRightSnip" v:prompt="" v:val="VT0(0):5"/>
+				<v:ud v:nameU="CornerLockHoriz" v:prompt="" v:val="VT0(0):5"/>
+				<v:ud v:nameU="CornerLockVert" v:prompt="" v:val="VT0(0):5"/>
+				<v:ud v:nameU="CornerLockDiag" v:prompt="" v:val="VT0(0):5"/>
+				<v:ud v:nameU="TopLeftOffset" v:prompt="" v:val="VT0(0):24"/>
+				<v:ud v:nameU="TopRightOffset" v:prompt="" v:val="VT0(0.15748031496063):24"/>
+				<v:ud v:nameU="BotLeftOffset" v:prompt="" v:val="VT0(0):24"/>
+				<v:ud v:nameU="BotRightOffset" v:prompt="" v:val="VT0(0):24"/>
+				<v:ud v:nameU="visVersion" v:prompt="" v:val="VT0(15):26"/>
+				<v:ud v:nameU="visMasterStencil" v:prompt="" v:val="VT4(Basic_M.vssx)"/>
+				<v:ud v:nameU="TopRightOffset" v:prompt="" v:val="VT0(0.10378216539501):1"/>
+			</v:userDefs>
+			<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
+			<v:textRect cx="85.4646" cy="185.745" width="170.93" height="35.514"/>
+			<path d="M0 203.5 L170.93 203.5 L170.93 175.46 L163.46 167.99 L0 167.99 L0 203.5 Z" class="st5"/>
+			<text x="4" y="190.03" class="st6" v:langID="3082"><v:paragraph v:spAfter="12"/><v:tabList/>📄<tspan class="st7">HolaMundo.</tspan><tspan
+						class="st8">java</tspan></text>		</g>
+		<g id="shape71-12" v:mID="71" v:groupContext="shape" transform="translate(0,-5.55915)">
+			<title>Hoja.71</title>
+			<desc>Proyecto Java</desc>
+			<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
+			<v:textRect cx="122.598" cy="194.431" width="245.2" height="18.1417"/>
+			<rect x="0" y="185.36" width="245.197" height="18.1417" class="st9"/>
+			<text x="132" y="198.63" class="st10" v:langID="3082"><v:paragraph v:horizAlign="2"/><v:tabList/>Proyecto Java</text>		</g>
+		<g id="group72-15" transform="translate(357.368,-53.3432)" v:mID="72" v:groupContext="group">
+			<v:userDefs>
+				<v:ud v:nameU="visVersion" v:prompt="" v:val="VT0(15):26"/>
+				<v:ud v:nameU="visMasterStencil" v:prompt="" v:val="VT4(Basic_M.vssx)"/>
+			</v:userDefs>
+			<title>Cubo.72</title>
+			<desc>📦HolaMundo.class</desc>
+			<g id="shape73-16" v:mID="73" v:groupContext="shape">
+				<title>Hoja.73</title>
+				<v:userDefs>
+					<v:ud v:nameU="ControlHeight" v:prompt="" v:val="VT0(0.94488188976378):24"/>
+					<v:ud v:nameU="FillForegnd" v:prompt="" v:val="VT0(1):26"/>
+					<v:ud v:nameU="ControlHeight" v:prompt="" v:val="VT0(0.84973701817619):1"/>
+					<v:ud v:nameU="FillForegnd" v:prompt="" v:val="VT5(#d0e0e3)"/>
+				</v:userDefs>
+				<path d="M0 142.32 L181.45 142.32 L191.14 132.64 L9.69 132.64 L0 142.32 Z" class="st11"/>
+			</g>
+			<g id="shape74-18" v:mID="74" v:groupContext="shape">
+				<title>Hoja.74</title>
+				<v:userDefs>
+					<v:ud v:nameU="ControlHeight" v:prompt="" v:val="VT0(0.94488188976378):24"/>
+					<v:ud v:nameU="FillForegnd" v:prompt="" v:val="VT0(1):26"/>
+					<v:ud v:nameU="ControlHeight" v:prompt="" v:val="VT0(0.84973701817619):1"/>
+					<v:ud v:nameU="FillForegnd" v:prompt="" v:val="VT5(#d0e0e3)"/>
+				</v:userDefs>
+				<path d="M181.45 203.5 L191.14 193.82 L191.14 132.64 L181.45 142.32 L181.45 203.5 Z" class="st12"/>
+			</g>
+			<g id="shape72-20" v:mID="72" v:groupContext="groupContent">
+				<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
+				<v:textRect cx="90.7256" cy="172.911" width="181.46" height="61.1811"/>
+				<rect x="0" y="142.32" width="181.451" height="61.1811" class="st13"/>
+				<text x="18.12" y="177.2" class="st6" v:langID="3082"><v:paragraph v:horizAlign="1"/><v:tabList/>📦<tspan
+							class="st7">HolaMundo.class</tspan></text>			</g>
+		</g>
+		<g id="shape75-24" v:mID="75" v:groupContext="shape" transform="translate(298.65,-16.6143)">
+			<title>Hoja.75</title>
+			<desc>Ficheros binarios</desc>
+			<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
+			<v:textRect cx="122.598" cy="185.785" width="245.2" height="35.433"/>
+			<rect x="0" y="168.069" width="245.197" height="35.433" class="st9"/>
+			<text x="98.4" y="189.99" class="st10" v:langID="3082"><v:paragraph v:horizAlign="2"/><v:tabList/>Ficheros binarios</text>		</g>
+		<g id="shape76-27" v:mID="76" v:groupContext="shape" v:layerMember="0" transform="translate(241.249,-92.8662)">
+			<title>Conector dinámico.76</title>
+			<path d="M0 210.3 L109.04 210.84" class="st14"/>
+		</g>
+		<g id="shape77-33" v:mID="77" v:groupContext="shape" v:layerMember="0" transform="translate(548.547,-93.4481)">
+			<title>Conector dinámico.77</title>
+			<path d="M0 210.3 L109.04 210.84" class="st14"/>
+		</g>
+		<g id="shape78-38" v:mID="78" v:groupContext="shape" transform="translate(553.485,-85.2127)">
+			<title>Hoja.78</title>
+			<desc>Máquina virtual de Java</desc>
+			<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
+			<v:textRect cx="51.4488" cy="176.431" width="102.9" height="54.1417"/>
+			<rect x="0" y="149.36" width="102.898" height="54.1417" class="st9"/>
+			<text x="23.61" y="171.63" class="st16" v:langID="3082"><v:paragraph v:horizAlign="1"/><v:tabList/>Máquina <tspan
+						x="6.43" dy="1.2em" class="st17">virtual de Java</tspan></text>		</g>
+		<g id="shape79-42" v:mID="79" v:groupContext="shape" transform="translate(253.012,-86.9135)">
+			<title>Hoja.79</title>
+			<desc>Compilador</desc>
+			<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
+			<v:textRect cx="44.6456" cy="187.769" width="89.3" height="31.4645"/>
+			<rect x="0" y="172.037" width="89.2913" height="31.4645" class="st9"/>
+			<text x="8.62" y="192.57" class="st16" v:langID="3082"><v:paragraph v:horizAlign="1"/><v:tabList/>Compilador</text>		</g>
+		<g id="shape80-45" v:mID="80" v:groupContext="shape" transform="translate(664.047,-55.3626)">
+			<title>Hoja.80</title>
+			<rect v:rectContext="foreign" x="0" y="133.599" width="272.324" height="69.9024" class="st9"/>
+			<switch>
+				<foreignObject x="0" y="133.599" width="272.324" height="69.9024"
+						requiredExtensions="http://schemas.microsoft.com/visio/2003/SVGExtensions/">
+					<v:foreignData v:orgSize="8312" clip="rect(0 0 0 0)" v:data="data:metafile;base64,eNrtWV1sFFUUPndmt2yLQEO72g
+								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
+								k="/>
+				</foreignObject>
+				<!-- Unsupported Record: EmfPlusRecordTypeSetPixelOffsetMode  -->
+				<svg viewBox="-0.51006 -0.51081 350.01 89.976" clip="rect(0 0 0 0)" height="69.9024" overflow="hidden"
+						preserveAspectRatio="none" width="272.324" x="0" y="133.599">
+					<mask id="mfid1">
+						<rect width="350" height="90" fill="white" stroke="none"/>
+					</mask>
+					<mask id="mfid2" fill="white" stroke="none">
+						<g>
+							<g mask="url(#mfid1)">
+								<rect x="-0.51006" y="-0.51081" width="350.01" height="89.976" id="mfid3"/>
+							</g>
+						</g>
+					</mask>
+					<defs>
+						<path id="mfid4"
+								d="M0,67226 C-0.00000000013226,30098 30098,-0.00000000026451 67226,-0.00000000026451 L3257000,0 C3294100,-0.00000000013226 3324200,30098 3324200,67226 L3324200,780500 C3324200,817630 3294100,847720 3257000,847720 L67226,847720 C30098,847720 0,817630 0,780500 Z"/>
+					</defs>
+					<g mask="url(#mfid2)">
+						<g transform="matrix(0.00010499, 0, 0, 0.00010499, 0.50005, 0.50005)">
+							<g fill="#ffffff">
+								<use xlink:href="#mfid4" fill-rule="evenodd" stroke="none"/>
+							</g>
+							<g fill="#ffffff" stroke-width="6350" stroke="#7f7f7f" stroke-miterlimit="8">
+								<use xlink:href="#mfid4" fill="none"/>
+							</g>
+						</g>
+					</g>
+					<!-- GetDC -->
+					<mask id="mfid5" fill-rule="evenodd" fill="white" stroke="none">
+						<rect x="0" y="0" width="350" height="90"/>
+					</mask>
+					<g mask="url(#mfid5)">
+						<g transform="matrix(1, 0, 0, 1, 18.875, 51.856)">
+							<g stroke="#000000" stroke-miterlimit="10" fill="none">
+								<g font-family="&#39;TX-02&#39;,modern,monospace" font-style="normal" font-weight="700"
+										font-size="13">
+									<text stroke="none" fill="#000000" x="0,8,16" y="0" transform="translate(0,0)"
+											xml:space="preserve">&#62; </text>
+								</g>
+							</g>
+						</g>
+					</g>
+					<!-- Released DC -->
+					<!-- GetDC -->
+					<g mask="url(#mfid5)">
+						<g transform="matrix(1, 0, 0, 1, 34.875, 51.856)">
+							<g stroke="#000000" stroke-miterlimit="10" fill="none">
+								<g font-family="&#39;TX-02&#39;,modern,monospace" font-style="normal" font-weight="700"
+										font-size="13">
+									<text stroke="none" fill="#000000"
+											x="0,8,16,24,32,40,48,56,64,72,80,88,96,104,112,120,128,136,144,152" y="0"
+											transform="translate(0,0)" xml:space="preserve">¿Cuál es tu nombre?</text>
+								</g>
+							</g>
+						</g>
+					</g>
+					<!-- Released DC -->
+					<!-- GetDC -->
+					<g mask="url(#mfid5)">
+						<g transform="matrix(1, 0, 0, 1, 18.875, 69.856)">
+							<g stroke="#000000" stroke-miterlimit="10" fill="none">
+								<g font-family="&#39;TX-02&#39;,modern,monospace" font-style="normal" font-weight="400"
+										font-size="13">
+									<text stroke="none" fill="#000000" x="0,8,16,24,32,40,48,56,64,72" y="0"
+											transform="translate(0,0)" xml:space="preserve">&#62; Alfonso</text>
+								</g>
+							</g>
+						</g>
+					</g>
+					<!-- Released DC -->
+					<defs>
+						<path id="mfid6"
+								d="M67626,0 L3256600,0 C3293900,-0.00000000013226 3324200,30277 3324200,67626 L3324200,228600 L0,228600 L0,67626 C-0.00000000013226,30277 30277,-0.00000000013226 67626,-0.00000000026451 Z"/>
+					</defs>
+					<g mask="url(#mfid2)">
+						<g transform="matrix(0.00010499, 0, 0, 0.00010499, 0, 0)">
+							<g fill="#3b3b3b" stroke-width="6350" stroke="#7f7f7f" stroke-miterlimit="8">
+								<use xlink:href="#mfid6" fill-rule="evenodd" stroke="none"/>
+								<defs>
+									<path id="mfid7"
+											d="M0,52388 C-0.00000000007276,23455 25587,-0.000000000066696 57150,-0.00000000013339 C88713,-0.00000000026679 114300,23455 114300,52388 C114300,81320 88713,104780 57150,104780 C25587,104780 -0.0000000003638,81320 0,52388 Z"/>
+								</defs>
+							</g>
+						</g>
+						<g transform="matrix(0.00010499, 0, 0, 0.00010499, 11, 7)">
+							<g fill="#ff544d" stroke-width="6350" stroke="#7f7f7f" stroke-miterlimit="8">
+								<use xlink:href="#mfid7" fill-rule="evenodd" stroke="none"/>
+								<defs>
+									<path id="mfid8"
+											d="M0,57150 C-0.000000000066696,25587 23455,-0.00000000007276 52388,-0.00000000014552 C81320,-0.00000000029104 104780,25587 104780,57150 C104780,88713 81320,114300 52388,114300 C23455,114300 -0.00000000033348,88713 0,57150 Z"/>
+								</defs>
+							</g>
+						</g>
+						<g transform="matrix(0.00010499, 0, 0, 0.00010499, 30, 7)">
+							<g fill="#e5bf2c" stroke-width="6350" stroke="#7f7f7f" stroke-miterlimit="8">
+								<use xlink:href="#mfid8" fill-rule="evenodd" stroke="none"/>
+								<defs>
+									<path id="mfid9"
+											d="M0,57150 C-0.000000000066696,25587 23455,-0.00000000007276 52388,-0.00000000014552 C81320,-0.00000000029104 104780,25587 104780,57150 C104780,88713 81320,114300 52388,114300 C23455,114300 -0.00000000033348,88713 0,57150 Z"/>
+								</defs>
+							</g>
+						</g>
+						<g transform="matrix(0.00010499, 0, 0, 0.00010499, 49, 7)">
+							<g fill="#50c127" stroke-width="6350" stroke="#7f7f7f" stroke-miterlimit="8">
+								<use xlink:href="#mfid9" fill-rule="evenodd" stroke="none"/>
+							</g>
+						</g>
+					</g>
+					<!-- GetDC -->
+					<g mask="url(#mfid5)">
+						<g transform="matrix(1, 0, 0, 1, 138.06, 18.026)">
+							<g stroke="#000000" stroke-miterlimit="10" fill="none">
+								<g font-family="&#39;TX-02&#39;,modern,monospace" font-style="normal" font-weight="400"
+										font-size="13">
+									<text stroke="none" fill="#ffffff" x="0,8,16,24,32,40,48,56,64,72" y="0"
+											transform="translate(0,0)" xml:space="preserve">practica2</text>
+								</g>
+							</g>
+						</g>
+					</g>
+					<!-- Released DC -->
+				</svg>
+			</switch>
+			<rect v:rectContext="foreign" x="0" y="133.599" width="272.324" height="69.9024" class="st9"/>
+		</g>
+		<g id="shape82-48" v:mID="82" v:groupContext="shape" transform="translate(3.9685,-148.668)">
+			<title>Hoja.82</title>
+			<desc>practica2</desc>
+			<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
+			<v:textRect cx="94.4949" cy="198.662" width="188.99" height="9.6783"/>
+			<rect x="0" y="193.823" width="188.99" height="9.6783" class="st9"/>
+			<text x="4" y="202.26" class="st18" v:langID="3082"><v:paragraph/><v:tabList/>practica2</text>		</g>
+		<g id="shape83-51" v:mID="83" v:groupContext="shape" transform="translate(361.343,-130.552)">
+			<title>Hoja.83</title>
+			<desc>practica2</desc>
+			<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
+			<v:textRect cx="94.4949" cy="198.662" width="188.99" height="9.6783"/>
+			<rect x="0" y="193.823" width="188.99" height="9.6783" class="st9"/>
+			<text x="4" y="202.26" class="st18" v:langID="3082"><v:paragraph/><v:tabList/>practica2</text>		</g>
+		<g id="shape84-54" v:mID="84" v:groupContext="shape" transform="translate(8.50384,-174.937)">
+			<title>Hoja.84</title>
+			<desc>1) Edición de código</desc>
+			<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
+			<v:textRect cx="116.929" cy="194.431" width="233.86" height="18.1417"/>
+			<rect x="0" y="185.36" width="233.858" height="18.1417" class="st9"/>
+			<text x="39.64" y="199.83" class="st19" v:langID="3082"><v:paragraph v:horizAlign="1"/><v:tabList/>1) Edición de código</text>		</g>
+		<g id="shape85-57" v:mID="85" v:groupContext="shape" transform="translate(335.234,-177.13)">
+			<title>Hoja.85</title>
+			<desc>2) Compilación</desc>
+			<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
+			<v:textRect cx="116.929" cy="197.444" width="233.86" height="12.1141"/>
+			<rect x="0" y="191.387" width="233.858" height="12.1141" class="st9"/>
+			<text x="59.56" y="202.84" class="st19" v:langID="3082"><v:paragraph v:horizAlign="1"/><v:tabList/>2) Compilación</text>		</g>
+		<g id="shape86-60" v:mID="86" v:groupContext="shape" transform="translate(682.851,-177.04)">
+			<title>Hoja.86</title>
+			<desc>3) Ejecución</desc>
+			<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
+			<v:textRect cx="116.929" cy="197.444" width="233.86" height="12.1141"/>
+			<rect x="0" y="191.387" width="233.858" height="12.1141" class="st9"/>
+			<text x="70.14" y="202.84" class="st19" v:langID="3082"><v:paragraph v:horizAlign="1"/><v:tabList/>3) Ejecución</text>		</g>
+		<g id="shape87-63" v:mID="87" v:groupContext="shape" transform="translate(693.921,-22.8505)">
+			<title>Hoja.87</title>
+			<desc>Consola del programa</desc>
+			<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
+			<v:textRect cx="122.598" cy="185.785" width="245.2" height="35.433"/>
+			<rect x="0" y="168.069" width="245.197" height="35.433" class="st9"/>
+			<text x="73.2" y="189.99" class="st10" v:langID="3082"><v:paragraph v:horizAlign="2"/><v:tabList/>Consola del programa</text>		</g>
+	</g>
+</svg>

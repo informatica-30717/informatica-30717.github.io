@@ -197,10 +197,8 @@
     }
   </style>
 <meta property="og:title" content="Práctica 2: Un entorno de programación en Java – Informática (30717) - Grado en Estudios en Arquitectura">
-<meta property="og:description" content="~19 min de lectura">
 <meta property="og:site_name" content="Informática (30717) - Grado en Estudios en Arquitectura">
 <meta name="twitter:title" content="Práctica 2: Un entorno de programación en Java – Informática (30717) - Grado en Estudios en Arquitectura">
-<meta name="twitter:description" content="~19 min de lectura">
 <meta name="twitter:card" content="summary">
 </head>
 <body class="quarto-light">
@@ -209,11 +207,16 @@
 
 <section id="title-slide" class="quarto-title-block center">
   <h1 class="title">Práctica 2: Un entorno de programación en Java</h1>
-  <p class="subtitle"><span class="badge rounded-pill text-bg-secondary">~19 min de lectura</span></p>
 
 <div class="quarto-title-authors">
 </div>
 
+</section>
+<section class="slide level2">
+
+<div>
+<p><span class="badge rounded-pill text-bg-secondary read-time-pill"> <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" viewbox="0 0 16 16" aria-hidden="true"> <path d="M8 3.5a.5.5 0 0 1 .5.5v3.207l2.146 1.147a.5.5 0 0 1-.472.882l-2.25-1.2A.5.5 0 0 1 7 8V4a.5.5 0 0 1 .5-.5z"></path> <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm0-1A7 7 0 1 1 8 1a7 7 0 0 1 0 14z"></path> </svg> ~21 min de lectura </span></p>
+</div>
 </section>
 <section id="objetivos-de-la-práctica" class="slide level2">
 <h2>Objetivos de la práctica</h2>
@@ -363,7 +366,7 @@ Figura&nbsp;5: Propiedades que debemos configurar al crear un nuevo proyecto.
 <h3 id="crear-una-aplicación">Crear una aplicación</h3>
 <p>Los lenguajes orientados a objetos, como Java, giran en torno al concepto de clase. Todas las variables y métodos de Java deben pertenecer a una <strong>clase</strong>. Una clase es una colección de datos (variables) y de métodos (funciones) que operan sobre dichos datos. Cada clase pública debe ir en un fichero con extensión <code>.java</code>, cuyo nombre es exactamente igual que el de la clase. Por ejemplo, en un fichero <code>HolaMundo.java</code>, definiremos una clase <em>HolaMundo</em>.</p>
 
-<img data-src="../resources/practica2/images/class_skeleton.png" class="r-stretch quarto-figure-center" id="fig-class_skeleton"><p class="caption">
+<img data-src="../resources/practica2/images/class_skeleton.png" style="width:75.0%" class="r-stretch quarto-figure-center" id="fig-class_skeleton"><p class="caption">
 Figura&nbsp;6: Ejemplo de estructura de una clase Java.
 </p></section>
 <section class="slide level2">
@@ -420,7 +423,7 @@ Figura&nbsp;7: Creación de una nueva clase de Java en <em>Eclipse IDE</em>.
 <h3 id="compilación-de-aplicaciones">Compilación de aplicaciones</h3>
 <p>Para compilar un programa, es necesario <strong>traducir el código fuente escrito en lenguaje Java a un código binario</strong> que pueda ser interpretado por la máquina virtual de Java. En el entorno <em>Eclipse</em>, la compilación se realiza <strong>automáticamente cada vez que se guarda un fichero</strong>, aunque también es posible compilar manualmente utilizando la opción de menú <code>Project &gt; Build Project</code>. Si el programa contiene errores de compilación, <em>Eclipse</em> nos lo indicará en la zona inferior del editor, en la subpestaña <strong><em>Problems</em></strong> (ver <a href="#/fig-compilation_errors" class="quarto-xref">Figura&nbsp;9</a>). En esta subpestaña se nos informará sobre el proceso de compilación indicando los posibles errores. <strong>Puedes seleccionar cada error mediante doble click, y se indicará dentro del código dónde se encuentra el error</strong>.</p>
 
-<img data-src="../resources/practica2/images/file_types.png" class="r-stretch quarto-figure-center" id="fig-file_types"><p class="caption">
+<img data-src="../resources/practica2/images/file_types.svg" class="r-stretch quarto-figure-center" id="fig-file_types"><p class="caption">
 Figura&nbsp;8: Proceso de ejecución de un programa.
 </p></section>
 <section class="slide level2">
@@ -581,7 +584,7 @@ Figura&nbsp;12: Importación de proyectos en un <em>workspace</em>.
 <h3 id="crear-biblioteca">Crear biblioteca</h3>
 <p>Cuando se quiere distribuir una aplicación desarrollada en Java que incluye un número considerable de clases y paquetes, conviene generar una <strong>biblioteca</strong>. Las bibliotecas en Java son archivos con extensión <strong><code>.jar</code></strong> que comprimen, de manera similar a un <code>.zip</code>, un conjunto de clases ya compiladas (ficheros <code>.class</code>) y organizadas en paquetes. Se puede explorar el contenido de un fichero <code>.jar</code> con programas de compresión de ficheros como <em>WinZip</em>.</p>
 
-<img data-src="../resources/practica2/images/import_export_scheme.png" class="r-stretch quarto-figure-center" id="fig-import_export_scheme"><p class="caption">
+<img data-src="../resources/practica2/images/import_export_scheme.svg" class="r-stretch quarto-figure-center" id="fig-import_export_scheme"><p class="caption">
 Figura&nbsp;13: Ejemplo de usos de importación y exportación de bibliotecas.
 </p></section>
 <section class="slide level2">

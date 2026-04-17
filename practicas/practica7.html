@@ -30,6 +30,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
+<link href="../practicas/practica8.html" rel="next">
 <link href="../practicas/practica6.html" rel="prev">
 <script src="../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
@@ -100,12 +101,16 @@ background-size: cover;
 
 <link rel="stylesheet" href="../styles.css">
 <meta property="og:title" content="Práctica 7: Introducción a Grasshopper – Informática (30717) - Grado en Estudios en Arquitectura">
-<meta property="og:description" content="~10 min de lectura">
-<meta property="og:image" content="https://informatica-30717.github.io/resources/practica7/scheme.svg">
+<meta property="og:description" content="Material de prácticas del curso 2025-2026.">
+<meta property="og:image" content="https://informatica-30717.github.io/resources/practica7/scheme.png">
 <meta property="og:site_name" content="Informática (30717) - Grado en Estudios en Arquitectura">
+<meta property="og:image:height" content="918">
+<meta property="og:image:width" content="2295">
 <meta name="twitter:title" content="Práctica 7: Introducción a Grasshopper – Informática (30717) - Grado en Estudios en Arquitectura">
-<meta name="twitter:description" content="~10 min de lectura">
-<meta name="twitter:image" content="https://informatica-30717.github.io/resources/practica7/scheme.svg">
+<meta name="twitter:description" content="Material de prácticas del curso 2025-2026.">
+<meta name="twitter:image" content="https://informatica-30717.github.io/resources/practica7/scheme.png">
+<meta name="twitter:image-height" content="918">
+<meta name="twitter:image-width" content="2295">
 <meta name="twitter:card" content="summary_large_image">
 </head>
 
@@ -157,7 +162,6 @@ background-size: cover;
   <div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-body"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../practicas/practica1.html">Prácticas</a></li><li class="breadcrumb-item"><a href="../practicas/practica7.html">Práctica 7: Introducción a Grasshopper</a></li></ol></nav>
       <h1 class="title">Práctica 7: Introducción a Grasshopper</h1>
-            <p class="subtitle lead"><span class="badge rounded-pill text-bg-secondary">~10 min de lectura</span></p>
                       </div>
   </div>
     
@@ -255,6 +259,12 @@ background-size: cover;
  <span class="menu-text">Práctica 7: Introducción a Grasshopper</span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../practicas/practica8.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Práctica 8: BIM semántico</span></a>
+  </div>
+</li>
       </ul>
   </li>
     </ul>
@@ -300,6 +310,9 @@ background-size: cover;
 
 
 
+<div>
+<p><span class="badge rounded-pill text-bg-secondary read-time-pill"> <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" viewbox="0 0 16 16" aria-hidden="true"> <path d="M8 3.5a.5.5 0 0 1 .5.5v3.207l2.146 1.147a.5.5 0 0 1-.472.882l-2.25-1.2A.5.5 0 0 1 7 8V4a.5.5 0 0 1 .5-.5z"></path> <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm0-1A7 7 0 1 1 8 1a7 7 0 0 1 0 14z"></path> </svg> ~10 min de lectura </span></p>
+</div>
 <section id="objetivos-de-la-práctica" class="level2" data-number="1">
 <h2 data-number="1" class="anchored" data-anchor-id="objetivos-de-la-práctica"><span class="header-section-number">1</span> Objetivos de la práctica</h2>
 <p>En esta práctica vamos a dar los primeros pasos con <em>Grasshopper</em> aplicándolo a un ejercicio sencillo de diseño paramétrico. Al finalizar, deberías ser capaz de:</p>
@@ -317,7 +330,7 @@ background-size: cover;
 <div id="fig-scheme" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-scheme-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="../resources/practica7/scheme.svg" class="img-fluid figure-img" style="width:80.0%">
+<img src="../resources/practica7/scheme.png" class="img-fluid figure-img" style="width:80.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-scheme-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figura&nbsp;1: Esquema de interacción entre Rhino y Grasshopper.
@@ -685,7 +698,7 @@ Figura&nbsp;14: Interfaz de RhinoBanana.
 <ul>
 <li><code>taza.obj</code>, con la geometría de la taza modelada en <em>Grasshopper</em>;</li>
 <li><code>vasija.obj</code>, con la geometría de la vasija modelada en <em>Grasshopper</em>;</li>
-<li><code>imagen.png</code>, una imagen generada con un modelo de difusión a partir de una vista de la vasija.</li>
+<li><code>imagen.jpeg</code>, una imagen generada con un modelo de difusión a partir de una vista de la vasija.</li>
 </ul>
 <div class="callout callout-style-default callout-important callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -1112,6 +1125,9 @@ Figura&nbsp;14: Interfaz de RhinoBanana.
       </a>          
   </div>
   <div class="nav-page nav-page-next">
+      <a href="../practicas/practica8.html" class="pagination-link" aria-label="Práctica 8: BIM semántico">
+        <span class="nav-page-text">Práctica 8: BIM semántico</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
   </div>
 </nav>
 </div> <!-- /content -->
