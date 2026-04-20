@@ -42,8 +42,6 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="../site_libs/bootstrap/bootstrap-029b10fc0dc652dab2ec1ac156c1a037.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
-<script src="../site_libs/quarto-contrib/videojs/video.min.js"></script>
-<link href="../site_libs/quarto-contrib/videojs/video-js.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -89,33 +87,40 @@ gtag('config', 'G-KJSTYN212D', { 'anonymize_ip': true});
       .quarto-title-block .quarto-title-banner h5,
       .quarto-title-block .quarto-title-banner h6
       {
-        color: #56616b;
+        color: #010e1a;
       }
 
       .quarto-title-block .quarto-title-banner {
-        color: #56616b;
-background-image: url(../resources/practica8/duplex_bimvision.png);
+        color: #010e1a;
+background-image: url(../resources/practica8/background.gif);
 background-size: cover;
       }
+</style>
+<style>
+#title-block-header .quarto-title-banner {
+  --title-banner-height: 460px;
+  --title-banner-size: cover;
+  --title-banner-position-y: 30%;
+}
 </style>
 
 
 <link rel="stylesheet" href="../styles.css">
 <meta property="og:title" content="Práctica 8: BIM semántico – Informática (30717) - Grado en Estudios en Arquitectura">
 <meta property="og:description" content="Material de prácticas del curso 2025-2026.">
-<meta property="og:image" content="https://informatica-30717.github.io/resources/practica8/bim_workflow.png">
+<meta property="og:image" content="https://informatica-30717.github.io/resources/practica8/bim_lifecycle.png">
 <meta property="og:site_name" content="Informática (30717) - Grado en Estudios en Arquitectura">
-<meta property="og:image:height" content="416">
-<meta property="og:image:width" content="440">
+<meta property="og:image:height" content="2722">
+<meta property="og:image:width" content="5039">
 <meta name="twitter:title" content="Práctica 8: BIM semántico – Informática (30717) - Grado en Estudios en Arquitectura">
 <meta name="twitter:description" content="Material de prácticas del curso 2025-2026.">
-<meta name="twitter:image" content="https://informatica-30717.github.io/resources/practica8/bim_workflow.png">
-<meta name="twitter:image-height" content="416">
-<meta name="twitter:image-width" content="440">
+<meta name="twitter:image" content="https://informatica-30717.github.io/resources/practica8/bim_lifecycle.png">
+<meta name="twitter:image-height" content="2722">
+<meta name="twitter:image-width" content="5039">
 <meta name="twitter:card" content="summary_large_image">
 </head>
 
-<body class="nav-sidebar floating nav-fixed slimcontent quarto-light">
+<body class="nav-sidebar floating nav-fixed quarto-light">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top quarto-banner">
@@ -305,14 +310,14 @@ background-size: cover;
 <div class="quarto-alternate-formats"><h2>Otros formatos</h2><ul><li><a href="practica8.reveal.html"><i class="bi bi-file-slides"></i>RevealJS</a></li><li><a href="practica8.pdf"><i class="bi bi-file-pdf"></i>PDF</a></li></ul></div></nav>
     </div>
 <!-- main -->
-<main class="content quarto-banner-title-block page-columns page-full" id="quarto-document-content">
+<main class="content quarto-banner-title-block" id="quarto-document-content">
 
 
 
 
 
 <div>
-<p><span class="badge rounded-pill text-bg-secondary read-time-pill"> <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" viewbox="0 0 16 16" aria-hidden="true"> <path d="M8 3.5a.5.5 0 0 1 .5.5v3.207l2.146 1.147a.5.5 0 0 1-.472.882l-2.25-1.2A.5.5 0 0 1 7 8V4a.5.5 0 0 1 .5-.5z"></path> <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm0-1A7 7 0 1 1 8 1a7 7 0 0 1 0 14z"></path> </svg> ~8 min de lectura </span></p>
+<p><span class="badge rounded-pill text-bg-secondary read-time-pill"> <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" viewbox="0 0 16 16" aria-hidden="true"> <path d="M8 3.5a.5.5 0 0 1 .5.5v3.207l2.146 1.147a.5.5 0 0 1-.472.882l-2.25-1.2A.5.5 0 0 1 7 8V4a.5.5 0 0 1 .5-.5z"></path> <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm0-1A7 7 0 1 1 8 1a7 7 0 0 1 0 14z"></path> </svg> ~10 min de lectura </span></p>
 </div>
 <section id="objetivos-de-la-práctica" class="level2" data-number="1">
 <h2 data-number="1" class="anchored" data-anchor-id="objetivos-de-la-práctica"><span class="header-section-number">1</span> Objetivos de la práctica</h2>
@@ -326,26 +331,9 @@ background-size: cover;
 </section>
 <section id="introducción-a-bim" class="level2" data-number="2">
 <h2 data-number="2" class="anchored" data-anchor-id="introducción-a-bim"><span class="header-section-number">2</span> Introducción a BIM</h2>
-<div class="quarto-layout-panel" data-layout="[58,42]">
-<div class="quarto-layout-row">
-<div class="column quarto-layout-cell" style="flex-basis: 58.0%;justify-content: flex-start;">
 <p>El <strong>modelado de información de construcción</strong> (<strong>BIM</strong>, <em>Building Information Modeling</em>) es una forma de representar digitalmente un edificio y la información asociada a sus elementos. No se trata solo de una maqueta 3D: un modelo BIM también puede describir materiales, relaciones espaciales, identificadores, propiedades geométricas y datos útiles para diseño, obra, mantenimiento y explotación.</p>
 <p>Esta manera de trabajar resulta especialmente valiosa porque reúne en un mismo modelo información que normalmente estaría dispersa en planos, tablas, memorias y documentos técnicos. Por eso BIM se ha convertido en una pieza clave en la digitalización del sector de la construcción.</p>
-</div>
-<div class="column quarto-layout-cell" style="flex-basis: 42.0%;justify-content: flex-start;">
-<div id="fig-bim" class="quarto-float quarto-figure quarto-figure-center anchored">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-bim-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="../resources/practica8/bim_workflow.png" class="img-fluid figure-img" style="width:100.0%">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-bim-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figura&nbsp;1: Esquema general del flujo de trabajo BIM. Fuente: <em>BIMCloud</em>.
-</figcaption>
-</figure>
-</div>
-</div>
-</div>
-</div>
+<p>En el trabajo profesional, un modelo BIM se crea y coordina con herramientas de autoría y revisión. <strong>Autodesk Revit</strong> es una de las más conocidas, junto con otras como <em>Archicad</em>, <em>Allplan</em>, <em>Vectorworks</em> o <em>Tekla Structures</em> para modelar, y <em>Navisworks</em>, <em>Solibri</em>, <em>BIMcollab Zoom</em> o <em>BIMvision</em> para revisar, coordinar o visualizar modelos. En esta práctica no usaremos una herramienta de autoría: trabajaremos con un visor IFC y con una representación semántica del modelo.</p>
 <p>El valor de BIM se aprecia mejor cuando pensamos en el <strong>ciclo de vida</strong> completo de la edificación. La misma información puede servir para coordinar el proyecto, detectar interferencias, planificar fases de obra o consultar características de un elemento una vez construido.</p>
 <div id="fig-bim-cycle" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
@@ -353,12 +341,16 @@ Figura&nbsp;1: Esquema general del flujo de trabajo BIM. Fuente: <em>BIMCloud</e
 <img src="../resources/practica8/bim_lifecycle.png" class="img-fluid figure-img" style="width:80.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-bim-cycle-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figura&nbsp;2: Ciclo de vida de la edificación y papel del modelo BIM. Fuente: <em>ip21ingenieria</em>.
+Figura&nbsp;1: Ciclo de vida de la edificación y papel del modelo BIM. Fuente: <em>ideCAD</em>.
 </figcaption>
 </figure>
 </div>
+<p>Una fuente cada vez más habitual de datos para BIM es el <strong>LiDAR</strong> (<em>Light Detection and Ranging</em>), una técnica de medición que emite pulsos láser y calcula la distancia a partir del tiempo que tardan en rebotar. El resultado es una <strong>nube de puntos</strong> tridimensional muy densa que captura la geometría real de un edificio o de su entorno. A partir de ella, en flujos de trabajo conocidos como <strong><em>scan-to-BIM</em></strong>, se genera un modelo BIM <em>as-built</em> que refleja el estado actual de la construcción, lo que resulta especialmente útil en rehabilitaciones, patrimonio o verificación de obra.</p>
+<!--![Integración de una nube de puntos LiDAR en un modelo BIM.](../resources/practica8/lidar_bim.png){#fig-lidar width=80%}-->
 <p>En el siguiente vídeo de <em>Autodesk Building Solutions</em> se explica de forma sencilla qué es BIM y qué ventajas aporta a lo largo del ciclo de vida de un edificio:</p>
-<div class="quarto-video ratio ratio-16x9"><iframe data-external="1" src="https://www.youtube.com/embed/suNadRnHy-Un" title="What Is BIM? by *Autodesk Building Solutions*" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe></div>
+<div class="ratio ratio-16x9">
+<p><iframe data-external="1" src="https://www.youtube.com/embed/suNadRnHy-U" title="What Is BIM? by Autodesk Building Solutions" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen=""></iframe></p>
+</div>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -377,9 +369,9 @@ Figura&nbsp;2: Ciclo de vida de la edificación y papel del modelo BIM. Fuente: 
 <h2 data-number="3" class="anchored" data-anchor-id="material-de-trabajo"><span class="header-section-number">3</span> Material de trabajo</h2>
 <p>Utilizaremos los siguientes ficheros:</p>
 <ul>
-<li><a href="../resources/practica8/Duplex.ifc">Duplex.ifc</a>, que contiene el modelo BIM original del apartamento dúplex en formato IFC (<em>Industry Foundation Classes</em>).</li>
-<li><a href="../resources/practica8/Duplex.owl">Duplex.owl</a>, que contiene una versión semántica del mismo modelo en lenguaje <strong>OWL</strong> (<em>Web Ontology Language</em>).</li>
-<li><a href="../resources/practica8/beo.owl">beo.owl</a> y <a href="../resources/practica8/bot.owl">bot.owl</a>, que pueden ser necesarios si <em>Protégé</em> te pide resolver manualmente algunas importaciones.</li>
+<li><a href="../resources/practica8/files/Duplex.ifc">Duplex.ifc</a>, que contiene el modelo BIM original del apartamento dúplex en formato IFC (<em>Industry Foundation Classes</em>).</li>
+<li><a href="../resources/practica8/files/Duplex.owl">Duplex.owl</a>, que contiene una versión semántica del mismo modelo en lenguaje <strong>OWL</strong> (<em>Web Ontology Language</em>).</li>
+<li><a href="../resources/practica8/files/beo.owl">beo.owl</a> y <a href="../resources/practica8/files/bot.owl">bot.owl</a>, que pueden ser necesarios si <em>Protégé</em> te pide resolver manualmente algunas importaciones.</li>
 </ul>
 <p>Como software de apoyo utilzaremos <a href="https://bimvision.eu">BIMvision</a> para visualizar el IFC y <a href="http://protege.stanford.edu">Protégé</a> para explorar la ontología.</p>
 </section>
@@ -392,7 +384,7 @@ Figura&nbsp;2: Ciclo de vida de la edificación y papel del modelo BIM. Fuente: 
 <img src="../resources/practica8/duplex_bimvision.png" class="img-fluid figure-img">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-viewer-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figura&nbsp;3: Modelo Duplex abierto en BIMvision.
+Figura&nbsp;2: Modelo Duplex abierto en BIMvision.
 </figcaption>
 </figure>
 </div>
@@ -415,7 +407,7 @@ Figura&nbsp;3: Modelo Duplex abierto en BIMvision.
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Nota</span>🧠 Encuentra elementos
+<span class="screen-reader-only">Nota</span>Encuentra elementos
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -428,10 +420,23 @@ Figura&nbsp;3: Modelo Duplex abierto en BIMvision.
 </div>
 </div>
 </section>
-<section id="del-ifc-al-modelo-semántico" class="level2 page-columns page-full" data-number="5">
+<section id="del-ifc-al-modelo-semántico" class="level2" data-number="5">
 <h2 data-number="5" class="anchored" data-anchor-id="del-ifc-al-modelo-semántico"><span class="header-section-number">5</span> Del IFC al modelo semántico</h2>
 <p>El siguiente paso consiste en pasar de una representación BIM convencional a una representación <strong>semántica</strong>. En lugar de trabajar solamente con geometría y propiedades dentro de un visor, vamos a describir el edificio mediante clases, propiedades e individuos conectados entre sí en una ontología.</p>
-<div class="page-columns page-full"><p>En esta práctica no es necesario que hagas la conversión por tu cuenta, porque el fichero <code>Duplex.owl</code> ya está preparado. Aun así, conviene entender de dónde sale: se ha generado a partir del IFC usando <a href="https://github.com/jyrkioraskari/IFCtoLBD/releases/tag/2.43.5">IFCtoLBD 2.43.5</a>, una herramienta que transforma modelos IFC en datos enlazados reutilizando vocabularios existentes del ámbito de la construcción. </p><div class="no-row-height column-margin column-container"><span class="margin-aside">El fichero <code>Duplex.owl</code> se ha generado con la configuración <strong>BOT + PRODUCT + PROPS, Level L1</strong>. Además, se han eliminado manualmente las referencias a dos ontologías externas para simplificar la práctica.</span></div></div>
+<p>En esta práctica no es necesario que hagas la conversión por tu cuenta, porque el fichero <code>Duplex.owl</code> ya está preparado. Aun así, conviene entender de dónde sale: se ha generado a partir del IFC usando <a href="https://github.com/jyrkioraskari/IFCtoLBD/releases/tag/2.43.5">IFCtoLBD 2.43.5</a>, una herramienta que transforma modelos IFC en datos enlazados reutilizando vocabularios existentes del ámbito de la construcción.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Nota</span>Nota técnica
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>El fichero <code>Duplex.owl</code> se ha generado con la configuración <strong>BOT + PRODUCT + PROPS, Level L1</strong>. Además, se han eliminado manualmente las referencias a dos ontologías externas para simplificar la práctica.</p>
+</div>
+</div>
 </section>
 <section id="ejercicio-2-abrir-la-ontología-en-protégé" class="level2" data-number="6">
 <h2 data-number="6" class="anchored" data-anchor-id="ejercicio-2-abrir-la-ontología-en-protégé"><span class="header-section-number">6</span> Ejercicio 2: abrir la ontología en Protégé</h2>
@@ -444,19 +449,21 @@ Figura&nbsp;3: Modelo Duplex abierto en BIMvision.
 <li><strong>Data properties</strong>, para ver propiedades cuyo valor es un dato literal.</li>
 <li><strong>Individuals</strong>, para ver las instancias concretas del modelo.</li>
 </ul>
-<p>La <a href="#fig-protege" class="quarto-xref">Figura&nbsp;4</a> muestra el resultado de seleccionar <strong><em>Clases</em></strong> y, concretamente, <strong><em>Edificio</em></strong>. Podeis observar cómo la interfaz nos muestra que <strong><em>Edificio</em></strong> es una subclase de <strong><em>Zona</em></strong>.</p>
+<p>La <a href="#fig-protege" class="quarto-xref">Figura&nbsp;3</a> muestra el resultado de seleccionar <strong><em>Clases</em></strong> y, concretamente, <strong><em>Edificio</em></strong>. Podeis observar cómo la interfaz nos muestra que <strong><em>Edificio</em></strong> es una subclase de <strong><em>Zona</em></strong>.</p>
 <div id="fig-protege" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-protege-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="../resources/practica8/protege_overview.png" class="img-fluid figure-img">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-protege-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figura&nbsp;4: Jerarquía de clases y detalle de una clase en Protégé.
+Figura&nbsp;3: Jerarquía de clases y detalle de una clase en Protégé.
 </figcaption>
 </figure>
 </div>
 <p>Puedes encontrar una pequeña introducción a la interfaz de <em>Protégé</em> en el siguiente vídeo, aunque no está orientado a nuestro mismo modelo, por lo que no es necesario seguirlo al pie de la letra:</p>
-<div class="quarto-video"><video id="video_shortcode_videojs_video1" class="video-js vjs-default-skin vjs-fluid" controls="" preload="auto" data-setup="{}" title="Introducción a Protégé, de Fernando Bobillo"><source src="https://drive.google.com/file/d/1eHHxYrJRiQZni_7KKrtRFqu5KEwk9omW"></video></div>
+<div class="ratio ratio-16x9">
+<p><iframe data-external="1" src="https://drive.google.com/file/d/1eHHxYrJRiQZni_7KKrtRFqu5KEwk9omW/preview" title="Introducción a Protégé, de Fernando Bobillo" frameborder="0" allow="autoplay" allowfullscreen=""></iframe></p>
+</div>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -467,7 +474,7 @@ Figura&nbsp;4: Jerarquía de clases y detalle de una clase en Protégé.
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>En algunas versiones de <em>Protégé</em>, las ontologías importadas se descargan automáticamente desde Internet. En otras, tendremos que resolver manualmente las importaciones. En este último caso, en <code>Active ontology &gt; Ontology imports</code> pinchamos en el botón <code>+</code> para añadir los ficheros <a href="../resources/practica8/beo.owl">beo.owl</a> y <a href="../resources/practica8/bot.owl">⬇️ bot.owl</a>.</p>
+<p>En algunas versiones de <em>Protégé</em>, las ontologías importadas se descargan automáticamente desde Internet. En otras, tendremos que resolver manualmente las importaciones. En este último caso, en <code>Active ontology &gt; Ontology imports</code> pinchamos en el botón <code>+</code> para añadir los ficheros <a href="../resources/practica8/files/beo.owl">beo.owl</a> y <a href="../resources/practica8/files/bot.owl">bot.owl</a>.</p>
 </div>
 </div>
 <p>También debes tener en cuenta que muchas entidades tienen <strong>etiquetas en varios idiomas</strong>. Dependiendo de la configuración de tu equipo, <em>Protégé</em> puede mostrar nombres en castellano o en inglés. Por ejemplo, la clase <code>Edificio ‐ http://w3id.org/bot/Building</code> tiene etiquetas <code>Building</code>, <code>Edificio</code>, etc. En este guion se asume que las etiquetas se muestran en castellano siempre que sea posible.</p>
@@ -480,32 +487,50 @@ Figura&nbsp;4: Jerarquía de clases y detalle de una clase en Protégé.
 <li><strong>Una ventana concreta y los valores de sus propiedades</strong>.</li>
 </ul>
 <p>Comprueba además si esos valores coinciden con los que viste en el visor IFC durante el ejercicio anterior.</p>
-<details>
-<summary>
-💡 Solución orientativa: clases
-</summary>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Solución orientativa: clases
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-6" class="callout-6-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
 <div id="fig-classes-solution" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-classes-solution-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="../resources/practica8/classes.png" class="img-fluid figure-img" style="width:100.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-classes-solution-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figura&nbsp;5: Jerarquía de clases para localizar la entidad de ventana.
+Figura&nbsp;4: Jerarquía de clases para localizar la entidad de ventana.
 </figcaption>
 </figure>
 </div>
-</details>
-<details>
-<summary>
-💡 Solución orientativa: propiedades
-</summary>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-7-contents" aria-controls="callout-7" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Solución orientativa: propiedades
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-7" class="callout-7-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
 <div id="fig-property-object" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-property-object-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="../resources/practica8/object_properties.png" class="img-fluid figure-img" style="width:100.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-property-object-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figura&nbsp;6: Propiedades de objeto relacionadas con los elementos del modelo.
+Figura&nbsp;5: Propiedades de objeto relacionadas con los elementos del modelo.
 </figcaption>
 </figure>
 </div>
@@ -515,26 +540,38 @@ Figura&nbsp;6: Propiedades de objeto relacionadas con los elementos del modelo.
 <img src="../resources/practica8/data_properties.png" class="img-fluid figure-img" style="width:100.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-property-data-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figura&nbsp;7: Propiedades de datos para recuperar medidas y otros valores literales.
+Figura&nbsp;6: Propiedades de datos para recuperar medidas y otros valores literales.
 </figcaption>
 </figure>
 </div>
-</details>
-<details>
-<summary>
-💡 Solución orientativa: individuos
-</summary>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-8-contents" aria-controls="callout-8" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Solución orientativa: individuos
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-8" class="callout-8-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
 <div id="fig-individuals-solution" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-individuals-solution-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="../resources/practica8/individuals.png" class="img-fluid figure-img" style="width:100.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-individuals-solution-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figura&nbsp;8: Exploración de individuos concretos dentro de la ontología.
+Figura&nbsp;7: Exploración de individuos concretos dentro de la ontología.
 </figcaption>
 </figure>
 </div>
-</details>
+</div>
+</div>
+</div>
 </section>
 </section>
 <section id="ejercicio-3-razonamiento-e-inferencia" class="level2" data-number="7">
@@ -565,31 +602,41 @@ Figura&nbsp;8: Exploración de individuos concretos dentro de la ontología.
 <p>En muchas instalaciones, las consultas se escriben con los nombres cortos en inglés, por ejemplo <code>Window</code>, aunque en la interfaz veas etiquetas en castellano.</p>
 </div>
 </div>
-<details>
-<summary>
-💡 Ejemplo orientativo: consulta sobre escaleras
-</summary>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-10-contents" aria-controls="callout-10" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Ejemplo orientativo: consulta sobre escaleras
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-10" class="callout-10-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
 <div id="fig-stairs-dl" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-stairs-dl-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="../resources/practica8/dl_query_stairs.png" class="img-fluid figure-img" style="width:75.0%">
+<img src="../resources/practica8/dl_query_stairs.png" class="img-fluid figure-img" style="width:100.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-stairs-dl-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figura&nbsp;9: Ejemplo de consulta DL en Protégé.
+Figura&nbsp;8: Ejemplo de consulta DL en Protégé.
 </figcaption>
 </figure>
 </div>
 <div id="fig-stairs-explanation" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-stairs-explanation-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="../resources/practica8/dl_explanation_stairs.png" class="img-fluid figure-img" style="width:70.0%">
+<img src="../resources/practica8/dl_explanation_stairs.png" class="img-fluid figure-img" style="width:100.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-stairs-explanation-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figura&nbsp;10: Ejemplo de explicación ofrecida por el razonador.
+Figura&nbsp;9: Ejemplo de explicación ofrecida por el razonador.
 </figcaption>
 </figure>
 </div>
-</details>
+</div>
+</div>
+</div>
 </section>
 </section>
 <section id="ejercicio-4-consultas-más-expresivas" class="level2" data-number="8">
@@ -617,7 +664,7 @@ Figura&nbsp;10: Ejemplo de explicación ofrecida por el razonador.
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Nota</span>🧠 Explora los resultados
+<span class="screen-reader-only">Nota</span>Explora los resultados
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -634,13 +681,14 @@ Figura&nbsp;10: Ejemplo de explicación ofrecida por el razonador.
 <h2 data-number="9" class="anchored" data-anchor-id="ejercicio-5-provocar-una-inconsistencia"><span class="header-section-number">9</span> Ejercicio 5: provocar una inconsistencia</h2>
 <p>Si una ontología se vuelve <strong>inconsistente</strong>, el razonador ya no puede trabajar correctamente con ella. En ese caso, <em>Protégé</em> muestra un aviso y permite abrir una explicación para entender qué axiomas están entrando en conflicto.</p>
 <p>En este ejercicio vamos a provocar una inconsistencia de forma controlada. La idea es declarar como <strong>funcional</strong> la propiedad que representa la altura de una ventana y, después, asignar a una misma ventana dos valores distintos para esa altura.</p>
+<p>En una ontología, una propiedad <strong>funcional</strong> es una propiedad que puede tener como máximo un valor para cada individuo. Por ejemplo, si la propiedad que representa la altura de una ventana se declara funcional, una misma ventana no debería tener dos alturas distintas. Si añadimos dos valores incompatibles, el razonador detectará que el modelo contiene una contradicción.</p>
 <section id="pasos-sugeridos" class="level3" data-number="9.1">
 <h3 data-number="9.1" class="anchored" data-anchor-id="pasos-sugeridos"><span class="header-section-number">9.1</span> Pasos sugeridos</h3>
 <ol type="1">
 <li>Localiza la propiedad de datos que representa la altura.</li>
-<li>Márcala como <strong>Functional</strong>.</li>
-<li>Busca una ventana concreta en <strong>Individuals</strong>.</li>
-<li>Añade una segunda afirmación de tipo <strong>Data property assertion</strong> con un valor distinto del original, por ejemplo <code>1234</code>.</li>
+<li>Márcala como <strong><em>Functional</em></strong>.</li>
+<li>Busca una ventana concreta en <strong><em>Individuals</em></strong>.</li>
+<li>Añade una segunda afirmación de tipo <strong><em>Data property assertion</em></strong> con un valor distinto del original, por ejemplo <code>1234</code>.</li>
 <li>Sincroniza el razonador y observa el error de inconsistencia.</li>
 </ol>
 <div class="callout callout-style-default callout-warning callout-titled">
@@ -656,17 +704,25 @@ Figura&nbsp;10: Ejemplo de explicación ofrecida por el razonador.
 <p>Haz este ejercicio sobre una copia de trabajo del fichero si quieres conservar <code>Duplex.owl</code> sin cambios al terminar la práctica.</p>
 </div>
 </div>
-<details>
-<summary>
-Solución orientativa: inconsistencia
-</summary>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-14-contents" aria-controls="callout-14" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Solución orientativa: inconsistencia
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-14" class="callout-14-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
 <div id="fig-functional" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-functional-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="../resources/practica8/functional_property.png" class="img-fluid figure-img" style="width:100.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-functional-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figura&nbsp;11: Marcar la propiedad como funcional.
+Figura&nbsp;10: Marcar la propiedad como funcional.
 </figcaption>
 </figure>
 </div>
@@ -676,7 +732,7 @@ Figura&nbsp;11: Marcar la propiedad como funcional.
 <img src="../resources/practica8/conflicting_value.png" class="img-fluid figure-img" style="width:100.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-property-value-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figura&nbsp;12: Añadir un segundo valor incompatible para la propiedad.
+Figura&nbsp;11: Añadir un segundo valor incompatible para la propiedad.
 </figcaption>
 </figure>
 </div>
@@ -686,7 +742,7 @@ Figura&nbsp;12: Añadir un segundo valor incompatible para la propiedad.
 <img src="../resources/practica8/inconsistency_notice.png" class="img-fluid figure-img" style="width:100.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-explain-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figura&nbsp;13: Aviso de inconsistencia y acceso a la explicación.
+Figura&nbsp;12: Aviso de inconsistencia y acceso a la explicación.
 </figcaption>
 </figure>
 </div>
@@ -696,11 +752,13 @@ Figura&nbsp;13: Aviso de inconsistencia y acceso a la explicación.
 <img src="../resources/practica8/inconsistency_explanation.png" class="img-fluid figure-img" style="width:100.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-explanation-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figura&nbsp;14: Explicación de la inconsistencia generada.
+Figura&nbsp;13: Explicación de la inconsistencia generada.
 </figcaption>
 </figure>
 </div>
-</details>
+</div>
+</div>
+</div>
 </section>
 </section>
 <section id="descarga" class="level2" data-number="10">
@@ -714,7 +772,7 @@ Figura&nbsp;14: Explicación de la inconsistencia generada.
 <img src="../resources/practica8/bimvision.png" class="img-fluid figure-img">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-bimvision-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figura&nbsp;15: Pantalla de bienvenida de BIMvision.
+Figura&nbsp;14: Pantalla de bienvenida de BIMvision.
 </figcaption>
 </figure>
 </div>
@@ -725,10 +783,10 @@ Figura&nbsp;15: Pantalla de bienvenida de BIMvision.
 <div id="fig-protege-welcome" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-protege-welcome-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="../resources/practica8/protege.png" class="img-fluid figure-img" style="width:80.0%">
+<img src="../resources/practica8/protege.png" class="img-fluid figure-img" style="width:100.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-protege-welcome-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figura&nbsp;16: Pantalla de bienvenida de Protégé.
+Figura&nbsp;15: Pantalla de bienvenida de Protégé.
 </figcaption>
 </figure>
 </div>
@@ -1163,7 +1221,6 @@ Uso docente no comercial permitido con atribución y licencia compartida.</p>
 </div>
   </div>
 </footer>
-<script>videojs(video_shortcode_videojs_video1);</script>
 
 
 

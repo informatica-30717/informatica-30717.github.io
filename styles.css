@@ -75,13 +75,24 @@ hr {
 }
 
 .quarto-title-banner {
+  --title-banner-height: 400px;
+  --title-banner-size: cover;
+  --title-banner-position-x: center;
+  --title-banner-position-y: top;
   position: relative;
   overflow: hidden;
-  min-height: 400px;
+  min-height: var(--title-banner-height);
   display: flex;
   align-items: flex-end;
-  background-size: cover;
-  background-position: center top;
+  background-color: #fff;
+  background-size: var(--title-banner-size);
+  background-position: var(--title-banner-position-x) var(--title-banner-position-y);
+  background-repeat: no-repeat;
+}
+
+#title-block-header .quarto-title-banner {
+  background-size: var(--title-banner-size);
+  background-position: var(--title-banner-position-x) var(--title-banner-position-y);
 }
 
 .quarto-title-banner::after {
@@ -90,14 +101,23 @@ hr {
   inset: 0;
   pointer-events: none;
   z-index: 0;
-  background: linear-gradient(
-    to bottom,
-    rgba(0,0,0,0.08) 0%,
-    rgba(0,0,0,0.14) 35%,
-    rgba(0,0,0,0.28) 58%,
-    rgba(255,255,255,0.8) 94%,
-    rgba(255,255,255,1.00) 100%
-  );
+  background:
+    linear-gradient(
+      to bottom,
+      rgba(255,255,255,0) 0%,
+      rgba(255,255,255,0.08) 44%,
+      rgba(255,255,255,0.34) 66%,
+      rgba(255,255,255,0.78) 88%,
+      rgba(255,255,255,1) 100%
+    ),
+    linear-gradient(
+      to bottom,
+      rgba(0,0,0,0.05) 0%,
+      rgba(0,0,0,0.10) 42%,
+      rgba(0,0,0,0.14) 66%,
+      rgba(0,0,0,0.04) 86%,
+      rgba(0,0,0,0) 100%
+    );
 }
 
 .quarto-title-banner .quarto-title,
@@ -107,13 +127,24 @@ hr {
   z-index: 2;
 }
 
+#title-block-header .quarto-title-banner .quarto-title-breadcrumbs,
+#title-block-header .quarto-title-banner .quarto-title-breadcrumbs a,
+#title-block-header .quarto-title-banner .breadcrumb-item,
+#title-block-header .quarto-title-banner .breadcrumb-item::before {
+  color: #010e1a !important;
+}
+
 #title-block-header.quarto-title-banner .title,
 #title-block-header.quarto-title-banner h1,
 #title-block-header.quarto-title-banner .subtitle,
-#title-block-header.quarto-title-banner .quarto-title-meta {
+#title-block-header.quarto-title-banner .quarto-title-meta,
+#title-block-header .quarto-title-banner .title,
+#title-block-header .quarto-title-banner h1,
+#title-block-header .quarto-title-banner .subtitle,
+#title-block-header .quarto-title-banner .quarto-title-meta {
   position: relative;
   z-index: 3;
-  color: #222 !important;
+  color: #010e1a !important;
   text-shadow: none !important;
 }
 
@@ -135,4 +166,15 @@ hr {
 
 .read-time-pill svg {
   flex: 0 0 auto;
+}
+
+.ratio > p {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+}
+
+.ratio > p > iframe {
+  width: 100%;
+  height: 100%;
 }
