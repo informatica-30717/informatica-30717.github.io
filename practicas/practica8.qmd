@@ -1,6 +1,6 @@
 ---
 title: "Práctica 8: BIM semántico"
-title-block-banner: ../resources/practica8/fig1.png
+title-block-banner: ../resources/practica8/duplex_bimvision.png
 title-block-banner-color: "#56616b"
 format:
   html:
@@ -26,7 +26,7 @@ execute:
 
 ## Objetivos de la práctica
 
-En esta práctica trabajaremos con un mismo edificio en dos representaciones complementarias: un modelo BIM en formato IFC y una versión semántica en OWL. Al finalizar, deberías ser capaz de:
+En esta práctica trabajaremos con un mismo edificio en dos representaciones complementarias: un modelo BIM (*Building Information Modeling*) en formato IFC (*Industry Foundation Classes*) y una versión semántica en OWL (*Web Ontology Language*). Al finalizar, deberías ser capaz de:
 
 - Entender qué aporta BIM como sistema de organización de información de un edificio.
 - Explorar un modelo IFC con un visor BIM y localizar elementos concretos.
@@ -37,40 +37,44 @@ En esta práctica trabajaremos con un mismo edificio en dos representaciones com
 
 :::: {layout="[58,42]"}
 ::: {.column}
-El **Modelado de Información de Construcción** (**BIM**, *Building Information Modeling*) es una forma de representar digitalmente un edificio y la información asociada a sus elementos. No se trata solo de una maqueta 3D: un modelo BIM también puede describir materiales, relaciones espaciales, identificadores, propiedades geométricas y datos útiles para diseño, obra, mantenimiento y explotación.
+El **modelado de información de construcción** (**BIM**, *Building Information Modeling*) es una forma de representar digitalmente un edificio y la información asociada a sus elementos. No se trata solo de una maqueta 3D: un modelo BIM también puede describir materiales, relaciones espaciales, identificadores, propiedades geométricas y datos útiles para diseño, obra, mantenimiento y explotación.
 
 Esta manera de trabajar resulta especialmente valiosa porque reúne en un mismo modelo información que normalmente estaría dispersa en planos, tablas, memorias y documentos técnicos. Por eso BIM se ha convertido en una pieza clave en la digitalización del sector de la construcción.
 :::
 ::: {.column}
-![Esquema general del flujo de trabajo BIM.](../resources/practica8/bim1.png){#fig-bim width=100%}
+![Esquema general del flujo de trabajo BIM. Fuente: *BIMCloud*.](../resources/practica8/bim_workflow.png){#fig-bim width=100%}
 :::
 ::::
 
 El valor de BIM se aprecia mejor cuando pensamos en el **ciclo de vida** completo de la edificación. La misma información puede servir para coordinar el proyecto, detectar interferencias, planificar fases de obra o consultar características de un elemento una vez construido.
 
-![Ciclo de vida de la edificación y papel del modelo BIM.](../resources/practica8/bim2.png){#fig-bim-cycle width=80%}
+![Ciclo de vida de la edificación y papel del modelo BIM. Fuente: *ip21ingenieria*.](../resources/practica8/bim_lifecycle.png){#fig-bim-cycle width=80%}
+
+En el siguiente vídeo de *Autodesk Building Solutions* se explica de forma sencilla qué es BIM y qué ventajas aporta a lo largo del ciclo de vida de un edificio:
+
+{{< video https://www.youtube.com/watch?v=suNadRnHy-Un title="What Is BIM? by *Autodesk Building Solutions*" >}}
 
 ::: {.callout-note}
 ## Idea clave
 
-En esta práctica no vamos a modelar un edificio desde cero. Vamos a aprender a **leer** un modelo BIM y a **consultar** su información, primero con un visor IFC y después con herramientas semánticas.
+En esta práctica no vamos a modelar un edificio desde cero. Vamos a aprender a **leer** un modelo BIM y a **consultar** su información, primero con un visor IFC (*Industry Foundation Classes*) y después con herramientas semánticas.
 :::
 
 ## Material de trabajo
 
 Utilizaremos los siguientes ficheros:
 
-- [Duplex.ifc](../resources/practica8/Duplex.ifc), que contiene el modelo BIM original del apartamento dúplex en formato IFC.
-- [Duplex.owl](../resources/practica8/Duplex.owl), que contiene una versión semántica del mismo modelo en lenguaje **OWL**.
+- [Duplex.ifc](../resources/practica8/Duplex.ifc), que contiene el modelo BIM original del apartamento dúplex en formato IFC (*Industry Foundation Classes*).
+- [Duplex.owl](../resources/practica8/Duplex.owl), que contiene una versión semántica del mismo modelo en lenguaje **OWL** (*Web Ontology Language*).
 - [beo.owl](../resources/practica8/beo.owl) y [bot.owl](../resources/practica8/bot.owl), que pueden ser necesarios si *Protégé* te pide resolver manualmente algunas importaciones.
 
-Como software de apoyo, se recomienda utilizar [BIMvision](https://bimvision.eu) para visualizar el IFC y [Protégé](http://protege.stanford.edu) para explorar la ontología.
+Como software de apoyo utilzaremos [BIMvision](https://bimvision.eu) para visualizar el IFC y [Protégé](http://protege.stanford.edu) para explorar la ontología.
 
 ## Ejercicio 1: explorar el modelo IFC
 
-El primer paso es abrir `Duplex.ifc` en **BIMvision** o en cualquier otro visor BIM compatible con IFC. El objetivo no es todavía hacer consultas complejas, sino familiarizarse con el edificio, sus plantas y la forma en que cada elemento aparece identificado en el modelo.
+El primer paso es abrir `Duplex.ifc` en **BIMvision**. El objetivo no es todavía hacer consultas complejas, sino familiarizarse con el edificio, sus plantas y la forma en que cada elemento aparece identificado en el modelo.
 
-![Modelo Duplex abierto en BIMvision.](../resources/practica8/fig1.png){#fig-viewer width=80%}
+![Modelo Duplex abierto en BIMvision.](../resources/practica8/duplex_bimvision.png){#fig-viewer}
 
 ::: {.callout-tip}
 ## Qué debes observar
@@ -78,96 +82,101 @@ El primer paso es abrir `Duplex.ifc` en **BIMvision** o en cualquier otro visor 
 Empieza por recorrer la planta baja y la planta superior, y acostúmbrate a seleccionar elementos individuales. Fíjate en cómo el visor muestra sus nombres, identificadores y propiedades básicas.
 :::
 
+::: {.callout-note}
+## 🧠 Encuentra elementos
+
 Durante esta primera exploración, responde a las siguientes preguntas:
 
-- ¿Cuántas ventanas hay en el modelo?
-- ¿Qué identificador tiene cada una?
-- ¿Qué altura y qué anchura tiene cada ventana?
+- **¿Cuántas ventanas hay en el modelo?**
+- **¿Qué identificador tiene cada una?**
+- **¿Qué altura y qué anchura tiene cada ventana?**
+:::
 
 ## Del IFC al modelo semántico
 
 El siguiente paso consiste en pasar de una representación BIM convencional a una representación **semántica**. En lugar de trabajar solamente con geometría y propiedades dentro de un visor, vamos a describir el edificio mediante clases, propiedades e individuos conectados entre sí en una ontología.
 
 En esta práctica no es necesario que hagas la conversión por tu cuenta, porque el fichero `Duplex.owl` ya está preparado. Aun así, conviene entender de dónde sale: se ha generado a partir del IFC usando [IFCtoLBD 2.43.5](https://github.com/jyrkioraskari/IFCtoLBD/releases/tag/2.43.5), una herramienta que transforma modelos IFC en datos enlazados reutilizando vocabularios existentes del ámbito de la construcción.
-
-::: {.callout-warning}
-## Conversión utilizada
-
-El fichero `Duplex.owl` se ha generado con la configuración **BOT + PRODUCT + PROPS, Level L1**. Además, se han eliminado manualmente las referencias a dos ontologías externas para simplificar la práctica.
-:::
+[El fichero `Duplex.owl` se ha generado con la configuración **BOT + PRODUCT + PROPS, Level L1**. Además, se han eliminado manualmente las referencias a dos ontologías externas para simplificar la práctica.]{.aside}
 
 ## Ejercicio 2: abrir la ontología en Protégé
 
-Para abrir `Duplex.owl` usaremos **Protégé**, un editor de ontologías gratuito y disponible para varios sistemas operativos. No suele requerir instalación compleja: basta con descargar el archivo comprimido, descomprimirlo y ejecutar la aplicación.
+Para abrir `Duplex.owl` usaremos **Protégé**, un editor de ontologías gratuito y disponible para varios sistemas operativos. No requiere una instalación compleja: basta con descargar el archivo comprimido, descomprimirlo y ejecutar la aplicación.
 
-:::: {layout="[60,40]"}
-::: {.column}
-Una vez abierto el fichero, encontrarás varias vistas desde las que puedes navegar por la ontología. En el menú lateral de **Entities** podrás recorrer:
+La interfaz puede cambiar ligeramente según la versión de *Protégé*, pero la idea general es siempre la misma: pasar de la estructura conceptual a los elementos concretos del edificio.
+
+Una vez abierto el fichero, encontrarás varias vistas desde las que puedes navegar por la ontología. Debajo del título de la ontología, *converters*, puedes encontrar una pestaña llamada ***Entities*** que te permitirá acceder a las siguientes categorías:
 
 - **Classes**, para ver la jerarquía de clases del dominio.
 - **Object properties**, para ver propiedades cuyo valor es otro objeto o individuo.
 - **Data properties**, para ver propiedades cuyo valor es un dato literal.
 - **Individuals**, para ver las instancias concretas del modelo.
 
-La interfaz puede cambiar ligeramente según la versión de *Protégé*, pero la idea general es siempre la misma: pasar de la estructura conceptual a los elementos concretos del edificio.
-:::
-::: {.column}
-![Jerarquía de clases y detalle de una clase en Protégé.](../resources/practica8/fig2.png){#fig-protege width=100%}
-:::
-::::
+La @fig-protege muestra el resultado de seleccionar ***Clases*** y, concretamente, ***Edificio***.
+Podeis observar cómo la interfaz nos muestra que ***Edificio*** es una subclase de ***Zona***. 
+
+![Jerarquía de clases y detalle de una clase en Protégé.](../resources/practica8/protege_overview.png){#fig-protege}
+
+Puedes encontrar una pequeña introducción a la interfaz de *Protégé* en el siguiente vídeo, aunque no está orientado a nuestro mismo modelo, por lo que no es necesario seguirlo al pie de la letra:
+
+{{< video https://drive.google.com/file/d/1eHHxYrJRiQZni_7KKrtRFqu5KEwk9omW title="Introducción a Protégé, de Fernando Bobillo" >}}
 
 ::: {.callout-tip}
 ## Si faltan importaciones
 
-En algunas versiones de *Protégé*, las ontologías importadas se descargan automáticamente desde Internet. En otras, tendrás que añadirlas manualmente desde `Active ontology > Ontology imports` usando los ficheros `beo.owl` y `bot.owl`.
+En algunas versiones de *Protégé*, las ontologías importadas se descargan automáticamente desde Internet. En otras, tendremos que resolver manualmente las importaciones. En este último caso, en `Active ontology > Ontology imports` pinchamos en el botón `+` para añadir los ficheros [beo.owl](../resources/practica8/beo.owl) y [⬇️ bot.owl](../resources/practica8/bot.owl).
 :::
 
-También debes tener en cuenta que muchas entidades tienen **etiquetas en varios idiomas**. Dependiendo de la configuración de tu equipo, *Protégé* puede mostrar nombres en castellano o en inglés. En este guion se asume que las etiquetas se muestran en castellano siempre que sea posible.
+También debes tener en cuenta que muchas entidades tienen **etiquetas en varios idiomas**. Dependiendo de la configuración de tu equipo, *Protégé* puede mostrar nombres en castellano o en inglés. Por ejemplo, la clase `Edificio ‐ http://w3id.org/bot/Building` tiene etiquetas `Building`, `Edificio`, etc. En este guion se asume que las etiquetas se muestran en castellano siempre que sea posible.
 
 ### Qué debes localizar
 
 Dentro de la ontología, localiza:
 
-- La clase que permite representar las ventanas.
-- Las propiedades que representan la altura y la anchura de una ventana.
-- Una ventana concreta y los valores de sus propiedades.
+- **La clase que permite representar las ventanas**.
+- **Las propiedades que representan la altura y la anchura de una ventana**.
+- **Una ventana concreta y los valores de sus propiedades**.
 
 Comprueba además si esos valores coinciden con los que viste en el visor IFC durante el ejercicio anterior.
 
 <details>
-<summary>Solución orientativa: clases</summary>
+<summary>💡 Solución orientativa: clases</summary>
 
-![Jerarquía de clases para localizar la entidad de ventana.](../resources/practica8/classes.png){#fig-classes-solution width=75%}
+![Jerarquía de clases para localizar la entidad de ventana.](../resources/practica8/classes.png){#fig-classes-solution width=100%}
 </details>
 
 <details>
-<summary>Solución orientativa: propiedades</summary>
+<summary>💡 Solución orientativa: propiedades</summary>
 
-![Propiedades de objeto relacionadas con los elementos del modelo.](../resources/practica8/property1.png){#fig-property-object width=75%}
+![Propiedades de objeto relacionadas con los elementos del modelo.](../resources/practica8/object_properties.png){#fig-property-object width=100%}
 
-![Propiedades de datos para recuperar medidas y otros valores literales.](../resources/practica8/property2.png){#fig-property-data width=75%}
+![Propiedades de datos para recuperar medidas y otros valores literales.](../resources/practica8/data_properties.png){#fig-property-data width=100%}
 </details>
 
 <details>
-<summary>Solución orientativa: individuos</summary>
+<summary>💡 Solución orientativa: individuos</summary>
 
-![Exploración de individuos concretos dentro de la ontología.](../resources/practica8/individuals.png){#fig-individuals-solution width=75%}
+![Exploración de individuos concretos dentro de la ontología.](../resources/practica8/individuals.png){#fig-individuals-solution width=100%}
 </details>
 
 ## Ejercicio 3: razonamiento e inferencia
 
 Una de las ventajas de trabajar con ontologías es que no solo podemos leer datos explícitos, sino también **inferir** información nueva a partir de la estructura del modelo y de las restricciones definidas en la ontología.
 
-Para ello, activa un razonador desde el menú superior **Reasoner**. En esta práctica se recomienda utilizar **HermiT**. Una vez cargado, podrás abrir la pestaña **DL Query** para lanzar consultas sobre clases e individuos.
+Para ello, activa un razonador desde el menú superior **Reasoner**. En esta práctica se recomienda utilizar **HermiT**. Inicia el razonador mediante `Reasoner > Start reasoner`. Una vez cargado, podrás abrir la pestaña **DL Query** para lanzar consultas sobre clases e individuos. 
+
+Si en algún momento actualizamos la ontología, tendremos que utilizar la opción **Synchronize reasoner** para que el razonador actualice su información y pueda responder a las consultas correctamente.
 
 ### Consultas propuestas
 
+A través de la pestaña ***DL Query***, recupera las instancias de la clase que representa las **ventanas**. Pinchando en alguna de ellas, puedes ver los valores de las propiedades (tanto los originales como los inferidos por el razonador, si los hubiera).
+
 Con el razonador activo, realiza las siguientes comprobaciones:
 
-- Recupera las instancias de la clase que representa las **ventanas**.
-- Recupera las **superclases** de esa clase.
-- Recupera las instancias de alguna de esas superclases para comprobar si el razonador también devuelve instancias indirectas.
-- Vuelve a consultar las instancias de la clase de ventanas y haz clic en el símbolo `?` de alguna de ellas para ver al menos una explicación.
+- **Recupera las instancias de la clase que representa las ventanas**.
+- **Recupera las superclases** de esa clase.
+- **Recupera las instancias de alguna de esas superclases para comprobar si el razonador también devuelve instancias indirectas**.
+- **Vuelve a consultar las instancias de la clase de ventanas y haz clic en el símbolo `?` de alguna de ellas para ver al menos una explicación**.
 
 ::: {.callout-note}
 ## Pista
@@ -176,28 +185,38 @@ En muchas instalaciones, las consultas se escriben con los nombres cortos en ing
 :::
 
 <details>
-<summary>Ejemplo orientativo: consulta sobre escaleras</summary>
+<summary>💡 Ejemplo orientativo: consulta sobre escaleras</summary>
 
-![Ejemplo de consulta DL en Protégé.](../resources/practica8/stairs_example_DL.png){#fig-stairs-dl width=75%}
+![Ejemplo de consulta DL en Protégé.](../resources/practica8/dl_query_stairs.png){#fig-stairs-dl width=75%}
 
-![Ejemplo de explicación ofrecida por el razonador.](../resources/practica8/stair_explanation.png){#fig-stairs-explanation width=70%}
+![Ejemplo de explicación ofrecida por el razonador.](../resources/practica8/dl_explanation_stairs.png){#fig-stairs-explanation width=70%}
 </details>
 
 ## Ejercicio 4: consultas más expresivas
 
-Una vez dominadas las consultas básicas, podemos construir expresiones más ricas combinando clases y propiedades. Esto permite formular preguntas que no se reducen a “dame todas las instancias de una clase”, sino a “dame todos los elementos que cumplan una determinada condición”.
+Una vez dominadas las consultas básicas, podemos construir expresiones más ricas combinando clases y propiedades. Esto permite formular preguntas que no se reducen a "dame todas las instancias de una clase", sino a "dame todos los elementos que cumplan una determinada condición".
 
-Lanza la siguiente consulta:
+Por ejemplo, lanza la siguiente consulta:
 
 `Espacio and 'elemento adyacente' some Window`
 
 Esa expresión representa el conjunto de espacios que tienen al menos un elemento adyacente que pertenece a la clase **Window**.
 
+::: {.callout-note}
+## Pista
+
+A medidas que escribes la consulta, *Protégé* te ofrece sugerencias de autocompletado para las clases y propiedades. Si no recuerdas el nombre exacto, puedes aprovechar esa función para construir la consulta. Si no aparecen las sugerencias a medida que escribes, puedes pulsar `Ctrl + Space` para forzar que se muestren.
+:::
+
+::: {.callout-note}
+## 🧠 Explora los resultados
+
 Responde a estas preguntas:
 
-- ¿Cuántos individuos recupera la consulta?
-- ¿Qué tipo de espacios son?
-- ¿Coincide ese resultado con lo que esperarías al observar el edificio en el visor IFC?
+- **¿Cuántos individuos recupera la consulta?**
+- **¿Qué tipo de espacios son?**
+- **¿Coincide ese resultado con lo que esperarías al observar el edificio en el visor IFC?**
+:::
 
 ## Ejercicio 5: provocar una inconsistencia
 
@@ -222,21 +241,26 @@ Haz este ejercicio sobre una copia de trabajo del fichero si quieres conservar `
 <details>
 <summary>Solución orientativa: inconsistencia</summary>
 
-:::: {layout="[50,50]"}
-::: {.column}
 ![Marcar la propiedad como funcional.](../resources/practica8/functional_property.png){#fig-functional width=100%}
-:::
-::: {.column}
-![Añadir un segundo valor incompatible para la propiedad.](../resources/practica8/property_value.png){#fig-property-value width=100%}
-:::
-::::
 
-:::: {layout="[50,50]"}
-::: {.column}
-![Aviso de inconsistencia y acceso a la explicación.](../resources/practica8/explain.png){#fig-explain width=100%}
-:::
-::: {.column}
-![Explicación de la inconsistencia generada.](../resources/practica8/explanation.png){#fig-explanation width=100%}
-:::
-::::
+![Añadir un segundo valor incompatible para la propiedad.](../resources/practica8/conflicting_value.png){#fig-property-value width=100%}
+
+![Aviso de inconsistencia y acceso a la explicación.](../resources/practica8/inconsistency_notice.png){#fig-explain width=100%}
+
+![Explicación de la inconsistencia generada.](../resources/practica8/inconsistency_explanation.png){#fig-explanation width=100%}
+
 </details>
+
+## Descarga
+
+### BIMvision
+
+Puedes descargar ***BIMvision*** desde su [página oficial](https://bimvision.eu/es/descargar/). Tendrás que introducir tu correo electrónico para recibir el enlace de descarga y aceptar los términos de servicio. Una vez hecho recibirás un correo con el enlace para descargar el instalador. Sigue las instrucciones de instalación para completar el proceso. Al ejecutar el programa por primera vez, deberías ver algo como esto:
+
+![Pantalla de bienvenida de BIMvision.](../resources/practica8/bimvision.png){#fig-bimvision}
+
+### Protégé
+
+Puedes descargar ***Protégé*** desde su [página oficial](https://protege.stanford.edu/software/#desktop-protege). En la sección de descargas, elige la versión que corresponda a tu sistema operativo (Windows, macOS o Linux). Descarga el archivo comprimido y descomprímelo en una ubicación de tu elección. Ten en cuenta que Protégé no requiere instalación adicional, por lo que puedes situar la carpeta descomprimida en una ubicación que recuerdes fácilmente. Para ejecutar Protégé, simplemente abre la carpeta descomprimida y haz doble clic en el archivo `Protege.exe` (en Windows). Al abrir Protégé, deberías ver una pantalla de bienvenida similar a esta:
+
+![Pantalla de bienvenida de Protégé.](../resources/practica8/protege.png){#fig-protege-welcome width=80%}
