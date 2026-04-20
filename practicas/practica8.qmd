@@ -116,7 +116,12 @@ Durante esta primera exploración, responde a las siguientes preguntas:
 El siguiente paso consiste en pasar de una representación BIM convencional a una representación **semántica**. En lugar de trabajar solamente con geometría y propiedades dentro de un visor, vamos a describir el edificio mediante clases, propiedades e individuos conectados entre sí en una ontología.
 
 En esta práctica no es necesario que hagas la conversión por tu cuenta, porque el fichero `Duplex.owl` ya está preparado. Aun así, conviene entender de dónde sale: se ha generado a partir del IFC usando [IFCtoLBD 2.43.5](https://github.com/jyrkioraskari/IFCtoLBD/releases/tag/2.43.5), una herramienta que transforma modelos IFC en datos enlazados reutilizando vocabularios existentes del ámbito de la construcción.
-[El fichero `Duplex.owl` se ha generado con la configuración **BOT + PRODUCT + PROPS, Level L1**. Además, se han eliminado manualmente las referencias a dos ontologías externas para simplificar la práctica.]{.aside}
+
+::: {.callout-note}
+## Nota técnica
+
+El fichero `Duplex.owl` se ha generado con la configuración **BOT + PRODUCT + PROPS, Level L1**. Además, se han eliminado manualmente las referencias a dos ontologías externas para simplificar la práctica.
+:::
 
 ## Ejercicio 2: abrir la ontología en Protégé
 
