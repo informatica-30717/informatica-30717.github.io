@@ -29,7 +29,7 @@ execute:
       <path d="M8 3.5a.5.5 0 0 1 .5.5v3.207l2.146 1.147a.5.5 0 0 1-.472.882l-2.25-1.2A.5.5 0 0 1 7 8V4a.5.5 0 0 1 .5-.5z"/>
       <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm0-1A7 7 0 1 1 8 1a7 7 0 0 1 0 14z"/>
     </svg>
-    ~8 min de lectura
+    ~10 min de lectura
   </span>
 </div>
 
@@ -44,34 +44,31 @@ En esta práctica trabajaremos con un mismo edificio en dos representaciones com
 
 ## Introducción a BIM
 
-::: {.content-visible unless-format="pdf"}
-:::: {layout="[58,42]"}
-::: {.column}
-El **modelado de información de construcción** (**BIM**, *Building Information Modeling*) es una forma de representar digitalmente un edificio y la información asociada a sus elementos. No se trata solo de una maqueta 3D: un modelo BIM también puede describir materiales, relaciones espaciales, identificadores, propiedades geométricas y datos útiles para diseño, obra, mantenimiento y explotación.
-
-Esta manera de trabajar resulta especialmente valiosa porque reúne en un mismo modelo información que normalmente estaría dispersa en planos, tablas, memorias y documentos técnicos. Por eso BIM se ha convertido en una pieza clave en la digitalización del sector de la construcción.
-:::
-::: {.column}
-![Esquema general del flujo de trabajo BIM. Fuente: *BIMCloud*.](../resources/practica8/bim_workflow.png){#fig-bim width=100%}
-:::
-::::
-:::
-
-::: {.content-visible when-format="pdf"}
 El **modelado de información de construcción** (**BIM**, *Building Information Modeling*) es una forma de representar digitalmente un edificio y la información asociada a sus elementos. No se trata solo de una maqueta 3D: un modelo BIM también puede describir materiales, relaciones espaciales, identificadores, propiedades geométricas y datos útiles para diseño, obra, mantenimiento y explotación.
 
 Esta manera de trabajar resulta especialmente valiosa porque reúne en un mismo modelo información que normalmente estaría dispersa en planos, tablas, memorias y documentos técnicos. Por eso BIM se ha convertido en una pieza clave en la digitalización del sector de la construcción.
 
-![Esquema general del flujo de trabajo BIM. Fuente: *BIMCloud*.](../resources/practica8/bim_workflow.png){#fig-bim width=100%}
-:::
+En el trabajo profesional, un modelo BIM se crea y coordina con herramientas de autoría y revisión. **Autodesk Revit** es una de las más conocidas, junto con otras como *Archicad*, *Allplan*, *Vectorworks* o *Tekla Structures* para modelar, y *Navisworks*, *Solibri*, *BIMcollab Zoom* o *BIMvision* para revisar, coordinar o visualizar modelos. En esta práctica no usaremos una herramienta de autoría: trabajaremos con un visor IFC y con una representación semántica del modelo.
 
 El valor de BIM se aprecia mejor cuando pensamos en el **ciclo de vida** completo de la edificación. La misma información puede servir para coordinar el proyecto, detectar interferencias, planificar fases de obra o consultar características de un elemento una vez construido.
 
-![Ciclo de vida de la edificación y papel del modelo BIM. Fuente: *ip21ingenieria*.](../resources/practica8/bim_lifecycle.png){#fig-bim-cycle width=80%}
+![Ciclo de vida de la edificación y papel del modelo BIM. Fuente: *ideCAD*.](../resources/practica8/bim_lifecycle.png){#fig-bim-cycle width=80%}
+
+Una fuente cada vez más habitual de datos para BIM es el **LiDAR** (*Light Detection and Ranging*), una técnica de medición que emite pulsos láser y calcula la distancia a partir del tiempo que tardan en rebotar. El resultado es una **nube de puntos** tridimensional muy densa que captura la geometría real de un edificio o de su entorno. A partir de ella, en flujos de trabajo conocidos como ***scan-to-BIM***, se genera un modelo BIM *as-built* que refleja el estado actual de la construcción, lo que resulta especialmente útil en rehabilitaciones, patrimonio o verificación de obra.
+
+<!--![Integración de una nube de puntos LiDAR en un modelo BIM.](../resources/practica8/lidar_bim.png){#fig-lidar width=80%}-->
 
 En el siguiente vídeo de *Autodesk Building Solutions* se explica de forma sencilla qué es BIM y qué ventajas aporta a lo largo del ciclo de vida de un edificio:
 
-{{< video https://www.youtube.com/watch?v=suNadRnHy-Un title="What Is BIM? by *Autodesk Building Solutions*" >}}
+::: {.content-visible unless-format="pdf"}
+<div class="ratio ratio-16x9">
+  <iframe data-external="1" src="https://www.youtube.com/embed/suNadRnHy-U" title="What Is BIM? by Autodesk Building Solutions" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+</div>
+:::
+
+::: {.content-visible when-format="pdf"}
+[Ver el vídeo en YouTube: *What Is BIM?*](https://www.youtube.com/watch?v=suNadRnHy-U)
+:::
 
 ::: {.callout-note}
 ## Idea clave
@@ -83,9 +80,9 @@ En esta práctica no vamos a modelar un edificio desde cero. Vamos a aprender a 
 
 Utilizaremos los siguientes ficheros:
 
-- [Duplex.ifc](../resources/practica8/Duplex.ifc), que contiene el modelo BIM original del apartamento dúplex en formato IFC (*Industry Foundation Classes*).
-- [Duplex.owl](../resources/practica8/Duplex.owl), que contiene una versión semántica del mismo modelo en lenguaje **OWL** (*Web Ontology Language*).
-- [beo.owl](../resources/practica8/beo.owl) y [bot.owl](../resources/practica8/bot.owl), que pueden ser necesarios si *Protégé* te pide resolver manualmente algunas importaciones.
+- [Duplex.ifc](../resources/practica8/files/Duplex.ifc), que contiene el modelo BIM original del apartamento dúplex en formato IFC (*Industry Foundation Classes*).
+- [Duplex.owl](../resources/practica8/files/Duplex.owl), que contiene una versión semántica del mismo modelo en lenguaje **OWL** (*Web Ontology Language*).
+- [beo.owl](../resources/practica8/files/beo.owl) y [bot.owl](../resources/practica8/files/bot.owl), que pueden ser necesarios si *Protégé* te pide resolver manualmente algunas importaciones.
 
 Como software de apoyo utilzaremos [BIMvision](https://bimvision.eu) para visualizar el IFC y [Protégé](http://protege.stanford.edu) para explorar la ontología.
 
@@ -102,7 +99,7 @@ Empieza por recorrer la planta baja y la planta superior, y acostúmbrate a sele
 :::
 
 ::: {.callout-note}
-## 🧠 Encuentra elementos
+## Encuentra elementos
 
 Durante esta primera exploración, responde a las siguientes preguntas:
 
@@ -143,12 +140,20 @@ Podeis observar cómo la interfaz nos muestra que ***Edificio*** es una subclase
 
 Puedes encontrar una pequeña introducción a la interfaz de *Protégé* en el siguiente vídeo, aunque no está orientado a nuestro mismo modelo, por lo que no es necesario seguirlo al pie de la letra:
 
-{{< video https://drive.google.com/file/d/1eHHxYrJRiQZni_7KKrtRFqu5KEwk9omW title="Introducción a Protégé, de Fernando Bobillo" >}}
+::: {.content-visible unless-format="pdf"}
+<div class="ratio ratio-16x9">
+  <iframe data-external="1" src="https://drive.google.com/file/d/1eHHxYrJRiQZni_7KKrtRFqu5KEwk9omW/preview" title="Introducción a Protégé, de Fernando Bobillo" frameborder="0" allow="autoplay" allowfullscreen></iframe>
+</div>
+:::
+
+::: {.content-visible when-format="pdf"}
+[Ver el vídeo en Google Drive: introducción a Protégé](https://drive.google.com/file/d/1eHHxYrJRiQZni_7KKrtRFqu5KEwk9omW/view)
+:::
 
 ::: {.callout-tip}
 ## Si faltan importaciones
 
-En algunas versiones de *Protégé*, las ontologías importadas se descargan automáticamente desde Internet. En otras, tendremos que resolver manualmente las importaciones. En este último caso, en `Active ontology > Ontology imports` pinchamos en el botón `+` para añadir los ficheros [beo.owl](../resources/practica8/beo.owl) y [⬇️ bot.owl](../resources/practica8/bot.owl).
+En algunas versiones de *Protégé*, las ontologías importadas se descargan automáticamente desde Internet. En otras, tendremos que resolver manualmente las importaciones. En este último caso, en `Active ontology > Ontology imports` pinchamos en el botón `+` para añadir los ficheros [beo.owl](../resources/practica8/files/beo.owl) y [bot.owl](../resources/practica8/files/bot.owl).
 :::
 
 También debes tener en cuenta que muchas entidades tienen **etiquetas en varios idiomas**. Dependiendo de la configuración de tu equipo, *Protégé* puede mostrar nombres en castellano o en inglés. Por ejemplo, la clase `Edificio ‐ http://w3id.org/bot/Building` tiene etiquetas `Building`, `Edificio`, etc. En este guion se asume que las etiquetas se muestran en castellano siempre que sea posible.
@@ -163,25 +168,25 @@ Dentro de la ontología, localiza:
 
 Comprueba además si esos valores coinciden con los que viste en el visor IFC durante el ejercicio anterior.
 
-<details>
-<summary>💡 Solución orientativa: clases</summary>
+::: {.callout-tip collapse="true"}
+## Solución orientativa: clases
 
 ![Jerarquía de clases para localizar la entidad de ventana.](../resources/practica8/classes.png){#fig-classes-solution width=100%}
-</details>
+:::
 
-<details>
-<summary>💡 Solución orientativa: propiedades</summary>
+::: {.callout-tip collapse="true"}
+## Solución orientativa: propiedades
 
 ![Propiedades de objeto relacionadas con los elementos del modelo.](../resources/practica8/object_properties.png){#fig-property-object width=100%}
 
 ![Propiedades de datos para recuperar medidas y otros valores literales.](../resources/practica8/data_properties.png){#fig-property-data width=100%}
-</details>
+:::
 
-<details>
-<summary>💡 Solución orientativa: individuos</summary>
+::: {.callout-tip collapse="true"}
+## Solución orientativa: individuos
 
 ![Exploración de individuos concretos dentro de la ontología.](../resources/practica8/individuals.png){#fig-individuals-solution width=100%}
-</details>
+:::
 
 ## Ejercicio 3: razonamiento e inferencia
 
@@ -208,13 +213,13 @@ Con el razonador activo, realiza las siguientes comprobaciones:
 En muchas instalaciones, las consultas se escriben con los nombres cortos en inglés, por ejemplo `Window`, aunque en la interfaz veas etiquetas en castellano.
 :::
 
-<details>
-<summary>💡 Ejemplo orientativo: consulta sobre escaleras</summary>
+::: {.callout-tip collapse="true"}
+## Ejemplo orientativo: consulta sobre escaleras
 
 ![Ejemplo de consulta DL en Protégé.](../resources/practica8/dl_query_stairs.png){#fig-stairs-dl width=100%}
 
 ![Ejemplo de explicación ofrecida por el razonador.](../resources/practica8/dl_explanation_stairs.png){#fig-stairs-explanation width=100%}
-</details>
+:::
 
 ## Ejercicio 4: consultas más expresivas
 
@@ -233,7 +238,7 @@ A medidas que escribes la consulta, *Protégé* te ofrece sugerencias de autocom
 :::
 
 ::: {.callout-note}
-## 🧠 Explora los resultados
+## Explora los resultados
 
 Responde a estas preguntas:
 
@@ -248,12 +253,14 @@ Si una ontología se vuelve **inconsistente**, el razonador ya no puede trabajar
 
 En este ejercicio vamos a provocar una inconsistencia de forma controlada. La idea es declarar como **funcional** la propiedad que representa la altura de una ventana y, después, asignar a una misma ventana dos valores distintos para esa altura.
 
+En una ontología, una propiedad **funcional** es una propiedad que puede tener como máximo un valor para cada individuo. Por ejemplo, si la propiedad que representa la altura de una ventana se declara funcional, una misma ventana no debería tener dos alturas distintas. Si añadimos dos valores incompatibles, el razonador detectará que el modelo contiene una contradicción.
+
 ### Pasos sugeridos
 
 1. Localiza la propiedad de datos que representa la altura.
-2. Márcala como **Functional**.
-3. Busca una ventana concreta en **Individuals**.
-4. Añade una segunda afirmación de tipo **Data property assertion** con un valor distinto del original, por ejemplo `1234`.
+2. Márcala como ***Functional***.
+3. Busca una ventana concreta en ***Individuals***.
+4. Añade una segunda afirmación de tipo ***Data property assertion*** con un valor distinto del original, por ejemplo `1234`.
 5. Sincroniza el razonador y observa el error de inconsistencia.
 
 ::: {.callout-warning}
@@ -262,8 +269,8 @@ En este ejercicio vamos a provocar una inconsistencia de forma controlada. La id
 Haz este ejercicio sobre una copia de trabajo del fichero si quieres conservar `Duplex.owl` sin cambios al terminar la práctica.
 :::
 
-<details>
-<summary>💡 Solución orientativa: inconsistencia</summary>
+::: {.callout-tip collapse="true"}
+## Solución orientativa: inconsistencia
 
 ![Marcar la propiedad como funcional.](../resources/practica8/functional_property.png){#fig-functional width=100%}
 
@@ -273,7 +280,7 @@ Haz este ejercicio sobre una copia de trabajo del fichero si quieres conservar `
 
 ![Explicación de la inconsistencia generada.](../resources/practica8/inconsistency_explanation.png){#fig-explanation width=100%}
 
-</details>
+:::
 
 ## Descarga
 
