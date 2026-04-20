@@ -1,11 +1,20 @@
 ---
 title: "Práctica 8: BIM semántico"
-title-block-banner: ../resources/practica8/duplex_bimvision.png
-title-block-banner-color: "#56616b"
+title-block-banner: ../resources/practica8/background.gif
+title-block-banner-color: "#010e1a"
 format:
   html:
     toc: true
     number-sections: true
+    include-in-header:
+      text: |
+        <style>
+        #title-block-header .quarto-title-banner {
+          --title-banner-height: 460px;
+          --title-banner-size: cover;
+          --title-banner-position-y: 30%;
+        }
+        </style>
   revealjs:
     output-ext: "reveal.html"
   pdf:
@@ -35,6 +44,7 @@ En esta práctica trabajaremos con un mismo edificio en dos representaciones com
 
 ## Introducción a BIM
 
+::: {.content-visible unless-format="pdf"}
 :::: {layout="[58,42]"}
 ::: {.column}
 El **modelado de información de construcción** (**BIM**, *Building Information Modeling*) es una forma de representar digitalmente un edificio y la información asociada a sus elementos. No se trata solo de una maqueta 3D: un modelo BIM también puede describir materiales, relaciones espaciales, identificadores, propiedades geométricas y datos útiles para diseño, obra, mantenimiento y explotación.
@@ -45,6 +55,15 @@ Esta manera de trabajar resulta especialmente valiosa porque reúne en un mismo 
 ![Esquema general del flujo de trabajo BIM. Fuente: *BIMCloud*.](../resources/practica8/bim_workflow.png){#fig-bim width=100%}
 :::
 ::::
+:::
+
+::: {.content-visible when-format="pdf"}
+El **modelado de información de construcción** (**BIM**, *Building Information Modeling*) es una forma de representar digitalmente un edificio y la información asociada a sus elementos. No se trata solo de una maqueta 3D: un modelo BIM también puede describir materiales, relaciones espaciales, identificadores, propiedades geométricas y datos útiles para diseño, obra, mantenimiento y explotación.
+
+Esta manera de trabajar resulta especialmente valiosa porque reúne en un mismo modelo información que normalmente estaría dispersa en planos, tablas, memorias y documentos técnicos. Por eso BIM se ha convertido en una pieza clave en la digitalización del sector de la construcción.
+
+![Esquema general del flujo de trabajo BIM. Fuente: *BIMCloud*.](../resources/practica8/bim_workflow.png){#fig-bim width=100%}
+:::
 
 El valor de BIM se aprecia mejor cuando pensamos en el **ciclo de vida** completo de la edificación. La misma información puede servir para coordinar el proyecto, detectar interferencias, planificar fases de obra o consultar características de un elemento una vez construido.
 
@@ -187,9 +206,9 @@ En muchas instalaciones, las consultas se escriben con los nombres cortos en ing
 <details>
 <summary>💡 Ejemplo orientativo: consulta sobre escaleras</summary>
 
-![Ejemplo de consulta DL en Protégé.](../resources/practica8/dl_query_stairs.png){#fig-stairs-dl width=75%}
+![Ejemplo de consulta DL en Protégé.](../resources/practica8/dl_query_stairs.png){#fig-stairs-dl width=100%}
 
-![Ejemplo de explicación ofrecida por el razonador.](../resources/practica8/dl_explanation_stairs.png){#fig-stairs-explanation width=70%}
+![Ejemplo de explicación ofrecida por el razonador.](../resources/practica8/dl_explanation_stairs.png){#fig-stairs-explanation width=100%}
 </details>
 
 ## Ejercicio 4: consultas más expresivas
@@ -239,7 +258,7 @@ Haz este ejercicio sobre una copia de trabajo del fichero si quieres conservar `
 :::
 
 <details>
-<summary>Solución orientativa: inconsistencia</summary>
+<summary>💡 Solución orientativa: inconsistencia</summary>
 
 ![Marcar la propiedad como funcional.](../resources/practica8/functional_property.png){#fig-functional width=100%}
 
@@ -263,4 +282,4 @@ Puedes descargar ***BIMvision*** desde su [página oficial](https://bimvision.eu
 
 Puedes descargar ***Protégé*** desde su [página oficial](https://protege.stanford.edu/software/#desktop-protege). En la sección de descargas, elige la versión que corresponda a tu sistema operativo (Windows, macOS o Linux). Descarga el archivo comprimido y descomprímelo en una ubicación de tu elección. Ten en cuenta que Protégé no requiere instalación adicional, por lo que puedes situar la carpeta descomprimida en una ubicación que recuerdes fácilmente. Para ejecutar Protégé, simplemente abre la carpeta descomprimida y haz doble clic en el archivo `Protege.exe` (en Windows). Al abrir Protégé, deberías ver una pantalla de bienvenida similar a esta:
 
-![Pantalla de bienvenida de Protégé.](../resources/practica8/protege.png){#fig-protege-welcome width=80%}
+![Pantalla de bienvenida de Protégé.](../resources/practica8/protege.png){#fig-protege-welcome width=100%}
