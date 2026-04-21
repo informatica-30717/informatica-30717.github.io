@@ -1,7 +1,10 @@
 project:
   type: website
+  render:
+    - "*.qmd"
+    - "practicas/*.qmd"
   resources:
-    - "resources/*"
+    - "resources/**/*"
   preview:
     port: 3000
     browser: true
