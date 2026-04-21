@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generado por Microsoft Visio, SVG Export class_skeleton.svg Página-1 -->
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:ev="http://www.w3.org/2001/xml-events"
+		xmlns:v="http://schemas.microsoft.com/visio/2003/SVGExtensions/" width="10.4926in" height="3.56624in"
+		viewBox="0 0 755.465 256.769" xml:space="preserve" color-interpolation-filters="sRGB" class="st15">
+	<v:documentProperties v:langID="3082" v:metric="true" v:viewMarkup="false"/>
+
+	<style type="text/css">
+	<![CDATA[
+		.st1 {fill:#ffffff;stroke:#000000;stroke-linecap:round;stroke-linejoin:round;stroke-width:2}
+		.st2 {fill:#f2f2f2;stroke:none;stroke-linecap:round;stroke-linejoin:round;stroke-width:2}
+		.st3 {fill:#3f3f3f;font-family:TX-02;font-size:1.5em}
+		.st4 {fill:none;stroke:none;stroke-linecap:round;stroke-linejoin:round;stroke-width:2}
+		.st5 {fill:#000000;font-family:TX-02;font-size:1.5em}
+		.st6 {font-size:1em;font-weight:bold}
+		.st7 {font-size:1em}
+		.st8 {fill:none;stroke:#000000;stroke-linecap:round;stroke-linejoin:round;stroke-width:1}
+		.st9 {marker-end:url(#mrkr4-25);stroke:#000000;stroke-linecap:round;stroke-linejoin:round;stroke-width:1}
+		.st10 {fill:#000000;fill-opacity:1;stroke:#000000;stroke-opacity:1;stroke-width:0.28409090909091}
+		.st11 {fill:#000000;font-family:Titillium Web;font-size:1.5em}
+		.st12 {font-family:Segoe UI Emoji;font-size:1em}
+		.st13 {fill:#000000;stroke:#000000;stroke-linecap:round;stroke-linejoin:round;stroke-width:2}
+		.st14 {fill:#ffffff;font-family:Titillium Web;font-size:1.00001em;font-weight:bold}
+		.st15 {fill:none;fill-rule:evenodd;font-size:12px;overflow:visible;stroke-linecap:square;stroke-miterlimit:3}
+	]]>
+	</style>
+
+	<defs id="Markers">
+		<g id="lend4">
+			<path d="M 2 1 L 0 0 L 2 -1 L 2 1 " style="stroke:none"/>
+		</g>
+		<marker id="mrkr4-25" class="st10" v:arrowType="4" v:arrowSize="2" v:setback="7.04" refX="-7.04" orient="auto"
+				markerUnits="strokeWidth" overflow="visible">
+			<use xlink:href="#lend4" transform="scale(-3.52,-3.52) "/>
+		</marker>
+	</defs>
+	<g v:mID="0" v:index="1" v:groupContext="foregroundPage">
+		<title>Página-1</title>
+		<v:pageProperties v:drawingScale="0.0393701" v:pageScale="0.0393701" v:drawingUnits="24" v:shadowOffsetX="8.50394"
+				v:shadowOffsetY="-8.50394"/>
+		<v:layer v:name="Conector" v:index="0"/>
+		<g id="shape1-1" v:mID="1" v:groupContext="shape" transform="translate(1.66847,-1.99708)">
+			<title>Recortar rectángulo de esquina sencilla</title>
+			<v:userDefs>
+				<v:ud v:nameU="CTypeTopLeftSnip" v:prompt="" v:val="VT0(0):5"/>
+				<v:ud v:nameU="CTypeTopRightSnip" v:prompt="" v:val="VT0(1):5"/>
+				<v:ud v:nameU="CTypeBotLeftSnip" v:prompt="" v:val="VT0(1):5"/>
+				<v:ud v:nameU="CTypeBotRightSnip" v:prompt="" v:val="VT0(0):5"/>
+				<v:ud v:nameU="CornerLockHoriz" v:prompt="" v:val="VT0(0):5"/>
+				<v:ud v:nameU="CornerLockVert" v:prompt="" v:val="VT0(0):5"/>
+				<v:ud v:nameU="CornerLockDiag" v:prompt="" v:val="VT0(0):5"/>
+				<v:ud v:nameU="TopLeftOffset" v:prompt="" v:val="VT0(0):24"/>
+				<v:ud v:nameU="TopRightOffset" v:prompt="" v:val="VT0(0.15748031496063):24"/>
+				<v:ud v:nameU="BotLeftOffset" v:prompt="" v:val="VT0(0):24"/>
+				<v:ud v:nameU="BotRightOffset" v:prompt="" v:val="VT0(0):24"/>
+				<v:ud v:nameU="visVersion" v:prompt="" v:val="VT0(15):26"/>
+				<v:ud v:nameU="visMasterStencil" v:prompt="" v:val="VT4(Basic_M.vssx)"/>
+				<v:ud v:nameU="TopRightOffset" v:prompt="" v:val="VT0(0.31237898187573):1"/>
+			</v:userDefs>
+			<path d="M0 256.77 L514.49 256.77 L514.49 39.73 L492 17.24 L0 17.24 L0 256.77 Z" class="st1"/>
+		</g>
+		<g id="shape2-3" v:mID="2" v:groupContext="shape" transform="translate(343.691,-218.847)">
+			<title>Hoja.2</title>
+			<desc>HolaMundo.java</desc>
+			<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
+			<v:textRect cx="98.2801" cy="238.046" width="196.57" height="37.4472"/>
+			<rect x="0" y="219.322" width="196.56" height="37.4472" class="st2"/>
+			<text x="22.68" y="243.45" class="st3" v:langID="3082"><v:paragraph v:horizAlign="1"/><v:tabList/>HolaMundo.java</text>		</g>
+		<g id="shape3-6" v:mID="3" v:groupContext="shape" transform="translate(14.8293,-20.4223)">
+			<title>Hoja.3</title>
+			<desc>public class HolaMundo { … public static void main (String[] ...</desc>
+			<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
+			<v:textRect cx="248.254" cy="154.013" width="496.51" height="205.512"/>
+			<rect x="0" y="51.2575" width="496.508" height="205.512" class="st4"/>
+			<text x="4" y="62.21" class="st5" v:langID="3082"><v:paragraph/><v:tabList/>public class <tspan class="st6">HolaMundo<v:newlineChar/></tspan><tspan
+						x="4" dy="1.2em" class="st7">{<v:newlineChar/></tspan><tspan x="4" dy="3.6em" class="st7">    </tspan>public static void <tspan
+						class="st6">main </tspan>(String[] args)<tspan x="4" dy="1.2em" class="st7">    </tspan>{<tspan x="4"
+						dy="1.2em" class="st7">       </tspan>int myVariable = 1;           <tspan x="46.52" dy="1.2em" class="st7">   </tspan>System.out.println(“Hola!”); <tspan
+						x="4" dy="1.2em" class="st7">    </tspan>}<tspan x="4" dy="1.2em" class="st7">}</tspan></text>		</g>
+		<g id="shape4-18" v:mID="4" v:groupContext="shape" transform="translate(587.833,-225.448)">
+			<title>Círculo</title>
+			<v:userDefs>
+				<v:ud v:nameU="visVersion" v:val="VT0(15):26"/>
+				<v:ud v:nameU="visMasterStencil" v:prompt="" v:val="VT4(Basic_M.vssx)"/>
+			</v:userDefs>
+			<path d="M0 245.43 A11.3386 11.3386 0 1 1 22.68 245.43 A11.3386 11.3386 0 0 1 0 245.43 Z" class="st8"/>
+		</g>
+		<g id="shape5-20" v:mID="5" v:groupContext="shape" v:layerMember="0" transform="translate(599.171,-225.448)">
+			<title>Conector dinámico</title>
+			<path d="M0 256.77 L0 396.03 L-114.24 396.03" class="st9"/>
+		</g>
+		<g id="shape6-26" v:mID="6" v:groupContext="shape" transform="translate(614.478,-154.096)">
+			<title>Hoja.6</title>
+			<desc>Usuario ejecuta el programa ▶</desc>
+			<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
+			<v:textRect cx="70.4932" cy="239.194" width="140.99" height="35.1496"/>
+			<rect x="0" y="221.62" width="140.986" height="35.1496" class="st4"/>
+			<text x="4" y="233.46" class="st11" v:langID="3082"><v:paragraph/><v:tabList/>Usuario ejecuta <tspan x="4" dy="1.228em"
+						class="st7">el programa </tspan><tspan class="st12">▶</tspan></text>		</g>
+		<g id="group8-31" transform="translate(694.22,-190.589)" v:mID="8" v:groupContext="group">
+			<title>Hoja.8</title>
+		</g>
+		<g id="shape88-32" v:mID="88" v:groupContext="shape" transform="translate(408.753,-86.3203)">
+			<title>Círculo.88</title>
+			<desc>1</desc>
+			<v:userDefs>
+				<v:ud v:nameU="visVersion" v:val="VT0(15):26"/>
+				<v:ud v:nameU="visMasterStencil" v:prompt="" v:val="VT4(Basic_M.vssx)"/>
+			</v:userDefs>
+			<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
+			<v:textRect cx="8.11603" cy="248.653" width="14.21" height="12.174"/>
+			<path d="M0 248.65 A8.11603 8.11603 0 1 1 16.23 248.65 A8.11603 8.11603 0 0 1 0 248.65 Z" class="st13"/>
+			<text x="5.01" y="252.25" class="st14" v:langID="3082"><v:paragraph v:horizAlign="1"/><v:tabList/>1</text>		</g>
+		<g id="shape89-35" v:mID="89" v:groupContext="shape" transform="translate(408.007,-61.3307)">
+			<title>Círculo.89</title>
+			<desc>2</desc>
+			<v:userDefs>
+				<v:ud v:nameU="visVersion" v:val="VT0(15):26"/>
+				<v:ud v:nameU="visMasterStencil" v:prompt="" v:val="VT4(Basic_M.vssx)"/>
+			</v:userDefs>
+			<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
+			<v:textRect cx="8.34727" cy="248.422" width="14.61" height="12.5209"/>
+			<path d="M0 248.42 A8.34727 8.34727 0 0 1 16.69 248.42 A8.34727 8.34727 0 1 1 -0 248.42 Z" class="st13"/>
+			<text x="5.04" y="252.02" class="st14" v:langID="3082"><v:paragraph v:horizAlign="1"/><v:tabList/>2</text>		</g>
+	</g>
+</svg>
