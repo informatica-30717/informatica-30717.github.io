@@ -342,10 +342,10 @@ Figura&nbsp;1: Flujo de trabajo de la práctica: del modelo BIM al modelo semán
 </section>
 <section id="introducción-a-bim" class="level2" data-number="2">
 <h2 data-number="2" class="anchored" data-anchor-id="introducción-a-bim"><span class="header-section-number">2</span> Introducción a BIM</h2>
-<p>Cuando se diseña un edificio no solo se define su forma: también se decide qué elementos lo componen, cómo se relacionan entre sí y qué información será útil más adelante, durante la obra y una vez terminado. El <strong>modelado de información de construcción</strong> (<strong>BIM</strong>, <em>Building Information Modeling</em>) nace precisamente para organizar todo eso dentro de una representación digital coherente.</p>
-<p>Por eso un modelo BIM no es simplemente una maqueta 3D. Además de la geometría, puede incorporar materiales, identificadores, relaciones espaciales, propiedades técnicas y otra información relevante para distintas fases del proyecto. La gracia está en que el modelo deja de ser solo algo que “se visualiza” y pasa a ser también algo que “se consulta”, “se coordina” y “se reutiliza”.</p>
-<p>Esta forma de trabajar resulta especialmente útil porque concentra en un mismo entorno información que, de otro modo, estaría repartida entre planos, tablas, memorias y documentos técnicos. En lugar de revisar cada pieza por separado, BIM permite entender mejor el edificio como un sistema formado por objetos relacionados entre sí.</p>
-<p>En el trabajo profesional, ese modelo acompaña al edificio a lo largo de buena parte de su <strong>ciclo de vida</strong>. Puede ayudar en fases tempranas de diseño y coordinación, servir para detectar interferencias antes de construir, apoyar la planificación de obra y seguir siendo útil después para mantenimiento, inventario o explotación. Es decir, la misma base de información puede ir cambiando de papel a medida que avanza el proyecto.</p>
+<p>Cuando se diseña un edificio no solo se define su forma. También se decide qué elementos lo componen, cómo se relacionan entre sí y qué información será necesaria más adelante, tanto durante la obra como en su uso posterior. El <strong>modelado de información de construcción</strong> (<strong>BIM</strong>, <em>Building Information Modeling</em>) surge precisamente para organizar todo eso dentro de una representación digital coherente.</p>
+<p>Por eso, un modelo BIM no es simplemente un modelo 3D. Además de la geometría, puede incorporar materiales, identificadores, relaciones espaciales, propiedades técnicas y otros datos útiles para distintas fases del proyecto. La idea es que el modelo deje de ser solo algo que se visualiza y pase a ser también algo que se consulta, se coordina y se reutiliza.</p>
+<p>Esta forma de trabajo resulta especialmente útil porque reúne en un mismo entorno información que, de otro modo, estaría dispersa entre planos, tablas, memorias y documentos técnicos. En lugar de revisar cada pieza por separado, BIM permite entender mejor el edificio como un sistema de objetos conectados entre sí.</p>
+<p>Esa utilidad se aprecia sobre todo cuando se piensa en el <strong>ciclo de vida</strong> de la edificación. Un edificio pasa por distintas etapas: diseño, construcción, uso, mantenimiento, reforma e incluso desmontaje o sustitución. En cada una de ellas se necesita información distinta, aunque muchas veces está relacionada. BIM permite que una misma base de información acompañe al edificio a lo largo de ese proceso, adaptándose a las necesidades de cada fase: puede servir para diseñar y coordinar, para detectar interferencias antes de construir, para planificar la obra o para gestionar después el mantenimiento y la explotación.</p>
 <div id="fig-bim-cycle" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-bim-cycle-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
@@ -356,56 +356,48 @@ Figura&nbsp;2: Ciclo de vida de la edificación y papel del modelo BIM. Fuente: 
 </figcaption>
 </figure>
 </div>
-<p>Aquí es donde encaja bien el <strong>LiDAR</strong> (<em>Light Detection and Ranging</em>). Esta técnica emite pulsos láser y estima la distancia a partir del tiempo que tarda la luz en regresar, generando así una <strong>nube de puntos</strong> tridimensional muy densa. En lugar de partir de un modelo ideal dibujado desde cero, el LiDAR permite capturar el estado real de un edificio o de su entorno.</p>
-<p>Esa conexión con BIM es especialmente interesante en fases avanzadas del ciclo de vida. Por ejemplo, en rehabilitación, patrimonio o control de obra puede interesar más describir lo que existe realmente que lo que se proyectó en su día. A partir de la nube de puntos, en flujos de trabajo conocidos como <strong><em>scan-to-BIM</em></strong>, se genera un modelo <em>as-built</em> que sirve para documentar, comparar, medir o actualizar la información del edificio.</p>
-<p>Aunque en esta práctica no construiremos un modelo BIM, sí conviene tener presente esa relación: BIM organiza la información del edificio, y técnicas como LiDAR ayudan a capturarla cuando necesitamos partir de la realidad física.</p>
-<div class="lidar-viewer">
-  <div class="lidar-viewer-pane">
-    <div class="lidar-viewer-canvas" id="lidar-viewer-cloud"></div>
-    <span class="lidar-viewer-label">Nube de puntos (artificial)</span>
-  </div>
-  <div class="lidar-viewer-pane">
-    <div class="lidar-viewer-canvas" id="lidar-viewer-mesh"></div>
-    <span class="lidar-viewer-label">Malla generada a partir de nube de puntos</span>
-  </div>
-  <div class="lidar-viewer-pane lidar-viewer-pane-wide">
-    <div class="lidar-viewer-canvas lidar-viewer-canvas-wide" id="lidar-viewer-room"></div>
-    <span class="lidar-viewer-label">Nube de puntos: habitación</span>
-  </div>
-</div>
-<p class="lidar-viewer-caption">
-  Click derecho para rotar, click izquierdo para trasladar y la rueda para hacer zoom.
-  </p>
+<p>Como curiosidad, existen técnicas de captura de la realidad que también pueden integrarse en este tipo de flujos. Una de las más conocidas es <strong>LiDAR</strong> (<em>Light Detection and Ranging</em>), que permite obtener nubes de puntos tridimensionales del edificio o de su entorno a partir de mediciones láser.</p>
+<p>Este tipo de información puede ser útil, por ejemplo, en rehabilitación, documentación del patrimonio o control de obra, donde interesa partir del estado real de un elemento construido. A veces, estas capturas se emplean como base para generar modelos <em>as-built</em> en procesos conocidos como <strong><em>scan-to-BIM</em></strong>.</p>
+<p>En cualquier caso, esta práctica no se centra en esas técnicas de captura, sino en entender qué es BIM, qué tipo de información organiza y por qué resulta útil a lo largo del ciclo de vida de la edificación.</p>
 <p class="lidar-viewer-credits">
   Modelo del <em>Monumento a Goya</em> (Zaragoza) por <a href="https://sketchfab.com/3d-models/monumento-a-goya-81593fc7ed844d85902ee048ae8e1637" target="_blank" rel="noopener">Sketchfab</a>; nube de puntos derivada del mismo modelo.<br>
   Nube de puntos de estancia: <a href="https://sketchfab.com/3d-models/point-cloud-from-diy-laser-scanner-lidar-05acf617dc9e4161a347153e045f6681" target="_blank" rel="noopener"><em>Point cloud from DIY laser scanner (lidar)</em></a>, de Alexey Yuzhakov (@tour3d), Sketchfab, licencia CC BY-NC.
 </p>
 
+<div class="lidar-viewer">
+  <div class="lidar-viewer-pane">
+    <div class="lidar-viewer-canvas" id="lidar-viewer-cloud"></div>
+    <span class="lidar-viewer-label">Nube de puntos</span>
+  </div>
+  <div class="lidar-viewer-pane">
+    <div class="lidar-viewer-canvas" id="lidar-viewer-room"></div>
+    <span class="lidar-viewer-label">Escaneo real: nube de puntos</span>
+  </div>
+</div>
+<p class="lidar-viewer-caption">
+  Click derecho para rotar, click izquierdo para trasladar y la rueda para hacer zoom.
+  </p>
+
 <style>
 .lidar-viewer {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: minmax(260px, 1fr) minmax(0, 2fr);
   gap: 1rem;
-  margin: 1.5rem 0 0.5rem;
+  align-items: stretch;
+  margin: 0.75rem 0 0.5rem;
 }
 .lidar-viewer-pane {
   position: relative;
+  min-width: 0;
   border: 1px solid #d0d7de;
   border-radius: 8px;
   overflow: hidden;
   background: #0b1221;
 }
-.lidar-viewer-pane-wide {
-  grid-column: 1 / -1;
-}
 .lidar-viewer-canvas {
   width: 100%;
-  aspect-ratio: 4 / 3;
+  height: clamp(320px, 46vw, 480px);
   display: block;
-}
-.lidar-viewer-canvas-wide {
-  aspect-ratio: 16 / 7;
-  min-height: 340px;
 }
 .lidar-viewer-label {
   position: absolute;
@@ -438,11 +430,12 @@ Figura&nbsp;2: Ciclo de vida de la edificación y papel del modelo BIM. Fuente: 
   text-align: center;
   font-size: 0.7rem;
   color: #56616b;
+  margin: 1.5rem 0 0.75rem;
 }
-@media (max-width: 600px) {
+@media (max-width: 700px) {
   .lidar-viewer { grid-template-columns: 1fr; }
-  .lidar-viewer-canvas-wide {
-    aspect-ratio: 4 / 3;
+  .lidar-viewer-canvas {
+    height: min(72vw, 360px);
     min-height: 260px;
   }
 }
@@ -452,9 +445,8 @@ Figura&nbsp;2: Ciclo de vida de la edificación y papel del modelo BIM. Fuente: 
 import * as THREE from 'https://esm.sh/three@0.161.0';
 import { OrbitControls } from 'https://esm.sh/three@0.161.0/examples/jsm/controls/OrbitControls.js';
 import { PLYLoader } from 'https://esm.sh/three@0.161.0/examples/jsm/loaders/PLYLoader.js';
-import { GLTFLoader } from 'https://esm.sh/three@0.161.0/examples/jsm/loaders/GLTFLoader.js';
 
-function createViewer(id, url, mode, options = {}) {
+function createViewer(id, url, options = {}) {
   const container = document.getElementById(id);
   if (!container) return;
 
@@ -479,9 +471,8 @@ function createViewer(id, url, mode, options = {}) {
   const controls = new OrbitControls(camera, renderer.domElement);
   controls.enableDamping = true;
 
-  // Brighter ambient for textured meshes; directional adds shape definition.
-  scene.add(new THREE.HemisphereLight(0xffffff, 0x444466, mode === 'points' ? 1.0 : 1.4));
-  const dir = new THREE.DirectionalLight(0xffffff, mode === 'points' ? 0.6 : 0.8);
+  scene.add(new THREE.HemisphereLight(0xffffff, 0x444466, 1.0));
+  const dir = new THREE.DirectionalLight(0xffffff, 0.6);
   dir.position.set(1, 2, 1);
   scene.add(dir);
 
@@ -507,73 +498,10 @@ function createViewer(id, url, mode, options = {}) {
 
   (async () => {
     try {
-      const ext = url.toLowerCase().split('?')[0].split('.').pop();
-
-      if (ext === 'glb' || ext === 'gltf') {
-        // GLB/glTF: self-contained geometry + materials + textures.
-        const gltf = await new Promise((resolve, reject) => {
-          new GLTFLoader().load(url, resolve, undefined, reject);
-        });
-        const root = gltf.scene;
-
-        // Center and normalize so max dimension = 1.5 world units.
-        const box = new THREE.Box3().setFromObject(root);
-        const size = new THREE.Vector3(); box.getSize(size);
-        const center = new THREE.Vector3(); box.getCenter(center);
-        const maxDim = Math.max(size.x, size.y, size.z) || 1;
-        const scaleFactor = 1.5 / maxDim;
-        root.scale.setScalar(scaleFactor);
-        root.position.copy(center).multiplyScalar(-scaleFactor);
-        root.updateMatrixWorld(true);
-
-        scene.add(root);
-        console.log('[lidar-viewer]', id, { format: ext, mode });
-
-        const sphere = new THREE.Sphere();
-        new THREE.Box3().setFromObject(root).getBoundingSphere(sphere);
-        frameCamera(sphere);
-        status.remove();
-        return;
-      }
-
-      // PLY path: fetch buffer, parse, optionally load texture from `comment TextureFile`.
       const response = await fetch(url);
       if (!response.ok) throw new Error(response.status + ' ' + response.statusText);
       const buffer = await response.arrayBuffer();
-
-      let textureFiles = [];
-      if (mode !== 'points') {
-        const headSlice = buffer.slice(0, Math.min(8192, buffer.byteLength));
-        const headerText = new TextDecoder().decode(headSlice);
-        const endIdx = headerText.indexOf('end_header');
-        if (endIdx !== -1) {
-          const headerOnly = headerText.slice(0, endIdx);
-          const re = /^\s*comment\s+TextureFile\s+(.+?)\s*$/gm;
-          let m;
-          while ((m = re.exec(headerOnly)) !== null) textureFiles.push(m[1]);
-        }
-      }
-
       const geometry = new PLYLoader().parse(buffer);
-
-      let texture = null;
-      if (textureFiles.length > 0) {
-        const baseDir = url.substring(0, url.lastIndexOf('/') + 1);
-        const texUrl = baseDir + textureFiles[0];
-        try {
-          texture = await new Promise((resolve, reject) => {
-            new THREE.TextureLoader().load(texUrl, resolve, undefined, reject);
-          });
-          texture.colorSpace = THREE.SRGBColorSpace;
-          texture.flipY = false;
-          if (textureFiles.length > 1) {
-            console.warn('[lidar-viewer] ' + id + ': PLY references ' + textureFiles.length +
-              ' textures; only the first is applied. Convert to a single-atlas mesh or .glb for full coverage.');
-          }
-        } catch (e) {
-          console.warn('[lidar-viewer] ' + id + ': texture load failed for ' + texUrl, e);
-        }
-      }
 
       geometry.computeBoundingBox();
       const bbox = geometry.boundingBox;
@@ -585,34 +513,18 @@ function createViewer(id, url, mode, options = {}) {
       geometry.scale(scale, scale, scale);
 
       const hasColor = geometry.hasAttribute('color');
-      const hasUv = geometry.hasAttribute('uv');
       const vertCount = geometry.attributes.position?.count ?? 0;
-      console.log('[lidar-viewer]', id, { format: 'ply', vertCount, hasColor, hasUv, textureFiles, mode });
+      console.log('[lidar-viewer]', id, { format: 'ply', vertCount, hasColor });
 
-      let object;
-      if (mode === 'points') {
-        // Screen-space points stay readable from far away without swelling on zoom-in.
-        const pointSize = vertCount > 200000 ? 1.2 : vertCount > 50000 ? 1.45 : 1.7;
-        const material = new THREE.PointsMaterial({
-          size: pointSize,
-          vertexColors: hasColor,
-          color: hasColor ? 0xffffff : 0x88c0ff,
-          sizeAttenuation: false
-        });
-        object = new THREE.Points(geometry, material);
-      } else {
-        geometry.computeVertexNormals();
-        const useTex = texture && hasUv;
-        const material = new THREE.MeshStandardMaterial({
-          map: useTex ? texture : null,
-          color: useTex ? 0xffffff : (hasColor ? 0xffffff : 0xc0c8d4),
-          vertexColors: !useTex && hasColor,
-          side: THREE.DoubleSide,
-          roughness: 0.85,
-          metalness: 0.0
-        });
-        object = new THREE.Mesh(geometry, material);
-      }
+      // Screen-space points stay readable from far away without swelling on zoom-in.
+      const pointSize = vertCount > 200000 ? 1.2 : vertCount > 50000 ? 1.45 : 1.7;
+      const material = new THREE.PointsMaterial({
+        size: pointSize,
+        vertexColors: hasColor,
+        color: hasColor ? 0xffffff : 0x88c0ff,
+        sizeAttenuation: false
+      });
+      const object = new THREE.Points(geometry, material);
       scene.add(object);
 
       const sphere = new THREE.Sphere();
@@ -646,9 +558,8 @@ function createViewer(id, url, mode, options = {}) {
   window.addEventListener('resize', resize);
 }
 
-createViewer('lidar-viewer-mesh',  '../resources/practica8/models/goya_mesh.glb',        'mesh');
-createViewer('lidar-viewer-cloud', '../resources/practica8/models/goya_point_cloud.ply', 'points');
-createViewer('lidar-viewer-room',  '../resources/practica8/models/room.ply',             'points', { startInside: true });
+createViewer('lidar-viewer-cloud', '../resources/practica8/models/goya_point_cloud.ply');
+createViewer('lidar-viewer-room',  '../resources/practica8/models/room.ply', { startInside: true });
 </script>
 <p>En el siguiente vídeo de <em>Autodesk Building Solutions</em> se explica de forma sencilla qué es BIM y qué ventajas aporta a lo largo del ciclo de vida de un edificio:</p>
 <div class="ratio ratio-16x9">
