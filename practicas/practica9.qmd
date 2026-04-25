@@ -356,6 +356,8 @@ La siguiente visualización muestra cómo actúa **rotacionZ** sobre un punto de
 </script>
 ```
 
+### La proyección en perspectiva
+
 La **matriz de perspectiva** transforma coordenadas de cámara a coordenadas de recorte (*clip space*):
 
 $$
@@ -376,7 +378,7 @@ $$
 
 donde $d$ es la distancia, $inc$ la inclinación, $rot$ la rotación (parámetros de la `Camara`) y $(x_c, y_c, z_c)$ las coordenadas del centro del `Objeto`.
 
-La siguiente visualización resume esa idea en 2D: moviendo el punto en profundidad o abriendo el campo de visión, la proyección horizontal cambia según
+La siguiente visualización muestra ese proceso con una cámara idealizada en 3D. El plano de imagen tiene ancho <em>w</em>, alto <em>h</em> y está situado a una distancia focal <em>f</em> del centro de proyección. Ajusta los parámetros para ver cómo cambia el frustum y la imagen proyectada del objeto. Si la imagen formada es mayor que el sensor, no hay contradicción: simplemente el sensor sólo registra una parte y el objeto aparece recortado.
 
 $$
 x' = \frac{f\,x}{z}
@@ -385,173 +387,548 @@ f = \frac{1}{\tan(fov/2)}
 $$
 
 ```{=html}
-<div id="perspective-demo-uza" style="margin:1.2rem 0; display:grid; grid-template-columns:minmax(0,1fr) 300px; gap:1rem; align-items:start;">
-  <div style="background:#fff; border:1px solid #e2e8f0; border-radius:14px; padding:0.8rem; box-shadow:0 4px 16px rgba(0,0,0,0.06);">
-    <canvas id="perspective-canvas-uza" width="420" height="260" style="width:100%; display:block; border-radius:10px; background:linear-gradient(180deg,#fbfdff,#eef4fb);"></canvas>
-  </div>
-  <div style="background:#fff; border:1px solid #e2e8f0; border-radius:14px; padding:1rem; box-shadow:0 4px 16px rgba(0,0,0,0.06); display:flex; flex-direction:column; gap:0.8rem;">
-    <div style="display:grid; grid-template-columns:84px 1fr 58px; gap:0.4rem 0.6rem; align-items:center; font-size:0.88rem;">
-      <label><em>fov</em></label>
-      <input id="persp-fov-uza" type="range" min="25" max="100" step="1" value="55" style="width:100%;">
-      <span id="persp-fov-val-uza" style="text-align:right; font-variant-numeric:tabular-nums;">55°</span>
+<div id="perspective-demo-uza" style="margin:1.2rem 0;">
+  <div style="background:#fcfcfb; border:1px solid #dbe4ee; border-radius:16px; padding:0.8rem 0.8rem 0.7rem; box-shadow:0 12px 28px rgba(15,23,42,0.07);">
+    <canvas id="perspective-canvas-uza" width="680" height="420" style="width:100%; display:block; border-radius:12px; border:1px solid #e2e8f0; background:#f8fafc;"></canvas>
+    <div style="margin-top:0.65rem; display:grid; grid-template-columns:auto 1fr 52px; gap:0.3rem 0.55rem; align-items:center; font-size:0.88rem;">
+      <label>Ancho del sensor <span style="font-family:Georgia, 'Times New Roman', serif; font-style:italic; margin-left:0.12rem;">(w)</span></label>
+      <input id="persp-w-uza" type="range" min="24" max="72" step="1" value="36" style="width:100%;">
+      <span id="persp-w-val-uza" style="text-align:right; font-variant-numeric:tabular-nums;">36 mm</span>
 
-      <label><em>z</em></label>
-      <input id="persp-z-uza" type="range" min="1.2" max="6" step="0.1" value="2.4" style="width:100%;">
-      <span id="persp-z-val-uza" style="text-align:right; font-variant-numeric:tabular-nums;">2.4</span>
+      <label>Alto del sensor <span style="font-family:Georgia, 'Times New Roman', serif; font-style:italic; margin-left:0.12rem;">(h)</span></label>
+      <input id="persp-h-uza" type="range" min="16" max="48" step="1" value="24" style="width:100%;">
+      <span id="persp-h-val-uza" style="text-align:right; font-variant-numeric:tabular-nums;">24 mm</span>
 
-      <label><em>x</em></label>
-      <input id="persp-x-uza" type="range" min="0.2" max="2.2" step="0.05" value="1.1" style="width:100%;">
-      <span id="persp-x-val-uza" style="text-align:right; font-variant-numeric:tabular-nums;">1.10</span>
+      <label>Distancia focal <span style="font-family:Georgia, 'Times New Roman', serif; font-style:italic; margin-left:0.12rem;">(f)</span></label>
+      <input id="persp-f-uza" type="range" min="35" max="130" step="1" value="80" style="width:100%;">
+      <span id="persp-f-val-uza" style="text-align:right; font-variant-numeric:tabular-nums;">80 mm</span>
     </div>
 
-    <div style="background:#f8fafc; border-radius:10px; padding:0.7rem 0.8rem; font-size:0.84rem; color:#334155; line-height:1.55;">
-      <div style="font-family:Georgia, 'Times New Roman', serif; font-size:1rem; margin-bottom:0.25rem;">
-        <span style="font-style:italic;">x</span><span style="font-size:0.92em;">′</span> = <span id="persp-f-val-uza">1.92</span> · <span style="font-style:italic;">x</span> / <span style="font-style:italic;">z</span>
+    <div style="margin-top:0.7rem; display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:0.45rem;">
+      <div style="background:#f8fafc; border-radius:8px; padding:0.55rem 0.65rem; font-size:0.8rem; color:#475569;">
+        <div style="font-size:0.72rem; color:#64748b; margin-bottom:0.15rem;">Aspecto</div>
+        <div id="persp-ar-uza" style="font-weight:600; font-variant-numeric:tabular-nums; color:#0f172a;">1.50</div>
       </div>
-      <div>Punto 3D: <code id="persp-point-uza">(1.10, 2.40)</code></div>
-      <div>Proyección en el plano: <code id="persp-proj-uza">x′ = 0.88</code></div>
-      <div style="margin-top:0.35rem; color:#64748b;">Más lejos (<em>z</em> mayor) implica una proyección menor; un <em>fov</em> más abierto reduce <em>f</em> y exagera la sensación de gran angular.</div>
+      <div style="background:#f8fafc; border-radius:8px; padding:0.55rem 0.65rem; font-size:0.8rem; color:#475569;">
+        <div style="font-size:0.72rem; color:#64748b; margin-bottom:0.15rem;">FOV horizontal</div>
+        <div id="persp-fovx-uza" style="font-weight:600; font-variant-numeric:tabular-nums; color:#0f172a;">25.36°</div>
+      </div>
+      <div style="background:#f8fafc; border-radius:8px; padding:0.55rem 0.65rem; font-size:0.8rem; color:#475569;">
+        <div style="font-size:0.72rem; color:#64748b; margin-bottom:0.15rem;">FOV vertical</div>
+        <div id="persp-fovy-uza" style="font-weight:600; font-variant-numeric:tabular-nums; color:#0f172a;">17.06°</div>
+      </div>
+      <div style="background:#f8fafc; border-radius:8px; padding:0.55rem 0.65rem; font-size:0.8rem; color:#475569;">
+        <div style="font-size:0.72rem; color:#64748b; margin-bottom:0.15rem;">Encaje</div>
+        <div id="persp-fit-uza" style="font-weight:600; color:#0f172a;">Se recorta</div>
+      </div>
     </div>
+    <p id="persp-fit-note-uza" style="margin:0.55rem 0 0; font-size:0.8rem; color:#64748b; line-height:1.45;">Si la imagen proyectada es mayor que el sensor, el objeto queda recortado: la proyección existe, pero el sensor sólo registra una parte.</p>
   </div>
 </div>
-<style>
-@media (max-width: 700px) {
-  #perspective-demo-uza { grid-template-columns: 1fr !important; }
-}
-</style>
 <script>
 (() => {
   const canvas = document.getElementById('perspective-canvas-uza');
   const ctx = canvas.getContext('2d');
-  const W = canvas.width;
-  const H = canvas.height;
-  const originX = 72;
-  const originY = H / 2;
-  const zScale = 48;
-  const xScale = 44;
-  const planeZ = 1;
+  const W = canvas.width, H = canvas.height;
+  const OBJ_W = 70, OBJ_H = 50, OBJ_DIST = 180;
+  const LABEL_FONT = '600 14px "Aptos", "Segoe UI", "Helvetica Neue", Arial, sans-serif';
+  const LEGEND_FONT = '12px "Aptos", "Segoe UI", "Helvetica Neue", Arial, sans-serif';
 
   const ids = {
-    fov: document.getElementById('persp-fov-uza'),
-    z: document.getElementById('persp-z-uza'),
-    x: document.getElementById('persp-x-uza'),
-    fovVal: document.getElementById('persp-fov-val-uza'),
-    zVal: document.getElementById('persp-z-val-uza'),
-    xVal: document.getElementById('persp-x-val-uza'),
+    w: document.getElementById('persp-w-uza'),
+    h: document.getElementById('persp-h-uza'),
+    f: document.getElementById('persp-f-uza'),
+    wVal: document.getElementById('persp-w-val-uza'),
+    hVal: document.getElementById('persp-h-val-uza'),
     fVal: document.getElementById('persp-f-val-uza'),
-    point: document.getElementById('persp-point-uza'),
-    proj: document.getElementById('persp-proj-uza'),
+    ar: document.getElementById('persp-ar-uza'),
+    fovx: document.getElementById('persp-fovx-uza'),
+    fovy: document.getElementById('persp-fovy-uza'),
+    fit: document.getElementById('persp-fit-uza'),
+    fitNote: document.getElementById('persp-fit-note-uza'),
   };
 
-  function sx(z) { return originX + z * zScale; }
-  function sy(x) { return originY - x * xScale; }
+  const CY = Math.cos(0.72), SY = Math.sin(0.72);
+  const CP = Math.cos(0.46), SP = Math.sin(0.46);
 
-  function draw() {
-    const fov = Number(ids.fov.value);
-    const z = Number(ids.z.value);
-    const x = Number(ids.x.value);
-    const f = 1 / Math.tan((fov * Math.PI / 180) / 2);
-    const xProj = f * x / z;
+  function mm(v) { return v / 5; }
 
-    ids.fovVal.textContent = `${fov}°`;
-    ids.zVal.textContent = z.toFixed(1);
-    ids.xVal.textContent = x.toFixed(2);
-    ids.fVal.textContent = f.toFixed(2);
-    ids.point.textContent = `(${x.toFixed(2)}, ${z.toFixed(2)})`;
-    ids.proj.textContent = `x′ = ${xProj.toFixed(2)}`;
-
-    ctx.clearRect(0, 0, W, H);
-
-    ctx.strokeStyle = 'rgba(148,163,184,0.28)';
-    ctx.lineWidth = 1;
-    for (let i = 1; i <= 6; i++) {
-      ctx.beginPath();
-      ctx.moveTo(sx(i), 18);
-      ctx.lineTo(sx(i), H - 18);
-      ctx.stroke();
-    }
-    for (let i = -2; i <= 2; i++) {
-      ctx.beginPath();
-      ctx.moveTo(originX - 12, sy(i));
-      ctx.lineTo(W - 20, sy(i));
-      ctx.stroke();
-    }
-
-    ctx.strokeStyle = '#334155';
-    ctx.lineWidth = 1.6;
-    ctx.beginPath();
-    ctx.moveTo(originX - 12, originY);
-    ctx.lineTo(W - 20, originY);
-    ctx.stroke();
-
-    ctx.beginPath();
-    ctx.moveTo(originX, 18);
-    ctx.lineTo(originX, H - 18);
-    ctx.stroke();
-
-    const planeX = sx(planeZ);
-    ctx.strokeStyle = '#0f766e';
-    ctx.lineWidth = 3;
-    ctx.beginPath();
-    ctx.moveTo(planeX, 36);
-    ctx.lineTo(planeX, H - 36);
-    ctx.stroke();
-
-    const pointX = sx(z);
-    const pointY = sy(x);
-    const projY = sy(xProj);
-
-    ctx.strokeStyle = '#f59e0b';
-    ctx.lineWidth = 2;
-    ctx.beginPath();
-    ctx.moveTo(originX, originY);
-    ctx.lineTo(pointX, pointY);
-    ctx.stroke();
-
-    ctx.setLineDash([6, 4]);
-    ctx.strokeStyle = '#64748b';
-    ctx.beginPath();
-    ctx.moveTo(pointX, pointY);
-    ctx.lineTo(pointX, originY);
-    ctx.moveTo(planeX, projY);
-    ctx.lineTo(pointX, pointY);
-    ctx.stroke();
-    ctx.setLineDash([]);
-
-    ctx.fillStyle = '#0f172a';
-    ctx.beginPath();
-    ctx.arc(originX, originY, 4, 0, Math.PI * 2);
-    ctx.fill();
-
-    ctx.fillStyle = '#f59e0b';
-    ctx.beginPath();
-    ctx.arc(pointX, pointY, 6, 0, Math.PI * 2);
-    ctx.fill();
-
-    ctx.fillStyle = '#0f766e';
-    ctx.beginPath();
-    ctx.arc(planeX, projY, 5.5, 0, Math.PI * 2);
-    ctx.fill();
-
-    ctx.fillStyle = '#475569';
-    ctx.font = '12px sans-serif';
-    ctx.fillText('cámara', originX - 26, originY + 22);
-    ctx.fillText('plano de proyección z = 1', planeX - 38, 28);
-    ctx.fillText('P(x, z)', pointX + 10, pointY - 10);
-    ctx.fillText('P′(x′, 1)', planeX + 8, projY - 8);
-    ctx.fillText('z', W - 28, originY - 8);
-    ctx.fillText('x', originX + 8, 16);
+  function project({x, y, z}) {
+    const x1 = CY * x + SY * z;
+    const z1 = -SY * x + CY * z;
+    const y1 = CP * y - SP * z1;
+    return { x: 80 + x1 * 18, y: 40 - y1 * 18 };
   }
 
-  ['input', 'change'].forEach(eventName => {
-    ids.fov.addEventListener(eventName, draw);
-    ids.z.addEventListener(eventName, draw);
-    ids.x.addEventListener(eventName, draw);
-  });
+  function seg(a, b, color, lw, dash) {
+    ctx.save();
+    ctx.strokeStyle = color; ctx.lineWidth = lw;
+    if (dash) ctx.setLineDash(dash);
+    ctx.beginPath(); ctx.moveTo(a.x, a.y); ctx.lineTo(b.x, b.y); ctx.stroke();
+    ctx.restore();
+  }
 
+  function quad(pts, fill, stroke, lw) {
+    ctx.beginPath();
+    pts.forEach((p, i) => i ? ctx.lineTo(p.x, p.y) : ctx.moveTo(p.x, p.y));
+    ctx.closePath();
+    if (fill) { ctx.fillStyle = fill; ctx.fill(); }
+    if (stroke && lw > 0) { ctx.strokeStyle = stroke; ctx.lineWidth = lw; ctx.stroke(); }
+  }
+
+  function clamp(v, min, max) {
+    return Math.max(min, Math.min(max, v));
+  }
+
+  function roundedRect(x, y, width, height, radius) {
+    const r = Math.min(radius, width / 2, height / 2);
+    ctx.beginPath();
+    ctx.moveTo(x + r, y);
+    ctx.arcTo(x + width, y, x + width, y + height, r);
+    ctx.arcTo(x + width, y + height, x, y + height, r);
+    ctx.arcTo(x, y + height, x, y, r);
+    ctx.arcTo(x, y, x + width, y, r);
+    ctx.closePath();
+  }
+
+  function drawLabel(text, x, y, options = {}) {
+    const {
+      align = 'left',
+      baseline = 'middle',
+      font = LABEL_FONT,
+      textColor = '#0f172a',
+      fill = 'rgba(255,255,255,0.92)',
+      stroke = 'rgba(148,163,184,0.45)',
+      height = 26,
+      paddingX = 9,
+      margin = 12,
+    } = options;
+
+    ctx.save();
+    ctx.font = font;
+    ctx.textAlign = 'left';
+    ctx.textBaseline = 'middle';
+
+    const width = Math.ceil(ctx.measureText(text).width + paddingX * 2);
+    let left = x;
+    let top = y;
+
+    if (align === 'center') left -= width / 2;
+    if (align === 'right') left -= width;
+    if (baseline === 'middle') top -= height / 2;
+    if (baseline === 'bottom' || baseline === 'alphabetic') top -= height;
+
+    left = clamp(left, margin, W - margin - width);
+    top = clamp(top, margin, H - margin - height);
+
+    roundedRect(left, top, width, height, 9);
+    ctx.fillStyle = fill;
+    ctx.fill();
+    if (stroke) {
+      ctx.strokeStyle = stroke;
+      ctx.lineWidth = 1;
+      ctx.stroke();
+    }
+
+    ctx.fillStyle = textColor;
+    ctx.fillText(text, left + paddingX, top + height / 2 + 0.5);
+    ctx.restore();
+
+    return { left, top, width, height };
+  }
+
+  function draw() {
+    const sW = Number(ids.w.value), sH = Number(ids.h.value), f = Number(ids.f.value);
+    const fovX = 2 * Math.atan(sW / (2 * f)) * 180 / Math.PI;
+    const fovY = 2 * Math.atan(sH / (2 * f)) * 180 / Math.PI;
+
+    ids.wVal.textContent = `${sW} mm`;
+    ids.hVal.textContent = `${sH} mm`;
+    ids.fVal.textContent = `${f} mm`;
+    ids.ar.textContent = (sW / sH).toFixed(2);
+    ids.fovx.textContent = `${fovX.toFixed(2)}°`;
+    ids.fovy.textContent = `${fovY.toFixed(2)}°`;
+
+    ctx.clearRect(0, 0, W, H);
+    ctx.lineCap = 'round';
+    ctx.lineJoin = 'round';
+
+    const sZ = mm(f), oZ = mm(OBJ_DIST);
+    const hw = mm(sW / 2), hh = mm(sH / 2);
+
+    const cam = project({x:0, y:0, z:0});
+    const sC  = project({x:0, y:0, z:sZ});
+    const axE = project({x:0, y:0, z:oZ + mm(18)});
+
+    const sc = [[-hw,-hh],[hw,-hh],[hw,hh],[-hw,hh]].map(([x,y]) => project({x, y, z:sZ}));
+
+    // House geometry (centered at oZ in z, origin in x/y)
+    const hW = mm(OBJ_W / 2);  // half-width
+    const hD = 5;               // half-depth (world units)
+    const hB = -mm(OBJ_H / 2); // base y
+    const hT = 2;               // wall-top y
+    const hR = mm(OBJ_H / 2);  // roof-ridge y
+
+    const houseVertices = [
+      {x:-hW, y:hB, z:oZ-hD},
+      {x: hW, y:hB, z:oZ-hD},
+      {x:-hW, y:hT, z:oZ-hD},
+      {x: hW, y:hT, z:oZ-hD},
+      {x:  0, y:hR, z:oZ-hD},
+      {x:-hW, y:hB, z:oZ+hD},
+      {x: hW, y:hB, z:oZ+hD},
+      {x:-hW, y:hT, z:oZ+hD},
+      {x: hW, y:hT, z:oZ+hD},
+      {x:  0, y:hR, z:oZ+hD},
+    ];
+    const sensorImagePoints = houseVertices.map(({x, y, z}) => ({ x: x * sZ / z, y: y * sZ / z }));
+    const minProjX = Math.min(...sensorImagePoints.map(p => p.x));
+    const maxProjX = Math.max(...sensorImagePoints.map(p => p.x));
+    const minProjY = Math.min(...sensorImagePoints.map(p => p.y));
+    const maxProjY = Math.max(...sensorImagePoints.map(p => p.y));
+    const projectedWidthMm = (maxProjX - minProjX) * 5;
+    const projectedHeightMm = (maxProjY - minProjY) * 5;
+    const fitsSensor = projectedWidthMm <= sW && projectedHeightMm <= sH;
+    const pc = [
+      project({x:minProjX, y:minProjY, z:sZ}),
+      project({x:maxProjX, y:minProjY, z:sZ}),
+      project({x:maxProjX, y:maxProjY, z:sZ}),
+      project({x:minProjX, y:maxProjY, z:sZ}),
+    ];
+
+    ids.fit.textContent = fitsSensor ? 'Cabe completa' : 'Se recorta';
+    ids.fit.style.color = fitsSensor ? '#166534' : '#b45309';
+    ids.fitNote.textContent = fitsSensor
+      ? `La imagen proyectada mide ${projectedWidthMm.toFixed(1)} × ${projectedHeightMm.toFixed(1)} mm y cabe dentro del sensor.`
+      : `La imagen proyectada mide ${projectedWidthMm.toFixed(1)} × ${projectedHeightMm.toFixed(1)} mm: es mayor que el sensor en al menos una dimension, asi que el objeto queda recortado.`;
+
+    const bfl = project({x:-hW, y:hB, z:oZ-hD});
+    const bfr = project({x: hW, y:hB, z:oZ-hD});
+    const tfl = project({x:-hW, y:hT, z:oZ-hD});
+    const tfr = project({x: hW, y:hT, z:oZ-hD});
+    const rpf = project({x:  0, y:hR, z:oZ-hD});
+    const bbl = project({x:-hW, y:hB, z:oZ+hD});
+    const bbr = project({x: hW, y:hB, z:oZ+hD});
+    const tbl = project({x:-hW, y:hT, z:oZ+hD});
+    const tbr = project({x: hW, y:hT, z:oZ+hD});
+    const rpb = project({x:  0, y:hR, z:oZ+hD});
+
+    // 1 — Optical axis
+    seg(cam, axE, 'rgba(148,163,184,0.45)', 1.2, [5,4]);
+
+    // 2 — House back-face fills (painter order: back→front)
+    quad([bbl,bbr,tbr,tbl], 'rgba(180,160,130,0.55)', null, 0);        // back wall (shadow)
+    quad([tbl,tbr,rpb],      'rgba(160,140,110,0.55)', null, 0);        // back roof (shadow)
+    quad([bfl,bfr,bbr,bbl], 'rgba(155,140,120,0.45)', null, 0);        // floor/base
+    quad([bfr,bbr,tbr,tfr], 'rgba(190,170,140,0.60)', null, 0);        // right side wall (mid)
+    quad([tfr,tbr,rpb,rpf], 'rgba(185,165,130,0.60)', null, 0);        // right roof (mid)
+    quad([bfl,bfr,tfr,tfl], 'rgba(240,225,195,0.80)', null, 0);        // front wall (lit)
+    quad([tfl,tfr,rpf],     'rgba(220,200,165,0.80)', null, 0);        // front gable roof (lit)
+
+    // 3 — House: back wireframe edges (dim)
+    const hDim = 'rgba(100,80,50,0.35)';
+    seg(bbl, bbr, hDim, 1.4); seg(bbl, tbl, hDim, 1.4);
+    seg(bbr, tbr, hDim, 1.4); seg(tbl, tbr, hDim, 1.4);
+    seg(tbl, rpb, hDim, 1.4); seg(tbr, rpb, hDim, 1.4);
+
+    // 4 — House: depth (connecting) edges
+    const hMid = 'rgba(100,80,50,0.55)';
+    seg(bfl, bbl, hMid, 1.5); seg(bfr, bbr, hMid, 1.5);
+    seg(tfl, tbl, hMid, 1.5); seg(tfr, tbr, hMid, 1.5);
+    seg(rpf, rpb, hMid, 1.5);
+
+    // 5 — Frustum rays (camera → sensor corners)
+    sc.forEach(c => seg(cam, c, 'rgba(29,78,216,0.4)', 1.5));
+
+    // 6 — Sensor plane
+    quad(sc, 'rgba(14,165,233,0.14)', '#0ea5e9', 2);
+
+    // 7 — Projected image rectangle
+    quad(pc, 'rgba(245,158,11,0.28)', '#f59e0b', 1.8);
+
+    // 7.5 — House silhouette projected onto sensor plane (pinhole image), clipped to pc
+    function perspPt(wx, wy, wz) {
+      return project({x: wx * sZ / wz, y: wy * sZ / wz, z: sZ});
+    }
+    const ipbfl = perspPt(-hW, hB, oZ-hD);
+    const ipbfr = perspPt( hW, hB, oZ-hD);
+    const iptfl = perspPt(-hW, hT, oZ-hD);
+    const iptfr = perspPt( hW, hT, oZ-hD);
+    const iprpf = perspPt(  0, hR, oZ-hD);
+    ctx.save();
+    ctx.beginPath();
+    pc.forEach((p, i) => i ? ctx.lineTo(p.x, p.y) : ctx.moveTo(p.x, p.y));
+    ctx.closePath();
+    ctx.clip();
+    quad([ipbfl,ipbfr,iptfr,iptfl], 'rgba(230,215,185,0.82)', null, 0);
+    quad([iptfl,iptfr,iprpf],       'rgba(205,185,150,0.82)', null, 0);
+    const ie = 'rgba(80,58,25,0.55)';
+    seg(ipbfl, ipbfr, ie, 0.9); seg(ipbfl, iptfl, ie, 0.9);
+    seg(ipbfr, iptfr, ie, 0.9); seg(iptfl, iptfr, ie, 0.9);
+    seg(iptfl, iprpf, ie, 0.9); seg(iptfr, iprpf, ie, 0.9);
+    ctx.restore();
+
+    // 8 — House: front wireframe edges
+    const hFront = 'rgba(80,55,20,0.85)';
+    seg(bfl, bfr, hFront, 2.2); seg(bfl, tfl, hFront, 2.2);
+    seg(bfr, tfr, hFront, 2.2); seg(tfl, tfr, hFront, 2.2);
+    seg(tfl, rpf, hFront, 2.2); seg(tfr, rpf, hFront, 2.2);
+
+    // 9 — Focal-length segment (camera → sensor center)
+    seg(cam, sC, '#ef4444', 2);
+
+    // 10 — Dots
+    ctx.fillStyle = '#0f172a';
+    ctx.beginPath(); ctx.arc(cam.x, cam.y, 5.5, 0, Math.PI*2); ctx.fill();
+    ctx.fillStyle = '#0ea5e9';
+    ctx.beginPath(); ctx.arc(sC.x, sC.y, 3.8, 0, Math.PI*2); ctx.fill();
+
+    // 11 — Labels
+    drawLabel(`cámara · f = ${f} mm`, cam.x + 16, cam.y - 18, {
+      align: 'left',
+      baseline: 'bottom',
+      textColor: '#991b1b',
+      fill: 'rgba(254,242,242,0.96)',
+      stroke: 'rgba(248,113,113,0.45)',
+    });
+    drawLabel('sensor', sc[2].x + 8, sc[2].y + 5, {
+      textColor: '#075985',
+      fill: 'rgba(240,249,255,0.96)',
+      stroke: 'rgba(14,165,233,0.4)',
+    });
+    drawLabel('objeto', rpf.x + 10, rpf.y - 14, {
+      textColor: '#713f12',
+      fill: 'rgba(255,251,235,0.96)',
+      stroke: 'rgba(245,158,11,0.42)',
+    });
+
+    // 12 — Legend (bottom-left, clear of all scene elements)
+    const lx = 14, ly = H - 38;
+    ctx.font = LEGEND_FONT; ctx.textAlign = 'left'; ctx.textBaseline = 'middle';
+    roundedRect(lx - 7, ly - 8, 164, 42, 10);
+    ctx.fillStyle = 'rgba(255,255,255,0.88)';
+    ctx.fill();
+    ctx.strokeStyle = 'rgba(148,163,184,0.28)';
+    ctx.lineWidth = 1;
+    ctx.stroke();
+    ctx.fillStyle = 'rgba(14,165,233,0.22)';
+    ctx.fillRect(lx, ly, 22, 12);
+    ctx.strokeStyle = '#0ea5e9'; ctx.lineWidth = 1.5; ctx.strokeRect(lx, ly, 22, 12);
+    ctx.fillStyle = '#0369a1'; ctx.fillText('plano del sensor', lx + 27, ly + 6);
+    ctx.fillStyle = 'rgba(245,158,11,0.30)';
+    ctx.fillRect(lx, ly + 18, 22, 12);
+    ctx.strokeStyle = '#f59e0b'; ctx.lineWidth = 1.5; ctx.strokeRect(lx, ly + 18, 22, 12);
+    ctx.fillStyle = '#92400e'; ctx.fillText('imagen proyectada', lx + 27, ly + 24);
+    ctx.textBaseline = 'alphabetic';
+  }
+
+  ['input','change'].forEach(ev => {
+    ids.w.addEventListener(ev, draw);
+    ids.h.addEventListener(ev, draw);
+    ids.f.addEventListener(ev, draw);
+  });
   draw();
 })();
 </script>
+```
+
+```{=html}
+<div class="focal-triptych-uza">
+  <div class="focal-triptych-header-uza">
+    <span class="focal-triptych-kicker-uza">De angular a tele</span>
+    <p>Sensor 36 × 24 mm con distancia al objeto fija.</p>
+  </div>
+
+  <div class="focal-triptych-grid-uza">
+    <figure class="focal-triptych-card-uza is-wide-uza">
+      <span class="focal-triptych-badge-uza">65 mm</span>
+      <img src="../resources/practica9/house_65mm.png" alt="Render a 65 mm">
+      <figcaption>
+        <strong>Encuadre amplio</strong>
+        <span>Más campo de visión, sensación más abierta.</span>
+      </figcaption>
+    </figure>
+
+    <figure class="focal-triptych-card-uza is-reference-uza">
+      <span class="focal-triptych-badge-uza">80 mm</span>
+      <img src="../resources/practica9/house_80mm.png" alt="Render a 80 mm">
+      <figcaption>
+        <strong>Referencia</strong>
+        <span>La vista base usada en la comparativa.</span>
+      </figcaption>
+    </figure>
+
+    <figure class="focal-triptych-card-uza is-tight-uza">
+      <span class="focal-triptych-badge-uza">100 mm</span>
+      <img src="../resources/practica9/house_100mm.png" alt="Render a 100 mm">
+      <figcaption>
+        <strong>Encuadre estrecho</strong>
+        <span>Menor campo de visión, imagen proyectada mayor.</span>
+      </figcaption>
+    </figure>
+  </div>
+
+  <div class="focal-triptych-scale-uza" aria-hidden="true">
+    <span>mas angular</span>
+    <div class="focal-triptych-line-uza"></div>
+    <span>mas tele</span>
+  </div>
+
+  <p class="focal-triptych-caption-uza">A mayor focal, menor campo de vision y mayor imagen proyectada sobre el sensor.</p>
+</div>
+
+<style>
+.focal-triptych-uza {
+  margin: 1rem 0 1.1rem;
+  padding: 1rem;
+  border: 1px solid #e2e8f0;
+  border-radius: 18px;
+  background:
+    radial-gradient(circle at top left, rgba(251, 191, 36, 0.12), transparent 34%),
+    linear-gradient(180deg, #fcfdff 0%, #f5f8fc 100%);
+  box-shadow: 0 10px 28px rgba(15, 23, 42, 0.08);
+}
+
+.focal-triptych-header-uza {
+  margin-bottom: 0.8rem;
+}
+
+.focal-triptych-kicker-uza {
+  display: inline-block;
+  padding: 0.18rem 0.55rem;
+  border-radius: 999px;
+  background: rgba(14, 165, 233, 0.12);
+  color: #0369a1;
+  font-size: 0.73rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.focal-triptych-header-uza p {
+  margin: 0.45rem 0 0;
+  color: #475569;
+  font-size: 0.9rem;
+}
+
+.focal-triptych-grid-uza {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.85rem;
+  align-items: end;
+}
+
+.focal-triptych-card-uza {
+  position: relative;
+  margin: 0;
+  padding: 0.55rem;
+  border: 1px solid rgba(203, 213, 225, 0.95);
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.92);
+  box-shadow: 0 8px 20px rgba(15, 23, 42, 0.08);
+  overflow: hidden;
+}
+
+.focal-triptych-card-uza img {
+  width: 100%;
+  display: block;
+  border-radius: 11px;
+  border: 1px solid #e2e8f0;
+}
+
+.focal-triptych-card-uza figcaption {
+  display: flex;
+  flex-direction: column;
+  gap: 0.16rem;
+  margin-top: 0.55rem;
+}
+
+.focal-triptych-card-uza strong {
+  color: #0f172a;
+  font-size: 0.87rem;
+}
+
+.focal-triptych-card-uza span {
+  color: #64748b;
+  font-size: 0.78rem;
+  line-height: 1.4;
+}
+
+.focal-triptych-badge-uza {
+  position: absolute;
+  top: 0.85rem;
+  left: 0.85rem;
+  z-index: 1;
+  padding: 0.2rem 0.5rem;
+  border-radius: 999px;
+  background: rgba(15, 23, 42, 0.78);
+  color: #fff !important;
+  font-size: 0.74rem !important;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+
+.is-wide-uza {
+  transform: rotate(-1.2deg) translateY(8px);
+}
+
+.is-reference-uza {
+  border-color: rgba(14, 165, 233, 0.45);
+  box-shadow: 0 14px 34px rgba(14, 165, 233, 0.14);
+}
+
+.is-tight-uza {
+  transform: rotate(1.1deg) translateY(10px);
+}
+
+.focal-triptych-scale-uza {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  gap: 0.65rem;
+  align-items: center;
+  margin-top: 0.9rem;
+  color: #64748b;
+  font-size: 0.76rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.focal-triptych-line-uza {
+  height: 1px;
+  background: linear-gradient(90deg, rgba(14, 165, 233, 0.3), rgba(249, 115, 22, 0.55));
+  position: relative;
+}
+
+.focal-triptych-line-uza::after {
+  content: '';
+  position: absolute;
+  right: 0;
+  top: 50%;
+  width: 8px;
+  height: 8px;
+  border-top: 1.5px solid rgba(249, 115, 22, 0.75);
+  border-right: 1.5px solid rgba(249, 115, 22, 0.75);
+  transform: translateY(-50%) rotate(45deg);
+}
+
+.focal-triptych-caption-uza {
+  margin: 0.65rem 0 0;
+  text-align: center;
+  color: #475569;
+  font-size: 0.82rem;
+}
+
+@media (max-width: 760px) {
+  .focal-triptych-grid-uza {
+    grid-template-columns: 1fr;
+  }
+
+  .is-wide-uza,
+  .is-tight-uza {
+    transform: none;
+  }
+}
+</style>
 ```
 
 ::: {.callout-note}
@@ -569,6 +946,20 @@ Ejecuta después el código en modo depuración para comprobar cómo se realiza 
 **Malla de alambre** (`pintarMallaAlambre`): se recorren todas las `Cara`s, se transforman sus `Punto`s con $M_p$ y se pintan líneas entre puntos adyacentes (`pintarCaraMallaAlambre`).
 
 **Raster**: se aplica el modelo de iluminación de Phong para calcular el color de cada píxel de cada cara visible. Además, se mantiene un ***z-buffer*** que guarda la profundidad $z$ de cada píxel para evitar pintar uno que quede por detrás de otro ya pintado.
+
+```{=html}
+<div class="img-compare" role="slider" aria-label="Malla de alambre frente a raster" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50" tabindex="0" style="max-width:560px; margin:0.75rem auto;">
+  <img src="../resources/practica9/wireframe.png" alt="Vista en malla de alambre">
+  <img class="img-compare-top" src="../resources/practica9/house_80mm.png" alt="Vista en raster con iluminación de Phong">
+  <span class="img-compare-label is-left">Malla de alambre</span>
+  <span class="img-compare-label is-right">Raster (Phong)</span>
+  <span class="img-compare-line" aria-hidden="true"></span>
+  <span class="img-compare-knob" aria-hidden="true">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 6 3 12 9 18"/><polyline points="15 6 21 12 15 18"/></svg>
+  </span>
+</div>
+<small class="img-compare-caption">El mismo objeto en los dos modos de visualización (focal 80 mm): arrastrar para comparar.</small>
+```
 
 En ambos modos se puede activar el ***backface culling*** (método `considerarCara`), que descarta las caras cuya normal apunta en sentido contrario a la cámara, acelerando el proceso de pintado.
 
