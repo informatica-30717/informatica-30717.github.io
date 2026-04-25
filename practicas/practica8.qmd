@@ -267,7 +267,7 @@ function createViewer(id, url, options = {}) {
 }
 
 createViewer('lidar-viewer-cloud', '../resources/practica8/models/goya_point_cloud.ply');
-createViewer('lidar-viewer-room',  '../resources/practica8/models/room.ply', { startInside: true });
+createViewer('lidar-viewer-room',  '../resources/practica8/models/room_500k.ply', { startInside: true });
 </script>
 ```
 
