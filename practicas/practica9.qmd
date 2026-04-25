@@ -999,6 +999,430 @@ $$
 
 La integral se anida una y otra vez: rebote sobre una pared, luego sobre el suelo, luego sobre el techo, luego sobre otra pared... y así sucesivamente. No hay una fórmula cerrada cómoda para escenas reales. Dicho sin dramatismo matemático: **resolverlo exactamente es demasiado complicado para hacerlo “a mano”**.
 
+El siguiente esquema no resuelve la ecuación completa: solo visualiza la idea recursiva. Desde una pequeña abertura en la cámara se lanza un haz de rayos; cada vez que uno choca con una superficie, nace un nuevo rayo desde ese último punto.
+
+```{=html}
+<div id="bounce-demo-uza">
+  <div class="bounce-layout-uza">
+    <div class="bounce-viewer-uza">
+      <canvas id="bounce-canvas-uza" width="620" height="320"></canvas>
+    </div>
+
+    <div class="bounce-panel-uza">
+      <div class="bounce-stats-uza">
+        <div>
+          <div class="bounce-stat-label-uza">Rayos</div>
+          <div id="bounce-rays-total-uza" class="bounce-stat-value-uza">18</div>
+        </div>
+        <div>
+          <div class="bounce-stat-label-uza">Llegan a la luz</div>
+          <div id="bounce-rays-hit-uza" class="bounce-stat-value-uza is-warm-uza">0</div>
+        </div>
+      </div>
+
+      <div class="bounce-control-uza">
+        <label for="bounce-count-uza">Número de rayos</label>
+        <input id="bounce-count-uza" type="range" min="6" max="36" step="1" value="18">
+        <div class="bounce-scale-uza"><span>6</span><span id="bounce-count-val-uza">18</span><span>36</span></div>
+      </div>
+
+      <div class="bounce-control-uza">
+        <label for="bounce-depth-uza">Rebotes máximos</label>
+        <input id="bounce-depth-uza" type="range" min="1" max="6" step="1" value="4">
+        <div class="bounce-scale-uza"><span>1</span><span id="bounce-depth-val-uza">4</span><span>6</span></div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<style>
+#bounce-demo-uza {
+  margin: 0.9rem 0 1.15rem;
+  background: #fff;
+  border: 1px solid #e2e8f0;
+  border-radius: 16px;
+  padding: 1rem;
+  box-shadow: 0 6px 20px rgba(15, 23, 42, 0.06);
+}
+
+#bounce-demo-uza .bounce-layout-uza {
+  display: grid;
+  grid-template-columns: minmax(0, 1.9fr) minmax(220px, 0.8fr);
+  gap: 1rem;
+  align-items: start;
+}
+
+#bounce-demo-uza .bounce-viewer-uza {
+  min-width: 0;
+}
+
+#bounce-demo-uza canvas {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 12px;
+  border: 1px solid #dbe4ee;
+  background: #fcfcfb;
+}
+
+#bounce-demo-uza .bounce-panel-uza {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  min-width: 0;
+}
+
+#bounce-demo-uza .bounce-stats-uza {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.55rem;
+}
+
+#bounce-demo-uza .bounce-stats-uza > div {
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 0.7rem 0.75rem;
+}
+
+#bounce-demo-uza .bounce-stat-label-uza {
+  color: #64748b;
+  font-size: 0.74rem;
+  margin-bottom: 0.18rem;
+}
+
+#bounce-demo-uza .bounce-stat-value-uza {
+  color: #0f172a;
+  font-size: 1.08rem;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+
+#bounce-demo-uza .bounce-stat-value-uza.is-warm-uza {
+  color: #b45309;
+}
+
+#bounce-demo-uza .bounce-control-uza {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+#bounce-demo-uza .bounce-control-uza label {
+  color: #334155;
+  font-size: 0.84rem;
+  font-weight: 600;
+}
+
+#bounce-demo-uza .bounce-control-uza input {
+  width: 100%;
+}
+
+#bounce-demo-uza .bounce-scale-uza {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.5rem;
+  color: #94a3b8;
+  font-size: 0.74rem;
+}
+
+@media (max-width: 760px) {
+  #bounce-demo-uza .bounce-layout-uza {
+    grid-template-columns: 1fr;
+  }
+}
+</style>
+
+<script>
+(() => {
+  const canvas = document.getElementById('bounce-canvas-uza');
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d');
+  const W = canvas.width;
+  const H = canvas.height;
+  const BEAM_RADIUS = 5;
+  const SCATTER = 0.18;
+
+  const ids = {
+    count: document.getElementById('bounce-count-uza'),
+    depth: document.getElementById('bounce-depth-uza'),
+    countVal: document.getElementById('bounce-count-val-uza'),
+    depthVal: document.getElementById('bounce-depth-val-uza'),
+    total: document.getElementById('bounce-rays-total-uza'),
+    hit: document.getElementById('bounce-rays-hit-uza'),
+  };
+
+  const ROOM = { x0: 30, y0: 16, x1: 604, y1: 304 };
+  const LIGHT = { x0: 438, x1: 566, y: ROOM.y0 };
+  const CAMERA = { x: 76, y: 176 };
+  const CIRCLE = { x: 322, y: 168, r: 48 };
+  const BLOCK = { x0: 480, y0: 214, x1: 560, y1: 274 };
+  const PALETTE = ['#f97316', '#fb923c', '#f59e0b', '#eab308', '#84cc16', '#38bdf8', '#818cf8'];
+  let seed = 7;
+
+  function mulberry32(a) {
+    return function() {
+      let t = a += 0x6D2B79F5;
+      t = Math.imul(t ^ t >>> 15, t | 1);
+      t ^= t + Math.imul(t ^ t >>> 7, t | 61);
+      return ((t ^ t >>> 14) >>> 0) / 4294967296;
+    };
+  }
+
+  function vec(x, y) { return { x, y }; }
+  function add(a, b) { return { x: a.x + b.x, y: a.y + b.y }; }
+  function sub(a, b) { return { x: a.x - b.x, y: a.y - b.y }; }
+  function scale(a, k) { return { x: a.x * k, y: a.y * k }; }
+  function dot(a, b) { return a.x * b.x + a.y * b.y; }
+  function cross(a, b) { return a.x * b.y - a.y * b.x; }
+  function length(a) { return Math.hypot(a.x, a.y); }
+  function normalize(a) {
+    const len = length(a) || 1;
+    return { x: a.x / len, y: a.y / len };
+  }
+  function reflect(direction, normal) {
+    const factor = 2 * dot(direction, normal);
+    return normalize(sub(direction, scale(normal, factor)));
+  }
+  function rotate(v, angle) {
+    const ca = Math.cos(angle);
+    const sa = Math.sin(angle);
+    return { x: v.x * ca - v.y * sa, y: v.x * sa + v.y * ca };
+  }
+  function mixDirections(a, b, t) {
+    return normalize(add(scale(a, 1 - t), scale(b, t)));
+  }
+
+  const segments = [
+    { a: vec(ROOM.x0, ROOM.y0), b: vec(LIGHT.x0, ROOM.y0), kind: 'wall' },
+    { a: vec(LIGHT.x0, ROOM.y0), b: vec(LIGHT.x1, ROOM.y0), kind: 'light', emissive: true },
+    { a: vec(LIGHT.x1, ROOM.y0), b: vec(ROOM.x1, ROOM.y0), kind: 'wall' },
+    { a: vec(ROOM.x1, ROOM.y0), b: vec(ROOM.x1, ROOM.y1), kind: 'wall' },
+    { a: vec(ROOM.x1, ROOM.y1), b: vec(ROOM.x0, ROOM.y1), kind: 'wall' },
+    { a: vec(ROOM.x0, ROOM.y1), b: vec(ROOM.x0, ROOM.y0), kind: 'wall' },
+    { a: vec(BLOCK.x0, BLOCK.y0), b: vec(BLOCK.x1, BLOCK.y0), kind: 'block' },
+    { a: vec(BLOCK.x1, BLOCK.y0), b: vec(BLOCK.x1, BLOCK.y1), kind: 'block' },
+    { a: vec(BLOCK.x1, BLOCK.y1), b: vec(BLOCK.x0, BLOCK.y1), kind: 'block' },
+    { a: vec(BLOCK.x0, BLOCK.y1), b: vec(BLOCK.x0, BLOCK.y0), kind: 'block' },
+  ];
+
+  function segmentHit(origin, direction, segment) {
+    const span = sub(segment.b, segment.a);
+    const den = cross(direction, span);
+    if (Math.abs(den) < 1e-6) return null;
+    const delta = sub(segment.a, origin);
+    const t = cross(delta, span) / den;
+    const u = cross(delta, direction) / den;
+    if (t <= 0.35 || u < -1e-5 || u > 1 + 1e-5) return null;
+    const point = add(origin, scale(direction, t));
+    let normal = normalize(vec(span.y, -span.x));
+    if (dot(direction, normal) > 0) normal = scale(normal, -1);
+    return { t, point, normal, emissive: Boolean(segment.emissive), kind: segment.kind };
+  }
+
+  function circleHit(origin, direction) {
+    const oc = sub(origin, CIRCLE);
+    const b = 2 * dot(oc, direction);
+    const c = dot(oc, oc) - CIRCLE.r * CIRCLE.r;
+    const disc = b * b - 4 * c;
+    if (disc <= 0) return null;
+    const root = Math.sqrt(disc);
+    const t1 = (-b - root) / 2;
+    const t2 = (-b + root) / 2;
+    const t = t1 > 0.35 ? t1 : (t2 > 0.35 ? t2 : null);
+    if (!t) return null;
+    const point = add(origin, scale(direction, t));
+    let normal = normalize(sub(point, CIRCLE));
+    if (dot(direction, normal) > 0) normal = scale(normal, -1);
+    return { t, point, normal, emissive: false, kind: 'pillar' };
+  }
+
+  function firstHit(origin, direction) {
+    let closest = null;
+    segments.forEach((segment) => {
+      const hit = segmentHit(origin, direction, segment);
+      if (!hit) return;
+      if (!closest || hit.t < closest.t) closest = hit;
+    });
+    const cHit = circleHit(origin, direction);
+    if (cHit && (!closest || cHit.t < closest.t)) closest = cHit;
+    return closest;
+  }
+
+  function sampleHemisphere(normal, rng) {
+    const base = Math.atan2(normal.y, normal.x);
+    const angle = base + (rng() * 2 - 1) * (Math.PI / 2);
+    let dir = vec(Math.cos(angle), Math.sin(angle));
+    if (dot(dir, normal) < 0) dir = scale(dir, -1);
+    return normalize(dir);
+  }
+
+  function traceRay(origin, direction, maxDepth, scatter, rng) {
+    const points = [origin];
+    const bounces = [];
+    let ro = origin;
+    let rd = normalize(direction);
+    let reachedLight = false;
+
+    for (let depth = 0; depth < maxDepth; depth++) {
+      const hit = firstHit(ro, rd);
+      if (!hit) {
+        points.push(add(ro, scale(rd, 90)));
+        break;
+      }
+
+      points.push(hit.point);
+      if (hit.emissive) {
+        reachedLight = true;
+        break;
+      }
+
+      bounces.push(hit.point);
+      const reflected = reflect(rd, hit.normal);
+      const diffuse = sampleHemisphere(hit.normal, rng);
+      rd = mixDirections(reflected, diffuse, scatter);
+      ro = add(hit.point, scale(hit.normal, 0.65));
+    }
+
+    return {
+      points,
+      bounces,
+      reachedLight,
+      segments: Math.max(points.length - 1, 0),
+    };
+  }
+
+  function drawScene(radius) {
+    ctx.clearRect(0, 0, W, H);
+    ctx.fillStyle = '#fcfcfb';
+    ctx.fillRect(0, 0, W, H);
+
+    ctx.fillStyle = '#f7f7f5';
+    ctx.fillRect(ROOM.x0, ROOM.y0, ROOM.x1 - ROOM.x0, ROOM.y1 - ROOM.y0);
+
+    ctx.fillStyle = 'rgba(251, 191, 36, 0.22)';
+    ctx.fillRect(LIGHT.x0, LIGHT.y - 1, LIGHT.x1 - LIGHT.x0, 18);
+    ctx.fillStyle = 'rgba(251, 191, 36, 0.34)';
+    ctx.fillRect(LIGHT.x0, LIGHT.y - 1, LIGHT.x1 - LIGHT.x0, 8);
+
+    ctx.fillStyle = '#ded7cd';
+    ctx.fillRect(BLOCK.x0, BLOCK.y0, BLOCK.x1 - BLOCK.x0, BLOCK.y1 - BLOCK.y0);
+    ctx.fillStyle = '#e8e1d6';
+    ctx.beginPath();
+    ctx.arc(CIRCLE.x, CIRCLE.y, CIRCLE.r, 0, Math.PI * 2);
+    ctx.fill();
+
+    ctx.strokeStyle = '#c7d1dc';
+    ctx.lineWidth = 2;
+    ctx.strokeRect(ROOM.x0, ROOM.y0, ROOM.x1 - ROOM.x0, ROOM.y1 - ROOM.y0);
+    ctx.strokeStyle = '#0f172a';
+    ctx.lineWidth = 1.4;
+    ctx.strokeRect(BLOCK.x0, BLOCK.y0, BLOCK.x1 - BLOCK.x0, BLOCK.y1 - BLOCK.y0);
+    ctx.beginPath();
+    ctx.arc(CIRCLE.x, CIRCLE.y, CIRCLE.r, 0, Math.PI * 2);
+    ctx.stroke();
+
+    ctx.strokeStyle = '#94a3b8';
+    ctx.lineWidth = 2.2;
+    ctx.beginPath();
+    ctx.moveTo(CAMERA.x, CAMERA.y - radius);
+    ctx.lineTo(CAMERA.x, CAMERA.y + radius);
+    ctx.stroke();
+
+    ctx.fillStyle = '#0f172a';
+    ctx.beginPath();
+    ctx.arc(CAMERA.x, CAMERA.y, 4.5, 0, Math.PI * 2);
+    ctx.fill();
+
+    ctx.font = '600 13px "Aptos", "Segoe UI", Arial, sans-serif';
+    ctx.textBaseline = 'middle';
+    ctx.fillStyle = '#334155';
+    ctx.fillText('cámara', CAMERA.x - 28, CAMERA.y - radius - 14);
+    ctx.fillStyle = '#b45309';
+    ctx.fillText('fuente emisiva', LIGHT.x0 - 8, LIGHT.y + 16);
+  }
+
+  function drawPath(path, highlighted) {
+    for (let i = 0; i < path.points.length - 1; i++) {
+      const a = path.points[i];
+      const b = path.points[i + 1];
+      ctx.beginPath();
+      ctx.moveTo(a.x, a.y);
+      ctx.lineTo(b.x, b.y);
+      ctx.strokeStyle = highlighted ? PALETTE[i % PALETTE.length] : `rgba(249, 115, 22, ${0.12 + i * 0.04})`;
+      ctx.lineWidth = highlighted ? 2.5 : 1.1;
+      ctx.stroke();
+    }
+  }
+
+  function drawGuide(path) {
+    drawPath(path, true);
+    path.bounces.forEach((point, index) => {
+      ctx.fillStyle = '#fff7ed';
+      ctx.beginPath();
+      ctx.arc(point.x, point.y, 9, 0, Math.PI * 2);
+      ctx.fill();
+      ctx.strokeStyle = PALETTE[index % PALETTE.length];
+      ctx.lineWidth = 1.7;
+      ctx.stroke();
+      ctx.fillStyle = '#7c2d12';
+      ctx.font = '700 11px "Aptos", "Segoe UI", Arial, sans-serif';
+      ctx.textAlign = 'center';
+      ctx.textBaseline = 'middle';
+      ctx.fillText(String(index + 1), point.x, point.y + 0.5);
+    });
+
+    if (path.reachedLight) {
+      const end = path.points[path.points.length - 1];
+      ctx.fillStyle = 'rgba(251, 191, 36, 0.28)';
+      ctx.beginPath();
+      ctx.arc(end.x, end.y, 11, 0, Math.PI * 2);
+      ctx.fill();
+    }
+  }
+
+  function render() {
+    const radius = BEAM_RADIUS;
+    const rayCount = Number(ids.count.value);
+    const maxDepth = Number(ids.depth.value);
+    const rng = mulberry32(seed);
+    const traced = [];
+    const focus = vec(CIRCLE.x - 14, CIRCLE.y - 20);
+
+    ids.countVal.textContent = String(rayCount);
+    ids.depthVal.textContent = String(maxDepth);
+    ids.total.textContent = String(rayCount);
+
+    for (let i = 0; i < rayCount; i++) {
+      const t = rayCount === 1 ? 0.5 : i / (rayCount - 1);
+      const offset = (t - 0.5) * radius * 2 + (rng() - 0.5) * 1.4;
+      const origin = vec(CAMERA.x, CAMERA.y + offset);
+      const aim = vec(focus.x, focus.y + offset * 0.45);
+      const initial = rotate(normalize(sub(aim, origin)), (rng() - 0.5) * 0.05);
+      traced.push(traceRay(origin, initial, maxDepth, SCATTER, rng));
+    }
+
+    const hits = traced.filter((path) => path.reachedLight).length;
+    const guide = traced.find((path) => path.reachedLight) || traced[Math.floor(traced.length / 2)];
+
+    ids.hit.textContent = String(hits);
+
+    drawScene(radius);
+    traced.forEach((path) => drawPath(path, false));
+    drawGuide(guide);
+  }
+
+  ['input', 'change'].forEach((eventName) => {
+    ids.count.addEventListener(eventName, render);
+    ids.depth.addEventListener(eventName, render);
+  });
+
+  render();
+})();
+</script>
+```
+
 #### Monte Carlo: la solución práctica
 
 La solución práctica consiste en aproximarlo con **Monte Carlo**: en vez de intentar calcular todos los rebotes de manera exacta, se toman muchas muestras aleatorias y se promedia su efecto. En renderizado esto suele explicarse así: desde cada píxel se lanzan muchos rayos, esos rayos rebotan por la escena y se estima cuánta luz termina llegando a cámara.
