@@ -1,6 +1,6 @@
 ---
 title: "Práctica 9: Visualizador 3D"
-title-block-banner: ../resources/practica9/full.png
+title-block-banner: ../resources/practica9/images/full.png
 title-block-banner-color: "#ffffff"
 format:
   html:
@@ -742,7 +742,7 @@ $$
   <div class="focal-triptych-grid-uza">
     <figure class="focal-triptych-card-uza is-wide-uza">
       <span class="focal-triptych-badge-uza">65 mm</span>
-      <img src="../resources/practica9/house_65mm.png" alt="Render a 65 mm">
+      <img src="../resources/practica9/images/house_65mm.png" alt="Render a 65 mm">
       <figcaption>
         <strong>Encuadre amplio</strong>
         <span>Más campo de visión, sensación más abierta.</span>
@@ -751,7 +751,7 @@ $$
 
     <figure class="focal-triptych-card-uza is-reference-uza">
       <span class="focal-triptych-badge-uza">80 mm</span>
-      <img src="../resources/practica9/house_80mm.png" alt="Render a 80 mm">
+      <img src="../resources/practica9/images/house_80mm.png" alt="Render a 80 mm">
       <figcaption>
         <strong>Referencia</strong>
         <span>La vista base usada en la comparativa.</span>
@@ -760,7 +760,7 @@ $$
 
     <figure class="focal-triptych-card-uza is-tight-uza">
       <span class="focal-triptych-badge-uza">100 mm</span>
-      <img src="../resources/practica9/house_100mm.png" alt="Render a 100 mm">
+      <img src="../resources/practica9/images/house_100mm.png" alt="Render a 100 mm">
       <figcaption>
         <strong>Encuadre estrecho</strong>
         <span>Menor campo de visión, imagen proyectada mayor.</span>
@@ -949,8 +949,8 @@ Ejecuta después el código en modo depuración para comprobar cómo se realiza 
 
 ```{=html}
 <div class="img-compare" role="slider" aria-label="Malla de alambre frente a raster" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50" tabindex="0" style="max-width:560px; margin:0.75rem auto;">
-  <img src="../resources/practica9/wireframe.png" alt="Vista en malla de alambre">
-  <img class="img-compare-top" src="../resources/practica9/house_80mm.png" alt="Vista en raster con iluminación de Phong">
+  <img src="../resources/practica9/images/wireframe.png" alt="Vista en malla de alambre">
+  <img class="img-compare-top" src="../resources/practica9/images/house_80mm.png" alt="Vista en raster con iluminación de Phong">
   <span class="img-compare-label is-left">Malla de alambre</span>
   <span class="img-compare-label is-right">Raster (Phong)</span>
   <span class="img-compare-line" aria-hidden="true"></span>
@@ -1589,8 +1589,8 @@ Veámoslo con el ejemplo más clásico: estimar el **área de un círculo de rad
 En el renderizado ocurre lo mismo: desde cada píxel se lanzan rayos aleatorios que rebotan entre superficies. Con **pocas muestras por píxel** (*spp*) el resultado es muy ruidoso; con **miles de muestras** converge a la solución física correcta. Los dos renders de Blender siguientes ilustran este efecto — arrastra el divisor para comparar:
 
 <div class="img-compare" role="slider" aria-label="Comparación entre render ruidoso y render limpio" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50" tabindex="0" style="max-width:640px; margin:1rem auto;">
-  <img src="../resources/practica9/room_50spp.png" alt="Pocas muestras por píxel — resultado ruidoso">
-  <img class="img-compare-top" src="../resources/practica9/room_500spp.png" alt="Muchas muestras por píxel — resultado limpio">
+  <img src="../resources/practica9/images/room_50spp.png" alt="Pocas muestras por píxel — resultado ruidoso">
+  <img class="img-compare-top" src="../resources/practica9/images/room_500spp.png" alt="Muchas muestras por píxel — resultado limpio">
   <span class="img-compare-label is-left">Pocas muestras</span>
   <span class="img-compare-label is-right">Muchas muestras</span>
   <span class="img-compare-line" aria-hidden="true"></span>
@@ -1818,8 +1818,8 @@ Los siguientes comparadores muestran renders reales del visualizador. A la derec
 
 ::: {.g-col-12 .g-col-md-6}
 <div class="img-compare" role="slider" aria-label="Comparación entre iluminación completa y ambiente + difusa" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50" tabindex="0">
-  <img src="../resources/practica9/full.png"  alt="Iluminación completa (ka + kd + ks)">
-  <img class="img-compare-top" src="../resources/practica9/ka_kd.png" alt="Ambiente + difusa (ka + kd)">
+  <img src="../resources/practica9/images/full.png"  alt="Iluminación completa (ka + kd + ks)">
+  <img class="img-compare-top" src="../resources/practica9/images/ka_kd.png" alt="Ambiente + difusa (ka + kd)">
   <span class="img-compare-label is-left">ka + kd + ks</span>
   <span class="img-compare-label is-right">ka + kd</span>
   <span class="img-compare-line" aria-hidden="true"></span>
@@ -1832,8 +1832,8 @@ Los siguientes comparadores muestran renders reales del visualizador. A la derec
 
 ::: {.g-col-12 .g-col-md-6}
 <div class="img-compare" role="slider" aria-label="Comparación entre difusa + especular y solo difusa" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50" tabindex="0">
-  <img src="../resources/practica9/kd_ks.png" alt="Difusa + especular (kd + ks)">
-  <img class="img-compare-top" src="../resources/practica9/kd.png" alt="Solo difusa (kd)">
+  <img src="../resources/practica9/images/kd_ks.png" alt="Difusa + especular (kd + ks)">
+  <img class="img-compare-top" src="../resources/practica9/images/kd.png" alt="Solo difusa (kd)">
   <span class="img-compare-label is-left">kd + ks</span>
   <span class="img-compare-label is-right">kd</span>
   <span class="img-compare-line" aria-hidden="true"></span>

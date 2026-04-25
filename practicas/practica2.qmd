@@ -422,7 +422,7 @@ El proceso de incluir bibliotecas diferentes a las incluidas por defecto en Java
 
 En este apartado vamos a describir el primer escenario. Para ello, vamos a importar a modo de ejemplo la biblioteca `.jar` incluida en Moodle, `biblioteca.jar`.
 
-[[Descargar Fichero JAR](../resources/practica2/biblioteca.jar)]
+[[Descargar Fichero JAR](../resources/practica2/binaries/biblioteca.jar)]
 
 Antes de ello, vamos a escribir en nuestro programa la siguiente instrucción:
 

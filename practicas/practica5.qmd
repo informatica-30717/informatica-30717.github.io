@@ -67,7 +67,7 @@ El objetivo es modificar cada una de las implementaciones para **contar el núme
 
 **Anota el tiempo de ejecución en Microsoft Excel para cada una de las implementaciones, y cuatro valores de $n$ diferentes**: $10^3$, $10^4$, $10^5$ y $10^6$. Los valores de $n$ se representarán en el eje $X$ de un gráfico, y el tiempo de ejecución en el eje $Y$. Dibuja una gráfica similar a la ilustrada a continuación:
 
-![Gráfica de tiempo de ejecución de las diferentes implementaciones de la criba de Eratóstenes.](../resources/practica5/tiempos.svg){#fig-graph width=75%}
+![Gráfica de tiempo de ejecución de las diferentes implementaciones de la criba de Eratóstenes.](../resources/practica5/images/tiempos.svg){#fig-graph width=75%}
 
 ---
 
@@ -77,7 +77,7 @@ El objetivo es modificar cada una de las implementaciones para **contar el núme
 import pandas as pd
 import numpy as np
 
-df = pd.read_excel('../resources/practica5/tiempos.xlsx')
+df = pd.read_excel('../resources/practica5/data/tiempos.xlsx')
 df.columns.values[0] = ""
 df
 ```
