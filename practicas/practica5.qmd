@@ -8,6 +8,8 @@ format:
     output-ext: "reveal.html"
 execute:
   echo: false
+resources:
+  - ../resources/practica5/ojs/practica5.js
 ---
 
 <div>
@@ -132,101 +134,29 @@ $$
 ::: {.card .shadow-sm .mb-4}
 ::: {.card-body}
 ```{ojs}
-// definimos la función global una sola vez para usarla en todos los bloques
-cleanSlider = (range, config) => {
-  const input = Inputs.range(range, config);
-  const numberBox = input.querySelector("input[type=number]");
-  if (numberBox) numberBox.style.display = "none";
-  const rangeSlider = input.querySelector("input[type=range]");
-  if (rangeSlider) rangeSlider.style.width = "100%";
-  input.style.width = "100%";
-  return input;
-};
+import {
+  cleanSlider,
+  buildBasicSieveSteps,
+  buildRootSieveSteps,
+  buildOddOnlySieveSteps,
+  renderSieveState
+} from "../resources/practica5/ojs/practica5.js"
 ```
 
 ```{ojs}
-viewof N1 = cleanSlider([10, 50], { value: 29, step: 1, label: "Valor N: " })
+viewof N1 = cleanSlider(Inputs, [10, 50], { value: 29, step: 1, label: "Valor N: " })
 ```
 
 ```{ojs}
-steps1 = {
-  const max = N1;
-  let state = Array(max + 1).fill("candidate");
-  state[0] = state[1] = "discarded";
-
-  const out = [];
-
-  for (let p = 2; p <= max; p++) {
-    if (state[p] === "candidate") {
-      out.push({ type: "prime", p, state: [...state] });
-
-      for (let k = p * 2; k <= max; k += p) {
-        if (state[k] === "candidate") {
-          state[k] = "discarded";
-          out.push({ type: "discard", p, k, state: [...state] });
-        }
-      }
-    }
-  }
-
-  out.push({ type: "final", state: [...state] });
-  return out;
-}
+steps1 = buildBasicSieveSteps(N1)
 ```
 
 ```{ojs}
-maxStep1 = steps1.length - 1
+viewof step1 = cleanSlider(Inputs, [0, steps1.length - 1], { value: 0, step: 1, label: "Paso de la criba: " })
 ```
 
 ```{ojs}
-viewof step1 = cleanSlider([0, maxStep1], { value: 0, step: 1, label: "Paso de la criba: " })
-```
-
-```{ojs}
-{
-  if (!steps1 || steps1.length === 0) return html`<div>Cargando...</div>`;
-
-  const safeStep = Math.min(step1, steps1.length - 1);
-  const s = steps1[safeStep];
-
-  if (!s) return html`<div>Cargando...</div>`;
-
-  const arr = s.state;
-  const max = N1;
-  const cols = Math.ceil(Math.sqrt(max));
-  
-  const currentPrime = s.p;
-  const lastDiscard = s.k;
-
-  const grid = Array.from({ length: max + 1 }, (_, i) => {
-    let bgColor = "#2a9d8f"; 
-    if (i < 2) bgColor = "#ddd";
-    else if (i === currentPrime) bgColor = "#457b9d";
-    else if (i === lastDiscard) bgColor = "#f4a261";
-    else if (arr[i] === "discarded") bgColor = "#e63946";
-
-    return {
-      n: i, x: i % cols, y: Math.floor(i / cols), state: arr[i],
-      color: bgColor, textColor: i < 2 ? "#333" : "white" 
-    };
-  });
-
-  return html`
-    <div style="margin-top:15px;">
-      ${Plot.plot({
-        height: Math.ceil(max / cols) * 35 + 20, margin: 10,
-        x: { axis: null }, y: { axis: null, reverse: true }, color: { type: "identity" }, 
-        marks: [
-          Plot.rect(grid, { x1: d => d.x - 0.45, x2: d => d.x + 0.45, y1: d => d.y - 0.45, y2: d => d.y + 0.45, fill: "color", stroke: "white", rx: 4 }),
-          Plot.text(grid, { x: "x", y: "y", text: "n", fill: "textColor", fontSize: 13, fontWeight: "bold" })
-        ]
-      })}
-      <div style="margin-top:15px; font-size: 1.1em; height: 1.5em;">
-        ${s.type === "prime" ? html`🔎 Probando primo <b>${currentPrime}</b>` : s.type === "discard" ? html`❌ ${lastDiscard} es múltiplo de <b>${currentPrime}</b>` : html`✅ Criba completada`}
-      </div>
-    </div>
-  `;
-}
+renderSieveState({ html, Plot, steps: steps1, stepIndex: step1, max: N1 })
 ```
 :::
 :::
@@ -291,88 +221,19 @@ Cada entero ocupa 4 bytes en Java, por lo que el vector utilizado para la criba 
 ::: {.card-body}
 
 ```{ojs}
-viewof N2 = cleanSlider([10, 150], { value: 29, step: 1, label: "Valor N: " })
+viewof N2 = cleanSlider(Inputs, [10, 150], { value: 29, step: 1, label: "Valor N: " })
 ```
 
 ```{ojs}
-steps2 = {
-  const max = N2;
-  let state = Array(max + 1).fill("candidate");
-  state[0] = state[1] = "discarded";
-
-  const out = [];
-
-  for (let p = 2; p * p <= max; p++) {
-    if (state[p] === "candidate") {
-      out.push({ type: "prime", p, state: [...state] });
-
-      for (let k = p * p; k <= max; k += p) {
-        if (state[k] === "candidate") {
-          state[k] = "discarded";
-          out.push({ type: "discard", p, k, state: [...state] });
-        }
-      }
-    }
-  }
-
-  out.push({ type: "final", state: [...state] });
-  return out;
-}
+steps2 = buildRootSieveSteps(N2)
 ```
 
 ```{ojs}
-maxStep2 = steps2.length - 1
+viewof step2 = cleanSlider(Inputs, [0, steps2.length - 1], { value: 0, step: 1, label: "Paso de la criba: " })
 ```
 
 ```{ojs}
-viewof step2 = cleanSlider([0, maxStep2], { value: 0, step: 1, label: "Paso de la criba: " })
-```
-
-```{ojs}
-{
-  if (!steps2 || steps2.length === 0) return html`<div>Cargando...</div>`;
-
-  const safeStep = Math.min(step2, steps2.length - 1);
-  const s = steps2[safeStep];
-
-  if (!s) return html`<div>Cargando...</div>`;
-
-  const arr = s.state;
-  const max = N2;
-  const cols = Math.ceil(Math.sqrt(max));
-  
-  const currentPrime = s.p;
-  const lastDiscard = s.k;
-
-  const grid = Array.from({ length: max + 1 }, (_, i) => {
-    let bgColor = "#2a9d8f"; 
-    if (i < 2) bgColor = "#ddd";
-    else if (i === currentPrime) bgColor = "#457b9d";
-    else if (i === lastDiscard) bgColor = "#f4a261";
-    else if (arr[i] === "discarded") bgColor = "#e63946";
-
-    return {
-      n: i, x: i % cols, y: Math.floor(i / cols), state: arr[i],
-      color: bgColor, textColor: i < 2 ? "#333" : "white" 
-    };
-  });
-
-  return html`
-    <div style="margin-top:15px;">
-      ${Plot.plot({
-        height: Math.ceil(max / cols) * 35 + 20, margin: 10,
-        x: { axis: null }, y: { axis: null, reverse: true }, color: { type: "identity" }, 
-        marks: [
-          Plot.rect(grid, { x1: d => d.x - 0.45, x2: d => d.x + 0.45, y1: d => d.y - 0.45, y2: d => d.y + 0.45, fill: "color", stroke: "white", rx: 4 }),
-          Plot.text(grid, { x: "x", y: "y", text: "n", fill: "textColor", fontSize: 13, fontWeight: "bold" })
-        ]
-      })}
-      <div style="margin-top:15px; font-size: 1.1em; height: 1.5em;">
-        ${s.type === "prime" ? html`🔎 Probando primo <b>${currentPrime}</b>` : s.type === "discard" ? html`❌ ${lastDiscard} es múltiplo de <b>${currentPrime}</b>` : html`✅ Criba completada`}
-      </div>
-    </div>
-  `;
-}
+renderSieveState({ html, Plot, steps: steps2, stepIndex: step2, max: N2 })
 ```
 :::
 :::
@@ -548,102 +409,19 @@ System.out.println("Total: " + contadorPrimos + " números primos");
 ::: {.card-body}
 
 ```{ojs}
-//| echo: false
-viewof N4 = cleanSlider([10, 150], { value: 51, step: 1, label: "Valor N: " })
+viewof N4 = cleanSlider(Inputs, [10, 150], { value: 51, step: 1, label: "Valor N: " })
 ```
 
 ```{ojs}
-//| echo: false
-steps4 = {
-  const max = N4;
-  if (max < 3) return [{ type: "final", state: [] }];
-
-  const size = Math.floor((max - 3) / 2) + 1;
-  let state = Array(size).fill("candidate");
-
-  const out = [];
-
-  for (let i = 0; ; i++) {
-    let p = 2 * i + 3;
-    if (p * p > max) break;
-
-    if (state[i] === "candidate") {
-      out.push({ type: "prime", p, state: [...state] });
-
-      for (let mult = p * p; mult <= max; mult += 2 * p) {
-        let idx = (mult - 3) / 2; 
-        if (state[idx] === "candidate") {
-          state[idx] = "discarded";
-          out.push({ type: "discard", p, k: mult, state: [...state] });
-        }
-      }
-    }
-  }
-
-  out.push({ type: "final", state: [...state] });
-  return out;
-}
+steps4 = buildOddOnlySieveSteps(N4)
 ```
 
 ```{ojs}
-//| echo: false
-maxStep4 = steps4.length - 1
+viewof step4 = cleanSlider(Inputs, [0, steps4.length - 1], { value: 0, step: 1, label: "Paso de la criba: " })
 ```
 
 ```{ojs}
-//| echo: false
-viewof step4 = cleanSlider([0, maxStep4], { value: 0, step: 1, label: "Paso de la criba: " })
-```
-
-```{ojs}
-//| echo: false
-{
-  if (!steps4 || steps4.length === 0) return html`<div>Cargando...</div>`;
-
-  const safeStep = Math.min(step4, steps4.length - 1);
-  const s = steps4[safeStep];
-
-  if (!s) return html`<div>Cargando...</div>`;
-
-  const arr = s.state;
-  const max = N4;
-  
-  const size = Math.floor((max - 3) / 2) + 1;
-  const cols = Math.ceil(Math.sqrt(size)); 
-  
-  const currentPrime = s.p;
-  const lastDiscard = s.k;
-
-  const grid = Array.from({ length: size }, (_, i) => {
-    const num = 2 * i + 3; 
-    let bgColor = "#2a9d8f"; 
-    
-    if (num === currentPrime) bgColor = "#457b9d";
-    else if (num === lastDiscard) bgColor = "#f4a261";
-    else if (arr[i] === "discarded") bgColor = "#e63946";
-
-    return {
-      idx: i, n: num, x: i % cols, y: Math.floor(i / cols), state: arr[i],
-      color: bgColor, textColor: "white" 
-    };
-  });
-
-  return html`
-    <div style="margin-top:15px;">
-      ${Plot.plot({
-        height: Math.ceil(size / cols) * 35 + 20, margin: 10,
-        x: { axis: null }, y: { axis: null, reverse: true }, color: { type: "identity" }, 
-        marks: [
-          Plot.rect(grid, { x1: d => d.x - 0.45, x2: d => d.x + 0.45, y1: d => d.y - 0.45, y2: d => d.y + 0.45, fill: "color", stroke: "white", rx: 4 }),
-          Plot.text(grid, { x: "x", y: "y", text: "n", fill: "textColor", fontSize: 13, fontWeight: "bold" })
-        ]
-      })}
-      <div style="margin-top:15px; font-size: 1.1em; height: 1.5em;">
-        ${s.type === "prime" ? html`🔎 Probando primo impar <b>${currentPrime}</b>` : s.type === "discard" ? html`❌ ${lastDiscard} es múltiplo impar de <b>${currentPrime}</b>` : html`✅ Criba completada`}
-      </div>
-    </div>
-  `;
-}
+renderSieveState({ html, Plot, steps: steps4, stepIndex: step4, max: N4, oddOnly: true })
 ```
 :::
 :::
