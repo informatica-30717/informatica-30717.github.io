@@ -54,9 +54,13 @@ Por eso, un modelo BIM no es simplemente un modelo 3D. Además de la geometría,
 
 Esta forma de trabajo resulta especialmente útil porque reúne en un mismo entorno información que, de otro modo, estaría dispersa entre planos, tablas, memorias y documentos técnicos. En lugar de revisar cada pieza por separado, BIM permite entender mejor el edificio como un sistema de objetos conectados entre sí.
 
+---
+
 Esa utilidad se aprecia sobre todo cuando se piensa en el **ciclo de vida** de la edificación. Un edificio pasa por distintas etapas: diseño, construcción, uso, mantenimiento, reforma e incluso desmontaje o sustitución. En cada una de ellas se necesita información distinta, aunque muchas veces está relacionada. BIM permite que una misma base de información acompañe al edificio a lo largo de ese proceso, adaptándose a las necesidades de cada fase: puede servir para diseñar y coordinar, para detectar interferencias antes de construir, para planificar la obra o para gestionar después el mantenimiento y la explotación.
 
 ![Ciclo de vida de la edificación y papel del modelo BIM. Fuente: *ideCAD*.](../resources/practica8/images/bim_lifecycle.png){#fig-bim-cycle width=80%}
+
+---
 
 Como curiosidad, existen técnicas de captura de la realidad que también pueden integrarse en este tipo de flujos. Una de las más conocidas es **LiDAR** (*Light Detection and Ranging*), que permite obtener nubes de puntos tridimensionales del edificio o de su entorno a partir de mediciones láser.
 
@@ -277,6 +281,8 @@ createViewer('lidar-viewer-room',  '../resources/practica8/models/room_500k.ply'
 *Visor interactivo de nubes de puntos disponible en la versión HTML.*
 :::
 
+---
+
 En el siguiente vídeo de *Autodesk Building Solutions* se explica de forma sencilla qué es BIM y qué ventajas aporta a lo largo del ciclo de vida de un edificio:
 
 ::: {.content-visible unless-format="pdf"}
@@ -288,6 +294,8 @@ En el siguiente vídeo de *Autodesk Building Solutions* se explica de forma senc
 ::: {.content-visible when-format="pdf"}
 [Ver el vídeo en YouTube: *What Is BIM?*](https://www.youtube.com/watch?v=suNadRnHy-U)
 :::
+
+---
 
 ::: {.callout-note}
 ## Idea clave
@@ -316,6 +324,8 @@ El primer paso es abrir `Duplex.ifc` en **BIMvision**. El objetivo no es todaví
 
 Empieza por recorrer la planta baja y la planta superior, y acostúmbrate a seleccionar elementos individuales. Fíjate en cómo el visor muestra sus nombres, identificadores y propiedades básicas.
 :::
+
+---
 
 ::: {.callout-note}
 ## Encuentra elementos
@@ -357,6 +367,8 @@ Podeis observar cómo la interfaz nos muestra que ***Edificio*** es una subclase
 
 ![Jerarquía de clases y detalle de una clase en Protégé.](../resources/practica8/images/protege_overview.png){#fig-protege}
 
+---
+
 Puedes encontrar una pequeña introducción a la interfaz de *Protégé* en el siguiente vídeo, aunque no está orientado a nuestro mismo modelo, por lo que no es necesario seguirlo al pie de la letra:
 
 ::: {.content-visible unless-format="pdf"}
@@ -369,6 +381,8 @@ Puedes encontrar una pequeña introducción a la interfaz de *Protégé* en el s
 [Ver el vídeo en Google Drive: introducción a Protégé](https://drive.google.com/file/d/1eHHxYrJRiQZni_7KKrtRFqu5KEwk9omW/view)
 :::
 
+---
+
 ::: {.callout-tip}
 ## Si faltan importaciones
 
@@ -376,6 +390,8 @@ En algunas versiones de *Protégé*, las ontologías importadas se descargan aut
 :::
 
 También debes tener en cuenta que muchas entidades tienen **etiquetas en varios idiomas**. Dependiendo de la configuración de tu equipo, *Protégé* puede mostrar nombres en castellano o en inglés. Por ejemplo, la clase `Edificio ‐ http://w3id.org/bot/Building` tiene etiquetas `Building`, `Edificio`, etc. En este guion se asume que las etiquetas se muestran en castellano siempre que sea posible.
+
+---
 
 ### Qué debes localizar
 
@@ -415,6 +431,8 @@ Para ello, activa un razonador desde el menú superior **Reasoner**. En esta pr�
 
 Si en algún momento actualizamos la ontología, tendremos que utilizar la opción **Synchronize reasoner** para que el razonador actualice su información y pueda responder a las consultas correctamente.
 
+---
+
 ### Consultas propuestas
 
 A través de la pestaña ***DL Query***, recupera las instancias de la clase que representa las **ventanas**. Pinchando en alguna de ellas, puedes ver los valores de las propiedades (tanto los originales como los inferidos por el razonador, si los hubiera).
@@ -431,6 +449,8 @@ Con el razonador activo, realiza las siguientes comprobaciones:
 
 En muchas instalaciones, las consultas se escriben con los nombres cortos en inglés, por ejemplo `Window`, aunque en la interfaz veas etiquetas en castellano.
 :::
+
+---
 
 ::: {.callout-tip collapse="true"}
 ## Ejemplo orientativo: consulta sobre escaleras
@@ -456,6 +476,8 @@ Esa expresión representa el conjunto de espacios que tienen al menos un element
 A medidas que escribes la consulta, *Protégé* te ofrece sugerencias de autocompletado para las clases y propiedades. Si no recuerdas el nombre exacto, puedes aprovechar esa función para construir la consulta. Si no aparecen las sugerencias a medida que escribes, puedes pulsar `Ctrl + Space` para forzar que se muestren.
 :::
 
+---
+
 ::: {.callout-note}
 ## Explora los resultados
 
@@ -474,6 +496,8 @@ En este ejercicio vamos a provocar una inconsistencia de forma controlada. La id
 
 En una ontología, una propiedad **funcional** es una propiedad que puede tener como máximo un valor para cada individuo. Por ejemplo, si la propiedad que representa la altura de una ventana se declara funcional, una misma ventana no debería tener dos alturas distintas. Si añadimos dos valores incompatibles, el razonador detectará que el modelo contiene una contradicción.
 
+---
+
 ### Pasos sugeridos
 
 1. Localiza la propiedad de datos que representa la altura.
@@ -487,6 +511,8 @@ En una ontología, una propiedad **funcional** es una propiedad que puede tener 
 
 Haz este ejercicio sobre una copia de trabajo del fichero si quieres conservar `Duplex.owl` sin cambios al terminar la práctica.
 :::
+
+---
 
 ::: {.callout-tip collapse="true"}
 ## Solución orientativa: inconsistencia
@@ -508,6 +534,8 @@ Haz este ejercicio sobre una copia de trabajo del fichero si quieres conservar `
 Puedes descargar ***BIMvision*** desde su [página oficial](https://bimvision.eu/es/descargar/). Tendrás que introducir tu correo electrónico para recibir el enlace de descarga y aceptar los términos de servicio. Una vez hecho recibirás un correo con el enlace para descargar el instalador. Sigue las instrucciones de instalación para completar el proceso. Al ejecutar el programa por primera vez, deberías ver algo como esto:
 
 ![Pantalla de bienvenida de BIMvision.](../resources/practica8/images/bimvision.png){#fig-bimvision}
+
+---
 
 ### Protégé
 

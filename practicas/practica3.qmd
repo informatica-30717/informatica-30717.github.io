@@ -153,6 +153,8 @@ $$
 
 El valor dentro de la raíz cuadrada, $b^2 - 4ac$, se llama **discriminante** ($\Delta$) y determina el número de soluciones reales que tiene la ecuación:
 
+---
+
 ::: {.callout-tip}
 ## Clases en Java
 
@@ -175,6 +177,8 @@ public class NombreDeLaClase {
 ### Clase 1: dos soluciones reales
 
 **Si $\Delta > 0$, la ecuación tiene dos soluciones reales distintas**, que se calculan con la fórmula general utilizando el símbolo $+$ para una raíz y el símbolo $-$ para la otra raíz.
+
+---
 
 ::: {.callout-note}
 ## Notas para resolver el problema
@@ -203,6 +207,8 @@ Utiliza la impresión por consola para mostrar los resultados de las soluciones,
 System.out.println("La solución es: " + x);
 ```
 :::
+
+---
 
 A continuación se muestra una posible solución en pseudocódigo:
 ```{.java}
@@ -256,9 +262,11 @@ Si $\Delta = 0$, la ecuación tiene una única solución real, que se calcula co
   - Si el discriminante es igual a cero:
     - Aplicar la fórmula para calcular la única solución.
     - Escribir la solución por pantalla.
-  - Si el discriminante es menor que cero:
+- Si el discriminante es menor que cero:
     - Escribir un texto indicando que no hay raíces.
 :::
+
+---
 
 ```{.java}
 Programa Raices2   { Funciona si hay raíces reales; si no, mensaje de error }
@@ -319,6 +327,8 @@ x_1 &= \frac{-b + i\sqrt{4ac - b^2}}{2a} = \frac{-b}{2a} + i\frac{\sqrt{4ac - b^
 x_2 &= \frac{-b - i\sqrt{4ac - b^2}}{2a} = \frac{-b}{2a} - i\frac{\sqrt{4ac - b^2}}{2a}
 \end{aligned}
 $$
+
+---
 
 ::: {.callout-note}
 ## Notas para resolver el problema
