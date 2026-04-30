@@ -5,6 +5,7 @@ import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
+import java.awt.GridLayout;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -22,7 +23,8 @@ import renderer.RenderMode;
  * Esto incluye si es raster o malla de alambre, y si se utiliza
  * backface culling o no.
  *
- * @author Adolfo
+ * @author Adolfo Muñoz Orbañanos
+ * @author Alfonso López Ruiz
  */
 public class PanelModoVisor extends JPanel implements ActionListener {
 	private static final long serialVersionUID = 1241500050560512894L;
@@ -30,6 +32,7 @@ public class PanelModoVisor extends JPanel implements ActionListener {
 	JComboBox<String> modeBox;
 	JComboBox<String> qualityBox;
 	JCheckBox backfaceCullingBox;
+	JCheckBox debugBackfaceCullingBox;
 	PanelVisor viewportPanel;
 
 	/**
@@ -52,7 +55,7 @@ public class PanelModoVisor extends JPanel implements ActionListener {
 		constraints.insets = new Insets(0, 0, 10, 0);
 
 		JTextArea description = InterfazTema.crearTextoSecundario(
-			"Alterna modos de render y activa el backface culling.",
+			"Alterna modos de render, resolución y backface culling.",
 			true);
 		description.setMaximumSize(new Dimension(Integer.MAX_VALUE, Integer.MAX_VALUE));
 		constraints.gridy = 0;
@@ -92,9 +95,21 @@ public class PanelModoVisor extends JPanel implements ActionListener {
 		backfaceCullingBox.setForeground(new Color(0xC2CCD6));
 		backfaceCullingBox.setSelected(viewportPanel.backfaceCulling());
 		backfaceCullingBox.addActionListener(this);
+
+		debugBackfaceCullingBox = new JCheckBox("Ver descartadas");
+		InterfazTema.estilizarCheckBox(debugBackfaceCullingBox, true);
+		debugBackfaceCullingBox.setForeground(new Color(0xC2CCD6));
+		debugBackfaceCullingBox.setSelected(viewportPanel.depuracionBackfaceCulling());
+		debugBackfaceCullingBox.setToolTipText("Muestra solo las caras descartadas cuando el culling está activo.");
+		debugBackfaceCullingBox.addActionListener(this);
+
+		JPanel toggleRow = new JPanel(new GridLayout(1, 2, 12, 0));
+		toggleRow.setOpaque(false);
+		toggleRow.add(backfaceCullingBox);
+		toggleRow.add(debugBackfaceCullingBox);
 		constraints.gridy = 4;
 		constraints.insets = new Insets(6, 0, 0, 0);
-		add(backfaceCullingBox, constraints);
+		add(toggleRow, constraints);
 	}
 
 	public Dimension getMaximumSize()
@@ -113,6 +128,7 @@ public class PanelModoVisor extends JPanel implements ActionListener {
 		this.viewportPanel.modificarModoRender(RenderMode.fromIndex(modeBox.getSelectedIndex()));
 		viewportPanel.modificarEscalaRender(qualityBox.getSelectedIndex() + 1);
 		viewportPanel.modificarBackfaceCulling(backfaceCullingBox.isSelected());
+		viewportPanel.modificarDepuracionBackfaceCulling(debugBackfaceCullingBox.isSelected());
 		viewportPanel.repaint();
 	}
 }

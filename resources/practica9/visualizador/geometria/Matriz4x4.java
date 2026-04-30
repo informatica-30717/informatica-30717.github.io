@@ -23,7 +23,8 @@ package geometria;
  * Implementacion de una matriz cuadrada de cuatro dimensiones
  * 
  * @author <a href="mailto:jacob.dreyer@geosoft.no">Jacob Dreyer</a>
- * @author Modificaciones de Adolfo
+ * @author Modificaciones de Adolfo Muñoz Orbañanos
+ * @author Alfonso López Ruiz
  */   
 public class Matriz4x4 
 {

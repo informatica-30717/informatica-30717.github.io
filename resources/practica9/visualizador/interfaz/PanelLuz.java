@@ -13,7 +13,8 @@ import javax.swing.SpinnerNumberModel;
  * Esta clase define un panel que se puede poner como interfaz grafico
  * que contiene y permite editar toda la iluminacion de la escena
  * 
- * @author Adolfo
+ * @author Adolfo Muñoz Orbañanos
+ * @author Alfonso López Ruiz
  */
 public class PanelLuz extends JPanel {
 

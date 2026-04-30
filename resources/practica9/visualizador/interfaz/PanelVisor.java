@@ -24,7 +24,8 @@ import renderer.Shader;
  * que permite visualizar un objeto, ya sea en malla de alambre
  * o raster
  * 
- * @author Adolfo
+ * @author Adolfo Muñoz Orbañanos
+ * @author Alfonso López Ruiz
  */
 public class PanelVisor extends JPanel {
 	public static interface CameraListener {
@@ -62,6 +63,7 @@ public class PanelVisor extends JPanel {
 	private boolean cameraInteracting;
 	private long lastRenderNanos;
 	private int lastRenderedFaces;
+	private int lastDiscardedFaces;
 	private int projectionWidth;
 	private int projectionHeight;
 	private int[] scanlineXIni;
@@ -104,6 +106,7 @@ public class PanelVisor extends JPanel {
 
 	//Different modes
 	boolean _backfaceCulling; //Activates / deactivates backface culling
+	private boolean debugBackfaceCulling;
 	
 	/**
 	 * Modifica el material de Phong del objeto para dibujar la escena.
@@ -218,6 +221,15 @@ public class PanelVisor extends JPanel {
 	{
 		_backfaceCulling = activated;
 		marcarEscenaSucia();
+		actualizarTituloVentana();
+		repaint();
+	}
+
+	public void modificarDepuracionBackfaceCulling(boolean activated)
+	{
+		debugBackfaceCulling = activated;
+		marcarEscenaSucia();
+		actualizarTituloVentana();
 		repaint();
 	}
 
@@ -234,6 +246,11 @@ public class PanelVisor extends JPanel {
 	public boolean backfaceCulling()
 	{
 		return _backfaceCulling;
+	}
+
+	public boolean depuracionBackfaceCulling()
+	{
+		return debugBackfaceCulling;
 	}
 	
 	/**
@@ -258,6 +275,7 @@ public class PanelVisor extends JPanel {
 	    sceneDirty = true;
 	    statusMessage = "Arrastra para orbitar. Mayús o botón derecho desplazan. Rueda para zoom.";
 	    _backfaceCulling=false;
+	    debugBackfaceCulling=false;
 	    setFocusable(true);
 	    configurarAtajos();
 	    configurarInteraccionCamara();
@@ -766,13 +784,91 @@ public class PanelVisor extends JPanel {
 	 * @param cara
 	 * @return true si hay que pintar la cara
 	 */
-	private boolean considerarCara(geometria.Cara cara)
+	private boolean caraRenderable(geometria.Cara cara)
 	{
-		if (!this._backfaceCulling) return true;
-		else
+		if ((cara == null) || (cara.vertices() == null) || (cara.vertices().length < 3))
 		{
-			geometria.Direccion d = new geometria.Direccion(cara.centro(),this.posicionCamara());
-			return d.aVector4().productoEscalar(cara.normal().aVector4()) > 0;
+			return false;
+		}
+
+		for (int i = 0; i < cara.vertices().length; i++)
+		{
+			if ((cara.vertice(i) == null) || (cara.vertice(i).punto == null))
+			{
+				return false;
+			}
+		}
+
+		return true;
+	}
+
+	private boolean caraDescartadaPorBackfaceCulling(geometria.Cara cara, geometria.Punto cameraPosition)
+	{
+		if (!_backfaceCulling || !caraRenderable(cara))
+		{
+			return false;
+		}
+
+		geometria.Direccion d = new geometria.Direccion(cara.centro(), cameraPosition);
+		return d.aVector4().productoEscalar(cara.normal().aVector4()) <= 0;
+	}
+
+	private boolean considerarCara(geometria.Cara cara, geometria.Punto cameraPosition)
+	{
+		return caraRenderable(cara) && !caraDescartadaPorBackfaceCulling(cara, cameraPosition);
+	}
+
+	private boolean mostrandoSoloCarasDescartadas()
+	{
+		return debugBackfaceCulling && _backfaceCulling;
+	}
+
+	private void pintarSoloCarasDescartadas(geometria.Cara[] facets,
+			geometria.Punto cameraPosition,
+			double cameraX,
+			double cameraY,
+			double cameraZ)
+	{
+		lastRenderedFaces = 0;
+		lastDiscardedFaces = 0;
+		if (facets == null)
+		{
+			return;
+		}
+		Graphics2D wireframeGraphics = null;
+		if (mallaAlambre())
+		{
+			wireframeGraphics = renderBuffers.colorBuffer().createGraphics();
+			wireframeGraphics.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+			wireframeGraphics.setColor(new Color(35, 45, 55));
+		}
+		
+		for (int i = 0; i < facets.length; i++)
+		{
+			if (!caraRenderable(facets[i]))
+			{
+				continue;
+			}
+			if (caraDescartadaPorBackfaceCulling(facets[i], cameraPosition))
+			{
+				if (wireframeGraphics != null)
+				{
+					pintarCaraMallaAlambre(wireframeGraphics, facets[i]);
+				}
+				else
+				{
+					pintarCaraRaster(facets[i], cameraX, cameraY, cameraZ);
+				}
+				lastDiscardedFaces++;
+			}
+			else
+			{
+				lastRenderedFaces++;
+			}
+		}
+		if (wireframeGraphics != null)
+		{
+			wireframeGraphics.dispose();
 		}
 	}
 	
@@ -784,19 +880,37 @@ public class PanelVisor extends JPanel {
 	private void pintarRaster()
 	{
 		  renderBuffers.clearGradient(0xfff7f1e7, 0xffdfe9f3, FAR_DEPTH);
+		  
 		  geometria.Punto cameraPosition = posicionCamara();
 		  double cameraX = cameraPosition.x();
 		  double cameraY = cameraPosition.y();
 		  double cameraZ = cameraPosition.z();
 
 		  geometria.Cara[] facets=_objeto.caras();	
+		  if (mostrandoSoloCarasDescartadas())
+		  {
+			  pintarSoloCarasDescartadas(facets, cameraPosition, cameraX, cameraY, cameraZ);
+			  if (renderMode == RenderMode.DEPTH)
+			  {
+				  colorearProfundidad();
+			  }
+			  postProcess.apply(renderBuffers, renderMode);
+			  return;
+		  }
 		  lastRenderedFaces = 0;
+		  lastDiscardedFaces = 0;
 		                 
 		  if (facets!=null)
 		  {
 			  for(int i=0;i<facets.length;i++)
 			  {
-				  if (considerarCara(facets[i]))
+				  if (caraDescartadaPorBackfaceCulling(facets[i], cameraPosition))
+				  {
+					  lastDiscardedFaces++;
+					  continue;
+				  }
+				  
+				  if (considerarCara(facets[i], cameraPosition))
 				  {
 					  pintarCaraRaster(facets[i], cameraX, cameraY, cameraZ);
 					  lastRenderedFaces++;
@@ -808,6 +922,7 @@ public class PanelVisor extends JPanel {
 		  {
 			  colorearProfundidad();
 		  }
+		  
 		  postProcess.apply(renderBuffers, renderMode);
 	}
 	
@@ -819,6 +934,7 @@ public class PanelVisor extends JPanel {
 	private void pintarEjesMallaAlambre(Graphics2D g2)
 	{
 		  g2.setStroke(new BasicStroke(2.0f));
+		  
 		  double[] o = new double[3];
 		  double[] x = new double[3];
 		  double[] y = new double[3];
@@ -873,14 +989,24 @@ public class PanelVisor extends JPanel {
 	private void pintarMallaAlambre()
 	{
 		  renderBuffers.clearGradient(0xfffaf5ef, 0xffdfe7ef, FAR_DEPTH);
+		  geometria.Punto cameraPosition = posicionCamara();
+		  double cameraX = cameraPosition.x();
+		  double cameraY = cameraPosition.y();
+		  double cameraZ = cameraPosition.z();
+		  geometria.Cara[] facets=_objeto.caras();
+		  if (mostrandoSoloCarasDescartadas())
+		  {
+			  pintarSoloCarasDescartadas(facets, cameraPosition, cameraX, cameraY, cameraZ);
+			  return;
+		  }
+
 		  Graphics2D g2 = renderBuffers.colorBuffer().createGraphics();
 		  g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
 		  g2.setColor(new Color(35, 45, 55));
 		  lastRenderedFaces = 0;
+		  lastDiscardedFaces = 0;
 
 		  pintarEjesMallaAlambre(g2);
-		  
-		  geometria.Cara[] facets=_objeto.caras();
 
 		  if (facets!=null)
 		  {
@@ -888,7 +1014,12 @@ public class PanelVisor extends JPanel {
 			  g2.setColor(new Color(35, 45, 55));
 			  for(i=0;i<facets.length;i++)
 			  {
-				  if (considerarCara(facets[i]))
+				  if (caraDescartadaPorBackfaceCulling(facets[i], cameraPosition))
+				  {
+					  lastDiscardedFaces++;
+					  continue;
+				  }
+				  if (considerarCara(facets[i], cameraPosition))
 				  {
 					  pintarCaraMallaAlambre(g2,facets[i]);
 					  lastRenderedFaces++;
@@ -975,7 +1106,7 @@ public class PanelVisor extends JPanel {
 		{
 			g2.setRenderingHint(RenderingHints.KEY_TEXT_ANTIALIASING, RenderingHints.VALUE_TEXT_ANTIALIAS_ON);
 			g2.setColor(new Color(24, 32, 40, 170));
-			g2.fillRoundRect(18, 18, 252, 84, 22, 22);
+			g2.fillRoundRect(18, 18, 320, 108, 22, 22);
 			g2.setColor(new Color(255, 247, 236));
 			g2.setFont(g2.getFont().deriveFont(Font.BOLD, 14.0f));
 			g2.drawString("Modo: " + renderMode.label(), 34, 43);
@@ -985,6 +1116,20 @@ public class PanelVisor extends JPanel {
 				"Frame: " + String.format(java.util.Locale.US, "%.1f ms", lastRenderNanos / 1_000_000.0),
 				34,
 				85);
+			String faceStats;
+			if (mostrandoSoloCarasDescartadas())
+			{
+				faceStats = "Mostrando descartadas: " + lastDiscardedFaces + "/" + _objeto.numeroCaras();
+			}
+			else
+			{
+				faceStats = "Caras visibles: " + lastRenderedFaces + "/" + _objeto.numeroCaras();
+				if (_backfaceCulling)
+				{
+					faceStats += " | descartadas: " + lastDiscardedFaces;
+				}
+			}
+			g2.drawString(faceStats, 34, 106);
 			return;
 		}
 
@@ -1202,6 +1347,11 @@ public class PanelVisor extends JPanel {
 				title.append(" | ").append(renderScale).append("x");
 				title.append(" | Outline ").append(postProcess.outlineEnabled() ? "on" : "off");
 				title.append(" | Vignette ").append(postProcess.vignetteEnabled() ? "on" : "off");
+			}
+			title.append(" | BFC ").append(_backfaceCulling ? "on" : "off");
+			if (debugBackfaceCulling)
+			{
+				title.append(mostrandoSoloCarasDescartadas() ? " | Solo descartadas" : " | Debug caras");
 			}
 			((JFrame) window).setTitle(title.toString());
 		}

@@ -30,7 +30,8 @@ import javax.swing.SwingConstants;
 /**
  * Contiene la ventana principal del sistema
  *
- * @author Adolfo
+ * @author Adolfo Muñoz Orbañanos
+ * @author Alfonso López Ruiz
  */
 public class VentanaPrincipal extends JFrame implements ActionListener, ComponentListener {
 	private static class SidebarPanel extends JPanel implements Scrollable {
@@ -247,7 +248,7 @@ public class VentanaPrincipal extends JFrame implements ActionListener, Componen
 	private void cargarModeloPorDefecto()
 	{
 		File objectDirectory = new File("objetos_3d");
-		File preferredModel = new File(objectDirectory, "teapot.obj");
+		File preferredModel = new File(objectDirectory, "trex.obj");
 		File modelToLoad = null;
 		if (preferredModel.exists())
 		{

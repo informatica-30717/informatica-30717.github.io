@@ -4,7 +4,8 @@ package geometria;
  * Representa una direccion normal, es decir, una direccion cuya longitud es
  * siempre 1
  * 
- * @author Adolfo
+ * @author Adolfo Muñoz Orbañanos
+ * @author Alfonso López Ruiz
  */
 public class Normal {
 	private Direccion d_;

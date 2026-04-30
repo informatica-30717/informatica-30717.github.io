@@ -21,7 +21,8 @@ package geometria;
  * Vector de 4 elementos para trabajar con Matriz4x4
  * 
  * @author <a href="mailto:jacob.dreyer@geosoft.no">Jacob Dreyer</a>
- * @author Adolfo
+ * @author Adolfo Muñoz Orbañanos
+ * @author Alfonso López Ruiz
  */   
 public class Vector4
 {

@@ -3,7 +3,8 @@ package geometria;
 /**
  * Esta clase representa un punto tridimensional en el espacio
  * 
- * @author Adolfo
+ * @author Adolfo Muñoz Orbañanos
+ * @author Alfonso López Ruiz
  */
 public class Punto {
 

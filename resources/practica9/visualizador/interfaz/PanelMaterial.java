@@ -13,7 +13,8 @@ import javax.swing.SpinnerNumberModel;
  * Esta clase define un panel que se puede poner como interfaz grafico
  * que contiene y permite editar el material de un objeto
  * 
- * @author Adolfo
+ * @author Adolfo Muñoz Orbañanos
+ * @author Alfonso López Ruiz
  */
 public class PanelMaterial extends JPanel {
 

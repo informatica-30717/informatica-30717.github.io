@@ -3,7 +3,8 @@ package escena;
 /**
  * Clase que contiene la definicion de la iluminacion de una escena
  * 
- * @author Adolfo
+ * @author Adolfo Muñoz Orbañanos
+ * @author Alfonso López Ruiz
  */
 public class Luz {
 	Color _color;

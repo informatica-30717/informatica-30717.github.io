@@ -20,7 +20,8 @@ import javax.swing.event.ChangeListener;
  * Esta clase representa a un cuadro de dialogo que gracias
  * a PanelMaterial edita el material del objeto del PanelVisor
  * 
- * @author Adolfo
+ * @author Adolfo Muñoz Orbañanos
+ * @author Alfonso López Ruiz
  */
 public class DialogoMaterial extends JDialog 
 							implements ActionListener, ChangeListener {

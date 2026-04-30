@@ -4,7 +4,8 @@ package escena;
  * Clase que contiene la definicion de una camara a traves de la que se
  * observa una escena
  * 
- * @author Adolfo
+ * @author Adolfo Muñoz Orbañanos
+ * @author Alfonso López Ruiz
  */
 public class Camara {
 	private static final double DISTANCIA_MINIMA = 5.0;

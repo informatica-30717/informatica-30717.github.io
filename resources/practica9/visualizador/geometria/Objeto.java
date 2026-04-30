@@ -1,11 +1,13 @@
 package geometria;
 import java.io.*;
+import java.util.Arrays;
 import java.util.Scanner;
 
 /**
  * Representa un objeto que se puede cargar a partir de un archivo y pintar.
  * 
- * @author Adolfo
+ * @author Adolfo Muñoz Orbañanos
+ * @author Alfonso López Ruiz
  */
 public class Objeto {
 	private Punto[] puntos;
@@ -19,10 +21,42 @@ public class Objeto {
 	 */
 	private void actualizarCentro()
 	{
+		if ((puntos == null) || (puntos.length == 0))
+		{
+			_centro = new Punto(0.0,0.0,0.0);
+			return;
+		}
+
 		Vector4 centro = new Vector4(0.0,0.0,0.0,0.0);
+		boolean foundPoint = false;
 		for (int i=0;i<puntos.length;i++)
-		    centro.sumar(puntos[i].aVector4());
-		_centro = centro.aPunto();
+		{
+			if (puntos[i] == null)
+			{
+				continue;
+			}
+			centro.sumar(puntos[i].aVector4());
+			foundPoint = true;
+		}
+		_centro = foundPoint ? centro.aPunto() : new Punto(0.0,0.0,0.0);
+	}
+
+	private int primerPuntoValido()
+	{
+		if (puntos == null)
+		{
+			return -1;
+		}
+
+		for (int i = 0; i < puntos.length; i++)
+		{
+			if (puntos[i] != null)
+			{
+				return i;
+			}
+		}
+
+		return -1;
 	}
 	
 	/**
@@ -36,20 +70,25 @@ public class Objeto {
 
 	public double tamanoAabb()
 	{
-		if ((puntos == null) || (puntos.length == 0))
+		int firstPointIndex = primerPuntoValido();
+		if (firstPointIndex < 0)
 		{
 			return 1.0;
 		}
 
-		double minX = puntos[0].x();
-		double minY = puntos[0].y();
-		double minZ = puntos[0].z();
+		double minX = puntos[firstPointIndex].x();
+		double minY = puntos[firstPointIndex].y();
+		double minZ = puntos[firstPointIndex].z();
 		double maxX = minX;
 		double maxY = minY;
 		double maxZ = minZ;
 
-		for (int i = 1; i < puntos.length; i++)
+		for (int i = firstPointIndex + 1; i < puntos.length; i++)
 		{
+			if (puntos[i] == null)
+			{
+				continue;
+			}
 			double x = puntos[i].x();
 			double y = puntos[i].y();
 			double z = puntos[i].z();
@@ -69,20 +108,25 @@ public class Objeto {
 
 	public double radioAabb()
 	{
-		if ((puntos == null) || (puntos.length == 0))
+		int firstPointIndex = primerPuntoValido();
+		if (firstPointIndex < 0)
 		{
 			return 0.5;
 		}
 
-		double minX = puntos[0].x();
-		double minY = puntos[0].y();
-		double minZ = puntos[0].z();
+		double minX = puntos[firstPointIndex].x();
+		double minY = puntos[firstPointIndex].y();
+		double minZ = puntos[firstPointIndex].z();
 		double maxX = minX;
 		double maxY = minY;
 		double maxZ = minZ;
 
-		for (int i = 1; i < puntos.length; i++)
+		for (int i = firstPointIndex + 1; i < puntos.length; i++)
 		{
+			if (puntos[i] == null)
+			{
+				continue;
+			}
 			double x = puntos[i].x();
 			double y = puntos[i].y();
 			double z = puntos[i].z();
@@ -112,7 +156,20 @@ public class Objeto {
 
 	public int numeroVertices()
 	{
-		return puntos == null ? 0 : puntos.length;
+		if (puntos == null)
+		{
+			return 0;
+		}
+
+		int validPoints = 0;
+		for (int i = 0; i < puntos.length; i++)
+		{
+			if (puntos[i] != null)
+			{
+				validPoints++;
+			}
+		}
+		return validPoints;
 	}
 
 	public int numeroCaras()
@@ -152,9 +209,17 @@ public class Objeto {
 		
 		for (p=0;p<puntos.length;p++)
 		{
+			if (puntos[p] == null)
+			{
+				continue;
+			}
 			//Buscamos el punto p en todos los vertices de todas las caras
 			for (f=0;f<_caras.length;f++)
 			{
+				if (_caras[f] == null)
+				{
+					continue;
+				}
 				for (v=0;v<_caras[f].vertices().length;v++)
 				{
 					//Si lo encontramos, entonces consideramos esta cara para la normal
@@ -195,8 +260,16 @@ public class Objeto {
 		//Copiamos las normales temporales en nuestra estructura de objeto
 		for (p=0;p<puntos.length;p++)
 		{
+			if (puntos[p] == null)
+			{
+				continue;
+			}
 			for (f=0;f<_caras.length;f++)
 			{
+				if (_caras[f] == null)
+				{
+					continue;
+				}
 				for (v=0;v<_caras[f].vertices().length;v++)
 				{
 					if ((_caras[f].vertice(v).punto == puntos[p])
@@ -207,6 +280,35 @@ public class Objeto {
 				}
 			}
 		}
+	}
+
+	private int resolverIndiceObj(String indexToken, int total)
+	{
+		if ((indexToken == null) || indexToken.isEmpty() || (total <= 0))
+		{
+			return -1;
+		}
+
+		int index = Integer.parseInt(indexToken);
+		if (index > 0)
+		{
+			index--;
+		}
+		else if (index < 0)
+		{
+			index = total + index;
+		}
+		else
+		{
+			return -1;
+		}
+
+		if ((index < 0) || (index >= total))
+		{
+			return -1;
+		}
+
+		return index;
 	}
 	
 	/**
@@ -225,9 +327,29 @@ public class Objeto {
 		if (sc.hasNext()) s3=sc.next();
 		Punto p = null;
 		Normal n = null;
-		if (!(s1.isEmpty())) p=puntos[Integer.parseInt(s1)-1];
-		if (!(s3.isEmpty())) n=normales[Integer.parseInt(s3)-1];
+		int pointIndex = resolverIndiceObj(s1, puntos == null ? 0 : puntos.length);
+		int normalIndex = resolverIndiceObj(s3, normales == null ? 0 : normales.length);
+		if (pointIndex >= 0) p=puntos[pointIndex];
+		if (normalIndex >= 0) n=normales[normalIndex];
 		return new Vertice(p,n);
+	}
+
+	private boolean caraValida(Vertice[] facetvertices)
+	{
+		if ((facetvertices == null) || (facetvertices.length < 3))
+		{
+			return false;
+		}
+
+		for (int i = 0; i < facetvertices.length; i++)
+		{
+			if ((facetvertices[i] == null) || (facetvertices[i].punto == null))
+			{
+				return false;
+			}
+		}
+
+		return true;
 	}
 	
 	/**
@@ -244,22 +366,27 @@ public class Objeto {
 	    BufferedReader in = new BufferedReader(new FileReader(filename));
 	    String line;
 	    while ((line = in.readLine()) != null) {
-	    	if (!line.isEmpty())
+	    	line = line.trim();
+	    	if (line.isEmpty() || line.startsWith("#"))
 	    	{
-	        if (line.charAt(0) == 'v')
+	    		continue;
+	    	}
+	        if (line.startsWith("vn ") || line.startsWith("vn\t"))
 	        {
-	            if (line.charAt(1) == 'n')
-	                nn++;
-	            else if (line.charAt(1) == 't')
-	                nt++;
-	            else
-	                nv++;
+	            nn++;
 	        }
-	        else if (line.charAt(0) == 'f')
+	        else if (line.startsWith("vt ") || line.startsWith("vt\t"))
+	        {
+	            nt++;
+	        }
+	        else if (line.startsWith("v ") || line.startsWith("v\t"))
+	        {
+	            nv++;
+	        }
+	        else if (line.startsWith("f ") || line.startsWith("f\t"))
 	        {
 	            nf++;
 	        }
-	    	}
 	 	}
 	    in.close();	
 	    in = new BufferedReader(new FileReader(filename));
@@ -274,12 +401,11 @@ public class Objeto {
 
 	    while ((line = in.readLine()) != null)
 	    {
-	    if (!line.isEmpty())
+	    	line = line.trim();
+	    if (!line.isEmpty() && !line.startsWith("#"))
 	    {
-	        if (line.charAt(0) == 'v')
+	        if (line.startsWith("vn ") || line.startsWith("vn\t"))
 	        {
-	            if (line.charAt(1) == 'n')
-	            {	            	
 	            	Scanner sc = new Scanner(line.substring(2));
 	                double x, y, z;
 	    	    	x=Double.parseDouble(sc.next());
@@ -287,18 +413,18 @@ public class Objeto {
 	    	    	z=Double.parseDouble(sc.next());
 	                normales[nnormals] = new Normal(x,y,z);
 	                nnormals++;
-	            }
-	            else if (line.charAt(1) == 't')
-	            {
-//	            	Scanner sc = new Scanner(line.substring(2));
-//	                double u, v;
-//	                u=sc.nextDouble();
-//	                v=sc.nextDouble();
-//			texture_coordinates[ntextures] = add_texture_coordinates(SurfaceCoordinates(u,v));
-	                ntextures++;
-	            }
-	            else
-	            {
+	        }
+	        else if (line.startsWith("vt ") || line.startsWith("vt\t"))
+	        {
+//	        	Scanner sc = new Scanner(line.substring(2));
+//	            double u, v;
+//	            u=sc.nextDouble();
+//	            v=sc.nextDouble();
+//		texture_coordinates[ntextures] = add_texture_coordinates(SurfaceCoordinates(u,v));
+	            ntextures++;
+	        }
+	        else if (line.startsWith("v ") || line.startsWith("v\t"))
+	        {
 	            	Scanner sc = new Scanner(line.substring(1));
 	                double x, y, z;
 	    	    	x=Double.parseDouble(sc.next());
@@ -306,9 +432,8 @@ public class Objeto {
 	    	    	z=Double.parseDouble(sc.next());
 	                puntos[nvertices] = new Punto(x,y,z);
 	                nvertices++;
-	            }
 	        }
-	        else if (line.charAt(0) == 'f')
+	        else if (line.startsWith("f ") || line.startsWith("f\t"))
 	        {
             	Scanner sc = new Scanner(line.substring(1));
             	int nfacetvertices=0;
@@ -322,13 +447,27 @@ public class Objeto {
             		i++;
             	}
             	
-            	_caras[nfacets] = new Cara(facetvertices);
-            	
-            	nfacets++;
+	            	if (caraValida(facetvertices))
+	            	{
+	            		_caras[nfacets] = new Cara(facetvertices);
+	            		nfacets++;
+	            	}
 	        }
 	    }
 	    }
 	    in.close();
+	    if (nvertices < puntos.length)
+	    {
+	    	puntos = Arrays.copyOf(puntos, nvertices);
+	    }
+	    if (nnormals < normales.length)
+	    {
+	    	normales = Arrays.copyOf(normales, nnormals);
+	    }
+	    if (nfacets < _caras.length)
+	    {
+	    	_caras = Arrays.copyOf(_caras, nfacets);
+	    }
 	    this.construirNormales();
 	    this.actualizarCentro();
 	}

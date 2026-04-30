@@ -21,7 +21,8 @@ import javax.swing.event.ChangeListener;
  * Este panel contiene toda la informacion de la camara a traves de la cual
  * se ve la escena del PanelVisor
  * 
- * @author Adolfo
+ * @author Adolfo Muñoz Orbañanos
+ * @author Alfonso López Ruiz
  */
 public class PanelCamara extends JPanel
 		implements ChangeListener, ActionListener, PanelVisor.CameraListener {

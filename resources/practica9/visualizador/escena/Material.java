@@ -5,7 +5,8 @@ package escena;
  * 
  * Esta informacion no sirve en modo jaula de alambre
  * 
- * @author Adolfo
+ * @author Adolfo Muñoz Orbañanos
+ * @author Alfonso López Ruiz
  */
 public class Material {
 	private Color _kd;

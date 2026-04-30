@@ -13,7 +13,8 @@ import javax.swing.JSlider;
 /**
  * Panel de interfaz grafico que define un color en coordenadas RGB
  * 
- * @author Adolfo
+ * @author Adolfo Muñoz Orbañanos
+ * @author Alfonso López Ruiz
  */
 public class PanelColor extends JPanel {
 

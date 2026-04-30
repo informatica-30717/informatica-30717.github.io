@@ -4,7 +4,8 @@ package geometria;
  * Representa un vertice de un objeto, con su posicion en el espacio y
  * su direccion normal
  * 
- * @author Adolfo
+ * @author Adolfo Muñoz Orbañanos
+ * @author Alfonso López Ruiz
  */
 public class Vertice {
 	/**

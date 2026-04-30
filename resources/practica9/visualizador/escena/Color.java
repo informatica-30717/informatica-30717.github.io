@@ -7,7 +7,8 @@ package escena;
  * G - Green - Verde
  * B - Blue - Azul
  * 
- * @author Adolfo
+ * @author Adolfo Muñoz Orbañanos
+ * @author Alfonso López Ruiz
  */
 public class Color {
 	private double c_[];
