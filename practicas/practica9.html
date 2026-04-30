@@ -130,13 +130,7 @@ background-image: url(../resources/practica9/images/full.png);
 background-size: cover;
       }
 </style>
-<style>
-#title-block-header .quarto-title-banner {
-  --title-banner-height: 420px;
-  --title-banner-size: cover;
-  --title-banner-position-y: center;
-}
-</style>
+<link rel="stylesheet" href="../resources/practica9/css/practica9.css">
 
   <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
@@ -364,8 +358,8 @@ window.Quarto = {
   <li><a href="#matrices-de-transformación" id="toc-matrices-de-transformación" class="nav-link" data-scroll-target="#matrices-de-transformación"><span class="header-section-number">3.2</span> Matrices de transformación</a></li>
   <li><a href="#la-proyección-en-perspectiva" id="toc-la-proyección-en-perspectiva" class="nav-link" data-scroll-target="#la-proyección-en-perspectiva"><span class="header-section-number">3.3</span> La proyección en perspectiva</a></li>
   <li><a href="#modos-de-visualización" id="toc-modos-de-visualización" class="nav-link" data-scroll-target="#modos-de-visualización"><span class="header-section-number">3.4</span> Modos de visualización</a></li>
-  <li><a href="#renderizado-físicamente-realista" id="toc-renderizado-físicamente-realista" class="nav-link" data-scroll-target="#renderizado-físicamente-realista"><span class="header-section-number">3.5</span> Renderizado físicamente realista</a></li>
-  <li><a href="#iluminación-de-phong" id="toc-iluminación-de-phong" class="nav-link" data-scroll-target="#iluminación-de-phong"><span class="header-section-number">3.6</span> Iluminación de Phong</a></li>
+  <li><a href="#más-allá-de-phong-contexto-profesional" id="toc-más-allá-de-phong-contexto-profesional" class="nav-link" data-scroll-target="#más-allá-de-phong-contexto-profesional"><span class="header-section-number">3.5</span> Más allá de Phong: contexto profesional</a></li>
+  <li><a href="#iluminación-de-phong-el-núcleo-de-esta-práctica" id="toc-iluminación-de-phong-el-núcleo-de-esta-práctica" class="nav-link" data-scroll-target="#iluminación-de-phong-el-núcleo-de-esta-práctica"><span class="header-section-number">3.6</span> Iluminación de Phong: el núcleo de esta práctica</a></li>
   </ul></li>
   <li><a href="#conceptos-de-programación-orientada-a-objetos" id="toc-conceptos-de-programación-orientada-a-objetos" class="nav-link" data-scroll-target="#conceptos-de-programación-orientada-a-objetos"><span class="header-section-number">4</span> Conceptos de programación orientada a objetos</a></li>
   </ul>
@@ -383,17 +377,21 @@ window.Quarto = {
 </div>
 <section id="objetivos-de-la-práctica" class="level2" data-number="1">
 <h2 data-number="1" class="anchored" data-anchor-id="objetivos-de-la-práctica"><span class="header-section-number">1</span> Objetivos de la práctica</h2>
-<p>En esta práctica exploraremos un visualizador de objetos 3D desarrollado en Java, analizando tanto su interfaz como su código fuente. Al finalizar, deberías ser capaz de:</p>
+<p>En esta práctica vamos a trabajar con un visualizador 3D ya construido en Java. El objetivo principal no es aprender desde cero algoritmos avanzados de renderizado, sino abrir el proyecto, probarlo y entender cómo se relacionan la interfaz, la cámara, los materiales y la iluminación.</p>
+<p>La parte teórica sirve sobre todo para orientarte. No hace falta dominar todas las fórmulas para seguir la práctica ni para sacar partido al proyecto.</p>
+<p>Al finalizar, deberías ser capaz de:</p>
 <ul>
-<li>Comprender algunas técnicas de informática gráfica usadas en un visualizador de objetos.</li>
-<li>Gestionar aplicaciones Java complejas organizadas en paquetes en el entorno Eclipse.</li>
-<li>Identificar los distintos elementos del visualizador y relacionarlos con el código que los implementa.</li>
+<li>Importar y ejecutar en Eclipse un proyecto Java organizado en paquetes.</li>
+<li>Identificar en el código las clases principales del visualizador y relacionarlas con lo que aparece en pantalla.</li>
+<li>Experimentar con el modo <strong>Raster</strong> y observar cómo cambian el resultado la cámara, la luz y el material.</li>
+<li>Entender, a nivel conceptual, que Phong es una aproximación rápida y que en herramientas profesionales como Blender suelen emplearse modelos de iluminación más completos.</li>
 </ul>
 <p><strong>Entrega:</strong> un documento Word que responda a las cuestiones que aparecen a lo largo del guion.</p>
 <hr>
 </section>
 <section id="el-visualizador" class="level2" data-number="2">
 <h2 data-number="2" class="anchored" data-anchor-id="el-visualizador"><span class="header-section-number">2</span> El visualizador</h2>
+<hr>
 <section id="importando-el-visualizador" class="level3" data-number="2.1">
 <h3 data-number="2.1" class="anchored" data-anchor-id="importando-el-visualizador"><span class="header-section-number">2.1</span> Importando el visualizador</h3>
 <p>Descarga el archivo <code>visualizador.zip</code> y descomprímelo en la carpeta del <em>workspace</em> de Eclipse. Para importar el proyecto:</p>
@@ -403,6 +401,7 @@ window.Quarto = {
 <li>Elige la carpeta <code>PracticaVisualizador</code>.</li>
 </ol>
 <p>Alternativamente, puedes ir a <strong>File → New → Java project</strong>, elegir un nombre, marcar <strong>Create project from existing source</strong>, pulsar <strong>Browse</strong> y seleccionar la carpeta con el código.</p>
+<hr>
 </section>
 <section id="el-código-fuente-organización-por-paquetes" class="level3" data-number="2.2">
 <h3 data-number="2.2" class="anchored" data-anchor-id="el-código-fuente-organización-por-paquetes"><span class="header-section-number">2.2</span> El código fuente: organización por paquetes</h3>
@@ -414,6 +413,7 @@ window.Quarto = {
 <li><strong><code>interfaz</code></strong>: clases que representan el interfaz gráfico: la ventana principal y los paneles de visualización y configuración.</li>
 </ul>
 <p>Puedes ver estos paquetes en el explorador de paquetes de Eclipse, en la parte izquierda de la pantalla. En el sistema de archivos, cada paquete se corresponde con una carpeta dentro de la carpeta del proyecto.</p>
+<hr>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -429,6 +429,7 @@ window.Quarto = {
 <p><strong>¿Por qué esos cambios de código?</strong> Cuando desde un archivo quieres acceder a una clase de otro paquete, tienes dos opciones: o escribir <code>&lt;paquete&gt;.&lt;clase&gt;</code>, o bien poner al principio <code>import &lt;paquete&gt;.&lt;clase&gt;</code> y usar simplemente <code>&lt;clase&gt;</code>.</p>
 </div>
 </div>
+<hr>
 </section>
 <section id="el-código-fuente-una-clase-un-archivo-un-concepto" class="level3" data-number="2.3">
 <h3 data-number="2.3" class="anchored" data-anchor-id="el-código-fuente-una-clase-un-archivo-un-concepto"><span class="header-section-number">2.3</span> El código fuente: una clase, un archivo, un concepto</h3>
@@ -440,6 +441,7 @@ window.Quarto = {
 <li><strong><code>Normal</code></strong>: normal en el espacio, dirección de longitud 1.</li>
 </ul>
 <p>Un <strong><code>Objeto</code></strong> es una serie de caras y vértices. Un vértice es un punto junto con su normal, y una <strong><code>Cara</code></strong> es una lista de vértices con aristas entre puntos consecutivos (y entre el último y el primero).</p>
+<hr>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -455,11 +457,13 @@ window.Quarto = {
 <p>Crea una captura de pantalla de Eclipse donde se vea la estructura completa del proyecto.</p>
 </div>
 </div>
+<hr>
 </section>
 <section id="ejecutando-el-visualizador" class="level3" data-number="2.4">
 <h3 data-number="2.4" class="anchored" data-anchor-id="ejecutando-el-visualizador"><span class="header-section-number">2.4</span> Ejecutando el visualizador</h3>
 <p>Ejecuta el visualizador desde Eclipse. Para cargar un objeto tridimensional, ve a <strong>Archivo → Abrir</strong> y selecciona un archivo <code>.obj</code> de la carpeta <code>objetos3d</code> del proyecto. Te recomendamos empezar con <code>teapot.obj</code>. La carga puede tardar unos segundos.</p>
 <p>Puedes cambiar el modo de visualización entre <strong>Malla de alambre</strong> (<em>wireframe</em>), donde sólo se muestran las aristas, y <strong>Raster</strong>, que rellena las caras con iluminación.</p>
+<hr>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -478,10 +482,12 @@ window.Quarto = {
 </ul>
 </div>
 </div>
+<hr>
 </section>
 <section id="editando-código" class="level3" data-number="2.5">
 <h3 data-number="2.5" class="anchored" data-anchor-id="editando-código"><span class="header-section-number">2.5</span> Editando código</h3>
 <p>Los parámetros de la cámara están en inglés en el interfaz gráfico. Todo el interfaz relacionado con la cámara está en la clase <code>PanelCamara</code>.</p>
+<hr>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -497,10 +503,12 @@ window.Quarto = {
 <p><strong>Cuidado:</strong> si modificas algo que no sea una cadena de texto, el código puede dejar de compilar. Siempre puedes deshacer los cambios.</p>
 </div>
 </div>
+<hr>
 </section>
 <section id="depuración-de-errores" class="level3" data-number="2.6">
 <h3 data-number="2.6" class="anchored" data-anchor-id="depuración-de-errores"><span class="header-section-number">2.6</span> Depuración de errores</h3>
 <p>En aplicaciones de este tamaño, el depurador de Eclipse resulta muy útil para entender paso a paso qué hace el código. Vamos a depurar el método <code>matrizDeProyeccion()</code> de la clase <code>PanelVisor</code> del paquete <code>interfaz</code>.</p>
+<hr>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -527,10 +535,25 @@ window.Quarto = {
 </section>
 <section id="el-visualizador-por-dentro" class="level2" data-number="3">
 <h2 data-number="3" class="anchored" data-anchor-id="el-visualizador-por-dentro"><span class="header-section-number">3</span> El visualizador por dentro</h2>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Nota</span>Idea clave
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>En esta parte no hace falta memorizar matrices ni seguir todas las fórmulas al detalle. Quédate con esta idea: el programa coloca el objeto respecto a la cámara, proyecta los puntos sobre la pantalla, decide qué partes se ven y les asigna un color.</p>
+<p>Con esa intuición ya puedes entender lo esencial del visualizador y trabajar con el proyecto sin perderte en la matemática.</p>
+</div>
+</div>
+<hr>
 <section id="proyectando-3-dimensiones-en-2-dimensiones" class="level3" data-number="3.1">
 <h3 data-number="3.1" class="anchored" data-anchor-id="proyectando-3-dimensiones-en-2-dimensiones"><span class="header-section-number">3.1</span> Proyectando 3 dimensiones en 2 dimensiones</h3>
-<p>Para visualizar un objeto tridimensional en pantalla hay que transformar cada punto 3D <span class="math inline">\((x, y, z)\)</span> a coordenadas de pantalla <span class="math inline">\((x, y)\)</span>.</p>
-<p>Todas las transformaciones se hacen con <strong>matrices de cuatro dimensiones</strong> (clase <code>Matriz4x4</code>). Para ello, a cada punto se le añade una cuarta componente llamada <strong>coordenada homogénea</strong>:</p>
+<p>Si vienes de una formación más espacial que matemática, piensa en este paso como una traducción: del modelo 3D a la imagen 2D que termina apareciendo en pantalla. El programa toma cada punto del objeto, lo sitúa respecto a la cámara y calcula dónde debe dibujarse.</p>
+<p>En el código esa traducción se implementa con <strong>matrices de cuatro dimensiones</strong> (clase <code>Matriz4x4</code>). No hace falta memorizar la técnica: basta con saber que permite encadenar traslaciones, giros y perspectiva de una forma uniforme. Para ello, a cada punto se le añade una cuarta componente llamada <strong>coordenada homogénea</strong>:</p>
 <p><span class="math display">\[
 (x,\, y,\, z) \;\longrightarrow\; (x,\, y,\, z,\, 1)
 \]</span></p>
@@ -542,6 +565,7 @@ V_t = M \cdot V
 <p><span class="math display">\[
 (x,\, y,\, z,\, w) \;\longrightarrow\; \left(\frac{x}{w},\;\frac{y}{w},\;\frac{z}{w}\right)
 \]</span></p>
+<hr>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -558,10 +582,11 @@ V_t = M \cdot V
 <p>(añade <code>//</code> al principio) y vuelve a ejecutar. ¿Qué ha cambiado? Prueba a comentar otras líneas del mismo método.</p>
 </div>
 </div>
+<hr>
 </section>
 <section id="matrices-de-transformación" class="level3" data-number="3.2">
 <h3 data-number="3.2" class="anchored" data-anchor-id="matrices-de-transformación"><span class="header-section-number">3.2</span> Matrices de transformación</h3>
-<p>La clase <code>Matriz4x4</code> contiene métodos que generan cada tipo de matriz de transformación:</p>
+<p>Las operaciones importantes aquí son muy intuitivas: trasladar un objeto, cambiar su tamaño y girarlo. La clase <code>Matriz4x4</code> tiene un método para cada una. No hace falta memorizar las matrices; úsalas como una forma compacta de expresar esas transformaciones:</p>
 <p><span class="math display">\[
 \text{traslacion}(x,y,z) \;\to\; \begin{pmatrix} 1 &amp; 0 &amp; 0 &amp; x \\ 0 &amp; 1 &amp; 0 &amp; y \\ 0 &amp; 0 &amp; 1 &amp; z \\ 0 &amp; 0 &amp; 0 &amp; 1 \end{pmatrix}
 \qquad
@@ -619,121 +644,29 @@ V_t = M \cdot V
     </div>
   </div>
 </div>
-<style>
-@media (max-width: 600px) {
-  #rot-demo-uza { grid-template-columns: 1fr !important; }
-}
-</style>
-<script>
-(() => {
-  const canvas = document.getElementById('rot-canvas-uza');
-  const ctx = canvas.getContext('2d');
-  const W = canvas.width, H = canvas.height;
-  const cx = W / 2, cy = H / 2, SC = 95;
-
-  // Arrow shape in world coords (unit space)
-  const SHAPE = [[-0.65,-0.28],[0.05,-0.28],[0.05,-0.62],[0.78,0],[0.05,0.62],[0.05,0.28],[-0.65,0.28]];
-  const TIP = 3; // index of arrow tip (0.78, 0)
-
-  function tw(x, y) { return [cx + x * SC, cy - y * SC]; }
-
-  function rot(x, y, cosA, sinA) {
-    return [cosA * x + sinA * y, -sinA * x + cosA * y];
-  }
-
-  function drawPoly(pts, fill, stroke, lw) {
-    ctx.beginPath();
-    pts.forEach(([x,y], i) => { const [cx2,cy2]=tw(x,y); i===0?ctx.moveTo(cx2,cy2):ctx.lineTo(cx2,cy2); });
-    ctx.closePath();
-    if (fill) { ctx.fillStyle = fill; ctx.fill(); }
-    ctx.strokeStyle = stroke; ctx.lineWidth = lw; ctx.stroke();
-  }
-
-  function draw(deg) {
-    const a = deg * Math.PI / 180;
-    const cosA = Math.cos(a), sinA = Math.sin(a);
-
-    ctx.clearRect(0, 0, W, H);
-
-    // Grid
-    ctx.strokeStyle = 'rgba(148,163,184,0.2)'; ctx.lineWidth = 1;
-    ctx.beginPath();
-    for (let gx = -3; gx <= 3; gx++) { const [px] = tw(gx, 0); ctx.moveTo(px, 0); ctx.lineTo(px, H); }
-    for (let gy = -3; gy <= 3; gy++) { const [,py] = tw(0, gy); ctx.moveTo(0, py); ctx.lineTo(W, py); }
-    ctx.stroke();
-
-    // Axes
-    ctx.strokeStyle = 'rgba(15,23,42,0.35)'; ctx.lineWidth = 1.5;
-    ctx.beginPath();
-    ctx.moveTo(0, cy); ctx.lineTo(W, cy);
-    ctx.moveTo(cx, 0); ctx.lineTo(cx, H);
-    ctx.stroke();
-
-    // X/Y labels
-    ctx.fillStyle = '#94a3b8'; ctx.font = '12px sans-serif';
-    ctx.fillText('x', W - 14, cy - 6);
-    ctx.fillText('y', cx + 6, 14);
-
-    // Original arrow (faint)
-    drawPoly(SHAPE, 'rgba(13,110,253,0.07)', 'rgba(13,110,253,0.25)', 1.2);
-
-    // Rotated arrow
-    const rotShape = SHAPE.map(([x,y]) => rot(x, y, cosA, sinA));
-    drawPoly(rotShape, 'rgba(29,78,216,0.12)', '#1d4ed8', 2);
-
-    // Arc showing angle
-    if (deg > 2 && deg < 358) {
-      ctx.strokeStyle = '#f97316'; ctx.lineWidth = 1.5;
-      ctx.beginPath();
-      ctx.arc(cx, cy, 22, -Math.atan2(0, SC), -Math.atan2(sinA * SHAPE[TIP][0], cosA * SHAPE[TIP][0] + sinA * SHAPE[TIP][1]), false);
-      // Simplified: just draw arc from 0 to angle
-      ctx.beginPath();
-      ctx.arc(cx, cy, 22, 0, -a, a < 0);
-      ctx.stroke();
-    }
-
-    // Tracked point (tip of arrow)
-    const [ox, oy] = SHAPE[TIP];
-    const [rx, ry] = rot(ox, oy, cosA, sinA);
-    const [opx, opy] = tw(ox, oy);
-    const [rpx, rpy] = tw(rx, ry);
-
-    // Line from origin to rotated tip
-    ctx.strokeStyle = '#ef4444'; ctx.lineWidth = 1.4; ctx.setLineDash([4,3]);
-    ctx.beginPath(); ctx.moveTo(cx, cy); ctx.lineTo(rpx, rpy); ctx.stroke();
-    ctx.setLineDash([]);
-
-    // Original tip (faint)
-    ctx.fillStyle = 'rgba(13,110,253,0.4)';
-    ctx.beginPath(); ctx.arc(opx, opy, 4, 0, Math.PI * 2); ctx.fill();
-
-    // Rotated tip (red)
-    ctx.fillStyle = '#ef4444';
-    ctx.beginPath(); ctx.arc(rpx, rpy, 5.5, 0, Math.PI * 2); ctx.fill();
-
-    // Update matrix cells
-    document.getElementById('rot-m00').textContent = cosA.toFixed(3);
-    document.getElementById('rot-m01').textContent = sinA.toFixed(3);
-    document.getElementById('rot-m10').textContent = (-sinA).toFixed(3);
-    document.getElementById('rot-m11').textContent = cosA.toFixed(3);
-
-    // Update coordinates
-    document.getElementById('rot-after-uza').textContent =
-      `(${rx.toFixed(2)}, ${ry.toFixed(2)})`;
-  }
-
-  const slider = document.getElementById('rot-angle-uza');
-  const valLabel = document.getElementById('rot-angle-val');
-  slider.addEventListener('input', () => {
-    valLabel.textContent = slider.value + '°';
-    draw(Number(slider.value));
-  });
-  draw(35);
-})();
-</script>
+<hr>
 </section>
 <section id="la-proyección-en-perspectiva" class="level3" data-number="3.3">
 <h3 data-number="3.3" class="anchored" data-anchor-id="la-proyección-en-perspectiva"><span class="header-section-number">3.3</span> La proyección en perspectiva</h3>
+<p>Aquí aparece un efecto que ya conoces de la fotografía y de la visualización arquitectónica: los objetos lejanos se ven más pequeños, y cambiar la focal cambia cuánto abarca la cámara.</p>
+<p>En el visor sucede lo mismo. Primero se coloca el objeto con respecto a la cámara, después se aplica la perspectiva y al final se convierten las coordenadas a píxeles de la pantalla. Si solo quieres quedarte con una idea, quédate con esta: una focal mayor cierra la vista; una focal menor la abre.</p>
+<p>Una manera muy simple de resumirlo es esta:</p>
+<p><span class="math display">\[
+x' = \frac{f\,x}{z}
+\]</span></p>
+<p>Cuanto mayor es <span class="math inline">\(z\)</span> (más lejos está el punto), menor aparece en pantalla. El resto de fórmulas del programa refinan esa misma idea para trabajar con una cámara completa, su campo de visión y el tamaño de la ventana.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-8-contents" aria-controls="callout-8" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Detalle técnico opcional
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-8" class="callout-8-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
 <p>La <strong>matriz de perspectiva</strong> transforma coordenadas de cámara a coordenadas de recorte (<em>clip space</em>):</p>
 <p><span class="math display">\[
 \text{perspectiva}(fov,ar,n,f) \;\to\; \begin{pmatrix} (ar\cdot\tan(fov/2))^{-1} &amp; 0 &amp; 0 &amp; 0 \\ 0 &amp; \tan(fov/2)^{-1} &amp; 0 &amp; 0 \\ 0 &amp; 0 &amp; \frac{f}{f-n} &amp; -\frac{nf}{f-n} \\ 0 &amp; 0 &amp; 1 &amp; 0 \end{pmatrix}
@@ -744,15 +677,25 @@ V_t = M \cdot V
 \]</span></p>
 <p>La <strong>matriz de proyección completa</strong> que aplica <code>PanelVisor</code> a todos los puntos del objeto es:</p>
 <p><span class="math display">\[
-M_p = \text{pantalla}(w,h)\cdot\text{perspectiva}(fov,h/w,1,100)\cdot\text{traslacion}(0,0,d)\cdot\text{rotacionX}(inc)\cdot\text{rotacionY}(rot)\cdot\text{traslacion}(x_c,y_c,z_c)
+\begin{aligned}
+M_p &amp;= \text{pantalla}(w,h)\cdot\text{perspectiva}(fov,h/w,1,100) \\
+    &amp;\quad\cdot\text{traslacion}(0,0,d)\cdot\text{rotacionX}(inc) \\
+    &amp;\quad\cdot\text{rotacionY}(rot)\cdot\text{traslacion}(x_c,y_c,z_c)
+\end{aligned}
 \]</span></p>
-<p>donde <span class="math inline">\(d\)</span> es la distancia, <span class="math inline">\(inc\)</span> la inclinación, <span class="math inline">\(rot\)</span> la rotación (parámetros de la <code>Camara</code>) y <span class="math inline">\((x_c, y_c, z_c)\)</span> las coordenadas del centro del <code>Objeto</code>.</p>
+<p>donde:</p>
+<ul>
+<li><span class="math inline">\(d\)</span> controla la <strong>separación en profundidad entre la cámara y el objeto</strong>. Si piensas en una cámara mirando al objeto que tiene delante, <span class="math inline">\(d\)</span> indica si ese objeto queda más cerca o más lejos de la cámara.</li>
+<li><span class="math inline">\(inc\)</span> es la <strong>inclinación vertical</strong> de la cámara: equivale a inclinar la vista hacia arriba o hacia abajo.</li>
+<li><span class="math inline">\(rot\)</span> es la <strong>rotación horizontal</strong> de la cámara alrededor del objeto: equivale a girar la vista hacia un lado o hacia otro.</li>
+<li><span class="math inline">\((x_c, y_c, z_c)\)</span> son las coordenadas del <strong>centro del objeto</strong>, es decir, el punto de referencia a partir del cual el programa lo coloca y lo gira.</li>
+</ul>
+<p>No hace falta preocuparse aquí por el signo exacto de cada transformación. Para seguir la práctica basta con esta idea: el visualizador coloca el objeto respecto a la cámara, ajusta la orientación de la vista y después calcula cómo se proyecta en la pantalla.</p>
+</div>
+</div>
+</div>
+<hr>
 <p>La siguiente visualización muestra ese proceso con una cámara idealizada en 3D. El plano de imagen tiene ancho <em>w</em>, alto <em>h</em> y está situado a una distancia focal <em>f</em> del centro de proyección. Ajusta los parámetros para ver cómo cambia el frustum y la imagen proyectada del objeto. Si la imagen formada es mayor que el sensor, no hay contradicción: simplemente el sensor sólo registra una parte y el objeto aparece recortado.</p>
-<p><span class="math display">\[
-x' = \frac{f\,x}{z}
-\qquad\text{con}\qquad
-f = \frac{1}{\tan(fov/2)}
-\]</span></p>
 <div id="perspective-demo-uza" style="margin:1.2rem 0;">
   <div style="background:#fcfcfb; border:1px solid #dbe4ee; border-radius:16px; padding:0.8rem 0.8rem 0.7rem; box-shadow:0 12px 28px rgba(15,23,42,0.07);">
     <canvas id="perspective-canvas-uza" width="680" height="420" style="width:100%; display:block; border-radius:12px; border:1px solid #e2e8f0; background:#f8fafc;"></canvas>
@@ -791,311 +734,6 @@ f = \frac{1}{\tan(fov/2)}
     <p id="persp-fit-note-uza" style="margin:0.55rem 0 0; font-size:0.8rem; color:#64748b; line-height:1.45;">Si la imagen proyectada es mayor que el sensor, el objeto queda recortado: la proyección existe, pero el sensor sólo registra una parte.</p>
   </div>
 </div>
-<script>
-(() => {
-  const canvas = document.getElementById('perspective-canvas-uza');
-  const ctx = canvas.getContext('2d');
-  const W = canvas.width, H = canvas.height;
-  const OBJ_W = 70, OBJ_H = 50, OBJ_DIST = 180;
-  const LABEL_FONT = '600 14px "Aptos", "Segoe UI", "Helvetica Neue", Arial, sans-serif';
-  const LEGEND_FONT = '12px "Aptos", "Segoe UI", "Helvetica Neue", Arial, sans-serif';
-
-  const ids = {
-    w: document.getElementById('persp-w-uza'),
-    h: document.getElementById('persp-h-uza'),
-    f: document.getElementById('persp-f-uza'),
-    wVal: document.getElementById('persp-w-val-uza'),
-    hVal: document.getElementById('persp-h-val-uza'),
-    fVal: document.getElementById('persp-f-val-uza'),
-    ar: document.getElementById('persp-ar-uza'),
-    fovx: document.getElementById('persp-fovx-uza'),
-    fovy: document.getElementById('persp-fovy-uza'),
-    fit: document.getElementById('persp-fit-uza'),
-    fitNote: document.getElementById('persp-fit-note-uza'),
-  };
-
-  const CY = Math.cos(0.72), SY = Math.sin(0.72);
-  const CP = Math.cos(0.46), SP = Math.sin(0.46);
-
-  function mm(v) { return v / 5; }
-
-  function project({x, y, z}) {
-    const x1 = CY * x + SY * z;
-    const z1 = -SY * x + CY * z;
-    const y1 = CP * y - SP * z1;
-    return { x: 80 + x1 * 18, y: 40 - y1 * 18 };
-  }
-
-  function seg(a, b, color, lw, dash) {
-    ctx.save();
-    ctx.strokeStyle = color; ctx.lineWidth = lw;
-    if (dash) ctx.setLineDash(dash);
-    ctx.beginPath(); ctx.moveTo(a.x, a.y); ctx.lineTo(b.x, b.y); ctx.stroke();
-    ctx.restore();
-  }
-
-  function quad(pts, fill, stroke, lw) {
-    ctx.beginPath();
-    pts.forEach((p, i) => i ? ctx.lineTo(p.x, p.y) : ctx.moveTo(p.x, p.y));
-    ctx.closePath();
-    if (fill) { ctx.fillStyle = fill; ctx.fill(); }
-    if (stroke && lw > 0) { ctx.strokeStyle = stroke; ctx.lineWidth = lw; ctx.stroke(); }
-  }
-
-  function clamp(v, min, max) {
-    return Math.max(min, Math.min(max, v));
-  }
-
-  function roundedRect(x, y, width, height, radius) {
-    const r = Math.min(radius, width / 2, height / 2);
-    ctx.beginPath();
-    ctx.moveTo(x + r, y);
-    ctx.arcTo(x + width, y, x + width, y + height, r);
-    ctx.arcTo(x + width, y + height, x, y + height, r);
-    ctx.arcTo(x, y + height, x, y, r);
-    ctx.arcTo(x, y, x + width, y, r);
-    ctx.closePath();
-  }
-
-  function drawLabel(text, x, y, options = {}) {
-    const {
-      align = 'left',
-      baseline = 'middle',
-      font = LABEL_FONT,
-      textColor = '#0f172a',
-      fill = 'rgba(255,255,255,0.92)',
-      stroke = 'rgba(148,163,184,0.45)',
-      height = 26,
-      paddingX = 9,
-      margin = 12,
-    } = options;
-
-    ctx.save();
-    ctx.font = font;
-    ctx.textAlign = 'left';
-    ctx.textBaseline = 'middle';
-
-    const width = Math.ceil(ctx.measureText(text).width + paddingX * 2);
-    let left = x;
-    let top = y;
-
-    if (align === 'center') left -= width / 2;
-    if (align === 'right') left -= width;
-    if (baseline === 'middle') top -= height / 2;
-    if (baseline === 'bottom' || baseline === 'alphabetic') top -= height;
-
-    left = clamp(left, margin, W - margin - width);
-    top = clamp(top, margin, H - margin - height);
-
-    roundedRect(left, top, width, height, 9);
-    ctx.fillStyle = fill;
-    ctx.fill();
-    if (stroke) {
-      ctx.strokeStyle = stroke;
-      ctx.lineWidth = 1;
-      ctx.stroke();
-    }
-
-    ctx.fillStyle = textColor;
-    ctx.fillText(text, left + paddingX, top + height / 2 + 0.5);
-    ctx.restore();
-
-    return { left, top, width, height };
-  }
-
-  function draw() {
-    const sW = Number(ids.w.value), sH = Number(ids.h.value), f = Number(ids.f.value);
-    const fovX = 2 * Math.atan(sW / (2 * f)) * 180 / Math.PI;
-    const fovY = 2 * Math.atan(sH / (2 * f)) * 180 / Math.PI;
-
-    ids.wVal.textContent = `${sW} mm`;
-    ids.hVal.textContent = `${sH} mm`;
-    ids.fVal.textContent = `${f} mm`;
-    ids.ar.textContent = (sW / sH).toFixed(2);
-    ids.fovx.textContent = `${fovX.toFixed(2)}°`;
-    ids.fovy.textContent = `${fovY.toFixed(2)}°`;
-
-    ctx.clearRect(0, 0, W, H);
-    ctx.lineCap = 'round';
-    ctx.lineJoin = 'round';
-
-    const sZ = mm(f), oZ = mm(OBJ_DIST);
-    const hw = mm(sW / 2), hh = mm(sH / 2);
-
-    const cam = project({x:0, y:0, z:0});
-    const sC  = project({x:0, y:0, z:sZ});
-    const axE = project({x:0, y:0, z:oZ + mm(18)});
-
-    const sc = [[-hw,-hh],[hw,-hh],[hw,hh],[-hw,hh]].map(([x,y]) => project({x, y, z:sZ}));
-
-    // House geometry (centered at oZ in z, origin in x/y)
-    const hW = mm(OBJ_W / 2);  // half-width
-    const hD = 5;               // half-depth (world units)
-    const hB = -mm(OBJ_H / 2); // base y
-    const hT = 2;               // wall-top y
-    const hR = mm(OBJ_H / 2);  // roof-ridge y
-
-    const houseVertices = [
-      {x:-hW, y:hB, z:oZ-hD},
-      {x: hW, y:hB, z:oZ-hD},
-      {x:-hW, y:hT, z:oZ-hD},
-      {x: hW, y:hT, z:oZ-hD},
-      {x:  0, y:hR, z:oZ-hD},
-      {x:-hW, y:hB, z:oZ+hD},
-      {x: hW, y:hB, z:oZ+hD},
-      {x:-hW, y:hT, z:oZ+hD},
-      {x: hW, y:hT, z:oZ+hD},
-      {x:  0, y:hR, z:oZ+hD},
-    ];
-    const sensorImagePoints = houseVertices.map(({x, y, z}) => ({ x: x * sZ / z, y: y * sZ / z }));
-    const minProjX = Math.min(...sensorImagePoints.map(p => p.x));
-    const maxProjX = Math.max(...sensorImagePoints.map(p => p.x));
-    const minProjY = Math.min(...sensorImagePoints.map(p => p.y));
-    const maxProjY = Math.max(...sensorImagePoints.map(p => p.y));
-    const projectedWidthMm = (maxProjX - minProjX) * 5;
-    const projectedHeightMm = (maxProjY - minProjY) * 5;
-    const fitsSensor = projectedWidthMm <= sW && projectedHeightMm <= sH;
-    const pc = [
-      project({x:minProjX, y:minProjY, z:sZ}),
-      project({x:maxProjX, y:minProjY, z:sZ}),
-      project({x:maxProjX, y:maxProjY, z:sZ}),
-      project({x:minProjX, y:maxProjY, z:sZ}),
-    ];
-
-    ids.fit.textContent = fitsSensor ? 'Cabe completa' : 'Se recorta';
-    ids.fit.style.color = fitsSensor ? '#166534' : '#b45309';
-    ids.fitNote.textContent = fitsSensor
-      ? `La imagen proyectada mide ${projectedWidthMm.toFixed(1)} × ${projectedHeightMm.toFixed(1)} mm y cabe dentro del sensor.`
-      : `La imagen proyectada mide ${projectedWidthMm.toFixed(1)} × ${projectedHeightMm.toFixed(1)} mm: es mayor que el sensor en al menos una dimension, asi que el objeto queda recortado.`;
-
-    const bfl = project({x:-hW, y:hB, z:oZ-hD});
-    const bfr = project({x: hW, y:hB, z:oZ-hD});
-    const tfl = project({x:-hW, y:hT, z:oZ-hD});
-    const tfr = project({x: hW, y:hT, z:oZ-hD});
-    const rpf = project({x:  0, y:hR, z:oZ-hD});
-    const bbl = project({x:-hW, y:hB, z:oZ+hD});
-    const bbr = project({x: hW, y:hB, z:oZ+hD});
-    const tbl = project({x:-hW, y:hT, z:oZ+hD});
-    const tbr = project({x: hW, y:hT, z:oZ+hD});
-    const rpb = project({x:  0, y:hR, z:oZ+hD});
-
-    // 1 — Optical axis
-    seg(cam, axE, 'rgba(148,163,184,0.45)', 1.2, [5,4]);
-
-    // 2 — House back-face fills (painter order: back→front)
-    quad([bbl,bbr,tbr,tbl], 'rgba(180,160,130,0.55)', null, 0);        // back wall (shadow)
-    quad([tbl,tbr,rpb],      'rgba(160,140,110,0.55)', null, 0);        // back roof (shadow)
-    quad([bfl,bfr,bbr,bbl], 'rgba(155,140,120,0.45)', null, 0);        // floor/base
-    quad([bfr,bbr,tbr,tfr], 'rgba(190,170,140,0.60)', null, 0);        // right side wall (mid)
-    quad([tfr,tbr,rpb,rpf], 'rgba(185,165,130,0.60)', null, 0);        // right roof (mid)
-    quad([bfl,bfr,tfr,tfl], 'rgba(240,225,195,0.80)', null, 0);        // front wall (lit)
-    quad([tfl,tfr,rpf],     'rgba(220,200,165,0.80)', null, 0);        // front gable roof (lit)
-
-    // 3 — House: back wireframe edges (dim)
-    const hDim = 'rgba(100,80,50,0.35)';
-    seg(bbl, bbr, hDim, 1.4); seg(bbl, tbl, hDim, 1.4);
-    seg(bbr, tbr, hDim, 1.4); seg(tbl, tbr, hDim, 1.4);
-    seg(tbl, rpb, hDim, 1.4); seg(tbr, rpb, hDim, 1.4);
-
-    // 4 — House: depth (connecting) edges
-    const hMid = 'rgba(100,80,50,0.55)';
-    seg(bfl, bbl, hMid, 1.5); seg(bfr, bbr, hMid, 1.5);
-    seg(tfl, tbl, hMid, 1.5); seg(tfr, tbr, hMid, 1.5);
-    seg(rpf, rpb, hMid, 1.5);
-
-    // 5 — Frustum rays (camera → sensor corners)
-    sc.forEach(c => seg(cam, c, 'rgba(29,78,216,0.4)', 1.5));
-
-    // 6 — Sensor plane
-    quad(sc, 'rgba(14,165,233,0.14)', '#0ea5e9', 2);
-
-    // 7 — Projected image rectangle
-    quad(pc, 'rgba(245,158,11,0.28)', '#f59e0b', 1.8);
-
-    // 7.5 — House silhouette projected onto sensor plane (pinhole image), clipped to pc
-    function perspPt(wx, wy, wz) {
-      return project({x: wx * sZ / wz, y: wy * sZ / wz, z: sZ});
-    }
-    const ipbfl = perspPt(-hW, hB, oZ-hD);
-    const ipbfr = perspPt( hW, hB, oZ-hD);
-    const iptfl = perspPt(-hW, hT, oZ-hD);
-    const iptfr = perspPt( hW, hT, oZ-hD);
-    const iprpf = perspPt(  0, hR, oZ-hD);
-    ctx.save();
-    ctx.beginPath();
-    pc.forEach((p, i) => i ? ctx.lineTo(p.x, p.y) : ctx.moveTo(p.x, p.y));
-    ctx.closePath();
-    ctx.clip();
-    quad([ipbfl,ipbfr,iptfr,iptfl], 'rgba(230,215,185,0.82)', null, 0);
-    quad([iptfl,iptfr,iprpf],       'rgba(205,185,150,0.82)', null, 0);
-    const ie = 'rgba(80,58,25,0.55)';
-    seg(ipbfl, ipbfr, ie, 0.9); seg(ipbfl, iptfl, ie, 0.9);
-    seg(ipbfr, iptfr, ie, 0.9); seg(iptfl, iptfr, ie, 0.9);
-    seg(iptfl, iprpf, ie, 0.9); seg(iptfr, iprpf, ie, 0.9);
-    ctx.restore();
-
-    // 8 — House: front wireframe edges
-    const hFront = 'rgba(80,55,20,0.85)';
-    seg(bfl, bfr, hFront, 2.2); seg(bfl, tfl, hFront, 2.2);
-    seg(bfr, tfr, hFront, 2.2); seg(tfl, tfr, hFront, 2.2);
-    seg(tfl, rpf, hFront, 2.2); seg(tfr, rpf, hFront, 2.2);
-
-    // 9 — Focal-length segment (camera → sensor center)
-    seg(cam, sC, '#ef4444', 2);
-
-    // 10 — Dots
-    ctx.fillStyle = '#0f172a';
-    ctx.beginPath(); ctx.arc(cam.x, cam.y, 5.5, 0, Math.PI*2); ctx.fill();
-    ctx.fillStyle = '#0ea5e9';
-    ctx.beginPath(); ctx.arc(sC.x, sC.y, 3.8, 0, Math.PI*2); ctx.fill();
-
-    // 11 — Labels
-    drawLabel(`cámara · f = ${f} mm`, cam.x + 16, cam.y - 18, {
-      align: 'left',
-      baseline: 'bottom',
-      textColor: '#991b1b',
-      fill: 'rgba(254,242,242,0.96)',
-      stroke: 'rgba(248,113,113,0.45)',
-    });
-    drawLabel('sensor', sc[2].x + 8, sc[2].y + 5, {
-      textColor: '#075985',
-      fill: 'rgba(240,249,255,0.96)',
-      stroke: 'rgba(14,165,233,0.4)',
-    });
-    drawLabel('objeto', rpf.x + 10, rpf.y - 14, {
-      textColor: '#713f12',
-      fill: 'rgba(255,251,235,0.96)',
-      stroke: 'rgba(245,158,11,0.42)',
-    });
-
-    // 12 — Legend (bottom-left, clear of all scene elements)
-    const lx = 14, ly = H - 38;
-    ctx.font = LEGEND_FONT; ctx.textAlign = 'left'; ctx.textBaseline = 'middle';
-    roundedRect(lx - 7, ly - 8, 164, 42, 10);
-    ctx.fillStyle = 'rgba(255,255,255,0.88)';
-    ctx.fill();
-    ctx.strokeStyle = 'rgba(148,163,184,0.28)';
-    ctx.lineWidth = 1;
-    ctx.stroke();
-    ctx.fillStyle = 'rgba(14,165,233,0.22)';
-    ctx.fillRect(lx, ly, 22, 12);
-    ctx.strokeStyle = '#0ea5e9'; ctx.lineWidth = 1.5; ctx.strokeRect(lx, ly, 22, 12);
-    ctx.fillStyle = '#0369a1'; ctx.fillText('plano del sensor', lx + 27, ly + 6);
-    ctx.fillStyle = 'rgba(245,158,11,0.30)';
-    ctx.fillRect(lx, ly + 18, 22, 12);
-    ctx.strokeStyle = '#f59e0b'; ctx.lineWidth = 1.5; ctx.strokeRect(lx, ly + 18, 22, 12);
-    ctx.fillStyle = '#92400e'; ctx.fillText('imagen proyectada', lx + 27, ly + 24);
-    ctx.textBaseline = 'alphabetic';
-  }
-
-  ['input','change'].forEach(ev => {
-    ids.w.addEventListener(ev, draw);
-    ids.h.addEventListener(ev, draw);
-    ids.f.addEventListener(ev, draw);
-  });
-  draw();
-})();
-</script>
 <div class="focal-triptych-uza">
   <div class="focal-triptych-header-uza">
     <span class="focal-triptych-kicker-uza">De angular a tele</span>
@@ -1140,178 +778,29 @@ f = \frac{1}{\tan(fov/2)}
   <p class="focal-triptych-caption-uza">A mayor focal, menor campo de vision y mayor imagen proyectada sobre el sensor.</p>
 </div>
 
-<style>
-.focal-triptych-uza {
-  margin: 1rem 0 1.1rem;
-  padding: 1rem;
-  border: 1px solid #e2e8f0;
-  border-radius: 18px;
-  background:
-    radial-gradient(circle at top left, rgba(251, 191, 36, 0.12), transparent 34%),
-    linear-gradient(180deg, #fcfdff 0%, #f5f8fc 100%);
-  box-shadow: 0 10px 28px rgba(15, 23, 42, 0.08);
-}
-
-.focal-triptych-header-uza {
-  margin-bottom: 0.8rem;
-}
-
-.focal-triptych-kicker-uza {
-  display: inline-block;
-  padding: 0.18rem 0.55rem;
-  border-radius: 999px;
-  background: rgba(14, 165, 233, 0.12);
-  color: #0369a1;
-  font-size: 0.73rem;
-  font-weight: 700;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-}
-
-.focal-triptych-header-uza p {
-  margin: 0.45rem 0 0;
-  color: #475569;
-  font-size: 0.9rem;
-}
-
-.focal-triptych-grid-uza {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 0.85rem;
-  align-items: end;
-}
-
-.focal-triptych-card-uza {
-  position: relative;
-  margin: 0;
-  padding: 0.55rem;
-  border: 1px solid rgba(203, 213, 225, 0.95);
-  border-radius: 16px;
-  background: rgba(255, 255, 255, 0.92);
-  box-shadow: 0 8px 20px rgba(15, 23, 42, 0.08);
-  overflow: hidden;
-}
-
-.focal-triptych-card-uza img {
-  width: 100%;
-  display: block;
-  border-radius: 11px;
-  border: 1px solid #e2e8f0;
-}
-
-.focal-triptych-card-uza figcaption {
-  display: flex;
-  flex-direction: column;
-  gap: 0.16rem;
-  margin-top: 0.55rem;
-}
-
-.focal-triptych-card-uza strong {
-  color: #0f172a;
-  font-size: 0.87rem;
-}
-
-.focal-triptych-card-uza span {
-  color: #64748b;
-  font-size: 0.78rem;
-  line-height: 1.4;
-}
-
-.focal-triptych-badge-uza {
-  position: absolute;
-  top: 0.85rem;
-  left: 0.85rem;
-  z-index: 1;
-  padding: 0.2rem 0.5rem;
-  border-radius: 999px;
-  background: rgba(15, 23, 42, 0.78);
-  color: #fff !important;
-  font-size: 0.74rem !important;
-  font-weight: 700;
-  letter-spacing: 0.02em;
-}
-
-.is-wide-uza {
-  transform: rotate(-1.2deg) translateY(8px);
-}
-
-.is-reference-uza {
-  border-color: rgba(14, 165, 233, 0.45);
-  box-shadow: 0 14px 34px rgba(14, 165, 233, 0.14);
-}
-
-.is-tight-uza {
-  transform: rotate(1.1deg) translateY(10px);
-}
-
-.focal-triptych-scale-uza {
-  display: grid;
-  grid-template-columns: auto 1fr auto;
-  gap: 0.65rem;
-  align-items: center;
-  margin-top: 0.9rem;
-  color: #64748b;
-  font-size: 0.76rem;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-}
-
-.focal-triptych-line-uza {
-  height: 1px;
-  background: linear-gradient(90deg, rgba(14, 165, 233, 0.3), rgba(249, 115, 22, 0.55));
-  position: relative;
-}
-
-.focal-triptych-line-uza::after {
-  content: '';
-  position: absolute;
-  right: 0;
-  top: 50%;
-  width: 8px;
-  height: 8px;
-  border-top: 1.5px solid rgba(249, 115, 22, 0.75);
-  border-right: 1.5px solid rgba(249, 115, 22, 0.75);
-  transform: translateY(-50%) rotate(45deg);
-}
-
-.focal-triptych-caption-uza {
-  margin: 0.65rem 0 0;
-  text-align: center;
-  color: #475569;
-  font-size: 0.82rem;
-}
-
-@media (max-width: 760px) {
-  .focal-triptych-grid-uza {
-    grid-template-columns: 1fr;
-  }
-
-  .is-wide-uza,
-  .is-tight-uza {
-    transform: none;
-  }
-}
-</style>
+<hr>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Nota</span>Calcula numéricamente
+<span class="screen-reader-only">Nota</span>Compruébalo con un ejemplo
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Calcula el resultado de rotar 90° con respecto al eje Z el punto <span class="math inline">\((4,\, 3,\, 2)\)</span>. Para ello, multiplica el vector fila <span class="math inline">\((4\ 3\ 2\ 1)\)</span> por la matriz de rotación correspondiente.</p>
-<p>Ejecuta después el código en modo depuración para comprobar cómo se realiza una rotación en el visualizador. Explícalo brevemente en el documento Word.</p>
+<p>Prueba con el punto <span class="math inline">\((4,\, 3,\, 2)\)</span> y una rotación de 90° con respecto al eje Z. Puedes multiplicar el vector fila <span class="math inline">\((4\ 3\ 2\ 1)\)</span> por la matriz correspondiente, pero no hace falta convertirlo en una cuenta larga: lo importante es entender qué cambio geométrico se produce.</p>
+<p>Ejecuta después el código en modo depuración para comprobar cómo se realiza esa rotación en el visualizador. Explícalo brevemente en el documento Word.</p>
 </div>
 </div>
+<hr>
 </section>
 <section id="modos-de-visualización" class="level3" data-number="3.4">
 <h3 data-number="3.4" class="anchored" data-anchor-id="modos-de-visualización"><span class="header-section-number">3.4</span> Modos de visualización</h3>
 <p><code>PanelVisor</code> gestiona la visualización del objeto con dos modos:</p>
-<p><strong>Malla de alambre</strong> (<code>pintarMallaAlambre</code>): se recorren todas las <code>Cara</code>s, se transforman sus <code>Punto</code>s con <span class="math inline">\(M_p\)</span> y se pintan líneas entre puntos adyacentes (<code>pintarCaraMallaAlambre</code>).</p>
-<p><strong>Raster</strong>: se aplica el modelo de iluminación de Phong para calcular el color de cada píxel de cada cara visible. Además, se mantiene un <strong><em>z-buffer</em></strong> que guarda la profundidad <span class="math inline">\(z\)</span> de cada píxel para evitar pintar uno que quede por detrás de otro ya pintado.</p>
+<p>En esta práctica nos interesa sobre todo el segundo, porque es el que utiliza la iluminación de Phong del proyecto proporcionado.</p>
+<p><strong>Malla de alambre</strong> (<code>pintarMallaAlambre</code>): se recorren todas las <code>Cara</code>s, se transforman sus <code>Punto</code>s y se dibujan solo las aristas.</p>
+<p><strong>Raster</strong>: se rellena cada cara visible y se calcula el color de cada píxel con el modelo de iluminación de Phong. Además, se mantiene un <strong><em>z-buffer</em></strong>, es decir, un registro de profundidad para que una superficie del fondo no tape a otra que está delante.</p>
 <div class="img-compare" role="slider" aria-label="Malla de alambre frente a raster" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50" tabindex="0" style="max-width:560px; margin:0.75rem auto;">
   <img src="../resources/practica9/images/wireframe.png" alt="Vista en malla de alambre">
   <img class="img-compare-top" src="../resources/practica9/images/house_80mm.png" alt="Vista en raster con iluminación de Phong">
@@ -1324,6 +813,7 @@ f = \frac{1}{\tan(fov/2)}
 </div>
 <small class="img-compare-caption">El mismo objeto en los dos modos de visualización (focal 80 mm): arrastrar para comparar.</small>
 <p>En ambos modos se puede activar el <strong><em>backface culling</em></strong> (método <code>considerarCara</code>), que descarta las caras cuya normal apunta en sentido contrario a la cámara, acelerando el proceso de pintado.</p>
+<hr>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -1337,32 +827,47 @@ f = \frac{1}{\tan(fov/2)}
 <p>Revisa los métodos <code>considerarCara</code>, <code>pintarMallaAlambre</code> y <code>pintarCaraMallaAlambre</code>, y los tres métodos que implementan el algoritmo raster. Identifica qué partes del algoritmo descrito en este guion implementa cada método. Compara los dos modos de visualización.</p>
 </div>
 </div>
+<hr>
 </section>
-<section id="renderizado-físicamente-realista" class="level3" data-number="3.5">
-<h3 data-number="3.5" class="anchored" data-anchor-id="renderizado-físicamente-realista"><span class="header-section-number">3.5</span> Renderizado físicamente realista</h3>
-<p>El modo raster con Phong es computacionalmente barato, pero simplificado. Si queremos una imagen realmente fotorrealista, la teoría completa se describe con la <strong>ecuación de renderizado</strong> de Kajiya (1986):</p>
+<section id="más-allá-de-phong-contexto-profesional" class="level3" data-number="3.5">
+<h3 data-number="3.5" class="anchored" data-anchor-id="más-allá-de-phong-contexto-profesional"><span class="header-section-number">3.5</span> Más allá de Phong: contexto profesional</h3>
+<p>El visualizador de esta práctica no implementa renderizado físicamente realista, y tampoco es el objetivo que lo haga. Aun así, conviene saber que en herramientas profesionales como Blender el resultado final suele apoyarse en modelos de iluminación más completos que Phong.</p>
+<p>En lugar de decidir el color de un punto solo con la luz directa y un brillo aproximado, estos motores intentan estimar cómo viaja la luz por toda la escena: qué parte llega directamente, qué parte rebota en paredes, suelos, techos o vidrios, y cómo responden los materiales. En arquitectura esto importa mucho, porque la percepción de un espacio depende en gran medida de esos rebotes de luz.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Nota</span>Qué debes retener
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>No necesitas aprender ni programar <em>path tracing</em> en esta práctica. Esta sección solo sirve para que, cuando en Blender veas palabras como <em>samples</em>, <em>bounces</em>, <em>noise</em> o <em>Cycles</em>, sepas a qué se refieren.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-12-contents" aria-controls="callout-12" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Detalle técnico opcional
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-12" class="callout-12-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Si quieres ver la formulación clásica, la idea se resume en la <strong>ecuación de renderizado</strong> de Kajiya (1986):</p>
 <p><span class="math display">\[
 L_o(\mathbf{p},\,\omega_o) = L_e(\mathbf{p},\,\omega_o) + \int_{\Omega} f_r(\mathbf{p},\,\omega_o,\,\omega_i)\; L_i(\mathbf{p},\,\omega_i)\; |\cos\theta_i|\; d\omega_i
 \]</span></p>
-<p>Si esa fórmula intimida un poco, es normal. La buena noticia es que, para entender la idea, no hace falta detenerse en cada símbolo. Lo que viene a decir, en esencia, es esto:</p>
-<blockquote class="blockquote">
-<p>El color que vemos en un punto no depende solo de una luz directa, sino de <strong>toda la luz que llega a ese punto después de rebotar por la escena</strong>.</p>
-</blockquote>
-<p>Dicho de una forma más clara:</p>
-<ul>
-<li><span class="math inline">\(L_o(\mathbf{p}, \omega_o)\)</span> es la <strong>luz que sale</strong> del punto y termina llegando a la cámara. En la práctica: el color final que veremos en ese píxel.</li>
-<li><span class="math inline">\(L_e(\mathbf{p}, \omega_o)\)</span> es la luz que el propio material <strong>emite por sí mismo</strong>. En la mayoría de paredes, muebles u objetos normales vale cero; en una lámpara o una pantalla, no.</li>
-<li><span class="math inline">\(L_i(\mathbf{p}, \omega_i)\)</span> es la luz que <strong>llega al punto</strong> desde una dirección concreta.</li>
-<li><span class="math inline">\(f_r\)</span> indica <strong>cómo responde el material</strong> a esa luz: si se comporta como mate, brillante, metálico, rugoso, etc.</li>
-<li><span class="math inline">\(|\cos\theta_i|\)</span> corrige el ángulo de incidencia: la luz aprovecha mejor cuando llega más de frente y menos cuando roza la superficie.</li>
-</ul>
-<p>En una escena arquitectónica esto significa que el aspecto de una pared no depende solo del foco o del sol, sino también de la luz que ha rebotado antes en el suelo, en el techo, en una ventana o en cualquier otro material cercano.</p>
-<p>El problema aparece enseguida: esa luz entrante <span class="math inline">\(L_i\)</span> no aparece sin más, sino que viene de otros puntos de la escena. Y esos otros puntos también dependen de la luz que les llega desde otros lugares. Es decir, todo está relacionado. Expandiendo un rebote:</p>
-<p><span class="math display">\[
-L_o(\mathbf{p}, \omega_o) = L_e + \int_{\Omega} f_r \left[ L_e(\mathbf{p}', \omega_i) + \int_{\Omega} f_r'\; L_i(\mathbf{p}', \omega_i')\; |\cos\theta_i'|\; d\omega_i' \right] |\cos\theta_i|\; d\omega_i
-\]</span></p>
-<p>La integral se anida una y otra vez: rebote sobre una pared, luego sobre el suelo, luego sobre el techo, luego sobre otra pared… y así sucesivamente. No hay una fórmula cerrada cómoda para escenas reales. Dicho sin dramatismo matemático: <strong>resolverlo exactamente es demasiado complicado para hacerlo “a mano”</strong>.</p>
-<p>El siguiente esquema no resuelve la ecuación completa: solo visualiza la idea recursiva. Desde una pequeña abertura en la cámara se lanza un haz de rayos; cada vez que uno choca con una superficie, nace un nuevo rayo desde ese último punto.</p>
+<p>Leída sin entrar en todos los símbolos, viene a decir que el color que vemos en un punto depende de la luz que emite ese punto y de toda la luz que le llega después de interactuar con la escena.</p>
+</div>
+</div>
+</div>
+<hr>
+<p>El siguiente esquema no pretende que aprendas <em>path tracing</em> ni que lo programes: solo visualiza la idea de los rebotes. Desde una pequeña abertura de la cámara se lanzan varios rayos y, cada vez que uno choca con una superficie, nace un nuevo rayo desde ese último punto.</p>
 <div id="bounce-demo-uza">
   <div class="bounce-layout-uza">
     <div class="bounce-viewer-uza">
@@ -1397,396 +902,13 @@ L_o(\mathbf{p}, \omega_o) = L_e + \int_{\Omega} f_r \left[ L_e(\mathbf{p}', \ome
   </div>
 </div>
 
-<style>
-#bounce-demo-uza {
-  margin: 0.9rem 0 1.15rem;
-  background: #fff;
-  border: 1px solid #e2e8f0;
-  border-radius: 16px;
-  padding: 1rem;
-  box-shadow: 0 6px 20px rgba(15, 23, 42, 0.06);
-}
 
-#bounce-demo-uza .bounce-layout-uza {
-  display: grid;
-  grid-template-columns: minmax(0, 1.9fr) minmax(220px, 0.8fr);
-  gap: 1rem;
-  align-items: start;
-}
-
-#bounce-demo-uza .bounce-viewer-uza {
-  min-width: 0;
-}
-
-#bounce-demo-uza canvas {
-  width: 100%;
-  height: auto;
-  display: block;
-  border-radius: 12px;
-  border: 1px solid #dbe4ee;
-  background: #fcfcfb;
-}
-
-#bounce-demo-uza .bounce-panel-uza {
-  display: flex;
-  flex-direction: column;
-  gap: 0.8rem;
-  min-width: 0;
-}
-
-#bounce-demo-uza .bounce-stats-uza {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 0.55rem;
-}
-
-#bounce-demo-uza .bounce-stats-uza > div {
-  background: #f8fafc;
-  border: 1px solid #e2e8f0;
-  border-radius: 12px;
-  padding: 0.7rem 0.75rem;
-}
-
-#bounce-demo-uza .bounce-stat-label-uza {
-  color: #64748b;
-  font-size: 0.74rem;
-  margin-bottom: 0.18rem;
-}
-
-#bounce-demo-uza .bounce-stat-value-uza {
-  color: #0f172a;
-  font-size: 1.08rem;
-  font-weight: 600;
-  font-variant-numeric: tabular-nums;
-}
-
-#bounce-demo-uza .bounce-stat-value-uza.is-warm-uza {
-  color: #b45309;
-}
-
-#bounce-demo-uza .bounce-control-uza {
-  display: flex;
-  flex-direction: column;
-  gap: 0.2rem;
-}
-
-#bounce-demo-uza .bounce-control-uza label {
-  color: #334155;
-  font-size: 0.84rem;
-  font-weight: 600;
-}
-
-#bounce-demo-uza .bounce-control-uza input {
-  width: 100%;
-}
-
-#bounce-demo-uza .bounce-scale-uza {
-  display: flex;
-  justify-content: space-between;
-  gap: 0.5rem;
-  color: #94a3b8;
-  font-size: 0.74rem;
-}
-
-@media (max-width: 760px) {
-  #bounce-demo-uza .bounce-layout-uza {
-    grid-template-columns: 1fr;
-  }
-}
-</style>
-
-<script>
-(() => {
-  const canvas = document.getElementById('bounce-canvas-uza');
-  if (!canvas) return;
-  const ctx = canvas.getContext('2d');
-  const W = canvas.width;
-  const H = canvas.height;
-  const BEAM_RADIUS = 5;
-  const SCATTER = 0.18;
-
-  const ids = {
-    count: document.getElementById('bounce-count-uza'),
-    depth: document.getElementById('bounce-depth-uza'),
-    countVal: document.getElementById('bounce-count-val-uza'),
-    depthVal: document.getElementById('bounce-depth-val-uza'),
-    total: document.getElementById('bounce-rays-total-uza'),
-    hit: document.getElementById('bounce-rays-hit-uza'),
-  };
-
-  const ROOM = { x0: 30, y0: 16, x1: 604, y1: 304 };
-  const LIGHT = { x0: 438, x1: 566, y: ROOM.y0 };
-  const CAMERA = { x: 76, y: 176 };
-  const CIRCLE = { x: 322, y: 168, r: 48 };
-  const BLOCK = { x0: 480, y0: 214, x1: 560, y1: 274 };
-  const PALETTE = ['#f97316', '#fb923c', '#f59e0b', '#eab308', '#84cc16', '#38bdf8', '#818cf8'];
-  let seed = 7;
-
-  function mulberry32(a) {
-    return function() {
-      let t = a += 0x6D2B79F5;
-      t = Math.imul(t ^ t >>> 15, t | 1);
-      t ^= t + Math.imul(t ^ t >>> 7, t | 61);
-      return ((t ^ t >>> 14) >>> 0) / 4294967296;
-    };
-  }
-
-  function vec(x, y) { return { x, y }; }
-  function add(a, b) { return { x: a.x + b.x, y: a.y + b.y }; }
-  function sub(a, b) { return { x: a.x - b.x, y: a.y - b.y }; }
-  function scale(a, k) { return { x: a.x * k, y: a.y * k }; }
-  function dot(a, b) { return a.x * b.x + a.y * b.y; }
-  function cross(a, b) { return a.x * b.y - a.y * b.x; }
-  function length(a) { return Math.hypot(a.x, a.y); }
-  function normalize(a) {
-    const len = length(a) || 1;
-    return { x: a.x / len, y: a.y / len };
-  }
-  function reflect(direction, normal) {
-    const factor = 2 * dot(direction, normal);
-    return normalize(sub(direction, scale(normal, factor)));
-  }
-  function rotate(v, angle) {
-    const ca = Math.cos(angle);
-    const sa = Math.sin(angle);
-    return { x: v.x * ca - v.y * sa, y: v.x * sa + v.y * ca };
-  }
-  function mixDirections(a, b, t) {
-    return normalize(add(scale(a, 1 - t), scale(b, t)));
-  }
-
-  const segments = [
-    { a: vec(ROOM.x0, ROOM.y0), b: vec(LIGHT.x0, ROOM.y0), kind: 'wall' },
-    { a: vec(LIGHT.x0, ROOM.y0), b: vec(LIGHT.x1, ROOM.y0), kind: 'light', emissive: true },
-    { a: vec(LIGHT.x1, ROOM.y0), b: vec(ROOM.x1, ROOM.y0), kind: 'wall' },
-    { a: vec(ROOM.x1, ROOM.y0), b: vec(ROOM.x1, ROOM.y1), kind: 'wall' },
-    { a: vec(ROOM.x1, ROOM.y1), b: vec(ROOM.x0, ROOM.y1), kind: 'wall' },
-    { a: vec(ROOM.x0, ROOM.y1), b: vec(ROOM.x0, ROOM.y0), kind: 'wall' },
-    { a: vec(BLOCK.x0, BLOCK.y0), b: vec(BLOCK.x1, BLOCK.y0), kind: 'block' },
-    { a: vec(BLOCK.x1, BLOCK.y0), b: vec(BLOCK.x1, BLOCK.y1), kind: 'block' },
-    { a: vec(BLOCK.x1, BLOCK.y1), b: vec(BLOCK.x0, BLOCK.y1), kind: 'block' },
-    { a: vec(BLOCK.x0, BLOCK.y1), b: vec(BLOCK.x0, BLOCK.y0), kind: 'block' },
-  ];
-
-  function segmentHit(origin, direction, segment) {
-    const span = sub(segment.b, segment.a);
-    const den = cross(direction, span);
-    if (Math.abs(den) < 1e-6) return null;
-    const delta = sub(segment.a, origin);
-    const t = cross(delta, span) / den;
-    const u = cross(delta, direction) / den;
-    if (t <= 0.35 || u < -1e-5 || u > 1 + 1e-5) return null;
-    const point = add(origin, scale(direction, t));
-    let normal = normalize(vec(span.y, -span.x));
-    if (dot(direction, normal) > 0) normal = scale(normal, -1);
-    return { t, point, normal, emissive: Boolean(segment.emissive), kind: segment.kind };
-  }
-
-  function circleHit(origin, direction) {
-    const oc = sub(origin, CIRCLE);
-    const b = 2 * dot(oc, direction);
-    const c = dot(oc, oc) - CIRCLE.r * CIRCLE.r;
-    const disc = b * b - 4 * c;
-    if (disc <= 0) return null;
-    const root = Math.sqrt(disc);
-    const t1 = (-b - root) / 2;
-    const t2 = (-b + root) / 2;
-    const t = t1 > 0.35 ? t1 : (t2 > 0.35 ? t2 : null);
-    if (!t) return null;
-    const point = add(origin, scale(direction, t));
-    let normal = normalize(sub(point, CIRCLE));
-    if (dot(direction, normal) > 0) normal = scale(normal, -1);
-    return { t, point, normal, emissive: false, kind: 'pillar' };
-  }
-
-  function firstHit(origin, direction) {
-    let closest = null;
-    segments.forEach((segment) => {
-      const hit = segmentHit(origin, direction, segment);
-      if (!hit) return;
-      if (!closest || hit.t < closest.t) closest = hit;
-    });
-    const cHit = circleHit(origin, direction);
-    if (cHit && (!closest || cHit.t < closest.t)) closest = cHit;
-    return closest;
-  }
-
-  function sampleHemisphere(normal, rng) {
-    const base = Math.atan2(normal.y, normal.x);
-    const angle = base + (rng() * 2 - 1) * (Math.PI / 2);
-    let dir = vec(Math.cos(angle), Math.sin(angle));
-    if (dot(dir, normal) < 0) dir = scale(dir, -1);
-    return normalize(dir);
-  }
-
-  function traceRay(origin, direction, maxDepth, scatter, rng) {
-    const points = [origin];
-    const bounces = [];
-    let ro = origin;
-    let rd = normalize(direction);
-    let reachedLight = false;
-
-    for (let depth = 0; depth < maxDepth; depth++) {
-      const hit = firstHit(ro, rd);
-      if (!hit) {
-        points.push(add(ro, scale(rd, 90)));
-        break;
-      }
-
-      points.push(hit.point);
-      if (hit.emissive) {
-        reachedLight = true;
-        break;
-      }
-
-      bounces.push(hit.point);
-      const reflected = reflect(rd, hit.normal);
-      const diffuse = sampleHemisphere(hit.normal, rng);
-      rd = mixDirections(reflected, diffuse, scatter);
-      ro = add(hit.point, scale(hit.normal, 0.65));
-    }
-
-    return {
-      points,
-      bounces,
-      reachedLight,
-      segments: Math.max(points.length - 1, 0),
-    };
-  }
-
-  function drawScene(radius) {
-    ctx.clearRect(0, 0, W, H);
-    ctx.fillStyle = '#fcfcfb';
-    ctx.fillRect(0, 0, W, H);
-
-    ctx.fillStyle = '#f7f7f5';
-    ctx.fillRect(ROOM.x0, ROOM.y0, ROOM.x1 - ROOM.x0, ROOM.y1 - ROOM.y0);
-
-    ctx.fillStyle = 'rgba(251, 191, 36, 0.22)';
-    ctx.fillRect(LIGHT.x0, LIGHT.y - 1, LIGHT.x1 - LIGHT.x0, 18);
-    ctx.fillStyle = 'rgba(251, 191, 36, 0.34)';
-    ctx.fillRect(LIGHT.x0, LIGHT.y - 1, LIGHT.x1 - LIGHT.x0, 8);
-
-    ctx.fillStyle = '#ded7cd';
-    ctx.fillRect(BLOCK.x0, BLOCK.y0, BLOCK.x1 - BLOCK.x0, BLOCK.y1 - BLOCK.y0);
-    ctx.fillStyle = '#e8e1d6';
-    ctx.beginPath();
-    ctx.arc(CIRCLE.x, CIRCLE.y, CIRCLE.r, 0, Math.PI * 2);
-    ctx.fill();
-
-    ctx.strokeStyle = '#c7d1dc';
-    ctx.lineWidth = 2;
-    ctx.strokeRect(ROOM.x0, ROOM.y0, ROOM.x1 - ROOM.x0, ROOM.y1 - ROOM.y0);
-    ctx.strokeStyle = '#0f172a';
-    ctx.lineWidth = 1.4;
-    ctx.strokeRect(BLOCK.x0, BLOCK.y0, BLOCK.x1 - BLOCK.x0, BLOCK.y1 - BLOCK.y0);
-    ctx.beginPath();
-    ctx.arc(CIRCLE.x, CIRCLE.y, CIRCLE.r, 0, Math.PI * 2);
-    ctx.stroke();
-
-    ctx.strokeStyle = '#94a3b8';
-    ctx.lineWidth = 2.2;
-    ctx.beginPath();
-    ctx.moveTo(CAMERA.x, CAMERA.y - radius);
-    ctx.lineTo(CAMERA.x, CAMERA.y + radius);
-    ctx.stroke();
-
-    ctx.fillStyle = '#0f172a';
-    ctx.beginPath();
-    ctx.arc(CAMERA.x, CAMERA.y, 4.5, 0, Math.PI * 2);
-    ctx.fill();
-
-    ctx.font = '600 13px "Aptos", "Segoe UI", Arial, sans-serif';
-    ctx.textBaseline = 'middle';
-    ctx.fillStyle = '#334155';
-    ctx.fillText('cámara', CAMERA.x - 28, CAMERA.y - radius - 14);
-    ctx.fillStyle = '#b45309';
-    ctx.fillText('fuente emisiva', LIGHT.x0 - 8, LIGHT.y + 16);
-  }
-
-  function drawPath(path, highlighted) {
-    for (let i = 0; i < path.points.length - 1; i++) {
-      const a = path.points[i];
-      const b = path.points[i + 1];
-      ctx.beginPath();
-      ctx.moveTo(a.x, a.y);
-      ctx.lineTo(b.x, b.y);
-      ctx.strokeStyle = highlighted ? PALETTE[i % PALETTE.length] : `rgba(249, 115, 22, ${0.12 + i * 0.04})`;
-      ctx.lineWidth = highlighted ? 2.5 : 1.1;
-      ctx.stroke();
-    }
-  }
-
-  function drawGuide(path) {
-    drawPath(path, true);
-    path.bounces.forEach((point, index) => {
-      ctx.fillStyle = '#fff7ed';
-      ctx.beginPath();
-      ctx.arc(point.x, point.y, 9, 0, Math.PI * 2);
-      ctx.fill();
-      ctx.strokeStyle = PALETTE[index % PALETTE.length];
-      ctx.lineWidth = 1.7;
-      ctx.stroke();
-      ctx.fillStyle = '#7c2d12';
-      ctx.font = '700 11px "Aptos", "Segoe UI", Arial, sans-serif';
-      ctx.textAlign = 'center';
-      ctx.textBaseline = 'middle';
-      ctx.fillText(String(index + 1), point.x, point.y + 0.5);
-    });
-
-    if (path.reachedLight) {
-      const end = path.points[path.points.length - 1];
-      ctx.fillStyle = 'rgba(251, 191, 36, 0.28)';
-      ctx.beginPath();
-      ctx.arc(end.x, end.y, 11, 0, Math.PI * 2);
-      ctx.fill();
-    }
-  }
-
-  function render() {
-    const radius = BEAM_RADIUS;
-    const rayCount = Number(ids.count.value);
-    const maxDepth = Number(ids.depth.value);
-    const rng = mulberry32(seed);
-    const traced = [];
-    const focus = vec(CIRCLE.x - 14, CIRCLE.y - 20);
-
-    ids.countVal.textContent = String(rayCount);
-    ids.depthVal.textContent = String(maxDepth);
-    ids.total.textContent = String(rayCount);
-
-    for (let i = 0; i < rayCount; i++) {
-      const t = rayCount === 1 ? 0.5 : i / (rayCount - 1);
-      const offset = (t - 0.5) * radius * 2 + (rng() - 0.5) * 1.4;
-      const origin = vec(CAMERA.x, CAMERA.y + offset);
-      const aim = vec(focus.x, focus.y + offset * 0.45);
-      const initial = rotate(normalize(sub(aim, origin)), (rng() - 0.5) * 0.05);
-      traced.push(traceRay(origin, initial, maxDepth, SCATTER, rng));
-    }
-
-    const hits = traced.filter((path) => path.reachedLight).length;
-    const guide = traced.find((path) => path.reachedLight) || traced[Math.floor(traced.length / 2)];
-
-    ids.hit.textContent = String(hits);
-
-    drawScene(radius);
-    traced.forEach((path) => drawPath(path, false));
-    drawGuide(guide);
-  }
-
-  ['input', 'change'].forEach((eventName) => {
-    ids.count.addEventListener(eventName, render);
-    ids.depth.addEventListener(eventName, render);
-  });
-
-  render();
-})();
-</script>
-<section id="monte-carlo-la-solución-práctica" class="level4" data-number="3.5.1">
-<h4 data-number="3.5.1" class="anchored" data-anchor-id="monte-carlo-la-solución-práctica"><span class="header-section-number">3.5.1</span> Monte Carlo: la solución práctica</h4>
-<p>La solución práctica consiste en aproximarlo con <strong>Monte Carlo</strong>: en vez de intentar calcular todos los rebotes de manera exacta, se toman muchas muestras aleatorias y se promedia su efecto. En renderizado esto suele explicarse así: desde cada píxel se lanzan muchos rayos, esos rayos rebotan por la escena y se estima cuánta luz termina llegando a cámara.</p>
-<p>Cuantas menos muestras uses, más ruido aparece. Cuantas más uses, más limpia y estable queda la imagen. Por eso los renders físicamente realistas pueden tardar bastante: el ordenador está repitiendo una y otra vez una pregunta que parece sencilla, pero no lo es tanto: “¿de dónde viene realmente la luz que veo aquí?”.</p>
-<p>Veámoslo con el ejemplo más clásico: estimar el <strong>área de un círculo de radio 1</strong> (que sabemos que es <span class="math inline">\(\pi\)</span>) sin usar ninguna fórmula, solo lanzando puntos al azar.</p>
+<hr>
+<section id="muestras-ruido-y-convergencia" class="level4" data-number="3.5.1">
+<h4 data-number="3.5.1" class="anchored" data-anchor-id="muestras-ruido-y-convergencia"><span class="header-section-number">3.5.1</span> Muestras, ruido y convergencia</h4>
+<p>La idea práctica es aproximar esos rebotes con muchas muestras. Si has visto que en Blender aparecen parámetros como <code>samples</code> o <code>spp</code>, vienen de aquí: el motor lanza muchas trayectorias posibles de la luz y promedia su efecto.</p>
+<p>No hace falta que estudies el método en detalle para esta práctica. Quédate con dos consecuencias muy útiles: con pocas muestras aparece ruido; con muchas, la imagen se estabiliza, pero el tiempo de cálculo aumenta.</p>
+<p>La intuición estadística puede verse con un ejemplo muy sencillo: estimar el <strong>área de un círculo de radio 1</strong> (que sabemos que es <span class="math inline">\(\pi\)</span>) sin usar una fórmula cerrada, sino lanzando puntos al azar.</p>
 <div id="mc-demo-uza" style="margin:1.2rem 0; background:#fff; border:1px solid #e2e8f0; border-radius:14px; padding:1rem; box-shadow:0 4px 16px rgba(0,0,0,0.06);">
   <div style="display:grid; grid-template-columns:auto 1fr; gap:1rem; align-items:start;">
     <div>
@@ -1830,116 +952,8 @@ L_o(\mathbf{p}, \omega_o) = L_e + \int_{\Omega} f_r \left[ L_e(\mathbf{p}', \ome
     </div>
   </div>
 </div>
-<style>
-#mc-btn:hover, #mc-reset:hover { background:#f8fafc !important; }
-@media (max-width: 560px) { #mc-demo-uza > div { grid-template-columns: 1fr !important; } }
-</style>
-<script>
-(() => {
-  const mainC  = document.getElementById('mc-canvas');
-  const graphC = document.getElementById('mc-graph');
-  const ctx  = mainC.getContext('2d');
-  const gctx = graphC.getContext('2d');
-  const W = mainC.width, H = mainC.height, GW = graphC.width, GH = graphC.height;
-
-  let total = 0, inside = 0, running = false, rafId = null;
-  const RECORD_AT = new Set([1,2,5,10,20,50,100,200,500,1000,2000,5000,10000,20000,30000]);
-  const history = [];
-  const MAX_N = 30000;
-  const SPEED = [1, 5, 25, 100, 500];
-
-  function overlay() {
-    ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 1.5;
-    ctx.strokeRect(0.75, 0.75, W - 1.5, H - 1.5);
-    ctx.strokeStyle = '#3b82f6'; ctx.lineWidth = 2;
-    ctx.beginPath(); ctx.arc(W/2, H/2, W/2 - 1, 0, Math.PI * 2); ctx.stroke();
-  }
-
-  function bg() { ctx.fillStyle = '#f8fafc'; ctx.fillRect(0, 0, W, H); overlay(); }
-
-  function addBatch(n) {
-    for (let i = 0; i < n && total < MAX_N; i++) {
-      const x = Math.random() * 2 - 1, y = Math.random() * 2 - 1;
-      const hit = x * x + y * y <= 1;
-      if (hit) inside++;
-      total++;
-      const px = (x + 1) / 2 * W, py = (1 - (y + 1) / 2) * H;
-      ctx.fillStyle = hit ? 'rgba(239,68,68,0.7)' : 'rgba(147,197,253,0.6)';
-      ctx.beginPath(); ctx.arc(px, py, 1.5, 0, Math.PI * 2); ctx.fill();
-      if (RECORD_AT.has(total)) history.push({ n: total, v: inside / total * 4 });
-    }
-    overlay();
-  }
-
-  function stats() {
-    document.getElementById('mc-total').textContent  = total.toLocaleString('es');
-    document.getElementById('mc-inside').textContent = inside.toLocaleString('es');
-    document.getElementById('mc-pi').textContent = total > 0 ? (inside / total * 4).toFixed(5) : '—';
-  }
-
-  function graph() {
-    gctx.fillStyle = '#f8fafc'; gctx.fillRect(0, 0, GW, GH);
-    const pl = 22, pr = 4, pt = 5, pb = 14;
-    const pw = GW - pl - pr, ph = GH - pt - pb;
-    const yMin = 2.4, yMax = 4.2, logMax = Math.log10(MAX_N);
-    const gx = n => pl + pw * Math.log10(Math.max(1, n)) / logMax;
-    const gy = v => pt + ph * (1 - (Math.min(Math.max(v, yMin), yMax) - yMin) / (yMax - yMin));
-
-    gctx.strokeStyle = '#e2e8f0'; gctx.lineWidth = 1;
-    [3.0, Math.PI, 3.5, 4.0].forEach(y => {
-      gctx.beginPath(); gctx.moveTo(pl, gy(y)); gctx.lineTo(GW - pr, gy(y)); gctx.stroke();
-    });
-    const piY = gy(Math.PI);
-    gctx.strokeStyle = '#64748b'; gctx.lineWidth = 1; gctx.setLineDash([3, 3]);
-    gctx.beginPath(); gctx.moveTo(pl, piY); gctx.lineTo(GW - pr, piY); gctx.stroke();
-    gctx.setLineDash([]);
-    gctx.fillStyle = '#64748b'; gctx.font = '9px sans-serif'; gctx.fillText('π', 2, piY + 3);
-    gctx.fillStyle = '#94a3b8';
-    [10, 100, 1000, 10000].forEach(n => gctx.fillText(n >= 1000 ? (n/1000) + 'k' : n, gx(n) - 4, GH - 2));
-
-    if (history.length >= 2) {
-      gctx.strokeStyle = '#ef4444'; gctx.lineWidth = 1.8;
-      gctx.beginPath();
-      history.forEach(({ n, v }, i) => i === 0 ? gctx.moveTo(gx(n), gy(v)) : gctx.lineTo(gx(n), gy(v)));
-      gctx.stroke();
-      const last = history[history.length - 1];
-      gctx.fillStyle = '#ef4444';
-      gctx.beginPath(); gctx.arc(gx(last.n), gy(last.v), 3, 0, Math.PI * 2); gctx.fill();
-    }
-  }
-
-  function frame() {
-    addBatch(SPEED[Number(document.getElementById('mc-speed').value)]);
-    stats(); graph();
-    if (total >= MAX_N) { running = false; document.getElementById('mc-btn').textContent = 'Reiniciar'; return; }
-    if (running) rafId = requestAnimationFrame(frame);
-  }
-
-  function toggle() {
-    if (total >= MAX_N) { reset(); return; }
-    if (running) {
-      running = false; cancelAnimationFrame(rafId);
-      document.getElementById('mc-btn').textContent = 'Continuar';
-    } else {
-      running = true;
-      document.getElementById('mc-btn').textContent = 'Pausar';
-      rafId = requestAnimationFrame(frame);
-    }
-  }
-
-  function reset() {
-    running = false; cancelAnimationFrame(rafId);
-    total = 0; inside = 0; history.length = 0;
-    bg(); stats(); graph();
-    document.getElementById('mc-btn').textContent = 'Iniciar';
-  }
-
-  document.getElementById('mc-btn').addEventListener('click', toggle);
-  document.getElementById('mc-reset').addEventListener('click', reset);
-  bg(); stats(); graph();
-})();
-</script>
-<p>En el renderizado ocurre lo mismo: desde cada píxel se lanzan rayos aleatorios que rebotan entre superficies. Con <strong>pocas muestras por píxel</strong> (<em>spp</em>) el resultado es muy ruidoso; con <strong>miles de muestras</strong> converge a la solución física correcta. Los dos renders de Blender siguientes ilustran este efecto — arrastra el divisor para comparar:</p>
+<hr>
+<p>En el renderizado ocurre lo mismo: desde cada píxel se lanzan rayos aleatorios que rebotan entre superficies. Con <strong>pocas muestras por píxel</strong> (<em>spp</em>) el resultado es muy ruidoso; con <strong>muchas muestras</strong> la imagen se va estabilizando. Los dos renders de Blender siguientes ilustran este efecto — arrastra el divisor para comparar:</p>
 <div class="img-compare" role="slider" aria-label="Comparación entre render ruidoso y render limpio" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50" tabindex="0" style="max-width:640px; margin:1rem auto;">
 <p><img src="../resources/practica9/images/room_50spp.png" alt="Pocas muestras por píxel — resultado ruidoso"> <img class="img-compare-top" src="../resources/practica9/images/room_500spp.png" alt="Muchas muestras por píxel — resultado limpio"> <span class="img-compare-label is-left">Pocas muestras</span> <span class="img-compare-label is-right">Muchas muestras</span> <span class="img-compare-line" aria-hidden="true"></span> <span class="img-compare-knob" aria-hidden="true"> <svg viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 6 3 12 9 18"></polyline><polyline points="15 6 21 12 15 18"></polyline></svg> </span></p>
 </div>
@@ -1947,19 +961,27 @@ L_o(\mathbf{p}, \omega_o) = L_e + \int_{\Omega} f_r \left[ L_e(\mathbf{p}', \ome
 <p class="img-compare-credits">
 Escena del comparador spp procedente de <a href="https://www.blenderkit.com/get-blenderkit/a9267e7e-7cd7-4d5d-b479-8bf8fff2eddf/" target="_blank" rel="noopener">BlenderKit</a>, autor: Ibrohim Toxirov.
 </p>
-<p><strong><a href="https://www.blender.org/">Blender</a></strong> utiliza este tipo de renderizado por trazado de caminos (<em>path tracing</em>). En el ámbito de la arquitectura se emplea habitualmente para visualizaciones de interiores y exteriores, renders de presentación y animaciones fotorrealistas. Sin embargo, simular correctamente la iluminación global puede tardar desde minutos hasta horas por imagen según la complejidad de la escena.</p>
-<p>Por eso en tiempo real se utilizan modelos aproximados como el de Phong: en lugar de simular el transporte de luz completo, se define directamente una fórmula heurística que capta los aspectos visuales más importantes con un coste computacional mínimo.</p>
+<p>Esto es lo que ocurre en Blender Cycles y en otros motores físicamente realistas: con pocas muestras aparece grano; con más muestras el resultado se limpia, aunque el tiempo de cálculo crece. En visualización arquitectónica se utiliza porque reproduce mucho mejor la iluminación global de interiores y exteriores.</p>
+<p>Para esta práctica, sin embargo, lo importante es otra cosa: nuestro visualizador no busca ese nivel de realismo, sino una respuesta rápida e interactiva. Por eso usa Phong.</p>
 <hr>
 </section>
 </section>
-<section id="iluminación-de-phong" class="level3" data-number="3.6">
-<h3 data-number="3.6" class="anchored" data-anchor-id="iluminación-de-phong"><span class="header-section-number">3.6</span> Iluminación de Phong</h3>
-<p>El modo raster calcula el color de cada píxel aplicando el <strong>modelo de iluminación de Phong</strong>, que descompone la luz reflejada en tres componentes:</p>
+<section id="iluminación-de-phong-el-núcleo-de-esta-práctica" class="level3" data-number="3.6">
+<h3 data-number="3.6" class="anchored" data-anchor-id="iluminación-de-phong-el-núcleo-de-esta-práctica"><span class="header-section-number">3.6</span> Iluminación de Phong: el núcleo de esta práctica</h3>
+<p>Este sí es el modelo que nos interesa aquí. En el modo raster, el color de cada píxel se calcula con el <strong>modelo de iluminación de Phong</strong>, una aproximación clásica y muy rápida.</p>
+<p>Puedes leerlo de forma intuitiva como la suma de tres ideas:</p>
+<ul>
+<li>una luz base que evita que todo quede completamente negro;</li>
+<li>una componente difusa, que depende de cómo orientada esté la superficie hacia la luz;</li>
+<li>una componente especular, que produce los brillos.</li>
+</ul>
+<p>Si quieres ver el resumen técnico, suele escribirse así:</p>
 <p><span class="math display">\[
 C_p = k_a\, C_a \;+\; k_d\, C_l\,(n_p \cdot d_l) \;+\; k_s\, C_l\,(r_p \cdot v)^{e}
 \]</span></p>
-<p>donde las propiedades del <strong>material</strong> son <span class="math inline">\(k_a\)</span> (coeficiente ambiental), <span class="math inline">\(k_d\)</span> (difuso), <span class="math inline">\(k_s\)</span> (especular) y <span class="math inline">\(e\)</span> (exponente especular, que controla el tamaño del reflejo), las propiedades de la <strong>luz</strong> son <span class="math inline">\(C_a\)</span> (color ambiental), <span class="math inline">\(C_l\)</span> (color de la luz) y <span class="math inline">\(d_l\)</span> (dirección desde el punto hasta la luz), y las propiedades <strong>geométricas</strong> son <span class="math inline">\(n_p\)</span> (normal del punto) y <span class="math inline">\(r_p\)</span> (vector de reflexión de la cámara en ese punto).</p>
-<p>La siguiente visualización 3D permite ajustar los coeficientes y ver su efecto en tiempo real sobre una lámpara de araña con materiales metálicos cálidos. Arrastra para orbitar y usa la rueda para hacer zoom.</p>
+<p>No hace falta memorizar todos los símbolos. En la práctica basta con relacionarlos con los controles del visualizador: <code>ka</code> añade luz base, <code>kd</code> controla la respuesta mate o difusa, <code>ks</code> refuerza el brillo y <code>e</code> hace ese brillo más abierto o más concentrado.</p>
+<p>La siguiente visualización 3D te permite tocar esos parámetros y ver su efecto en tiempo real, igual que harías al ajustar un material y una luz en un software 3D. Arrastra para orbitar y usa la rueda para hacer zoom.</p>
+<hr>
 <div id="phong-demo-uza" style="margin:1.2rem 0; display:grid; grid-template-columns:1fr 300px; gap:1rem; align-items:start;">
 
   <div style="background:#fff; border:1px solid #e2e8f0; border-radius:14px; overflow:hidden; box-shadow:0 4px 16px rgba(0,0,0,0.06); position:relative;">
@@ -2003,153 +1025,7 @@ C_p = k_a\, C_a \;+\; k_d\, C_l\,(n_p \cdot d_l) \;+\; k_s\, C_l\,(r_p \cdot v)^
 
   </div>
 </div>
-<style>
-#ph-ca, #ph-cl {
-  appearance: none;
-  -webkit-appearance: none;
-}
-
-#ph-ca::-webkit-color-swatch-wrapper,
-#ph-cl::-webkit-color-swatch-wrapper {
-  padding: 0;
-}
-
-#ph-ca::-webkit-color-swatch,
-#ph-cl::-webkit-color-swatch {
-  border: none;
-  border-radius: 6px;
-}
-
-#ph-ca::-moz-color-swatch,
-#ph-cl::-moz-color-swatch {
-  border: none;
-  border-radius: 6px;
-}
-
-@media (max-width: 680px) {
-  #phong-demo-uza { grid-template-columns: 1fr !important; }
-  #phong-viewport { height: 260px !important; }
-}
-</style>
-<script type="module">
-import * as THREE from 'https://esm.sh/three@0.161.0';
-import { OrbitControls } from 'https://esm.sh/three@0.161.0/examples/jsm/controls/OrbitControls.js';
-import { RGBELoader }    from 'https://esm.sh/three@0.161.0/examples/jsm/loaders/RGBELoader.js';
-
-const vp = document.getElementById('phong-viewport');
-const statusEl = document.getElementById('phong-status');
-
-const scene = new THREE.Scene();
-scene.background = new THREE.Color(0x000000);
-
-const W = vp.clientWidth || 500, H = 340;
-const camera = new THREE.PerspectiveCamera(45, W / H, 0.001, 2000);
-const renderer = new THREE.WebGLRenderer({ antialias: true });
-renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-renderer.setSize(W, H);
-renderer.outputColorSpace = THREE.SRGBColorSpace;
-renderer.toneMapping = THREE.ACESFilmicToneMapping;
-renderer.toneMappingExposure = 1.1;
-vp.appendChild(renderer.domElement);
-
-const pmremGenerator = new THREE.PMREMGenerator(renderer);
-pmremGenerator.compileEquirectangularShader();
-
-const ambientLight = new THREE.AmbientLight(0xfff4e0, 1.0);
-const dirLight     = new THREE.DirectionalLight(0xffffff, 2.8);
-dirLight.position.set(3, 6, 4);
-scene.add(ambientLight, dirLight);
-
-const controls = new OrbitControls(camera, renderer.domElement);
-controls.enableDamping = true;
-controls.dampingFactor = 0.08;
-
-const shadedMats = [];
-let envMap = null;
-
-const sphereGeometry = new THREE.SphereGeometry(1.08, 128, 96);
-const sphereMaterial = new THREE.MeshStandardMaterial({
-  color: new THREE.Color('#f7f7f5'),
-  metalness: 1,
-  roughness: 0.08,
-  envMap: null,
-  envMapIntensity: 2.6,
-});
-const sphere = new THREE.Mesh(sphereGeometry, sphereMaterial);
-sphere.position.set(0, 0, 0);
-scene.add(sphere);
-shadedMats.push(sphereMaterial);
-
-camera.position.set(0, 0.12, 3.05);
-controls.target.set(0, 0, 0);
-controls.update();
-statusEl.style.display = 'none';
-
-function hexToColor(hex) {
-  const v = parseInt(hex.slice(1), 16);
-  return new THREE.Color((v >> 16 & 255) / 255, (v >> 8 & 255) / 255, (v & 255) / 255);
-}
-
-function updatePhong() {
-  const ka = Number(document.getElementById('ph-ka').value);
-  const kd = Number(document.getElementById('ph-kd').value);
-  const ks = Number(document.getElementById('ph-ks').value);
-  const e  = Number(document.getElementById('ph-e').value);
-  const cl = hexToColor(document.getElementById('ph-cl').value);
-  const ca = hexToColor(document.getElementById('ph-ca').value);
-
-  ambientLight.color.copy(ca);
-  ambientLight.intensity = ka * 5;
-  dirLight.color.copy(cl);
-  dirLight.intensity = kd * 5;
-
-  shadedMats.forEach(mat => {
-    mat.color.copy(ca).lerp(new THREE.Color('#ffffff'), 0.72);
-    mat.metalness = 0.82 + ks * 0.18;
-    mat.roughness = Math.max(0.035, 0.22 - (e / 120) * 0.18);
-    if (envMap) {
-      mat.envMap = envMap;
-      mat.envMapIntensity = 1.8 + ks * 1.8;
-    }
-    mat.needsUpdate = true;
-  });
-}
-
-new RGBELoader().load('../resources/practica9/models/sunset.hdr', texture => {
-  texture.mapping = THREE.EquirectangularReflectionMapping;
-  envMap = pmremGenerator.fromEquirectangular(texture).texture;
-  scene.environment = envMap;
-  shadedMats.forEach(mat => {
-    mat.envMap = envMap;
-    mat.envMapIntensity = 2.4;
-    mat.needsUpdate = true;
-  });
-  texture.dispose();
-  pmremGenerator.dispose();
-}, undefined, err => {
-  console.warn('No se pudo cargar sunset.hdr', err);
-});
-updatePhong();
-
-['ph-ka','ph-kd','ph-ks','ph-e','ph-ca','ph-cl'].forEach(id => {
-  document.getElementById(id)?.addEventListener('input', () => {
-    const vEl = document.getElementById(id + '-v');
-    const el  = document.getElementById(id);
-    if (vEl) vEl.textContent = id === 'ph-e' ? el.value : Number(el.value).toFixed(2);
-    updatePhong();
-  });
-});
-
-(function animate() { requestAnimationFrame(animate); controls.update(); renderer.render(scene, camera); })();
-
-new ResizeObserver(() => {
-  const nw = vp.clientWidth;
-  if (!nw) return;
-  camera.aspect = nw / H;
-  camera.updateProjectionMatrix();
-  renderer.setSize(nw, H);
-}).observe(vp);
-</script>
+<hr>
 <p>Los siguientes comparadores muestran renders reales del visualizador. A la derecha de cada divisor se ve la imagen con menos términos activos; arrastra para comparar:</p>
 <div class="grid">
 <div class="g-col-12 g-col-md-6">
@@ -2168,6 +1044,7 @@ new ResizeObserver(() => {
 <p class="img-compare-credits">
 Comparadores de <em>k</em><sub>a</sub>, <em>k</em><sub>d</sub> y <em>k</em><sub>s</sub> a partir de una escena de <a href="https://www.blenderkit.com/get-blenderkit/1ac8808f-11e6-4c76-894e-227f1eb3cba5/" target="_blank" rel="noopener">BlenderKit</a>, autor: Russo 3D.
 </p>
+<hr>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -2213,43 +1090,6 @@ Comparadores de <em>k</em><sub>a</sub>, <em>k</em><sub>d</sub> y <em>k</em><sub>
 </ul></li>
 <li><p><strong>El método <code>modificar</code> (el que tiene tres parámetros) de la clase <code>geometria.Punto</code> es llamado durante la ejecución. ¿Qué valores toman sus tres parámetros la primera vez? ¿Y la segunda vez?</strong></p></li>
 </ol>
-<style>
-.img-compare-credits {
-  text-align: center;
-  font-size: 0.7rem;
-  color: #56616b;
-  margin: 0.45rem 0 1rem;
-}
-</style>
-
-<script>
-(() => {
-  const init = (el) => {
-    const setPos = (clientX) => {
-      const r = el.getBoundingClientRect();
-      const pct = Math.max(0, Math.min(100, ((clientX - r.left) / r.width) * 100));
-      el.style.setProperty('--pos', pct + '%');
-      el.setAttribute('aria-valuenow', Math.round(pct));
-    };
-    const onDown = (e) => { el.classList.add('is-dragging'); el.setPointerCapture?.(e.pointerId); setPos(e.clientX); };
-    const onMove = (e) => { if (el.classList.contains('is-dragging')) setPos(e.clientX); };
-    const onUp   = (e) => { el.classList.remove('is-dragging'); el.releasePointerCapture?.(e.pointerId); };
-    el.addEventListener('pointerdown', onDown);
-    el.addEventListener('pointermove', onMove);
-    el.addEventListener('pointerup', onUp);
-    el.addEventListener('pointercancel', onUp);
-    el.addEventListener('keydown', (e) => {
-      const cur = parseFloat(getComputedStyle(el).getPropertyValue('--pos')) || 50;
-      const step = e.shiftKey ? 10 : 2;
-      if (e.key === 'ArrowLeft')  { el.style.setProperty('--pos', Math.max(0, cur - step) + '%'); e.preventDefault(); }
-      if (e.key === 'ArrowRight') { el.style.setProperty('--pos', Math.min(100, cur + step) + '%'); e.preventDefault(); }
-    });
-  };
-  const ready = () => document.querySelectorAll('.img-compare').forEach(init);
-  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', ready);
-  else ready();
-})();
-</script>
 
 
 </section>
@@ -2671,6 +1511,8 @@ Uso docente no comercial permitido con atribución y licencia compartida.</p>
 </div>
   </div>
 </footer>
+<script src="../resources/practica9/js/practica9.js"></script>
+<script type="module" src="../resources/practica9/js/practica9-phong.js"></script>
 
 
 

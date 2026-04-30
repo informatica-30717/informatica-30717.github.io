@@ -1,0 +1,19 @@
+Read AGENTS.md and inspect the existing Java visualizer project.
+
+Do not modify code yet.
+
+I want to modernize this old teaching renderer for architecture students. The final project must remain plain Java, dependency-free, easy to import in Eclipse/IntelliJ, and based on Swing + BufferedImage.
+
+Do not add OpenGL, LWJGL, JOGL, JavaFX, ImGui, Maven, Gradle, native libraries, GLFW, or shader files.
+
+For this first task, produce a short report with:
+
+1. Current package structure.
+2. Main class / entry point.
+3. Whether the project currently uses any external dependencies.
+4. Whether it uses OpenGL or any graphics binding.
+5. Classes responsible for OBJ loading, projection, rasterization, z-buffer, material/light, and UI.
+6. Which files are most coupled or risky to modify.
+7. A safe incremental refactor plan.
+
+Do not change files in this task.
