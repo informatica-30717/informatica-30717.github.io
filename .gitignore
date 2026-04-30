@@ -147,3 +147,10 @@ checklink/cookies.txt
 /.quarto/
 
 **/*.quarto_ipynb
+
+# práctica 9
+resources/practica9/visualizador/doc
+resources/practica9/visualizador/screenshots
+resources/practica9/visualizador/*/*.class
+resources/practica9/visualizador/.classpath
+resources/practica9/visualizador/.project
