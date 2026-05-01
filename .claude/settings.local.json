@@ -1,7 +1,0 @@
-{
-  "permissions": {
-    "allow": [
-      "Bash(grep -iE \"majo|mesh|\\\\.\\(ply|obj|mtl|glb|gltf|jpg|jpeg|png\\)$\")"
-    ]
-  }
-}

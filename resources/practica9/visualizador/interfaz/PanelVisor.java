@@ -64,6 +64,9 @@ public class PanelVisor extends JPanel {
 	private long lastRenderNanos;
 	private int lastRenderedFaces;
 	private int lastDiscardedFaces;
+	private double defaultFov;
+	private double defaultInclination;
+	private double defaultRotation;
 	private int projectionWidth;
 	private int projectionHeight;
 	private int[] scanlineXIni;
@@ -264,7 +267,10 @@ public class PanelVisor extends JPanel {
 	    renderBuffers = new RenderBuffers();
 	    shader = new Shader();
 	    postProcess = new PostProcess();
-	    _camara = new escena.Camara(18, FOV_INICIAL, INCLINACION_INICIAL, ROTACION_INICIAL);
+	    defaultFov = FOV_INICIAL;
+	    defaultInclination = INCLINACION_INICIAL;
+	    defaultRotation = ROTACION_INICIAL;
+	    _camara = new escena.Camara(18, fovInicialConfigurado(), inclinacionInicialConfigurada(), rotacionInicialConfigurada());
 	    _luz = new escena.Luz(
 	    		   new escena.Color(1.0,1.0,1.0),
 	               new geometria.Punto(100.0,100.0,1000.0),
@@ -370,10 +376,25 @@ public class PanelVisor extends JPanel {
 		return Math.max(0.5, _objeto.radioAabb());
 	}
 
+	private double fovInicialConfigurado()
+	{
+		return Math.max(10.0, Math.min(120.0, defaultFov));
+	}
+
+	private double inclinacionInicialConfigurada()
+	{
+		return Math.max(-89.0, Math.min(89.0, defaultInclination));
+	}
+
+	private double rotacionInicialConfigurada()
+	{
+		return defaultRotation;
+	}
+
 	private double distanciaCamaraPorDefecto()
 	{
 		double radio = radioObjeto();
-		double distancia = (radio * 1.45) / Math.tan(Math.toRadians(FOV_INICIAL * 0.5));
+		double distancia = (radio * 1.45) / Math.tan(Math.toRadians(fovInicialConfigurado() * 0.5));
 		return Math.max(6.0, distancia * 1.2);
 	}
 
@@ -1311,6 +1332,14 @@ public class PanelVisor extends JPanel {
 		repaint();
 	}
 
+	public void configurarCamaraInicial(double fov, double inclinacion, double rotacion)
+	{
+		defaultFov = fov;
+		defaultInclination = inclinacion;
+		defaultRotation = rotacion;
+		reiniciarCamara();
+	}
+
 	private double lerp(double start, double end, double t)
 	{
 		return (1.0 - t) * start + t * end;
@@ -1328,7 +1357,7 @@ public class PanelVisor extends JPanel {
 
 	public void reiniciarCamara()
 	{
-		_camara.reiniciar(distanciaCamaraPorDefecto(), FOV_INICIAL, INCLINACION_INICIAL, ROTACION_INICIAL);
+		_camara.reiniciar(distanciaCamaraPorDefecto(), fovInicialConfigurado(), inclinacionInicialConfigurada(), rotacionInicialConfigurada());
 		statusMessage = "Cámara reiniciada.";
 		actualizar();
 		notificarCambioCamara();

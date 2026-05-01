@@ -42,34 +42,34 @@ resources:
 
 ## Objetivos de la práctica
 
-En esta práctica vamos a trabajar con un visualizador 3D ya construido en Java. El objetivo principal no es aprender desde cero algoritmos avanzados de renderizado, sino abrir el proyecto, probarlo y entender cómo se relacionan la interfaz, la cámara, los materiales y la iluminación.
+**En esta práctica vamos a trabajar con un visualizador 3D ya construido en Java**. El objetivo principal no es aprender desde cero algoritmos avanzados de renderizado, sino abrir el proyecto, probarlo y entender cómo se relacionan la interfaz, la cámara, los materiales y la iluminación.
 
-La parte teórica sirve sobre todo para orientarte. No hace falta dominar todas las fórmulas para seguir la práctica ni para sacar partido al proyecto.
+La parte teórica sirve sobre todo para orientarte. No hace falta dominar todas las fórmulas para seguir la práctica ni para sacar partido al proyecto. No intentes entender todo el código de golpe: sigue el recorrido en orden, ejecuta primero el visualizador y usa las actividades marcadas como **Experimenta** para ir relacionando lo que ves en pantalla con el código.
 
 Al finalizar, deberías ser capaz de:
 
 - Importar y ejecutar en Eclipse un proyecto Java organizado en paquetes.
 - Identificar en el código las clases principales del visualizador y relacionarlas con lo que aparece en pantalla.
-- Experimentar con el modo **Raster** y observar cómo cambian el resultado la cámara, la luz y el material.
-- Entender, a nivel conceptual, que Phong es una aproximación rápida y que en herramientas profesionales como Blender suelen emplearse modelos de iluminación más completos.
+- Experimentar con el visualizador y observar cómo cambian el resultado la cámara, la luz y el material.
+- Entender, a nivel conceptual, que *Phong* es una aproximación rápida y que en herramientas profesionales como *Blender* suelen emplearse modelos de iluminación más completos.
 
-**Entrega:** un documento Word que responda a las cuestiones que aparecen a lo largo del guion.
+Es conveniente que resolváis todos los ejercicios que se os plantean en el guion, pero no es necesario que los entreguéis. La evaluación se realizará a través de un cuestionario disponible en Moodle.
 
 ---
 
 ## El visualizador
 
----
-
 ### Importando el visualizador
 
-Descarga el archivo `visualizador.zip` y descomprímelo en la carpeta del *workspace* de Eclipse. Para importar el proyecto:
+El visualizador de la práctica se puede descargar desde [⤓ aquí](../resources/practica9/visualizador.zip). Copia esa carpeta a tu *workspace* de Eclipse. Si quieres, puedes renombrarla como `PracticaVisualizador` para que coincida con el nombre usado en este guion.
+
+Para importar el proyecto:
 
 1. Ve a **File → Import**.
 2. Selecciona **General → Existing projects into workspace**.
-3. Elige la carpeta `PracticaVisualizador`.
+3. Elige la carpeta `visualizador` (o `PracticaVisualizador`, si la has renombrado).
 
-Alternativamente, puedes ir a **File → New → Java project**, elegir un nombre, marcar **Create project from existing source**, pulsar **Browse** y seleccionar la carpeta con el código.
+Alternativamente, puedes ir a **File → New → Java project**, elegir un nombre, marcar **Create project from existing source**, pulsar **Browse** y seleccionar esa misma carpeta. Si Eclipse te pide la clase de arranque, usa `app.Main`.
 
 ---
 
@@ -77,13 +77,26 @@ Alternativamente, puedes ir a **File → New → Java project**, elegir un nombr
 
 El visualizador es una aplicación suficientemente grande como para que resulte necesario agrupar las clases en **paquetes**. Un paquete es un conjunto de clases que representan conceptos relacionados entre sí.
 
-El código fuente está dividido en tres paquetes:
+El código fuente está dividido en cinco paquetes:
 
+- **`app`**: arranque del programa y archivo `Configuracion`, pensado para cambios sencillos.
 - **`geometria`**: clases que representan elementos geométricos: puntos, vectores, normales, caras, objetos y matrices de transformación.
 - **`escena`**: clases que representan los elementos de la escena: colores, materiales, luces y la cámara.
 - **`interfaz`**: clases que representan el interfaz gráfico: la ventana principal y los paneles de visualización y configuración.
+- **`renderer`**: rasterizado, sombreado y efectos visuales. No hace falta entrar aquí al principio.
 
 Puedes ver estos paquetes en el explorador de paquetes de Eclipse, en la parte izquierda de la pantalla. En el sistema de archivos, cada paquete se corresponde con una carpeta dentro de la carpeta del proyecto.
+
+---
+
+### Recorrido recomendado para no perderte
+
+Si es la primera vez que abres el proyecto, sigue este orden:
+
+1. `app.Main`: punto de arranque.
+2. `app.Configuracion`: archivo pensado para retocar el visualizador sin tocar el renderizador.
+3. `interfaz.PanelCamara` y `interfaz.PanelModoVisor`: controles que ves en pantalla.
+4. `interfaz.PanelVisor` y `renderer`: solo cuando el guion te pida mirar el funcionamiento interno.
 
 ---
 
@@ -118,7 +131,7 @@ Un **`Objeto`** es una serie de caras y vértices. Un vértice es un punto junto
 
 Abre en Eclipse los archivos de las clases `Punto`, `Direccion` y `Normal`. Repasa el código de cada una y observa cómo se relaciona con el *Outline* que aparece a la derecha, que muestra esquemáticamente los atributos y métodos de la clase.
 
-**¿En qué clase está el método `public static void main(String s[])`?** Sólo puede haber uno por aplicación; búscalo (pista: está en una de las clases del paquete `interfaz`).
+**¿En qué clase está el método `public static void main(String[] args)`?** Sólo puede haber uno por aplicación; búscalo (pista: está en el paquete `app`).
 
 Crea una captura de pantalla de Eclipse donde se vea la estructura completa del proyecto.
 :::
@@ -127,7 +140,7 @@ Crea una captura de pantalla de Eclipse donde se vea la estructura completa del 
 
 ### Ejecutando el visualizador
 
-Ejecuta el visualizador desde Eclipse. Para cargar un objeto tridimensional, ve a **Archivo → Abrir** y selecciona un archivo `.obj` de la carpeta `objetos3d` del proyecto. Te recomendamos empezar con `teapot.obj`. La carga puede tardar unos segundos.
+Ejecuta el visualizador desde Eclipse usando `app.Main` (**Run As → Java Application**). Al arrancar, el programa cargará el modelo configurado en `app.Configuracion`. Para cargar otro objeto tridimensional, ve a **Archivo → Abrir** y selecciona un archivo `.obj` de la carpeta `objetos_3d` del proyecto. Te recomendamos empezar con `teapot.obj`. La carga puede tardar unos segundos.
 
 Puedes cambiar el modo de visualización entre **Malla de alambre** (*wireframe*), donde sólo se muestran las aristas, y **Raster**, que rellena las caras con iluminación.
 
@@ -144,20 +157,25 @@ Puedes cambiar el modo de visualización entre **Malla de alambre** (*wireframe*
 
 ---
 
-### Editando código
+### Primeros cambios de código
 
-Los parámetros de la cámara están en inglés en el interfaz gráfico. Todo el interfaz relacionado con la cámara está en la clase `PanelCamara`.
+Si vas a tocar código por primera vez, empieza por `app.Configuracion`. Ese archivo concentra los cambios sencillos del proyecto: modelo inicial, modo de visualización, cámara, material y luz.
 
 ---
 
 ::: {.callout-note}
-## Traduce la interfaz
+## Personaliza el arranque
 
-Busca en `PanelCamara` las cadenas de texto que hay en las etiquetas de la interfaz gráfica. En Java, las cadenas van siempre entre comillas dobles. Las cadenas de la interfaz suelen aparecer en las líneas que contienen `JLabel`. Cámbialas a castellano.
+Abre `app.Configuracion` y prueba cambios pequeños, sin salirte de ese archivo:
 
-Muestra el resultado con una captura de pantalla.
+- cambia `MODELO_INICIAL` por otro `.obj`;
+- prueba otro `MODO_INICIAL`;
+- modifica el color del material o de la luz;
+- cambia la inclinación o la rotación inicial de la cámara.
 
-**Cuidado:** si modificas algo que no sea una cadena de texto, el código puede dejar de compilar. Siempre puedes deshacer los cambios.
+Ejecuta de nuevo el programa y muestra el resultado con una captura de pantalla.
+
+**Idea clave:** si solo quieres experimentar con el visualizador, no hace falta entrar todavía en `PanelVisor` ni en el paquete `renderer`.
 :::
 
 ---
@@ -165,6 +183,8 @@ Muestra el resultado con una captura de pantalla.
 ### Depuración de errores
 
 En aplicaciones de este tamaño, el depurador de Eclipse resulta muy útil para entender paso a paso qué hace el código. Vamos a depurar el método `matrizDeProyeccion()` de la clase `PanelVisor` del paquete `interfaz`.
+
+No hace falta leer toda la clase antes: usa el buscador de Eclipse y salta directamente a ese método.
 
 ---
 
@@ -451,7 +471,11 @@ Ejecuta después el código en modo depuración para comprobar cómo se realiza 
 
 ### Modos de visualización
 
-`PanelVisor` gestiona la visualización del objeto con dos modos:
+`PanelVisor` coordina la visualización del objeto. La proyección y el recorrido de caras siguen ahí, pero el cálculo del color está concentrado en `renderer.Shader` y los efectos opcionales en `renderer.PostProcess`.
+
+Si solo quieres modificar cámara, material, luz o modo de visualización, no hace falta entrar en ese paquete todavía.
+
+El visualizador ofrece dos modos principales:
 
 En esta práctica nos interesa sobre todo el segundo, porque es el que utiliza la iluminación de Phong del proyecto proporcionado.
 
@@ -480,7 +504,7 @@ En ambos modos se puede activar el ***backface culling*** (método `considerarCa
 ::: {.callout-note}
 ## Busca en el código
 
-Revisa los métodos `considerarCara`, `pintarMallaAlambre` y `pintarCaraMallaAlambre`, y los tres métodos que implementan el algoritmo raster. Identifica qué partes del algoritmo descrito en este guion implementa cada método. Compara los dos modos de visualización.
+No leas `PanelVisor` de principio a fin. Busca directamente los métodos `considerarCara`, `pintarMallaAlambre` y `pintarCaraMallaAlambre`, y localiza después dónde se llama a `renderer.Shader` en el recorrido raster. Identifica qué partes del algoritmo descrito en este guion implementa cada método. Compara los dos modos de visualización.
 :::
 
 ---
@@ -700,7 +724,12 @@ La siguiente visualización 3D te permite tocar esos parámetros y ver su efecto
 
 ---
 
-Los siguientes comparadores muestran renders reales del visualizador. A la derecha de cada divisor se ve la imagen con menos términos activos; arrastra para comparar:
+Las siguientes imágenes no son capturas literales del visualizador, sino **apoyos visuales externos** preparados para que se entienda mejor qué aporta cada término de Phong. Úsalas de forma cualitativa: quédate con estas dos ideas.
+
+- Si quitas `ks`, desaparecen los brillos especulares.
+- Si quitas `ka`, las zonas en sombra se oscurecen mucho más.
+
+Arrastra cada divisor y fíjate sobre todo en esas dos diferencias:
 
 ::: {.grid}
 
@@ -715,26 +744,26 @@ Los siguientes comparadores muestran renders reales del visualizador. A la derec
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 6 3 12 9 18"/><polyline points="15 6 21 12 15 18"/></svg>
   </span>
 </div>
-<small class="img-compare-caption">Completo ↔ sin componente especular</small>
+<small class="img-compare-caption">Completo ↔ sin componente especular. Fíjate en el brillo del saxofón y en los reflejos más intensos.</small>
 :::
 
 ::: {.g-col-12 .g-col-md-6}
-<div class="img-compare" role="slider" aria-label="Comparación entre difusa + especular y solo difusa" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50" tabindex="0">
-  <img src="../resources/practica9/images/kd_ks.png" alt="Difusa + especular (kd + ks)">
+<div class="img-compare" role="slider" aria-label="Comparación entre ambiente más difusa y solo difusa" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50" tabindex="0">
+  <img src="../resources/practica9/images/ka_kd.png" alt="Ambiente más difusa (ka + kd)">
   <img class="img-compare-top" src="../resources/practica9/images/kd.png" alt="Solo difusa (kd)">
-  <span class="img-compare-label is-left">kd + ks</span>
+  <span class="img-compare-label is-left">ka + kd</span>
   <span class="img-compare-label is-right">kd</span>
   <span class="img-compare-line" aria-hidden="true"></span>
   <span class="img-compare-knob" aria-hidden="true">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 6 3 12 9 18"/><polyline points="15 6 21 12 15 18"/></svg>
   </span>
 </div>
-<small class="img-compare-caption">Sin componente ambiental ↔ solo difusa</small>
+<small class="img-compare-caption">Ambiente + difusa ↔ solo difusa. Fíjate en las zonas en sombra: con `ka` se levantan; sin `ka`, caen hacia negro.</small>
 :::
 
 :::
 
-<p class="img-compare-credits">Comparadores de <em>k</em><sub>a</sub>, <em>k</em><sub>d</sub> y <em>k</em><sub>s</sub> a partir de una escena de <a href="https://www.blenderkit.com/get-blenderkit/1ac8808f-11e6-4c76-894e-227f1eb3cba5/" target="_blank" rel="noopener">BlenderKit</a>, autor: Russo 3D.</p>
+<p class="img-compare-credits">Comparadores cualitativos de <em>k</em><sub>a</sub>, <em>k</em><sub>d</sub> y <em>k</em><sub>s</sub> preparados sobre una escena de <a href="https://www.blenderkit.com/get-blenderkit/1ac8808f-11e6-4c76-894e-227f1eb3cba5/" target="_blank" rel="noopener">BlenderKit</a>, autor: Russo 3D.</p>
 
 ---
 
@@ -749,6 +778,8 @@ Prueba con otras combinaciones de colores de luz y material.
 ---
 
 ## Conceptos de programación orientada a objetos
+
+No respondas estas preguntas de memoria. Apóyate en **Package Explorer**, **Outline** y el buscador de Eclipse para localizar clases, atributos y métodos.
 
 Responde a las siguientes preguntas en el documento Word:
 
