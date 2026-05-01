@@ -1,6 +1,6 @@
 ---
 title: "Práctica 9: Visualizador 3D"
-title-block-banner: ../resources/practica9/images/full.png
+title-block-banner: ../resources/practica9/images/house_100mm.png
 title-block-banner-color: "#ffffff"
 format:
   html:

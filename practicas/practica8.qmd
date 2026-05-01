@@ -180,10 +180,10 @@ La interfaz puede cambiar ligeramente según la versión de *Protégé*, pero la
 
 Una vez abierto el fichero, encontrarás varias vistas desde las que puedes navegar por la ontología. Debajo del título de la ontología, *converters*, puedes encontrar una pestaña llamada ***Entities*** que te permitirá acceder a las siguientes categorías:
 
-- **Classes**, para ver la jerarquía de clases del dominio.
-- **Object properties**, para ver propiedades cuyo valor es otro objeto o individuo.
-- **Data properties**, para ver propiedades cuyo valor es un dato literal.
-- **Individuals**, para ver las instancias concretas del modelo.
+- ***Classes***, para ver la jerarquía de clases del dominio.
+- ***Object properties***, para ver propiedades cuyo valor es otro objeto o individuo.
+- ***Data properties***, para ver propiedades cuyo valor es un dato literal.
+- ***Individuals***, para ver las instancias concretas del modelo.
 
 La @fig-protege muestra el resultado de seleccionar ***Clases*** y, concretamente, ***Edificio***.
 Podeis observar cómo la interfaz nos muestra que ***Edificio*** es una subclase de ***Zona***. 
