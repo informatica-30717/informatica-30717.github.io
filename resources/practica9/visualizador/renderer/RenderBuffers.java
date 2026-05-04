@@ -57,6 +57,20 @@ public class RenderBuffers {
 		Arrays.fill(normalZ, 0.0f);
 	}
 
+	public void clearTransparent(double farDepth)
+	{
+		if (pixels == null)
+		{
+			return;
+		}
+
+		Arrays.fill(pixels, 0x00000000);
+		Arrays.fill(depth, farDepth);
+		Arrays.fill(normalX, 0.0f);
+		Arrays.fill(normalY, 0.0f);
+		Arrays.fill(normalZ, 0.0f);
+	}
+
 	private int mixRgb(int topRgb, int bottomRgb, double t)
 	{
 		int topR = (topRgb >> 16) & 0xff;

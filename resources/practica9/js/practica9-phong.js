@@ -1,6 +1,5 @@
 import * as THREE from 'https://esm.sh/three@0.161.0';
 import { OrbitControls } from 'https://esm.sh/three@0.161.0/examples/jsm/controls/OrbitControls.js';
-import { RGBELoader } from 'https://esm.sh/three@0.161.0/examples/jsm/loaders/RGBELoader.js';
 
 (() => {
   const vp = document.getElementById('phong-viewport');
@@ -21,9 +20,6 @@ import { RGBELoader } from 'https://esm.sh/three@0.161.0/examples/jsm/loaders/RG
   renderer.toneMappingExposure = 1.1;
   vp.appendChild(renderer.domElement);
 
-  const pmremGenerator = new THREE.PMREMGenerator(renderer);
-  pmremGenerator.compileEquirectangularShader();
-
   const ambientLight = new THREE.AmbientLight(0xfff4e0, 1.0);
   const dirLight = new THREE.DirectionalLight(0xffffff, 2.8);
   dirLight.position.set(3, 6, 4);
@@ -34,15 +30,12 @@ import { RGBELoader } from 'https://esm.sh/three@0.161.0/examples/jsm/loaders/RG
   controls.dampingFactor = 0.08;
 
   const shadedMats = [];
-  let envMap = null;
 
   const sphereGeometry = new THREE.SphereGeometry(1.08, 128, 96);
-  const sphereMaterial = new THREE.MeshStandardMaterial({
+  const sphereMaterial = new THREE.MeshPhongMaterial({
     color: new THREE.Color('#f7f7f5'),
-    metalness: 1,
-    roughness: 0.08,
-    envMap: null,
-    envMapIntensity: 2.6,
+    specular: new THREE.Color('#ffffff'),
+    shininess: 40,
   });
   const sphere = new THREE.Mesh(sphereGeometry, sphereMaterial);
   sphere.position.set(0, 0, 0);
@@ -73,31 +66,12 @@ import { RGBELoader } from 'https://esm.sh/three@0.161.0/examples/jsm/loaders/RG
     dirLight.intensity = kd * 5;
 
     shadedMats.forEach((mat) => {
-      mat.color.copy(ca).lerp(new THREE.Color('#ffffff'), 0.72);
-      mat.metalness = 0.82 + ks * 0.18;
-      mat.roughness = Math.max(0.035, 0.22 - (e / 120) * 0.18);
-      if (envMap) {
-        mat.envMap = envMap;
-        mat.envMapIntensity = 1.8 + ks * 1.8;
-      }
+      mat.color.setRGB(0.95, 0.95, 0.93);
+      mat.specular.copy(cl).multiplyScalar(ks);
+      mat.shininess = e;
       mat.needsUpdate = true;
     });
   }
-
-  new RGBELoader().load('../resources/practica9/models/sunset.hdr', (texture) => {
-    texture.mapping = THREE.EquirectangularReflectionMapping;
-    envMap = pmremGenerator.fromEquirectangular(texture).texture;
-    scene.environment = envMap;
-    shadedMats.forEach((mat) => {
-      mat.envMap = envMap;
-      mat.envMapIntensity = 2.4;
-      mat.needsUpdate = true;
-    });
-    texture.dispose();
-    pmremGenerator.dispose();
-  }, undefined, (err) => {
-    console.warn('No se pudo cargar sunset.hdr', err);
-  });
 
   updatePhong();
 

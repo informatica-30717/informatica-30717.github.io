@@ -61,8 +61,10 @@ public class PanelMaterial extends JPanel {
 		this.setOpaque(false);
 		this.setLayout(new BoxLayout(this,BoxLayout.Y_AXIS));
 		kdPanel = new PanelColor(1.0);
-		kdPanel.setBorder(InterfazTema.crearBordeTarjeta("Coeficiente difuso"));
-		this.add(kdPanel);
+		JPanel diffuseSection = InterfazTema.crearSeccionDialogo("Coeficiente difuso", kdPanel);
+		diffuseSection.setMaximumSize(new java.awt.Dimension(Integer.MAX_VALUE, diffuseSection.getPreferredSize().height));
+		this.add(diffuseSection);
+		this.add(Box.createVerticalStrut(12));
 		
 		JPanel specularPanel = new JPanel();
 		specularPanel.setOpaque(false);
@@ -106,10 +108,10 @@ public class PanelMaterial extends JPanel {
 		esPanel.add(Box.createHorizontalStrut(20));
 		esPanel.add(esSpinner);
 		esPanel.setMaximumSize(new java.awt.Dimension(Integer.MAX_VALUE, esPanel.getPreferredSize().height));
-		specularPanel.setBorder(InterfazTema.crearBordeTarjeta("Parte especular"));
-		specularPanel.setMaximumSize(new java.awt.Dimension(Integer.MAX_VALUE, specularPanel.getPreferredSize().height));
+		JPanel specularSection = InterfazTema.crearSeccionDialogo("Parte especular", specularPanel);
+		specularSection.setMaximumSize(new java.awt.Dimension(Integer.MAX_VALUE, specularSection.getPreferredSize().height));
 		
-		this.add(specularPanel);
+		this.add(specularSection);
 		this.add(Box.createVerticalGlue());
 	}
 }

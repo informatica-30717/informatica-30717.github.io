@@ -32,6 +32,11 @@ public class Shader {
 		{
 			return shadeNormals(nx, ny, nz);
 		}
+		
+		if (mode == RenderMode.ONDAS)
+		{
+			return shadeOndas(pointX, pointY, pointZ, nx, ny, nz);
+		}
 
 		double lightX = light.posicion().x() - pointX;
 		double lightY = light.posicion().y() - pointY;
@@ -76,6 +81,21 @@ public class Shader {
 		Color specularColor = light.color().multiplicado(material.ks() * specular);
 		Color rimColor = light.color().multiplicado(material.kd()).multiplicado(rim * 0.18);
 		return toRgb(ambient.sumado(diffuseColor).sumado(specularColor).sumado(rimColor));
+	}
+	
+	private int shadeOndas(double x, double y, double z, double nx, double ny, double nz)
+	{
+	  double escala = 1;
+
+	  double ondasXY = Math.sin((x + y) * escala);
+	  double ondasZ = Math.cos(z * escala * 1.7);
+	  double ondasRadiales = Math.sin(Math.sqrt(x * x + y * y + z * z) * escala * 2.4);
+
+	  double r = 0.5 + 0.5 * Math.sin(ondasXY * 3.0 + nz * 4.0);
+	  double g = 0.5 + 0.5 * Math.cos(ondasZ * 3.0 + nx * 4.0);
+	  double b = 0.5 + 0.5 * Math.sin(ondasRadiales * 3.0 + ny * 4.0);
+
+	  return pack(r, g, b);
 	}
 
 	private int shadeNormals(double nx, double ny, double nz)

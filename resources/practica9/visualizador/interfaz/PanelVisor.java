@@ -61,9 +61,13 @@ public class PanelVisor extends JPanel {
 	private int renderScale;
 	private boolean sceneDirty;
 	private boolean cameraInteracting;
+	private boolean transparentBackground;
 	private long lastRenderNanos;
 	private int lastRenderedFaces;
 	private int lastDiscardedFaces;
+	private double defaultFov;
+	private double defaultInclination;
+	private double defaultRotation;
 	private int projectionWidth;
 	private int projectionHeight;
 	private int[] scanlineXIni;
@@ -264,7 +268,10 @@ public class PanelVisor extends JPanel {
 	    renderBuffers = new RenderBuffers();
 	    shader = new Shader();
 	    postProcess = new PostProcess();
-	    _camara = new escena.Camara(18, FOV_INICIAL, INCLINACION_INICIAL, ROTACION_INICIAL);
+	    defaultFov = FOV_INICIAL;
+	    defaultInclination = INCLINACION_INICIAL;
+	    defaultRotation = ROTACION_INICIAL;
+	    _camara = new escena.Camara(18, fovInicialConfigurado(), inclinacionInicialConfigurada(), rotacionInicialConfigurada());
 	    _luz = new escena.Luz(
 	    		   new escena.Color(1.0,1.0,1.0),
 	               new geometria.Punto(100.0,100.0,1000.0),
@@ -370,10 +377,25 @@ public class PanelVisor extends JPanel {
 		return Math.max(0.5, _objeto.radioAabb());
 	}
 
+	private double fovInicialConfigurado()
+	{
+		return Math.max(10.0, Math.min(120.0, defaultFov));
+	}
+
+	private double inclinacionInicialConfigurada()
+	{
+		return Math.max(-89.0, Math.min(89.0, defaultInclination));
+	}
+
+	private double rotacionInicialConfigurada()
+	{
+		return defaultRotation;
+	}
+
 	private double distanciaCamaraPorDefecto()
 	{
 		double radio = radioObjeto();
-		double distancia = (radio * 1.45) / Math.tan(Math.toRadians(FOV_INICIAL * 0.5));
+		double distancia = (radio * 1.45) / Math.tan(Math.toRadians(fovInicialConfigurado() * 0.5));
 		return Math.max(6.0, distancia * 1.2);
 	}
 
@@ -780,7 +802,7 @@ public class PanelVisor extends JPanel {
 	}
 	
 	/**
-	 * Decide si una cara de pintar o no, teniendo en cuenta el backface culling
+	 * Decide si hay que pintar una cara o no, teniendo en cuenta el backface culling
 	 * @param cara
 	 * @return true si hay que pintar la cara
 	 */
@@ -879,7 +901,7 @@ public class PanelVisor extends JPanel {
 	 */
 	private void pintarRaster()
 	{
-		  renderBuffers.clearGradient(0xfff7f1e7, 0xffdfe9f3, FAR_DEPTH);
+		  limpiarFondo(0xfff7f1e7, 0xffdfe9f3);
 		  
 		  geometria.Punto cameraPosition = posicionCamara();
 		  double cameraX = cameraPosition.x();
@@ -977,8 +999,8 @@ public class PanelVisor extends JPanel {
 		  {
 			  g2.drawLine((int) projectedX[i - 1], (int) projectedY[i - 1], (int) projectedX[i], (int) projectedY[i]);
 		  }
-		  g2.drawLine((int) projectedX[vertexCount - 1], (int) projectedY[vertexCount - 1],
-		  		(int) projectedX[0], (int) projectedY[0]);
+		  
+		  g2.drawLine((int) projectedX[vertexCount - 1], (int) projectedY[vertexCount - 1], (int) projectedX[0], (int) projectedY[0]);
 	}
 	
 	/**
@@ -988,12 +1010,14 @@ public class PanelVisor extends JPanel {
 	 */
 	private void pintarMallaAlambre()
 	{
-		  renderBuffers.clearGradient(0xfffaf5ef, 0xffdfe7ef, FAR_DEPTH);
+		  limpiarFondo(0xfffaf5ef, 0xffdfe7ef);
 		  geometria.Punto cameraPosition = posicionCamara();
+		  
 		  double cameraX = cameraPosition.x();
 		  double cameraY = cameraPosition.y();
 		  double cameraZ = cameraPosition.z();
 		  geometria.Cara[] facets=_objeto.caras();
+		  
 		  if (mostrandoSoloCarasDescartadas())
 		  {
 			  pintarSoloCarasDescartadas(facets, cameraPosition, cameraX, cameraY, cameraZ);
@@ -1026,8 +1050,21 @@ public class PanelVisor extends JPanel {
 				  }
 			  }
 		  }
+		  
 		  g2.dispose();
-	 }
+	}
+
+	private void limpiarFondo(int topRgb, int bottomRgb)
+	{
+		if (transparentBackground)
+		{
+			renderBuffers.clearTransparent(FAR_DEPTH);
+		}
+		else
+		{
+			renderBuffers.clearGradient(topRgb, bottomRgb, FAR_DEPTH);
+		}
+	}
 
 	private void asegurarBuffers()
 	{
@@ -1038,6 +1075,7 @@ public class PanelVisor extends JPanel {
 			renderBuffers.ensureSize(renderWidth, renderHeight);
 			marcarEscenaSucia();
 		}
+		
 		asegurarCapacidadScanline(renderHeight);
 	}
 
@@ -1048,6 +1086,7 @@ public class PanelVisor extends JPanel {
 		{
 			return;
 		}
+		
 		long renderStart = System.nanoTime();
 		if (mallaAlambre())
 		{
@@ -1057,6 +1096,7 @@ public class PanelVisor extends JPanel {
 		{
 			pintarRaster();
 		}
+		
 		lastRenderNanos = System.nanoTime() - renderStart;
 		sceneDirty = false;
 	}
@@ -1066,16 +1106,19 @@ public class PanelVisor extends JPanel {
 		double minDepth = Double.POSITIVE_INFINITY;
 		double maxDepth = Double.NEGATIVE_INFINITY;
 		double[] depth = renderBuffers.depth();
+		
 		for (int i = 0; i < depth.length; i++)
 		{
 			if (depth[i] >= 1.0e20)
 			{
 				continue;
 			}
+			
 			if (depth[i] < minDepth)
 			{
 				minDepth = depth[i];
 			}
+			
 			if (depth[i] > maxDepth)
 			{
 				maxDepth = depth[i];
@@ -1094,6 +1137,7 @@ public class PanelVisor extends JPanel {
 			{
 				continue;
 			}
+			
 			double normalized = 1.0 - ((depth[i] - minDepth) / range);
 			int channel = (int) Math.max(0, Math.min(255, Math.round(normalized * 255.0)));
 			renderBuffers.pixels()[i] = 0xff000000 | (channel << 16) | (channel << 8) | channel;
@@ -1116,6 +1160,7 @@ public class PanelVisor extends JPanel {
 				"Frame: " + String.format(java.util.Locale.US, "%.1f ms", lastRenderNanos / 1_000_000.0),
 				34,
 				85);
+			
 			String faceStats;
 			if (mostrandoSoloCarasDescartadas())
 			{
@@ -1129,6 +1174,7 @@ public class PanelVisor extends JPanel {
 					faceStats += " | descartadas: " + lastDiscardedFaces;
 				}
 			}
+			
 			g2.drawString(faceStats, 34, 106);
 			return;
 		}
@@ -1145,6 +1191,7 @@ public class PanelVisor extends JPanel {
 		String stats = _objeto.numeroVertices() + " vertices   " + _objeto.numeroCaras() + " caras   "
 			+ renderBuffers.width() + "x" + renderBuffers.height() + " px   "
 			+ String.format(java.util.Locale.US, "%.1f ms", lastRenderNanos / 1_000_000.0);
+		
 		g2.drawString(stats, 34, 101);
 		if (statusMessage != null && statusMessage.length() > 0)
 		{
@@ -1311,6 +1358,14 @@ public class PanelVisor extends JPanel {
 		repaint();
 	}
 
+	public void configurarCamaraInicial(double fov, double inclinacion, double rotacion)
+	{
+		defaultFov = fov;
+		defaultInclination = inclinacion;
+		defaultRotation = rotacion;
+		reiniciarCamara();
+	}
+
 	private double lerp(double start, double end, double t)
 	{
 		return (1.0 - t) * start + t * end;
@@ -1328,7 +1383,7 @@ public class PanelVisor extends JPanel {
 
 	public void reiniciarCamara()
 	{
-		_camara.reiniciar(distanciaCamaraPorDefecto(), FOV_INICIAL, INCLINACION_INICIAL, ROTACION_INICIAL);
+		_camara.reiniciar(distanciaCamaraPorDefecto(), fovInicialConfigurado(), inclinacionInicialConfigurada(), rotacionInicialConfigurada());
 		statusMessage = "Cámara reiniciada.";
 		actualizar();
 		notificarCambioCamara();
@@ -1341,18 +1396,6 @@ public class PanelVisor extends JPanel {
 		if (window instanceof JFrame)
 		{
 			StringBuilder title = new StringBuilder("Visualizador");
-			title.append(" - ").append(renderMode.label());
-			if (renderMode.isRaster())
-			{
-				title.append(" | ").append(renderScale).append("x");
-				title.append(" | Outline ").append(postProcess.outlineEnabled() ? "on" : "off");
-				title.append(" | Vignette ").append(postProcess.vignetteEnabled() ? "on" : "off");
-			}
-			title.append(" | BFC ").append(_backfaceCulling ? "on" : "off");
-			if (debugBackfaceCulling)
-			{
-				title.append(mostrandoSoloCarasDescartadas() ? " | Solo descartadas" : " | Debug caras");
-			}
 			((JFrame) window).setTitle(title.toString());
 		}
 	}
@@ -1363,7 +1406,6 @@ public class PanelVisor extends JPanel {
 		{
 			actualizar();
 		}
-		renderizarEscena();
 		File directory = new File("screenshots");
 		if (!directory.exists())
 		{
@@ -1374,14 +1416,22 @@ public class PanelVisor extends JPanel {
 		File output = new File(directory, "render_" + timestamp + ".png");
 		try
 		{
+			transparentBackground = true;
+			sceneDirty = true;
+			renderizarEscena();
 			ImageIO.write(renderBuffers.colorBuffer(), "png", output);
-			statusMessage = "Captura guardada en " + output.getPath();
+			statusMessage = "Captura transparente guardada en " + output.getPath();
 			System.out.println("Captura guardada: " + output.getAbsolutePath());
 		}
 		catch (IOException exception)
 		{
 			statusMessage = "No se pudo guardar la captura.";
 			System.out.println("No se pudo guardar la captura: " + exception.getMessage());
+		}
+		finally
+		{
+			transparentBackground = false;
+			sceneDirty = true;
 		}
 		repaint();
 	}

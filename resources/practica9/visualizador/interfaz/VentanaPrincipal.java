@@ -26,6 +26,9 @@ import javax.swing.JTabbedPane;
 import javax.swing.JTextArea;
 import javax.swing.Scrollable;
 import javax.swing.SwingConstants;
+import javax.swing.filechooser.FileNameExtensionFilter;
+
+import renderer.RenderMode;
 
 /**
  * Contiene la ventana principal del sistema
@@ -114,7 +117,7 @@ public class VentanaPrincipal extends JFrame implements ActionListener, Componen
 
 		JButton openButton = crearBotonAccion("Abrir modelo", "abrir", true);
 		JButton closeButton = crearBotonAccion("Cerrar modelo", "cerrar", false);
-		JButton screenshotButton = crearBotonAccion("Guardar PNG", "captura", false);
+		JButton screenshotButton = crearBotonAccion("PNG sin fondo", "captura", false);
 		JButton exitButton = crearBotonAccion("Salir", "salir", false);
 		filePanel.add(openButton);
 		filePanel.add(Box.createVerticalStrut(10));
@@ -137,7 +140,7 @@ public class VentanaPrincipal extends JFrame implements ActionListener, Componen
 
 		JTabbedPane sidebarTabs = new JTabbedPane();
 		InterfazTema.estilizarPestanas(sidebarTabs);
-		sidebarTabs.setTabPlacement(JTabbedPane.LEFT);
+		sidebarTabs.setTabPlacement(JTabbedPane.TOP);
 		sidebarTabs.setTabLayoutPolicy(JTabbedPane.SCROLL_TAB_LAYOUT);
 		sidebarTabs.setPreferredSize(new Dimension(388, 0));
 		sidebarTabs.setMinimumSize(new Dimension(372, 0));
@@ -167,7 +170,7 @@ public class VentanaPrincipal extends JFrame implements ActionListener, Componen
 	{
 		sidebarTabs.addTab(title, content);
 		int tabIndex = sidebarTabs.getTabCount() - 1;
-		sidebarTabs.setTabComponentAt(tabIndex, new RotatedTabLabel(sidebarTabs, title, true));
+		sidebarTabs.setToolTipTextAt(tabIndex, title);
 	}
 
 	private JScrollPane crearPestanaHerramientas(String title, JComponent principal, JComponent secundario)
@@ -223,17 +226,6 @@ public class VentanaPrincipal extends JFrame implements ActionListener, Componen
 		return button;
 	}
 
-	/**
-	 * Programa main, esto es lo que se empieza a ejecutar al principio
-	 *
-	 * @param s Los parámetros de línea de comandos (no se utilizan)
-	 * @throws IOException
-	 */
-	public static void main(String s[]) throws IOException
-	{
-		new VentanaPrincipal();
-	}
-
 	public VentanaPrincipal()
 	{
 		InterfazTema.aplicarTemaGlobal();
@@ -242,55 +234,120 @@ public class VentanaPrincipal extends JFrame implements ActionListener, Componen
 		cameraPanel = new PanelCamara(viewportPanel);
 		visualizationModePanel = new PanelModoVisor(viewportPanel);
 		distribuirInterfaz();
-		cargarModeloPorDefecto();
 	}
 
-	private void cargarModeloPorDefecto()
+	public void configurarCamaraInicial(double fov, double inclinacion, double rotacion)
 	{
-		File objectDirectory = new File("objetos_3d");
-		File preferredModel = new File(objectDirectory, "trex.obj");
-		File modelToLoad = null;
-		if (preferredModel.exists())
+		viewportPanel.configurarCamaraInicial(fov, inclinacion, rotacion);
+	}
+
+	public void aplicarModoRender(RenderMode mode)
+	{
+		viewportPanel.modificarModoRender(mode);
+	}
+
+	public void aplicarMaterial(escena.Material material)
+	{
+		viewportPanel.modificarMaterial(material);
+	}
+
+	public void aplicarLuz(escena.Luz luz)
+	{
+		viewportPanel.modificarLuz(luz);
+	}
+
+	public boolean cargarModeloInicial(String modelName)
+	{
+		String trimmedName = modelName == null ? "" : modelName.trim();
+		if (trimmedName.length() == 0)
 		{
-			modelToLoad = preferredModel;
-		}
-		else if (objectDirectory.isDirectory())
-		{
-			File[] objectFiles = objectDirectory.listFiles(new FilenameFilter() {
-				public boolean accept(File dir, String name)
-				{
-					return name.toLowerCase().endsWith(".obj");
-				}
-			});
-			if (objectFiles != null && objectFiles.length > 0)
-			{
-				Arrays.sort(objectFiles);
-				modelToLoad = objectFiles[0];
-			}
+			return false;
 		}
 
-		if (modelToLoad == null)
+		File model = new File(new File("objetos_3d"), trimmedName);
+		if (!model.isFile())
 		{
-			String message = "No se encontró ningún OBJ en la carpeta objetos_3d.";
+			String message = "No se encontro el modelo inicial: " + trimmedName;
+			viewportPanel.modificarMensajeEstado(message);
+			System.out.println(message + " (" + model.getAbsolutePath() + ")");
+			return false;
+		}
+		return cargarModelo(model);
+	}
+
+	public boolean cargarPrimerModeloDisponible()
+	{
+		File model = buscarPrimerModeloDisponible();
+		if (model == null)
+		{
+			String message = "No se encontro ningun OBJ en la carpeta objetos_3d.";
 			viewportPanel.modificarMensajeEstado(message);
 			System.out.println(message);
-			return;
+			return false;
+		}
+		return cargarModelo(model);
+	}
+
+	private File buscarPrimerModeloDisponible()
+	{
+		File objectDirectory = new File("objetos_3d");
+		if (!objectDirectory.isDirectory())
+		{
+			return null;
 		}
 
+		File[] objectFiles = objectDirectory.listFiles(new FilenameFilter() {
+			public boolean accept(File dir, String name)
+			{
+				return name.toLowerCase().endsWith(".obj");
+			}
+		});
+		if (objectFiles == null || objectFiles.length == 0)
+		{
+			return null;
+		}
+
+		Arrays.sort(objectFiles);
+		return objectFiles[0];
+	}
+
+	private boolean cargarModelo(File file)
+	{
 		try
 		{
-			object.cargarObj(modelToLoad.getAbsolutePath());
+			object.cargarObj(file.getAbsolutePath());
 			viewportPanel.reiniciarCamara();
-			viewportPanel.modificarMensajeEstado("Modelo cargado: " + modelToLoad.getName());
+			viewportPanel.modificarMensajeEstado("Modelo cargado: " + file.getName());
 			viewportPanel.repaint();
-			System.out.println("Modelo por defecto cargado: " + modelToLoad.getAbsolutePath());
+			System.out.println("Modelo cargado: " + file.getAbsolutePath());
+			return true;
 		}
 		catch (IOException exception)
 		{
-			String message = "No se pudo cargar el modelo por defecto: " + modelToLoad.getAbsolutePath();
+			String message = "No se pudo cargar el modelo seleccionado.";
 			viewportPanel.modificarMensajeEstado(message);
-			System.out.println(message);
+			System.out.println(message + " (" + file.getAbsolutePath() + ")");
+			return false;
 		}
+	}
+
+	private File carpetaObjetos3d()
+	{
+		File objectDirectory = new File("objetos_3d");
+		if (objectDirectory.isDirectory())
+		{
+			return objectDirectory;
+		}
+		return new File(System.getProperty("user.dir"));
+	}
+
+	private JFileChooser crearSelectorModelo()
+	{
+		JFileChooser fileChooser = new JFileChooser(carpetaObjetos3d());
+		fileChooser.setDialogTitle("Abrir modelo");
+		fileChooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
+		fileChooser.setFileFilter(new FileNameExtensionFilter("Modelos OBJ (*.obj)", "obj"));
+		return fileChooser;
 	}
 
 	/**
@@ -302,22 +359,11 @@ public class VentanaPrincipal extends JFrame implements ActionListener, Componen
 	{
 		if ("abrir".equals(e.getActionCommand()))
 		{
-			JFileChooser fc = new JFileChooser();
+			JFileChooser fc = crearSelectorModelo();
 			int returnVal = fc.showOpenDialog(this);
 			if (returnVal == JFileChooser.APPROVE_OPTION)
 			{
-				try
-				{
-					File file = fc.getSelectedFile();
-					object.cargarObj(file.getAbsolutePath());
-					viewportPanel.reiniciarCamara();
-					viewportPanel.modificarMensajeEstado("Modelo cargado: " + file.getName());
-					viewportPanel.repaint();
-				}
-				catch (IOException ex)
-				{
-					viewportPanel.modificarMensajeEstado("No se pudo abrir el fichero seleccionado.");
-				}
+				cargarModelo(fc.getSelectedFile());
 			}
 		}
 		else if ("cerrar".equals(e.getActionCommand()))

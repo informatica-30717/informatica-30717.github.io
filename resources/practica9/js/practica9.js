@@ -2,7 +2,13 @@
   const canvas = document.getElementById('rot-canvas-uza');
   const slider = document.getElementById('rot-angle-uza');
   const valLabel = document.getElementById('rot-angle-val');
-  if (!canvas || !slider || !valLabel) return;
+  const beforeEl = document.getElementById('rot-before-uza');
+  const afterEl = document.getElementById('rot-after-uza');
+  const m00El = document.getElementById('rot-m00');
+  const m01El = document.getElementById('rot-m01');
+  const m10El = document.getElementById('rot-m10');
+  const m11El = document.getElementById('rot-m11');
+  if (!canvas || !slider || !valLabel || !beforeEl || !afterEl || !m00El || !m01El || !m10El || !m11El) return;
 
   const ctx = canvas.getContext('2d');
   const W = canvas.width;
@@ -10,8 +16,8 @@
   const cx = W / 2;
   const cy = H / 2;
   const SC = 95;
-  const SHAPE = [[-0.65, -0.28], [0.05, -0.28], [0.05, -0.62], [0.78, 0], [0.05, 0.62], [0.05, 0.28], [-0.65, 0.28]];
-  const TIP = 3;
+  const POINT = [0.72, 0.24];
+  const ORBIT = Math.hypot(POINT[0], POINT[1]);
 
   function tw(x, y) {
     return [cx + x * SC, cy - y * SC];
@@ -21,23 +27,71 @@
     return [cosA * x + sinA * y, -sinA * x + cosA * y];
   }
 
-  function drawPoly(pts, fill, stroke, lw) {
+  function fmt(x) {
+    return x.toFixed(2);
+  }
+
+  function drawArrow(x, y, color, lw) {
+    const [sx, sy] = tw(x, y);
+    const angle = Math.atan2(sy - cy, sx - cx);
+    const head = 11;
+
     ctx.beginPath();
-    pts.forEach(([x, y], i) => {
-      const [px, py] = tw(x, y);
-      if (i === 0) {
-        ctx.moveTo(px, py);
-      } else {
-        ctx.lineTo(px, py);
-      }
-    });
-    ctx.closePath();
-    if (fill) {
-      ctx.fillStyle = fill;
-      ctx.fill();
-    }
-    ctx.strokeStyle = stroke;
+    ctx.moveTo(cx, cy);
+    ctx.lineTo(sx, sy);
+    ctx.strokeStyle = color;
     ctx.lineWidth = lw;
+    ctx.lineCap = 'round';
+    ctx.stroke();
+
+    ctx.beginPath();
+    ctx.moveTo(sx, sy);
+    ctx.lineTo(sx - head * Math.cos(angle - Math.PI / 6), sy - head * Math.sin(angle - Math.PI / 6));
+    ctx.lineTo(sx - head * 0.82 * Math.cos(angle), sy - head * 0.82 * Math.sin(angle));
+    ctx.lineTo(sx - head * Math.cos(angle + Math.PI / 6), sy - head * Math.sin(angle + Math.PI / 6));
+    ctx.closePath();
+    ctx.fillStyle = color;
+    ctx.fill();
+  }
+
+  function drawDot(x, y, color, r) {
+    const [sx, sy] = tw(x, y);
+    ctx.beginPath();
+    ctx.arc(sx, sy, r, 0, Math.PI * 2);
+    ctx.fillStyle = color;
+    ctx.fill();
+  }
+
+  function drawLabel(text, x, y, color, dx, dy) {
+    const [sx, sy] = tw(x, y);
+    ctx.save();
+    ctx.font = '600 12px system-ui, -apple-system, sans-serif';
+    ctx.textAlign = 'left';
+    ctx.textBaseline = 'middle';
+    ctx.lineWidth = 3.5;
+    ctx.strokeStyle = 'rgba(255,255,255,0.96)';
+    ctx.strokeText(text, sx + dx, sy + dy);
+    ctx.fillStyle = color;
+    ctx.fillText(text, sx + dx, sy + dy);
+    ctx.restore();
+  }
+
+  function drawArc(start, end, radius, color) {
+    const steps = Math.max(10, Math.round(Math.abs(end - start) * 18));
+
+    ctx.beginPath();
+    for (let i = 0; i <= steps; i++) {
+      const t = i / steps;
+      const angle = start + (end - start) * t;
+      const [sx, sy] = tw(radius * Math.cos(angle), radius * Math.sin(angle));
+      if (i === 0) {
+        ctx.moveTo(sx, sy);
+      } else {
+        ctx.lineTo(sx, sy);
+      }
+    }
+    ctx.strokeStyle = color;
+    ctx.lineWidth = 2;
     ctx.stroke();
   }
 
@@ -45,10 +99,15 @@
     const a = deg * Math.PI / 180;
     const cosA = Math.cos(a);
     const sinA = Math.sin(a);
+    const [ox, oy] = POINT;
+    const [rx, ry] = rot(ox, oy, cosA, sinA);
+    const startAngle = Math.atan2(oy, ox);
+    const endAngle = startAngle - a;
+    const arcRadius = ORBIT * 0.42;
 
     ctx.clearRect(0, 0, W, H);
 
-    ctx.strokeStyle = 'rgba(148,163,184,0.2)';
+    ctx.strokeStyle = 'rgba(148,163,184,0.16)';
     ctx.lineWidth = 1;
     ctx.beginPath();
     for (let gx = -3; gx <= 3; gx++) {
@@ -63,8 +122,16 @@
     }
     ctx.stroke();
 
-    ctx.strokeStyle = 'rgba(15,23,42,0.35)';
-    ctx.lineWidth = 1.5;
+    ctx.beginPath();
+    ctx.setLineDash([6, 5]);
+    ctx.arc(cx, cy, ORBIT * SC, 0, Math.PI * 2);
+    ctx.strokeStyle = 'rgba(100,116,139,0.38)';
+    ctx.lineWidth = 1.2;
+    ctx.stroke();
+    ctx.setLineDash([]);
+
+    ctx.strokeStyle = 'rgba(15,23,42,0.42)';
+    ctx.lineWidth = 1.4;
     ctx.beginPath();
     ctx.moveTo(0, cy);
     ctx.lineTo(W, cy);
@@ -72,61 +139,57 @@
     ctx.lineTo(cx, H);
     ctx.stroke();
 
-    ctx.fillStyle = '#94a3b8';
-    ctx.font = '12px sans-serif';
-    ctx.fillText('x', W - 14, cy - 6);
-    ctx.fillText('y', cx + 6, 14);
+    drawDot(0, 0, '#0f172a', 3.4);
+    drawLabel('O', 0, 0, '#0f172a', 8, 10);
 
-    drawPoly(SHAPE, 'rgba(13,110,253,0.07)', 'rgba(13,110,253,0.25)', 1.2);
+    ctx.fillStyle = '#64748b';
+    ctx.font = '12px system-ui, -apple-system, sans-serif';
+    ctx.fillText('x', W - 16, cy - 7);
+    ctx.fillText('y', cx + 7, 14);
 
-    const rotShape = SHAPE.map(([x, y]) => rot(x, y, cosA, sinA));
-    drawPoly(rotShape, 'rgba(29,78,216,0.12)', '#1d4ed8', 2);
+    if (deg > 0.5 && deg < 359.5) {
+      drawArc(startAngle, endAngle, arcRadius, '#f59e0b');
 
-    if (deg > 2 && deg < 358) {
-      ctx.strokeStyle = '#f97316';
-      ctx.lineWidth = 1.5;
-      ctx.beginPath();
-      ctx.arc(cx, cy, 22, 0, -a, a < 0);
-      ctx.stroke();
+      const midAngle = startAngle + (endAngle - startAngle) / 2;
+      drawLabel('a', arcRadius * Math.cos(midAngle), arcRadius * Math.sin(midAngle), '#b45309', 8, -4);
     }
 
-    const [ox, oy] = SHAPE[TIP];
-    const [rx, ry] = rot(ox, oy, cosA, sinA);
-    const [opx, opy] = tw(ox, oy);
-    const [rpx, rpy] = tw(rx, ry);
+    drawArrow(ox, oy, '#64748b', 2.2);
+    drawDot(ox, oy, '#64748b', 4.2);
+    drawLabel('P', ox, oy, '#475569', 8, -10);
 
-    ctx.strokeStyle = '#ef4444';
-    ctx.lineWidth = 1.4;
-    ctx.setLineDash([4, 3]);
+    ctx.strokeStyle = 'rgba(37,99,235,0.3)';
+    ctx.lineWidth = 1.1;
+    ctx.setLineDash([4, 4]);
     ctx.beginPath();
     ctx.moveTo(cx, cy);
+    const [rpx, rpy] = tw(rx, ry);
+    ctx.moveTo(rpx, cy);
+    ctx.lineTo(rpx, rpy);
+    ctx.moveTo(cx, rpy);
     ctx.lineTo(rpx, rpy);
     ctx.stroke();
     ctx.setLineDash([]);
 
-    ctx.fillStyle = 'rgba(13,110,253,0.4)';
-    ctx.beginPath();
-    ctx.arc(opx, opy, 4, 0, Math.PI * 2);
-    ctx.fill();
+    drawArrow(rx, ry, '#2563eb', 2.7);
+    drawDot(rx, ry, '#2563eb', 4.8);
+    drawLabel("P'", rx, ry, '#1d4ed8', 8, -10);
 
-    ctx.fillStyle = '#ef4444';
-    ctx.beginPath();
-    ctx.arc(rpx, rpy, 5.5, 0, Math.PI * 2);
-    ctx.fill();
-
-    document.getElementById('rot-m00').textContent = cosA.toFixed(3);
-    document.getElementById('rot-m01').textContent = sinA.toFixed(3);
-    document.getElementById('rot-m10').textContent = (-sinA).toFixed(3);
-    document.getElementById('rot-m11').textContent = cosA.toFixed(3);
-    document.getElementById('rot-after-uza').textContent = `(${rx.toFixed(2)}, ${ry.toFixed(2)})`;
+    beforeEl.textContent = `(${fmt(ox)}, ${fmt(oy)})`;
+    afterEl.textContent = `(${fmt(rx)}, ${fmt(ry)})`;
+    m00El.textContent = cosA.toFixed(3);
+    m01El.textContent = sinA.toFixed(3);
+    m10El.textContent = (-sinA).toFixed(3);
+    m11El.textContent = cosA.toFixed(3);
   }
 
-  slider.addEventListener('input', () => {
+  function update() {
     valLabel.textContent = `${slider.value}\u00b0`;
     draw(Number(slider.value));
-  });
+  }
 
-  draw(35);
+  slider.addEventListener('input', update);
+  update();
 })();
 
 (() => {
@@ -506,7 +569,9 @@
   const CAMERA = { x: 76, y: 176 };
   const CIRCLE = { x: 322, y: 168, r: 48 };
   const BLOCK = { x0: 480, y0: 214, x1: 560, y1: 274 };
-  const PALETTE = ['#f97316', '#fb923c', '#f59e0b', '#eab308', '#84cc16', '#38bdf8', '#818cf8'];
+  const HIT_PALETTE = ['#ea580c', '#f97316', '#f59e0b', '#facc15', '#fde047'];
+  const MISS_COLOR = 'rgba(37, 99, 235, 0.26)';
+  const MISS_FOCUS_COLOR = 'rgba(30, 64, 175, 0.84)';
   let seed = 7;
 
   function mulberry32(a) {
@@ -516,6 +581,10 @@
       t ^= t + Math.imul(t ^ t >>> 7, t | 61);
       return ((t ^ t >>> 14) >>> 0) / 4294967296;
     };
+  }
+
+  function raySeed(index) {
+    return seed + index * 1013904223;
   }
 
   function vec(x, y) { return { x, y }; }
@@ -641,7 +710,7 @@
     };
   }
 
-  function drawScene(radius) {
+  function drawScene(radius, hits) {
     ctx.clearRect(0, 0, W, H);
     ctx.fillStyle = '#fcfcfb';
     ctx.fillRect(0, 0, W, H);
@@ -653,6 +722,12 @@
     ctx.fillRect(LIGHT.x0, LIGHT.y - 1, LIGHT.x1 - LIGHT.x0, 18);
     ctx.fillStyle = 'rgba(251, 191, 36, 0.34)';
     ctx.fillRect(LIGHT.x0, LIGHT.y - 1, LIGHT.x1 - LIGHT.x0, 8);
+    if (hits > 0) {
+      ctx.fillStyle = 'rgba(250, 204, 21, 0.16)';
+      ctx.fillRect(LIGHT.x0 - 14, LIGHT.y - 10, LIGHT.x1 - LIGHT.x0 + 28, 32);
+      ctx.fillStyle = 'rgba(249, 115, 22, 0.10)';
+      ctx.fillRect(LIGHT.x0 - 6, LIGHT.y - 4, LIGHT.x1 - LIGHT.x0 + 12, 18);
+    }
 
     ctx.fillStyle = '#ded7cd';
     ctx.fillRect(BLOCK.x0, BLOCK.y0, BLOCK.x1 - BLOCK.x0, BLOCK.y1 - BLOCK.y0);
@@ -692,40 +767,55 @@
   }
 
   function drawPath(path, highlighted) {
+    const reachedLight = Boolean(path.reachedLight);
     for (let i = 0; i < path.points.length - 1; i++) {
       const a = path.points[i];
       const b = path.points[i + 1];
       ctx.beginPath();
       ctx.moveTo(a.x, a.y);
       ctx.lineTo(b.x, b.y);
-      ctx.strokeStyle = highlighted ? PALETTE[i % PALETTE.length] : `rgba(249, 115, 22, ${0.12 + i * 0.04})`;
-      ctx.lineWidth = highlighted ? 2.5 : 1.1;
+      if (reachedLight) {
+        ctx.strokeStyle = highlighted
+          ? HIT_PALETTE[i % HIT_PALETTE.length]
+          : `rgba(249, 115, 22, ${0.18 + i * 0.05})`;
+        ctx.lineWidth = highlighted ? 2.6 : 1.2;
+      } else {
+        ctx.strokeStyle = highlighted ? MISS_FOCUS_COLOR : MISS_COLOR;
+        ctx.lineWidth = highlighted ? 2.2 : 1.1;
+      }
+      ctx.setLineDash(highlighted ? [8, 6] : []);
       ctx.stroke();
+      ctx.setLineDash([]);
     }
   }
 
   function drawGuide(path) {
     drawPath(path, true);
     path.bounces.forEach((point, index) => {
-      ctx.fillStyle = '#fff7ed';
+      ctx.fillStyle = path.reachedLight ? '#fff7ed' : '#f8fafc';
       ctx.beginPath();
       ctx.arc(point.x, point.y, 9, 0, Math.PI * 2);
       ctx.fill();
-      ctx.strokeStyle = PALETTE[index % PALETTE.length];
+      ctx.strokeStyle = path.reachedLight ? HIT_PALETTE[index % HIT_PALETTE.length] : '#2563eb';
       ctx.lineWidth = 1.7;
       ctx.stroke();
-      ctx.fillStyle = '#7c2d12';
+      ctx.fillStyle = path.reachedLight ? '#7c2d12' : '#1e3a8a';
       ctx.font = '700 11px "Aptos", "Segoe UI", Arial, sans-serif';
       ctx.textAlign = 'center';
       ctx.textBaseline = 'middle';
       ctx.fillText(String(index + 1), point.x, point.y + 0.5);
     });
 
+    const end = path.points[path.points.length - 1];
     if (path.reachedLight) {
-      const end = path.points[path.points.length - 1];
       ctx.fillStyle = 'rgba(251, 191, 36, 0.28)';
       ctx.beginPath();
       ctx.arc(end.x, end.y, 11, 0, Math.PI * 2);
+      ctx.fill();
+    } else {
+      ctx.fillStyle = 'rgba(37, 99, 235, 0.22)';
+      ctx.beginPath();
+      ctx.arc(end.x, end.y, 6, 0, Math.PI * 2);
       ctx.fill();
     }
   }
@@ -734,29 +824,34 @@
     const radius = BEAM_RADIUS;
     const rayCount = Number(ids.count.value);
     const maxDepth = Number(ids.depth.value);
-    const rng = mulberry32(seed);
     const traced = [];
     const focus = vec(CIRCLE.x - 14, CIRCLE.y - 20);
+    const centerIndex = Math.floor(rayCount / 2);
 
     ids.countVal.textContent = String(rayCount);
     ids.depthVal.textContent = String(maxDepth);
     ids.total.textContent = String(rayCount);
 
     for (let i = 0; i < rayCount; i++) {
+      // Each ray gets its own RNG so changing maxDepth extends/truncates the
+      // same path instead of reshuffling the rest of the beam.
+      const rayRng = mulberry32(raySeed(i));
       const t = rayCount === 1 ? 0.5 : i / (rayCount - 1);
-      const offset = (t - 0.5) * radius * 2 + (rng() - 0.5) * 1.4;
+      const offset = (t - 0.5) * radius * 2 + (rayRng() - 0.5) * 1.4;
       const origin = vec(CAMERA.x, CAMERA.y + offset);
       const aim = vec(focus.x, focus.y + offset * 0.45);
-      const initial = rotate(normalize(sub(aim, origin)), (rng() - 0.5) * 0.05);
-      traced.push(traceRay(origin, initial, maxDepth, SCATTER, rng));
+      const initial = rotate(normalize(sub(aim, origin)), (rayRng() - 0.5) * 0.05);
+      traced.push(traceRay(origin, initial, maxDepth, SCATTER, rayRng));
     }
 
     const hits = traced.filter((path) => path.reachedLight).length;
-    const guide = traced.find((path) => path.reachedLight) || traced[Math.floor(traced.length / 2)];
+    // Keep the guide stable: always follow the central ray of the beam.
+    // Its color already tells whether that particular path reaches the light.
+    const guide = traced[centerIndex];
 
     ids.hit.textContent = String(hits);
 
-    drawScene(radius);
+    drawScene(radius, hits);
     traced.forEach((path) => drawPath(path, false));
     drawGuide(guide);
   }

@@ -69,8 +69,10 @@ public class PanelLuz extends JPanel {
 		this.setOpaque(false);
 		this.setLayout(new BoxLayout(this,BoxLayout.Y_AXIS));
 		panelColor = new PanelColor(5.0);
-		panelColor.setBorder(InterfazTema.crearBordeTarjeta("Color principal"));
-		this.add(panelColor);
+		JPanel mainColorSection = InterfazTema.crearSeccionDialogo("Color principal", panelColor);
+		mainColorSection.setMaximumSize(new java.awt.Dimension(Integer.MAX_VALUE, mainColorSection.getPreferredSize().height));
+		this.add(mainColorSection);
+		this.add(Box.createVerticalStrut(12));
 
 		JPanel positionPanel = new JPanel();
 		positionPanel.setOpaque(false);
@@ -136,13 +138,15 @@ public class PanelLuz extends JPanel {
 		zPanel.add(spinnerZ);
 		zPanel.setMaximumSize(new java.awt.Dimension(Integer.MAX_VALUE, zPanel.getPreferredSize().height));
 		
-		positionPanel.setBorder(InterfazTema.crearBordeTarjeta("Posicion"));	
-		positionPanel.setMaximumSize(new java.awt.Dimension(Integer.MAX_VALUE, positionPanel.getPreferredSize().height));
-		this.add(positionPanel);
+		JPanel positionSection = InterfazTema.crearSeccionDialogo("Posicion", positionPanel);
+		positionSection.setMaximumSize(new java.awt.Dimension(Integer.MAX_VALUE, positionSection.getPreferredSize().height));
+		this.add(positionSection);
+		this.add(Box.createVerticalStrut(12));
 		
 		panelColorAmbiente = new PanelColor(1.0);
-		panelColorAmbiente.setBorder(InterfazTema.crearBordeTarjeta("Color ambiente"));
-		this.add(panelColorAmbiente);
+		JPanel ambientColorSection = InterfazTema.crearSeccionDialogo("Color ambiente", panelColorAmbiente);
+		ambientColorSection.setMaximumSize(new java.awt.Dimension(Integer.MAX_VALUE, ambientColorSection.getPreferredSize().height));
+		this.add(ambientColorSection);
 
 		this.add(Box.createVerticalGlue());
 	}
