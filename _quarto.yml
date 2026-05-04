@@ -22,10 +22,7 @@ website:
   description: "Material de prácticas del curso 2025-2026."
   twitter-card: true
   open-graph: true
-  reader-mode: true
   page-navigation: true
-  repo-branch: master
-  repo-url: https://github.com/informatica-30717/informatica-30717.github.io
   navbar:
     background: primary
     search: true
