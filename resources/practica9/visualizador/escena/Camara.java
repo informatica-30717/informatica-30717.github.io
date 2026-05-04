@@ -141,9 +141,9 @@ public class Camara {
 		double upY = Math.cos(inclinacionRad);
 		double upZ = Math.cos(rotacionRad) * Math.sin(inclinacionRad);
 
-		_desplazamientoX += (-deltaX * rightX + deltaY * upX) * escala;
-		_desplazamientoY += (-deltaX * rightY + deltaY * upY) * escala;
-		_desplazamientoZ += (-deltaX * rightZ + deltaY * upZ) * escala;
+		_desplazamientoX += (deltaX * rightX + deltaY * upX) * escala;
+		_desplazamientoY += (deltaX * rightY + deltaY * upY) * escala;
+		_desplazamientoZ += (deltaX * rightZ + deltaY * upZ) * escala;
 	}
 
 	public void reiniciar(double distancia, double fov, double inclinacion, double rotacion)

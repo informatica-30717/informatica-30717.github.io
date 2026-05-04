@@ -998,8 +998,8 @@ public class PanelVisor extends JPanel {
 		  {
 			  g2.drawLine((int) projectedX[i - 1], (int) projectedY[i - 1], (int) projectedX[i], (int) projectedY[i]);
 		  }
-		  g2.drawLine((int) projectedX[vertexCount - 1], (int) projectedY[vertexCount - 1],
-		  		(int) projectedX[0], (int) projectedY[0]);
+		  
+		  g2.drawLine((int) projectedX[vertexCount - 1], (int) projectedY[vertexCount - 1], (int) projectedX[0], (int) projectedY[0]);
 	}
 	
 	/**
@@ -1011,10 +1011,12 @@ public class PanelVisor extends JPanel {
 	{
 		  renderBuffers.clearGradient(0xfffaf5ef, 0xffdfe7ef, FAR_DEPTH);
 		  geometria.Punto cameraPosition = posicionCamara();
+		  
 		  double cameraX = cameraPosition.x();
 		  double cameraY = cameraPosition.y();
 		  double cameraZ = cameraPosition.z();
 		  geometria.Cara[] facets=_objeto.caras();
+		  
 		  if (mostrandoSoloCarasDescartadas())
 		  {
 			  pintarSoloCarasDescartadas(facets, cameraPosition, cameraX, cameraY, cameraZ);
@@ -1047,6 +1049,7 @@ public class PanelVisor extends JPanel {
 				  }
 			  }
 		  }
+		  
 		  g2.dispose();
 	 }
 
@@ -1059,6 +1062,7 @@ public class PanelVisor extends JPanel {
 			renderBuffers.ensureSize(renderWidth, renderHeight);
 			marcarEscenaSucia();
 		}
+		
 		asegurarCapacidadScanline(renderHeight);
 	}
 
@@ -1069,6 +1073,7 @@ public class PanelVisor extends JPanel {
 		{
 			return;
 		}
+		
 		long renderStart = System.nanoTime();
 		if (mallaAlambre())
 		{
@@ -1078,6 +1083,7 @@ public class PanelVisor extends JPanel {
 		{
 			pintarRaster();
 		}
+		
 		lastRenderNanos = System.nanoTime() - renderStart;
 		sceneDirty = false;
 	}
@@ -1087,16 +1093,19 @@ public class PanelVisor extends JPanel {
 		double minDepth = Double.POSITIVE_INFINITY;
 		double maxDepth = Double.NEGATIVE_INFINITY;
 		double[] depth = renderBuffers.depth();
+		
 		for (int i = 0; i < depth.length; i++)
 		{
 			if (depth[i] >= 1.0e20)
 			{
 				continue;
 			}
+			
 			if (depth[i] < minDepth)
 			{
 				minDepth = depth[i];
 			}
+			
 			if (depth[i] > maxDepth)
 			{
 				maxDepth = depth[i];
@@ -1115,6 +1124,7 @@ public class PanelVisor extends JPanel {
 			{
 				continue;
 			}
+			
 			double normalized = 1.0 - ((depth[i] - minDepth) / range);
 			int channel = (int) Math.max(0, Math.min(255, Math.round(normalized * 255.0)));
 			renderBuffers.pixels()[i] = 0xff000000 | (channel << 16) | (channel << 8) | channel;
@@ -1137,6 +1147,7 @@ public class PanelVisor extends JPanel {
 				"Frame: " + String.format(java.util.Locale.US, "%.1f ms", lastRenderNanos / 1_000_000.0),
 				34,
 				85);
+			
 			String faceStats;
 			if (mostrandoSoloCarasDescartadas())
 			{
@@ -1150,6 +1161,7 @@ public class PanelVisor extends JPanel {
 					faceStats += " | descartadas: " + lastDiscardedFaces;
 				}
 			}
+			
 			g2.drawString(faceStats, 34, 106);
 			return;
 		}
@@ -1166,6 +1178,7 @@ public class PanelVisor extends JPanel {
 		String stats = _objeto.numeroVertices() + " vertices   " + _objeto.numeroCaras() + " caras   "
 			+ renderBuffers.width() + "x" + renderBuffers.height() + " px   "
 			+ String.format(java.util.Locale.US, "%.1f ms", lastRenderNanos / 1_000_000.0);
+		
 		g2.drawString(stats, 34, 101);
 		if (statusMessage != null && statusMessage.length() > 0)
 		{
@@ -1370,18 +1383,6 @@ public class PanelVisor extends JPanel {
 		if (window instanceof JFrame)
 		{
 			StringBuilder title = new StringBuilder("Visualizador");
-			title.append(" - ").append(renderMode.label());
-			if (renderMode.isRaster())
-			{
-				title.append(" | ").append(renderScale).append("x");
-				title.append(" | Outline ").append(postProcess.outlineEnabled() ? "on" : "off");
-				title.append(" | Vignette ").append(postProcess.vignetteEnabled() ? "on" : "off");
-			}
-			title.append(" | BFC ").append(_backfaceCulling ? "on" : "off");
-			if (debugBackfaceCulling)
-			{
-				title.append(mostrandoSoloCarasDescartadas() ? " | Solo descartadas" : " | Debug caras");
-			}
 			((JFrame) window).setTitle(title.toString());
 		}
 	}

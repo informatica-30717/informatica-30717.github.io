@@ -2,10 +2,16 @@ package interfaz;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.Font;
+import java.awt.FontMetrics;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
 import java.awt.GraphicsEnvironment;
 import java.awt.Insets;
+import java.awt.Rectangle;
+import java.awt.RenderingHints;
 
 import javax.swing.AbstractButton;
 import javax.swing.BorderFactory;
@@ -22,6 +28,7 @@ import javax.swing.JTextArea;
 import javax.swing.SwingConstants;
 import javax.swing.UIManager;
 import javax.swing.plaf.basic.BasicTabbedPaneUI;
+import javax.swing.plaf.basic.BasicSliderUI;
 import javax.swing.border.Border;
 import javax.swing.border.CompoundBorder;
 import javax.swing.border.EmptyBorder;
@@ -44,10 +51,10 @@ public final class InterfazTema {
 	public static final Color WHITE = new Color(0xFFFDF9);
 
 	private static final String FONT_FAMILY = seleccionarFuente(
-		"Aptos",
-		"Bahnschrift",
 		"Segoe UI Variable Text",
-		"Segoe UI");
+		"Segoe UI",
+		"Aptos",
+		"Bahnschrift");
 	private static final Font FONT_BASE = new Font(FONT_FAMILY, Font.PLAIN, 14);
 	private static final Font FONT_TITLE = new Font(FONT_FAMILY, Font.BOLD, 16);
 	private static final Font FONT_HERO = new Font(FONT_FAMILY, Font.BOLD, 28);
@@ -107,7 +114,7 @@ public final class InterfazTema {
 		UIManager.put("TabbedPane.selected", SIDEBAR_PANEL);
 		UIManager.put("TabbedPane.focus", SIDEBAR_BACKGROUND);
 		UIManager.put("TabbedPane.contentBorderInsets", new Insets(0, 0, 0, 0));
-		UIManager.put("TabbedPane.tabAreaInsets", new Insets(2, 0, 2, 0));
+		UIManager.put("TabbedPane.tabAreaInsets", new Insets(8, 8, 0, 8));
 		UIManager.put("TabbedPane.selectedTabPadInsets", new Insets(0, 0, 0, 0));
 		UIManager.put("Slider.background", SIDEBAR_CARD);
 		UIManager.put("Slider.foreground", ACCENT);
@@ -128,6 +135,30 @@ public final class InterfazTema {
 	public static Border crearBordeTarjetaOscura()
 	{
 		return new CompoundBorder(new LineBorder(BORDER_DARK, 1, true), new EmptyBorder(18, 18, 18, 18));
+	}
+
+	public static JPanel crearSeccionDialogo(String title, JComponent content)
+	{
+		JPanel section = new JPanel(new BorderLayout(0, 7));
+		section.setOpaque(false);
+		section.setAlignmentX(JComponent.LEFT_ALIGNMENT);
+
+		JLabel label = new JLabel(title);
+		label.setForeground(MUTED);
+		label.setFont(FONT_TITLE.deriveFont(12.5f));
+		label.setBorder(new EmptyBorder(0, 2, 0, 0));
+		section.add(label, BorderLayout.NORTH);
+
+		JPanel card = new JPanel(new BorderLayout());
+		card.setOpaque(true);
+		card.setBackground(SIDEBAR_CARD);
+		card.setBorder(new CompoundBorder(
+			new LineBorder(new Color(0xE5D7C5), 1, true),
+			new EmptyBorder(10, 12, 10, 12)));
+		card.add(content, BorderLayout.CENTER);
+		section.add(card, BorderLayout.CENTER);
+
+		return section;
 	}
 
 	public static Border crearBordeViewport()
@@ -254,8 +285,84 @@ public final class InterfazTema {
 
 	public static void estilizarSlider(JSlider slider, Color accent)
 	{
-		slider.setOpaque(false);
+		slider.setOpaque(true);
 		slider.setForeground(accent);
+		slider.setBackground(SIDEBAR_CARD);
+		slider.setFocusable(false);
+		slider.setPaintTicks(false);
+		slider.setPaintLabels(false);
+		slider.setPreferredSize(new Dimension(178, 36));
+		slider.setMinimumSize(new Dimension(132, 36));
+		slider.setMaximumSize(new Dimension(Integer.MAX_VALUE, 36));
+		slider.setBorder(BorderFactory.createEmptyBorder(8, 0, 8, 0));
+		slider.setUI(new BasicSliderUI(slider) {
+			public void setThumbLocation(int x, int y)
+			{
+				super.setThumbLocation(x, y);
+				slider.repaint();
+				Container parent = slider.getParent();
+				if (parent != null)
+				{
+					parent.repaint();
+				}
+			}
+
+			public void paint(Graphics g, JComponent component)
+			{
+				g.setColor(component.getBackground());
+				g.fillRect(0, 0, component.getWidth(), component.getHeight());
+				super.paint(g, component);
+			}
+
+			protected Dimension getThumbSize()
+			{
+				return new Dimension(18, 18);
+			}
+
+			public void paintTrack(Graphics g)
+			{
+				Graphics2D g2 = (Graphics2D) g.create();
+				g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+
+				int y = trackRect.y + (trackRect.height / 2) - 3;
+				int start = trackRect.x;
+				int width = trackRect.width;
+				int fill = thumbRect.x + (thumbRect.width / 2) - start;
+				if (fill < 0)
+				{
+					fill = 0;
+				}
+				if (fill > width)
+				{
+					fill = width;
+				}
+
+				g2.setColor(new Color(0xE2D4C3));
+				g2.fillRoundRect(start, y, width, 6, 6, 6);
+				g2.setColor(accent);
+				g2.fillRoundRect(start, y, fill, 6, 6, 6);
+				g2.dispose();
+			}
+
+			public void paintThumb(Graphics g)
+			{
+				Graphics2D g2 = (Graphics2D) g.create();
+				g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+				int x = thumbRect.x + 2;
+				int y = thumbRect.y + 2;
+				int size = thumbRect.width - 4;
+
+				g2.setColor(WHITE);
+				g2.fillOval(x, y, size, size);
+				g2.setColor(accent);
+				g2.drawOval(x, y, size - 1, size - 1);
+				g2.dispose();
+			}
+
+			public void paintFocus(Graphics g)
+			{
+			}
+		});
 	}
 
 	public static void estilizarBoton(JButton button, boolean primary)
@@ -281,12 +388,60 @@ public final class InterfazTema {
 
 	public static void estilizarPestanas(JTabbedPane tabs)
 	{
-		tabs.setFont(FONT_BASE);
+		tabs.setFont(FONT_BASE.deriveFont(Font.BOLD, 12.0f));
 		tabs.setBackground(SIDEBAR_BACKGROUND);
-		tabs.setForeground(WHITE);
+		tabs.setForeground(new Color(0xD8E1EA));
 		tabs.setOpaque(true);
 		tabs.setBorder(BorderFactory.createEmptyBorder());
+		tabs.setFocusable(false);
 		tabs.setUI(new BasicTabbedPaneUI() {
+			protected void installDefaults()
+			{
+				super.installDefaults();
+				tabInsets = new Insets(8, 12, 8, 12);
+				selectedTabPadInsets = new Insets(0, 0, 0, 0);
+				tabAreaInsets = new Insets(8, 8, 0, 8);
+				contentBorderInsets = new Insets(0, 0, 0, 0);
+			}
+
+			protected int calculateTabHeight(int tabPlacement, int tabIndex, int fontHeight)
+			{
+				return 34;
+			}
+
+			protected void paintTabBackground(Graphics g, int tabPlacement, int tabIndex,
+					int x, int y, int w, int h, boolean isSelected)
+			{
+				Graphics2D g2 = (Graphics2D) g.create();
+				g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+				g2.setColor(isSelected ? SIDEBAR_PANEL : new Color(0x243747));
+				g2.fillRoundRect(x + 2, y + 3, w - 4, h - 6, 8, 8);
+				if (isSelected)
+				{
+					g2.setColor(ACCENT);
+					g2.fillRoundRect(x + 12, y + h - 6, w - 24, 2, 2, 2);
+				}
+				g2.dispose();
+			}
+
+			protected void paintTabBorder(Graphics g, int tabPlacement, int tabIndex,
+					int x, int y, int w, int h, boolean isSelected)
+			{
+			}
+
+			protected void paintFocusIndicator(Graphics g, int tabPlacement, Rectangle[] rects,
+					int tabIndex, Rectangle iconRect, Rectangle textRect, boolean isSelected)
+			{
+			}
+
+			protected void paintText(Graphics g, int tabPlacement, Font font, FontMetrics metrics,
+					int tabIndex, String title, Rectangle textRect, boolean isSelected)
+			{
+				g.setFont(font);
+				g.setColor(isSelected ? WHITE : new Color(0xB8C7D5));
+				g.drawString(title, textRect.x, textRect.y + metrics.getAscent());
+			}
+
 			protected void paintContentBorder(java.awt.Graphics g, int tabPlacement, int selectedIndex)
 			{
 			}

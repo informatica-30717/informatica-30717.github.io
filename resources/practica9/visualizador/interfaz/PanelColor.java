@@ -1,14 +1,19 @@
 package interfaz;
 
+import java.awt.Color;
 import java.awt.Dimension;
-import java.util.Hashtable;
+import java.awt.Font;
+import java.util.Locale;
 
 import javax.swing.Box;
 import javax.swing.BoxLayout;
-import javax.swing.JComponent;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JSlider;
+import javax.swing.SwingConstants;
+import javax.swing.border.EmptyBorder;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
 
 /**
  * Panel de interfaz grafico que define un color en coordenadas RGB
@@ -55,6 +60,26 @@ public class PanelColor extends JPanel {
 	JSlider sliderR;
 	JSlider sliderG;
 	JSlider sliderB;
+
+	private String textoValor(JSlider slider)
+	{
+		double value = (double)(slider.getValue()) * this._max / 100.0;
+		return String.format(Locale.US, "%.2f", value);
+	}
+
+	private JLabel crearEtiquetaCanal(String text, Color accent)
+	{
+		JLabel label = new JLabel(text);
+		label.setOpaque(true);
+		label.setBackground(accent);
+		label.setForeground(InterfazTema.WHITE);
+		label.setFont(label.getFont().deriveFont(Font.BOLD, 12.0f));
+		label.setHorizontalAlignment(SwingConstants.CENTER);
+		label.setPreferredSize(new Dimension(24, 24));
+		label.setMinimumSize(new Dimension(24, 24));
+		label.setMaximumSize(new Dimension(24, 24));
+		return label;
+	}
 	
 	/**
 	 * Funcion privada que ayuda a la dsitribucion de las diferentes etiquetas
@@ -64,26 +89,37 @@ public class PanelColor extends JPanel {
 	 * @param slider El correspondiente slider
 	 * @return El panel que contiene la etiqueta y el slider
 	 */
-	private JPanel crearPanelSlider(String label, JSlider slider) 
+	private JPanel crearPanelSlider(String label, JSlider slider, Color accent) 
 	{
 		JPanel panel = new JPanel();
-		panel.setOpaque(false);
+		panel.setOpaque(true);
+		panel.setBackground(InterfazTema.SIDEBAR_CARD);
 		panel.setLayout(new BoxLayout(panel,BoxLayout.X_AXIS));
-		panel.add(Box.createHorizontalGlue());
-		panel.add(new JLabel(label));
-		panel.add(Box.createHorizontalStrut(5));
-		panel.add(slider);
-		
-		Hashtable<Integer,JComponent> labelTable = new Hashtable<Integer,JComponent>();
-		labelTable.put( new Integer( 0 ), new JLabel("0") );
-		labelTable.put( new Integer( 50 ), new JLabel(new Double(0.5*_max).toString()) );
-		labelTable.put( new Integer( 100 ), new JLabel(new Double(_max).toString()) );
+		panel.setBorder(new EmptyBorder(7, 2, 7, 2));
 
-        slider.setLabelTable(labelTable);
-        slider.setMajorTickSpacing(50);
-        slider.setMinorTickSpacing(10);
-        slider.setPaintLabels(true);
-        slider.setPaintTicks(true);
+		JLabel valueLabel = new JLabel(textoValor(slider));
+		valueLabel.setForeground(InterfazTema.MUTED);
+		valueLabel.setFont(valueLabel.getFont().deriveFont(Font.BOLD, 12.0f));
+		valueLabel.setHorizontalAlignment(SwingConstants.RIGHT);
+		valueLabel.setPreferredSize(new Dimension(48, 24));
+		valueLabel.setMinimumSize(new Dimension(48, 24));
+		valueLabel.setMaximumSize(new Dimension(48, 24));
+
+		slider.addChangeListener(new ChangeListener() {
+			public void stateChanged(ChangeEvent event)
+			{
+				valueLabel.setText(textoValor(slider));
+				slider.repaint();
+				panel.repaint();
+			}
+		});
+
+		panel.add(crearEtiquetaCanal(label, accent));
+		panel.add(Box.createHorizontalStrut(10));
+		panel.add(slider);
+		panel.add(Box.createHorizontalStrut(10));
+		panel.add(valueLabel);
+		panel.setMaximumSize(new Dimension(Integer.MAX_VALUE, 50));
 
         return panel;
 	}
@@ -98,18 +134,21 @@ public class PanelColor extends JPanel {
 	{
 		_max=max;
 		this.setOpaque(false);
-		this.setPreferredSize(new Dimension(300,200));
-		this.setMaximumSize(new Dimension(Integer.MAX_VALUE, 200));
+		this.setPreferredSize(new Dimension(320,178));
+		this.setMaximumSize(new Dimension(Integer.MAX_VALUE, 178));
 		this.setLayout(new BoxLayout(this,BoxLayout.Y_AXIS));
+		Color red = new Color(0xD05252);
+		Color green = new Color(0x5D9E63);
+		Color blue = new Color(0x5E7FB7);
         sliderR = new JSlider(JSlider.HORIZONTAL,0,100,100);
         sliderG = new JSlider(JSlider.HORIZONTAL,0,100,100);
         sliderB = new JSlider(JSlider.HORIZONTAL,0,100,100);
-		InterfazTema.estilizarSlider(sliderR, new java.awt.Color(0xD05252));
-		InterfazTema.estilizarSlider(sliderG, new java.awt.Color(0x5D9E63));
-		InterfazTema.estilizarSlider(sliderB, new java.awt.Color(0x5E7FB7));
-		this.add(this.crearPanelSlider("R", sliderR));
-		this.add(this.crearPanelSlider("G", sliderG));
-		this.add(this.crearPanelSlider("B", sliderB));
+		InterfazTema.estilizarSlider(sliderR, red);
+		InterfazTema.estilizarSlider(sliderG, green);
+		InterfazTema.estilizarSlider(sliderB, blue);
+		this.add(this.crearPanelSlider("R", sliderR, red));
+		this.add(this.crearPanelSlider("G", sliderG, green));
+		this.add(this.crearPanelSlider("B", sliderB, blue));
 		this.add(Box.createVerticalGlue());
 	}
 	

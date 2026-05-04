@@ -14,7 +14,7 @@ import renderer.RenderMode;
  */
 public final class Configuracion {
 	// Modelo que se cargara al arrancar. Si no existe, se abrira el primer OBJ disponible.
-	public static final String MODELO_INICIAL = "trex.obj";
+	public static final String MODELO_INICIAL = "house.obj";
 
 	// Modo de visualizacion inicial: WIREFRAME, PHONG, TOON, CLAY, NORMALS o DEPTH.
 	public static final RenderMode MODO_INICIAL = RenderMode.CLAY;
@@ -25,7 +25,7 @@ public final class Configuracion {
 	public static final double CAMARA_ROTACION = -24.0;
 
 	// Material del objeto (valores entre 0 y 1 para el color).
-	public static final double MATERIAL_R = 0.60;
+	public static final double MATERIAL_R = 0.80;
 	public static final double MATERIAL_G = 0.10;
 	public static final double MATERIAL_B = 0.10;
 	public static final double MATERIAL_KS = 1.0;

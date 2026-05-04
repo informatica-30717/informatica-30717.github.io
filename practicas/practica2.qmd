@@ -286,7 +286,7 @@ La opción `Step into` ejecuta el código *instrucción a instrucción*, mientra
 Para ello, seguimos los siguientes pasos:
 
 - Utiliza la opción de menú `Run > Toggle line breakpoint` para establecer (o eliminar) puntos de parada sobre el código que queremos ejecutar paso a paso. La ejecución paso a paso comenzará en la línea que contenga el punto de ruptura. También se puede utilizar el menú desplegable que aparece al pulsar el botón derecho del ratón sobre el margen izquierdo de la ventana que muestra el código de una clase Java, justo al lado del número de línea.
-- Utiliza la opción `Run > Debug`, o `Debug` ![](../resources/practica2/images/debug.svg){width=1em}  en la barra de herramientas superior, para lanzar la ejecución en modo depuración de errores. Aparecerá una ventana de *debugger* (depurador) con el estado de todas las variables.
+- Utiliza la opción `Run > Debug`, o `Debug` ![](../resources/practica2/images/debug.svg){width=1em} en la barra de herramientas superior, para lanzar la ejecución en modo depuración de errores. Aparecerá una ventana de *debugger* (depurador) con el estado de todas las variables.
 - Utiliza `Run > Step into (F5)` y `Run > Step over (F6)` para ejecutar el código instrucción a instrucción. `Step over` ejecuta las llamadas a métodos como sentencias simples (sin entrar a ejecutar paso a paso cada instrucción dentro del método).
 
 ---

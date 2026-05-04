@@ -26,6 +26,7 @@ import javax.swing.JTabbedPane;
 import javax.swing.JTextArea;
 import javax.swing.Scrollable;
 import javax.swing.SwingConstants;
+import javax.swing.filechooser.FileNameExtensionFilter;
 
 import renderer.RenderMode;
 
@@ -139,7 +140,7 @@ public class VentanaPrincipal extends JFrame implements ActionListener, Componen
 
 		JTabbedPane sidebarTabs = new JTabbedPane();
 		InterfazTema.estilizarPestanas(sidebarTabs);
-		sidebarTabs.setTabPlacement(JTabbedPane.LEFT);
+		sidebarTabs.setTabPlacement(JTabbedPane.TOP);
 		sidebarTabs.setTabLayoutPolicy(JTabbedPane.SCROLL_TAB_LAYOUT);
 		sidebarTabs.setPreferredSize(new Dimension(388, 0));
 		sidebarTabs.setMinimumSize(new Dimension(372, 0));
@@ -169,7 +170,7 @@ public class VentanaPrincipal extends JFrame implements ActionListener, Componen
 	{
 		sidebarTabs.addTab(title, content);
 		int tabIndex = sidebarTabs.getTabCount() - 1;
-		sidebarTabs.setTabComponentAt(tabIndex, new RotatedTabLabel(sidebarTabs, title, true));
+		sidebarTabs.setToolTipTextAt(tabIndex, title);
 	}
 
 	private JScrollPane crearPestanaHerramientas(String title, JComponent principal, JComponent secundario)
@@ -330,6 +331,25 @@ public class VentanaPrincipal extends JFrame implements ActionListener, Componen
 		}
 	}
 
+	private File carpetaObjetos3d()
+	{
+		File objectDirectory = new File("objetos_3d");
+		if (objectDirectory.isDirectory())
+		{
+			return objectDirectory;
+		}
+		return new File(System.getProperty("user.dir"));
+	}
+
+	private JFileChooser crearSelectorModelo()
+	{
+		JFileChooser fileChooser = new JFileChooser(carpetaObjetos3d());
+		fileChooser.setDialogTitle("Abrir modelo");
+		fileChooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
+		fileChooser.setFileFilter(new FileNameExtensionFilter("Modelos OBJ (*.obj)", "obj"));
+		return fileChooser;
+	}
+
 	/**
 	 * Obtiene y procesa todos los clicks que se hacen en el panel lateral.
 	 *
@@ -339,7 +359,7 @@ public class VentanaPrincipal extends JFrame implements ActionListener, Componen
 	{
 		if ("abrir".equals(e.getActionCommand()))
 		{
-			JFileChooser fc = new JFileChooser();
+			JFileChooser fc = crearSelectorModelo();
 			int returnVal = fc.showOpenDialog(this);
 			if (returnVal == JFileChooser.APPROVE_OPTION)
 			{
