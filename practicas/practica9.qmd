@@ -150,7 +150,7 @@ Un **`Objeto`** es una serie de caras y vértices. Un vértice es un punto junto
 
 ### Ejecutando el visualizador
 
-Ejecuta el visualizador desde Eclipse usando `app.Main` (**Run As → Java Application**). Al arrancar, el programa cargará el modelo configurado en `app.Configuracion`. Para cargar otro objeto tridimensional, ve a **Archivo → Abrir modelo** y selecciona un archivo `.obj` de la carpeta `objetos_3d` del proyecto. Te recomendamos empezar con `chair.obj` o `trex.obj`. La carga puede tardar unos segundos.
+Ejecuta el visualizador desde Eclipse usando `app.Main` (**Run As → Java Application**). Al arrancar, el programa cargará el modelo configurado en `app.Configuracion`. Para cargar otro objeto tridimensional, ve a **Archivo → Abrir modelo** y selecciona un archivo `.obj` de la carpeta `objetos_3d` del proyecto. Te recomendamos empezar con `house.obj` o `trex.obj`. La carga puede tardar unos segundos.
 
 Puedes cambiar el modo de visualización entre **Malla de alambre** (*wireframe*), donde sólo se muestran las aristas, y ***Raster***, que rellena las caras con iluminación.
 
@@ -168,7 +168,7 @@ Puedes cambiar el modo de visualización entre **Malla de alambre** (*wireframe*
 
 ### Primeros cambios de código
 
-Si vas a tocar código por primera vez, empieza por `app.Configuracion`. Ese archivo concentra los cambios sencillos del proyecto: modelo inicial, modo de visualización, cámara, material y luz.
+Si vas a tocar código por primera vez, empieza por `app.Configuracion`. Ese archivo concentra los cambios sencillos del proyecto: modelo inicial, modo de visualización, orientación inicial de la cámara, material y luz.
 
 ---
 
@@ -181,6 +181,8 @@ Abre `app.Configuracion` y prueba cambios pequeños, sin salirte de ese archivo:
 - prueba otro `MODO_INICIAL`;
 - modifica el color del material o de la luz;
 - cambia la inclinación o la rotación inicial de la cámara.
+
+Ten en cuenta que el visualizador recalcula automáticamente la distancia de la cámara al cargar o recentrar un modelo, para que el objeto entre en pantalla. Por eso, desde `Configuracion` tiene más sentido cambiar el campo de visión, la inclinación y la rotación inicial.
 
 Ejecuta de nuevo el programa.
 
@@ -205,7 +207,7 @@ No hace falta leer toda la clase antes: usa el buscador de *Eclipse* y salta dir
    geometria.Matriz4x4 proyeccion = new geometria.Matriz4x4();
    ```
 2. Pon un **punto de ruptura** (*breakpoint*): botón derecho sobre la línea → ***Toggle Breakpoint***.
-3. Ejecuta la aplicación en **modo depuración** (![](../resources/practica2/images/debug.svg){width=1em}).
+3. Ejecuta la aplicación en **modo depuración** ![](../resources/practica2/images/debug.svg){width=1em}.
 4. Pulsa **F6** repetidamente para avanzar paso a paso y observa cómo se va construyendo la matriz de proyección.
 5. ¿Por qué el programa vuelve una y otra vez a esa misma línea aunque no hayas hecho nada?
 6. Cuando termines, desactiva el *breakpoint*: botón derecho → **Disable Breakpoint**.
@@ -485,7 +487,7 @@ La siguiente visualización muestra ese proceso con una cámara idealizada en 3D
 ::: {.callout-note}
 ## Compruébalo con un ejemplo
 
-Prueba con el punto $(4,\, 3,\, 2)$ y una rotación de 90° con respecto al eje Z. Puedes multiplicar el vector fila $(4\ 3\ 2\ 1)$ por la matriz correspondiente, pero no hace falta convertirlo en una cuenta larga: lo importante es entender qué cambio geométrico se produce.
+Prueba con el punto $(4,\, 3,\, 2)$ y una rotación de 90° con respecto al eje Z. Puedes multiplicar el vector fila $(4\ 3\ 2\ 1)$ por la matriz correspondiente.
 
 Ejecuta después el código en modo depuración para comprobar cómo se realiza esa rotación en el visualizador. 
 :::
@@ -494,13 +496,13 @@ Ejecuta después el código en modo depuración para comprobar cómo se realiza 
 
 ### Modos de visualización
 
-`PanelVisor` coordina la visualización del objeto. La proyección y el recorrido de caras están ahí, pero el cálculo del color está concentrado en `renderer.Shader` y los efectos opcionales en `renderer.PostProcess`.
+`PanelVisor` coordina la visualización del objeto. La proyección y el recorrido de caras se encuentran en esa clase, pero el cálculo del color está en `renderer.Shader` y los efectos opcionales en `renderer.PostProcess`.
 
 Si solo quieres modificar cámara, material, luz o modo de visualización, no hace falta entrar en ese paquete todavía.
 
 El visualizador ofrece dos modos principales. En esta práctica nos interesa sobre todo el segundo, porque es el que utiliza la iluminación de Phong del proyecto proporcionado.
 
-- **Malla de alambre** (`pintarMallaAlambre`): se recorren todas las `Cara`s, se transforman sus `Punto`s y se dibujan solo las aristas.
+- **Malla de alambre** (`pintarMallaAlambre`): se recorren todas las `Caras`, se transforman sus `Puntos`y se dibujan solo las aristas.
 - **Raster**: se rellena cada cara visible y se calcula el color de cada píxel con el modelo de iluminación de Phong. Además, se mantiene un ***z-buffer***, es decir, un registro de profundidad para que una superficie del fondo no tape a otra que está delante.
 
 ```{=html}
@@ -508,7 +510,7 @@ El visualizador ofrece dos modos principales. En esta práctica nos interesa sob
   <img src="../resources/practica9/images/wireframe.png" alt="Vista en malla de alambre">
   <img class="img-compare-top" src="../resources/practica9/images/house_80mm.png" alt="Vista en raster con iluminación de Phong">
   <span class="img-compare-label is-left">Malla de alambre</span>
-  <span class="img-compare-label is-right">Raster (Phong)</span>
+  <span class="img-compare-label is-right">Raster</span>
   <span class="img-compare-line" aria-hidden="true"></span>
   <span class="img-compare-knob" aria-hidden="true">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 6 3 12 9 18"/><polyline points="15 6 21 12 15 18"/></svg>
@@ -529,7 +531,7 @@ No leas `PanelVisor` de principio a fin. Busca directamente los métodos `consid
 
 ---
 
-### Iluminación de Phong: el núcleo de esta práctica
+### Iluminación de Phong
 
 En el modo ráster, el color de cada píxel se calcula con el **modelo de iluminación de Phong**, una aproximación clásica y muy rápida.
 
@@ -660,7 +662,7 @@ La siguiente visualización sirve justo como **guía para responder a ese ejerci
         <input id="mix-light-uza" type="color" value="#ff4040" aria-label="Color de la luz">
         <span id="mix-light-chip-uza" class="color-mix-chip-uza" aria-hidden="true"></span>
       </label>
-      <code id="mix-light-rgb-uza" class="color-mix-code-uza">RGB(255, 64, 64)</code>
+      <code id="mix-light-rgb-uza" class="color-mix-code-uza">RGB(1.00, 0.25, 0.25)</code>
     </div>
 
     <div class="color-mix-op-uza" aria-hidden="true">×</div>
@@ -672,37 +674,32 @@ La siguiente visualización sirve justo como **guía para responder a ese ejerci
         <input id="mix-material-uza" type="color" value="#32c86a" aria-label="Color del material">
         <span id="mix-material-chip-uza" class="color-mix-chip-uza" aria-hidden="true"></span>
       </label>
-      <code id="mix-material-rgb-uza" class="color-mix-code-uza">RGB(50, 200, 106)</code>
+      <code id="mix-material-rgb-uza" class="color-mix-code-uza">RGB(0.20, 0.78, 0.42)</code>
     </div>
 
     <div class="color-mix-op-uza" aria-hidden="true">=</div>
 
     <div class="color-mix-card-uza is-result-uza">
       <div class="color-mix-kicker-uza">Resultado</div>
-      <div class="color-mix-title-uza">Combinación por canales</div>
-      <span id="mix-result-chip-uza" class="color-mix-chip-uza is-result-chip-uza" aria-hidden="true"></span>
-      <code id="mix-result-rgb-uza" class="color-mix-code-uza">RGB(50, 50, 27)</code>
+      <div class="color-mix-title-uza">Combinación</div>
+      <span id="mix-result-chip-uza" class="color-mix-chip-uza" aria-hidden="true"></span>
+      <code id="mix-result-rgb-uza" class="color-mix-code-uza">RGB(0.20, 0.20, 0.10)</code>
     </div>
   </div>
 
   <div class="color-mix-formula-uza">
     <div class="color-mix-row-uza">
       <span class="color-mix-channel-uza is-r-uza">R</span>
-      <code id="mix-r-formula-uza">255 × 50 / 255 = 50</code>
+      <code id="mix-r-formula-uza">1.00 x 0.20 = 0.20</code>
     </div>
     <div class="color-mix-row-uza">
       <span class="color-mix-channel-uza is-g-uza">G</span>
-      <code id="mix-g-formula-uza">64 × 200 / 255 = 50</code>
+      <code id="mix-g-formula-uza">0.25 x 0.78 = 0.20</code>
     </div>
     <div class="color-mix-row-uza">
       <span class="color-mix-channel-uza is-b-uza">B</span>
-      <code id="mix-b-formula-uza">64 × 106 / 255 = 27</code>
+      <code id="mix-b-formula-uza">0.25 x 0.42 = 0.10</code>
     </div>
-  </div>
-
-  <div class="color-mix-note-uza">
-    <p><strong>Lectura rápida:</strong> si un canal vale 0 en uno de los dos colores, ese canal se anula en el resultado.</p>
-    <p>Brillo especular: <span id="mix-spec-chip-uza" class="color-mix-inline-chip-uza" aria-hidden="true"></span> si aparece un brillo, tenderá a seguir el color de la luz.</p>
   </div>
 </div>
 ```
@@ -710,7 +707,55 @@ La siguiente visualización sirve justo como **guía para responder a ese ejerci
 
 ---
 
-## Más allá de Phong: contexto profesional
+::: {.callout-note}
+## Reto creativo: modo ondas
+
+Vamos a crear un modo nuevo de visualización, como si el modelo fuese un falso análisis de ondas de color. 
+
+Primero, abre `renderer.RenderMode` y añade un valor nuevo al `enum`:
+
+```java
+NORMALS("Normales"),
+ONDAS("Ondas"),
+DEPTH("Profundidad");
+```
+
+Después, abre `renderer.Shader`. Justo después del bloque de `RenderMode.NORMALS`, añade este caso:
+
+```java
+if (mode == RenderMode.ONDAS)
+{
+  return shadeOndas(pointX, pointY, pointZ, nx, ny, nz);
+}
+```
+
+Por último, añade este método cerca de `shadeNormals`. Esta versión ya funciona y suele dar un resultado vistoso:
+
+```java
+private int shadeOndas(double x, double y, double z, double nx, double ny, double nz)
+{
+  double escala = 0.18;
+
+  double onda1 = Math.sin((x + y) * escala);
+  double onda2 = Math.cos((y - z) * escala * 1.7);
+  double onda3 = Math.sin(Math.sqrt(x * x + y * y + z * z) * escala * 2.4);
+
+  double r = 0.5 + 0.5 * Math.sin(...);
+  double g = 0.5 + 0.5 * Math.cos(...);
+  double b = 0.5 + 0.5 * Math.sin(...);
+
+  return pack(r, g, b);
+}
+```
+
+Dentro de las funciones seno y coseno, puedes combinar las tres ondas de la forma que quieras. Prueba a sumarlas, multiplicarlas o a usarlas por separado, o súmale algún térmmino como `nx`, `ny` o `nz` para que la orientación de la superficie también influya en el resultado. Debería salir algo parecido a esto:
+
+![Ejemplo de renderizado con nuestro modo ondas.](../resources/practica9/images/render_tan.png)
+:::
+
+---
+
+## Más allá de Phong
 
 El visualizador de esta práctica no implementa renderizado basado en físicas, y tampoco es el objetivo que lo haga. Aun así, conviene saber que en herramientas profesionales como ***Blender*** el resultado final suele apoyarse en modelos de iluminación más completos que Phong.
 
@@ -865,7 +910,7 @@ Para esta práctica, sin embargo, lo importante es otra cosa: nuestro visualizad
 
 ## Materiales e iluminación de Phong
 
-A continuación tienes un mapa visual de los componentes difusa y especular en el modelo de iluminación de Phong. No es un diagrama formal, sino una ayuda para entender mejor qué aporta cada término y cómo se combinan.
+A continuación tienes un mapa visual de la componente difusa y especular en el modelo de iluminación de Phong. No es un diagrama formal, sino una ayuda para entender mejor qué aporta cada término y cómo se combinan.
 
 ```{=html}
 <div class="phong-bsdf-map-uza" aria-label="Mapa visual de componentes difusa y especular en Phong">

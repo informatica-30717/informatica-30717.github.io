@@ -117,7 +117,7 @@ public class VentanaPrincipal extends JFrame implements ActionListener, Componen
 
 		JButton openButton = crearBotonAccion("Abrir modelo", "abrir", true);
 		JButton closeButton = crearBotonAccion("Cerrar modelo", "cerrar", false);
-		JButton screenshotButton = crearBotonAccion("Guardar PNG", "captura", false);
+		JButton screenshotButton = crearBotonAccion("PNG sin fondo", "captura", false);
 		JButton exitButton = crearBotonAccion("Salir", "salir", false);
 		filePanel.add(openButton);
 		filePanel.add(Box.createVerticalStrut(10));

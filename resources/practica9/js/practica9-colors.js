@@ -18,7 +18,6 @@
     !lightChip ||
     !materialChip ||
     !resultChip ||
-    !specChip ||
     !lightLabel ||
     !materialLabel ||
     !resultLabel ||
@@ -43,39 +42,59 @@
     return `rgb(${r}, ${g}, ${b})`;
   }
 
-  function rgbToLabel({ r, g, b }) {
-    return `RGB(${r}, ${g}, ${b})`;
+  function toUnitRgb({ r, g, b }) {
+    return {
+      r: r / 255,
+      g: g / 255,
+      b: b / 255,
+    };
   }
 
-  function mixChannel(light, material) {
-    return Math.round((light * material) / 255);
+  function formatUnit(value) {
+    return value.toFixed(2);
   }
 
-  function setChipColor(node, rgb) {
-    node.style.background = rgbToCss(rgb);
+  function unitRgbToCss({ r, g, b }) {
+    return `rgb(${Math.round(r * 255)}, ${Math.round(g * 255)}, ${Math.round(b * 255)})`;
+  }
+
+  function unitRgbToLabel({ r, g, b }) {
+    return `RGB(${formatUnit(r)}, ${formatUnit(g)}, ${formatUnit(b)})`;
+  }
+
+  function mixUnitRgb(light, material) {
+    return {
+      r: light.r * material.r,
+      g: light.g * material.g,
+      b: light.b * material.b,
+    };
+  }
+
+  function setChipColor(node, cssColor) {
+    node.style.background = cssColor;
   }
 
   function update() {
-    const light = hexToRgb(lightInput.value);
-    const material = hexToRgb(materialInput.value);
-    const result = {
-      r: mixChannel(light.r, material.r),
-      g: mixChannel(light.g, material.g),
-      b: mixChannel(light.b, material.b),
-    };
+    const lightBytes = hexToRgb(lightInput.value);
+    const materialBytes = hexToRgb(materialInput.value);
+    const light = toUnitRgb(lightBytes);
+    const material = toUnitRgb(materialBytes);
+    const result = mixUnitRgb(light, material);
 
-    setChipColor(lightChip, light);
-    setChipColor(materialChip, material);
-    setChipColor(resultChip, result);
-    setChipColor(specChip, light);
+    setChipColor(lightChip, rgbToCss(lightBytes));
+    setChipColor(materialChip, rgbToCss(materialBytes));
+    setChipColor(resultChip, unitRgbToCss(result));
+    if (specChip) {
+      setChipColor(specChip, rgbToCss(lightBytes));
+    }
 
-    lightLabel.textContent = rgbToLabel(light);
-    materialLabel.textContent = rgbToLabel(material);
-    resultLabel.textContent = rgbToLabel(result);
+    lightLabel.textContent = unitRgbToLabel(light);
+    materialLabel.textContent = unitRgbToLabel(material);
+    resultLabel.textContent = unitRgbToLabel(result);
 
-    rFormula.textContent = `${light.r} x ${material.r} / 255 = ${result.r}`;
-    gFormula.textContent = `${light.g} x ${material.g} / 255 = ${result.g}`;
-    bFormula.textContent = `${light.b} x ${material.b} / 255 = ${result.b}`;
+    rFormula.textContent = `${formatUnit(light.r)} x ${formatUnit(material.r)} = ${formatUnit(result.r)}`;
+    gFormula.textContent = `${formatUnit(light.g)} x ${formatUnit(material.g)} = ${formatUnit(result.g)}`;
+    bFormula.textContent = `${formatUnit(light.b)} x ${formatUnit(material.b)} = ${formatUnit(result.b)}`;
   }
 
   lightInput.addEventListener('input', update);

@@ -61,6 +61,7 @@ public class PanelVisor extends JPanel {
 	private int renderScale;
 	private boolean sceneDirty;
 	private boolean cameraInteracting;
+	private boolean transparentBackground;
 	private long lastRenderNanos;
 	private int lastRenderedFaces;
 	private int lastDiscardedFaces;
@@ -801,7 +802,7 @@ public class PanelVisor extends JPanel {
 	}
 	
 	/**
-	 * Decide si una cara de pintar o no, teniendo en cuenta el backface culling
+	 * Decide si hay que pintar una cara o no, teniendo en cuenta el backface culling
 	 * @param cara
 	 * @return true si hay que pintar la cara
 	 */
@@ -900,7 +901,7 @@ public class PanelVisor extends JPanel {
 	 */
 	private void pintarRaster()
 	{
-		  renderBuffers.clearGradient(0xfff7f1e7, 0xffdfe9f3, FAR_DEPTH);
+		  limpiarFondo(0xfff7f1e7, 0xffdfe9f3);
 		  
 		  geometria.Punto cameraPosition = posicionCamara();
 		  double cameraX = cameraPosition.x();
@@ -1009,7 +1010,7 @@ public class PanelVisor extends JPanel {
 	 */
 	private void pintarMallaAlambre()
 	{
-		  renderBuffers.clearGradient(0xfffaf5ef, 0xffdfe7ef, FAR_DEPTH);
+		  limpiarFondo(0xfffaf5ef, 0xffdfe7ef);
 		  geometria.Punto cameraPosition = posicionCamara();
 		  
 		  double cameraX = cameraPosition.x();
@@ -1051,7 +1052,19 @@ public class PanelVisor extends JPanel {
 		  }
 		  
 		  g2.dispose();
-	 }
+	}
+
+	private void limpiarFondo(int topRgb, int bottomRgb)
+	{
+		if (transparentBackground)
+		{
+			renderBuffers.clearTransparent(FAR_DEPTH);
+		}
+		else
+		{
+			renderBuffers.clearGradient(topRgb, bottomRgb, FAR_DEPTH);
+		}
+	}
 
 	private void asegurarBuffers()
 	{
@@ -1393,7 +1406,6 @@ public class PanelVisor extends JPanel {
 		{
 			actualizar();
 		}
-		renderizarEscena();
 		File directory = new File("screenshots");
 		if (!directory.exists())
 		{
@@ -1404,14 +1416,22 @@ public class PanelVisor extends JPanel {
 		File output = new File(directory, "render_" + timestamp + ".png");
 		try
 		{
+			transparentBackground = true;
+			sceneDirty = true;
+			renderizarEscena();
 			ImageIO.write(renderBuffers.colorBuffer(), "png", output);
-			statusMessage = "Captura guardada en " + output.getPath();
+			statusMessage = "Captura transparente guardada en " + output.getPath();
 			System.out.println("Captura guardada: " + output.getAbsolutePath());
 		}
 		catch (IOException exception)
 		{
 			statusMessage = "No se pudo guardar la captura.";
 			System.out.println("No se pudo guardar la captura: " + exception.getMessage());
+		}
+		finally
+		{
+			transparentBackground = false;
+			sceneDirty = true;
 		}
 		repaint();
 	}

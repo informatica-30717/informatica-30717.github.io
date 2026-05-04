@@ -4,7 +4,7 @@ $CATEGORY: Práctica 9/Visualizador 3D
 // Mezcla preguntas de uso del visualizador, exploración de código y teoría ligera.
 
 ::P9-01 Clase main::
-¿En qué clase está el método `public static void main(String[] args)` del visualizador? {
+¿En qué clase está el método public static void main(String[] args) del visualizador? {
 =app.Main
 ~interfaz.VentanaPrincipal
 ~interfaz.PanelVisor
@@ -34,15 +34,15 @@ Según el guion, ¿qué opción del asistente de importación de Eclipse se util
 }
 
 ::P9-05 Qué se modifica en Configuracion::
-Según el guion, `app.Configuracion` está pensado para concentrar cambios sencillos del visualizador. ¿Cuál de los siguientes grupos encaja mejor con ese objetivo? {
-=Modelo inicial, modo de visualización, cámara, material y luz
+Según el guion, app.Configuracion está pensado para concentrar cambios sencillos del visualizador. ¿Cuál de los siguientes grupos encaja mejor con ese objetivo? {
+=Modelo inicial, modo de visualización, orientación inicial de la cámara, material y luz
 ~Importación del proyecto, creación de paquetes y compilación de Java
 ~Rasterizado interno, z-buffer y parseo de archivos OBJ
 ~CSS, JavaScript y comparadores interactivos de la página web
 }
 
 ::P9-06 Efecto de cambiar MODELO_INICIAL::
-Si cambias `MODELO_INICIAL` por el nombre de otro archivo `.obj` válido y vuelves a ejecutar el programa, ¿qué debería ocurrir? {
+Si cambias MODELO_INICIAL por el nombre de otro archivo .obj válido y vuelves a ejecutar el programa, ¿qué debería ocurrir? {
 ~Cambiará el color ambiente de toda la escena
 =Se cargará otro modelo al arrancar el visualizador
 ~Se activará automáticamente el backface culling
@@ -50,19 +50,11 @@ Si cambias `MODELO_INICIAL` por el nombre de otro archivo `.obj` válido y vuelv
 }
 
 ::P9-07 Efecto de cambiar MODO_INICIAL::
-Si en `app.Configuracion` fijas `MODO_INICIAL` a `WIREFRAME` y vuelves a ejecutar, ¿cómo debería verse el objeto al arrancar? {
+Si en app.Configuracion fijas MODO_INICIAL a WIREFRAME y vuelves a ejecutar, ¿cómo debería verse el objeto al arrancar? {
 ~Con sombreado Phong completo
 =Solo con aristas, sin caras rellenas
 ~Solo con las normales coloreadas
 ~Como un mapa de profundidad
-}
-
-::P9-10 Abrir otro modelo::
-Para cargar manualmente otro objeto tridimensional durante la ejecución, ¿qué ruta de menú indica el guion? {
-~Escena -> Material
-=Archivo -> Abrir
-~Herramientas -> Importar
-~Ver -> Cargar OBJ
 }
 
 ::P9-11 Extensión de archivo::
@@ -74,7 +66,7 @@ Para cargar manualmente otro objeto tridimensional durante la ejecución, ¿qué
 }
 
 ::P9-12 Punto a homogéneo::
-¿Qué método de la clase `geometria.Punto` convierte un punto `(x,y,z)` en un `Vector4` homogéneo? {
+¿Qué método de la clase geometria.Punto convierte un punto (x,y,z) en un Vector4 homogéneo? {
 =aVector4
 =aVector4()
 ~modificar
@@ -82,7 +74,7 @@ Para cargar manualmente otro objeto tridimensional durante la ejecución, ¿qué
 }
 
 ::P9-13 Vector homogéneo a punto::
-¿Qué método de `geometria.Punto` divide por la coordenada homogénea `w` para reconstruir el punto 3D? {
+¿Qué método de geometria.Punto divide por la coordenada homogénea w para reconstruir el punto 3D? {
 =modificar(Vector4 v)
 =modificar(Vector4)
 ~modificar(double x, double y, double z)
@@ -90,7 +82,7 @@ Para cargar manualmente otro objeto tridimensional durante la ejecución, ¿qué
 }
 
 ::P9-14 Efecto de comentar rotacionX::
-Si comentas la línea `proyeccion.rotacionX(camara().inclinacion() * Math.PI / 180.0);` en `matrizDeProyeccion()`, ¿qué ajuste de cámara deja de aplicarse? {
+Si comentas la línea proyeccion.rotacionX(camara().inclinacion() * Math.PI / 180.0); en matrizDeProyeccion(), ¿qué ajuste de cámara deja de aplicarse? {
 ~La distancia a la cámara
 ~La traslación al centro del objeto
 =La inclinación vertical de la cámara
@@ -98,7 +90,7 @@ Si comentas la línea `proyeccion.rotacionX(camara().inclinacion() * Math.PI / 1
 }
 
 ::P9-15 Método a depurar::
-El guion propone depurar el método `matrizDeProyeccion()`. ¿En qué clase está ese método? {
+El guion propone depurar el método matrizDeProyeccion(). ¿En qué clase está ese método? {
 ~app.Configuracion
 =interfaz.PanelVisor
 ~interfaz.PanelCamara
@@ -106,15 +98,15 @@ El guion propone depurar el método `matrizDeProyeccion()`. ¿En qué clase est�
 }
 
 ::P9-16 Breakpoint repetido::
-Si dejas un breakpoint en `matrizDeProyeccion()`, ¿por qué el programa vuelve repetidamente a esa línea? {
+Si dejas un breakpoint en matrizDeProyeccion(), ¿por qué el programa vuelve repetidamente a esa línea? {
 ~Porque Eclipse ejecuta automáticamente F6 en bucle
 ~Porque Java recompila la clase en cada fotograma
 =Porque la proyección se recalcula muchas veces durante la actualización y repintado del visor
-~Porque `matrizDeProyeccion()` contiene una recursión infinita
+~Porque matrizDeProyeccion() contiene una recursión infinita
 }
 
 ::P9-17 Backface culling::
-¿Qué hace el *backface culling* en el visualizador? {
+¿Qué hace el backface culling en el visualizador? {
 ~Duplica las caras visibles para acelerar el raster
 =Descarta caras cuya normal apunta en sentido contrario a la cámara
 ~Convierte todas las caras en transparentes
@@ -122,12 +114,12 @@ Si dejas un breakpoint en `matrizDeProyeccion()`, ¿por qué el programa vuelve 
 }
 
 ::P9-18 Ver descartadas::
-Si activas **Backface culling** y también **Ver descartadas**, el visor muestra únicamente las caras que habrían sido descartadas. {
+Si activas Backface culling y también Ver descartadas, el visor muestra únicamente las caras que habrían sido descartadas. {
 TRUE
 }
 
 ::P9-19 Método que decide si una cara se pinta::
-¿Qué método de `PanelVisor` decide finalmente si una cara se considera para pintarse? {
+¿Qué método de PanelVisor decide finalmente si una cara se considera para pintarse? {
 =considerarCara
 =considerarCara()
 ~caraValida
@@ -135,7 +127,7 @@ TRUE
 }
 
 ::P9-20 Método de malla completa::
-¿Qué método de `PanelVisor` pinta todo el objeto en modo malla de alambre? {
+¿Qué método de PanelVisor pinta todo el objeto en modo malla de alambre? {
 =pintarMallaAlambre
 =pintarMallaAlambre()
 ~pintarCaraMallaAlambre
@@ -143,7 +135,7 @@ TRUE
 }
 
 ::P9-21 Z-buffer::
-En modo raster, ¿para qué sirve el *z-buffer*? {
+En modo raster, ¿para qué sirve el z-buffer? {
 ~Para almacenar el color ambiente de cada píxel
 ~Para interpolar las normales en modo wireframe
 =Para evitar que una superficie del fondo tape a otra que está delante
@@ -151,7 +143,7 @@ En modo raster, ¿para qué sirve el *z-buffer*? {
 }
 
 ::P9-22 Modo no raster::
-¿Qué modo de `RenderMode` es el único que no se considera raster? {
+¿Qué modo de RenderMode es el único que no se considera raster? {
 =WIREFRAME
 ~PHONG
 ~CLAY
@@ -175,15 +167,15 @@ Según el guion, al aumentar la distancia focal de la cámara... {
 }
 
 ::P9-25 Significado de ka::
-En el contexto del guion, el término `ka` del modelo de Phong sirve principalmente para... {
+En el contexto del guion, el término ka del modelo de Phong sirve principalmente para... {
 =levantar las zonas en sombra mediante una contribución ambiente
 ~hacer la cámara más angular
-~activar el *backface culling*
+~activar el backface culling
 ~incrementar el número de muestras por píxel
 }
 
 ::P9-26 Significado de ks::
-En el modelo de Phong del visualizador, aumentar `ks` tiende a... {
+En el modelo de Phong del visualizador, aumentar ks tiende a... {
 =reforzar los brillos especulares
 ~oscurecer globalmente el objeto
 ~aumentar la resolución del render
@@ -191,7 +183,7 @@ En el modelo de Phong del visualizador, aumentar `ks` tiende a... {
 }
 
 ::P9-27 Muestras por píxel::
-Con pocas muestras por píxel (`samples per pixel`, o `spp`) en un render tipo *path tracing*... {
+Con pocas muestras por píxel (samples per pixel, o spp) en un render tipo path tracing... {
 =aumenta el ruido y normalmente baja el tiempo de cálculo
 ~disminuye el ruido y aumenta el tiempo de cálculo
 ~la imagen no cambia, solo cambia el tamaño del archivo
@@ -199,7 +191,7 @@ Con pocas muestras por píxel (`samples per pixel`, o `spp`) en un render tipo *
 }
 
 ::P9-28 Tipo de interpretarComoVertice::
-¿Cuál es el tipo de retorno del método `interpretarComoVertice` de `geometria.Objeto`? {
+¿Cuál es el tipo de retorno del método interpretarComoVertice de geometria.Objeto? {
 =Vertice
 ~Cara
 ~Punto
@@ -207,7 +199,7 @@ Con pocas muestras por píxel (`samples per pixel`, o `spp`) en un render tipo *
 }
 
 ::P9-29 Parámetro de cargarObj::
-¿De qué tipo es el parámetro `filename` del método `cargarObj` de `geometria.Objeto`? {
+¿De qué tipo es el parámetro filename del método cargarObj de geometria.Objeto? {
 =String
 ~File
 ~Path
@@ -223,11 +215,11 @@ Según el guion, el visualizador de esta práctica usa Phong principalmente porq
 }
 
 ::P9-31 Mover Luz.java::
-Cuando arrastras `Luz.java` a otro paquete en Eclipse con **Update references to the moved elements**, ¿por qué aparecen cambios en otros archivos? {
+Cuando arrastras Luz.java a otro paquete en Eclipse con Update references to the moved elements, ¿por qué aparecen cambios en otros archivos? {
 =Porque Eclipse actualiza las referencias de paquete e imports para mantener el código consistente
 ~Porque Java obliga a duplicar todas las clases relacionadas
 ~Porque cada paquete debe tener exactamente el mismo número de clases
-~Porque los métodos de `Luz` cambian automáticamente de nombre
+~Porque los métodos de Luz cambian automáticamente de nombre
 }
 
 ::P9-32 Material verde y luz roja::
@@ -239,7 +231,7 @@ Si en una prueba de Phong pones el material completamente verde y tanto la luz d
 }
 
 ::P9-33 Exponente especular::
-En la clase `escena.Material`, ¿qué representa el valor `es`? {
+En la clase escena.Material, ¿qué representa el valor es? {
 =El exponente especular, relacionado con la rugosidad/apertura del brillo
 ~La escala del modelo importado
 ~El espesor de las aristas en wireframe
