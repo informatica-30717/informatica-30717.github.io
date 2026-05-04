@@ -57,14 +57,6 @@ Si en app.Configuracion fijas MODO_INICIAL a WIREFRAME y vuelves a ejecutar, ¿c
 ~Como un mapa de profundidad
 }
 
-::P9-10 Abrir otro modelo::
-Para cargar manualmente otro objeto tridimensional durante la ejecución, ¿qué ruta de menú indica el guion? {
-~Escena -> Material
-=Archivo -> Abrir
-~Herramientas -> Importar
-~Ver -> Cargar OBJ
-}
-
 ::P9-11 Extensión de archivo::
 ¿Qué extensión deben tener los modelos que carga el visualizador desde el menú? {
 =.obj

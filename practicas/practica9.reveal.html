@@ -721,11 +721,11 @@ M_p &amp;= \text{pantalla}(w,h)\cdot\text{perspectiva}(fov,h/w,1,100) \\
 <section class="slide level2">
 
 <h3 id="modos-de-visualización">Modos de visualización</h3>
-<p><code>PanelVisor</code> coordina la visualización del objeto. La proyección y el recorrido de caras están ahí, pero el cálculo del color está concentrado en <code>renderer.Shader</code> y los efectos opcionales en <code>renderer.PostProcess</code>.</p>
+<p><code>PanelVisor</code> coordina la visualización del objeto. La proyección y el recorrido de caras se encuentran en esa clase, pero el cálculo del color está en <code>renderer.Shader</code> y los efectos opcionales en <code>renderer.PostProcess</code>.</p>
 <p>Si solo quieres modificar cámara, material, luz o modo de visualización, no hace falta entrar en ese paquete todavía.</p>
 <p>El visualizador ofrece dos modos principales. En esta práctica nos interesa sobre todo el segundo, porque es el que utiliza la iluminación de Phong del proyecto proporcionado.</p>
 <ul>
-<li class="fragment"><strong>Malla de alambre</strong> (<code>pintarMallaAlambre</code>): se recorren todas las <code>Cara</code>s, se transforman sus <code>Punto</code>s y se dibujan solo las aristas.</li>
+<li class="fragment"><strong>Malla de alambre</strong> (<code>pintarMallaAlambre</code>): se recorren todas las <code>Caras</code>, se transforman sus <code>Puntos</code>y se dibujan solo las aristas.</li>
 <li class="fragment"><strong>Raster</strong>: se rellena cada cara visible y se calcula el color de cada píxel con el modelo de iluminación de Phong. Además, se mantiene un <strong><em>z-buffer</em></strong>, es decir, un registro de profundidad para que una superficie del fondo no tape a otra que está delante.</li>
 </ul>
 <div class="img-compare" role="slider" aria-label="Malla de alambre frente a raster" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50" tabindex="0" style="max-width:560px; margin:0.75rem auto;">
