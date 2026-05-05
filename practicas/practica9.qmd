@@ -112,7 +112,7 @@ Después, arrastra y suelta `Luz.java` del paquete `escena` al nuevo paquete. An
 
 ---
 
-### El código fuente: una clase, un archivo, un concepto
+### El código fuente: programación orientada a objetos
 
 La regla habitual de la programación orientada a objetos es que cada archivo contiene una clase, y cada clase representa un concepto concreto.
 
@@ -698,7 +698,7 @@ La siguiente visualización sirve justo como **guía para responder a ese ejerci
 ---
 
 ::: {.callout-note}
-## Reto creativo: modo ondas
+## Reto de visualización: modo ondas
 
 Vamos a crear un modo nuevo de visualización, como si el modelo fuese un falso análisis de ondas de color. 
 
@@ -738,7 +738,7 @@ private int shadeOndas(double x, double y, double z, double nx, double ny, doubl
 }
 ```
 
-Dentro de las funciones seno y coseno, puedes combinar las tres ondas de la forma que quieras. Prueba a sumarlas, multiplicarlas o a usarlas por separado, o súmale algún térmmino como `nx`, `ny` o `nz` para que la orientación de la superficie también influya en el resultado. Debería salir algo parecido a esto:
+Dentro de las funciones seno y coseno, puedes combinar las tres ondas de la forma que quieras. Prueba a sumarlas, multiplicarlas o a usarlas por separado, o súmale algún término como `nx`, `ny` o `nz` para que la orientación de la superficie también influya en el resultado. Un posible resultado es este:
 
 ![Ejemplo de renderizado con nuestro modo ondas.](../resources/practica9/images/render_tan.png)
 :::
