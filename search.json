@@ -60,18 +60,6 @@
     ]
   },
   {
-    "objectID": "practicas/practica9.html#materiales-e-iluminación-de-phong",
-    "href": "practicas/practica9.html#materiales-e-iluminación-de-phong",
-    "title": "Práctica 9: Visualizador 3D",
-    "section": "5 Materiales e iluminación de Phong",
-    "text": "5 Materiales e iluminación de Phong\nA continuación tienes un mapa visual de la componente difusa y especular en el modelo de iluminación de Phong. No es un diagrama formal, sino una ayuda para entender mejor qué aporta cada término y cómo se combinan.\n\n  \n\n  \n    \n      \n        Mapa visual: de superficie mate a reflejo metalico\n        Phong no es un BSDF fisico, pero sus parametros sirven para imitar estos comportamientos.\n      \n      \n        kd luz dispersa\n        ks reflejo dirigido\n      \n    \n\n    \n      \n        \n          \n          Lambert / mate\n          Casi todo se entiende con kd; ks seria bajo.\n        \n\n        \n          \n          Base plastica\n          Solo la parte difusa del plastico; su brillo esta a la derecha.\n        \n      \n\n      \n        \n          \n            ka\n            +\n            kd\n            +\n            ks\n          \n          \n          ka levanta la escena, kd da cuerpo mate y ks anade el destello.\n        \n\n        \n          Plastico: base difusa (kd) + capa especular (ks).\n          Metal: domina la parte especular y el reflejo tambien toma color.\n        \n      \n\n      \n        \n          \n          Metal / conductor\n          El reflejo manda: buen referente mental para ks alto.\n        \n\n        \n          \n          Brillo plastico\n          e decide si el brillo se abre o se concentra.\n        \n      \n    \n  \n\n  \n    Imagenes: documentacion de Mitsuba 3, BSDF plugins. Usadas aqui como referencia visual cualitativa para los terminos de Phong.",
-    "crumbs": [
-      "![](../resources/unizar_white.png){width=95px}",
-      "Prácticas",
-      "Práctica 9: Visualizador 3D"
-    ]
-  },
-  {
     "objectID": "practicas/practica9.reveal.html#objetivos-de-la-práctica",
     "href": "practicas/practica9.reveal.html#objetivos-de-la-práctica",
     "title": "Práctica 9: Visualizador 3D",
@@ -98,13 +86,6 @@
     "title": "Práctica 9: Visualizador 3D",
     "section": "Más allá de Phong",
     "text": "Más allá de Phong\nEl visualizador de esta práctica no implementa renderizado basado en físicas, y tampoco es el objetivo que lo haga. Aun así, conviene saber que en herramientas profesionales como Blender el resultado final suele apoyarse en modelos de iluminación más completos que Phong.\nEn lugar de decidir el color de un punto solo con la luz directa y un brillo aproximado, estos motores intentan estimar cómo viaja la luz por toda la escena: qué parte llega directamente, qué parte rebota en paredes, suelos, techos o vidrios, y cómo responden los materiales. En arquitectura esto importa mucho, porque la percepción de un espacio depende en gran medida de esos rebotes de luz.\n\n\n\n\n\n\nQué debes retener\n\n\nNo necesitas aprender ni programar path tracing en esta práctica. Esta sección solo sirve para que, cuando en Blender veas palabras como samples, bounces, noise o Cycles, sepas a qué se refieren.\n\n\n\n\n\n\n\n\n\nDetalle técnico opcional\n\n\nSi quieres ver la formulación clásica, la idea se resume en la ecuación de renderizado de Kajiya (1986):\n\\[\nL_o(\\mathbf{p},\\,\\omega_o) = L_e(\\mathbf{p},\\,\\omega_o) + \\int_{\\Omega} f_r(\\mathbf{p},\\,\\omega_o,\\,\\omega_i)\\; L_i(\\mathbf{p},\\,\\omega_i)\\; |\\cos\\theta_i|\\; d\\omega_i\n\\]\nSin entrar en todos los símbolos, viene a decir que el color que vemos en un punto depende de la luz que emite ese punto y de toda la luz que le llega después de interactuar con la escena."
-  },
-  {
-    "objectID": "practicas/practica9.reveal.html#materiales-e-iluminación-de-phong",
-    "href": "practicas/practica9.reveal.html#materiales-e-iluminación-de-phong",
-    "title": "Práctica 9: Visualizador 3D",
-    "section": "Materiales e iluminación de Phong",
-    "text": "Materiales e iluminación de Phong\nA continuación tienes un mapa visual de la componente difusa y especular en el modelo de iluminación de Phong. No es un diagrama formal, sino una ayuda para entender mejor qué aporta cada término y cómo se combinan.\n\n  \n\n  \n    \n      \n        Mapa visual: de superficie mate a reflejo metalico\n        Phong no es un BSDF fisico, pero sus parametros sirven para imitar estos comportamientos.\n      \n      \n        kd luz dispersa\n        ks reflejo dirigido\n      \n    \n\n    \n      \n        \n          \n          Lambert / mate\n          Casi todo se entiende con kd; ks seria bajo.\n        \n\n        \n          \n          Base plastica\n          Solo la parte difusa del plastico; su brillo esta a la derecha.\n        \n      \n\n      \n        \n          \n            ka\n            +\n            kd\n            +\n            ks\n          \n          \n          ka levanta la escena, kd da cuerpo mate y ks anade el destello.\n        \n\n        \n          Plastico: base difusa (kd) + capa especular (ks).\n          Metal: domina la parte especular y el reflejo tambien toma color.\n        \n      \n\n      \n        \n          \n          Metal / conductor\n          El reflejo manda: buen referente mental para ks alto.\n        \n\n        \n          \n          Brillo plastico\n          e decide si el brillo se abre o se concentra.\n        \n      \n    \n  \n\n  \n    Imagenes: documentacion de Mitsuba 3, BSDF plugins. Usadas aqui como referencia visual cualitativa para los terminos de Phong."
   },
   {
     "objectID": "practicas/practica7.html",

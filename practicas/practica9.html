@@ -364,7 +364,6 @@ window.Quarto = {
   <ul class="collapse">
   <li><a href="#muestras-ruido-y-convergencia" id="toc-muestras-ruido-y-convergencia" class="nav-link" data-scroll-target="#muestras-ruido-y-convergencia"><span class="header-section-number">4.1</span> Muestras, ruido y convergencia</a></li>
   </ul></li>
-  <li><a href="#materiales-e-iluminación-de-phong" id="toc-materiales-e-iluminación-de-phong" class="nav-link" data-scroll-target="#materiales-e-iluminación-de-phong"><span class="header-section-number">5</span> Materiales e iluminación de Phong</a></li>
   </ul>
 <div class="quarto-alternate-formats"><h2>Otros formatos</h2><ul><li><a href="practica9.reveal.html"><i class="bi bi-file-slides"></i>RevealJS</a></li></ul></div></nav>
     </div>
@@ -1254,11 +1253,11 @@ Escena del comparador spp procedente de <a href="https://www.blenderkit.com/get-
 </p>
 <p>Esto es lo que ocurre en <em>Blender Cycles</em> y en otros motores físicamente realistas: con pocas muestras aparece ruido, mientras que con más muestras el resultado se limpia, aunque el tiempo de cálculo crece. En visualización de edificios se puede utilizar para reproducir mucho mejor la iluminación global de interiores y exteriores.</p>
 <p>Para esta práctica, sin embargo, lo importante es otra cosa: nuestro visualizador no busca ese nivel de realismo, sino una respuesta rápida e interactiva. Por eso usamos Phong.</p>
-</section>
-</section>
-<section id="materiales-e-iluminación-de-phong" class="level2" data-number="5">
-<h2 data-number="5" class="anchored" data-anchor-id="materiales-e-iluminación-de-phong"><span class="header-section-number">5</span> Materiales e iluminación de Phong</h2>
-<p>A continuación tienes un mapa visual de la componente difusa y especular en el modelo de iluminación de Phong. No es un diagrama formal, sino una ayuda para entender mejor qué aporta cada término y cómo se combinan.</p>
+<!--
+## Materiales e iluminación de Phong
+
+A continuación tienes un mapa visual de la componente difusa y especular en el modelo de iluminación de Phong. No es un diagrama formal, sino una ayuda para entender mejor qué aporta cada término y cómo se combinan.
+
 <div class="phong-bsdf-map-uza" aria-label="Mapa visual de componentes difusa y especular en Phong">
   <style>
     .phong-bsdf-map-uza {
@@ -1559,8 +1558,8 @@ Escena del comparador spp procedente de <a href="https://www.blenderkit.com/get-
   <div class="pbm-shell">
     <div class="pbm-head">
       <div>
-        <p class="pbm-title">Mapa visual: de superficie mate a reflejo metalico</p>
-        <p class="pbm-subtitle">Phong no es un BSDF fisico, pero sus parametros sirven para imitar estos comportamientos.</p>
+        <p class="pbm-title">Mapa visual: de superficie mate a reflejo metálico</p>
+        <p class="pbm-subtitle">Phong no es un BSDF físico, pero sus parámetros sirven para imitar estos comportamientos.</p>
       </div>
       <div class="pbm-key" aria-label="Leyenda">
         <span><i class="pbm-swatch diff"></i><code>kd</code> luz dispersa</span>
@@ -1570,16 +1569,16 @@ Escena del comparador spp procedente de <a href="https://www.blenderkit.com/get-
 
     <div class="pbm-flow">
       <section class="pbm-side" aria-label="Ejemplos de componente difusa">
-        <figure class="pbm-card figure">
-          <img src="../resources/practica9/images/mitsuba_bsdf_diffuse_plain.jpg" alt="Material difuso lambertiano renderizado en Mitsuba" class="figure-img">
+        <figure class="pbm-card">
+          <img src="../resources/practica9/images/mitsuba_bsdf_diffuse_plain.jpg" alt="Material difuso lambertiano renderizado en Mitsuba">
           <span class="pbm-badge diff">Lambert / mate</span>
-          <figcaption>Casi todo se entiende con <code>kd</code>; <code>ks</code> seria bajo.</figcaption>
+          <figcaption>Casi todo se entiende con <code>kd</code>; <code>ks</code> sería bajo.</figcaption>
         </figure>
 
-        <figure class="pbm-card figure">
-          <img src="../resources/practica9/images/mitsuba_bsdf_pplastic_diffuse_component.jpg" alt="Componente difusa de un material plastico renderizado en Mitsuba" class="figure-img">
-          <span class="pbm-badge diff">Base plastica</span>
-          <figcaption>Solo la parte difusa del plastico; su brillo esta a la derecha.</figcaption>
+        <figure class="pbm-card">
+          <img src="../resources/practica9/images/mitsuba_bsdf_pplastic_diffuse_component.jpg" alt="Componente difusa de un material plástico renderizado en Mitsuba">
+          <span class="pbm-badge diff">Base plástica</span>
+          <figcaption>Solo la parte difusa del plástico; su brillo esta a la derecha.</figcaption>
         </figure>
       </section>
 
@@ -1593,25 +1592,25 @@ Escena del comparador spp procedente de <a href="https://www.blenderkit.com/get-
             <span class="pbm-token spec">ks</span>
           </div>
           <div class="pbm-mix" aria-hidden="true"><span></span><span></span><span></span></div>
-          <p><code>ka</code> levanta la escena, <code>kd</code> da cuerpo mate y <code>ks</code> anade el destello.</p>
+          <p><code>ka</code> levanta la escena, <code>kd</code> da cuerpo mate y <code>ks</code> añade el destello.</p>
         </div>
 
         <div class="pbm-note">
-          <p><strong>Plastico:</strong> base difusa (<code>kd</code>) + capa especular (<code>ks</code>).</p>
-          <p><strong>Metal:</strong> domina la parte especular y el reflejo tambien toma color.</p>
+          <p><strong>Plástico:</strong> base difusa (<code>kd</code>) + capa especular (<code>ks</code>).</p>
+          <p><strong>Metal:</strong> domina la parte especular y el reflejo también toma color.</p>
         </div>
       </section>
 
       <section class="pbm-side" aria-label="Ejemplos de componente especular">
-        <figure class="pbm-card figure">
-          <img src="../resources/practica9/images/mitsuba_bsdf_conductor_gold.jpg" alt="Material conductor dorado renderizado en Mitsuba" class="figure-img">
+        <figure class="pbm-card">
+          <img src="../resources/practica9/images/mitsuba_bsdf_conductor_gold.jpg" alt="Material conductor dorado renderizado en Mitsuba">
           <span class="pbm-badge spec">Metal / conductor</span>
           <figcaption>El reflejo manda: buen referente mental para <code>ks</code> alto.</figcaption>
         </figure>
 
-        <figure class="pbm-card figure">
-          <img src="../resources/practica9/images/mitsuba_bsdf_pplastic_specular_component.jpg" alt="Componente especular de un material plastico renderizado en Mitsuba" class="figure-img">
-          <span class="pbm-badge spec">Brillo plastico</span>
+        <figure class="pbm-card">
+          <img src="../resources/practica9/images/mitsuba_bsdf_pplastic_specular_component.jpg" alt="Componente especular de un material plástico renderizado en Mitsuba">
+          <span class="pbm-badge spec">Brillo plástico</span>
           <figcaption><code>e</code> decide si el brillo se abre o se concentra.</figcaption>
         </figure>
       </section>
@@ -1619,11 +1618,13 @@ Escena del comparador spp procedente de <a href="https://www.blenderkit.com/get-
   </div>
 
   <p class="pbm-credit">
-    Imagenes: documentacion de <a href="https://mitsuba.readthedocs.io/en/latest/src/generated/plugins_bsdfs.html">Mitsuba 3, BSDF plugins</a>. Usadas aqui como referencia visual cualitativa para los terminos de Phong.
+    Imágenes: documentación de <a href="https://mitsuba.readthedocs.io/en/latest/src/generated/plugins_bsdfs.html">Mitsuba 3, BSDF plugins</a>. Usadas aquí como referencia visual cualitativa para los terminos de Phong.
   </p>
 </div>
+```-->
 
 
+</section>
 </section>
 
 <div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Reutilización</h2><div class="quarto-appendix-contents"><div><a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.es">CC BY-NC-SA 4.0</a></div></div></section></div></main> <!-- /main -->
