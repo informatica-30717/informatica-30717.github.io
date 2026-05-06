@@ -225,7 +225,9 @@
 <li class="fragment">Entender, a nivel conceptual, que <em>Phong</em> es una aproximación rápida y que en herramientas profesionales como <em>Blender</em> suelen emplearse modelos de iluminación más completos.</li>
 </ul>
 <p>Es conveniente que resolváis todos los ejercicios que se os plantean en el guion, pero no es necesario que los entreguéis. La evaluación se realizará a través de un cuestionario disponible en <em>Moodle</em>.</p>
-</section>
+<p>A modo de esquema, la siguiente figura representa el flujó básico del visualizador:</p>
+
+<img data-src="../resources/practica9/images/schema.png" style="width:100.0%" class="r-stretch"></section>
 <section id="el-visualizador" class="slide level2 scrollable">
 <h2>El visualizador</h2>
 <h3 id="importando-el-visualizador">Importando el visualizador</h3>
@@ -467,6 +469,31 @@ V_t = M \cdot V
 <p><span class="math display">\[
 (x,\, y,\, z,\, w) \;\longrightarrow\; \left(\frac{x}{w},\;\frac{y}{w},\;\frac{z}{w}\right)
 \]</span></p>
+<p>Si <span class="math inline">\(w = 0\)</span>, ese <code>Vector4</code> no representa un punto que puedas recuperar con la división anterior, sino una <strong>dirección</strong>. Por eso una traslación no le afecta. Por ejemplo:</p>
+<p><span class="math display">\[
+\begin{pmatrix}
+1 &amp; 0 &amp; 0 &amp; 10\\
+0 &amp; 1 &amp; 0 &amp; 0\\
+0 &amp; 0 &amp; 1 &amp; 0\\
+0 &amp; 0 &amp; 0 &amp; 1
+\end{pmatrix}
+\cdot
+\begin{pmatrix}4\\3\\2\\1\end{pmatrix}
+=
+\begin{pmatrix}14\\3\\2\\1\end{pmatrix}
+\qquad
+\begin{pmatrix}
+1 &amp; 0 &amp; 0 &amp; 10\\
+0 &amp; 1 &amp; 0 &amp; 0\\
+0 &amp; 0 &amp; 1 &amp; 0\\
+0 &amp; 0 &amp; 0 &amp; 1
+\end{pmatrix}
+\cdot
+\begin{pmatrix}4\\3\\2\\0\end{pmatrix}
+=
+\begin{pmatrix}4\\3\\2\\0\end{pmatrix}
+\]</span></p>
+<p>En el primer caso se ha movido el punto diez unidades en <span class="math inline">\(x\)</span>. En el segundo, la misma operación no cambia el vector: con <span class="math inline">\(w = 0\)</span> la parte de traslación queda multiplicada por cero. Si lo que querías era mover una posición, entonces ese vector debía tener <span class="math inline">\(w = 1\)</span>.</p>
 </section>
 <section class="slide level2">
 
@@ -501,18 +528,18 @@ V_t = M \cdot V
 <p><span class="math display">\[
 \text{rotacionZ}(a) \;\to\; \begin{pmatrix} \cos a &amp; \sin a &amp; 0 &amp; 0 \\ {-\sin a} &amp; \cos a &amp; 0 &amp; 0 \\ 0 &amp; 0 &amp; 1 &amp; 0 \\ 0 &amp; 0 &amp; 0 &amp; 1 \end{pmatrix}
 \]</span></p>
-<p>La siguiente visualización muestra cómo actúa <strong>rotacionZ</strong> sobre un punto del plano XY. Mueve el ángulo y observa cómo se actualizan los valores de la matriz:</p>
+<p>La siguiente visualización muestra cómo actúa <strong>rotacionZ</strong> sobre un punto en 3D. Mueve el ángulo y observa cómo se actualizan los valores de la matriz:</p>
 <div id="rot-demo-uza">
   <div class="rot-stage-uza">
     <div class="rot-stage-head-uza">
-      <span class="rot-stage-kicker-uza">Plano XY</span>
-      <p>El punto gira alrededor del origen: la distancia al origen se conserva y solo cambia su orientación.</p>
+      <span class="rot-stage-kicker-uza">Eje Z</span>
     </div>
     <canvas id="rot-canvas-uza" width="280" height="280" class="rot-canvas-uza"></canvas>
     <div class="rot-legend-uza">
       <span class="rot-legend-item-uza"><i class="is-base-uza"></i>Vector original</span>
       <span class="rot-legend-item-uza"><i class="is-rotated-uza"></i>Vector rotado</span>
       <span class="rot-legend-item-uza"><i class="is-angle-uza"></i>Ángulo <em>a</em></span>
+      <span class="rot-legend-item-uza"><i class="is-axis-uza"></i>Eje Z</span>
     </div>
   </div>
   <div class="rot-panel-uza">
@@ -550,7 +577,7 @@ V_t = M \cdot V
     <div class="rot-summary-uza">
       <div class="rot-summary-row-uza">
         <span>Punto inicial</span>
-        <code id="rot-before-uza">(0.72, 0.24)</code>
+        <code id="rot-before-uza">(0.72, 0.24, 0.38)</code>
       </div>
       <div class="rot-summary-row-uza">
         <span>Punto rotado</span>
@@ -764,7 +791,7 @@ M_p &amp;= \text{pantalla}(w,h)\cdot\text{perspectiva}(fov,h/w,1,100) \\
 <p><strong>Busca en el código</strong></p>
 </div>
 <div class="callout-content">
-<p>No leas <code>PanelVisor</code> de principio a fin. Busca directamente los métodos <code>considerarCara</code>, <code>pintarMallaAlambre</code> y <code>pintarCaraMallaAlambre</code>, y localiza después dónde se llama a <code>renderer.Shader</code> en el recorrido ráster. Identifica qué partes del algoritmo descrito en este guion implementa cada método. Compara los dos modos de visualización.</p>
+<p>No leas <code>PanelVisor</code> de principio a fin. Busca directamente los métodos <code>considerarCara</code>, <code>pintarMallaAlambre</code> y <code>pintarRaster</code>, y localiza después dónde se llama a <code>renderer.Shader</code> en el recorrido ráster. Identifica qué partes del algoritmo descrito en este guion implementa cada método. Compara los dos modos de visualización.</p>
 </div>
 </div>
 </div>

@@ -92,6 +92,10 @@
   background: #f59e0b;
 }
 
+#rot-demo-uza .rot-legend-item-uza .is-axis-uza {
+  background: #7c3aed;
+}
+
 #rot-demo-uza .rot-panel-uza {
   display: flex;
   flex-direction: column;
