@@ -1,6 +1,7 @@
 package geometria;
 import java.io.*;
 import java.util.Arrays;
+import java.util.IdentityHashMap;
 import java.util.Scanner;
 
 /**
@@ -10,6 +11,10 @@ import java.util.Scanner;
  * @author Alfonso López Ruiz
  */
 public class Objeto {
+	private static final String CACHE_MAGIC = "VISUALIZADOR_OBJ_CACHE";
+	private static final int CACHE_VERSION = 1;
+	private static final String CACHE_EXTENSION = ".vbin";
+
 	private Punto[] puntos;
 	private Normal[] normales;
 	private Cara[] _caras;	
@@ -195,6 +200,226 @@ public class Objeto {
 		puntos=null;
 		_centro = new Punto(0.0,0.0,0.0);
 	}
+
+	private File archivoCache(File source)
+	{
+		File parent = source.getParentFile();
+		if (parent == null)
+		{
+			parent = new File(".");
+		}
+		return new File(parent, source.getName() + CACHE_EXTENSION);
+	}
+
+	private IdentityHashMap<Punto, Integer> indicesPuntos()
+	{
+		IdentityHashMap<Punto, Integer> indices = new IdentityHashMap<Punto, Integer>();
+		if (puntos == null)
+		{
+			return indices;
+		}
+
+		for (int i = 0; i < puntos.length; i++)
+		{
+			if (puntos[i] != null)
+			{
+				indices.put(puntos[i], Integer.valueOf(i));
+			}
+		}
+		return indices;
+	}
+
+	private IdentityHashMap<Normal, Integer> indicesNormales()
+	{
+		IdentityHashMap<Normal, Integer> indices = new IdentityHashMap<Normal, Integer>();
+		if (normales == null)
+		{
+			return indices;
+		}
+
+		for (int i = 0; i < normales.length; i++)
+		{
+			if (normales[i] != null)
+			{
+				indices.put(normales[i], Integer.valueOf(i));
+			}
+		}
+		return indices;
+	}
+
+	private void escribirPunto(DataOutputStream out, Punto punto) throws IOException
+	{
+		out.writeBoolean(punto != null);
+		if (punto != null)
+		{
+			out.writeDouble(punto.x());
+			out.writeDouble(punto.y());
+			out.writeDouble(punto.z());
+		}
+	}
+
+	private Punto leerPunto(DataInputStream in) throws IOException
+	{
+		if (!in.readBoolean())
+		{
+			return null;
+		}
+		return new Punto(in.readDouble(), in.readDouble(), in.readDouble());
+	}
+
+	private void escribirNormal(DataOutputStream out, Normal normal) throws IOException
+	{
+		out.writeBoolean(normal != null);
+		if (normal != null)
+		{
+			out.writeDouble(normal.x());
+			out.writeDouble(normal.y());
+			out.writeDouble(normal.z());
+		}
+	}
+
+	private Normal leerNormal(DataInputStream in) throws IOException
+	{
+		if (!in.readBoolean())
+		{
+			return null;
+		}
+		return new Normal(in.readDouble(), in.readDouble(), in.readDouble());
+	}
+
+	private void guardarCacheBinaria(File source) throws IOException
+	{
+		File cache = archivoCache(source);
+		DataOutputStream out = new DataOutputStream(new BufferedOutputStream(new FileOutputStream(cache)));
+		try
+		{
+			out.writeUTF(CACHE_MAGIC);
+			out.writeInt(CACHE_VERSION);
+			out.writeLong(source.length());
+			out.writeLong(source.lastModified());
+
+			out.writeInt(puntos == null ? 0 : puntos.length);
+			if (puntos != null)
+			{
+				for (int i = 0; i < puntos.length; i++)
+				{
+					escribirPunto(out, puntos[i]);
+				}
+			}
+
+			out.writeInt(normales == null ? 0 : normales.length);
+			if (normales != null)
+			{
+				for (int i = 0; i < normales.length; i++)
+				{
+					escribirNormal(out, normales[i]);
+				}
+			}
+
+			IdentityHashMap<Punto, Integer> pointIndices = indicesPuntos();
+			IdentityHashMap<Normal, Integer> normalIndices = indicesNormales();
+			out.writeInt(_caras == null ? 0 : _caras.length);
+			if (_caras != null)
+			{
+				for (int i = 0; i < _caras.length; i++)
+				{
+					Vertice[] vertices = _caras[i].vertices();
+					out.writeInt(vertices.length);
+					for (int j = 0; j < vertices.length; j++)
+					{
+						Integer pointIndex = pointIndices.get(vertices[j].punto);
+						Integer normalIndex = normalIndices.get(vertices[j].normal);
+						out.writeInt(pointIndex == null ? -1 : pointIndex.intValue());
+						out.writeInt(normalIndex == null ? -1 : normalIndex.intValue());
+					}
+				}
+			}
+		}
+		finally
+		{
+			out.close();
+		}
+	}
+
+	private boolean cargarCacheBinaria(File source) throws IOException
+	{
+		if (!source.isFile())
+		{
+			return false;
+		}
+
+		File cache = archivoCache(source);
+		if (!cache.isFile())
+		{
+			return false;
+		}
+
+		DataInputStream in = new DataInputStream(new BufferedInputStream(new FileInputStream(cache)));
+		try
+		{
+			if (!CACHE_MAGIC.equals(in.readUTF()))
+			{
+				return false;
+			}
+			if (in.readInt() != CACHE_VERSION)
+			{
+				return false;
+			}
+			if ((in.readLong() != source.length()) || (in.readLong() != source.lastModified()))
+			{
+				return false;
+			}
+
+			Punto[] cachedPoints = new Punto[in.readInt()];
+			for (int i = 0; i < cachedPoints.length; i++)
+			{
+				cachedPoints[i] = leerPunto(in);
+			}
+
+			Normal[] cachedNormals = new Normal[in.readInt()];
+			for (int i = 0; i < cachedNormals.length; i++)
+			{
+				cachedNormals[i] = leerNormal(in);
+			}
+
+			Cara[] cachedFaces = new Cara[in.readInt()];
+			for (int i = 0; i < cachedFaces.length; i++)
+			{
+				int vertexCount = in.readInt();
+				Vertice[] vertices = new Vertice[vertexCount];
+				for (int j = 0; j < vertexCount; j++)
+				{
+					int pointIndex = in.readInt();
+					int normalIndex = in.readInt();
+					if ((pointIndex < 0) || (pointIndex >= cachedPoints.length))
+					{
+						throw new IOException("Cache binaria con indice de punto invalido.");
+					}
+					Normal normal = null;
+					if (normalIndex >= 0)
+					{
+						if (normalIndex >= cachedNormals.length)
+						{
+							throw new IOException("Cache binaria con indice de normal invalido.");
+						}
+						normal = cachedNormals[normalIndex];
+					}
+					vertices[j] = new Vertice(cachedPoints[pointIndex], normal);
+				}
+				cachedFaces[i] = new Cara(vertices);
+			}
+
+			puntos = cachedPoints;
+			normales = cachedNormals;
+			_caras = cachedFaces;
+			actualizarCentro();
+			return true;
+		}
+		finally
+		{
+			in.close();
+		}
+	}
 	
 	/**
 	 * Construye todas las normales que no se han cargado como la media de las normales
@@ -359,6 +584,37 @@ public class Objeto {
 	 * @throws IOException Si el archivo no se encuentra
 	 */
 	public void cargarObj(String filename) throws IOException
+	{
+		File source = new File(filename);
+		try
+		{
+			if (cargarCacheBinaria(source))
+			{
+				System.out.println("Modelo cargado desde cache binaria: " + archivoCache(source).getAbsolutePath());
+				return;
+			}
+		}
+		catch (IOException exception)
+		{
+			System.out.println("Cache binaria ignorada: " + exception.getMessage());
+		}
+		catch (RuntimeException exception)
+		{
+			System.out.println("Cache binaria ignorada: " + exception.getMessage());
+		}
+
+		cargarObjTexto(filename);
+		try
+		{
+			guardarCacheBinaria(source);
+		}
+		catch (IOException exception)
+		{
+			System.out.println("No se pudo guardar la cache binaria: " + exception.getMessage());
+		}
+	}
+
+	private void cargarObjTexto(String filename) throws IOException
 	{
 		reiniciar();
 	    int nv=0, nt=0, nn=0, nf=0;

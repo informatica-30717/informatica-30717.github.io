@@ -40,6 +40,8 @@ public class PanelVisor extends JPanel {
 	private static final int DEFAULT_RENDER_SCALE = 1;
 	private static final double INTERACTION_RENDER_FACTOR = 0.65;
 	private static final double FOV_INICIAL = 28.0;
+	private static final double FOV_REFERENCIA_DISTANCIA = FOV_INICIAL;
+	private static final double BACKFACE_CULLING_EPSILON = 1.0e-5;
 	private static final double INCLINACION_INICIAL = 12.0;
 	private static final double ROTACION_INICIAL = -24.0;
 	
@@ -395,7 +397,7 @@ public class PanelVisor extends JPanel {
 	private double distanciaCamaraPorDefecto()
 	{
 		double radio = radioObjeto();
-		double distancia = (radio * 1.45) / Math.tan(Math.toRadians(fovInicialConfigurado() * 0.5));
+		double distancia = (radio * 1.45) / Math.tan(Math.toRadians(FOV_REFERENCIA_DISTANCIA * 0.5));
 		return Math.max(6.0, distancia * 1.2);
 	}
 
@@ -550,43 +552,6 @@ public class PanelVisor extends JPanel {
 		projectedX = new double[vertexCount];
 		projectedY = new double[vertexCount];
 		projectedZ = new double[vertexCount];
-	}
-	
-	/**
-	 * Calcula el color de phong para un punto concreto y una normal
-	 * @param punto El punto en el que estamos comprobando el color
-	 * @param n La normal a la superficie en ese punto
-	 * @return El color, ya en formato de java
-	 */
-	private java.awt.Color colorPhong(geometria.Punto punto, geometria.Normal n)
-	{	
-		//Direccion de la camara
-		geometria.Direccion cameraDirection =
-			new geometria.Direccion(punto,this.posicionCamara());
-		cameraDirection.normalizar();
-		
-		//Calculamos iluminacion ambiente
-		escena.Color ambientColor = _luz.colorAmbiente().multiplicado(_material.kd());
-
-		//Calculamos iluminacion difusa
-		geometria.Direccion d = new geometria.Direccion(punto,this._luz.posicion());
-		d.normalizar();
-		double diffuseCosine = d.aVector4().productoEscalar(n.aVector4());
-		if (diffuseCosine < 0) diffuseCosine = 0;
-		escena.Color diffuseColor = _luz.color().multiplicado(_material.kd()).multiplicado(diffuseCosine);
-		
-		//Calculamos iluminacion especular
-		double specularCosine = 0;
-		if (diffuseCosine>0)
-		{
-			geometria.Direccion reflectedDirection = cameraDirection.reflejado(n);
-			specularCosine = d.aVector4().productoEscalar(reflectedDirection.aVector4());
-			if (specularCosine<0) specularCosine = 0;
-		}
-		escena.Color specularColor = _luz.color().multiplicado(_material.ks()).multiplicado(Math.pow(specularCosine, _material.es()));
-		
-		//Devolvemos todo sumado y en formato de java
-		return ambientColor.sumado(diffuseColor).sumado(specularColor).aAwtColor();
 	}
 	
 	/**
@@ -832,7 +797,13 @@ public class PanelVisor extends JPanel {
 		}
 
 		geometria.Direccion d = new geometria.Direccion(cara.centro(), cameraPosition);
-		return d.aVector4().productoEscalar(cara.normal().aVector4()) <= 0;
+		double distancia = d.longitud();
+		if (distancia == 0.0)
+		{
+			return false;
+		}
+		d.normalizar();
+		return d.aVector4().productoEscalar(cara.normal().aVector4()) > BACKFACE_CULLING_EPSILON;
 	}
 
 	private boolean considerarCara(geometria.Cara cara, geometria.Punto cameraPosition)

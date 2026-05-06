@@ -6,7 +6,6 @@ public enum RenderMode {
 	TOON("Toon"),
 	CLAY("Clay"),
 	NORMALS("Normales"),
-	ONDAS("Ondas"),
 	DEPTH("Profundidad");
 
 	private final String label;

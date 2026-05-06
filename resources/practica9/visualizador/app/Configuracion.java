@@ -32,12 +32,12 @@ public final class Configuracion {
 	public static final double MATERIAL_EXPONENTE = 10.0;
 
 	// Luz principal.
-	public static final double LUZ_R = 1.0;
-	public static final double LUZ_G = 1.0;
-	public static final double LUZ_B = 1.0;
+	public static final double LUZ_R = 2.2;
+	public static final double LUZ_G = 2.2;
+	public static final double LUZ_B = 1.8;
 	public static final double LUZ_X = 100.0;
 	public static final double LUZ_Y = 100.0;
-	public static final double LUZ_Z = 1000.0;
+	public static final double LUZ_Z = 300.0;
 
 	// Luz ambiente.
 	public static final double AMBIENTE_R = 0.10;

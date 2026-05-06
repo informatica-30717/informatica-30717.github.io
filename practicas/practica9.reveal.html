@@ -230,6 +230,7 @@
 <h2>El visualizador</h2>
 <h3 id="importando-el-visualizador">Importando el visualizador</h3>
 <p>El visualizador de la práctica se puede descargar desde <a href="../resources/practica9/visualizador.zip">⤓ aquí</a>. Copia esa carpeta a tu <em>workspace</em> de Eclipse. Si quieres, puedes renombrarla como <code>PracticaVisualizador</code> para que coincida con el nombre usado en este guion.</p>
+<p>Cuando abras un modelo <code>.obj</code> por primera vez, el visualizador puede crear junto a él un archivo <code>.obj.vbin</code>. Es una caché binaria para que las siguientes cargas sean más rápidas; si borras la caché, el visualizador la genera de nuevo.</p>
 <div class="column-margin">
 <p>El enlace de descarga está aquí, y también se encuentra disponible en <em>Moodle</em>, en la carpeta de la práctica 9.</p>
 </div>
@@ -394,9 +395,9 @@ Figura&nbsp;5: <em>Outline</em> de <em>Eclipse</em> (derecha) mostrando los mét
 <li class="fragment">cambia <code>MODELO_INICIAL</code> por otro <code>.obj</code>;</li>
 <li class="fragment">prueba otro <code>MODO_INICIAL</code>;</li>
 <li class="fragment">modifica el color del material o de la luz;</li>
-<li class="fragment">cambia la inclinación o la rotación inicial de la cámara.</li>
+<li class="fragment">cambia el campo de visión, la inclinación o la rotación inicial de la cámara.</li>
 </ul>
-<p>Ten en cuenta que el visualizador recalcula automáticamente la distancia de la cámara al cargar o recentrar un modelo, para que el objeto entre en pantalla. Por eso, desde <code>Configuracion</code> tiene más sentido cambiar el campo de visión, la inclinación y la rotación inicial.</p>
+<p>Ten en cuenta que el visualizador calcula automáticamente una distancia base al cargar o recentrar un modelo, pero no compensa el campo de visión configurado. Así, al cambiar <code>CAMARA_FOV</code> deberías notar de verdad cómo se abre o se cierra la vista.</p>
 <p>Ejecuta de nuevo el programa.</p>
 <p><strong>Idea clave:</strong> si solo quieres experimentar con el visualizador, no hace falta entrar todavía en <code>PanelVisor</code> ni en el paquete <code>renderer</code>.</p>
 </div>
@@ -479,9 +480,6 @@ V_t = M \cdot V
 </div>
 <div class="callout-content">
 <p>¿Qué dos métodos de la clase <code>Punto</code> encapsulan respectivamente la conversión <span class="math inline">\((x,y,z) \to (x,y,z,1)\)</span> y la vuelta <span class="math inline">\((x,y,z,w) \to (x/w,\,y/w,\,z/w)\)</span>? Estudia su código.</p>
-<p>En el método <code>matrizDeProyeccion()</code> de <code>PanelVisor</code>, comenta la línea:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode numberSource java number-lines code-with-copy"><code class="sourceCode java"><span id="cb2-1"><a></a>proyeccion<span class="op">.</span><span class="fu">rotacionX</span><span class="op">(</span><span class="fu">camara</span><span class="op">().</span><span class="fu">inclinacion</span><span class="op">()</span> <span class="op">*</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">PI</span> <span class="op">/</span> <span class="fl">180.0</span><span class="op">);</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
-<p>(añade <code>//</code> al principio) y vuelve a ejecutar. ¿Qué ha cambiado? Prueba a comentar otras líneas del mismo método.</p>
 </div>
 </div>
 </div>
@@ -560,6 +558,22 @@ V_t = M \cdot V
       </div>
     </div>
   </div>
+</div>
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Comprueba la rotación de la cámara</strong></p>
+</div>
+<div class="callout-content">
+<p>¿Qué dos métodos de la clase <code>Punto</code> encapsulan respectivamente la conversión <span class="math inline">\((x,y,z) \to (x,y,z,1)\)</span> y la vuelta <span class="math inline">\((x,y,z,w) \to (x/w,\,y/w,\,z/w)\)</span>? Estudia su código.</p>
+<p>En el método <code>matrizDeProyeccion()</code> de <code>PanelVisor</code>, comenta la línea:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode numberSource java number-lines code-with-copy"><code class="sourceCode java"><span id="cb2-1"><a></a>proyeccion<span class="op">.</span><span class="fu">rotacionX</span><span class="op">(</span><span class="fu">camara</span><span class="op">().</span><span class="fu">inclinacion</span><span class="op">()</span> <span class="op">*</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">PI</span> <span class="op">/</span> <span class="fl">180.0</span><span class="op">);</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<p>(añade <code>//</code> al principio) y vuelve a ejecutar. ¿Qué ha cambiado? Prueba a comentar otras líneas del mismo método.</p>
+</div>
+</div>
 </div>
 </section>
 <section class="slide level2">
@@ -766,7 +780,7 @@ M_p &amp;= \text{pantalla}(w,h)\cdot\text{perspectiva}(fov,h/w,1,100) \\
 C_p = k_a\, C_a \;+\; k_d\, C_l\,(n_p \cdot d_l) \;+\; k_s\, C_l\,(r_p \cdot v)^{e}
 \]</span></p>
 <p>No hace falta memorizar todos los símbolos. En la práctica basta con relacionarlos con los controles del visualizador: <code>ka</code> añade luz base, <code>kd</code> controla la respuesta mate o difusa, <code>ks</code> refuerza el brillo y <code>e</code> hace ese brillo más abierto o más concentrado. Por otro lado, los términos <code>Ca</code> y <code>Cl</code> modelan la luz, y no el material del objeto. Hay una comparativa un poco más en detalle al final de este guion.</p>
-<p>La siguiente visualización 3D te permite tocar esos parámetros y ver su efecto en tiempo real, igual que harías al ajustar un material y una luz en un software 3D. Arrastra para orbitar y usa la rueda para hacer zoom.</p>
+<p>La siguiente visualización 3D te permite modificar esos parámetros y ver su efecto en tiempo real, igual que harías al ajustar un material y una luz en un software 3D. Arrastra para orbitar y usa la rueda para hacer zoom.</p>
 </section>
 <section class="slide level2">
 
@@ -1098,8 +1112,8 @@ L_o(\mathbf{p},\,\omega_o) = L_e(\mathbf{p},\,\omega_o) + \int_{\Omega} f_r(\mat
 <p class="img-compare-credits">
 Escena del comparador spp procedente de <a href="https://www.blenderkit.com/get-blenderkit/a9267e7e-7cd7-4d5d-b479-8bf8fff2eddf/" target="_blank" rel="noopener">BlenderKit</a>, autor: Ibrohim Toxirov.
 </p>
-<p>Esto es lo que ocurre en <em>Blender Cycles</em> y en otros motores físicamente realistas: con pocas muestras aparece ruido, mientras que con más muestras el resultado se limpia, aunque el tiempo de cálculo crece. En visualización de edificios se puede utilizar para reproducir mucho mejor la iluminación global de interiores y exteriores.</p>
-<p>Para esta práctica, sin embargo, lo importante es otra cosa: nuestro visualizador no busca ese nivel de realismo, sino una respuesta rápida e interactiva. Por eso usamos Phong.</p>
+<p>Esto es lo que ocurre en <em>Blender Cycles</em> y en otros motores con visualización realista: con pocas muestras aparece ruido, mientras que con más muestras el resultado se limpia, aunque el tiempo de cálculo también aumenta. En visualización de edificios se puede utilizar para reproducir mucho mejor la iluminación global de interiores y exteriores.</p>
+<p>Para esta práctica, sin embargo, lo importante es que nuestro visualizador no busca ese nivel de realismo, sino <em>una respuesta rápida e interactiva</em>. Por eso usamos Phong.</p>
 <!--
 ## Materiales e iluminación de Phong
 
