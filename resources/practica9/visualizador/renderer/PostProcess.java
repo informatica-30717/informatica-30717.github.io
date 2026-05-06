@@ -55,7 +55,8 @@ public class PostProcess {
 		}
 	}
 
-	private double computeOutline(double[] depth, float[] normalX, float[] normalY, float[] normalZ,
+	private double computeOutline(
+			double[] depth, float[] normalX, float[] normalY, float[] normalZ,
 			int width, int height, int x, int y, int index)
 	{
 		double currentDepth = depth[index];

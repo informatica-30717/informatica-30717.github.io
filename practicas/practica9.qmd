@@ -56,6 +56,8 @@ Es conveniente que resolváis todos los ejercicios que se os plantean en el guio
 
 El visualizador de la práctica se puede descargar desde [⤓ aquí](../resources/practica9/visualizador.zip). Copia esa carpeta a tu *workspace* de Eclipse. Si quieres, puedes renombrarla como `PracticaVisualizador` para que coincida con el nombre usado en este guion.
 
+Cuando abras un modelo `.obj` por primera vez, el visualizador puede crear junto a él un archivo `.obj.vbin`. Es una caché binaria para que las siguientes cargas sean más rápidas; si borras la caché, el visualizador la genera de nuevo.
+
 ::: {.column-margin}
 El enlace de descarga está aquí, y también se encuentra disponible en *Moodle*, en la carpeta de la práctica 9.
 :::
@@ -170,13 +172,11 @@ Abre `app.Configuracion` y prueba cambios pequeños, sin salirte de ese archivo:
 - cambia `MODELO_INICIAL` por otro `.obj`;
 - prueba otro `MODO_INICIAL`;
 - modifica el color del material o de la luz;
-- cambia la inclinación o la rotación inicial de la cámara.
+- cambia el campo de visión, la inclinación o la rotación inicial de la cámara.
 
-Ten en cuenta que el visualizador recalcula automáticamente la distancia de la cámara al cargar o recentrar un modelo, para que el objeto entre en pantalla. Por eso, desde `Configuracion` tiene más sentido cambiar el campo de visión, la inclinación y la rotación inicial.
+Ten en cuenta que el visualizador calcula automáticamente una distancia base al cargar o recentrar un modelo, pero no compensa el campo de visión configurado. Así, al cambiar `CAMARA_FOV` deberías notar de verdad cómo se abre o se cierra la vista.
 
 Ejecuta de nuevo el programa.
-
-**Idea clave:** si solo quieres experimentar con el visualizador, no hace falta entrar todavía en `PanelVisor` ni en el paquete `renderer`.
 :::
 
 ---
@@ -198,9 +198,10 @@ No hace falta leer toda la clase antes: usa el buscador de *Eclipse* y salta dir
    ```
 2. Pon un **punto de ruptura** (*breakpoint*): botón derecho sobre la línea → ***Toggle Breakpoint***.
 3. Ejecuta la aplicación en **modo depuración** ![](../resources/practica2/images/debug.svg){width=1em}.
-4. Pulsa **F6** repetidamente para avanzar paso a paso y observa cómo se va construyendo la matriz de proyección.
-5. ¿Por qué el programa vuelve una y otra vez a esa misma línea aunque no hayas hecho nada?
-6. Cuando termines, desactiva el *breakpoint*: botón derecho → **Disable Breakpoint**.
+4. Pulsa **`F6`** unas pocas veces para avanzar paso a paso y observa cómo se va construyendo la matriz de proyección.
+5. Pulsa **`F8`** para continuar la ejecución normal del programa.
+6. ¿Por qué el programa vuelve una y otra vez a esa misma línea aunque no hayas hecho nada?
+7. Cuando termines, desactiva el *breakpoint*: botón derecho → **Disable Breakpoint**.
 :::
 
 ---
@@ -245,12 +246,6 @@ $$
 ## Busca en el código
 
 ¿Qué dos métodos de la clase `Punto` encapsulan respectivamente la conversión $(x,y,z) \to (x,y,z,1)$ y la vuelta $(x,y,z,w) \to (x/w,\,y/w,\,z/w)$? Estudia su código.
-
-En el método `matrizDeProyeccion()` de `PanelVisor`, comenta la línea:
-```java
-proyeccion.rotacionX(camara().inclinacion() * Math.PI / 180.0);
-```
-(añade `//` al principio) y vuelve a ejecutar. ¿Qué ha cambiado? Prueba a comentar otras líneas del mismo método.
 :::
 
 ---
@@ -387,7 +382,7 @@ En el visor sucede lo mismo. Primero se coloca el objeto con respecto a la cáma
 Una manera muy simple de resumirlo es esta:
 
 $$
-x' = \frac{f\,x}{z}
+x' = \frac{f\,x}{z}; y' = \frac{f\,y}{z}
 $$
 
 Cuanto mayor es $z$ (más lejos está el punto), menor aparece en pantalla. El resto de fórmulas del programa refinan esa misma idea para trabajar con una cámara completa, su campo de visión y el tamaño de la ventana.
@@ -475,11 +470,26 @@ La siguiente visualización muestra ese proceso con una cámara idealizada en 3D
 ---
 
 ::: {.callout-note}
+## Comprueba la rotación de la cámara
+
+En el método `matrizDeProyeccion()` de `PanelVisor`, comenta la línea:
+```java
+proyeccion.rotacionX(camara().inclinacion() * Math.PI / 180.0);
+```
+(añade `//` al principio) y vuelve a ejecutar. ¿Qué ha cambiado? Prueba a comentar otras líneas del mismo método.
+:::
+
+::: {.callout-note}
 ## Compruébalo con un ejemplo
 
 Prueba con el punto $(4,\, 3,\, 2)$ y una rotación de 90° con respecto al eje Z. Puedes multiplicar el vector fila $(4\ 3\ 2\ 1)$ por la matriz correspondiente.
 
-Ejecuta después el código en modo depuración para comprobar cómo se realiza esa rotación en el visualizador. 
+Recuerda que las clases que debemos utilizar son `geometria.Punto` y `geometria.Matriz4x4`. Para crear la matriz de rotación, puedes usar el método `rotacionZ` de `Matriz4x4`. Para multiplicar el punto por la matriz, puedes usar el método `multiplicar` de `Matriz4x4`. Los ángulos de rotación se expresan en radianes, así que para convertir 90° a radianes puedes multiplicar el ángulo por `Math.PI / 180.0`.
+
+Puedes hacer dos cosas para comprobar el resultado de multiplicar ese punto por la matriz de rotación:
+
+- Ejecuta después el código en modo depuración para comprobar cómo se realiza esa rotación en el visualizador; 
+- O bien, muestra por pantalla los valores del punto resultante. Por ejemplo, utiliza `System.out.println(res.elemento(0) + ", " + res.elemento(1) + ", " + res.elemento(2));` para imprimir el resultado en la consola de *Eclipse*.
 :::
 
 ---
@@ -539,7 +549,7 @@ $$
 
 No hace falta memorizar todos los símbolos. En la práctica basta con relacionarlos con los controles del visualizador: `ka` añade luz base, `kd` controla la respuesta mate o difusa, `ks` refuerza el brillo y `e` hace ese brillo más abierto o más concentrado. Por otro lado, los términos `Ca` y `Cl` modelan la luz, y no el material del objeto. Hay una comparativa un poco más en detalle al final de este guion.
 
-La siguiente visualización 3D te permite tocar esos parámetros y ver su efecto en tiempo real, igual que harías al ajustar un material y una luz en un software 3D. Arrastra para orbitar y usa la rueda para hacer zoom.
+La siguiente visualización 3D te permite modificar esos parámetros y ver su efecto en tiempo real, igual que harías al ajustar un material y una luz en un software 3D. Arrastra para orbitar y usa la rueda para hacer zoom.
 
 ---
 
@@ -558,12 +568,12 @@ La siguiente visualización 3D te permite tocar esos parámetros y ver su efecto
 
     <div style="display:grid; grid-template-columns:118px 1fr 44px; gap:0.4rem 0.6rem; align-items:center; font-size:0.88rem;">
       <label><span style="font-family:Georgia, 'Times New Roman', serif;"><em>k</em><sub>a</sub></span> ambiental</label>
-      <input id="ph-ka" type="range" min="0" max="1" step="0.02" value="0.20" style="width:100%;">
-      <span id="ph-ka-v" style="text-align:right; font-variant-numeric:tabular-nums;">0.20</span>
+      <input id="ph-ka" type="range" min="0" max="1" step="0.02" value="0.02" style="width:100%;">
+      <span id="ph-ka-v" style="text-align:right; font-variant-numeric:tabular-nums;">0.02</span>
 
       <label><span style="font-family:Georgia, 'Times New Roman', serif;"><em>k</em><sub>d</sub></span> difuso</label>
-      <input id="ph-kd" type="range" min="0" max="1" step="0.02" value="0.70" style="width:100%;">
-      <span id="ph-kd-v" style="text-align:right; font-variant-numeric:tabular-nums;">0.70</span>
+      <input id="ph-kd" type="range" min="0" max="1" step="0.02" value="0.1" style="width:100%;">
+      <span id="ph-kd-v" style="text-align:right; font-variant-numeric:tabular-nums;">0.1</span>
 
       <label><span style="font-family:Georgia, 'Times New Roman', serif;"><em>k</em><sub>s</sub></span> especular</label>
       <input id="ph-ks" type="range" min="0" max="1" step="0.02" value="0.35" style="width:100%;">
@@ -611,7 +621,7 @@ Arrastra cada divisor y fíjate sobre todo en esas dos diferencias:
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 6 3 12 9 18"/><polyline points="15 6 21 12 15 18"/></svg>
   </span>
 </div>
-<small class="img-compare-caption">Completo ↔ sin componente especular. Fíjate en el brillo del saxofón y en los reflejos más intensos.</small>
+<small class="img-compare-caption">Completo ↔ sin componente especular. Por ejemplo, fíjate en el brillo del saxofón.</small>
 :::
 
 ::: {.g-col-12 .g-col-md-6}
@@ -625,21 +635,21 @@ Arrastra cada divisor y fíjate sobre todo en esas dos diferencias:
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 6 3 12 9 18"/><polyline points="15 6 21 12 15 18"/></svg>
   </span>
 </div>
-<small class="img-compare-caption">Ambiente + difusa ↔ solo difusa. Fíjate en las zonas en sombra: con `ka` se levantan; sin `ka`, caen hacia negro.</small>
+<small class="img-compare-caption">Ambiente + difusa ↔ solo difusa.</small>
 :::
 
 :::
 
-<p class="img-compare-credits">Comparadores cualitativos de <em>k</em><sub>a</sub>, <em>k</em><sub>d</sub> y <em>k</em><sub>s</sub> preparados sobre una escena de <a href="https://www.blenderkit.com/get-blenderkit/1ac8808f-11e6-4c76-894e-227f1eb3cba5/" target="_blank" rel="noopener">BlenderKit</a>, autor: Russo 3D.</p>
+<p class="img-compare-credits">Comparación de términos <em>k</em><sub>a</sub>, <em>k</em><sub>d</sub> y <em>k</em><sub>s</sub> sobre una escena de <a href="https://www.blenderkit.com/get-blenderkit/1ac8808f-11e6-4c76-894e-227f1eb3cba5/" target="_blank" rel="noopener">BlenderKit</a>, autor: Russo 3D.</p>
 
 ---
 
 ::: {.callout-note}
 ## Experimenta con colores
 
-Pon en el visualizador una **luz completamente roja** (canales verde y azul a 0) y el **material completamente verde** (canales rojo y azul a 0). ¿De qué color queda el objeto? ¿Por qué?
+- Pon en el visualizador una **luz completamente roja** (canales verde y azul a 0) y el **material completamente verde** (canales rojo y azul a 0). ¿De qué color queda el objeto? ¿Por qué?
 
-Prueba con otras combinaciones de colores de luz y material.
+- Prueba con otras combinaciones de colores de luz y material.
 
 La siguiente visualización sirve justo como **guía para responder a ese ejercicio**. No reproduce todo el modelo de Phong al detalle: se centra en la idea más importante aquí, que es cómo se combinan por canales el color de la luz y el del material en la parte ambiente/difusa. Si en el visualizador aparecen pequeños brillos, recuerda que proceden de la componente especular y tienden a seguir el color de la luz.
 ```{=html}
@@ -894,10 +904,11 @@ En el renderizado ocurre lo mismo: desde cada píxel se lanzan rayos aleatorios 
 <small class="img-compare-caption">Comparación de convergencia en Blender Cycles: 50 spp frente a 500 spp, con tiempos orientativos del orden de ~3 min y ~8 min.</small>
 <p class="img-compare-credits">Escena del comparador spp procedente de <a href="https://www.blenderkit.com/get-blenderkit/a9267e7e-7cd7-4d5d-b479-8bf8fff2eddf/" target="_blank" rel="noopener">BlenderKit</a>, autor: Ibrohim Toxirov.</p>
 
-Esto es lo que ocurre en *Blender Cycles* y en otros motores físicamente realistas: con pocas muestras aparece ruido, mientras que con más muestras el resultado se limpia, aunque el tiempo de cálculo crece. En visualización de edificios se puede utilizar para reproducir mucho mejor la iluminación global de interiores y exteriores.
+Esto es lo que ocurre en *Blender Cycles* y en otros motores con visualización realista: con pocas muestras aparece ruido, mientras que con más muestras el resultado se limpia, aunque el tiempo de cálculo también aumenta. En visualización de edificios se puede utilizar para reproducir mucho mejor la iluminación global de interiores y exteriores.
 
-Para esta práctica, sin embargo, lo importante es otra cosa: nuestro visualizador no busca ese nivel de realismo, sino una respuesta rápida e interactiva. Por eso usamos Phong.
+Para esta práctica, sin embargo, lo importante es que nuestro visualizador no busca ese nivel de realismo, sino *una respuesta rápida e interactiva*. Por eso usamos Phong.
 
+<!--
 ## Materiales e iluminación de Phong
 
 A continuación tienes un mapa visual de la componente difusa y especular en el modelo de iluminación de Phong. No es un diagrama formal, sino una ayuda para entender mejor qué aporta cada término y cómo se combinan.
@@ -1203,8 +1214,8 @@ A continuación tienes un mapa visual de la componente difusa y especular en el 
   <div class="pbm-shell">
     <div class="pbm-head">
       <div>
-        <p class="pbm-title">Mapa visual: de superficie mate a reflejo metalico</p>
-        <p class="pbm-subtitle">Phong no es un BSDF fisico, pero sus parametros sirven para imitar estos comportamientos.</p>
+        <p class="pbm-title">Mapa visual: de superficie mate a reflejo metálico</p>
+        <p class="pbm-subtitle">Phong no es un BSDF físico, pero sus parámetros sirven para imitar estos comportamientos.</p>
       </div>
       <div class="pbm-key" aria-label="Leyenda">
         <span><i class="pbm-swatch diff"></i><code>kd</code> luz dispersa</span>
@@ -1217,13 +1228,13 @@ A continuación tienes un mapa visual de la componente difusa y especular en el 
         <figure class="pbm-card">
           <img src="../resources/practica9/images/mitsuba_bsdf_diffuse_plain.jpg" alt="Material difuso lambertiano renderizado en Mitsuba">
           <span class="pbm-badge diff">Lambert / mate</span>
-          <figcaption>Casi todo se entiende con <code>kd</code>; <code>ks</code> seria bajo.</figcaption>
+          <figcaption>Casi todo se entiende con <code>kd</code>; <code>ks</code> sería bajo.</figcaption>
         </figure>
 
         <figure class="pbm-card">
-          <img src="../resources/practica9/images/mitsuba_bsdf_pplastic_diffuse_component.jpg" alt="Componente difusa de un material plastico renderizado en Mitsuba">
-          <span class="pbm-badge diff">Base plastica</span>
-          <figcaption>Solo la parte difusa del plastico; su brillo esta a la derecha.</figcaption>
+          <img src="../resources/practica9/images/mitsuba_bsdf_pplastic_diffuse_component.jpg" alt="Componente difusa de un material plástico renderizado en Mitsuba">
+          <span class="pbm-badge diff">Base plástica</span>
+          <figcaption>Solo la parte difusa del plástico; su brillo esta a la derecha.</figcaption>
         </figure>
       </section>
 
@@ -1237,12 +1248,12 @@ A continuación tienes un mapa visual de la componente difusa y especular en el 
             <span class="pbm-token spec">ks</span>
           </div>
           <div class="pbm-mix" aria-hidden="true"><span></span><span></span><span></span></div>
-          <p><code>ka</code> levanta la escena, <code>kd</code> da cuerpo mate y <code>ks</code> anade el destello.</p>
+          <p><code>ka</code> levanta la escena, <code>kd</code> da cuerpo mate y <code>ks</code> añade el destello.</p>
         </div>
 
         <div class="pbm-note">
-          <p><strong>Plastico:</strong> base difusa (<code>kd</code>) + capa especular (<code>ks</code>).</p>
-          <p><strong>Metal:</strong> domina la parte especular y el reflejo tambien toma color.</p>
+          <p><strong>Plástico:</strong> base difusa (<code>kd</code>) + capa especular (<code>ks</code>).</p>
+          <p><strong>Metal:</strong> domina la parte especular y el reflejo también toma color.</p>
         </div>
       </section>
 
@@ -1254,8 +1265,8 @@ A continuación tienes un mapa visual de la componente difusa y especular en el 
         </figure>
 
         <figure class="pbm-card">
-          <img src="../resources/practica9/images/mitsuba_bsdf_pplastic_specular_component.jpg" alt="Componente especular de un material plastico renderizado en Mitsuba">
-          <span class="pbm-badge spec">Brillo plastico</span>
+          <img src="../resources/practica9/images/mitsuba_bsdf_pplastic_specular_component.jpg" alt="Componente especular de un material plástico renderizado en Mitsuba">
+          <span class="pbm-badge spec">Brillo plástico</span>
           <figcaption><code>e</code> decide si el brillo se abre o se concentra.</figcaption>
         </figure>
       </section>
@@ -1263,7 +1274,7 @@ A continuación tienes un mapa visual de la componente difusa y especular en el 
   </div>
 
   <p class="pbm-credit">
-    Imagenes: documentacion de <a href="https://mitsuba.readthedocs.io/en/latest/src/generated/plugins_bsdfs.html">Mitsuba 3, BSDF plugins</a>. Usadas aqui como referencia visual cualitativa para los terminos de Phong.
+    Imágenes: documentación de <a href="https://mitsuba.readthedocs.io/en/latest/src/generated/plugins_bsdfs.html">Mitsuba 3, BSDF plugins</a>. Usadas aquí como referencia visual cualitativa para los terminos de Phong.
   </p>
 </div>
-```
+```-->
