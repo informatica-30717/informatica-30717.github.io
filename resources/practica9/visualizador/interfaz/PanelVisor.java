@@ -445,6 +445,13 @@ public class PanelVisor extends JPanel {
 	    geometria.Punto foco = focoCamara();
 	    proyeccion.traslacion(-foco.x(), -foco.y(), -foco.z());
 	    
+	    geometria.Vector4 v = new geometria.Vector4(new geometria.Punto(4,  3,  2));
+	    geometria.Matriz4x4 rotacion = new geometria.Matriz4x4();
+	    rotacion.rotacionZ(90.0 * Math.PI/180.0);
+	    geometria.Vector4 res = rotacion.multiplicar(v);
+	    
+	    System.out.println(res.elemento(0) + ", " + res.elemento(1) + ", " + res.elemento(2) + ", " + res.elemento(3));
+	    
 	    return proyeccion;
 	}
 	

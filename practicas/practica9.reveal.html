@@ -720,7 +720,12 @@ M_p &amp;= \text{pantalla}(w,h)\cdot\text{perspectiva}(fov,h/w,1,100) \\
 </div>
 <div class="callout-content">
 <p>Prueba con el punto <span class="math inline">\((4,\, 3,\, 2)\)</span> y una rotación de 90° con respecto al eje Z. Puedes multiplicar el vector fila <span class="math inline">\((4\ 3\ 2\ 1)\)</span> por la matriz correspondiente.</p>
-<p>Ejecuta después el código en modo depuración para comprobar cómo se realiza esa rotación en el visualizador.</p>
+<p>Recuerda que las clases que debemos utilizar son <code>geometria.Punto</code> y <code>geometria.Matriz4x4</code>. Para crear la matriz de rotación, puedes usar el método <code>rotacionZ</code> de <code>Matriz4x4</code>. Para multiplicar el punto por la matriz, puedes usar el método <code>multiplicar</code> de <code>Matriz4x4</code>. Los ángulos de rotación se expresan en radianes, así que para convertir 90° a radianes puedes multiplicar el ángulo por <code>Math.PI / 180.0</code>.</p>
+<p>Puedes hacer dos cosas para comprobar el resultado de multiplicar ese punto por la matriz de rotación:</p>
+<ul>
+<li class="fragment">Ejecuta después el código en modo depuración para comprobar cómo se realiza esa rotación en el visualizador;</li>
+<li class="fragment">O bien, muestra por pantalla los valores del punto resultante. Por ejemplo, utiliza <code>System.out.println(res.elemento(0) + ", " + res.elemento(1) + ", " + res.elemento(2));</code> para imprimir el resultado en la consola de <em>Eclipse</em>.</li>
+</ul>
 </div>
 </div>
 </div>
@@ -798,11 +803,11 @@ C_p = k_a\, C_a \;+\; k_d\, C_l\,(n_p \cdot d_l) \;+\; k_s\, C_l\,(r_p \cdot v)^
     <div style="display:grid; grid-template-columns:118px 1fr 44px; gap:0.4rem 0.6rem; align-items:center; font-size:0.88rem;">
       <label><span style="font-family:Georgia, 'Times New Roman', serif;"><em>k</em><sub>a</sub></span> ambiental</label>
       <input id="ph-ka" type="range" min="0" max="1" step="0.02" value="0.20" style="width:100%;">
-      <span id="ph-ka-v" style="text-align:right; font-variant-numeric:tabular-nums;">0.20</span>
+      <span id="ph-ka-v" style="text-align:right; font-variant-numeric:tabular-nums;">0.02</span>
 
       <label><span style="font-family:Georgia, 'Times New Roman', serif;"><em>k</em><sub>d</sub></span> difuso</label>
       <input id="ph-kd" type="range" min="0" max="1" step="0.02" value="0.70" style="width:100%;">
-      <span id="ph-kd-v" style="text-align:right; font-variant-numeric:tabular-nums;">0.70</span>
+      <span id="ph-kd-v" style="text-align:right; font-variant-numeric:tabular-nums;">0.1</span>
 
       <label><span style="font-family:Georgia, 'Times New Roman', serif;"><em>k</em><sub>s</sub></span> especular</label>
       <input id="ph-ks" type="range" min="0" max="1" step="0.02" value="0.35" style="width:100%;">
@@ -850,7 +855,7 @@ C_p = k_a\, C_a \;+\; k_d\, C_l\,(n_p \cdot d_l) \;+\; k_s\, C_l\,(r_p \cdot v)^
 </div>
 </div>
 <p class="img-compare-credits">
-Comparadores cualitativos de <em>k</em><sub>a</sub>, <em>k</em><sub>d</sub> y <em>k</em><sub>s</sub> preparados sobre una escena de <a href="https://www.blenderkit.com/get-blenderkit/1ac8808f-11e6-4c76-894e-227f1eb3cba5/" target="_blank" rel="noopener">BlenderKit</a>, autor: Russo 3D.
+Comparación de términos <em>k</em><sub>a</sub>, <em>k</em><sub>d</sub> y <em>k</em><sub>s</sub> sobre una escena de <a href="https://www.blenderkit.com/get-blenderkit/1ac8808f-11e6-4c76-894e-227f1eb3cba5/" target="_blank" rel="noopener">BlenderKit</a>, autor: Russo 3D.
 </p>
 </section>
 <section class="slide level2">
@@ -864,8 +869,10 @@ Comparadores cualitativos de <em>k</em><sub>a</sub>, <em>k</em><sub>d</sub> y <e
 <p><strong>Experimenta con colores</strong></p>
 </div>
 <div class="callout-content">
-<p>Pon en el visualizador una <strong>luz completamente roja</strong> (canales verde y azul a 0) y el <strong>material completamente verde</strong> (canales rojo y azul a 0). ¿De qué color queda el objeto? ¿Por qué?</p>
-<p>Prueba con otras combinaciones de colores de luz y material.</p>
+<ul>
+<li class="fragment"><p>Pon en el visualizador una <strong>luz completamente roja</strong> (canales verde y azul a 0) y el <strong>material completamente verde</strong> (canales rojo y azul a 0). ¿De qué color queda el objeto? ¿Por qué?</p></li>
+<li class="fragment"><p>Prueba con otras combinaciones de colores de luz y material.</p></li>
+</ul>
 <p>La siguiente visualización sirve justo como <strong>guía para responder a ese ejercicio</strong>. No reproduce todo el modelo de Phong al detalle: se centra en la idea más importante aquí, que es cómo se combinan por canales el color de la luz y el del material en la parte ambiente/difusa. Si en el visualizador aparecen pequeños brillos, recuerda que proceden de la componente especular y tienden a seguir el color de la luz.</p>
 <div id="color-mix-uza">
   <div class="color-mix-stage-uza">
