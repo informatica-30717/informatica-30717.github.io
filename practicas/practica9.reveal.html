@@ -399,7 +399,6 @@ Figura&nbsp;5: <em>Outline</em> de <em>Eclipse</em> (derecha) mostrando los mét
 </ul>
 <p>Ten en cuenta que el visualizador calcula automáticamente una distancia base al cargar o recentrar un modelo, pero no compensa el campo de visión configurado. Así, al cambiar <code>CAMARA_FOV</code> deberías notar de verdad cómo se abre o se cierra la vista.</p>
 <p>Ejecuta de nuevo el programa.</p>
-<p><strong>Idea clave:</strong> si solo quieres experimentar con el visualizador, no hace falta entrar todavía en <code>PanelVisor</code> ni en el paquete <code>renderer</code>.</p>
 </div>
 </div>
 </div>
@@ -426,7 +425,8 @@ Figura&nbsp;5: <em>Outline</em> de <em>Eclipse</em> (derecha) mostrando los mét
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode numberSource java number-lines code-with-copy"><code class="sourceCode java"><span id="cb1-1"><a></a>geometria<span class="op">.</span><span class="fu">Matriz4x4</span> proyeccion <span class="op">=</span> <span class="kw">new</span> geometria<span class="op">.</span><span class="fu">Matriz4x4</span><span class="op">();</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div></li>
 <li class="fragment"><p>Pon un <strong>punto de ruptura</strong> (<em>breakpoint</em>): botón derecho sobre la línea → <strong><em>Toggle Breakpoint</em></strong>.</p></li>
 <li class="fragment"><p>Ejecuta la aplicación en <strong>modo depuración</strong> <img data-src="../resources/practica2/images/debug.svg" style="width:1em">.</p></li>
-<li class="fragment"><p>Pulsa <strong>F6</strong> repetidamente para avanzar paso a paso y observa cómo se va construyendo la matriz de proyección.</p></li>
+<li class="fragment"><p>Pulsa <strong><code>F6</code></strong> unas pocas veces para avanzar paso a paso y observa cómo se va construyendo la matriz de proyección.</p></li>
+<li class="fragment"><p>Pulsa <strong><code>F8</code></strong> para continuar la ejecución normal del programa.</p></li>
 <li class="fragment"><p>¿Por qué el programa vuelve una y otra vez a esa misma línea aunque no hayas hecho nada?</p></li>
 <li class="fragment"><p>Cuando termines, desactiva el <em>breakpoint</em>: botón derecho → <strong>Disable Breakpoint</strong>.</p></li>
 </ol>
@@ -559,22 +559,6 @@ V_t = M \cdot V
     </div>
   </div>
 </div>
-<div class="callout callout-note callout-titled callout-style-default">
-<div class="callout-body">
-<div class="callout-title">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<p><strong>Comprueba la rotación de la cámara</strong></p>
-</div>
-<div class="callout-content">
-<p>¿Qué dos métodos de la clase <code>Punto</code> encapsulan respectivamente la conversión <span class="math inline">\((x,y,z) \to (x,y,z,1)\)</span> y la vuelta <span class="math inline">\((x,y,z,w) \to (x/w,\,y/w,\,z/w)\)</span>? Estudia su código.</p>
-<p>En el método <code>matrizDeProyeccion()</code> de <code>PanelVisor</code>, comenta la línea:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode numberSource java number-lines code-with-copy"><code class="sourceCode java"><span id="cb2-1"><a></a>proyeccion<span class="op">.</span><span class="fu">rotacionX</span><span class="op">(</span><span class="fu">camara</span><span class="op">().</span><span class="fu">inclinacion</span><span class="op">()</span> <span class="op">*</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">PI</span> <span class="op">/</span> <span class="fl">180.0</span><span class="op">);</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
-<p>(añade <code>//</code> al principio) y vuelve a ejecutar. ¿Qué ha cambiado? Prueba a comentar otras líneas del mismo método.</p>
-</div>
-</div>
-</div>
 </section>
 <section class="slide level2">
 
@@ -627,7 +611,7 @@ V_t = M \cdot V
 
 <p>Una manera muy simple de resumirlo es esta:</p>
 <p><span class="math display">\[
-x' = \frac{f\,x}{z}
+x' = \frac{f\,x}{z}; y' = \frac{f\,y}{z}
 \]</span></p>
 <p>Cuanto mayor es <span class="math inline">\(z\)</span> (más lejos está el punto), menor aparece en pantalla. El resto de fórmulas del programa refinan esa misma idea para trabajar con una cámara completa, su campo de visión y el tamaño de la ventana.</p>
 <div class="callout callout-tip callout-titled callout-style-default">
@@ -711,6 +695,21 @@ M_p &amp;= \text{pantalla}(w,h)\cdot\text{perspectiva}(fov,h/w,1,100) \\
 </section>
 <section class="slide level2">
 
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Comprueba la rotación de la cámara</strong></p>
+</div>
+<div class="callout-content">
+<p>En el método <code>matrizDeProyeccion()</code> de <code>PanelVisor</code>, comenta la línea:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode numberSource java number-lines code-with-copy"><code class="sourceCode java"><span id="cb2-1"><a></a>proyeccion<span class="op">.</span><span class="fu">rotacionX</span><span class="op">(</span><span class="fu">camara</span><span class="op">().</span><span class="fu">inclinacion</span><span class="op">()</span> <span class="op">*</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">PI</span> <span class="op">/</span> <span class="fl">180.0</span><span class="op">);</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<p>(añade <code>//</code> al principio) y vuelve a ejecutar. ¿Qué ha cambiado? Prueba a comentar otras líneas del mismo método.</p>
+</div>
+</div>
+</div>
 <div class="callout callout-note callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
@@ -841,13 +840,13 @@ C_p = k_a\, C_a \;+\; k_d\, C_l\,(n_p \cdot d_l) \;+\; k_s\, C_l\,(r_p \cdot v)^
 <div class="img-compare" role="slider" aria-label="Comparación entre iluminación completa y ambiente + difusa" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50" tabindex="0">
 <p><img src="../resources/practica9/images/full.png" alt="Iluminación completa (ka + kd + ks)"> <img class="img-compare-top" src="../resources/practica9/images/ka_kd.png" alt="Ambiente + difusa (ka + kd)"> <span class="img-compare-label is-left">ka + kd + ks</span> <span class="img-compare-label is-right">ka + kd</span> <span class="img-compare-line" aria-hidden="true"></span> <span class="img-compare-knob" aria-hidden="true"> <svg viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 6 3 12 9 18"></polyline><polyline points="15 6 21 12 15 18"></polyline></svg> </span></p>
 </div>
-<p><small class="img-compare-caption">Completo ↔︎ sin componente especular. Fíjate en el brillo del saxofón y en los reflejos más intensos.</small></p>
+<p><small class="img-compare-caption">Completo ↔︎ sin componente especular. Por ejemplo, fíjate en el brillo del saxofón.</small></p>
 </div>
 <div class="g-col-12 g-col-md-6">
 <div class="img-compare" role="slider" aria-label="Comparación entre ambiente más difusa y solo difusa" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50" tabindex="0">
 <p><img src="../resources/practica9/images/ka_kd.png" alt="Ambiente más difusa (ka + kd)"> <img class="img-compare-top" src="../resources/practica9/images/kd.png" alt="Solo difusa (kd)"> <span class="img-compare-label is-left">ka + kd</span> <span class="img-compare-label is-right">kd</span> <span class="img-compare-line" aria-hidden="true"></span> <span class="img-compare-knob" aria-hidden="true"> <svg viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 6 3 12 9 18"></polyline><polyline points="15 6 21 12 15 18"></polyline></svg> </span></p>
 </div>
-<p><small class="img-compare-caption">Ambiente + difusa ↔︎ solo difusa. Fíjate en las zonas en sombra: con <code>ka</code> se levantan; sin <code>ka</code>, caen hacia negro.</small></p>
+<p><small class="img-compare-caption">Ambiente + difusa ↔︎ solo difusa.</small></p>
 </div>
 </div>
 <p class="img-compare-credits">

@@ -32,6 +32,7 @@ public final class Configuracion {
 	public static final double MATERIAL_EXPONENTE = 10.0;
 
 	// Luz principal.
+	// Los valores pueden subir hasta 5.0, igual que en el panel de luz.
 	public static final double LUZ_R = 2.2;
 	public static final double LUZ_G = 2.2;
 	public static final double LUZ_B = 1.8;
@@ -53,13 +54,13 @@ public final class Configuracion {
 		ventana.configurarCamaraInicial(CAMARA_FOV, CAMARA_INCLINACION, CAMARA_ROTACION);
 		ventana.aplicarModoRender(MODO_INICIAL);
 		ventana.aplicarMaterial(new Material(
-			color(MATERIAL_R, MATERIAL_G, MATERIAL_B),
+			color01(MATERIAL_R, MATERIAL_G, MATERIAL_B),
 			Math.max(0.0, Math.min(1.0, MATERIAL_KS)),
 			Math.max(1.0, MATERIAL_EXPONENTE)));
 		ventana.aplicarLuz(new Luz(
-			color(LUZ_R, LUZ_G, LUZ_B),
+			colorLuz(LUZ_R, LUZ_G, LUZ_B),
 			new Punto(LUZ_X, LUZ_Y, LUZ_Z),
-			color(AMBIENTE_R, AMBIENTE_G, AMBIENTE_B)));
+			color01(AMBIENTE_R, AMBIENTE_G, AMBIENTE_B)));
 
 		if (!ventana.cargarModeloInicial(MODELO_INICIAL))
 		{
@@ -67,20 +68,30 @@ public final class Configuracion {
 		}
 	}
 
-	private static Color color(double r, double g, double b)
+	private static Color color01(double r, double g, double b)
 	{
 		return new Color(clamp01(r), clamp01(g), clamp01(b));
 	}
 
+	private static Color colorLuz(double r, double g, double b)
+	{
+		return new Color(clamp(r, 0.0, 5.0), clamp(g, 0.0, 5.0), clamp(b, 0.0, 5.0));
+	}
+
 	private static double clamp01(double value)
 	{
-		if (value < 0.0)
+		return clamp(value, 0.0, 1.0);
+	}
+
+	private static double clamp(double value, double minimum, double maximum)
+	{
+		if (value < minimum)
 		{
-			return 0.0;
+			return minimum;
 		}
-		if (value > 1.0)
+		if (value > maximum)
 		{
-			return 1.0;
+			return maximum;
 		}
 		return value;
 	}

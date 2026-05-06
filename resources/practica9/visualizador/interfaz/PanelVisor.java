@@ -41,7 +41,6 @@ public class PanelVisor extends JPanel {
 	private static final double INTERACTION_RENDER_FACTOR = 0.65;
 	private static final double FOV_INICIAL = 28.0;
 	private static final double FOV_REFERENCIA_DISTANCIA = FOV_INICIAL;
-	private static final double BACKFACE_CULLING_EPSILON = 1.0e-5;
 	private static final double INCLINACION_INICIAL = 12.0;
 	private static final double ROTACION_INICIAL = -24.0;
 	
@@ -440,8 +439,7 @@ public class PanelVisor extends JPanel {
 	    proyeccion.traslacion(0, 0, camara().distancia());
 	    //Incluimos la inclinacion de la camara
 	    proyeccion.rotacionX(camara().inclinacion()*Math.PI/180.0);
-	    //Hacemos que la camara tenga en cuenta la rotacion alrededor 
-	    //  del eje vertical
+	    //Hacemos que la camara tenga en cuenta la rotacion alrededor del eje vertical
 	    proyeccion.rotacionY(camara().rotacion()*Math.PI/180.0);
 	    //Hacemos que la camara apunte al centro del objeto
 	    geometria.Punto foco = focoCamara();
@@ -797,13 +795,7 @@ public class PanelVisor extends JPanel {
 		}
 
 		geometria.Direccion d = new geometria.Direccion(cara.centro(), cameraPosition);
-		double distancia = d.longitud();
-		if (distancia == 0.0)
-		{
-			return false;
-		}
-		d.normalizar();
-		return d.aVector4().productoEscalar(cara.normal().aVector4()) > BACKFACE_CULLING_EPSILON;
+		return d.aVector4().productoEscalar(cara.normal().aVector4()) <= 0;
 	}
 
 	private boolean considerarCara(geometria.Cara cara, geometria.Punto cameraPosition)
