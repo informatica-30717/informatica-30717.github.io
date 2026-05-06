@@ -48,6 +48,10 @@ Al finalizar, deberías ser capaz de:
 
 Es conveniente que resolváis todos los ejercicios que se os plantean en el guion, pero no es necesario que los entreguéis. La evaluación se realizará a través de un cuestionario disponible en *Moodle*.
 
+A modo de esquema, la siguiente figura representa el flujó básico del visualizador:
+
+![](../resources/practica9/images/schema.png){width=100%}
+
 ---
 
 ## El visualizador
@@ -240,6 +244,34 @@ $$
 (x,\, y,\, z,\, w) \;\longrightarrow\; \left(\frac{x}{w},\;\frac{y}{w},\;\frac{z}{w}\right)
 $$
 
+Si $w = 0$, ese `Vector4` no representa un punto que puedas recuperar con la división anterior, sino una **dirección**. Por eso una traslación no le afecta. Por ejemplo:
+
+$$
+\begin{pmatrix}
+1 & 0 & 0 & 10\\
+0 & 1 & 0 & 0\\
+0 & 0 & 1 & 0\\
+0 & 0 & 0 & 1
+\end{pmatrix}
+\cdot
+\begin{pmatrix}4\\3\\2\\1\end{pmatrix}
+=
+\begin{pmatrix}14\\3\\2\\1\end{pmatrix}
+\qquad
+\begin{pmatrix}
+1 & 0 & 0 & 10\\
+0 & 1 & 0 & 0\\
+0 & 0 & 1 & 0\\
+0 & 0 & 0 & 1
+\end{pmatrix}
+\cdot
+\begin{pmatrix}4\\3\\2\\0\end{pmatrix}
+=
+\begin{pmatrix}4\\3\\2\\0\end{pmatrix}
+$$
+
+En el primer caso se ha movido el punto diez unidades en $x$. En el segundo, la misma operación no cambia el vector: con $w = 0$ la parte de traslación queda multiplicada por cero. Si lo que querías era mover una posición, entonces ese vector debía tener $w = 1$.
+
 ---
 
 ::: {.callout-note}
@@ -270,20 +302,20 @@ $$
 \text{rotacionZ}(a) \;\to\; \begin{pmatrix} \cos a & \sin a & 0 & 0 \\ {-\sin a} & \cos a & 0 & 0 \\ 0 & 0 & 1 & 0 \\ 0 & 0 & 0 & 1 \end{pmatrix}
 $$
 
-La siguiente visualización muestra cómo actúa **rotacionZ** sobre un punto del plano XY. Mueve el ángulo y observa cómo se actualizan los valores de la matriz:
+La siguiente visualización muestra cómo actúa **rotacionZ** sobre un punto en 3D. Mueve el ángulo y observa cómo se actualizan los valores de la matriz:
 
 ```{=html}
 <div id="rot-demo-uza">
   <div class="rot-stage-uza">
     <div class="rot-stage-head-uza">
-      <span class="rot-stage-kicker-uza">Plano XY</span>
-      <p>El punto gira alrededor del origen: la distancia al origen se conserva y solo cambia su orientación.</p>
+      <span class="rot-stage-kicker-uza">Eje Z</span>
     </div>
     <canvas id="rot-canvas-uza" width="280" height="280" class="rot-canvas-uza"></canvas>
     <div class="rot-legend-uza">
       <span class="rot-legend-item-uza"><i class="is-base-uza"></i>Vector original</span>
       <span class="rot-legend-item-uza"><i class="is-rotated-uza"></i>Vector rotado</span>
       <span class="rot-legend-item-uza"><i class="is-angle-uza"></i>Ángulo <em>a</em></span>
+      <span class="rot-legend-item-uza"><i class="is-axis-uza"></i>Eje Z</span>
     </div>
   </div>
   <div class="rot-panel-uza">
@@ -313,7 +345,7 @@ La siguiente visualización muestra cómo actúa **rotacionZ** sobre un punto de
     <div class="rot-summary-uza">
       <div class="rot-summary-row-uza">
         <span>Punto inicial</span>
-        <code id="rot-before-uza">(0.72, 0.24)</code>
+        <code id="rot-before-uza">(0.72, 0.24, 0.38)</code>
       </div>
       <div class="rot-summary-row-uza">
         <span>Punto rotado</span>
@@ -526,7 +558,7 @@ En ambos modos se puede activar el ***backface culling*** (método `considerarCa
 ::: {.callout-note}
 ## Busca en el código
 
-No leas `PanelVisor` de principio a fin. Busca directamente los métodos `considerarCara`, `pintarMallaAlambre` y `pintarCaraMallaAlambre`, y localiza después dónde se llama a `renderer.Shader` en el recorrido ráster. Identifica qué partes del algoritmo descrito en este guion implementa cada método. Compara los dos modos de visualización.
+No leas `PanelVisor` de principio a fin. Busca directamente los métodos `considerarCara`, `pintarMallaAlambre` y `pintarRaster`, y localiza después dónde se llama a `renderer.Shader` en el recorrido ráster. Identifica qué partes del algoritmo descrito en este guion implementa cada método. Compara los dos modos de visualización.
 :::
 
 ---

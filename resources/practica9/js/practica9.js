@@ -13,81 +13,153 @@
   const ctx = canvas.getContext('2d');
   const W = canvas.width;
   const H = canvas.height;
-  const cx = W / 2;
-  const cy = H / 2;
-  const SC = 95;
-  const POINT = [0.72, 0.24];
-  const ORBIT = Math.hypot(POINT[0], POINT[1]);
+  const ORIGIN = { x: W * 0.5, y: H * 0.68 };
+  const BASIS_X = { x: 82, y: 28 };
+  const BASIS_Y = { x: -58, y: 34 };
+  const BASIS_Z = { x: 0, y: -88 };
+  const POINT = { x: 0.72, y: 0.24, z: 0.38 };
+  const ORBIT = Math.hypot(POINT.x, POINT.y);
 
-  function tw(x, y) {
-    return [cx + x * SC, cy - y * SC];
+  function project(point) {
+    return {
+      x: ORIGIN.x + point.x * BASIS_X.x + point.y * BASIS_Y.x + point.z * BASIS_Z.x,
+      y: ORIGIN.y + point.x * BASIS_X.y + point.y * BASIS_Y.y + point.z * BASIS_Z.y,
+    };
   }
 
-  function rot(x, y, cosA, sinA) {
-    return [cosA * x + sinA * y, -sinA * x + cosA * y];
+  function rot(point, cosA, sinA) {
+    return {
+      x: cosA * point.x + sinA * point.y,
+      y: -sinA * point.x + cosA * point.y,
+      z: point.z,
+    };
   }
 
   function fmt(x) {
     return x.toFixed(2);
   }
 
-  function drawArrow(x, y, color, lw) {
-    const [sx, sy] = tw(x, y);
-    const angle = Math.atan2(sy - cy, sx - cx);
+  function drawScreenArrow(start, end, color, lw) {
+    const angle = Math.atan2(end.y - start.y, end.x - start.x);
     const head = 11;
 
     ctx.beginPath();
-    ctx.moveTo(cx, cy);
-    ctx.lineTo(sx, sy);
+    ctx.moveTo(start.x, start.y);
+    ctx.lineTo(end.x, end.y);
     ctx.strokeStyle = color;
     ctx.lineWidth = lw;
     ctx.lineCap = 'round';
     ctx.stroke();
 
     ctx.beginPath();
-    ctx.moveTo(sx, sy);
-    ctx.lineTo(sx - head * Math.cos(angle - Math.PI / 6), sy - head * Math.sin(angle - Math.PI / 6));
-    ctx.lineTo(sx - head * 0.82 * Math.cos(angle), sy - head * 0.82 * Math.sin(angle));
-    ctx.lineTo(sx - head * Math.cos(angle + Math.PI / 6), sy - head * Math.sin(angle + Math.PI / 6));
+    ctx.moveTo(end.x, end.y);
+    ctx.lineTo(end.x - head * Math.cos(angle - Math.PI / 6), end.y - head * Math.sin(angle - Math.PI / 6));
+    ctx.lineTo(end.x - head * 0.82 * Math.cos(angle), end.y - head * 0.82 * Math.sin(angle));
+    ctx.lineTo(end.x - head * Math.cos(angle + Math.PI / 6), end.y - head * Math.sin(angle + Math.PI / 6));
     ctx.closePath();
     ctx.fillStyle = color;
     ctx.fill();
   }
 
-  function drawDot(x, y, color, r) {
-    const [sx, sy] = tw(x, y);
+  function drawArrow(point, color, lw) {
+    drawScreenArrow(project({ x: 0, y: 0, z: 0 }), project(point), color, lw);
+  }
+
+  function drawDot(point, color, r) {
+    const p = project(point);
     ctx.beginPath();
-    ctx.arc(sx, sy, r, 0, Math.PI * 2);
+    ctx.arc(p.x, p.y, r, 0, Math.PI * 2);
     ctx.fillStyle = color;
     ctx.fill();
   }
 
-  function drawLabel(text, x, y, color, dx, dy) {
-    const [sx, sy] = tw(x, y);
+  function drawLabel(text, point, color, dx, dy) {
+    const p = project(point);
     ctx.save();
     ctx.font = '600 12px system-ui, -apple-system, sans-serif';
     ctx.textAlign = 'left';
     ctx.textBaseline = 'middle';
     ctx.lineWidth = 3.5;
     ctx.strokeStyle = 'rgba(255,255,255,0.96)';
-    ctx.strokeText(text, sx + dx, sy + dy);
+    ctx.strokeText(text, p.x + dx, p.y + dy);
     ctx.fillStyle = color;
-    ctx.fillText(text, sx + dx, sy + dy);
+    ctx.fillText(text, p.x + dx, p.y + dy);
     ctx.restore();
   }
 
-  function drawArc(start, end, radius, color) {
+  function drawLine(a, b, color, lw, dash) {
+    const pa = project(a);
+    const pb = project(b);
+    ctx.save();
+    if (dash) ctx.setLineDash(dash);
+    ctx.strokeStyle = color;
+    ctx.lineWidth = lw;
+    ctx.beginPath();
+    ctx.moveTo(pa.x, pa.y);
+    ctx.lineTo(pb.x, pb.y);
+    ctx.stroke();
+    ctx.restore();
+  }
+
+  function fillPolygon(points, fill, stroke) {
+    ctx.beginPath();
+    points.forEach((point, index) => {
+      const p = project(point);
+      if (index === 0) {
+        ctx.moveTo(p.x, p.y);
+      } else {
+        ctx.lineTo(p.x, p.y);
+      }
+    });
+    ctx.closePath();
+    ctx.fillStyle = fill;
+    ctx.fill();
+    if (stroke) {
+      ctx.strokeStyle = stroke;
+      ctx.lineWidth = 1;
+      ctx.stroke();
+    }
+  }
+
+  function circlePoint(angle, radius, z) {
+    return {
+      x: radius * Math.cos(angle),
+      y: radius * Math.sin(angle),
+      z,
+    };
+  }
+
+  function drawOrbit(radius, z, color, dash) {
+    ctx.save();
+    if (dash) ctx.setLineDash(dash);
+    ctx.beginPath();
+    for (let i = 0; i <= 96; i++) {
+      const p = project(circlePoint((i / 96) * Math.PI * 2, radius, z));
+      if (i === 0) {
+        ctx.moveTo(p.x, p.y);
+      } else {
+        ctx.lineTo(p.x, p.y);
+      }
+    }
+    ctx.closePath();
+    ctx.strokeStyle = color;
+    ctx.lineWidth = 1.2;
+    ctx.stroke();
+    ctx.restore();
+  }
+
+  function drawArc(start, end, radius, z, color) {
     const steps = Math.max(10, Math.round(Math.abs(end - start) * 18));
 
     ctx.beginPath();
     for (let i = 0; i <= steps; i++) {
       const t = i / steps;
       const angle = start + (end - start) * t;
-      const [sx, sy] = tw(radius * Math.cos(angle), radius * Math.sin(angle));
+      const p = project(circlePoint(angle, radius, z));
       if (i === 0) {
-        ctx.moveTo(sx, sy);
+        ctx.moveTo(p.x, p.y);
       } else {
-        ctx.lineTo(sx, sy);
+        ctx.lineTo(p.x, p.y);
       }
     }
     ctx.strokeStyle = color;
@@ -95,88 +167,78 @@
     ctx.stroke();
   }
 
+  function drawGrid() {
+    fillPolygon([
+      { x: -1.15, y: -1.15, z: 0 },
+      { x: 1.15, y: -1.15, z: 0 },
+      { x: 1.15, y: 1.15, z: 0 },
+      { x: -1.15, y: 1.15, z: 0 },
+    ], 'rgba(226,232,240,0.34)', 'rgba(148,163,184,0.24)');
+
+    for (let g = -1; g <= 1.01; g += 0.5) {
+      drawLine({ x: -1.15, y: g, z: 0 }, { x: 1.15, y: g, z: 0 }, 'rgba(148,163,184,0.22)', 1);
+      drawLine({ x: g, y: -1.15, z: 0 }, { x: g, y: 1.15, z: 0 }, 'rgba(148,163,184,0.22)', 1);
+    }
+  }
+
+  function drawAxes() {
+    const origin = project({ x: 0, y: 0, z: 0 });
+    drawScreenArrow(origin, project({ x: 1.25, y: 0, z: 0 }), '#ef4444', 1.8);
+    drawScreenArrow(origin, project({ x: 0, y: 1.25, z: 0 }), '#16a34a', 1.8);
+    drawScreenArrow(origin, project({ x: 0, y: 0, z: 1.05 }), '#7c3aed', 2.1);
+    drawLabel('x', { x: 1.25, y: 0, z: 0 }, '#b91c1c', 5, -2);
+    drawLabel('y', { x: 0, y: 1.25, z: 0 }, '#15803d', -16, 2);
+    drawLabel('z', { x: 0, y: 0, z: 1.05 }, '#6d28d9', 7, -4);
+    drawDot({ x: 0, y: 0, z: 0 }, '#0f172a', 3.4);
+    drawLabel('O', { x: 0, y: 0, z: 0 }, '#0f172a', 8, 10);
+  }
+
   function draw(deg) {
     const a = deg * Math.PI / 180;
     const cosA = Math.cos(a);
     const sinA = Math.sin(a);
-    const [ox, oy] = POINT;
-    const [rx, ry] = rot(ox, oy, cosA, sinA);
-    const startAngle = Math.atan2(oy, ox);
+    const rotated = rot(POINT, cosA, sinA);
+    const startAngle = Math.atan2(POINT.y, POINT.x);
     const endAngle = startAngle - a;
     const arcRadius = ORBIT * 0.42;
+    const shadow = { x: POINT.x, y: POINT.y, z: 0 };
+    const rotatedShadow = { x: rotated.x, y: rotated.y, z: 0 };
 
     ctx.clearRect(0, 0, W, H);
 
-    ctx.strokeStyle = 'rgba(148,163,184,0.16)';
-    ctx.lineWidth = 1;
-    ctx.beginPath();
-    for (let gx = -3; gx <= 3; gx++) {
-      const [px] = tw(gx, 0);
-      ctx.moveTo(px, 0);
-      ctx.lineTo(px, H);
-    }
-    for (let gy = -3; gy <= 3; gy++) {
-      const [, py] = tw(0, gy);
-      ctx.moveTo(0, py);
-      ctx.lineTo(W, py);
-    }
-    ctx.stroke();
+    const background = ctx.createLinearGradient(0, 0, 0, H);
+    background.addColorStop(0, '#f8fafc');
+    background.addColorStop(1, '#eef3f8');
+    ctx.fillStyle = background;
+    ctx.fillRect(0, 0, W, H);
 
-    ctx.beginPath();
-    ctx.setLineDash([6, 5]);
-    ctx.arc(cx, cy, ORBIT * SC, 0, Math.PI * 2);
-    ctx.strokeStyle = 'rgba(100,116,139,0.38)';
-    ctx.lineWidth = 1.2;
-    ctx.stroke();
-    ctx.setLineDash([]);
-
-    ctx.strokeStyle = 'rgba(15,23,42,0.42)';
-    ctx.lineWidth = 1.4;
-    ctx.beginPath();
-    ctx.moveTo(0, cy);
-    ctx.lineTo(W, cy);
-    ctx.moveTo(cx, 0);
-    ctx.lineTo(cx, H);
-    ctx.stroke();
-
-    drawDot(0, 0, '#0f172a', 3.4);
-    drawLabel('O', 0, 0, '#0f172a', 8, 10);
-
-    ctx.fillStyle = '#64748b';
-    ctx.font = '12px system-ui, -apple-system, sans-serif';
-    ctx.fillText('x', W - 16, cy - 7);
-    ctx.fillText('y', cx + 7, 14);
+    drawGrid();
+    drawAxes();
+    drawOrbit(ORBIT, 0, 'rgba(100,116,139,0.22)', [4, 5]);
+    drawOrbit(ORBIT, POINT.z, 'rgba(100,116,139,0.38)', [6, 5]);
 
     if (deg > 0.5 && deg < 359.5) {
-      drawArc(startAngle, endAngle, arcRadius, '#f59e0b');
+      drawArc(startAngle, endAngle, arcRadius, POINT.z, '#f59e0b');
 
       const midAngle = startAngle + (endAngle - startAngle) / 2;
-      drawLabel('a', arcRadius * Math.cos(midAngle), arcRadius * Math.sin(midAngle), '#b45309', 8, -4);
+      drawLabel('a', circlePoint(midAngle, arcRadius, POINT.z), '#b45309', 8, -4);
     }
 
-    drawArrow(ox, oy, '#64748b', 2.2);
-    drawDot(ox, oy, '#64748b', 4.2);
-    drawLabel('P', ox, oy, '#475569', 8, -10);
+    drawLine(shadow, POINT, 'rgba(100,116,139,0.32)', 1.1, [4, 4]);
+    drawLine(rotatedShadow, rotated, 'rgba(37,99,235,0.34)', 1.1, [4, 4]);
+    drawDot(shadow, 'rgba(100,116,139,0.35)', 3.2);
+    drawDot(rotatedShadow, 'rgba(37,99,235,0.35)', 3.2);
 
-    ctx.strokeStyle = 'rgba(37,99,235,0.3)';
-    ctx.lineWidth = 1.1;
-    ctx.setLineDash([4, 4]);
-    ctx.beginPath();
-    ctx.moveTo(cx, cy);
-    const [rpx, rpy] = tw(rx, ry);
-    ctx.moveTo(rpx, cy);
-    ctx.lineTo(rpx, rpy);
-    ctx.moveTo(cx, rpy);
-    ctx.lineTo(rpx, rpy);
-    ctx.stroke();
-    ctx.setLineDash([]);
+    drawArrow(POINT, '#64748b', 2.2);
+    drawDot(POINT, '#64748b', 4.2);
+    drawLabel('P', POINT, '#475569', 8, -10);
 
-    drawArrow(rx, ry, '#2563eb', 2.7);
-    drawDot(rx, ry, '#2563eb', 4.8);
-    drawLabel("P'", rx, ry, '#1d4ed8', 8, -10);
+    drawArrow(rotated, '#2563eb', 2.7);
+    drawDot(rotated, '#2563eb', 4.8);
+    drawLabel("P'", rotated, '#1d4ed8', 8, -10);
 
-    beforeEl.textContent = `(${fmt(ox)}, ${fmt(oy)})`;
-    afterEl.textContent = `(${fmt(rx)}, ${fmt(ry)})`;
+    beforeEl.textContent = `(${fmt(POINT.x)}, ${fmt(POINT.y)}, ${fmt(POINT.z)})`;
+    afterEl.textContent = `(${fmt(rotated.x)}, ${fmt(rotated.y)}, ${fmt(rotated.z)})`;
     m00El.textContent = cosA.toFixed(3);
     m01El.textContent = sinA.toFixed(3);
     m10El.textContent = (-sinA).toFixed(3);
