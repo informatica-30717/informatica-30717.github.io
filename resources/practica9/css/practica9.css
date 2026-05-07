@@ -4,6 +4,11 @@
   --title-banner-position-y: center;
 }
 
+.callout-content p code:not(.sourceCode),
+.callout-content li code:not(.sourceCode) {
+  overflow-wrap: anywhere;
+}
+
 #rot-demo-uza {
   margin: 1.2rem 0;
   display: grid;
