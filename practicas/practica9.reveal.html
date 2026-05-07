@@ -233,8 +233,18 @@
 <h3 id="importando-el-visualizador">Importando el visualizador</h3>
 <p>El visualizador de la práctica se puede descargar desde <a href="../resources/practica9/visualizador.zip">⤓ aquí</a>. Copia esa carpeta a tu <em>workspace</em> de Eclipse. Si quieres, puedes renombrarla como <code>PracticaVisualizador</code> para que coincida con el nombre usado en este guion.</p>
 <p>Cuando abras un modelo <code>.obj</code> por primera vez, el visualizador puede crear junto a él un archivo <code>.obj.vbin</code>. Es una caché binaria para que las siguientes cargas sean más rápidas; si borras la caché, el visualizador la genera de nuevo.</p>
-<div class="column-margin">
-<p>El enlace de descarga está aquí, y también se encuentra disponible en <em>Moodle</em>, en la carpeta de la práctica 9.</p>
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Descarga</strong></p>
+</div>
+<div class="callout-content">
+<p>El enlace de descarga también se encuentra disponible en <em>Moodle</em>, en la carpeta de la práctica 9.</p>
+</div>
+</div>
 </div>
 <p>Para importar el proyecto:</p>
 <ol type="1">
@@ -426,7 +436,7 @@ Figura&nbsp;5: <em>Outline</em> de <em>Eclipse</em> (derecha) mostrando los mét
 <li class="fragment"><p>Busca en <code>PanelVisor</code> la línea:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode numberSource java number-lines code-with-copy"><code class="sourceCode java"><span id="cb1-1"><a></a>geometria<span class="op">.</span><span class="fu">Matriz4x4</span> proyeccion <span class="op">=</span> <span class="kw">new</span> geometria<span class="op">.</span><span class="fu">Matriz4x4</span><span class="op">();</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div></li>
 <li class="fragment"><p>Pon un <strong>punto de ruptura</strong> (<em>breakpoint</em>): botón derecho sobre la línea → <strong><em>Toggle Breakpoint</em></strong>.</p></li>
-<li class="fragment"><p>Ejecuta la aplicación en <strong>modo depuración</strong> <img data-src="../resources/practica2/images/debug.svg" style="width:1em">.</p></li>
+<li class="fragment"><p>Ejecuta la aplicación en <strong>modo depuración</strong>.</p></li>
 <li class="fragment"><p>Pulsa <strong><code>F6</code></strong> unas pocas veces para avanzar paso a paso y observa cómo se va construyendo la matriz de proyección.</p></li>
 <li class="fragment"><p>Pulsa <strong><code>F8</code></strong> para continuar la ejecución normal del programa.</p></li>
 <li class="fragment"><p>¿Por qué el programa vuelve una y otra vez a esa misma línea aunque no hayas hecho nada?</p></li>
@@ -528,7 +538,11 @@ V_t = M \cdot V
 <p><span class="math display">\[
 \text{rotacionZ}(a) \;\to\; \begin{pmatrix} \cos a &amp; \sin a &amp; 0 &amp; 0 \\ {-\sin a} &amp; \cos a &amp; 0 &amp; 0 \\ 0 &amp; 0 &amp; 1 &amp; 0 \\ 0 &amp; 0 &amp; 0 &amp; 1 \end{pmatrix}
 \]</span></p>
+<!-- Para mantener PDF y web juntos: cada bloque interactivo se oculta en PDF y su alternativa estática va justo debajo. -->
 <p>La siguiente visualización muestra cómo actúa <strong>rotacionZ</strong> sobre un punto en 3D. Mueve el ángulo y observa cómo se actualizan los valores de la matriz:</p>
+</section>
+<section class="slide level2">
+
 <div id="rot-demo-uza">
   <div class="rot-stage-uza">
     <div class="rot-stage-head-uza">
@@ -681,6 +695,9 @@ M_p &amp;= \text{pantalla}(w,h)\cdot\text{perspectiva}(fov,h/w,1,100) \\
 <section class="slide level2">
 
 <p>La siguiente visualización muestra ese proceso con una cámara idealizada en 3D. El plano de imagen tiene ancho <em>w</em>, alto <em>h</em> y está situado a una distancia focal <em>f</em> del centro de proyección. Ajusta los parámetros para ver cómo cambia el <em>frustum</em> y la imagen proyectada del objeto. Si la imagen formada es mayor que el sensor, el sensor sólo registra una parte y el objeto aparece recortado.</p>
+</section>
+<section class="slide level2">
+
 <div id="perspective-demo-uza" style="margin:1.2rem 0;">
   <div style="background:#fcfcfb; border:1px solid #dbe4ee; border-radius:16px; padding:0.8rem 0.8rem 0.7rem; box-shadow:0 12px 28px rgba(15,23,42,0.07);">
     <canvas id="perspective-canvas-uza" width="680" height="420" style="width:100%; display:block; border-radius:12px; border:1px solid #e2e8f0; background:#f8fafc;"></canvas>
@@ -747,7 +764,7 @@ M_p &amp;= \text{pantalla}(w,h)\cdot\text{perspectiva}(fov,h/w,1,100) \\
 </div>
 <div class="callout-content">
 <p>Prueba con el punto <span class="math inline">\((4,\, 3,\, 2)\)</span> y una rotación de 90° con respecto al eje Z. Puedes multiplicar el vector fila <span class="math inline">\((4\ 3\ 2\ 1)\)</span> por la matriz correspondiente.</p>
-<p>Recuerda que las clases que debemos utilizar son <code>geometria.Punto</code> y <code>geometria.Matriz4x4</code>. Para crear la matriz de rotación, puedes usar el método <code>rotacionZ</code> de <code>Matriz4x4</code>. Para multiplicar el punto por la matriz, puedes usar el método <code>multiplicar</code> de <code>Matriz4x4</code>. Los ángulos de rotación se expresan en radianes, así que para convertir 90° a radianes puedes multiplicar el ángulo por <code>Math.PI / 180.0</code>.</p>
+<p>Recuerda que las clases que debemos utilizar son <code>geometria.Vector4</code> y <code>geometria.Matriz4x4</code>. Para representar el punto homogéneo, puedes crear un <code>Vector4</code> con valores <code>(4, 3, 2, 1)</code>. Para crear la matriz de rotación, puedes usar el método <code>rotacionZ</code> de <code>Matriz4x4</code>. Para multiplicar el vector por la matriz, puedes usar el método <code>multiplicar</code> de <code>Matriz4x4</code>. Los ángulos de rotación se expresan en radianes, así que para convertir 90° a radianes puedes multiplicar el ángulo por <code>Math.PI / 180.0</code>.</p>
 <p>Puedes hacer dos cosas para comprobar el resultado de multiplicar ese punto por la matriz de rotación:</p>
 <ul>
 <li class="fragment">Ejecuta después el código en modo depuración para comprobar cómo se realiza esa rotación en el visualizador;</li>
@@ -770,9 +787,12 @@ M_p &amp;= \text{pantalla}(w,h)\cdot\text{perspectiva}(fov,h/w,1,100) \\
 <p>Si solo quieres modificar cámara, material, luz o modo de visualización, no hace falta entrar en ese paquete todavía.</p>
 <p>El visualizador ofrece dos modos principales. En esta práctica nos interesa sobre todo el segundo, porque es el que utiliza la iluminación de Phong del proyecto proporcionado.</p>
 <ul>
-<li class="fragment"><strong>Malla de alambre</strong> (<code>pintarMallaAlambre</code>): se recorren todas las <code>Caras</code>, se transforman sus <code>Puntos</code>y se dibujan solo las aristas.</li>
+<li class="fragment"><strong>Malla de alambre</strong> (<code>pintarMallaAlambre</code>): se recorren todas las <code>Caras</code>, se transforman sus <code>Puntos</code> y se dibujan solo las aristas.</li>
 <li class="fragment"><strong>Raster</strong>: se rellena cada cara visible y se calcula el color de cada píxel con el modelo de iluminación de Phong. Además, se mantiene un <strong><em>z-buffer</em></strong>, es decir, un registro de profundidad para que una superficie del fondo no tape a otra que está delante.</li>
 </ul>
+</section>
+<section class="slide level2">
+
 <div class="img-compare" role="slider" aria-label="Malla de alambre frente a raster" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50" tabindex="0" style="max-width:560px; margin:0.75rem auto;">
   <img src="../resources/practica9/images/wireframe.png" alt="Vista en malla de alambre">
   <img class="img-compare-top" src="../resources/practica9/images/house_80mm.png" alt="Vista en raster con iluminación de Phong">
@@ -816,7 +836,7 @@ M_p &amp;= \text{pantalla}(w,h)\cdot\text{perspectiva}(fov,h/w,1,100) \\
 <p><span class="math display">\[
 C_p = k_a\, C_a \;+\; k_d\, C_l\,(n_p \cdot d_l) \;+\; k_s\, C_l\,(r_p \cdot v)^{e}
 \]</span></p>
-<p>No hace falta memorizar todos los símbolos. En la práctica basta con relacionarlos con los controles del visualizador: <code>ka</code> añade luz base, <code>kd</code> controla la respuesta mate o difusa, <code>ks</code> refuerza el brillo y <code>e</code> hace ese brillo más abierto o más concentrado. Por otro lado, los términos <code>Ca</code> y <code>Cl</code> modelan la luz, y no el material del objeto. Hay una comparativa un poco más en detalle al final de este guion.</p>
+<p>No hace falta memorizar todos los símbolos. En la práctica basta con relacionarlos con los controles del visualizador: <code>ka</code> añade luz base, <code>kd</code> controla la respuesta mate o difusa, <code>ks</code> refuerza el brillo y <code>e</code> hace ese brillo más abierto o más concentrado. Por otro lado, los términos <code>Ca</code> y <code>Cl</code> modelan la luz, y no el material del objeto.</p>
 <p>La siguiente visualización 3D te permite modificar esos parámetros y ver su efecto en tiempo real, igual que harías al ajustar un material y una luz en un software 3D. Arrastra para orbitar y usa la rueda para hacer zoom.</p>
 </section>
 <section class="slide level2">
@@ -873,6 +893,9 @@ C_p = k_a\, C_a \;+\; k_d\, C_l\,(n_p \cdot d_l) \;+\; k_s\, C_l\,(r_p \cdot v)^
 <li class="fragment">Si quitas <code>ka</code>, las zonas en sombra se oscurecen mucho más.</li>
 </ul>
 <p>Arrastra cada divisor y fíjate sobre todo en esas dos diferencias:</p>
+</section>
+<section class="slide level2">
+
 <div class="grid">
 <div class="g-col-12 g-col-md-6">
 <div class="img-compare" role="slider" aria-label="Comparación entre iluminación completa y ambiente + difusa" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50" tabindex="0">
@@ -906,7 +929,16 @@ Comparación de términos <em>k</em><sub>a</sub>, <em>k</em><sub>d</sub> y <em>k
 <li class="fragment"><p>Pon en el visualizador una <strong>luz completamente roja</strong> (canales verde y azul a 0) y el <strong>material completamente verde</strong> (canales rojo y azul a 0). ¿De qué color queda el objeto? ¿Por qué?</p></li>
 <li class="fragment"><p>Prueba con otras combinaciones de colores de luz y material.</p></li>
 </ul>
+</div>
+</div>
+</div>
+</section>
+<section class="slide level2">
+
 <p>La siguiente visualización sirve justo como <strong>guía para responder a ese ejercicio</strong>. No reproduce todo el modelo de Phong al detalle: se centra en la idea más importante aquí, que es cómo se combinan por canales el color de la luz y el del material en la parte ambiente/difusa. Si en el visualizador aparecen pequeños brillos, recuerda que proceden de la componente especular y tienden a seguir el color de la luz.</p>
+</section>
+<section class="slide level2">
+
 <div id="color-mix-uza">
   <div class="color-mix-stage-uza">
     <div class="color-mix-card-uza">
@@ -956,9 +988,6 @@ Comparación de términos <em>k</em><sub>a</sub>, <em>k</em><sub>d</sub> y <em>k
     </div>
   </div>
 </div>
-</div>
-</div>
-</div>
 </section>
 <section class="slide level2">
 
@@ -979,23 +1008,28 @@ Comparación de términos <em>k</em><sub>a</sub>, <em>k</em><sub>d</sub> y <em>k
 <p>Después, abre <code>renderer.Shader</code>. Justo después del bloque de <code>RenderMode.NORMALS</code>, añade este caso:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode numberSource java number-lines code-with-copy"><code class="sourceCode java"><span id="cb5-1"><a></a><span class="cf">if</span> <span class="op">(</span>mode <span class="op">==</span> RenderMode<span class="op">.</span><span class="fu">ONDAS</span><span class="op">)</span></span>
 <span id="cb5-2"><a></a><span class="op">{</span></span>
-<span id="cb5-3"><a></a>  <span class="cf">return</span> <span class="fu">shadeOndas</span><span class="op">(</span>pointX<span class="op">,</span> pointY<span class="op">,</span> pointZ<span class="op">,</span> nx<span class="op">,</span> ny<span class="op">,</span> nz<span class="op">);</span></span>
-<span id="cb5-4"><a></a><span class="op">}</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb5-3"><a></a>  <span class="cf">return</span> <span class="fu">shadeOndas</span><span class="op">(</span></span>
+<span id="cb5-4"><a></a>      pointX<span class="op">,</span> pointY<span class="op">,</span> pointZ<span class="op">,</span></span>
+<span id="cb5-5"><a></a>      nx<span class="op">,</span> ny<span class="op">,</span> nz</span>
+<span id="cb5-6"><a></a>  <span class="op">);</span></span>
+<span id="cb5-7"><a></a><span class="op">}</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Por último, añade este método cerca de <code>shadeNormals</code>. Esta versión ya funciona y suele dar un resultado vistoso:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode numberSource java number-lines code-with-copy"><code class="sourceCode java"><span id="cb6-1"><a></a><span class="kw">private</span> <span class="dt">int</span> <span class="fu">shadeOndas</span><span class="op">(</span><span class="dt">double</span> x<span class="op">,</span> <span class="dt">double</span> y<span class="op">,</span> <span class="dt">double</span> z<span class="op">,</span> <span class="dt">double</span> nx<span class="op">,</span> <span class="dt">double</span> ny<span class="op">,</span> <span class="dt">double</span> nz<span class="op">)</span></span>
-<span id="cb6-2"><a></a><span class="op">{</span></span>
-<span id="cb6-3"><a></a>  <span class="dt">double</span> escala <span class="op">=</span> <span class="fl">0.18</span><span class="op">;</span></span>
-<span id="cb6-4"><a></a></span>
-<span id="cb6-5"><a></a>  <span class="dt">double</span> onda1 <span class="op">=</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">sin</span><span class="op">((</span>x <span class="op">+</span> y<span class="op">)</span> <span class="op">*</span> escala<span class="op">);</span></span>
-<span id="cb6-6"><a></a>  <span class="dt">double</span> onda2 <span class="op">=</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">cos</span><span class="op">((</span>y <span class="op">-</span> z<span class="op">)</span> <span class="op">*</span> escala <span class="op">*</span> <span class="fl">1.7</span><span class="op">);</span></span>
-<span id="cb6-7"><a></a>  <span class="dt">double</span> onda3 <span class="op">=</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">sin</span><span class="op">(</span><span class="bu">Math</span><span class="op">.</span><span class="fu">sqrt</span><span class="op">(</span>x <span class="op">*</span> x <span class="op">+</span> y <span class="op">*</span> y <span class="op">+</span> z <span class="op">*</span> z<span class="op">)</span> <span class="op">*</span> escala <span class="op">*</span> <span class="fl">2.4</span><span class="op">);</span></span>
-<span id="cb6-8"><a></a></span>
-<span id="cb6-9"><a></a>  <span class="dt">double</span> r <span class="op">=</span> <span class="fl">0.5</span> <span class="op">+</span> <span class="fl">0.5</span> <span class="op">*</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">sin</span><span class="op">(</span><span class="kw">...</span><span class="op">);</span></span>
-<span id="cb6-10"><a></a>  <span class="dt">double</span> g <span class="op">=</span> <span class="fl">0.5</span> <span class="op">+</span> <span class="fl">0.5</span> <span class="op">*</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">cos</span><span class="op">(</span><span class="kw">...</span><span class="op">);</span></span>
-<span id="cb6-11"><a></a>  <span class="dt">double</span> b <span class="op">=</span> <span class="fl">0.5</span> <span class="op">+</span> <span class="fl">0.5</span> <span class="op">*</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">sin</span><span class="op">(</span><span class="kw">...</span><span class="op">);</span></span>
-<span id="cb6-12"><a></a></span>
-<span id="cb6-13"><a></a>  <span class="cf">return</span> <span class="fu">pack</span><span class="op">(</span>r<span class="op">,</span> g<span class="op">,</span> b<span class="op">);</span></span>
-<span id="cb6-14"><a></a><span class="op">}</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode numberSource java number-lines code-with-copy"><code class="sourceCode java"><span id="cb6-1"><a></a><span class="kw">private</span> <span class="dt">int</span> <span class="fu">shadeOndas</span><span class="op">(</span></span>
+<span id="cb6-2"><a></a>    <span class="dt">double</span> x<span class="op">,</span> <span class="dt">double</span> y<span class="op">,</span> <span class="dt">double</span> z<span class="op">,</span></span>
+<span id="cb6-3"><a></a>    <span class="dt">double</span> nx<span class="op">,</span> <span class="dt">double</span> ny<span class="op">,</span> <span class="dt">double</span> nz<span class="op">)</span></span>
+<span id="cb6-4"><a></a><span class="op">{</span></span>
+<span id="cb6-5"><a></a>  <span class="dt">double</span> escala <span class="op">=</span> <span class="fl">0.18</span><span class="op">;</span></span>
+<span id="cb6-6"><a></a></span>
+<span id="cb6-7"><a></a>  <span class="dt">double</span> onda1 <span class="op">=</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">sin</span><span class="op">((</span>x <span class="op">+</span> y<span class="op">)</span> <span class="op">*</span> escala<span class="op">);</span></span>
+<span id="cb6-8"><a></a>  <span class="dt">double</span> onda2 <span class="op">=</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">cos</span><span class="op">((</span>y <span class="op">-</span> z<span class="op">)</span> <span class="op">*</span> escala <span class="op">*</span> <span class="fl">1.7</span><span class="op">);</span></span>
+<span id="cb6-9"><a></a>  <span class="dt">double</span> onda3 <span class="op">=</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">sin</span><span class="op">(</span><span class="bu">Math</span><span class="op">.</span><span class="fu">sqrt</span><span class="op">(</span>x <span class="op">*</span> x <span class="op">+</span> y <span class="op">*</span> y <span class="op">+</span> z <span class="op">*</span> z<span class="op">)</span> <span class="op">*</span> escala <span class="op">*</span> <span class="fl">2.4</span><span class="op">);</span></span>
+<span id="cb6-10"><a></a></span>
+<span id="cb6-11"><a></a>  <span class="dt">double</span> r <span class="op">=</span> <span class="fl">0.5</span> <span class="op">+</span> <span class="fl">0.5</span> <span class="op">*</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">sin</span><span class="op">(</span><span class="kw">...</span><span class="op">);</span></span>
+<span id="cb6-12"><a></a>  <span class="dt">double</span> g <span class="op">=</span> <span class="fl">0.5</span> <span class="op">+</span> <span class="fl">0.5</span> <span class="op">*</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">cos</span><span class="op">(</span><span class="kw">...</span><span class="op">);</span></span>
+<span id="cb6-13"><a></a>  <span class="dt">double</span> b <span class="op">=</span> <span class="fl">0.5</span> <span class="op">+</span> <span class="fl">0.5</span> <span class="op">*</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">sin</span><span class="op">(</span><span class="kw">...</span><span class="op">);</span></span>
+<span id="cb6-14"><a></a></span>
+<span id="cb6-15"><a></a>  <span class="cf">return</span> <span class="fu">pack</span><span class="op">(</span>r<span class="op">,</span> g<span class="op">,</span> b<span class="op">);</span></span>
+<span id="cb6-16"><a></a><span class="op">}</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Dentro de las funciones seno y coseno, puedes combinar las tres ondas de la forma que quieras. Prueba a sumarlas, multiplicarlas o a usarlas por separado, o súmale algún término como <code>nx</code>, <code>ny</code> o <code>nz</code> para que la orientación de la superficie también influya en el resultado. Un posible resultado es este:</p>
 <div class="quarto-figure quarto-figure-center">
 <figure>
@@ -1097,6 +1131,9 @@ L_o(\mathbf{p},\,\omega_o) = L_e(\mathbf{p},\,\omega_o) + \int_{\Omega} f_r(\mat
 <p>La idea práctica es aproximar esos rebotes con muchas muestras. Si has visto que en <em>Blender</em> aparecen parámetros como <code>samples</code> o <code>spp</code> (<em>samples per pixel</em>), vienen de aquí: el motor lanza muchas trayectorias posibles de la luz y promedia su resultado.</p>
 <p>No hace falta que estudies el método en detalle para esta práctica. Quédate con dos consecuencias muy útiles: con pocas muestras aparece ruido; con muchas, la imagen se estabiliza, pero el tiempo de cálculo aumenta.</p>
 <p>La intuición estadística puede verse con un ejemplo muy sencillo: estimar el <strong>área de un círculo de radio 1</strong> (que sabemos que es <span class="math inline">\(\pi\)</span>) sin usar una fórmula cerrada, sino generando puntos aleatorios.</p>
+</section>
+<section class="slide level2">
+
 <div id="mc-demo-uza" style="margin:1.2rem 0; background:#fff; border:1px solid #e2e8f0; border-radius:14px; padding:1rem; box-shadow:0 4px 16px rgba(0,0,0,0.06);">
   <div style="display:grid; grid-template-columns:auto 1fr; gap:1rem; align-items:start;">
     <div>
@@ -1144,6 +1181,9 @@ L_o(\mathbf{p},\,\omega_o) = L_e(\mathbf{p},\,\omega_o) + \int_{\Omega} f_r(\mat
 <section class="slide level2">
 
 <p>En el renderizado ocurre lo mismo: desde cada píxel se lanzan rayos aleatorios que rebotan entre superficies. Con <strong>pocas muestras por píxel</strong> (<em>spp</em>) el resultado es muy ruidoso; con <strong>muchas muestras la imagen se va estabilizando</strong>. Los dos <em>renders</em> de <em>Blender</em> siguientes ilustran este efecto (arrastra el divisor para comparar):</p>
+</section>
+<section class="slide level2">
+
 <div class="img-compare img-compare-spp-uza" role="slider" aria-label="Comparación entre render ruidoso y render limpio" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50" tabindex="0" style="max-width:640px; margin:1rem auto;">
 <p><img src="../resources/practica9/images/room_50spp.png" alt="Pocas muestras por píxel — resultado ruidoso"> <img class="img-compare-top" src="../resources/practica9/images/room_500spp.png" alt="Muchas muestras por píxel — resultado limpio"> <span class="img-compare-label is-left">Pocas muestras <small class="img-compare-time-uza">~3 min</small></span> <span class="img-compare-label is-right">Muchas muestras <small class="img-compare-time-uza">~8 min</small></span> <span class="img-compare-line" aria-hidden="true"></span> <span class="img-compare-knob" aria-hidden="true"> <svg viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 6 3 12 9 18"></polyline><polyline points="15 6 21 12 15 18"></polyline></svg> </span></p>
 </div>
@@ -1153,375 +1193,6 @@ Escena del comparador spp procedente de <a href="https://www.blenderkit.com/get-
 </p>
 <p>Esto es lo que ocurre en <em>Blender Cycles</em> y en otros motores con visualización realista: con pocas muestras aparece ruido, mientras que con más muestras el resultado se limpia, aunque el tiempo de cálculo también aumenta. En visualización de edificios se puede utilizar para reproducir mucho mejor la iluminación global de interiores y exteriores.</p>
 <p>Para esta práctica, sin embargo, lo importante es que nuestro visualizador no busca ese nivel de realismo, sino <em>una respuesta rápida e interactiva</em>. Por eso usamos Phong.</p>
-<!--
-## Materiales e iluminación de Phong
-
-A continuación tienes un mapa visual de la componente difusa y especular en el modelo de iluminación de Phong. No es un diagrama formal, sino una ayuda para entender mejor qué aporta cada término y cómo se combinan.
-
-<div class="phong-bsdf-map-uza" aria-label="Mapa visual de componentes difusa y especular en Phong">
-  <style>
-    .phong-bsdf-map-uza {
-      --pbm-ink: #172033;
-      --pbm-muted: #5c677a;
-      --pbm-line: #d8e0ec;
-      --pbm-paper: #ffffff;
-      --pbm-soft: #f6f8fb;
-      --pbm-diff: #0072b2;
-      --pbm-spec: #d55e00;
-      margin: 1.35rem 0;
-    }
-
-    .phong-bsdf-map-uza * {
-      box-sizing: border-box;
-    }
-
-    .phong-bsdf-map-uza .pbm-shell {
-      border: 1px solid var(--pbm-line);
-      border-radius: 12px;
-      overflow: hidden;
-      background:
-        linear-gradient(135deg, rgba(0, 114, 178, 0.08), transparent 34%),
-        linear-gradient(315deg, rgba(213, 94, 0, 0.11), transparent 38%),
-        var(--pbm-soft);
-      box-shadow: 0 14px 34px rgba(23, 32, 51, 0.10);
-    }
-
-    .phong-bsdf-map-uza .pbm-head {
-      display: flex;
-      justify-content: space-between;
-      gap: 1rem;
-      align-items: flex-end;
-      padding: 1rem 1.1rem;
-      border-bottom: 1px solid rgba(216, 224, 236, 0.85);
-      background: rgba(255, 255, 255, 0.78);
-    }
-
-    .phong-bsdf-map-uza .pbm-title {
-      margin: 0;
-      color: var(--pbm-ink);
-      font-size: 1.04rem;
-      line-height: 1.22;
-      font-weight: 750;
-    }
-
-    .phong-bsdf-map-uza .pbm-subtitle {
-      margin: 0.25rem 0 0;
-      color: var(--pbm-muted);
-      font-size: 0.9rem;
-      line-height: 1.35;
-    }
-
-    .phong-bsdf-map-uza .pbm-key {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: flex-end;
-      gap: 0.45rem;
-      min-width: 210px;
-      font-size: 0.82rem;
-      color: var(--pbm-ink);
-    }
-
-    .phong-bsdf-map-uza .pbm-key span,
-    .phong-bsdf-map-uza .pbm-key span {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.35rem;
-      border: 1px solid var(--pbm-line);
-      border-radius: 999px;
-      background: rgba(255, 255, 255, 0.88);
-      padding: 0.28rem 0.55rem;
-      white-space: nowrap;
-    }
-
-    .phong-bsdf-map-uza .pbm-swatch {
-      width: 0.78rem;
-      height: 0.78rem;
-      border-radius: 50%;
-      display: inline-block;
-      border: 2px solid currentColor;
-    }
-
-    .phong-bsdf-map-uza .pbm-swatch.diff {
-      color: var(--pbm-diff);
-      background: repeating-linear-gradient(45deg, currentColor 0 2px, #fff 2px 4px);
-    }
-
-    .phong-bsdf-map-uza .pbm-swatch.spec {
-      color: var(--pbm-spec);
-      background: currentColor;
-    }
-
-    .phong-bsdf-map-uza .pbm-flow {
-      display: grid;
-      grid-template-columns: minmax(0, 1fr) minmax(190px, 0.72fr) minmax(0, 1fr);
-      gap: 1rem;
-      align-items: stretch;
-      padding: 1rem;
-    }
-
-    .phong-bsdf-map-uza .pbm-side {
-      display: grid;
-      grid-template-rows: repeat(2, minmax(0, 1fr));
-      gap: 0.75rem;
-      min-width: 0;
-    }
-
-    .phong-bsdf-map-uza .pbm-card {
-      position: relative;
-      margin: 0;
-      min-height: 0;
-      border-radius: 10px;
-      overflow: hidden;
-      border: 1px solid rgba(255, 255, 255, 0.85);
-      background: #111827;
-      box-shadow: 0 10px 24px rgba(23, 32, 51, 0.17);
-      aspect-ratio: 1 / 0.88;
-    }
-
-    .phong-bsdf-map-uza .pbm-card img {
-      display: block;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-
-    .phong-bsdf-map-uza .pbm-card figcaption {
-      position: absolute;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      padding: 1.6rem 0.75rem 0.65rem;
-      color: #fff;
-      font-size: 0.86rem;
-      line-height: 1.3;
-      background: linear-gradient(to top, rgba(8, 13, 24, 0.86), rgba(8, 13, 24, 0));
-      text-shadow: 0 1px 2px rgba(0, 0, 0, 0.55);
-    }
-
-    .phong-bsdf-map-uza .pbm-badge {
-      position: absolute;
-      top: 0.58rem;
-      left: 0.58rem;
-      border-radius: 999px;
-      padding: 0.28rem 0.52rem;
-      font-size: 0.77rem;
-      font-weight: 750;
-      letter-spacing: 0;
-      background: rgba(255, 255, 255, 0.92);
-      color: var(--pbm-ink);
-      border: 1px solid rgba(255, 255, 255, 0.7);
-    }
-
-    .phong-bsdf-map-uza .pbm-badge.diff {
-      box-shadow: inset 0 -3px 0 var(--pbm-diff);
-    }
-
-    .phong-bsdf-map-uza .pbm-badge.spec {
-      box-shadow: inset 0 -3px 0 var(--pbm-spec);
-    }
-
-    .phong-bsdf-map-uza .pbm-core {
-      display: grid;
-      align-content: center;
-      gap: 0.75rem;
-      min-width: 0;
-    }
-
-    .phong-bsdf-map-uza .pbm-node {
-      border: 1px solid var(--pbm-line);
-      border-radius: 10px;
-      background: rgba(255, 255, 255, 0.92);
-      padding: 0.82rem;
-      color: var(--pbm-ink);
-      box-shadow: 0 8px 20px rgba(23, 32, 51, 0.08);
-    }
-
-    .phong-bsdf-map-uza .pbm-formula {
-      display: flex;
-      flex-wrap: nowrap;
-      align-items: center;
-      justify-content: center;
-      gap: 0.26rem;
-      margin-bottom: 0.58rem;
-      font-size: 0.84rem;
-    }
-
-    .phong-bsdf-map-uza .pbm-token {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      min-width: 2.05rem;
-      border-radius: 999px;
-      padding: 0.18rem 0.34rem;
-      font-weight: 750;
-      border: 1px solid var(--pbm-line);
-      background: #fff;
-    }
-
-    .phong-bsdf-map-uza .pbm-token.ambient {
-      color: #4b5563;
-      background: #eef1f5;
-    }
-
-    .phong-bsdf-map-uza .pbm-token.diff {
-      color: #fff;
-      border-color: var(--pbm-diff);
-      background: var(--pbm-diff);
-    }
-
-    .phong-bsdf-map-uza .pbm-token.spec {
-      color: #fff;
-      border-color: var(--pbm-spec);
-      background: var(--pbm-spec);
-    }
-
-    .phong-bsdf-map-uza .pbm-mix {
-      display: grid;
-      grid-template-columns: 0.72fr 1fr 0.54fr;
-      height: 22px;
-      overflow: hidden;
-      border-radius: 999px;
-      border: 1px solid rgba(23, 32, 51, 0.18);
-      background: #eef1f5;
-    }
-
-    .phong-bsdf-map-uza .pbm-mix span:nth-child(1) {
-      background: #cfd6df;
-    }
-
-    .phong-bsdf-map-uza .pbm-mix span:nth-child(2) {
-      background: repeating-linear-gradient(45deg, var(--pbm-diff) 0 7px, #2c8ec4 7px 14px);
-    }
-
-    .phong-bsdf-map-uza .pbm-mix span:nth-child(3) {
-      background: var(--pbm-spec);
-    }
-
-    .phong-bsdf-map-uza .pbm-node p {
-      margin: 0.6rem 0 0;
-      color: var(--pbm-muted);
-      font-size: 0.86rem;
-      line-height: 1.35;
-    }
-
-    .phong-bsdf-map-uza .pbm-note p {
-      margin: 0;
-    }
-
-    .phong-bsdf-map-uza .pbm-note p + p {
-      margin-top: 0.58rem;
-      padding-top: 0.58rem;
-      border-top: 1px solid rgba(23, 32, 51, 0.18);
-    }
-
-    .phong-bsdf-map-uza .pbm-note {
-      border-radius: 10px;
-      padding: 0.78rem;
-      color: var(--pbm-ink);
-      background: rgba(255, 255, 255, 0.74);
-      border: 1px dashed rgba(23, 32, 51, 0.24);
-      font-size: 0.86rem;
-      line-height: 1.35;
-    }
-
-    .phong-bsdf-map-uza .pbm-credit {
-      margin: 0.65rem 0 0;
-      color: var(--pbm-muted);
-      font-size: 0.84rem;
-      line-height: 1.35;
-    }
-
-    @media (max-width: 820px) {
-      .phong-bsdf-map-uza .pbm-head {
-        align-items: flex-start;
-        flex-direction: column;
-      }
-
-      .phong-bsdf-map-uza .pbm-key {
-        justify-content: flex-start;
-      }
-
-      .phong-bsdf-map-uza .pbm-flow {
-        grid-template-columns: 1fr;
-      }
-
-      .phong-bsdf-map-uza .pbm-side {
-        grid-template-rows: auto;
-      }
-
-      .phong-bsdf-map-uza .pbm-card {
-        aspect-ratio: 1.18 / 1;
-      }
-    }
-  </style>
-
-  <div class="pbm-shell">
-    <div class="pbm-head">
-      <div>
-        <p class="pbm-title">Mapa visual: de superficie mate a reflejo metálico</p>
-        <p class="pbm-subtitle">Phong no es un BSDF físico, pero sus parámetros sirven para imitar estos comportamientos.</p>
-      </div>
-      <div class="pbm-key" aria-label="Leyenda">
-        <span><i class="pbm-swatch diff"></i><code>kd</code> luz dispersa</span>
-        <span><i class="pbm-swatch spec"></i><code>ks</code> reflejo dirigido</span>
-      </div>
-    </div>
-
-    <div class="pbm-flow">
-      <section class="pbm-side" aria-label="Ejemplos de componente difusa">
-        <figure class="pbm-card">
-          <img src="../resources/practica9/images/mitsuba_bsdf_diffuse_plain.jpg" alt="Material difuso lambertiano renderizado en Mitsuba">
-          <span class="pbm-badge diff">Lambert / mate</span>
-          <figcaption>Casi todo se entiende con <code>kd</code>; <code>ks</code> sería bajo.</figcaption>
-        </figure>
-
-        <figure class="pbm-card">
-          <img src="../resources/practica9/images/mitsuba_bsdf_pplastic_diffuse_component.jpg" alt="Componente difusa de un material plástico renderizado en Mitsuba">
-          <span class="pbm-badge diff">Base plástica</span>
-          <figcaption>Solo la parte difusa del plástico; su brillo esta a la derecha.</figcaption>
-        </figure>
-      </section>
-
-      <section class="pbm-core" aria-label="Lectura de parametros Phong">
-        <div class="pbm-node">
-          <div class="pbm-formula" aria-label="ka mas kd mas ks">
-            <span class="pbm-token ambient">ka</span>
-            <span>+</span>
-            <span class="pbm-token diff">kd</span>
-            <span>+</span>
-            <span class="pbm-token spec">ks</span>
-          </div>
-          <div class="pbm-mix" aria-hidden="true"><span></span><span></span><span></span></div>
-          <p><code>ka</code> levanta la escena, <code>kd</code> da cuerpo mate y <code>ks</code> añade el destello.</p>
-        </div>
-
-        <div class="pbm-note">
-          <p><strong>Plástico:</strong> base difusa (<code>kd</code>) + capa especular (<code>ks</code>).</p>
-          <p><strong>Metal:</strong> domina la parte especular y el reflejo también toma color.</p>
-        </div>
-      </section>
-
-      <section class="pbm-side" aria-label="Ejemplos de componente especular">
-        <figure class="pbm-card">
-          <img src="../resources/practica9/images/mitsuba_bsdf_conductor_gold.jpg" alt="Material conductor dorado renderizado en Mitsuba">
-          <span class="pbm-badge spec">Metal / conductor</span>
-          <figcaption>El reflejo manda: buen referente mental para <code>ks</code> alto.</figcaption>
-        </figure>
-
-        <figure class="pbm-card">
-          <img src="../resources/practica9/images/mitsuba_bsdf_pplastic_specular_component.jpg" alt="Componente especular de un material plástico renderizado en Mitsuba">
-          <span class="pbm-badge spec">Brillo plástico</span>
-          <figcaption><code>e</code> decide si el brillo se abre o se concentra.</figcaption>
-        </figure>
-      </section>
-    </div>
-  </div>
-
-  <p class="pbm-credit">
-    Imágenes: documentación de <a href="https://mitsuba.readthedocs.io/en/latest/src/generated/plugins_bsdfs.html">Mitsuba 3, BSDF plugins</a>. Usadas aquí como referencia visual cualitativa para los terminos de Phong.
-  </p>
-</div>
-```-->
 
 
 </section>
@@ -1706,12 +1377,12 @@ A continuación tienes un mapa visual de la componente difusa y especular en el 
         // The "normal" size of the presentation, aspect ratio will be preserved
         // when the presentation is scaled to fit different resolutions. Can be
         // specified using percentage units.
-        width: 1050,
+        width: 1280,
 
-        height: 700,
+        height: 720,
 
         // Factor of the display size that should remain empty around the content
-        margin: 0.1,
+        margin: 8.0e-2,
 
         math: {
           mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@2.7.9/MathJax.js',

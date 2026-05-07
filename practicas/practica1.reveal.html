@@ -199,6 +199,7 @@
   <script src="../site_libs/quarto-diagram/mermaid.min.js"></script>
   <script src="../site_libs/quarto-diagram/mermaid-init.js"></script>
   <link href="../site_libs/quarto-diagram/mermaid.css" rel="stylesheet">
+  <link rel="stylesheet" href="../resources/practica1/css/practica1.css">
 <meta property="og:title" content="Práctica 1: Introducción a Processing – Informática (30717) - Grado en Estudios en Arquitectura">
 <meta property="og:site_name" content="Informática (30717) - Grado en Estudios en Arquitectura">
 <meta name="twitter:title" content="Práctica 1: Introducción a Processing – Informática (30717) - Grado en Estudios en Arquitectura">
@@ -238,7 +239,7 @@
 <li class="fragment">Distribución gratuita y de código abierto.</li>
 </ul>
 </div><div class="column quarto-layout-cell" style="flex-basis: 25.0%;justify-content: center;">
-<p><img data-src="../resources/practica1/images/processing.svg"></p>
+<p><img data-src="../resources/practica1/images/processing-logo.png"></p>
 </div></div>
 </div>
 </section>
@@ -366,13 +367,16 @@ Figura&nbsp;5: Animación con una resolución de pantalla más baja, donde comie
 </div>
 </div>
 </div><div class="column quarto-layout-cell" style="flex-basis: 32.0%;justify-content: flex-start;">
-<div id="fig-pixels" class="quarto-float quarto-figure quarto-figure-center">
+<div id="fig-pixels" class="p1-figure-uza quarto-float quarto-figure quarto-figure-center">
 <figure class="quarto-float quarto-float-fig">
 <div aria-describedby="fig-pixels-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img data-src="../resources/practica1/images/pixel-matrix.svg">
+<div class="p1-pixel-demo-uza" data-p1-pixel-demo="">
+  <canvas width="420" height="330" aria-label="Matriz interactiva de píxeles"></canvas>
+  <output class="p1-pixel-readout-uza" data-readout="" aria-live="polite">(4, 3)</output>
+</div>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-pixels-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figura&nbsp;6: Ilustración de una matriz de píxeles, indicando las coordenadas de algunos de ellos.
+Figura&nbsp;6: Ilustración interactiva de una matriz de píxeles y sus coordenadas.
 </figcaption>
 </figure>
 </div>
@@ -505,10 +509,33 @@ Las palabras reservadas se muestran <span style="color:#1f77ff; font-weight:600;
 </section>
 <section class="slide level2">
 
-
-<img data-src="../resources/practica1/images/rect-mode.svg" class="r-stretch quarto-figure-center" id="fig-rectmodes"><p class="caption">
-Figura&nbsp;7: Representación de cómo se interpretan las posiciones en ambos modos para rectángulos y elipses.
-</p></section>
+<div id="fig-rectmodes" class="p1-figure-uza quarto-float quarto-figure quarto-figure-center">
+<figure class="quarto-float quarto-float-fig">
+<div aria-describedby="fig-rectmodes-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="p1-mode-demo-uza" data-p1-mode-demo="">
+  <canvas width="720" height="270" aria-label="Comparación interactiva de rectMode y ellipseMode"></canvas>
+  <div class="p1-mode-controls-uza">
+    <label>Rectángulo
+      <select data-shape="rect">
+        <option value="CORNER">CORNER</option>
+        <option value="CENTER">CENTER</option>
+      </select>
+    </label>
+    <label>Elipse
+      <select data-shape="ellipse">
+        <option value="CENTER">CENTER</option>
+        <option value="CORNER">CORNER</option>
+      </select>
+    </label>
+  </div>
+</div>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-rectmodes-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;7: Representación interactiva de cómo se interpretan las posiciones en ambos modos para rectángulos y elipses.
+</figcaption>
+</figure>
+</div>
+</section>
 <section class="slide level2">
 
 <p>Por defecto, <em>Processing</em> interpreta las posiciones de la siguiente manera:</p>
@@ -548,10 +575,20 @@ Figura&nbsp;7: Representación de cómo se interpretan las posiciones en ambos m
 <p>A continuación, veremos cómo especificar colores en <em>Processing</em>. Por ahora, basta con componer colores en escala de grises. Para ello hay que tener en cuenta que la escala de un tono de gris va de 0 a 255; el valor 0 corresponde al negro y el valor 255 corresponde al blanco. Por ejemplo, la figura de la derecha se ha representado única y exclusivamente con diferentes valores de gris.</p>
 <p>En <em>Processing</em>, las figuras tienen <strong>borde</strong> y <strong>relleno</strong>, que se definen mediante los métodos <code>stroke</code> y <code>fill</code>. Además, también puede controlarse el color de fondo de la ventana con <code>background</code>.</p>
 </div><div class="column quarto-layout-cell" style="flex-basis: 33.3%;justify-content: flex-start;">
-<div id="fig-grayscale" class="quarto-float quarto-figure quarto-figure-center">
+<div id="fig-grayscale" class="p1-figure-uza quarto-float quarto-figure quarto-figure-center">
 <figure class="quarto-float quarto-float-fig">
 <div aria-describedby="fig-grayscale-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img data-src="../resources/practica1/images/grayscale.svg">
+<div class="p1-gray-sampler-uza" data-p1-gray-sampler="">
+  <img src="../resources/practica1/images/grayscale.png" alt="Imagen representada únicamente con valores de gris.">
+  <span class="p1-gray-sampler-icon-uza" data-sampler-marker="" aria-hidden="true">
+    <svg viewbox="0 0 24 24" aria-hidden="true">
+      <path d="M14.7 4.3a2.1 2.1 0 0 1 3 0l2 2a2.1 2.1 0 0 1 0 3l-8.9 8.9-4.4 1.4 1.4-4.4 8.9-8.9-2-2Z"></path>
+      <path d="m13.2 7.8 3 3"></path>
+      <path d="M7.8 15.2 10.8 18.2"></path>
+    </svg>
+  </span>
+  <output class="p1-gray-readout-uza" data-gray-readout="" aria-live="polite">gris: --</output>
+</div>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-grayscale-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figura&nbsp;8: Imagen representada únicamente con valores de gris.
@@ -629,26 +666,35 @@ Figura&nbsp;8: Imagen representada únicamente con valores de gris.
 <section class="slide level2">
 
 <h3 id="colores-rgb-red-green-blue">Colores RGB (red, green, blue)</h3>
-<div class="quarto-layout-panel" data-layout="[30,70]">
-<div class="quarto-layout-row">
-<div class="column quarto-layout-cell" style="flex-basis: 30.0%;justify-content: flex-start;">
-<div id="fig-rgb" class="quarto-float quarto-figure quarto-figure-center">
+<p>Además de diferentes tonos de gris, <em>Processing</em> permite definir colores a partir de los tres colores primarios: rojo, verde y azul (RGB). Cuando los tres componentes toman el valor máximo (255), el color resultante es el blanco. En una escala de grises, los tres valores RGB coinciden; por ejemplo, el color (0, 0, 0) corresponde al negro. Por otro lado, si sólo activamos un canal con 255, y dejamos el resto a 0, obtenemos rojo, verde o azul.</p>
+<div id="fig-rgb" class="p1-figure-uza quarto-float quarto-figure quarto-figure-center">
 <figure class="quarto-float quarto-float-fig">
 <div aria-describedby="fig-rgb-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img data-src="../resources/practica1/images/primary-colors.png">
+<div class="p1-rgb-demo-uza" data-p1-rgb-demo="">
+  <div class="p1-rgb-picker-uza">
+    <canvas class="p1-rgb-field-uza" width="280" height="280" data-color-field="" aria-label="Selector de saturación y brillo"></canvas>
+    <canvas class="p1-rgb-hue-uza" width="30" height="280" data-hue-strip="" aria-label="Selector de tono"></canvas>
+  </div>
+  <div class="p1-rgb-values-uza">
+    <span class="p1-rgb-chip-uza" data-color-chip=""></span>
+    <dl>
+      <div><dt>R</dt><dd data-channel-value="r">255</dd></div>
+      <div><dt>G</dt><dd data-channel-value="g">180</dd></div>
+      <div><dt>B</dt><dd data-channel-value="b">40</dd></div>
+    </dl>
+    <code data-hex="">#FFB428</code>
+    <code data-code="">fill(255, 180, 40);</code>
+  </div>
+</div>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-rgb-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figura&nbsp;9: Representación de los colores primarios RGB.
+Figura&nbsp;9: Mezcla interactiva de los canales primarios RGB.
 </figcaption>
 </figure>
 </div>
-</div><div class="column quarto-layout-cell" style="flex-basis: 70.0%;justify-content: flex-start;">
-<p>Además de diferentes tonos de gris, <em>Processing</em> permite definir colores a partir de los tres colores primarios: rojo, verde y azul (RGB). Cuando los tres componentes toman el valor máximo (255), el color resultante es el blanco. En una escala de grises, los tres valores RGB coinciden; por ejemplo, el color (0, 0, 0) corresponde al negro. Por otro lado, si sólo activamos un canal con 255, y dejamos el resto a 0, obtenemos rojo, verde o azul.</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12"><pre class="sourceCode numberSource java number-lines code-with-copy"><code class="sourceCode java"><span id="cb12-1"><a></a><span class="fu">fill</span><span class="op">(</span><span class="dv">255</span><span class="op">,</span> <span class="dv">0</span><span class="op">,</span> <span class="dv">0</span><span class="op">);</span>  <span class="co">// rojo</span></span>
 <span id="cb12-2"><a></a><span class="fu">fill</span><span class="op">(</span><span class="dv">0</span><span class="op">,</span> <span class="dv">255</span><span class="op">,</span> <span class="dv">0</span><span class="op">);</span>  <span class="co">// verde</span></span>
 <span id="cb12-3"><a></a><span class="fu">fill</span><span class="op">(</span><span class="dv">0</span><span class="op">,</span> <span class="dv">0</span><span class="op">,</span> <span class="dv">255</span><span class="op">);</span>  <span class="co">// azul</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
-</div></div>
-</div>
 <div class="callout callout-note callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
@@ -798,7 +844,7 @@ Figura&nbsp;11: Imagen del alienígena Zoog.
 <div id="fig-disney-animation" class="quarto-float quarto-figure quarto-figure-center">
 <figure class="quarto-float quarto-float-fig">
 <div aria-describedby="fig-disney-animation-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img data-src="../resources/practica1/images/disney-animation.svg">
+<img data-src="../resources/practica1/images/disney-animation-static.png">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-disney-animation-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figura&nbsp;12: Analogía del funcionamiento de <em>Processing</em>, y el proceso de animación. El resultado final se compone de varias llamadas a <code>draw</code>, y en cada llamada, se dibujan múltiples tipos de geometría.
@@ -957,7 +1003,7 @@ Figura&nbsp;12: Analogía del funcionamiento de <em>Processing</em>, y el proces
 <div id="fig-zoog-follow-mouse" class="quarto-float quarto-figure quarto-figure-center">
 <figure class="quarto-float quarto-float-fig">
 <div aria-describedby="fig-zoog-follow-mouse-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img data-src="../resources/practica1/images/zoog_size.svg">
+<img data-src="../resources/practica1/images/zoog_size-static.png">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-zoog-follow-mouse-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figura&nbsp;13: Algunas medidas de Zoog.
@@ -1308,12 +1354,12 @@ Figura&nbsp;15: Banner de la página oficial de <em>Processing</em>; a la izquie
         // The "normal" size of the presentation, aspect ratio will be preserved
         // when the presentation is scaled to fit different resolutions. Can be
         // specified using percentage units.
-        width: 1050,
+        width: 1280,
 
-        height: 700,
+        height: 720,
 
         // Factor of the display size that should remain empty around the content
-        margin: 0.1,
+        margin: 8.0e-2,
 
         math: {
           mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@2.7.9/MathJax.js',
@@ -1510,6 +1556,7 @@ Figura&nbsp;15: Banner de la página oficial de <em>Processing</em>; a la izquie
         }
       });
       </script>
+    <script src="../resources/practica1/js/practica1.js"></script>
     
 
 </body></html>
