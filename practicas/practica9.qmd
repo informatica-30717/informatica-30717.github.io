@@ -24,6 +24,10 @@ format:
         <script src="../resources/practica9/js/practica9.js"></script>
         <script src="../resources/practica9/js/practica9-colors.js"></script>
         <script type="module" src="../resources/practica9/js/practica9-phong.js"></script>
+  pdf:
+    output-ext: "pdf"
+    filters:
+      - ../resources/practica9/filters/pdf-cleanup.lua
 execute:
   echo: false
 resources:
@@ -62,8 +66,10 @@ El visualizador de la práctica se puede descargar desde [⤓ aquí](../resource
 
 Cuando abras un modelo `.obj` por primera vez, el visualizador puede crear junto a él un archivo `.obj.vbin`. Es una caché binaria para que las siguientes cargas sean más rápidas; si borras la caché, el visualizador la genera de nuevo.
 
-::: {.column-margin}
-El enlace de descarga está aquí, y también se encuentra disponible en *Moodle*, en la carpeta de la práctica 9.
+::: {.callout-note}
+## Descarga
+
+El enlace de descarga también se encuentra disponible en *Moodle*, en la carpeta de la práctica 9.
 :::
 
 Para importar el proyecto:
@@ -201,7 +207,7 @@ No hace falta leer toda la clase antes: usa el buscador de *Eclipse* y salta dir
    geometria.Matriz4x4 proyeccion = new geometria.Matriz4x4();
    ```
 2. Pon un **punto de ruptura** (*breakpoint*): botón derecho sobre la línea → ***Toggle Breakpoint***.
-3. Ejecuta la aplicación en **modo depuración** ![](../resources/practica2/images/debug.svg){width=1em}.
+3. Ejecuta la aplicación en **modo depuración**.
 4. Pulsa **`F6`** unas pocas veces para avanzar paso a paso y observa cómo se va construyendo la matriz de proyección.
 5. Pulsa **`F8`** para continuar la ejecución normal del programa.
 6. ¿Por qué el programa vuelve una y otra vez a esa misma línea aunque no hayas hecho nada?
@@ -302,6 +308,10 @@ $$
 \text{rotacionZ}(a) \;\to\; \begin{pmatrix} \cos a & \sin a & 0 & 0 \\ {-\sin a} & \cos a & 0 & 0 \\ 0 & 0 & 1 & 0 \\ 0 & 0 & 0 & 1 \end{pmatrix}
 $$
 
+<!-- Para mantener PDF y web juntos: cada bloque interactivo se oculta en PDF y su alternativa estática va justo debajo. -->
+
+:::: {.content-visible unless-format="pdf"}
+
 La siguiente visualización muestra cómo actúa **rotacionZ** sobre un punto en 3D. Mueve el ángulo y observa cómo se actualizan los valores de la matriz:
 
 ```{=html}
@@ -356,6 +366,23 @@ La siguiente visualización muestra cómo actúa **rotacionZ** sobre un punto en
 </div>
 ```
 
+::::
+
+:::: {.content-visible when-format="pdf"}
+
+La versión HTML incluye una visualización interactiva de `rotacionZ`. En PDF, quédate con este caso fijo para $a=35^\circ$:
+
+| Magnitud | Valor aproximado |
+|---|---:|
+| $\cos a$ | 0.819 |
+| $\sin a$ | 0.574 |
+| Punto inicial | $(0.72,\ 0.24,\ 0.38)$ |
+| Punto rotado | $(0.45,\ 0.61,\ 0.38)$ |
+
+La rotación respecto al eje Z cambia las coordenadas $x$ e $y$, pero mantiene constante la coordenada $z$.
+
+::::
+
 ---
 
 ### La proyección en perspectiva
@@ -363,6 +390,8 @@ La siguiente visualización muestra cómo actúa **rotacionZ** sobre un punto en
 Aquí aparece un efecto que ya conoces de la fotografía: **los objetos lejanos se ven más pequeños, y cambiar la focal cambia cuánto abarca la cámara**.
 
 En el visor sucede lo mismo. Primero se coloca el objeto con respecto a la cámara, después se aplica la perspectiva y al final se convierten las coordenadas a píxeles de la pantalla. Si solo quieres quedarte con una idea, quédate con que **una distancia focal mayor cierra la vista, mientras que una distancia focal menor la abre**.
+
+:::: {.content-visible unless-format="pdf"}
 
 ```{=html}
 <div class="focal-triptych-uza">
@@ -411,6 +440,22 @@ En el visor sucede lo mismo. Primero se coloca el objeto con respecto a la cáma
 
 ```
 
+::::
+
+:::: {.content-visible when-format="pdf"}
+
+::: {#fig-practica9-focal layout-ncol=3}
+![65 mm: encuadre amplio.](../resources/practica9/images/house_65mm.png){width=100%}
+
+![80 mm: vista de referencia.](../resources/practica9/images/house_80mm.png){width=100%}
+
+![100 mm: encuadre estrecho.](../resources/practica9/images/house_100mm.png){width=100%}
+
+A mayor distancia focal, menor campo de visión y mayor imagen proyectada sobre el sensor.
+:::
+
+::::
+
 Una manera muy simple de resumirlo es esta:
 
 $$
@@ -456,6 +501,8 @@ No hace falta preocuparse aquí por el signo exacto de cada transformación. Par
 
 ---
 
+:::: {.content-visible unless-format="pdf"}
+
 La siguiente visualización muestra ese proceso con una cámara idealizada en 3D. El plano de imagen tiene ancho <em>w</em>, alto <em>h</em> y está situado a una distancia focal <em>f</em> del centro de proyección. Ajusta los parámetros para ver cómo cambia el *frustum* y la imagen proyectada del objeto. Si la imagen formada es mayor que el sensor, el sensor sólo registra una parte y el objeto aparece recortado.
 
 ```{=html}
@@ -498,6 +545,25 @@ La siguiente visualización muestra ese proceso con una cámara idealizada en 3D
   </div>
 </div>
 ```
+
+::::
+
+:::: {.content-visible when-format="pdf"}
+
+La versión HTML permite ajustar el sensor y la distancia focal. En PDF, este caso fijo resume la lectura de la escena:
+
+| Parámetro | Valor |
+|---|---:|
+| Ancho del sensor, $w$ | 36 mm |
+| Alto del sensor, $h$ | 24 mm |
+| Distancia focal, $f$ | 80 mm |
+| Relación de aspecto, $w/h$ | 1.50 |
+| Campo de visión horizontal | 25.36° |
+| Campo de visión vertical | 17.06° |
+
+Si la imagen proyectada del objeto es mayor que el sensor, la proyección existe, pero el sensor solo registra una parte y el objeto aparece recortado.
+
+::::
 
 ---
 
@@ -547,6 +613,8 @@ El visualizador ofrece dos modos principales. En esta práctica nos interesa sob
 - **Malla de alambre** (`pintarMallaAlambre`): se recorren todas las `Caras`, se transforman sus `Puntos`y se dibujan solo las aristas.
 - **Raster**: se rellena cada cara visible y se calcula el color de cada píxel con el modelo de iluminación de Phong. Además, se mantiene un ***z-buffer***, es decir, un registro de profundidad para que una superficie del fondo no tape a otra que está delante.
 
+:::: {.content-visible unless-format="pdf"}
+
 ```{=html}
 <div class="img-compare" role="slider" aria-label="Malla de alambre frente a raster" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50" tabindex="0" style="max-width:560px; margin:0.75rem auto;">
   <img src="../resources/practica9/images/wireframe.png" alt="Vista en malla de alambre">
@@ -560,6 +628,20 @@ El visualizador ofrece dos modos principales. En esta práctica nos interesa sob
 </div>
 <small class="img-compare-caption">El mismo objeto en los dos modos de visualización (focal 80 mm): arrastrar para comparar.</small>
 ```
+
+::::
+
+:::: {.content-visible when-format="pdf"}
+
+::: {#fig-practica9-render-modes layout-ncol=2}
+![Malla de alambre.](../resources/practica9/images/wireframe.png){width=100%}
+
+![Ráster con iluminación de Phong.](../resources/practica9/images/house_80mm.png){width=100%}
+
+El mismo objeto en los dos modos de visualización del programa, con focal de 80 mm.
+:::
+
+::::
 
 En ambos modos se puede activar el ***backface culling*** (método `considerarCara`), que descarta las caras cuya normal apunta en sentido contrario a la cámara, acelerando el proceso de pintado.
 
@@ -589,7 +671,9 @@ $$
 C_p = k_a\, C_a \;+\; k_d\, C_l\,(n_p \cdot d_l) \;+\; k_s\, C_l\,(r_p \cdot v)^{e}
 $$
 
-No hace falta memorizar todos los símbolos. En la práctica basta con relacionarlos con los controles del visualizador: `ka` añade luz base, `kd` controla la respuesta mate o difusa, `ks` refuerza el brillo y `e` hace ese brillo más abierto o más concentrado. Por otro lado, los términos `Ca` y `Cl` modelan la luz, y no el material del objeto. Hay una comparativa un poco más en detalle al final de este guion.
+No hace falta memorizar todos los símbolos. En la práctica basta con relacionarlos con los controles del visualizador: `ka` añade luz base, `kd` controla la respuesta mate o difusa, `ks` refuerza el brillo y `e` hace ese brillo más abierto o más concentrado. Por otro lado, los términos `Ca` y `Cl` modelan la luz, y no el material del objeto.
+
+:::: {.content-visible unless-format="pdf"}
 
 La siguiente visualización 3D te permite modificar esos parámetros y ver su efecto en tiempo real, igual que harías al ajustar un material y una luz en un software 3D. Arrastra para orbitar y usa la rueda para hacer zoom.
 
@@ -641,12 +725,34 @@ La siguiente visualización 3D te permite modificar esos parámetros y ver su ef
 </div>
 ```
 
+::::
+
+:::: {.content-visible when-format="pdf"}
+
+La versión HTML incluye un visor 3D interactivo para cambiar `ka`, `kd`, `ks`, `e`, `Ca` y `Cl`. En PDF, la @fig-practica9-phong-materials ofrece una lectura estática de la misma idea: una superficie mate se entiende sobre todo con `kd`, mientras que una superficie brillante o metálica necesita una contribución especular mayor, controlada por `ks` y por el exponente `e`.
+
+::: {#fig-practica9-phong-materials layout-ncol=2}
+![Material mate difuso.](../resources/practica9/images/mitsuba_bsdf_diffuse_plain.jpg){width=100%}
+
+![Base difusa plástica.](../resources/practica9/images/mitsuba_bsdf_pplastic_diffuse_component.jpg){width=100%}
+
+![Metal especular.](../resources/practica9/images/mitsuba_bsdf_conductor_gold.jpg){width=100%}
+
+![Brillo plástico.](../resources/practica9/images/mitsuba_bsdf_pplastic_specular_component.jpg){width=100%}
+
+Referencias visuales para interpretar `kd`, `ks` y `e` en el modelo de Phong. Las imágenes proceden de la documentación de Mitsuba 3 sobre materiales BSDF y se usan aquí como referencia cualitativa.
+:::
+
+::::
+
 ---
 
 Las siguientes imágenes no son capturas literales del visualizador, sino simplemente imágenes de apoyo para comprender mejor qué aporta cada término de la iluminación de Phong. Quédate sobre todo con estas dos ideas:
 
 - Si quitas `ks`, desaparecen los brillos especulares.
 - Si quitas `ka`, las zonas en sombra se oscurecen mucho más.
+
+:::: {.content-visible unless-format="pdf"}
 
 Arrastra cada divisor y fíjate sobre todo en esas dos diferencias:
 
@@ -684,6 +790,32 @@ Arrastra cada divisor y fíjate sobre todo en esas dos diferencias:
 
 <p class="img-compare-credits">Comparación de términos <em>k</em><sub>a</sub>, <em>k</em><sub>d</sub> y <em>k</em><sub>s</sub> sobre una escena de <a href="https://www.blenderkit.com/get-blenderkit/1ac8808f-11e6-4c76-894e-227f1eb3cba5/" target="_blank" rel="noopener">BlenderKit</a>, autor: Russo 3D.</p>
 
+::::
+
+:::: {.content-visible when-format="pdf"}
+
+En PDF, compara las imágenes lado a lado:
+
+::: {#fig-practica9-phong-specular layout-ncol=2}
+![Iluminación completa: `ka + kd + ks`.](../resources/practica9/images/full.png){width=100%}
+
+![Sin componente especular: `ka + kd`.](../resources/practica9/images/ka_kd.png){width=100%}
+
+Comparación entre el modelo completo y el mismo caso sin componente especular. El brillo más evidente desaparece al quitar `ks`.
+:::
+
+::: {#fig-practica9-phong-ambient layout-ncol=2}
+![Ambiente más difusa: `ka + kd`.](../resources/practica9/images/ka_kd.png){width=100%}
+
+![Solo difusa: `kd`.](../resources/practica9/images/kd.png){width=100%}
+
+Comparación entre ambiente más difusa y solo difusa. Sin `ka`, las zonas menos iluminadas quedan mucho más oscuras.
+:::
+
+Comparación de términos `ka`, `kd` y `ks` sobre una escena de BlenderKit, autor: Russo 3D.
+
+::::
+
 ---
 
 ::: {.callout-note}
@@ -692,6 +824,8 @@ Arrastra cada divisor y fíjate sobre todo en esas dos diferencias:
 - Pon en el visualizador una **luz completamente roja** (canales verde y azul a 0) y el **material completamente verde** (canales rojo y azul a 0). ¿De qué color queda el objeto? ¿Por qué?
 
 - Prueba con otras combinaciones de colores de luz y material.
+
+:::: {.content-visible unless-format="pdf"}
 
 La siguiente visualización sirve justo como **guía para responder a ese ejercicio**. No reproduce todo el modelo de Phong al detalle: se centra en la idea más importante aquí, que es cómo se combinan por canales el color de la luz y el del material en la parte ambiente/difusa. Si en el visualizador aparecen pequeños brillos, recuerda que proceden de la componente especular y tienden a seguir el color de la luz.
 ```{=html}
@@ -745,6 +879,22 @@ La siguiente visualización sirve justo como **guía para responder a ese ejerci
   </div>
 </div>
 ```
+
+::::
+
+:::: {.content-visible when-format="pdf"}
+
+Para responder en PDF, usa la multiplicación por canales. Si la luz es roja pura y el material es verde puro:
+
+| Canal | Luz | Material | Resultado |
+|---|---:|---:|---:|
+| R | 1.00 | 0.00 | 0.00 |
+| G | 0.00 | 1.00 | 0.00 |
+| B | 0.00 | 0.00 | 0.00 |
+
+El resultado ambiente/difuso es negro, porque ningún canal coincide entre la luz y el material. Si aparecen brillos especulares, tenderán a seguir el color de la luz.
+
+::::
 :::
 
 ---
@@ -767,14 +917,19 @@ Después, abre `renderer.Shader`. Justo después del bloque de `RenderMode.NORMA
 ```java
 if (mode == RenderMode.ONDAS)
 {
-  return shadeOndas(pointX, pointY, pointZ, nx, ny, nz);
+  return shadeOndas(
+      pointX, pointY, pointZ,
+      nx, ny, nz
+  );
 }
 ```
 
 Por último, añade este método cerca de `shadeNormals`. Esta versión ya funciona y suele dar un resultado vistoso:
 
 ```java
-private int shadeOndas(double x, double y, double z, double nx, double ny, double nz)
+private int shadeOndas(
+    double x, double y, double z,
+    double nx, double ny, double nz)
 {
   double escala = 0.18;
 
@@ -822,6 +977,8 @@ Sin entrar en todos los símbolos, viene a decir que el color que vemos en un pu
 :::
 
 ---
+
+:::: {.content-visible unless-format="pdf"}
 
 El siguiente esquema no pretende que aprendas *path tracing* ni que lo programes: solo visualiza la idea de los rebotes. Desde una pequeña abertura de la cámara se lanzan varios rayos y, cada vez que uno choca con una superficie, nace un nuevo rayo desde ese último punto. Los caminos que terminan encontrando la fuente emisiva aparecen en color; los que no lo consiguen quedan en gris.
 
@@ -873,6 +1030,23 @@ El siguiente esquema no pretende que aprendas *path tracing* ni que lo programes
 
 ```
 
+::::
+
+:::: {.content-visible when-format="pdf"}
+
+El esquema interactivo de la versión HTML permite cambiar el número de rayos y el máximo de rebotes. En PDF, la idea se resume así:
+
+| Elemento | Lectura |
+|---|---|
+| Rayo primario | Sale de la cámara y busca una superficie visible. |
+| Rebote | Al chocar con una superficie, nace una nueva dirección aleatoria. |
+| Camino que llega a la luz | Aporta energía al píxel. |
+| Camino que no llega a la luz | Aporta poca o ninguna energía en esa muestra. |
+
+Al aumentar el número de rayos o la profundidad máxima, crecen las probabilidades de estimar mejor la iluminación indirecta, pero también aumenta el coste de cálculo.
+
+::::
+
 ---
 
 ### Muestras, ruido y convergencia
@@ -880,6 +1054,8 @@ El siguiente esquema no pretende que aprendas *path tracing* ni que lo programes
 La idea práctica es aproximar esos rebotes con muchas muestras. Si has visto que en *Blender* aparecen parámetros como `samples` o `spp` (*samples per pixel*), vienen de aquí: el motor lanza muchas trayectorias posibles de la luz y promedia su resultado.
 
 No hace falta que estudies el método en detalle para esta práctica. Quédate con dos consecuencias muy útiles: con pocas muestras aparece ruido; con muchas, la imagen se estabiliza, pero el tiempo de cálculo aumenta.
+
+:::: {.content-visible unless-format="pdf"}
 
 La intuición estadística puede verse con un ejemplo muy sencillo: estimar el **área de un círculo de radio 1** (que sabemos que es $\pi$) sin usar una fórmula cerrada, sino generando puntos aleatorios.
 
@@ -929,7 +1105,23 @@ La intuición estadística puede verse con un ejemplo muy sencillo: estimar el *
 </div>
 ```
 
+::::
+
+:::: {.content-visible when-format="pdf"}
+
+La intuición estadística puede verse con un ejemplo muy sencillo: estimar el **área de un círculo de radio 1** generando puntos aleatorios en el cuadrado $[-1,1]^2$.
+
+$$
+\pi \approx 4 \cdot \frac{\text{puntos dentro del círculo}}{\text{puntos totales}}
+$$
+
+Con pocas muestras, la estimación fluctúa mucho; con muchas muestras, converge lentamente hacia $\pi$. Esa es la misma intuición que se usa al aumentar las muestras por píxel en un render.
+
+::::
+
 ---
+
+:::: {.content-visible unless-format="pdf"}
 
 En el renderizado ocurre lo mismo: desde cada píxel se lanzan rayos aleatorios que rebotan entre superficies. Con **pocas muestras por píxel** (*spp*) el resultado es muy ruidoso; con **muchas muestras la imagen se va estabilizando**. Los dos *renders* de *Blender* siguientes ilustran este efecto (arrastra el divisor para comparar):
 
@@ -946,377 +1138,24 @@ En el renderizado ocurre lo mismo: desde cada píxel se lanzan rayos aleatorios 
 <small class="img-compare-caption">Comparación de convergencia en Blender Cycles: 50 spp frente a 500 spp, con tiempos orientativos del orden de ~3 min y ~8 min.</small>
 <p class="img-compare-credits">Escena del comparador spp procedente de <a href="https://www.blenderkit.com/get-blenderkit/a9267e7e-7cd7-4d5d-b479-8bf8fff2eddf/" target="_blank" rel="noopener">BlenderKit</a>, autor: Ibrohim Toxirov.</p>
 
+::::
+
+:::: {.content-visible when-format="pdf"}
+
+En el renderizado ocurre lo mismo: desde cada píxel se lanzan rayos aleatorios que rebotan entre superficies. Con **pocas muestras por píxel** (*spp*) el resultado es muy ruidoso; con **muchas muestras la imagen se va estabilizando**.
+
+::: {#fig-practica9-spp layout-ncol=2}
+![50 spp: pocas muestras por píxel, resultado ruidoso.](../resources/practica9/images/room_50spp.png){width=100%}
+
+![500 spp: más muestras por píxel, resultado más estable.](../resources/practica9/images/room_500spp.png){width=100%}
+
+Comparación de convergencia en Blender Cycles: 50 spp frente a 500 spp, con tiempos orientativos del orden de 3 min y 8 min.
+:::
+
+Escena del comparador spp procedente de BlenderKit, autor: Ibrohim Toxirov.
+
+::::
+
 Esto es lo que ocurre en *Blender Cycles* y en otros motores con visualización realista: con pocas muestras aparece ruido, mientras que con más muestras el resultado se limpia, aunque el tiempo de cálculo también aumenta. En visualización de edificios se puede utilizar para reproducir mucho mejor la iluminación global de interiores y exteriores.
 
 Para esta práctica, sin embargo, lo importante es que nuestro visualizador no busca ese nivel de realismo, sino *una respuesta rápida e interactiva*. Por eso usamos Phong.
-
-<!--
-## Materiales e iluminación de Phong
-
-A continuación tienes un mapa visual de la componente difusa y especular en el modelo de iluminación de Phong. No es un diagrama formal, sino una ayuda para entender mejor qué aporta cada término y cómo se combinan.
-
-```{=html}
-<div class="phong-bsdf-map-uza" aria-label="Mapa visual de componentes difusa y especular en Phong">
-  <style>
-    .phong-bsdf-map-uza {
-      --pbm-ink: #172033;
-      --pbm-muted: #5c677a;
-      --pbm-line: #d8e0ec;
-      --pbm-paper: #ffffff;
-      --pbm-soft: #f6f8fb;
-      --pbm-diff: #0072b2;
-      --pbm-spec: #d55e00;
-      margin: 1.35rem 0;
-    }
-
-    .phong-bsdf-map-uza * {
-      box-sizing: border-box;
-    }
-
-    .phong-bsdf-map-uza .pbm-shell {
-      border: 1px solid var(--pbm-line);
-      border-radius: 12px;
-      overflow: hidden;
-      background:
-        linear-gradient(135deg, rgba(0, 114, 178, 0.08), transparent 34%),
-        linear-gradient(315deg, rgba(213, 94, 0, 0.11), transparent 38%),
-        var(--pbm-soft);
-      box-shadow: 0 14px 34px rgba(23, 32, 51, 0.10);
-    }
-
-    .phong-bsdf-map-uza .pbm-head {
-      display: flex;
-      justify-content: space-between;
-      gap: 1rem;
-      align-items: flex-end;
-      padding: 1rem 1.1rem;
-      border-bottom: 1px solid rgba(216, 224, 236, 0.85);
-      background: rgba(255, 255, 255, 0.78);
-    }
-
-    .phong-bsdf-map-uza .pbm-title {
-      margin: 0;
-      color: var(--pbm-ink);
-      font-size: 1.04rem;
-      line-height: 1.22;
-      font-weight: 750;
-    }
-
-    .phong-bsdf-map-uza .pbm-subtitle {
-      margin: 0.25rem 0 0;
-      color: var(--pbm-muted);
-      font-size: 0.9rem;
-      line-height: 1.35;
-    }
-
-    .phong-bsdf-map-uza .pbm-key {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: flex-end;
-      gap: 0.45rem;
-      min-width: 210px;
-      font-size: 0.82rem;
-      color: var(--pbm-ink);
-    }
-
-    .phong-bsdf-map-uza .pbm-key span,
-    .phong-bsdf-map-uza .pbm-key span {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.35rem;
-      border: 1px solid var(--pbm-line);
-      border-radius: 999px;
-      background: rgba(255, 255, 255, 0.88);
-      padding: 0.28rem 0.55rem;
-      white-space: nowrap;
-    }
-
-    .phong-bsdf-map-uza .pbm-swatch {
-      width: 0.78rem;
-      height: 0.78rem;
-      border-radius: 50%;
-      display: inline-block;
-      border: 2px solid currentColor;
-    }
-
-    .phong-bsdf-map-uza .pbm-swatch.diff {
-      color: var(--pbm-diff);
-      background: repeating-linear-gradient(45deg, currentColor 0 2px, #fff 2px 4px);
-    }
-
-    .phong-bsdf-map-uza .pbm-swatch.spec {
-      color: var(--pbm-spec);
-      background: currentColor;
-    }
-
-    .phong-bsdf-map-uza .pbm-flow {
-      display: grid;
-      grid-template-columns: minmax(0, 1fr) minmax(190px, 0.72fr) minmax(0, 1fr);
-      gap: 1rem;
-      align-items: stretch;
-      padding: 1rem;
-    }
-
-    .phong-bsdf-map-uza .pbm-side {
-      display: grid;
-      grid-template-rows: repeat(2, minmax(0, 1fr));
-      gap: 0.75rem;
-      min-width: 0;
-    }
-
-    .phong-bsdf-map-uza .pbm-card {
-      position: relative;
-      margin: 0;
-      min-height: 0;
-      border-radius: 10px;
-      overflow: hidden;
-      border: 1px solid rgba(255, 255, 255, 0.85);
-      background: #111827;
-      box-shadow: 0 10px 24px rgba(23, 32, 51, 0.17);
-      aspect-ratio: 1 / 0.88;
-    }
-
-    .phong-bsdf-map-uza .pbm-card img {
-      display: block;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-
-    .phong-bsdf-map-uza .pbm-card figcaption {
-      position: absolute;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      padding: 1.6rem 0.75rem 0.65rem;
-      color: #fff;
-      font-size: 0.86rem;
-      line-height: 1.3;
-      background: linear-gradient(to top, rgba(8, 13, 24, 0.86), rgba(8, 13, 24, 0));
-      text-shadow: 0 1px 2px rgba(0, 0, 0, 0.55);
-    }
-
-    .phong-bsdf-map-uza .pbm-badge {
-      position: absolute;
-      top: 0.58rem;
-      left: 0.58rem;
-      border-radius: 999px;
-      padding: 0.28rem 0.52rem;
-      font-size: 0.77rem;
-      font-weight: 750;
-      letter-spacing: 0;
-      background: rgba(255, 255, 255, 0.92);
-      color: var(--pbm-ink);
-      border: 1px solid rgba(255, 255, 255, 0.7);
-    }
-
-    .phong-bsdf-map-uza .pbm-badge.diff {
-      box-shadow: inset 0 -3px 0 var(--pbm-diff);
-    }
-
-    .phong-bsdf-map-uza .pbm-badge.spec {
-      box-shadow: inset 0 -3px 0 var(--pbm-spec);
-    }
-
-    .phong-bsdf-map-uza .pbm-core {
-      display: grid;
-      align-content: center;
-      gap: 0.75rem;
-      min-width: 0;
-    }
-
-    .phong-bsdf-map-uza .pbm-node {
-      border: 1px solid var(--pbm-line);
-      border-radius: 10px;
-      background: rgba(255, 255, 255, 0.92);
-      padding: 0.82rem;
-      color: var(--pbm-ink);
-      box-shadow: 0 8px 20px rgba(23, 32, 51, 0.08);
-    }
-
-    .phong-bsdf-map-uza .pbm-formula {
-      display: flex;
-      flex-wrap: nowrap;
-      align-items: center;
-      justify-content: center;
-      gap: 0.26rem;
-      margin-bottom: 0.58rem;
-      font-size: 0.84rem;
-    }
-
-    .phong-bsdf-map-uza .pbm-token {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      min-width: 2.05rem;
-      border-radius: 999px;
-      padding: 0.18rem 0.34rem;
-      font-weight: 750;
-      border: 1px solid var(--pbm-line);
-      background: #fff;
-    }
-
-    .phong-bsdf-map-uza .pbm-token.ambient {
-      color: #4b5563;
-      background: #eef1f5;
-    }
-
-    .phong-bsdf-map-uza .pbm-token.diff {
-      color: #fff;
-      border-color: var(--pbm-diff);
-      background: var(--pbm-diff);
-    }
-
-    .phong-bsdf-map-uza .pbm-token.spec {
-      color: #fff;
-      border-color: var(--pbm-spec);
-      background: var(--pbm-spec);
-    }
-
-    .phong-bsdf-map-uza .pbm-mix {
-      display: grid;
-      grid-template-columns: 0.72fr 1fr 0.54fr;
-      height: 22px;
-      overflow: hidden;
-      border-radius: 999px;
-      border: 1px solid rgba(23, 32, 51, 0.18);
-      background: #eef1f5;
-    }
-
-    .phong-bsdf-map-uza .pbm-mix span:nth-child(1) {
-      background: #cfd6df;
-    }
-
-    .phong-bsdf-map-uza .pbm-mix span:nth-child(2) {
-      background: repeating-linear-gradient(45deg, var(--pbm-diff) 0 7px, #2c8ec4 7px 14px);
-    }
-
-    .phong-bsdf-map-uza .pbm-mix span:nth-child(3) {
-      background: var(--pbm-spec);
-    }
-
-    .phong-bsdf-map-uza .pbm-node p {
-      margin: 0.6rem 0 0;
-      color: var(--pbm-muted);
-      font-size: 0.86rem;
-      line-height: 1.35;
-    }
-
-    .phong-bsdf-map-uza .pbm-note p {
-      margin: 0;
-    }
-
-    .phong-bsdf-map-uza .pbm-note p + p {
-      margin-top: 0.58rem;
-      padding-top: 0.58rem;
-      border-top: 1px solid rgba(23, 32, 51, 0.18);
-    }
-
-    .phong-bsdf-map-uza .pbm-note {
-      border-radius: 10px;
-      padding: 0.78rem;
-      color: var(--pbm-ink);
-      background: rgba(255, 255, 255, 0.74);
-      border: 1px dashed rgba(23, 32, 51, 0.24);
-      font-size: 0.86rem;
-      line-height: 1.35;
-    }
-
-    .phong-bsdf-map-uza .pbm-credit {
-      margin: 0.65rem 0 0;
-      color: var(--pbm-muted);
-      font-size: 0.84rem;
-      line-height: 1.35;
-    }
-
-    @media (max-width: 820px) {
-      .phong-bsdf-map-uza .pbm-head {
-        align-items: flex-start;
-        flex-direction: column;
-      }
-
-      .phong-bsdf-map-uza .pbm-key {
-        justify-content: flex-start;
-      }
-
-      .phong-bsdf-map-uza .pbm-flow {
-        grid-template-columns: 1fr;
-      }
-
-      .phong-bsdf-map-uza .pbm-side {
-        grid-template-rows: auto;
-      }
-
-      .phong-bsdf-map-uza .pbm-card {
-        aspect-ratio: 1.18 / 1;
-      }
-    }
-  </style>
-
-  <div class="pbm-shell">
-    <div class="pbm-head">
-      <div>
-        <p class="pbm-title">Mapa visual: de superficie mate a reflejo metálico</p>
-        <p class="pbm-subtitle">Phong no es un BSDF físico, pero sus parámetros sirven para imitar estos comportamientos.</p>
-      </div>
-      <div class="pbm-key" aria-label="Leyenda">
-        <span><i class="pbm-swatch diff"></i><code>kd</code> luz dispersa</span>
-        <span><i class="pbm-swatch spec"></i><code>ks</code> reflejo dirigido</span>
-      </div>
-    </div>
-
-    <div class="pbm-flow">
-      <section class="pbm-side" aria-label="Ejemplos de componente difusa">
-        <figure class="pbm-card">
-          <img src="../resources/practica9/images/mitsuba_bsdf_diffuse_plain.jpg" alt="Material difuso lambertiano renderizado en Mitsuba">
-          <span class="pbm-badge diff">Lambert / mate</span>
-          <figcaption>Casi todo se entiende con <code>kd</code>; <code>ks</code> sería bajo.</figcaption>
-        </figure>
-
-        <figure class="pbm-card">
-          <img src="../resources/practica9/images/mitsuba_bsdf_pplastic_diffuse_component.jpg" alt="Componente difusa de un material plástico renderizado en Mitsuba">
-          <span class="pbm-badge diff">Base plástica</span>
-          <figcaption>Solo la parte difusa del plástico; su brillo esta a la derecha.</figcaption>
-        </figure>
-      </section>
-
-      <section class="pbm-core" aria-label="Lectura de parametros Phong">
-        <div class="pbm-node">
-          <div class="pbm-formula" aria-label="ka mas kd mas ks">
-            <span class="pbm-token ambient">ka</span>
-            <span>+</span>
-            <span class="pbm-token diff">kd</span>
-            <span>+</span>
-            <span class="pbm-token spec">ks</span>
-          </div>
-          <div class="pbm-mix" aria-hidden="true"><span></span><span></span><span></span></div>
-          <p><code>ka</code> levanta la escena, <code>kd</code> da cuerpo mate y <code>ks</code> añade el destello.</p>
-        </div>
-
-        <div class="pbm-note">
-          <p><strong>Plástico:</strong> base difusa (<code>kd</code>) + capa especular (<code>ks</code>).</p>
-          <p><strong>Metal:</strong> domina la parte especular y el reflejo también toma color.</p>
-        </div>
-      </section>
-
-      <section class="pbm-side" aria-label="Ejemplos de componente especular">
-        <figure class="pbm-card">
-          <img src="../resources/practica9/images/mitsuba_bsdf_conductor_gold.jpg" alt="Material conductor dorado renderizado en Mitsuba">
-          <span class="pbm-badge spec">Metal / conductor</span>
-          <figcaption>El reflejo manda: buen referente mental para <code>ks</code> alto.</figcaption>
-        </figure>
-
-        <figure class="pbm-card">
-          <img src="../resources/practica9/images/mitsuba_bsdf_pplastic_specular_component.jpg" alt="Componente especular de un material plástico renderizado en Mitsuba">
-          <span class="pbm-badge spec">Brillo plástico</span>
-          <figcaption><code>e</code> decide si el brillo se abre o se concentra.</figcaption>
-        </figure>
-      </section>
-    </div>
-  </div>
-
-  <p class="pbm-credit">
-    Imágenes: documentación de <a href="https://mitsuba.readthedocs.io/en/latest/src/generated/plugins_bsdfs.html">Mitsuba 3, BSDF plugins</a>. Usadas aquí como referencia visual cualitativa para los terminos de Phong.
-  </p>
-</div>
-```-->
