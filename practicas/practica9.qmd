@@ -521,7 +521,17 @@ Recuerda que las clases que debemos utilizar son `geometria.Punto` y `geometria.
 Puedes hacer dos cosas para comprobar el resultado de multiplicar ese punto por la matriz de rotación:
 
 - Ejecuta después el código en modo depuración para comprobar cómo se realiza esa rotación en el visualizador; 
-- O bien, muestra por pantalla los valores del punto resultante. Por ejemplo, utiliza `System.out.println(res.elemento(0) + ", " + res.elemento(1) + ", " + res.elemento(2));` para imprimir el resultado en la consola de *Eclipse*.
+- O bien, muestra por pantalla los valores del punto resultante.
+
+Por ejemplo, utiliza este código para imprimir el resultado en la consola de *Eclipse*:
+
+```java
+System.out.println(
+    res.elemento(0) + ", " +
+    res.elemento(1) + ", " +
+    res.elemento(2)
+);
+```
 :::
 
 ---
