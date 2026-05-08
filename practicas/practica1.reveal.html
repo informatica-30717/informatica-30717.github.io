@@ -419,7 +419,7 @@ Figura&nbsp;6: Ilustración interactiva de una matriz de píxeles y sus coordena
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode numberSource java number-lines code-with-copy"><code class="sourceCode java"><span id="cb4-1"><a></a><span class="bu">Line</span><span class="op">(</span><span class="dv">10</span><span class="op">,</span> <span class="dv">0</span><span class="op">,</span> <span class="dv">40</span><span class="op">,</span> <span class="dv">50</span><span class="op">);</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 <details>
 <summary>
-💡 Solución
+💡 Solución:
 </summary>
 <p>Processing es sensible al uso de mayúsculas y minúsculas. Por ejemplo, la función para dibujar una línea es <code>line</code>, no <code>Line</code> ni <code>LINE</code>.</p>
 Las palabras reservadas se muestran <span style="color:#1f77ff; font-weight:600;">resaltadas</span> en el editor, por lo que esta es una manera de ver si el nombre de una función está bien escrito. Los <span style="color:#FF0000; font-weight:600;">errores</span> se muestran en la pestaña <em>Errores</em> de la ventana inferior.
@@ -457,7 +457,7 @@ Las palabras reservadas se muestran <span style="color:#1f77ff; font-weight:600;
 <p>Dibuja varias líneas en un lienzo de tamaño 300x200 píxeles.</p>
 <details>
 <summary>
-💡 Solución
+💡 Solución:
 </summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode numberSource java number-lines code-with-copy"><code class="sourceCode java"><span id="cb5-1"><a></a><span class="fu">size</span><span class="op">(</span><span class="dv">300</span><span class="op">,</span> <span class="dv">200</span><span class="op">);</span></span>
 <span id="cb5-2"><a></a><span class="fu">line</span><span class="op">(</span><span class="dv">10</span><span class="op">,</span> <span class="dv">0</span><span class="op">,</span> <span class="dv">40</span><span class="op">,</span> <span class="dv">50</span><span class="op">);</span></span>
@@ -484,7 +484,7 @@ Las palabras reservadas se muestran <span style="color:#1f77ff; font-weight:600;
 <p>¿Puedes deducir qué parámetros son necesarios para dibujar algunas de las figuras geométricas mencionadas anteriormente? Puedes consultar la <a href="https://processing.org/reference#shape">documentación oficial de <em>Processing</em></a>, y más concretamente, la sección <em>2d primitives</em> en el apartado <em>Shape</em>.</p>
 <details>
 <summary>
-💡 Solución
+💡 Solución:
 </summary>
 <ul>
 <li class="fragment"><code>point(x, y)</code>: un punto en la posición (x, y).</li>
@@ -601,7 +601,7 @@ Figura&nbsp;8: Imagen representada únicamente con valores de gris.
 <section class="slide level2">
 
 <p>Por ejemplo, podemos definir el color del fondo, así como del borde y el relleno de un rectángulo de la siguiente manera:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode numberSource java number-lines code-with-copy"><code class="sourceCode java"><span id="cb9-1"><a></a><span class="fu">background</span><span class="op">(</span><span class="dv">0</span><span class="op">);</span>              <span class="co">// fondo </span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode numberSource java number-lines code-with-copy"><code class="sourceCode java"><span id="cb9-1"><a></a><span class="fu">background</span><span class="op">(</span><span class="dv">0</span><span class="op">);</span>              <span class="co">// fondo</span></span>
 <span id="cb9-2"><a></a></span>
 <span id="cb9-3"><a></a><span class="fu">stroke</span><span class="op">(</span><span class="dv">200</span><span class="op">);</span>                <span class="co">// borde</span></span>
 <span id="cb9-4"><a></a><span class="fu">fill</span><span class="op">(</span><span class="dv">100</span><span class="op">);</span>                  <span class="co">// relleno</span></span>
@@ -631,7 +631,7 @@ Figura&nbsp;8: Imagen representada únicamente con valores de gris.
 <p>Dibuja un círculo negro con borde gris, centrado en (20, 30) y con radio 10.</p>
 <details>
 <summary>
-💡 Solución
+💡 Solución:
 </summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="sourceCode numberSource java number-lines code-with-copy"><code class="sourceCode java"><span id="cb11-1"><a></a><span class="fu">stroke</span><span class="op">(</span><span class="dv">128</span><span class="op">);</span></span>
 <span id="cb11-2"><a></a><span class="fu">fill</span><span class="op">(</span><span class="dv">0</span><span class="op">);</span></span>
@@ -665,33 +665,8 @@ Figura&nbsp;8: Imagen representada únicamente con valores de gris.
 </section>
 <section class="slide level2">
 
-<h3 id="colores-rgb-red-green-blue">Colores RGB (red, green, blue)</h3>
+<h3 id="colores-rgb-red-green-blue">Colores RGB (<em>red</em>, <em>green</em>, <em>blue</em>)</h3>
 <p>Además de diferentes tonos de gris, <em>Processing</em> permite definir colores a partir de los tres colores primarios: rojo, verde y azul (RGB). Cuando los tres componentes toman el valor máximo (255), el color resultante es el blanco. En una escala de grises, los tres valores RGB coinciden; por ejemplo, el color (0, 0, 0) corresponde al negro. Por otro lado, si sólo activamos un canal con 255, y dejamos el resto a 0, obtenemos rojo, verde o azul.</p>
-<div id="fig-rgb" class="p1-figure-uza quarto-float quarto-figure quarto-figure-center">
-<figure class="quarto-float quarto-float-fig">
-<div aria-describedby="fig-rgb-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<div class="p1-rgb-demo-uza" data-p1-rgb-demo="">
-  <div class="p1-rgb-picker-uza">
-    <canvas class="p1-rgb-field-uza" width="280" height="280" data-color-field="" aria-label="Selector de saturación y brillo"></canvas>
-    <canvas class="p1-rgb-hue-uza" width="30" height="280" data-hue-strip="" aria-label="Selector de tono"></canvas>
-  </div>
-  <div class="p1-rgb-values-uza">
-    <span class="p1-rgb-chip-uza" data-color-chip=""></span>
-    <dl>
-      <div><dt>R</dt><dd data-channel-value="r">255</dd></div>
-      <div><dt>G</dt><dd data-channel-value="g">180</dd></div>
-      <div><dt>B</dt><dd data-channel-value="b">40</dd></div>
-    </dl>
-    <code data-hex="">#FFB428</code>
-    <code data-code="">fill(255, 180, 40);</code>
-  </div>
-</div>
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-rgb-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figura&nbsp;9: Mezcla interactiva de los canales primarios RGB.
-</figcaption>
-</figure>
-</div>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12"><pre class="sourceCode numberSource java number-lines code-with-copy"><code class="sourceCode java"><span id="cb12-1"><a></a><span class="fu">fill</span><span class="op">(</span><span class="dv">255</span><span class="op">,</span> <span class="dv">0</span><span class="op">,</span> <span class="dv">0</span><span class="op">);</span>  <span class="co">// rojo</span></span>
 <span id="cb12-2"><a></a><span class="fu">fill</span><span class="op">(</span><span class="dv">0</span><span class="op">,</span> <span class="dv">255</span><span class="op">,</span> <span class="dv">0</span><span class="op">);</span>  <span class="co">// verde</span></span>
 <span id="cb12-3"><a></a><span class="fu">fill</span><span class="op">(</span><span class="dv">0</span><span class="op">,</span> <span class="dv">0</span><span class="op">,</span> <span class="dv">255</span><span class="op">);</span>  <span class="co">// azul</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
@@ -713,7 +688,7 @@ Figura&nbsp;9: Mezcla interactiva de los canales primarios RGB.
 <li class="fragment"><code>fill(127, 255, 255)</code></li>
 <li class="fragment"><code>fill(255, 127, 255)</code></li>
 </ul>
-<p><strong>Pista</strong>: fíjate en la <a href="#/fig-rgb" class="quarto-xref">Figura&nbsp;9</a>.</p>
+<p><strong>Pista</strong>: fíjate en la <a href="#/fig-rgb" class="quarto-xref">Figura&nbsp;10</a>.</p>
 </div>
 </div>
 </div>
@@ -729,13 +704,38 @@ Figura&nbsp;9: Mezcla interactiva de los canales primarios RGB.
 <img data-src="../resources/practica1/images/hsv-picker.png">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-colorpicker-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figura&nbsp;10: Captura de pantalla del selector de color de <em>Processing</em>.
+Figura&nbsp;9: Captura de pantalla del selector de color de <em>Processing</em>.
 </figcaption>
 </figure>
 </div>
 </div><div class="column quarto-layout-cell" style="flex-basis: 55.6%;justify-content: flex-start;">
-<p>Como habréis podido observar a partir del Ejercicio 9, no es sencillo imaginar qué color genera una mezcla concreta de valores RGB, ni determinar qué valores exactos u aproximados de rojo, verde y azul necesitamos para componer un color que tengamos en mente. Por esta razón, <em>Processing</em> dispone de una herramienta, <strong><em>Selector de color</em></strong>, que permite interactuar con una paleta de colores y obtener valores de rojo, verde y azul. Podéis acceder a esta herramienta desde el menú <strong>Herramientas &gt; Selector de color</strong>.</p>
+<p>Como habréis podido observar a partir del Ejercicio 9, no es sencillo imaginar qué color genera una mezcla concreta de valores RGB, ni determinar qué valores exactos u aproximados de rojo, verde y azul necesitamos para componer un color que tengamos en mente. Por esta razón, <em>Processing</em> dispone de una herramienta, <strong><em>Selector de color</em></strong>, que permite interactuar con una paleta de colores y obtener valores de rojo, verde y azul. Podéis acceder a esta herramienta desde el menú <strong>Herramientas &gt; Selector de color</strong>. También podéis probar el selector que se muestra en la <a href="#/fig-rgb" class="quarto-xref">Figura&nbsp;10</a>, que es una implementación web de un selector de color similar al de <em>Processing</em>.</p>
 </div></div>
+</div>
+<div id="fig-rgb" class="p1-figure-uza quarto-float quarto-figure quarto-figure-center">
+<figure class="quarto-float quarto-float-fig">
+<div aria-describedby="fig-rgb-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="p1-rgb-demo-uza" data-p1-rgb-demo="">
+  <div class="p1-rgb-picker-uza">
+    <canvas class="p1-rgb-field-uza" width="280" height="280" data-color-field="" aria-label="Selector de saturación y brillo"></canvas>
+    <canvas class="p1-rgb-hue-uza" width="30" height="280" data-hue-strip="" aria-label="Selector de tono"></canvas>
+  </div>
+  <div class="p1-rgb-values-uza">
+    <span class="p1-rgb-chip-uza" data-color-chip=""></span>
+    <dl>
+      <div><dt>R</dt><dd data-channel-value="r">255</dd></div>
+      <div><dt>G</dt><dd data-channel-value="g">180</dd></div>
+      <div><dt>B</dt><dd data-channel-value="b">40</dd></div>
+    </dl>
+    <code data-hex="">#FFB428</code>
+    <code data-code="">fill(255, 180, 40);</code>
+  </div>
+</div>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-rgb-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;10: Mezcla interactiva de los canales primarios RGB.
+</figcaption>
+</figure>
 </div>
 </section>
 <section class="slide level2">
@@ -743,9 +743,9 @@ Figura&nbsp;10: Captura de pantalla del selector de color de <em>Processing</em>
 <h3 id="opacidad">Opacidad</h3>
 <p>Además de los canales R, G y B, también podemos indicar un valor de <strong>opacidad</strong>. De esta manera, un valor de opacidad de 255 indica que elemento a dibujar es completamente opaco, y un valor de 0 indica que es completamente transparente. Para especificar la opacidad, bastante con indicar un cuarto valor en operaciones como <code>stroke</code> o <code>fill</code>.</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13"><pre class="sourceCode numberSource java number-lines code-with-copy"><code class="sourceCode java"><span id="cb13-1"><a></a><span class="fu">fill</span><span class="op">(</span><span class="dv">255</span><span class="op">,</span> <span class="dv">255</span><span class="op">,</span> <span class="dv">127</span><span class="op">);</span></span>
-<span id="cb13-2"><a></a><span class="fu">rect</span><span class="op">(</span><span class="dv">50</span><span class="op">,</span> <span class="dv">50</span><span class="op">,</span> <span class="dv">100</span><span class="op">,</span> <span class="dv">100</span><span class="op">);</span>     <span class="co">// rectángulo opaco     </span></span>
+<span id="cb13-2"><a></a><span class="fu">rect</span><span class="op">(</span><span class="dv">50</span><span class="op">,</span> <span class="dv">50</span><span class="op">,</span> <span class="dv">100</span><span class="op">,</span> <span class="dv">100</span><span class="op">);</span>     <span class="co">// rectángulo opaco</span></span>
 <span id="cb13-3"><a></a></span>
-<span id="cb13-4"><a></a><span class="fu">fill</span><span class="op">(</span><span class="dv">255</span><span class="op">,</span> <span class="dv">0</span><span class="op">,</span> <span class="dv">127</span><span class="op">,</span> <span class="dv">127</span><span class="op">);</span>     </span>
+<span id="cb13-4"><a></a><span class="fu">fill</span><span class="op">(</span><span class="dv">255</span><span class="op">,</span> <span class="dv">0</span><span class="op">,</span> <span class="dv">127</span><span class="op">,</span> <span class="dv">127</span><span class="op">);</span></span>
 <span id="cb13-5"><a></a><span class="fu">rect</span><span class="op">(</span><span class="dv">20</span><span class="op">,</span> <span class="dv">20</span><span class="op">,</span> <span class="dv">50</span><span class="op">,</span> <span class="dv">50</span><span class="op">);</span>       <span class="co">// rectángulo semitransparente</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 <section id="programas-dinámicos" class="slide level2">
@@ -1029,7 +1029,7 @@ Figura&nbsp;13: Algunas medidas de Zoog.
 <p>Crea un programa que traslade una esfera de izquierda a derecha en la ventana. Utiliza una variable para almacenar la posición horizontal de la esfera, y actualízala en cada iteración del bucle <code>draw</code>.</p>
 <details>
 <summary>
-💡 Solución
+💡 Solución:
 </summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb17"><pre class="sourceCode numberSource java number-lines code-with-copy"><code class="sourceCode java"><span id="cb17-1"><a></a><span class="dt">int</span> circleX <span class="op">=</span> <span class="dv">100</span><span class="op">;</span></span>
 <span id="cb17-2"><a></a><span class="dt">int</span> circleY <span class="op">=</span> <span class="dv">100</span><span class="op">;</span></span>

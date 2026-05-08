@@ -1,0 +1,218 @@
+% PDF style for Practica 9.
+% A modest university handout look: classical type, clear hierarchy,
+% restrained color, and durable code/callout styling.
+
+\usepackage{graphicx}
+\usepackage[export]{adjustbox}
+\usepackage{fontspec}
+\usepackage{microtype}
+\usepackage{scrlayer-scrpage}
+\usepackage{tikz}
+\usepackage{fvextra}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage[skins,breakable]{tcolorbox}
+
+\providecommand{\practicaPdfCoverImage}{}
+
+\definecolor{uzaInk}{HTML}{172033}
+\definecolor{uzaMuted}{HTML}{5F6B7A}
+\definecolor{uzaBlue}{HTML}{1F5F8B}
+\definecolor{uzaBlueDark}{HTML}{153E5C}
+\definecolor{uzaCyan}{HTML}{EAF4F7}
+\definecolor{uzaLine}{HTML}{D7E2EA}
+\definecolor{uzaCodeBg}{HTML}{F5F7F9}
+\definecolor{uzaTip}{HTML}{237A57}
+\definecolor{uzaWarn}{HTML}{A65F00}
+
+\IfFontExistsTF{TeX Gyre Pagella}{
+  \setmainfont{TeX Gyre Pagella}
+}{}
+\IfFontExistsTF{TeX Gyre Heros}{
+  \setsansfont{TeX Gyre Heros}
+}{}
+\IfFontExistsTF{TeX Gyre Cursor}{
+  \setmonofont{TeX Gyre Cursor}[Scale=0.86]
+}{
+  \setmonofont{Latin Modern Mono}[Scale=0.88]
+}
+
+\KOMAoptions{parskip=half}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.55em plus 0.15em minus 0.08em}
+\linespread{1.035}
+
+\addtokomafont{disposition}{\sffamily\color{uzaBlueDark}}
+\addtokomafont{section}{\LARGE}
+\addtokomafont{subsection}{\Large}
+\addtokomafont{subsubsection}{\normalsize\bfseries}
+\RedeclareSectionCommand[beforeskip=2.2em plus 0.4em minus 0.2em,afterskip=1.0em]{section}
+\RedeclareSectionCommand[beforeskip=1.2em,afterskip=0.55em]{subsection}
+\RedeclareSectionCommand[beforeskip=1.0em,afterskip=0.35em]{subsubsection}
+
+\clearpairofpagestyles
+\automark[section]{section}
+\ihead{\sffamily\footnotesize\textcolor{uzaMuted}{Informática (30717)}}
+\ohead{\sffamily\footnotesize\textcolor{uzaMuted}{\headmark}}
+\cfoot{\sffamily\small\textcolor{uzaMuted}{\pagemark}}
+\setkomafont{pageheadfoot}{\normalfont}
+\KOMAoptions{headsepline=0.35pt}
+\addtokomafont{headsepline}{\color{uzaLine}}
+
+\makeatletter
+\AtBeginDocument{%
+  \hypersetup{
+    linkcolor=uzaBlueDark,
+    urlcolor=uzaBlue,
+    citecolor=uzaBlueDark
+  }%
+  \@ifundefined{Highlighting}{%
+    \DefineVerbatimEnvironment{Highlighting}{Verbatim}{
+      commandchars=\\\{\},
+      fontsize=\small,
+      breaklines=true,
+      breakanywhere=true
+    }%
+  }{%
+    \RecustomVerbatimEnvironment{Highlighting}{Verbatim}{
+      commandchars=\\\{\},
+      fontsize=\small,
+      breaklines=true,
+      breakanywhere=true
+    }%
+  }%
+  \@ifundefined{Shaded}{%
+    \newenvironment{Shaded}{%
+      \begin{tcolorbox}[
+        enhanced,
+        breakable,
+        sharp corners,
+        boxrule=0.25pt,
+        colback=uzaCodeBg,
+        colframe=uzaLine,
+        borderline west={1.4pt}{0pt}{uzaBlue},
+        left=2mm,
+        right=2mm,
+        top=1.4mm,
+        bottom=1.4mm,
+        before skip=0.75em,
+        after skip=0.75em
+      ]%
+    }{%
+      \end{tcolorbox}%
+    }%
+  }{%
+    \renewenvironment{Shaded}{%
+      \begin{tcolorbox}[
+        enhanced,
+        breakable,
+        sharp corners,
+        boxrule=0.25pt,
+        colback=uzaCodeBg,
+        colframe=uzaLine,
+        borderline west={1.4pt}{0pt}{uzaBlue},
+        left=2mm,
+        right=2mm,
+        top=1.4mm,
+        bottom=1.4mm,
+        before skip=0.75em,
+        after skip=0.75em
+      ]%
+    }{%
+      \end{tcolorbox}%
+    }%
+  }%
+}
+\makeatother
+
+\newcommand{\PracticeCode}[1]{%
+  \begin{Shaded}%
+  \VerbatimInput[
+    fontsize=\small,
+    breaklines=true,
+    breakanywhere=true
+  ]{#1}%
+  \end{Shaded}%
+}
+
+\makeatletter
+\renewcommand{\maketitle}{%
+  \begin{titlepage}
+    \thispagestyle{empty}
+    \begin{tikzpicture}[remember picture,overlay]
+      \fill[uzaCyan] (current page.north west) rectangle ([yshift=-72mm]current page.north east);
+      \fill[uzaBlue] (current page.north west) rectangle ([xshift=7mm]current page.south west);
+    \end{tikzpicture}
+    \vspace*{12mm}
+    {\sffamily\small\bfseries\textcolor{uzaBlue}{INFORMÁTICA (30717)}}\par
+    \vspace{5mm}
+    {\sffamily\bfseries\fontsize{30}{35}\selectfont\textcolor{uzaInk}{\@title}}\par
+    \vspace{3mm}
+    {\sffamily\Large\textcolor{uzaMuted}{Grado en Estudios en Arquitectura}}\par
+    \vspace{8mm}
+    {\color{uzaBlue}\rule{\textwidth}{0.6pt}}\par
+    \if\relax\detokenize\expandafter{\practicaPdfCoverImage}\relax
+    \else
+      \vspace{5mm}
+      {\centering\includegraphics[width=\textwidth,height=78mm,keepaspectratio]{\practicaPdfCoverImage}\par}
+    \fi
+    \vfill
+    {\sffamily\large\textcolor{uzaBlueDark}{Universidad de Zaragoza}}\par
+    \vspace{2mm}
+    {\sffamily\small\textcolor{uzaMuted}{Material de prácticas del curso 2025--2026}}\par
+  \end{titlepage}
+}
+\makeatother
+
+\captionsetup{
+  font={small,sf},
+  labelfont={bf,color=uzaBlueDark},
+  textfont={color=uzaInk},
+  justification=centering,
+  singlelinecheck=false,
+  skip=6pt
+}
+\captionsetup[subfigure]{
+  font={small,sf},
+  labelfont={bf,color=uzaBlueDark},
+  justification=centering,
+  singlelinecheck=true,
+  skip=4pt
+}
+
+\newcommand{\PracticeCredit}[1]{\textcolor{uzaMuted}{#1}}
+\newcommand{\PracticeImagePair}[6]{%
+  \begin{figure}[tbp]
+    \centering
+    \begin{minipage}[t]{0.485\linewidth}
+      \includegraphics[width=\linewidth]{#3}
+      \vspace{2mm}
+      \centering{\sffamily\footnotesize #4}
+    \end{minipage}\hfill
+    \begin{minipage}[t]{0.485\linewidth}
+      \includegraphics[width=\linewidth]{#5}
+      \vspace{2mm}
+      \centering{\sffamily\footnotesize #6}
+    \end{minipage}
+    \caption{\label{#1}#2}
+  \end{figure}
+}
+
+\renewcommand{\arraystretch}{1.16}
+\setlength{\tabcolsep}{6pt}
+\setkeys{Gin}{center}
+
+% Quarto callout colors are referenced by generated tcolorbox options.
+% Apply them at document start so they win over Quarto's defaults.
+\AtBeginDocument{%
+  \definecolor{quarto-callout-note-color}{HTML}{1F5F8B}%
+  \definecolor{quarto-callout-note-color-frame}{HTML}{1F5F8B}%
+  \definecolor{quarto-callout-tip-color}{HTML}{237A57}%
+  \definecolor{quarto-callout-tip-color-frame}{HTML}{237A57}%
+  \definecolor{quarto-callout-warning-color}{HTML}{A65F00}%
+  \definecolor{quarto-callout-warning-color-frame}{HTML}{A65F00}%
+  \definecolor{quarto-callout-important-color}{HTML}{9B2C2C}%
+  \definecolor{quarto-callout-important-color-frame}{HTML}{9B2C2C}%
+  \definecolor{quarto-callout-caution-color}{HTML}{B45309}%
+  \definecolor{quarto-callout-caution-color-frame}{HTML}{B45309}%
+}
