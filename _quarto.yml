@@ -5,6 +5,8 @@ project:
     - "practicas/*.qmd"
   resources:
     - "resources/**/*"
+  post-render:
+    - scripts/build-practice-tex.py
   preview:
     port: 3000
     browser: true

@@ -1,0 +1,772 @@
+% Options for packages loaded elsewhere
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+\PassOptionsToPackage{dvipsnames,svgnames,x11names}{xcolor}
+%
+\documentclass[
+  spanish,
+  11pt,
+  a4paper,
+  DIV=11,
+  numbers=noendperiod]{scrartcl}
+\usepackage{xcolor}
+\usepackage[top=24mm,bottom=24mm,left=24mm,right=24mm,headheight=14pt,headsep=8mm]{geometry}
+\usepackage{amsmath,amssymb}
+\setcounter{secnumdepth}{5}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+% Make \paragraph and \subparagraph free-standing
+\makeatletter
+\ifx\paragraph\undefined\else
+  \let\oldparagraph\paragraph
+  \renewcommand{\paragraph}{
+    \@ifstar
+      \xxxParagraphStar
+      \xxxParagraphNoStar
+  }
+  \newcommand{\xxxParagraphStar}[1]{\oldparagraph*{#1}\mbox{}}
+  \newcommand{\xxxParagraphNoStar}[1]{\oldparagraph{#1}\mbox{}}
+\fi
+\ifx\subparagraph\undefined\else
+  \let\oldsubparagraph\subparagraph
+  \renewcommand{\subparagraph}{
+    \@ifstar
+      \xxxSubParagraphStar
+      \xxxSubParagraphNoStar
+  }
+  \newcommand{\xxxSubParagraphStar}[1]{\oldsubparagraph*{#1}\mbox{}}
+  \newcommand{\xxxSubParagraphNoStar}[1]{\oldsubparagraph{#1}\mbox{}}
+\fi
+\makeatother
+
+
+\usepackage{longtable,booktabs,array}
+\usepackage{calc} % for calculating minipage widths
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+% Allow footnotes in longtable head/foot
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
+\usepackage{graphicx}
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+
+
+
+\ifLuaTeX
+\usepackage[bidi=basic]{babel}
+\else
+\usepackage[bidi=default]{babel}
+\fi
+% get rid of language-specific shorthands (see #6817):
+\let\LanguageShortHands\languageshorthands
+\def\languageshorthands#1{}
+
+
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+
+
+
+ 
+
+
+\newcommand{\practicaPdfCoverImage}{../resources/practica1/images/fractal.jpg}
+\input{../resources/latex/practice-pdf-style.tex}
+\KOMAoption{captions}{tableheading}
+\makeatletter
+\@ifpackageloaded{tcolorbox}{}{\usepackage[skins,breakable]{tcolorbox}}
+\@ifpackageloaded{fontawesome5}{}{\usepackage{fontawesome5}}
+\definecolor{quarto-callout-color}{HTML}{909090}
+\definecolor{quarto-callout-note-color}{HTML}{0758E5}
+\definecolor{quarto-callout-important-color}{HTML}{CC1914}
+\definecolor{quarto-callout-warning-color}{HTML}{EB9113}
+\definecolor{quarto-callout-tip-color}{HTML}{00A047}
+\definecolor{quarto-callout-caution-color}{HTML}{FC5300}
+\definecolor{quarto-callout-color-frame}{HTML}{acacac}
+\definecolor{quarto-callout-note-color-frame}{HTML}{4582ec}
+\definecolor{quarto-callout-important-color-frame}{HTML}{d9534f}
+\definecolor{quarto-callout-warning-color-frame}{HTML}{f0ad4e}
+\definecolor{quarto-callout-tip-color-frame}{HTML}{02b875}
+\definecolor{quarto-callout-caution-color-frame}{HTML}{fd7e14}
+\makeatother
+\makeatletter
+\@ifpackageloaded{caption}{}{\usepackage{caption}}
+\AtBeginDocument{%
+\ifdefined\contentsname
+  \renewcommand*\contentsname{Tabla de contenidos}
+\else
+  \newcommand\contentsname{Tabla de contenidos}
+\fi
+\ifdefined\listfigurename
+  \renewcommand*\listfigurename{Listado de Figuras}
+\else
+  \newcommand\listfigurename{Listado de Figuras}
+\fi
+\ifdefined\listtablename
+  \renewcommand*\listtablename{Listado de Tablas}
+\else
+  \newcommand\listtablename{Listado de Tablas}
+\fi
+\ifdefined\figurename
+  \renewcommand*\figurename{Figura}
+\else
+  \newcommand\figurename{Figura}
+\fi
+\ifdefined\tablename
+  \renewcommand*\tablename{Tabla}
+\else
+  \newcommand\tablename{Tabla}
+\fi
+}
+\@ifpackageloaded{float}{}{\usepackage{float}}
+\floatstyle{ruled}
+\@ifundefined{c@chapter}{\newfloat{codelisting}{h}{lop}}{\newfloat{codelisting}{h}{lop}[chapter]}
+\floatname{codelisting}{Listado}
+\newcommand*\listoflistings{\listof{codelisting}{Listado de Listados}}
+\makeatother
+\makeatletter
+\makeatother
+\makeatletter
+\@ifpackageloaded{caption}{}{\usepackage{caption}}
+\@ifpackageloaded{subcaption}{}{\usepackage{subcaption}}
+\makeatother
+\usepackage{bookmark}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  pdftitle={Práctica 1: Introducción a Processing},
+  pdflang={es},
+  colorlinks=true,
+  linkcolor={blue},
+  filecolor={Maroon},
+  citecolor={Blue},
+  urlcolor={Blue},
+  pdfcreator={LaTeX via pandoc}}
+
+
+\title{Práctica 1: Introducción a Processing}
+\author{}
+\date{}
+\begin{document}
+\maketitle
+
+\renewcommand*\contentsname{Tabla de contenidos}
+{
+\hypersetup{linkcolor=}
+\setcounter{tocdepth}{2}
+\tableofcontents
+}
+
+\clearpage
+
+\section{Objetivos de la práctica}
+
+\label{objetivos-de-la-práctica}
+
+Los objetivos de esta práctica son los siguientes:
+
+\begin{itemize}
+\tightlist
+\item
+  Familiarización con el ordenador y los elementos básicos de un sistema operativo.
+\item
+  Familiarización con el entorno de desarrollo \emph{Processing}.
+\item
+  Familiarización con aspectos básicos de programación a través de programas en \emph{Processing}.
+\end{itemize}
+
+\section{Processing}
+
+\label{processing}
+
+\subsection{Introducción}
+
+\label{introducción}
+
+\emph{Processing} es un lenguaje de programación y un entorno de desarrollo (\emph{Integrated Development Environment}, IDE).
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Basado en Java}.
+\item
+  \textbf{Producción de proyectos multimedia e interactivos}.
+\item
+  Creado por científicos del MIT en 2001.
+\item
+  Distribución gratuita y de código abierto.
+\end{itemize}
+
+\PracticeCenteredImage[width=0.3\textwidth, keepaspectratio]{../resources/practica1/images/processing-logo.png}
+
+La propia \href{https://processing.org/examples/}{página de Processing} muestra numerosos ejemplos de proyectos realizados con este lenguaje. También hay muchos ejemplos en Youtube, en particular, en el canal de \href{https://www.youtube.com/c/TheCodingTrain}{The Coding Train}.
+
+\begin{figure}
+
+\PracticeCenteredImage[width=0.65\textwidth, keepaspectratio]{../resources/practica1/images/processing-example.png}
+
+\caption{\label{fig-mandelbrot}Visualización del \href{https://processing.org/examples/mandelbrot.html}{fractal de Mandelbrot}.}
+
+\end{figure}%
+
+\begin{figure}
+\PracticeCenteredImage[width=0.65\textwidth, keepaspectratio]{../resources/practica1/images/thecodetrain-still.png}
+
+\caption{\label{fig-thecodetrain}Canal de Youtube \href{https://www.youtube.com/c/TheCodingTrain}{The Coding Train}.}
+
+\end{figure}%
+
+\subsection{El entorno de desarrollo}
+
+\label{el-entorno-de-desarrollo}
+
+El entorno de desarrollo de \emph{Processing} tiene un diseño minimalista que facilita su uso. La interfaz gráfica está compuesta por los siguientes elementos principales:
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Un menú de opciones} (archivo, editar, sketch, depuración, herramientas y ayuda).
+\item
+  \textbf{Dos botones para ejecutar y detener el programa.}
+\item
+  Un área central para escribir el código fuente (\textbf{editor}).
+\item
+  Una ventana inferior donde se muestran dos pestañas:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    \textbf{Consola}: salida estándar del programa.
+  \item
+    \textbf{Errores}: mensajes de error generados durante la ejecución.
+  \end{itemize}
+\end{itemize}
+
+Al ejecutar un programa se abrirá una \textbf{nueva ventana donde se mostrará el resultado de la ejecución}.
+
+\begin{figure}
+\PracticeCenteredImage[keepaspectratio]{../resources/practica1/images/ide.png}
+
+\caption{\label{fig-ide}Vista del entorno de desarrollo (derecha) y ventana \emph{pop-up} (izquierda) que redirige a ejemplos disponibles en su página web.}
+
+\end{figure}%
+
+\begin{tcolorbox}[enhanced jigsaw, toprule=.15mm, coltitle=black, titlerule=0mm, opacitybacktitle=0.6, breakable, colback=white, colframe=quarto-callout-warning-color-frame, colbacktitle=quarto-callout-warning-color!10!white, opacityback=0, title={Advertencia}, bottomtitle=1mm, rightrule=.15mm, toptitle=1mm, left=2mm, bottomrule=.15mm, leftrule=.75mm, arc=.35mm]
+
+El primer archivo que se crea en un nuevo proyecto de \emph{Processing} se denomina \texttt{sketch\_yymmdda}. Es recomendable cambiar el nombre del archivo para que tenga sentido con el programa que se va a desarrollar. Además, al guardarlo nos preguntará el nombre del proyecto, que también es recomendable que tenga sentido.
+
+Indicad una ubicación de fácil acceso en vuestro ordenador para guardar los proyectos de \emph{Processing}.
+
+\end{tcolorbox}
+
+\section{Dibujando figuras geométricas}
+
+\label{dibujando-figuras-geométricas}
+
+Las figuras geométricas se dibujan en una ventana que está formada por una \textbf{matriz de píxeles}. Cada píxel es un pequeño punto de luz que puede tener un color diferente. La combinación de todos los píxeles forma la imagen que vemos en la pantalla.
+
+Un píxel es la \textbf{unidad más pequeña de una imagen digital}. La resolución de una imagen se refiere a la cantidad de píxeles que contiene, y se expresa como el número de píxeles en el eje horizontal por el número de píxeles en el eje vertical (por ejemplo, 1920x1080 píxeles). Por ejemplo, la Figura~\ref{fig-highres} muestra una animación con una resolución alta, donde los píxeles no son visibles a simple vista. En cambio, en la Figura~\ref{fig-lowres} se ha reducido la resolución de la animación, y comienzan a ser visibles los píxeles individuales.
+
+\begin{figure}
+\PracticeCenteredImage[width=0.5\textwidth, keepaspectratio]{../resources/practica1/images/animation_pixels-still.png}
+
+\caption{\label{fig-highres}Fotograma de una animación con una resolución de pantalla alta.}
+
+\end{figure}%
+
+\begin{figure}
+\PracticeCenteredImage[width=0.5\textwidth, keepaspectratio]{../resources/practica1/images/animation_pixels_lowerres-still.png}
+
+\caption{\label{fig-lowres}Fotograma de una animación con una resolución de pantalla más baja, donde comienzan a ser visibles los píxeles.}
+
+\end{figure}%
+
+Para dibujar cualquier figura geométrica, es necesario especificar una o varias posiciones en la ventana. Dichas posiciones se definen mediante un par de coordenadas \textbf{\emph{(x, y)}}, donde \textbf{\emph{x}} indica la \textbf{posición horizontal} e \textbf{\emph{y}} la \textbf{posición vertical}. En \emph{Processing}, \textbf{el origen de coordenadas (0,0) se encuentra en la esquina superior izquierda de la ventana}, como se muestra en la Figura~\ref{fig-pixels}.
+
+\begin{tcolorbox}[enhanced jigsaw, toprule=.15mm, coltitle=black, titlerule=0mm, opacitybacktitle=0.6, breakable, colback=white, colframe=quarto-callout-note-color-frame, colbacktitle=quarto-callout-note-color!10!white, opacityback=0, title={Ejercicio 1 - Sistema de coordenadas}, bottomtitle=1mm, rightrule=.15mm, toptitle=1mm, left=2mm, bottomrule=.15mm, leftrule=.75mm, arc=.35mm]
+
+Dibuja una línea que va desde la posición (10, 0) hasta la posición (40, 50). Cuando se ejecute, os podréis dar cuenta de que el origen, (0,0), parte de la esquina superior izquierda.
+
+\PracticeCode{../resources/practica1/snippets/draw-line.java}
+
+\end{tcolorbox}
+
+\begin{figure}
+\PracticeCenteredImage[width=0.4\textwidth, keepaspectratio]{../resources/practica1/images/pixel-matrix.png}
+
+\caption{\label{fig-pixels}Ilustración de una matriz de píxeles, indicando las coordenadas de algunos de ellos.}
+
+\end{figure}%
+
+Este concepto puede entenderse como \textbf{darle un nombre a un conjunto de instrucciones para poder reutilizarlas fácilmente} más adelante. En \textbf{matemáticas}, una función toma uno o varios valores de entrada y produce un valor de salida siguiendo una regla. Por ejemplo, la función \(f(x) = x^2\) toma un número \(x\) y devuelve su cuadrado.
+
+En programación ocurre algo muy similar: una función recibe unos parámetros, ejecuta unas instrucciones con ellos y, opcionalmente, devuelve un resultado.
+
+Por ejemplo, podemos definir en Java una función que reciba un número entero y devuelva su cuadrado:
+
+\PracticeCode{../resources/practica1/snippets/square-function.java}
+
+Una vez definida, podemos usar la función tantas veces como queramos, simplemente indicando el valor de entrada:
+
+\PracticeCode{../resources/practica1/snippets/square-call.java}
+
+De este modo:
+
+\begin{itemize}
+\tightlist
+\item
+  \texttt{square} es el nombre de la función.
+\item
+  \texttt{x} es el parámetro de entrada.
+\item
+  \texttt{return} indica el valor que devuelve la función.
+\end{itemize}
+
+En \emph{Processing} ocurre exactamente lo mismo. La función \texttt{line}, por ejemplo, recibe cuatro parámetros (las coordenadas de dos puntos) y ejecuta una acción: dibujar una línea en la ventana. La diferencia es que, en este caso, la función no devuelve un valor, sino que produce un efecto visual en pantalla.
+
+\begin{tcolorbox}[enhanced jigsaw, toprule=.15mm, coltitle=black, titlerule=0mm, opacitybacktitle=0.6, breakable, colback=white, colframe=quarto-callout-warning-color-frame, colbacktitle=quarto-callout-warning-color!10!white, opacityback=0, title={Ejercicio 2 - Errores comunes}, bottomtitle=1mm, rightrule=.15mm, toptitle=1mm, left=2mm, bottomrule=.15mm, leftrule=.75mm, arc=.35mm]
+
+Prueba a copiar el siguiente código en el editor de \emph{Processing} y ejecutarlo:
+
+\PracticeCode{../resources/practica1/snippets/wrong-line-case.java}
+
+Solución:
+
+Processing es sensible al uso de mayúsculas y minúsculas. Por ejemplo, la función para dibujar una línea es \texttt{line}, no \texttt{Line} ni \texttt{LINE}.
+
+Las palabras reservadas se muestran {resaltadas} en el editor, por lo que esta es una manera de ver si el nombre de una función está bien escrito. Los {errores} se muestran en la pestaña \emph{Errores} de la ventana inferior.
+
+\end{tcolorbox}
+
+\begin{tcolorbox}[enhanced jigsaw, toprule=.15mm, coltitle=black, titlerule=0mm, opacitybacktitle=0.6, breakable, colback=white, colframe=quarto-callout-note-color-frame, colbacktitle=quarto-callout-note-color!10!white, opacityback=0, title={Ejercicio 3 - Múltiples formas geométricas}, bottomtitle=1mm, rightrule=.15mm, toptitle=1mm, left=2mm, bottomrule=.15mm, leftrule=.75mm, arc=.35mm]
+
+Prueba a dibujar varias líneas en diferentes posiciones de la pantalla, utilizando la instrucción \texttt{line} varias veces.
+
+\end{tcolorbox}
+
+\subsection{Lienzo}
+
+\label{lienzo}
+
+Las figuras geométricas se dibujan sobre un lienzo de tamaño predeterminado 100x100 píxeles. No obstante, es posible cambiar el tamaño del lienzo utilizando la función \texttt{size}, que recibe dos parámetros: el ancho y el alto del lienzo en píxeles.
+
+\begin{tcolorbox}[enhanced jigsaw, toprule=.15mm, coltitle=black, titlerule=0mm, opacitybacktitle=0.6, breakable, colback=white, colframe=quarto-callout-note-color-frame, colbacktitle=quarto-callout-note-color!10!white, opacityback=0, title={Ejercicio 4 - Tamaño del lienzo}, bottomtitle=1mm, rightrule=.15mm, toptitle=1mm, left=2mm, bottomrule=.15mm, leftrule=.75mm, arc=.35mm]
+
+Dibuja varias líneas en un lienzo de tamaño 300x200 píxeles.
+
+Solución:
+
+\PracticeCode{../resources/practica1/snippets/canvas-size-solution.java}
+
+\end{tcolorbox}
+
+\subsection{Tipos de figuras geométricas}
+
+\label{tipos-de-figuras-geométricas}
+
+Además de la línea utilizada en los ejercicios anteriores, \emph{Processing} permite dibujar otras figuras geométricas básicas, tales como \textbf{puntos}, \textbf{triángulos}, \textbf{cuadriláteros}, \textbf{rectángulos} y \textbf{elipses}.
+
+\begin{tcolorbox}[enhanced jigsaw, toprule=.15mm, coltitle=black, titlerule=0mm, opacitybacktitle=0.6, breakable, colback=white, colframe=quarto-callout-note-color-frame, colbacktitle=quarto-callout-note-color!10!white, opacityback=0, title={Ejercicio 5 - Deducción de parámetros}, bottomtitle=1mm, rightrule=.15mm, toptitle=1mm, left=2mm, bottomrule=.15mm, leftrule=.75mm, arc=.35mm]
+
+¿Puedes deducir qué parámetros son necesarios para dibujar algunas de las figuras geométricas mencionadas anteriormente? Puedes consultar la \href{https://processing.org/reference\#shape}{documentación oficial de \emph{Processing}}, y más concretamente, la sección \emph{2d primitives} en el apartado \emph{Shape}.
+
+Solución:
+
+\begin{itemize}
+\tightlist
+\item
+  \texttt{point(x,\ y)}: un punto en la posición (x, y).
+\item
+  \texttt{triangle(x1,\ y1,\ x2,\ y2,\ x3,\ y3)}: un triángulo con vértices en las posiciones (x1, y1), (x2, y2) y (x3, y3).
+\item
+  \texttt{quad(x1,\ y1,\ x2,\ y2,\ x3,\ y3,\ x4,\ y4)}: un cuadrilátero con vértices en las posiciones (x1, y1), (x2, y2), (x3, y3) y (x4, y4).
+\item
+  \texttt{rect(x,\ y,\ anchura,\ altura)}: un rectángulo con esquina superior izquierda en la posición (x, y), de anchura y altura especificadas.
+\item
+  \texttt{ellipse(x,\ y,\ anchura,\ altura)}: una elipse centrada en la posición (x, y), con anchura y altura especificadas.
+\end{itemize}
+
+\end{tcolorbox}
+
+\subsubsection{Dibujando rectángulos y elipses}
+
+\label{dibujando-rectángulos-y-elipses}
+
+Tanto en la documentación oficial, como en la solución del ejercicio anterior, os habréis podido dar cuenta de que las funciones \texttt{rect} y \texttt{ellipse} requieren cuatro parámetros: \textbf{dos para la posición} y \textbf{dos para el tamaño}. Sin embargo, hemos asumido que la posición siempre corresponde a la esquina superior izquierda del rectángulo o al centro de la elipse. Esta suposición es correcta por defecto, pero es posible cambiarla utilizando las funciones \texttt{rectMode} y \texttt{ellipseMode}. Más concretamente, estas funciones permiten definir cómo se interpretan las posiciones pasadas como parámetros a las funciones \texttt{rect} y \texttt{ellipse}. Existen dos modos principales para cada una de estas funciones:
+
+\begin{itemize}
+\tightlist
+\item
+  \texttt{CORNER}: la posición corresponde a la esquina superior izquierda del rectángulo o elipse.
+\item
+  \texttt{CENTER}: la posición corresponde al centro del rectángulo o elipse.
+\end{itemize}
+
+\begin{figure}
+\PracticeCenteredImage[width=1\linewidth,height=\textheight,keepaspectratio]{../resources/practica1/images/rect-mode.png}
+
+\caption{\label{fig-rectmodes}Representación de cómo se interpretan las posiciones en ambos modos para rectángulos y elipses.}
+
+\end{figure}%
+
+Por defecto, \emph{Processing} interpreta las posiciones de la siguiente manera:
+
+\PracticeCode{../resources/practica1/snippets/drawing-mode-default.java}
+
+También es posible cambiar esta interpretación usando:
+
+\PracticeCode{../resources/practica1/snippets/drawing-mode-alternative.java}
+
+\begin{tcolorbox}[enhanced jigsaw, toprule=.15mm, coltitle=black, titlerule=0mm, opacitybacktitle=0.6, breakable, colback=white, colframe=quarto-callout-note-color-frame, colbacktitle=quarto-callout-note-color!10!white, opacityback=0, title={Ejercicio 6 - Modo de dibujo}, bottomtitle=1mm, rightrule=.15mm, toptitle=1mm, left=2mm, bottomrule=.15mm, leftrule=.75mm, arc=.35mm]
+
+Intenta dibujar un círculo centrado en (20, 30) con radio 10 utilizando ambos modos. En el siguiente código tienes todas las instrucciones necesarias para completar el ejercicio:
+
+\PracticeCode{../resources/practica1/snippets/drawing-mode-exercise.java}
+
+\end{tcolorbox}
+
+\section{\texorpdfstring{Color en \emph{Processing}}{Color en Processing}}
+
+\label{color-en-processing}
+
+\subsection{Escala de grises}
+
+\label{escala-de-grises}
+
+Hasta ahora, hemos dibujado figuras geométricas sin especificar ningún color. Por defecto, las figuras se dibujan en negro sobre un fondo blanco.
+
+A continuación, veremos cómo especificar colores en \emph{Processing}. Por ahora, basta con componer colores en escala de grises. Para ello hay que tener en cuenta que la escala de un tono de gris va de 0 a 255; el valor 0 corresponde al negro y el valor 255 corresponde al blanco. Por ejemplo, la figura de la derecha se ha representado única y exclusivamente con diferentes valores de gris.
+
+En \emph{Processing}, las figuras tienen \textbf{borde} y \textbf{relleno}, que se definen mediante los métodos \texttt{stroke} y \texttt{fill}. Además, también puede controlarse el color de fondo de la ventana con \texttt{background}.
+
+\begin{figure}
+\PracticeCenteredImage[width=0.4\textwidth, keepaspectratio]{../resources/practica1/images/grayscale.png}
+
+\caption{\label{fig-grayscale}Imagen representada únicamente con valores de gris.}
+
+\end{figure}%
+
+Por ejemplo, podemos definir el color del fondo, así como del borde y el relleno de un rectángulo de la siguiente manera:
+
+\PracticeCode{../resources/practica1/snippets/grayscale-rect.java}
+
+Además, cabe destacar que \emph{Processing} funciona como una \textbf{máquina de estados}; es decir, \textbf{una vez se indica el color de borde o de relleno, este se utilizará para todas las figuras que se dibujen a continuación}. Por ejemplo, podemos dibujar dos rectángulos con el mismo color de borde, pero diferente color de relleno, de la siguiente manera:
+
+\PracticeCode{../resources/practica1/snippets/stateful-colors.java}
+
+\begin{tcolorbox}[enhanced jigsaw, toprule=.15mm, coltitle=black, titlerule=0mm, opacitybacktitle=0.6, breakable, colback=white, colframe=quarto-callout-note-color-frame, colbacktitle=quarto-callout-note-color!10!white, opacityback=0, title={Ejercicio 7 - Círculo y colores}, bottomtitle=1mm, rightrule=.15mm, toptitle=1mm, left=2mm, bottomrule=.15mm, leftrule=.75mm, arc=.35mm]
+
+Dibuja un círculo negro con borde gris, centrado en (20, 30) y con radio 10.
+
+Solución:
+
+\PracticeCode{../resources/practica1/snippets/circle-colors-solution.java}
+
+\end{tcolorbox}
+
+Intenta crear un lienzo de tamaño 30x30 y repite este ejercicio. \textbf{¿Qué sucede ahora?}
+
+\begin{tcolorbox}[enhanced jigsaw, toprule=.15mm, coltitle=black, titlerule=0mm, opacitybacktitle=0.6, breakable, colback=white, colframe=quarto-callout-note-color-frame, colbacktitle=quarto-callout-note-color!10!white, opacityback=0, title={Ejercicio 8 - Dibuja una forma geométrica}, bottomtitle=1mm, rightrule=.15mm, toptitle=1mm, left=2mm, bottomrule=.15mm, leftrule=.75mm, arc=.35mm]
+
+Trata de obtener algo parecido a la figura que se muestra debajo.
+
+\PracticeCenteredImage[width=0.3\linewidth, keepaspectratio]{../resources/practica1/images/render.png}
+
+\end{tcolorbox}
+
+\subsection{\texorpdfstring{Colores RGB (\emph{red}, \emph{green}, \emph{blue})}{Colores RGB (red, green, blue)}}
+
+\label{colores-rgb-red-green-blue}
+
+Además de diferentes tonos de gris, \emph{Processing} permite definir colores a partir de los tres colores primarios: rojo, verde y azul (RGB). Cuando los tres componentes toman el valor máximo (255), el color resultante es el blanco. En una escala de grises, los tres valores RGB coinciden; por ejemplo, el color (0, 0, 0) corresponde al negro. Por otro lado, si sólo activamos un canal con 255, y dejamos el resto a 0, obtenemos rojo, verde o azul.
+
+\begin{figure}
+\PracticeCenteredImage[width=0.35\linewidth,height=\textheight,keepaspectratio]{../resources/practica1/images/primary-colors.png}
+
+\caption{\label{fig-rgb}Representación de los colores primarios RGB.}
+
+\end{figure}%
+
+\PracticeCode{../resources/practica1/snippets/rgb-primary-colors.java}
+
+\begin{tcolorbox}[enhanced jigsaw, toprule=.15mm, coltitle=black, titlerule=0mm, opacitybacktitle=0.6, breakable, colback=white, colframe=quarto-callout-note-color-frame, colbacktitle=quarto-callout-note-color!10!white, opacityback=0, title={Ejercicio 9 - Colores RGB}, bottomtitle=1mm, rightrule=.15mm, toptitle=1mm, left=2mm, bottomrule=.15mm, leftrule=.75mm, arc=.35mm]
+
+¿Sabrías decir qué colores crearán las siguientes combinaciones de rojo, verde y azul?
+
+\begin{itemize}
+\tightlist
+\item
+  \texttt{fill(255,\ 255,\ 0)}
+\item
+  \texttt{fill(0,\ 255,\ 255)}
+\item
+  \texttt{fill(255,\ 0,\ 255)}
+\item
+  \texttt{fill(255,\ 255,\ 127)}
+\item
+  \texttt{fill(127,\ 255,\ 255)}
+\item
+  \texttt{fill(255,\ 127,\ 255)}
+\end{itemize}
+
+\textbf{Pista}: fíjate en la Figura~\ref{fig-rgb}.
+
+\end{tcolorbox}
+
+\begin{figure}
+\PracticeCenteredImage[width=0.5\textwidth, keepaspectratio]{../resources/practica1/images/hsv-picker.png}
+
+\caption{\label{fig-colorpicker}Captura de pantalla del selector de color de \emph{Processing}.}
+
+\end{figure}%
+
+Como habréis podido observar a partir del Ejercicio 9, no es sencillo imaginar qué color genera una mezcla concreta de valores RGB, ni determinar qué valores exactos u aproximados de rojo, verde y azul necesitamos para componer un color que tengamos en mente. Por esta razón, \emph{Processing} dispone de una herramienta, \textbf{\emph{Selector de color}}, que permite interactuar con una paleta de colores y obtener valores de rojo, verde y azul. Podéis acceder a esta herramienta desde el menú \textbf{Herramientas \textgreater{} Selector de color}. También podéis probar el selector que se muestra en la Figura~\ref{fig-rgb}, que es una implementación web de un selector de color similar al de \emph{Processing}.
+
+\subsection{Opacidad}
+
+\label{opacidad}
+
+Además de los canales R, G y B, también podemos indicar un valor de \textbf{opacidad}. De esta manera, un valor de opacidad de 255 indica que elemento a dibujar es completamente opaco, y un valor de 0 indica que es completamente transparente. Para especificar la opacidad, bastante con indicar un cuarto valor en operaciones como \texttt{stroke} o \texttt{fill}.
+
+\PracticeCode{../resources/practica1/snippets/alpha-colors.java}
+
+\section{Programas dinámicos}
+
+\label{programas-dinámicos}
+
+Hasta este momento, hemos escrito programas estáticos, es decir, programas que dibujan una imagen fija. A continuación, veremos cómo crear programas dinámicos que pueden cambiar con el tiempo.
+
+Comenzaremos con este bloque de código:
+
+\PracticeCode{../resources/practica1/snippets/zoog-static.java}
+
+\begin{figure}
+\PracticeCenteredImage[keepaspectratio]{../resources/practica1/images/zoog.png}
+
+\caption{\label{fig-zoog}Imagen del alienígena Zoog.}
+
+\end{figure}%
+
+\begin{tcolorbox}[enhanced jigsaw, toprule=.15mm, coltitle=black, titlerule=0mm, opacitybacktitle=0.6, breakable, colback=white, colframe=quarto-callout-note-color-frame, colbacktitle=quarto-callout-note-color!10!white, opacityback=0, title={Ejercicio 10 - Dibuja a Zoog}, bottomtitle=1mm, rightrule=.15mm, toptitle=1mm, left=2mm, bottomrule=.15mm, leftrule=.75mm, arc=.35mm]
+
+Intenta dibujar al alienígena Zoog utilizando el bloque de código anterior como referencia.
+
+\end{tcolorbox}
+
+\subsection{Comentarios}
+
+\label{comentarios}
+
+Aprovechando que nuestro programa empieza a ser un poco más largo, es recomendable añadir comentarios para explicar qué hace cada parte del código. En \emph{Processing}, los comentarios se indican con \texttt{//} para comentarios de una sola línea, o con \texttt{/*} y \texttt{*/} para comentarios multilínea. Además de para indicar qué hace una parte de nuestro código, también se pueden usar para desactivar temporalmente líneas de código durante la depuración. Por ejemplo, en el siguiente código se han añadido comentarios para explicar qué parte del cuerpo de Zoog dibuja cada bloque de instrucciones, y para desactivar el dibujo de la cabeza temporalmente:
+
+\PracticeCode{../resources/practica1/snippets/comments-example.java}
+
+\subsection{\texorpdfstring{Funciones \texttt{setup} y \texttt{draw}}{Funciones setup y draw}}
+
+\label{funciones-setup-y-draw}
+
+Cuando ejecutamos un programa en \emph{Processing}, el código no se ejecuta de arriba a abajo una sola vez, sino que utiliza un modelo de ejecución basado en dos fases bien diferenciadas: \texttt{setup()} y \texttt{draw()}.
+
+\begin{itemize}
+\tightlist
+\item
+  Al pulsar el botón , \emph{Processing} inicia el programa y lo primero que hace es llamar a la función \texttt{setup()}.
+\item
+  \textbf{La función \texttt{setup()} se ejecuta una única vez al comienzo del programa}. Su objetivo es preparar el entorno antes de empezar a dibujar. En esta función se suele definir el tamaño de la ventana, inicializar variables, configurar colores o modos de dibujo y cargar recursos como imágenes o fuentes. \textbf{Una vez que \texttt{setup()} termina, \emph{Processing} no vuelve a ejecutarla}.
+\item
+  Después de \texttt{setup()}, \emph{Processing} entra automáticamente en la función \texttt{draw()}. \textbf{La función \texttt{draw()} se ejecuta repetidamente}, normalmente unas sesenta veces por segundo. \textbf{En cada ejecución se dibuja un nuevo fotograma y se actualizan posiciones o estados}. Gracias a este bucle continuo es posible crear animaciones, juegos y visualizaciones interactivas.
+\end{itemize}
+
+\begin{figure}
+\PracticeCenteredImage[keepaspectratio]{../resources/practica1/images/disney-animation-static.png}
+
+\caption{\label{fig-disney-animation}Analogía del funcionamiento de \emph{Processing}, y el proceso de animación. El resultado final se compone de varias llamadas a \texttt{draw}, y en cada llamada, se dibujan múltiples tipos de geometría.}
+
+\end{figure}%
+
+\PracticeCenteredImage[width=0.3\textwidth, keepaspectratio]{practica1_files/figure-latex/mermaid-figure-1.png}
+
+Tanto \texttt{setup} como \texttt{draw} son funciones especiales que no requieren ser llamadas explícitamente en el código; \emph{Processing} se encarga de ello automáticamente. Por ahora, sólo cabe destacar que el código que se encuentra dentro de una función debe estar \textbf{sangrado} (indentado) para indicar que pertenece a dicha función. Además, ambas funciones devuelven \texttt{void}, lo que significa que no devuelven ningún valor. También es importante abrir y cerrar llaves \texttt{\{\}} para definir el bloque de código que pertenece a cada función.
+
+\begin{tcolorbox}[enhanced jigsaw, toprule=.15mm, coltitle=black, titlerule=0mm, opacitybacktitle=0.6, breakable, colback=white, colframe=quarto-callout-note-color-frame, colbacktitle=quarto-callout-note-color!10!white, opacityback=0, title={Ejercicio 11 - Zoog, utilizando \texttt{setup} y \texttt{draw}}, bottomtitle=1mm, rightrule=.15mm, toptitle=1mm, left=2mm, bottomrule=.15mm, leftrule=.75mm, arc=.35mm]
+
+Reescribe el código de Zoog utilizando las funciones \texttt{setup} y \texttt{draw}. \textbf{¿Notas alguna diferencia en el resultado respecto al código original?}
+
+\PracticeCode{../resources/practica1/snippets/zoog-setup-draw.java}
+
+\end{tcolorbox}
+
+\begin{tcolorbox}[enhanced jigsaw, toprule=.15mm, coltitle=black, titlerule=0mm, opacitybacktitle=0.6, breakable, colback=white, colframe=quarto-callout-warning-color-frame, colbacktitle=quarto-callout-warning-color!10!white, opacityback=0, title={Color de fondo}, bottomtitle=1mm, rightrule=.15mm, toptitle=1mm, left=2mm, bottomrule=.15mm, leftrule=.75mm, arc=.35mm]
+
+Prueba a mover la instrucción \texttt{background(255);} desde la función \texttt{draw} a la función \texttt{setup}. \textbf{¿Qué ocurre?}
+
+\end{tcolorbox}
+
+\subsection{Interacción con el ratón}
+
+\label{interacción-con-el-ratón}
+
+En \emph{Processing} existen algunas \textbf{palabras reservadas} como \texttt{width} y \texttt{height}, que permiten acceder al ancho y alto de la ventana, respectivamente, y otras que permiten interactuar con el usuario, como \texttt{mouseX} y \texttt{mouseY}, que indican la \textbf{posición actual del ratón en la ventana}.
+
+\begin{tcolorbox}[enhanced jigsaw, toprule=.15mm, coltitle=black, titlerule=0mm, opacitybacktitle=0.6, breakable, colback=white, colframe=quarto-callout-note-color-frame, colbacktitle=quarto-callout-note-color!10!white, opacityback=0, title={Ejercicio 12 - Sigue al ratón}, bottomtitle=1mm, rightrule=.15mm, toptitle=1mm, left=2mm, bottomrule=.15mm, leftrule=.75mm, arc=.35mm]
+
+Modifica el programa de Zoog para que la esquina superior izquierda del cuerpo de Zoog sea la posición del ratón, utilizando \texttt{mouseX} y \texttt{mouseY}.
+
+\end{tcolorbox}
+
+\begin{tcolorbox}[enhanced jigsaw, toprule=.15mm, coltitle=black, titlerule=0mm, opacitybacktitle=0.6, breakable, colback=white, colframe=quarto-callout-note-color-frame, colbacktitle=quarto-callout-note-color!10!white, opacityback=0, title={Ejercicio 13 - Sigue al ratón II}, bottomtitle=1mm, rightrule=.15mm, toptitle=1mm, left=2mm, bottomrule=.15mm, leftrule=.75mm, arc=.35mm]
+
+Posiciona la cabeza de Zoog sobre el cuerpo, de acuerdo también a las coordenadas (\texttt{mouseX}, \texttt{mouseY}), de manera que la cabeza se mueva en función de la posición del ratón. Por supuesto, tendrás que ajustar también la posición de los ojos.
+
+\end{tcolorbox}
+
+\begin{tcolorbox}[enhanced jigsaw, toprule=.15mm, coltitle=black, titlerule=0mm, opacitybacktitle=0.6, breakable, colback=white, colframe=quarto-callout-note-color-frame, colbacktitle=quarto-callout-note-color!10!white, opacityback=0, title={Ejercicio extra - Sigue al ratón III}, bottomtitle=1mm, rightrule=.15mm, toptitle=1mm, left=2mm, bottomrule=.15mm, leftrule=.75mm, arc=.35mm]
+
+Intenta que las piernas de Zoog también sigan al ratón, manteniendo la misma distancia relativa con el cuerpo.
+
+\end{tcolorbox}
+
+\begin{figure}
+\PracticeCenteredImage[width=\linewidth,height=0.5\textheight,keepaspectratio]{../resources/practica1/images/zoog_size-static.png}
+
+\caption{\label{fig-zoog-follow-mouse}Algunas medidas de Zoog.}
+
+\end{figure}%
+
+\section{Variables, condicionales y bucles}
+
+\label{variables-condicionales-y-bucles}
+
+\subsection{Introducción a variables}
+
+\label{introducción-a-variables}
+
+En la sección anterior hemos descubierto que el método \texttt{draw} se ejecuta de manera repetitiva en un bucle infinito. Esto nos permite crear programas dinámicos que cambian con el tiempo. Sin embargo, para crear programas más complejos, es necesario utilizar \textbf{variables} para almacenar datos que pueden cambiar durante la ejecución del programa.
+
+\begin{tcolorbox}[enhanced jigsaw, toprule=.15mm, coltitle=black, titlerule=0mm, opacitybacktitle=0.6, breakable, colback=white, colframe=quarto-callout-note-color-frame, colbacktitle=quarto-callout-note-color!10!white, opacityback=0, title={Ejercicio 14 - Traslada una esfera}, bottomtitle=1mm, rightrule=.15mm, toptitle=1mm, left=2mm, bottomrule=.15mm, leftrule=.75mm, arc=.35mm]
+
+Crea un programa que traslade una esfera de izquierda a derecha en la ventana. Utiliza una variable para almacenar la posición horizontal de la esfera, y actualízala en cada iteración del bucle \texttt{draw}.
+
+Solución:
+
+\PracticeCode{../resources/practica1/snippets/moving-circle-solution.java}
+
+\end{tcolorbox}
+
+\subsection{Condicionales}
+
+\label{condicionales}
+
+Los \textbf{condicionales} permiten ejecutar \textbf{diferentes bloques de código} en función de \textbf{si se cumple o no una determinada condición}. En \emph{Processing}, los condicionales se implementan utilizando las palabras reservadas \texttt{if}, \texttt{else\ if} y \texttt{else}.
+
+La sintaxis básica de un condicional es la siguiente:
+
+\PracticeCode{../resources/practica1/snippets/conditional-syntax.java}
+
+Ten en cuenta que no siempre es necesario utilizar \texttt{else\ if} o \texttt{else}; \textbf{un condicional puede consistir únicamente en una instrucción \texttt{if}}.
+
+\begin{tcolorbox}[enhanced jigsaw, toprule=.15mm, coltitle=black, titlerule=0mm, opacitybacktitle=0.6, breakable, colback=white, colframe=quarto-callout-note-color-frame, colbacktitle=quarto-callout-note-color!10!white, opacityback=0, title={Ejercicio 15 - Color de fondo interactivo}, bottomtitle=1mm, rightrule=.15mm, toptitle=1mm, left=2mm, bottomrule=.15mm, leftrule=.75mm, arc=.35mm]
+
+Modifica el programa de Zoog para que el color de fondo cambie en función de la posición del ratón. Por ejemplo, si el ratón se encuentra en el primer tercio de la ventana, el fondo debe ser blanco; si está en el segundo tercio, el fondo debe ser gris; y si está en el tercer tercio, el fondo debe ser negro.
+
+\textbf{Pista}: en el código que hemos utilizado para dibujar a Zoog se define una ventana de tamaño 600x600. Puedes comprobar si \texttt{mouseX} o \texttt{mouseY} se encuentran en un determinado tercio de la pantalla:
+
+\PracticeCode{../resources/practica1/snippets/mouse-third-hint.java}
+
+\end{tcolorbox}
+
+\subsection{Bucles}
+
+\label{bucles}
+
+Existen algunas palabras reservadas en \emph{Java} para representar \textbf{bucles}, es decir, \textbf{bloques de código que se repiten durante un número de iteraciones, o infinitamente hasta que no se cumpla alguna condición}.
+
+En esta sesión es suficiente con conocer el bucle \texttt{for}, que permite ejecutar un bloque de código un número determinado de veces. La sintaxis básica de un bucle \texttt{for} es la siguiente:
+
+\PracticeCode{../resources/practica1/snippets/for-loop-syntax.java}
+
+\begin{tcolorbox}[enhanced jigsaw, toprule=.15mm, coltitle=black, titlerule=0mm, opacitybacktitle=0.6, breakable, colback=white, colframe=quarto-callout-note-color-frame, colbacktitle=quarto-callout-note-color!10!white, opacityback=0, title={Ejercicio 16 - Múltiples Zoog}, bottomtitle=1mm, rightrule=.15mm, toptitle=1mm, left=2mm, bottomrule=.15mm, leftrule=.75mm, arc=.35mm]
+
+El objetivo es mostrar 2 Zoogs en la pantalla a partir del programa de un único Zoog. Ten en cuenta que tendrás que modificar la posición de al menos uno de ellos para que sea visible.
+
+\textbf{A modo de inspiración}, el siguiente código dibuja dos rectángulos desplazados en el eje horizontal y vertical en función de \emph{i}:
+
+\PracticeCode{../resources/practica1/snippets/multiple-zoog-offsets.java}
+
+\end{tcolorbox}
+
+\begin{tcolorbox}[enhanced jigsaw, toprule=.15mm, coltitle=black, titlerule=0mm, opacitybacktitle=0.6, breakable, colback=white, colframe=quarto-callout-note-color-frame, colbacktitle=quarto-callout-note-color!10!white, opacityback=0, title={Ejercicio 17 - Z pares de brazos}, bottomtitle=1mm, rightrule=.15mm, toptitle=1mm, left=2mm, bottomrule=.15mm, leftrule=.75mm, arc=.35mm]
+
+Modifica el programa de Zoog para que dibuje \emph{Z} pares de brazos, donde \emph{Z} es una variable que puedes definir al principio del programa. Utiliza un bucle \texttt{for} para dibujar los brazos.
+
+\end{tcolorbox}
+
+\begin{figure}
+\PracticeCenteredImage[keepaspectratio]{../resources/practica1/images/zoog-arms.png}
+
+\caption{\label{fig-zoog-multiple-arms}Resultado de añadir 3 pares de brazos a Zoog.}
+
+\end{figure}%
+
+\section*{Apéndice: Instalación de Processing}
+\addcontentsline{toc}{section}{Apéndice: Instalación de Processing}
+
+\label{apéndice-instalación-de-processing}
+
+\begin{figure}
+\PracticeCenteredImage[keepaspectratio]{../resources/practica1/images/web-teaser.png}
+
+\caption{\label{fig-installation}Banner de la página oficial de \emph{Processing}; a la izquierda se muestra el botón de \emph{Download}.}
+
+\end{figure}%
+
+\begin{itemize}
+\tightlist
+\item
+  Accede a \href{http://processing.org}{la página oficial de \emph{Processing}} y selecciona \textbf{Download}.
+\item
+  Descarga la versión correspondiente a tu sistema operativo.
+\item
+  Ejecuta el instalador descargado y sigue las instrucciones.
+\end{itemize}
+
+
+
+
+\end{document}

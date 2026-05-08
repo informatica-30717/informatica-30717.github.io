@@ -1,0 +1,35 @@
+Programa Raices3   { Funciona si hay raices reales o complejas }
+
+Definicion de variables
+    reales: coefA, coefB, coefC;
+    reales: discriminante, denominador;
+    reales: raiz1, raiz2, parteReal, parteImaginaria;
+
+Principio del algoritmo
+
+    lee(coefA, coefB, coefC);
+
+    discriminante := pow(coefB, 2) - (4.0 * coefA * coefC);
+    denominador := 2.0 * coefA;
+
+    si discriminante > 0.0 entonces   { Raices reales }
+        principio
+            raiz1 := (-coefB + sqrt(discriminante)) / denominador;
+            raiz2 := (-coefB - sqrt(discriminante)) / denominador;
+            escribe(raiz1, raiz2);
+        fin
+    sino si discriminante == 0.0 entonces   { Raiz unica real }
+        principio
+            raiz1 := -coefB / denominador;
+            escribe(raiz1);
+        fin
+    sino   { Raices complejas }
+        principio
+            parteReal := -coefB / denominador;
+            parteImaginaria := sqrt(-discriminante) / denominador;
+
+            escribe("(", parteReal, " + ", parteImaginaria, "i)");
+            escribe("(", parteReal, " - ", parteImaginaria, "i)");
+        fin
+    fin
+fin

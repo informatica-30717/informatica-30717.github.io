@@ -1,0 +1,2 @@
+rectMode(CENTER);
+ellipseMode(CORNER);

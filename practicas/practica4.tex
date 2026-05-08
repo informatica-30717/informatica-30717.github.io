@@ -1,0 +1,335 @@
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+\PassOptionsToPackage{dvipsnames,svgnames,x11names}{xcolor}
+\documentclass[
+  spanish,
+  11pt,
+  a4paper,
+  DIV=11,
+  numbers=noendperiod]{scrartcl}
+
+\usepackage{xcolor}
+\usepackage[top=24mm,bottom=24mm,left=24mm,right=24mm,headheight=15pt,headsep=8mm]{geometry}
+\usepackage{amsmath,amssymb}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp}
+\else
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath}
+}{}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage[bidi=basic]{babel}
+\let\LanguageShortHands\languageshorthands
+\def\languageshorthands#1{}
+\setlength{\emergencystretch}{3em}
+\setcounter{secnumdepth}{5}
+\providecommand{\tightlist}{\setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+
+\newcommand{\practicaPdfCoverImage}{../resources/practica4/images/gateway-arch.jpg}
+\input{../resources/latex/practice-pdf-style.tex}
+\KOMAoption{captions}{tableheading}
+\usetikzlibrary{arrows.meta}
+
+\newtcolorbox{PracticeWarningBox}[1]{%
+  enhanced,
+  breakable,
+  sharp corners,
+  boxrule=0.25pt,
+  colback=white,
+  colframe=uzaLine,
+  colbacktitle=uzaCyan,
+  coltitle=uzaInk,
+  fonttitle=\sffamily\bfseries,
+  title={#1},
+  borderline west={1.4pt}{0pt}{uzaWarn},
+  left=2mm,
+  right=2mm,
+  top=1.4mm,
+  bottom=1.4mm,
+  before skip=0.75em,
+  after skip=0.75em
+}
+
+\usepackage{bookmark}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{}
+\urlstyle{same}
+\hypersetup{
+  pdftitle={Práctica 4: Aspectos avanzados de Excel},
+  pdflang={es},
+  colorlinks=true,
+  linkcolor={uzaBlueDark},
+  filecolor={Maroon},
+  citecolor={Blue},
+  urlcolor={uzaBlue},
+  pdfcreator={LaTeX}
+}
+
+\title{Práctica 4: Aspectos avanzados de Excel}
+\author{}
+\date{}
+
+\begin{document}
+\maketitle
+
+\renewcommand*\contentsname{Tabla de contenidos}
+{
+\hypersetup{linkcolor=}
+\setcounter{tocdepth}{2}
+\tableofcontents
+}
+
+\clearpage
+
+\section{Objetivos de la práctica}
+\label{objetivos-de-la-practica}
+
+Los objetivos de esta práctica son los siguientes:
+
+\begin{itemize}
+\tightlist
+\item Mostrar algunas de las capacidades más interesantes de una hoja de cálculo como herramienta para la resolución de problemas. \textbf{No se pretende impartir un curso de Excel}, sino despertar el interés por herramientas de enorme utilidad.
+\item \textbf{Aplicar} algunos de los \textbf{conocimientos de programación} aprendidos en esta asignatura.
+\end{itemize}
+
+\section{Introducción}
+\label{introduccion}
+
+Una \textbf{hoja de cálculo} es una herramienta de gran utilidad en la \textbf{resolución de problemas en ingeniería} dado que, además de permitir manejar una gran cantidad de datos y realizar operaciones complejas de forma interactiva, proporciona una potente herramienta de representación gráfica de datos, fácil de utilizar.
+
+De hecho, hay una gran cantidad de problemas que pueden ser resueltos y analizados con una simple hoja de cálculo de una \textbf{manera rápida y eficaz}, sin tener que recurrir al desarrollo de aplicaciones específicas o al uso de otras aplicaciones de cálculo comerciales más potentes, pero más costosas y complejas de utilizar.
+
+Nos centraremos en los siguientes puntos, aunque para profundizar en ellos se recomienda consultar la documentación oficial de Excel y la bibliografía recomendada:
+
+\begin{itemize}
+\tightlist
+\item Representación de datos simples.
+\item Cálculo mediante fórmulas complejas.
+\item Funciones de Excel.
+\item Estructuras condicionales.
+\item Repetición para crear tablas de datos.
+\item Referencias absolutas y relativas.
+\item Creación de gráficos.
+\item Creación de macros.
+\end{itemize}
+
+\section{Ecuaciones no lineales y métodos iterativos}
+\label{ecuaciones-no-lineales-y-metodos-iterativos}
+
+Hay muchos problemas matemáticos donde \textbf{no se conoce un método analítico para calcular una solución exacta o bien el método para obtener la solución es tan costoso que no resulta una opción válida} para obtener un resultado con un tiempo de respuesta bajo. En dichos casos, una alternativa es utilizar un método numérico que \textbf{aproxime} la solución.
+
+Como caso de estudio consideraremos la \textbf{curva catenaria}. Desde el punto de vista físico, una catenaria describe la forma que adopta un cable suspendido por sus extremos y sometido exclusivamente a la acción de su propio peso.
+
+La \textbf{catenaria invertida}, obtenida al reflejar la curva respecto de un eje horizontal, presenta una propiedad estructural especialmente relevante en arquitectura: bajo cargas gravitatorias uniformes, el esfuerzo interno es predominantemente de compresión, lo que la convierte en una forma óptima para el diseño de arcos y bóvedas.
+
+\begin{figure}[H]
+\PracticeCenteredImage[width=0.58\textwidth,height=0.38\textheight,keepaspectratio]{../resources/practica4/images/ejemplos_catenarias.jpg}
+\caption{Ejemplos de catenarias en arquitectura. \PracticeCredit{Fuente: apuntesdearquitecturadigital.blogspot.com.}}\label{fig-ejemplos-catenarias}
+\end{figure}
+
+Un ejemplo de su aplicación es la obra del arquitecto \textbf{Antonio Gaudí}, quien empleó modelos físicos de catenarias invertidas para el diseño de la \textbf{Sagrada Familia} en Barcelona, tal como se ilustra en la Figura~\ref{fig-ejemplos-catenarias}.
+
+Podéis utilizar la web \href{https://es.wikiarquitectura.com/}{\textbf{WikiArquitectura}} para explorar información sobre edificios, arquitectos y obras de distintos lugares del mundo. En el contexto de esta práctica, puede ser especialmente útil para localizar ejemplos arquitectónicos en los que aparezcan arcos, bóvedas o formas relacionadas con la curva \textbf{catenaria}, y así relacionar el modelo matemático con aplicaciones reales en arquitectura.
+
+\subsection{Curva catenaria}
+\label{curva-catenaria}
+
+La curva que describe un cable suspendido de \textbf{dos puntos a la misma altura} y cuyo \textbf{punto mínimo} es el punto \((0,a)\) se puede escribir como:
+
+\[
+y = a \cosh\left(\frac{x}{a}\right) = a \frac{e^{x/a} + e^{-x/a}}{2}
+\]
+
+donde \(a > 0\) es un parámetro real que controla la forma de la curva y la tensión del cable. Valores mayores de \(a\) producen una curva más ancha y menos tensa, mientras que valores menores de \(a\) producen una curva más estrecha y más tensa.
+
+En esta práctica vamos a resolver la ecuación \(y = b\), para un número real \(b\). Para ello, consideraremos la función:
+
+\[
+f(x) = a \cosh\left(\frac{x}{a}\right) - b
+\]
+
+y buscaremos las soluciones de la ecuación \(f(x) = 0\).
+
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}[x=1cm,y=1cm, every node/.style={font=\sffamily\small}]
+  \pgfmathsetmacro{\catA}{2}
+  \pgfmathsetmacro{\catB}{5}
+  \pgfmathsetmacro{\catScale}{0.36}
+  \pgfmathsetmacro{\catRoot}{\catA*ln(\catB/\catA + sqrt((\catB/\catA)^2 - 1))}
+  \draw[rounded corners=2pt, color=uzaLine, fill=uzaCodeBg] (-4.65,-0.35) rectangle (4.65,2.8);
+  \draw[-{Latex[length=2mm]}, color=uzaMuted] (-4.25,0) -- (4.35,0) node[right] {$x$};
+  \draw[-{Latex[length=2mm]}, color=uzaMuted] (0,-0.18) -- (0,2.55) node[above] {$y$};
+  \draw[domain=-4:4,samples=180,smooth,variable=\x,color=uzaBlue,thick] plot ({\x},{\catScale*(\catA*(exp(\x/\catA)+exp(-\x/\catA))/2)});
+  \draw[color=uzaWarn,thick,dashed] (-4,{\catScale*\catB}) -- (4,{\catScale*\catB}) node[right,color=uzaWarn] {$y=b$};
+  \fill[color=uzaWarn] (-\catRoot,{\catScale*\catB}) circle (2.3pt);
+  \fill[color=uzaWarn] (\catRoot,{\catScale*\catB}) circle (2.3pt);
+  \fill[color=uzaTip] (0,{\catScale*\catA}) circle (2.3pt);
+  \node[anchor=south, color=uzaTip] at (0,{\catScale*\catA+0.12}) {$V=(0,a)$};
+  \node[anchor=north, color=uzaWarn] at (-\catRoot,{\catScale*\catB-0.08}) {$x_1$};
+  \node[anchor=north, color=uzaWarn] at (\catRoot,{\catScale*\catB-0.08}) {$x_2$};
+\end{tikzpicture}
+\caption{Catenaria \(y=a\cosh(x/a)\), nivel \(b\) y soluciones de \(f(x)=0\).}\label{fig-catenaria-modelo}
+\end{figure}
+
+\section{Representación gráfica de la solución}
+\label{representacion-grafica-de-la-solucion}
+
+Los pasos a seguir para representar gráficamente la función \(f\) y obtener una aproximación de la solución a la ecuación \(f(x) = 0\) son los siguientes:
+
+\begin{enumerate}
+\item Abrir \emph{Excel} y crear un \texttt{Libro en blanco}.
+\item En las celdas \texttt{B2} y \texttt{C2} escribiremos los valores de \(a\) y \(b\). Por ejemplo, \(a = 2\) y \(b = 5\). Asimismo, podemos utilizar las columnas \texttt{B1} y \texttt{C1} para añadir texto que permita explicar el significado de las celdas de abajo, escribiendo \textbf{a} y \textbf{b}.
+\item Buscaremos un intervalo de valores entre los que sepamos que se encuentra la solución, de manera que en ambos extremos del intervalo la función cambie de signo.
+\end{enumerate}
+
+Como la función \(f\) es continua, un cambio de signo implica que entre dichos valores existe un valor intermedio donde la función toma el valor \(0\). Por ejemplo, la gráfica muestra que el valor de \(x\) donde \(f(x) = 0\) está en \([2, 4]\), y además \(f(2) < 0\) y \(f(4) > 0\). Por tanto, los valores de \(x\) irán en el rango \([2, 4]\), con un incremento de \(0,1\) entre cada valor.
+
+\begin{enumerate}
+\setcounter{enumi}{3}
+\item A continuación, en los pasos \textbf{5, 6 y 7}, crearemos una tabla con los valores de \(f(x)\) en función de \(x\), en las celdas \texttt{D2:E22}. No basta con crear la tabla, es obligatorio utilizar correctamente referencias absolutas y relativas.
+\item Para rellenar los valores de \(x\), se introduce el primer valor, \texttt{2}, en la celda \texttt{D2}. Después, marcamos las celdas a rellenar, \texttt{D2:D22}, y utilizamos la opción \texttt{Inicio > Rellenar > Series}, indicando el \textbf{incremento} de valor deseado.
+\item Introduce en la celda \texttt{E2} la fórmula para calcular \(f(x)\) a partir del valor de \(x\) en la celda \texttt{D2}. \emph{Excel} incluye la función \texttt{COSH} para calcular un coseno hiperbólico.
+\item Copia el valor de la celda \texttt{E2} en las celdas \texttt{E3:E22}.
+\end{enumerate}
+
+\begin{PracticeWarningBox}{Error de actualización}
+\emph{Excel} ajusta automáticamente la fórmula, pero el resultado no es correcto: \(x\) se ha actualizado correctamente, pero las referencias a los valores de \(a\) y \(b\) también. Para evitarlo, se deben utilizar referencias absolutas para los valores de \(a\) y \(b\), y una referencia relativa para el valor de \(x\).
+\end{PracticeWarningBox}
+
+\begin{enumerate}
+\setcounter{enumi}{7}
+\item Para solucionar el problema anterior, modificaremos la fórmula en \texttt{E2} combinando el uso de \textbf{referencias absolutas} y \textbf{relativas}. Para crear referencias absolutas, de modo que no cambien automáticamente al copiarse la celda, se añade un carácter \texttt{\$} entre la letra y el número, por ejemplo \texttt{\$B\$2}. También podéis usar el atajo de teclado con \texttt{F4} o \texttt{Fn+F4}.
+\item Ahora sí, propagad el valor de la celda \texttt{E2} a las celdas \texttt{E3:E22}.
+\item Seleccionamos \texttt{D2:E22} e insertamos un gráfico de tipo \textbf{XY Dispersión}. Haciendo click en cada eje podemos cambiar el rango de valores mostrado, como muestra la Figura~\ref{fig-grafico-limites-ejes}.
+\end{enumerate}
+
+\begin{figure}[H]
+\PracticeCenteredImage[width=0.83\textwidth,height=0.46\textheight,keepaspectratio]{../resources/practica4/images/limites_ejes.png}
+\caption{Actualización de ejes en el gráfico.}\label{fig-grafico-limites-ejes}
+\end{figure}
+
+\begin{enumerate}
+\setcounter{enumi}{10}
+\item Podemos observar en la Figura~\ref{fig-grafico-xy-dispersion} que el valor cero de \(f(x)\) se alcanza en \textbf{[3.1, 3.2]}. Si se repite el proceso con valores de \(x\) en el intervalo \(\mathbf{[2, 4]}\) e incremento \textbf{0.01}, el resultado será más preciso.
+\item Guarda el fichero de \emph{Excel} con extensión \texttt{.xlsx}, por ejemplo, \texttt{practica4.xlsx}.
+\end{enumerate}
+
+\begin{figure}[H]
+\PracticeCenteredImage[width=0.58\textwidth,height=0.36\textheight,keepaspectratio]{../resources/practica4/images/grafico_xy_dispersion.png}
+\caption{Gráfico de tipo XY Dispersión.}\label{fig-grafico-xy-dispersion}
+\end{figure}
+
+\section{Automatización mediante el método de bisección}
+\label{automatizacion-mediante-el-metodo-de-biseccion}
+
+En lugar de repetir el proceso a mano, vamos a automatizarlo. Comenzaremos con un intervalo e iremos reduciéndolo por el \textbf{método de bisección} hasta obtener una solución que nos parezca suficientemente buena.
+
+El \textbf{método de bisección} es un método numérico para encontrar soluciones de funciones continuas. El método se basa en el teorema del valor intermedio: si una función cambia de signo en un intervalo, entonces debe tener al menos una solución en dicho intervalo.
+
+\begin{enumerate}
+\item En las celdas \texttt{G1:J1} escribiremos los nombres \textbf{Xmin}, \textbf{Xmax}, \textbf{Xmedio} y \textbf{f(x)}.
+\item En las celdas \texttt{G2} y \texttt{H2} escribiremos los extremos del intervalo inicial, tales que \(f(G2)\) y \(f(H2)\) tengan distinto signo: \(f(3.1) < 0\) y \(f(3.2) > 0\).
+\item En la celda \texttt{I2} escribimos la fórmula para \textbf{calcular el punto medio del intervalo}, es decir, la media de \texttt{G2} y \texttt{H2}.
+\item En la celda \texttt{J2} calculamos el resultado de evaluar la función \(f\) en el punto indicado en la celda \texttt{I2}.
+\item En la fila \textbf{3}, celdas \texttt{G3} y \texttt{H3}, definimos un nuevo extremo para el intervalo. \textbf{Si f(xMedio) es negativo}, seleccionamos el intervalo \textbf{[xMedio, xMax]} en la siguiente iteración. \textbf{Si es positivo}, utilizamos \textbf{[xMin, xMedio]}. Usa la función \texttt{=SI} para resolver esta composición condicional.
+\item Copia las celdas \texttt{I2} y \texttt{J2} en \texttt{I3} y \texttt{J3}, respectivamente.
+\item Copia la fila \textbf{3} en la fila \textbf{4} y repite este proceso hasta que se obtenga una solución suficientemente buena. Con \textbf{20 filas} debería ser suficiente para obtener una aproximación de la solución con un error menor a \(10^{-6}\).
+\end{enumerate}
+
+\begin{figure}[H]
+\PracticeCenteredImage[width=0.72\textwidth,height=0.46\textheight,keepaspectratio]{../resources/practica4/images/biseccion.png}
+\caption{Resultados obtenidos al aplicar el método de bisección. A la derecha, en \(f(x)\), se puede observar que no se ha alcanzado el valor cero, pero el error es inferior a \(10^{-6}\).}\label{fig-biseccion}
+\end{figure}
+
+Guarda los cambios en el fichero \texttt{practica4.xlsx}.
+
+\section{Creación de una macro}
+\label{creacion-de-una-macro}
+
+Por último, vamos a crear una \textbf{macro} que permita calcular nuestra función \(f\). Una \textbf{macro} no es más que una función que nos permitirá escribir una \textbf{fórmula para evaluar la función en un punto} dado por una celda.
+
+Nuestra función recibirá 3 parámetros de entrada: los valores de \(x\), \(a\) y \(b\). Fíjate en la Figura~\ref{fig-ejemplo-evaluarf}.
+
+\begin{figure}[H]
+\PracticeCenteredImage[width=0.34\textwidth,height=0.36\textheight,keepaspectratio]{../resources/practica4/images/ejemplo_evaluarf.png}
+\caption{Ejemplo de uso de la macro \texttt{EvaluarF}.}\label{fig-ejemplo-evaluarf}
+\end{figure}
+
+\begin{enumerate}
+\item Crea un nuevo libro de \emph{Excel} y en la celda \texttt{E2} escribe la fórmula \texttt{=EvaluarF(D2; B2; C2)}.
+\end{enumerate}
+
+\begin{PracticeWarningBox}{Error de función no definida}
+Por ahora, \emph{Excel} no encuentra la función llamada \texttt{EvaluarF}. En su lugar, intenta utilizar la función \texttt{SUMA} y especifica un rango de celdas. Las funciones deben comenzar con el carácter \texttt{=}.
+\end{PracticeWarningBox}
+
+\begin{figure}[H]
+\PracticeCenteredImage[width=0.34\textwidth,height=0.36\textheight,keepaspectratio]{../resources/practica4/images/error_evaluarf.png}
+\caption{Error indicando que la función \texttt{EvaluarF} no está definida.}\label{fig-error-evaluarf}
+\end{figure}
+
+\begin{enumerate}
+\setcounter{enumi}{1}
+\item Creamos la función \texttt{EvaluarF}. Para ello, utilizamos la opción del menú \texttt{Archivo > Opciones > Personalizar cinta de opciones} y activamos \textbf{Desarrollador} o \textbf{Programador}.
+\end{enumerate}
+
+\begin{figure}[H]
+\PracticeCenteredImage[width=0.72\textwidth,height=0.44\textheight,keepaspectratio]{../resources/practica4/images/programador.png}
+\caption{Activación de las opciones de Programador.}\label{fig-programador}
+\end{figure}
+
+\begin{enumerate}
+\setcounter{enumi}{2}
+\item En la opción del menú \texttt{Desarrollador > Visual Basic} aparecerá una nueva ventana. Después de utilizar la opción \texttt{Insertar > Módulo}, copia y pega el código siguiente:
+\end{enumerate}
+
+\PracticeCode{../resources/practica4/snippets/vba/evaluar-f.bas}
+
+\begin{PracticeNoteBox}{Programación en Visual Basic}
+Al igual que en Java, nuestra función en \emph{Visual Basic} debe utilizar operaciones como la suma (\texttt{+}), la resta (\texttt{-}), la multiplicación (\texttt{*}) y la división (\texttt{/}). Recuerda además que los paréntesis se utilizan para indicar el orden de las operaciones.
+
+De nuevo, la curva catenaria se define como \(f(x) = a \frac{e^{x/a} + e^{-x/a}}{2} - b\).
+\end{PracticeNoteBox}
+
+\begin{figure}[H]
+\PracticeCenteredImage[width=0.8\textwidth,height=0.42\textheight,keepaspectratio]{../resources/practica4/images/evaluarf_macro.png}
+\caption{Ejemplo de definición de la función \texttt{EvaluarF} en Visual Basic.}\label{fig-evaluarf-macro}
+\end{figure}
+
+\begin{enumerate}
+\setcounter{enumi}{3}
+\item Cierra la ventana de \emph{Visual Basic} y guarda el fichero de \emph{Excel} con extensión \texttt{.xlsm}. Por ejemplo, guárdalo con el nombre \texttt{practica4\_macro.xlsm}.
+\item Una vez guardado el fichero de \emph{Excel}, probaremos sobre \texttt{E2} la macro \texttt{EvaluarF}. Haz lo mismo para las celdas \texttt{E3:E22}. Tened cuidado nuevamente con las referencias absolutas.
+\end{enumerate}
+
+\vspace{0.7em}
+\textbf{Solución:}
+
+\begin{figure}[H]
+\PracticeCenteredImage[width=0.36\textwidth,height=0.38\textheight,keepaspectratio]{../resources/practica4/images/resultado_evaluarf.png}
+\caption{Función \texttt{EvaluarF} aplicada en la hoja de cálculo.}\label{fig-resultado-evaluarf}
+\end{figure}
+
+\section{Entrega de la solución}
+\label{entrega-de-la-solucion}
+
+\textbf{Solo debe realizar la entrega un miembro del grupo}. Sube a Moodle un \textbf{fichero comprimido \texttt{practica4.zip}} que contenga los siguientes archivos:
+
+\begin{itemize}
+\tightlist
+\item \texttt{practica4.xlsx}
+\item \texttt{practica4\_macro.xlsm}
+\end{itemize}
+
+\end{document}

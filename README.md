@@ -101,6 +101,8 @@ Para generar la web completa:
 quarto render
 ```
 
+Consulta [`BUILD.md`](BUILD.md) para el flujo completo de Quarto, PDFs y scripts personalizados.
+
 ## Autores
 
 Alfonso López Ruiz, Fernando Bobillo, Ignacio Huitzil, Y. Toca.

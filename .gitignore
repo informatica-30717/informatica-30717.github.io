@@ -1,5 +1,7 @@
 _docs/
 _site/
+_texbuild/
+practicas/practica*.pdf
 
 *.bak
 .gitattributes

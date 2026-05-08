@@ -6,6 +6,8 @@ format:
   html:
     toc: true
     number-sections: true
+    filters:
+      - ../resources/filters/include-code.lua
     include-in-header:
       text: |
         <link rel="stylesheet" href="../resources/practica9/css/practica9.css">
@@ -16,6 +18,11 @@ format:
         <script type="module" src="../resources/practica9/js/practica9-phong.js"></script>
   revealjs:
     output-ext: "reveal.html"
+    width: 1280
+    height: 720
+    margin: 0.08
+    filters:
+      - ../resources/filters/include-code.lua
     include-in-header:
       text: |
         <link rel="stylesheet" href="../resources/practica9/css/practica9.css">
@@ -24,10 +31,6 @@ format:
         <script src="../resources/practica9/js/practica9.js"></script>
         <script src="../resources/practica9/js/practica9-colors.js"></script>
         <script type="module" src="../resources/practica9/js/practica9-phong.js"></script>
-  pdf:
-    output-ext: "pdf"
-    filters:
-      - ../resources/practica9/filters/pdf-cleanup.lua
 execute:
   echo: false
 resources:
@@ -203,8 +206,7 @@ No hace falta leer toda la clase antes: usa el buscador de *Eclipse* y salta dir
 ## Usa el depurador
 
 1. Busca en `PanelVisor` la línea:
-   ```java
-   geometria.Matriz4x4 proyeccion = new geometria.Matriz4x4();
+   ```{.java include="../resources/practica9/snippets/projection-matrix-breakpoint.java"}
    ```
 2. Pon un **punto de ruptura** (*breakpoint*): botón derecho sobre la línea → ***Toggle Breakpoint***.
 3. Ejecuta la aplicación en **modo depuración**.
@@ -308,11 +310,11 @@ $$
 \text{rotacionZ}(a) \;\to\; \begin{pmatrix} \cos a & \sin a & 0 & 0 \\ {-\sin a} & \cos a & 0 & 0 \\ 0 & 0 & 1 & 0 \\ 0 & 0 & 0 & 1 \end{pmatrix}
 $$
 
-<!-- Para mantener PDF y web juntos: cada bloque interactivo se oculta en PDF y su alternativa estática va justo debajo. -->
-
-:::: {.content-visible unless-format="pdf"}
-
 La siguiente visualización muestra cómo actúa **rotacionZ** sobre un punto en 3D. Mueve el ángulo y observa cómo se actualizan los valores de la matriz:
+
+
+---
+
 
 ```{=html}
 <div id="rot-demo-uza">
@@ -366,22 +368,7 @@ La siguiente visualización muestra cómo actúa **rotacionZ** sobre un punto en
 </div>
 ```
 
-::::
 
-:::: {.content-visible when-format="pdf"}
-
-La versión HTML incluye una visualización interactiva de `rotacionZ`. En PDF, quédate con este caso fijo para $a=35^\circ$:
-
-| Magnitud | Valor aproximado |
-|---|---:|
-| $\cos a$ | 0.819 |
-| $\sin a$ | 0.574 |
-| Punto inicial | $(0.72,\ 0.24,\ 0.38)$ |
-| Punto rotado | $(0.45,\ 0.61,\ 0.38)$ |
-
-La rotación respecto al eje Z cambia las coordenadas $x$ e $y$, pero mantiene constante la coordenada $z$.
-
-::::
 
 ---
 
@@ -391,7 +378,6 @@ Aquí aparece un efecto que ya conoces de la fotografía: **los objetos lejanos 
 
 En el visor sucede lo mismo. Primero se coloca el objeto con respecto a la cámara, después se aplica la perspectiva y al final se convierten las coordenadas a píxeles de la pantalla. Si solo quieres quedarte con una idea, quédate con que **una distancia focal mayor cierra la vista, mientras que una distancia focal menor la abre**.
 
-:::: {.content-visible unless-format="pdf"}
 
 ```{=html}
 <div class="focal-triptych-uza">
@@ -440,21 +426,7 @@ En el visor sucede lo mismo. Primero se coloca el objeto con respecto a la cáma
 
 ```
 
-::::
 
-:::: {.content-visible when-format="pdf"}
-
-::: {#fig-practica9-focal layout-ncol=3}
-![65 mm: encuadre amplio.](../resources/practica9/images/house_65mm.png){width=100%}
-
-![80 mm: vista de referencia.](../resources/practica9/images/house_80mm.png){width=100%}
-
-![100 mm: encuadre estrecho.](../resources/practica9/images/house_100mm.png){width=100%}
-
-A mayor distancia focal, menor campo de visión y mayor imagen proyectada sobre el sensor.
-:::
-
-::::
 
 Una manera muy simple de resumirlo es esta:
 
@@ -501,9 +473,12 @@ No hace falta preocuparse aquí por el signo exacto de cada transformación. Par
 
 ---
 
-:::: {.content-visible unless-format="pdf"}
 
 La siguiente visualización muestra ese proceso con una cámara idealizada en 3D. El plano de imagen tiene ancho <em>w</em>, alto <em>h</em> y está situado a una distancia focal <em>f</em> del centro de proyección. Ajusta los parámetros para ver cómo cambia el *frustum* y la imagen proyectada del objeto. Si la imagen formada es mayor que el sensor, el sensor sólo registra una parte y el objeto aparece recortado.
+
+
+---
+
 
 ```{=html}
 <div id="perspective-demo-uza" style="margin:1.2rem 0;">
@@ -546,24 +521,7 @@ La siguiente visualización muestra ese proceso con una cámara idealizada en 3D
 </div>
 ```
 
-::::
 
-:::: {.content-visible when-format="pdf"}
-
-La versión HTML permite ajustar el sensor y la distancia focal. En PDF, este caso fijo resume la lectura de la escena:
-
-| Parámetro | Valor |
-|---|---:|
-| Ancho del sensor, $w$ | 36 mm |
-| Alto del sensor, $h$ | 24 mm |
-| Distancia focal, $f$ | 80 mm |
-| Relación de aspecto, $w/h$ | 1.50 |
-| Campo de visión horizontal | 25.36° |
-| Campo de visión vertical | 17.06° |
-
-Si la imagen proyectada del objeto es mayor que el sensor, la proyección existe, pero el sensor solo registra una parte y el objeto aparece recortado.
-
-::::
 
 ---
 
@@ -571,8 +529,7 @@ Si la imagen proyectada del objeto es mayor que el sensor, la proyección existe
 ## Comprueba la rotación de la cámara
 
 En el método `matrizDeProyeccion()` de `PanelVisor`, comenta la línea:
-```java
-proyeccion.rotacionX(camara().inclinacion() * Math.PI / 180.0);
+```{.java include="../resources/practica9/snippets/disable-camera-inclination.java"}
 ```
 (añade `//` al principio) y vuelve a ejecutar. ¿Qué ha cambiado? Prueba a comentar otras líneas del mismo método.
 :::
@@ -582,7 +539,7 @@ proyeccion.rotacionX(camara().inclinacion() * Math.PI / 180.0);
 
 Prueba con el punto $(4,\, 3,\, 2)$ y una rotación de 90° con respecto al eje Z. Puedes multiplicar el vector fila $(4\ 3\ 2\ 1)$ por la matriz correspondiente.
 
-Recuerda que las clases que debemos utilizar son `geometria.Punto` y `geometria.Matriz4x4`. Para crear la matriz de rotación, puedes usar el método `rotacionZ` de `Matriz4x4`. Para multiplicar el punto por la matriz, puedes usar el método `multiplicar` de `Matriz4x4`. Los ángulos de rotación se expresan en radianes, así que para convertir 90° a radianes puedes multiplicar el ángulo por `Math.PI / 180.0`.
+Recuerda que las clases que debemos utilizar son `geometria.Vector4` y `geometria.Matriz4x4`. Para representar el punto homogéneo, puedes crear un `Vector4` con valores `(4, 3, 2, 1)`. Para crear la matriz de rotación, puedes usar el método `rotacionZ` de `Matriz4x4`. Para multiplicar el vector por la matriz, puedes usar el método `multiplicar` de `Matriz4x4`. Los ángulos de rotación se expresan en radianes, así que para convertir 90° a radianes puedes multiplicar el ángulo por `Math.PI / 180.0`.
 
 Puedes hacer dos cosas para comprobar el resultado de multiplicar ese punto por la matriz de rotación:
 
@@ -591,12 +548,7 @@ Puedes hacer dos cosas para comprobar el resultado de multiplicar ese punto por 
 
 Por ejemplo, utiliza este código para imprimir el resultado en la consola de *Eclipse*:
 
-```java
-System.out.println(
-    res.elemento(0) + ", " +
-    res.elemento(1) + ", " +
-    res.elemento(2)
-);
+```{.java include="../resources/practica9/snippets/print-rotated-vector.java"}
 ```
 :::
 
@@ -610,10 +562,11 @@ Si solo quieres modificar cámara, material, luz o modo de visualización, no ha
 
 El visualizador ofrece dos modos principales. En esta práctica nos interesa sobre todo el segundo, porque es el que utiliza la iluminación de Phong del proyecto proporcionado.
 
-- **Malla de alambre** (`pintarMallaAlambre`): se recorren todas las `Caras`, se transforman sus `Puntos`y se dibujan solo las aristas.
+- **Malla de alambre** (`pintarMallaAlambre`): se recorren todas las `Caras`, se transforman sus `Puntos` y se dibujan solo las aristas.
 - **Raster**: se rellena cada cara visible y se calcula el color de cada píxel con el modelo de iluminación de Phong. Además, se mantiene un ***z-buffer***, es decir, un registro de profundidad para que una superficie del fondo no tape a otra que está delante.
 
-:::: {.content-visible unless-format="pdf"}
+---
+
 
 ```{=html}
 <div class="img-compare" role="slider" aria-label="Malla de alambre frente a raster" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50" tabindex="0" style="max-width:560px; margin:0.75rem auto;">
@@ -629,19 +582,7 @@ El visualizador ofrece dos modos principales. En esta práctica nos interesa sob
 <small class="img-compare-caption">El mismo objeto en los dos modos de visualización (focal 80 mm): arrastrar para comparar.</small>
 ```
 
-::::
 
-:::: {.content-visible when-format="pdf"}
-
-::: {#fig-practica9-render-modes layout-ncol=2}
-![Malla de alambre.](../resources/practica9/images/wireframe.png){width=100%}
-
-![Ráster con iluminación de Phong.](../resources/practica9/images/house_80mm.png){width=100%}
-
-El mismo objeto en los dos modos de visualización del programa, con focal de 80 mm.
-:::
-
-::::
 
 En ambos modos se puede activar el ***backface culling*** (método `considerarCara`), que descarta las caras cuya normal apunta en sentido contrario a la cámara, acelerando el proceso de pintado.
 
@@ -673,11 +614,12 @@ $$
 
 No hace falta memorizar todos los símbolos. En la práctica basta con relacionarlos con los controles del visualizador: `ka` añade luz base, `kd` controla la respuesta mate o difusa, `ks` refuerza el brillo y `e` hace ese brillo más abierto o más concentrado. Por otro lado, los términos `Ca` y `Cl` modelan la luz, y no el material del objeto.
 
-:::: {.content-visible unless-format="pdf"}
 
 La siguiente visualización 3D te permite modificar esos parámetros y ver su efecto en tiempo real, igual que harías al ajustar un material y una luz en un software 3D. Arrastra para orbitar y usa la rueda para hacer zoom.
 
+
 ---
+
 
 ```{=html}
 <div id="phong-demo-uza" style="margin:1.2rem 0; display:grid; grid-template-columns:1fr 300px; gap:1rem; align-items:start;">
@@ -725,25 +667,7 @@ La siguiente visualización 3D te permite modificar esos parámetros y ver su ef
 </div>
 ```
 
-::::
 
-:::: {.content-visible when-format="pdf"}
-
-La versión HTML incluye un visor 3D interactivo para cambiar `ka`, `kd`, `ks`, `e`, `Ca` y `Cl`. En PDF, la @fig-practica9-phong-materials ofrece una lectura estática de la misma idea: una superficie mate se entiende sobre todo con `kd`, mientras que una superficie brillante o metálica necesita una contribución especular mayor, controlada por `ks` y por el exponente `e`.
-
-::: {#fig-practica9-phong-materials layout-ncol=2}
-![Material mate difuso.](../resources/practica9/images/mitsuba_bsdf_diffuse_plain.jpg){width=100%}
-
-![Base difusa plástica.](../resources/practica9/images/mitsuba_bsdf_pplastic_diffuse_component.jpg){width=100%}
-
-![Metal especular.](../resources/practica9/images/mitsuba_bsdf_conductor_gold.jpg){width=100%}
-
-![Brillo plástico.](../resources/practica9/images/mitsuba_bsdf_pplastic_specular_component.jpg){width=100%}
-
-Referencias visuales para interpretar `kd`, `ks` y `e` en el modelo de Phong. Las imágenes proceden de la documentación de Mitsuba 3 sobre materiales BSDF y se usan aquí como referencia cualitativa.
-:::
-
-::::
 
 ---
 
@@ -752,9 +676,12 @@ Las siguientes imágenes no son capturas literales del visualizador, sino simple
 - Si quitas `ks`, desaparecen los brillos especulares.
 - Si quitas `ka`, las zonas en sombra se oscurecen mucho más.
 
-:::: {.content-visible unless-format="pdf"}
 
 Arrastra cada divisor y fíjate sobre todo en esas dos diferencias:
+
+
+---
+
 
 ::: {.grid}
 
@@ -790,31 +717,7 @@ Arrastra cada divisor y fíjate sobre todo en esas dos diferencias:
 
 <p class="img-compare-credits">Comparación de términos <em>k</em><sub>a</sub>, <em>k</em><sub>d</sub> y <em>k</em><sub>s</sub> sobre una escena de <a href="https://www.blenderkit.com/get-blenderkit/1ac8808f-11e6-4c76-894e-227f1eb3cba5/" target="_blank" rel="noopener">BlenderKit</a>, autor: Russo 3D.</p>
 
-::::
 
-:::: {.content-visible when-format="pdf"}
-
-En PDF, compara las imágenes lado a lado:
-
-::: {#fig-practica9-phong-specular layout-ncol=2}
-![Iluminación completa: `ka + kd + ks`.](../resources/practica9/images/full.png){width=100%}
-
-![Sin componente especular: `ka + kd`.](../resources/practica9/images/ka_kd.png){width=100%}
-
-Comparación entre el modelo completo y el mismo caso sin componente especular. El brillo más evidente desaparece al quitar `ks`.
-:::
-
-::: {#fig-practica9-phong-ambient layout-ncol=2}
-![Ambiente más difusa: `ka + kd`.](../resources/practica9/images/ka_kd.png){width=100%}
-
-![Solo difusa: `kd`.](../resources/practica9/images/kd.png){width=100%}
-
-Comparación entre ambiente más difusa y solo difusa. Sin `ka`, las zonas menos iluminadas quedan mucho más oscuras.
-:::
-
-Comparación de términos `ka`, `kd` y `ks` sobre una escena de BlenderKit, autor: Russo 3D.
-
-::::
 
 ---
 
@@ -825,9 +728,17 @@ Comparación de términos `ka`, `kd` y `ks` sobre una escena de BlenderKit, auto
 
 - Prueba con otras combinaciones de colores de luz y material.
 
-:::: {.content-visible unless-format="pdf"}
+:::
+
+---
+
 
 La siguiente visualización sirve justo como **guía para responder a ese ejercicio**. No reproduce todo el modelo de Phong al detalle: se centra en la idea más importante aquí, que es cómo se combinan por canales el color de la luz y el del material en la parte ambiente/difusa. Si en el visualizador aparecen pequeños brillos, recuerda que proceden de la componente especular y tienden a seguir el color de la luz.
+
+
+---
+
+
 ```{=html}
 <div id="color-mix-uza">
   <div class="color-mix-stage-uza">
@@ -880,22 +791,7 @@ La siguiente visualización sirve justo como **guía para responder a ese ejerci
 </div>
 ```
 
-::::
 
-:::: {.content-visible when-format="pdf"}
-
-Para responder en PDF, usa la multiplicación por canales. Si la luz es roja pura y el material es verde puro:
-
-| Canal | Luz | Material | Resultado |
-|---|---:|---:|---:|
-| R | 1.00 | 0.00 | 0.00 |
-| G | 0.00 | 1.00 | 0.00 |
-| B | 0.00 | 0.00 | 0.00 |
-
-El resultado ambiente/difuso es negro, porque ningún canal coincide entre la luz y el material. Si aparecen brillos especulares, tenderán a seguir el color de la luz.
-
-::::
-:::
 
 ---
 
@@ -906,43 +802,17 @@ Vamos a crear un modo nuevo de visualización, como si el modelo fuese un falso 
 
 Primero, abre `renderer.RenderMode` y añade un valor nuevo al `enum`:
 
-```java
-NORMALS("Normales"),
-ONDAS("Ondas"),
-DEPTH("Profundidad");
+```{.java include="../resources/practica9/snippets/render-mode-ondas.java"}
 ```
 
 Después, abre `renderer.Shader`. Justo después del bloque de `RenderMode.NORMALS`, añade este caso:
 
-```java
-if (mode == RenderMode.ONDAS)
-{
-  return shadeOndas(
-      pointX, pointY, pointZ,
-      nx, ny, nz
-  );
-}
+```{.java include="../resources/practica9/snippets/shader-render-mode-ondas.java"}
 ```
 
 Por último, añade este método cerca de `shadeNormals`. Esta versión ya funciona y suele dar un resultado vistoso:
 
-```java
-private int shadeOndas(
-    double x, double y, double z,
-    double nx, double ny, double nz)
-{
-  double escala = 0.18;
-
-  double onda1 = Math.sin((x + y) * escala);
-  double onda2 = Math.cos((y - z) * escala * 1.7);
-  double onda3 = Math.sin(Math.sqrt(x * x + y * y + z * z) * escala * 2.4);
-
-  double r = 0.5 + 0.5 * Math.sin(...);
-  double g = 0.5 + 0.5 * Math.cos(...);
-  double b = 0.5 + 0.5 * Math.sin(...);
-
-  return pack(r, g, b);
-}
+```{.java include="../resources/practica9/snippets/shade-ondas.java"}
 ```
 
 Dentro de las funciones seno y coseno, puedes combinar las tres ondas de la forma que quieras. Prueba a sumarlas, multiplicarlas o a usarlas por separado, o súmale algún término como `nx`, `ny` o `nz` para que la orientación de la superficie también influya en el resultado. Un posible resultado es este:
@@ -978,7 +848,6 @@ Sin entrar en todos los símbolos, viene a decir que el color que vemos en un pu
 
 ---
 
-:::: {.content-visible unless-format="pdf"}
 
 El siguiente esquema no pretende que aprendas *path tracing* ni que lo programes: solo visualiza la idea de los rebotes. Desde una pequeña abertura de la cámara se lanzan varios rayos y, cada vez que uno choca con una superficie, nace un nuevo rayo desde ese último punto. Los caminos que terminan encontrando la fuente emisiva aparecen en color; los que no lo consiguen quedan en gris.
 
@@ -1030,22 +899,7 @@ El siguiente esquema no pretende que aprendas *path tracing* ni que lo programes
 
 ```
 
-::::
 
-:::: {.content-visible when-format="pdf"}
-
-El esquema interactivo de la versión HTML permite cambiar el número de rayos y el máximo de rebotes. En PDF, la idea se resume así:
-
-| Elemento | Lectura |
-|---|---|
-| Rayo primario | Sale de la cámara y busca una superficie visible. |
-| Rebote | Al chocar con una superficie, nace una nueva dirección aleatoria. |
-| Camino que llega a la luz | Aporta energía al píxel. |
-| Camino que no llega a la luz | Aporta poca o ninguna energía en esa muestra. |
-
-Al aumentar el número de rayos o la profundidad máxima, crecen las probabilidades de estimar mejor la iluminación indirecta, pero también aumenta el coste de cálculo.
-
-::::
 
 ---
 
@@ -1055,9 +909,12 @@ La idea práctica es aproximar esos rebotes con muchas muestras. Si has visto qu
 
 No hace falta que estudies el método en detalle para esta práctica. Quédate con dos consecuencias muy útiles: con pocas muestras aparece ruido; con muchas, la imagen se estabiliza, pero el tiempo de cálculo aumenta.
 
-:::: {.content-visible unless-format="pdf"}
 
 La intuición estadística puede verse con un ejemplo muy sencillo: estimar el **área de un círculo de radio 1** (que sabemos que es $\pi$) sin usar una fórmula cerrada, sino generando puntos aleatorios.
+
+
+---
+
 
 ```{=html}
 <div id="mc-demo-uza" style="margin:1.2rem 0; background:#fff; border:1px solid #e2e8f0; border-radius:14px; padding:1rem; box-shadow:0 4px 16px rgba(0,0,0,0.06);">
@@ -1105,25 +962,16 @@ La intuición estadística puede verse con un ejemplo muy sencillo: estimar el *
 </div>
 ```
 
-::::
 
-:::: {.content-visible when-format="pdf"}
-
-La intuición estadística puede verse con un ejemplo muy sencillo: estimar el **área de un círculo de radio 1** generando puntos aleatorios en el cuadrado $[-1,1]^2$.
-
-$$
-\pi \approx 4 \cdot \frac{\text{puntos dentro del círculo}}{\text{puntos totales}}
-$$
-
-Con pocas muestras, la estimación fluctúa mucho; con muchas muestras, converge lentamente hacia $\pi$. Esa es la misma intuición que se usa al aumentar las muestras por píxel en un render.
-
-::::
 
 ---
 
-:::: {.content-visible unless-format="pdf"}
 
 En el renderizado ocurre lo mismo: desde cada píxel se lanzan rayos aleatorios que rebotan entre superficies. Con **pocas muestras por píxel** (*spp*) el resultado es muy ruidoso; con **muchas muestras la imagen se va estabilizando**. Los dos *renders* de *Blender* siguientes ilustran este efecto (arrastra el divisor para comparar):
+
+
+---
+
 
 <div class="img-compare img-compare-spp-uza" role="slider" aria-label="Comparación entre render ruidoso y render limpio" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50" tabindex="0" style="max-width:640px; margin:1rem auto;">
   <img src="../resources/practica9/images/room_50spp.png" alt="Pocas muestras por píxel — resultado ruidoso">
@@ -1138,23 +986,7 @@ En el renderizado ocurre lo mismo: desde cada píxel se lanzan rayos aleatorios 
 <small class="img-compare-caption">Comparación de convergencia en Blender Cycles: 50 spp frente a 500 spp, con tiempos orientativos del orden de ~3 min y ~8 min.</small>
 <p class="img-compare-credits">Escena del comparador spp procedente de <a href="https://www.blenderkit.com/get-blenderkit/a9267e7e-7cd7-4d5d-b479-8bf8fff2eddf/" target="_blank" rel="noopener">BlenderKit</a>, autor: Ibrohim Toxirov.</p>
 
-::::
 
-:::: {.content-visible when-format="pdf"}
-
-En el renderizado ocurre lo mismo: desde cada píxel se lanzan rayos aleatorios que rebotan entre superficies. Con **pocas muestras por píxel** (*spp*) el resultado es muy ruidoso; con **muchas muestras la imagen se va estabilizando**.
-
-::: {#fig-practica9-spp layout-ncol=2}
-![50 spp: pocas muestras por píxel, resultado ruidoso.](../resources/practica9/images/room_50spp.png){width=100%}
-
-![500 spp: más muestras por píxel, resultado más estable.](../resources/practica9/images/room_500spp.png){width=100%}
-
-Comparación de convergencia en Blender Cycles: 50 spp frente a 500 spp, con tiempos orientativos del orden de 3 min y 8 min.
-:::
-
-Escena del comparador spp procedente de BlenderKit, autor: Ibrohim Toxirov.
-
-::::
 
 Esto es lo que ocurre en *Blender Cycles* y en otros motores con visualización realista: con pocas muestras aparece ruido, mientras que con más muestras el resultado se limpia, aunque el tiempo de cálculo también aumenta. En visualización de edificios se puede utilizar para reproducir mucho mejor la iluminación global de interiores y exteriores.
 

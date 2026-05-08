@@ -39,5 +39,30 @@
         ".vscode",
         ".vscode-insiders",
         "*.ipynb"
+    ],
+    "latex-workshop.latex.recipe.default": "first",
+    "latex-workshop.latex.autoBuild.run": "never",
+    "latex-workshop.latex.tools": [
+        {
+            "name": "latexmk-lualatex-cd",
+            "command": "latexmk",
+            "args": [
+                "-gg",
+                "-cd",
+                "-lualatex",
+                "-interaction=nonstopmode",
+                "-synctex=1",
+                "-file-line-error",
+                "%DOC%"
+            ]
+        }
+    ],
+    "latex-workshop.latex.recipes": [
+        {
+            "name": "latexmk (LuaLaTeX from file dir)",
+            "tools": [
+                "latexmk-lualatex-cd"
+            ]
+        }
     ]
 }

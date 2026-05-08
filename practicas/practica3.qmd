@@ -1,27 +1,46 @@
 ---
 title: "Práctica 3: Resolución de problemas en Java (I)"
+title-block-banner: ../resources/practica3/images/teaser.jpg
+title-block-banner-color: "#ffffff"
 format:
-  html: 
+  html:
     toc: true
     number-sections: true
-  revealjs: 
+    filters:
+      - ../resources/filters/include-code.lua
+    include-in-header:
+      text: |
+        <link rel="stylesheet" href="../resources/practica3/css/practica3.css">
+  revealjs:
     output-ext: "reveal.html"
+    width: 1280
+    height: 720
+    margin: 0.08
+    filters:
+      - ../resources/filters/include-code.lua
+    include-in-header:
+      text: |
+        <link rel="stylesheet" href="../resources/practica3/css/practica3.css">
+resources:
+  - ../resources/practica3/css/practica3.css
+  - ../resources/practica3/images/teaser.jpg
 execute:
   echo: false
 ---
 
 ## Objetivos de la práctica
 
-Los objetivos de la segunda práctica de la asignatura son los siguientes:
+Los objetivos de esta práctica son los siguientes:
 
 - Desarrollar algoritmos en Java.
 - Ejecutar algoritmos en el entorno Eclipse.
+- Utilizar expresiones condicionales para distinguir distintos casos de un problema.
 
 ---
 
 ## Raíces de una ecuación de segundo grado
 
-Como bien sabemos, una ecuación de segundo grado tiene la forma:
+Una ecuación de segundo grado tiene la forma:
 
 $$
 ax^2 + bx + c = 0
@@ -29,136 +48,161 @@ $$
 
 donde $a$, $b$ y $c$ son coeficientes reales, y $x$ es la variable que queremos resolver.
 
-A diferencia de las ecuaciones de primer grado, las de segundo grado pueden tener **0, 1 o 2 soluciones reales** dependiendo de los valores de los coeficientes ($a$, $b$, $c$).
+A diferencia de las ecuaciones de primer grado, las ecuaciones de segundo grado pueden tener **0, 1 o 2 soluciones reales** dependiendo de los valores de los coeficientes.
+
+---
 
 Por ejemplo, los siguientes coeficientes generan diferentes números de soluciones:
 
 - $a=1$, $b=-3$, $c=2$ → dos soluciones reales ($x=1$ y $x=2$).
 - $a=1$, $b=-2$, $c=1$ → una solución real ($x=1$).
-- $a=1$, $b=0$, $c=1$ → no soluciones reales.
+- $a=1$, $b=0$, $c=1$ → no hay soluciones reales.
 
----
+:::: {#fig-discriminante .p3-figure-uza}
+```{ojs}
+viewof coeficientes = {
+  const makeRange = (name, min, max, value, step = 0.1) => {
+    const control = Inputs.range([min, max], { value, step });
+    control.classList.add("p3-range-widget-uza");
+    control.style.width = "100%";
+    control.style.maxWidth = "100%";
+    control.style.minWidth = "0";
+    control.style.boxSizing = "border-box";
 
-::: {.card .shadow-sm .mb-4 .mt-4}
-::: {.card-body}
-  ```{ojs}
-  viewof params = {
-    const cleanSlider = (range, config) => {
-      const input = Inputs.range(range, config);
-      const numberBox = input.querySelector("input[type=number]");
-      if (numberBox) numberBox.style.display = "none";
-      const rangeSlider = input.querySelector("input[type=range]");
-      if (rangeSlider) rangeSlider.style.width = "100%";
-      input.style.width = "100%";
-      return input;
-    };
-
-    const ia = cleanSlider([-5, 5], { value: 1, step: 0.1 });
-    const ib = cleanSlider([-10, 10], { value: -2, step: 0.1 });
-    const ic = cleanSlider([-10, 10], { value: -3, step: 0.1 });
-
-    const col = (input, label) => {
-      const val = htl.html`<div style="font-family: monospace; color: #555; margin-top: 4px;">${input.value.toFixed(1)}</div>`;
-      input.addEventListener("input", () => val.textContent = input.value.toFixed(1));
-      
-      return htl.html`<div style="display: flex; flex-direction: column; align-items: center; margin: 0 10px; flex: 1; min-width: 120px;">
-        <div style="font-weight: bold; font-size: 0.9rem; margin-bottom: 5px; white-space: nowrap;">${label}</div>
-        <div style="width: 100%">${input}</div>
-        ${val}
-      </div>`;
-    };
-
-    // Styles: Removed background/border here so it blends into the card
-    const form = htl.html`<div style="display: flex; flex-wrap: wrap; justify-content: center; width: 100%; padding-bottom: 20px; border-bottom: 1px solid #eee; margin-bottom: 20px;">
-      ${col(ia, "a (curvatura ╭╮)")}
-      ${col(ib, "b (pendiente ⟋)")}
-      ${col(ic, "c (desplazamiento ↑↓)")}
-    </div>`;
-
-    form.oninput = () => form.value = { a: ia.value, b: ib.value, c: ic.value };
-    form.value = { a: ia.value, b: ib.value, c: ic.value };
-    return form;
-  }
-
-  // Extract variables for reactivity
-  a = params.a
-  b = params.b
-  c = params.c
-  ```
-
-  ```{ojs}
-  {
-    const curve = Array.from({ length: 401 }, (_, i) => {
-      const x = -10 + i * 0.05;
-      return { x, y: a * x * x + b * x + c };
-    });
-
-    const points = [];
-    const disc = b * b - 4 * a * c; 
-    
-    if (a !== 0 && disc >= 0) {
-      const r1 = (-b + Math.sqrt(disc)) / (2 * a);
-      const r2 = (-b - Math.sqrt(disc)) / (2 * a);
-      points.push({ x: r1, y: 0, type: "Root", label: `x=${r1.toFixed(2)}` });
-      if (disc > 0) points.push({ x: r2, y: 0, type: "Root", label: `x=${r2.toFixed(2)}` });
-    } else if (a === 0 && b !== 0) {
-      const root = -c / b;
-      points.push({ x: root, y: 0, type: "Root", label: `x=${root.toFixed(2)}` });
+    const numberBox = control.querySelector("input[type=number]");
+    const slider = control.querySelector("input[type=range]");
+    if (numberBox) numberBox.style.display = "none";
+    if (slider) {
+      slider.classList.add("p3-slider-uza");
+      slider.style.width = "100%";
+      slider.style.maxWidth = "100%";
+      slider.style.minWidth = "0";
     }
 
-    const curve_plot = Plot.plot({
-      height: 400,
-      grid: true,
-      marginLeft: 40, 
-      marginRight: 20,
-      x: { domain: [-10, 10], label: "x axis" },
-      y: { domain: [-10, 10], label: null }, // Removed Y label to save space
-      marks: [
-        Plot.ruleY([0], { stroke: "#888", strokeWidth: 1.5 }),
-        Plot.ruleX([0], { stroke: "#888", strokeWidth: 1.5 }),
-        Plot.line(curve, { x: "x", y: "y", stroke: "steelblue", strokeWidth: 3 }),
-        Plot.dot(points, { x: "x", y: "y", fill: d => d.type === "Root" ? "#e63946" : "#457b9d", r: 6, stroke: "white", strokeWidth: 2 }),
-        Plot.text(points, { x: "x", y: "y", text: "label", dy: -15, fill: "currentColor", stroke: "white", strokeWidth: 4, fontWeight: "bold", fontSize: 12 })
-      ]
-    });
-    
-    // Ensure the SVG fills the card width
-    curve_plot.style.width = "100%";
-    return curve_plot;
+    const valueNode = htl.html`<output class="p3-control-value-uza">${value.toFixed(1)}</output>`;
+    const field = htl.html`<label class="p3-control-uza">
+      <span>${name}</span>
+      ${control}
+      ${valueNode}
+    </label>`;
+
+    return { field, control, valueNode };
+  };
+
+  const aControl = makeRange("a", -5, 5, 1);
+  const bControl = makeRange("b", -10, 10, -3);
+  const cControl = makeRange("c", -10, 10, 2);
+
+  const form = htl.html`<div class="p3-quadratic-panel-uza">
+    <div class="p3-controls-uza">
+      ${aControl.field}
+      ${bControl.field}
+      ${cControl.field}
+    </div>
+  </div>`;
+
+  const update = () => {
+    const value = {
+      a: Number(aControl.control.value),
+      b: Number(bControl.control.value),
+      c: Number(cControl.control.value)
+    };
+
+    aControl.valueNode.value = value.a.toFixed(1);
+    bControl.valueNode.value = value.b.toFixed(1);
+    cControl.valueNode.value = value.c.toFixed(1);
+    form.value = value;
+    form.dispatchEvent(new CustomEvent("input"));
+  };
+
+  [aControl, bControl, cControl].forEach(({ control }) => {
+    control.addEventListener("input", update);
+  });
+
+  update();
+  return form;
+}
+```
+
+```{ojs}
+{
+  const { a, b, c } = coeficientes;
+  const curve = Array.from({ length: 401 }, (_, i) => {
+    const x = -10 + i * 0.05;
+    return { x, y: a * x * x + b * x + c };
+  });
+
+  const discriminante = b * b - 4 * a * c;
+  const points = [];
+
+  if (a !== 0 && discriminante >= 0) {
+    const raiz1 = (-b + Math.sqrt(discriminante)) / (2 * a);
+    const raiz2 = (-b - Math.sqrt(discriminante)) / (2 * a);
+    points.push({ x: raiz1, y: 0, label: `x=${raiz1.toFixed(2)}` });
+    if (discriminante > 0) points.push({ x: raiz2, y: 0, label: `x=${raiz2.toFixed(2)}` });
+  } else if (a === 0 && b !== 0) {
+    const raiz = -c / b;
+    points.push({ x: raiz, y: 0, label: `x=${raiz.toFixed(2)}` });
   }
-  ```
-:::
-:::
+
+  const plot = Plot.plot({
+    height: 360,
+    grid: true,
+    marginLeft: 42,
+    marginRight: 18,
+    x: { domain: [-10, 10], label: "x" },
+    y: { domain: [-10, 10], label: null },
+    marks: [
+      Plot.ruleY([0], { stroke: "#94a3b8", strokeWidth: 1.4 }),
+      Plot.ruleX([0], { stroke: "#94a3b8", strokeWidth: 1.4 }),
+      Plot.line(curve, { x: "x", y: "y", stroke: "#1f5f8b", strokeWidth: 3 }),
+      Plot.dot(points, { x: "x", y: "y", fill: "#d94841", r: 6, stroke: "white", strokeWidth: 2 }),
+      Plot.text(points, { x: "x", y: "y", text: "label", dy: -15, fill: "#172033", stroke: "white", strokeWidth: 4, fontWeight: "bold", fontSize: 12 })
+    ]
+  });
+
+  plot.classList.add("p3-plot-uza");
+
+  const state =
+    discriminante > 0 ? "Dos soluciones reales" :
+    discriminante === 0 ? "Una solución real" :
+    "Sin soluciones reales";
+
+  return htl.html`<div class="p3-plot-card-uza">
+    ${plot}
+    <div class="p3-discriminant-uza">
+      <span>Δ = ${discriminante.toFixed(2)}</span>
+      <strong>${state}</strong>
+    </div>
+  </div>`;
+}
+```
+
+Explorador interactivo de una ecuación de segundo grado y de sus raíces reales.
+::::
 
 ---
 
 ## Resolución de la práctica
 
-Para resolver esta práctica se propone implementar **tres clases en Java** que correspondan a cada uno de los casos de solución de la ecuación cuadrática.
+Para resolver esta práctica se propone implementar **tres clases en Java**, cada una correspondiente a un nivel de resolución de la ecuación cuadrática.
 
-De manera general, ten en cuenta que la solución única o doble de la ecuación se calcula a través de la siguiente fórmula, conocida como la **fórmula general**:
+La solución única o doble de la ecuación se calcula mediante la siguiente fórmula, conocida como la **fórmula general**:
+
 $$
 x = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a} = \frac{-b \pm \sqrt{\Delta}}{2a}
 $$
 
-El valor dentro de la raíz cuadrada, $b^2 - 4ac$, se llama **discriminante** ($\Delta$) y determina el número de soluciones reales que tiene la ecuación:
+El valor dentro de la raíz cuadrada, $b^2 - 4ac$, se llama **discriminante** ($\Delta$) y determina el número de soluciones reales que tiene la ecuación.
 
 ---
 
 ::: {.callout-tip}
 ## Clases en Java
 
-Recuerda que, en Java, una clase toma el siguiente formato general:
-```java
-public class NombreDeLaClase {
-    /*
-    * @author: Vuestros nombres
-    * @date: Fecha de entrega
-    */
-    public static void main(String[] args) {
-        // solución del problema
-    }
-}
+Recuerda que una clase en Java toma el siguiente formato general:
+
+```{.java include="../resources/practica3/snippets/java/class-template.java"}
 ```
 :::
 
@@ -166,151 +210,98 @@ public class NombreDeLaClase {
 
 ### Clase 1: dos soluciones reales
 
-**Si $\Delta > 0$, la ecuación tiene dos soluciones reales distintas**, que se calculan con la fórmula general utilizando el símbolo $+$ para una raíz y el símbolo $-$ para la otra raíz.
-
----
+Si $\Delta > 0$, la ecuación tiene dos soluciones reales distintas. Estas soluciones se calculan con la fórmula general utilizando el signo $+$ para una raíz y el signo $-$ para la otra.
 
 ::: {.callout-note}
 ## Notas para resolver el problema
 
-- Supondremos que sólo hay raíces reales.
-- Acciones a realizar:
-  - Leer los coeficientes del polinomio.
-  - Aplicar las fórmulas para calcular las dos soluciones.
-  - Escribir las soluciones por pantalla.
+- Supondremos que solo hay raíces reales.
+- Lee los coeficientes del polinomio.
+- Aplica las fórmulas para calcular las dos soluciones.
+- Escribe las soluciones por pantalla.
 :::
 
 ::: {.callout-note}
 ## Leer datos en Java
-Utiliza la clase `Scanner` para leer los coeficientes del polinomio desde la entrada estándar, por ejemplo:
-```java
-Scanner scanner = new Scanner(System.in);
-System.out.print("Introduce el coeficiente a: ");
-double a = scanner.nextDouble();
+
+Utiliza la clase `Scanner` para leer los coeficientes del polinomio desde la entrada estándar:
+
+```{.java include="../resources/practica3/snippets/java/scanner-read-coefficients.java"}
 ```
 :::
 
 ::: {.callout-note}
 ## Imprimir resultados en Java
-Utiliza la impresión por consola para mostrar los resultados de las soluciones, por ejemplo:
-```java
-System.out.println("La solución es: " + x);
+
+Utiliza la consola para mostrar los resultados:
+
+```{.java include="../resources/practica3/snippets/java/print-solution.java"}
 ```
 :::
 
 ---
 
 A continuación se muestra una posible solución en pseudocódigo:
-```{.java}
-Programa Raices1   { Funciona si sólo hay raíces reales }
 
-Definición de variables
-    reales: coefA, coefB, coefC;
-    reales: discriminante, denominador;
-    reales: raiz1, raiz2;
-
-Principio del algoritmo
-
-    lee(coefA, coefB, coefC);
-
-    discriminante := pow(coefB, 2) - (4.0 * coefA * coefC);
-    denominador := 2.0 * coefA;
-
-    raiz1 := (-coefB + sqrt(discriminante)) / denominador;
-    raiz2 := (-coefB - sqrt(discriminante)) / denominador;
-
-    escribe(raiz1, raiz2);
-
-fin
+```{.text include="../resources/practica3/snippets/pseudocode/raices1.txt"}
 ```
 
 ::: {.callout-tip}
-## Solución única
+## Comprobación
 
-Verifica que la solución es correcta utilizando los siguientes coeficientes:
+Verifica la solución con los siguientes coeficientes:
 
-- $a=1, \quad b=-3, \quad c=2$ → dos soluciones reales ($x=1$ y $x=2$).
+$a=1, \quad b=-3, \quad c=2$
 
+El resultado esperado son dos soluciones reales: $x=1$ y $x=2$.
 :::
 
 ---
 
 ### Clase 2: una solución real o dos soluciones reales
 
-Si $\Delta = 0$, la ecuación tiene una única solución real, que se calcula con la fórmula general utilizando cualquiera de los símbolos $+$ o $-$, ya que ambos darán el mismo resultado.
+Si $\Delta = 0$, la ecuación tiene una única solución real. En este caso, los signos $+$ y $-$ de la fórmula general producen el mismo resultado.
 
 ::: {.callout-note}
 ## Notas para resolver el problema
 
-- Calcula las raíces cuando sólo hay raíces reales ($\Delta \geq 0$), pero en caso contrario se escribe un mensaje explicativo.
-- Acciones a realizar:
-  - Leer los coeficientes del polinomio.
-  - Calcular el discriminante.
-  - Si el discriminante es mayor que cero:
-    - Aplicar las fórmulas para calcular las dos soluciones.
-    - Escribir las soluciones por pantalla.
-  - Si el discriminante es igual a cero:
-    - Aplicar la fórmula para calcular la única solución.
-    - Escribir la solución por pantalla.
-- Si el discriminante es menor que cero:
-    - Escribir un texto indicando que no hay raíces.
+- Calcula las raíces cuando $\Delta \geq 0$.
+- Si $\Delta > 0$, escribe las dos soluciones reales.
+- Si $\Delta = 0$, escribe la solución única.
+- Si $\Delta < 0$, escribe un mensaje indicando que no hay raíces reales.
 :::
 
 ---
 
-```{.java}
-Programa Raices2   { Funciona si hay raíces reales; si no, mensaje de error }
-
-Definición de variables
-    reales: coefA, coefB, coefC;
-    reales: discriminante, denominador;
-    reales: raiz1, raiz2;
-
-Principio del algoritmo
-
-    lee(coefA, coefB, coefC);
-
-    discriminante := pow(coefB, 2) - (4.0 * coefA * coefC);
-
-    si discriminante > 0.0 entonces
-        principio
-            denominador := 2.0 * coefA;
-            raiz1 := (-coefB + sqrt(discriminante)) / denominador;
-            raiz2 := (-coefB - sqrt(discriminante)) / denominador;
-            escribe(raiz1, raiz2);
-        fin
-    sino si discriminante == 0.0 entonces
-        principio
-            denominador := 2.0 * coefA;
-            raiz1 := -coefB / denominador;
-            escribe(raiz1);
-        fin
-    sino
-        escribe("Este polinomio no tiene raíces reales");
-    fin
-fin
+```{.text include="../resources/practica3/snippets/pseudocode/raices2.txt"}
 ```
 
 ::: {.callout-tip}
-## Solución única
+## Comprobación
 
-Verifica que la solución es correcta utilizando los siguientes coeficientes:
+Verifica la solución con los siguientes coeficientes:
 
-- $a=1, \quad b=-2, \quad c=1$ → una solución real ($x=1$).
+$a=1, \quad b=-2, \quad c=1$
+
+El resultado esperado es una única solución real: $x=1$.
 :::
 
 ---
 
 ### Clase 3: solución completa
 
-Si $\Delta < 0$, la ecuación no tiene soluciones reales, ya que la raíz cuadrada de un número negativo no es un número real. En este caso, se pueden calcular las soluciones complejas utilizando números imaginarios de la siguiente forma:
+Si $\Delta < 0$, la ecuación no tiene soluciones reales, ya que la raíz cuadrada de un número negativo no es un número real.
+
+En este caso, se pueden calcular las soluciones complejas utilizando números imaginarios:
+
 $$
 x = \frac{-b \pm i\sqrt{-(b^2 - 4ac)}}{2a} = \frac{-b \pm i\sqrt{4ac - b^2}}{2a}
 $$
 
-de tal manera que el número imaginario $i$ se define como la raíz cuadrada de $-1$.
+---
 
-Por tanto, las dos soluciones complejas conjugadas se pueden expresar como:
+Las dos soluciones complejas conjugadas se pueden expresar como:
+
 $$
 \begin{aligned}
 x_1 &= \frac{-b + i\sqrt{4ac - b^2}}{2a} = \frac{-b}{2a} + i\frac{\sqrt{4ac - b^2}}{2a} \\
@@ -318,86 +309,42 @@ x_2 &= \frac{-b - i\sqrt{4ac - b^2}}{2a} = \frac{-b}{2a} - i\frac{\sqrt{4ac - b^
 \end{aligned}
 $$
 
----
-
 ::: {.callout-note}
 ## Notas para resolver el problema
 
 - Calcula las raíces en todos los casos.
-- Acciones a realizar:
-  - Leer los coeficientes del polinomio.
-  - Calcular el discriminante.
-  - Si el discriminante es mayor que cero:
-    - Aplicar las fórmulas para calcular soluciones reales.
-    - Escribir las soluciones por pantalla.
-  - Si el discriminante es igual a cero:
-    - Aplicar las fórmulas para calcular la única solución real.
-    - Escribir la solución por pantalla.
-  - Si el discriminante es menor que cero:
-    - Aplicar las fórmulas para calcular soluciones complejas.
-    - Escribir las soluciones por pantalla.
+- Si $\Delta > 0$, escribe las dos soluciones reales.
+- Si $\Delta = 0$, escribe la solución única.
+- Si $\Delta < 0$, escribe las dos soluciones complejas conjugadas.
 :::
-
-```{.java}
-Programa Raices3   { Funciona si hay raíces reales o complejas }
-
-Definición de variables
-    reales: coefA, coefB, coefC;
-    reales: discriminante, denominador;
-    reales: raiz1, raiz2, parteReal, parteImaginaria;
-
-Principio del algoritmo
-
-    lee(coefA, coefB, coefC);
-
-    discriminante := pow(coefB, 2) - (4.0 * coefA * coefC);
-    denominador := 2.0 * coefA;
-
-    si discriminante > 0.0 entonces   { Raíces reales }
-        principio
-            raiz1 := (-coefB + sqrt(discriminante)) / denominador;
-            raiz2 := (-coefB - sqrt(discriminante)) / denominador;
-            escribe(raiz1, raiz2);
-        fin
-    sino si discriminante == 0.0 entonces   { Raíz única real }
-        principio
-            raiz1 := -coefB / denominador;
-            escribe(raiz1);
-        fin
-    sino   { Raíces complejas }
-        principio
-            parteReal := -coefB / denominador;
-            parteImaginaria := sqrt(-discriminante) / denominador;
-
-            escribe("(", parteReal, " + ", parteImaginaria, "i)");
-            escribe("(", parteReal, " - ", parteImaginaria, "i)");
-        fin
-    fin
-fin
-```
 
 ---
 
-::: {.callout-tip}
-## Solución compleja
+```{.text include="../resources/practica3/snippets/pseudocode/raices3.txt"}
+```
 
-Verifica que la solución es correcta utilizando los siguientes coeficientes:
+::: {.callout-tip}
+## Comprobación
+
+Verifica la solución con los siguientes coeficientes:
 
 $a=1, \quad b=0, \quad c=1$
 
-Las soluciones son:
-$$x_1 = 1i$$
-$$x_2 = -1i$$
+Las soluciones esperadas son:
+
+$$
+x_1 = i,\qquad x_2 = -i
+$$
 :::
 
 ---
 
 ## Entrega de la práctica
 
-La práctica se entregará a través de la plataforma de la asignatura, con un fichero **.zip** que contenga las tres clases Java implementadas. 
+La práctica se entregará a través de la plataforma de la asignatura, con un fichero **.zip** que contenga las tres clases Java implementadas.
 
 - `Solucion1.java` para el caso de dos soluciones reales.
-- `Solucion2.java` para el caso de discriminante no negativo (una o dos soluciones reales).
-- `Solucion3.java` para el caso de cualquier tipo de solución (reales o complejas).
+- `Solucion2.java` para el caso de discriminante no negativo, es decir, una o dos soluciones reales.
+- `Solucion3.java` para el caso completo, con soluciones reales o complejas.
 
-**Sólo realizará la entrega de la práctica un miembro del grupo**.
+**Solo realizará la entrega de la práctica un miembro del grupo.**

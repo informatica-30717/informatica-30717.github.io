@@ -1,0 +1,281 @@
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+\PassOptionsToPackage{dvipsnames,svgnames,x11names}{xcolor}
+\documentclass[
+  spanish,
+  11pt,
+  a4paper,
+  DIV=11,
+  numbers=noendperiod]{scrartcl}
+
+\usepackage{xcolor}
+\usepackage[top=24mm,bottom=24mm,left=24mm,right=24mm,headheight=15pt,headsep=8mm]{geometry}
+\usepackage{amsmath,amssymb}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp}
+\else
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath}
+}{}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage[bidi=basic]{babel}
+\let\LanguageShortHands\languageshorthands
+\def\languageshorthands#1{}
+\setlength{\emergencystretch}{3em}
+\setcounter{secnumdepth}{5}
+\providecommand{\tightlist}{\setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+
+\newcommand{\practicaPdfCoverImage}{../resources/practica3/images/teaser.jpg}
+\input{../resources/latex/practice-pdf-style.tex}
+\KOMAoption{captions}{tableheading}
+
+\usepackage{bookmark}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{}
+\urlstyle{same}
+\hypersetup{
+  pdftitle={Práctica 3: Resolución de problemas en Java (I)},
+  pdflang={es},
+  colorlinks=true,
+  linkcolor={uzaBlueDark},
+  filecolor={Maroon},
+  citecolor={Blue},
+  urlcolor={uzaBlue},
+  pdfcreator={LaTeX}
+}
+
+\title{Práctica 3: Resolución de problemas en Java (I)}
+\author{}
+\date{}
+
+\begin{document}
+\maketitle
+
+\renewcommand*\contentsname{Tabla de contenidos}
+{
+\hypersetup{linkcolor=}
+\setcounter{tocdepth}{2}
+\tableofcontents
+}
+
+\clearpage
+
+\section{Objetivos de la práctica}\label{objetivos-de-la-practica}
+
+Los objetivos de esta práctica son los siguientes:
+
+\begin{itemize}
+\tightlist
+\item Desarrollar algoritmos en Java.
+\item Ejecutar algoritmos en el entorno Eclipse.
+\item Utilizar expresiones condicionales para distinguir distintos casos de un problema.
+\end{itemize}
+
+\section{Raíces de una ecuación de segundo grado}\label{raices-de-una-ecuacion-de-segundo-grado}
+
+Una ecuación de segundo grado tiene la forma:
+
+\[
+ax^2 + bx + c = 0
+\]
+
+donde \(a\), \(b\) y \(c\) son coeficientes reales, y \(x\) es la variable que queremos resolver.
+
+A diferencia de las ecuaciones de primer grado, las ecuaciones de segundo grado pueden tener \textbf{0, 1 o 2 soluciones reales} dependiendo de los valores de los coeficientes.
+
+Por ejemplo, los siguientes coeficientes generan diferentes números de soluciones:
+
+\begin{itemize}
+\tightlist
+\item \(a=1\), \(b=-3\), \(c=2\): dos soluciones reales (\(x=1\) y \(x=2\)).
+\item \(a=1\), \(b=-2\), \(c=1\): una solución real (\(x=1\)).
+\item \(a=1\), \(b=0\), \(c=1\): no hay soluciones reales.
+\end{itemize}
+
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}[x=1cm,y=1cm, every node/.style={font=\sffamily\small}]
+  \foreach \shift/\title/\formula/\roots in {
+    0/{$\Delta>0$}/{Dos cortes}/{dos raíces reales},
+    5/{$\Delta=0$}/{Tangencia}/{una raíz real},
+    10/{$\Delta<0$}/{Sin cortes}/{sin raíces reales}
+  } {
+    \begin{scope}[xshift=\shift cm]
+      \draw[rounded corners=2pt, color=uzaLine, fill=uzaCodeBg] (-2.05,-1.35) rectangle (2.05,2.05);
+      \draw[->, color=uzaMuted] (-1.65,0) -- (1.72,0) node[right] {$x$};
+      \draw[->, color=uzaMuted] (0,-0.95) -- (0,1.55) node[above] {$y$};
+      \node[anchor=west, color=uzaBlueDark, font=\sffamily\bfseries\small] at (-1.8,1.7) {\title};
+      \node[anchor=west, color=uzaMuted, font=\sffamily\scriptsize] at (-1.8,1.43) {\formula};
+      \node[align=center, color=uzaInk, font=\sffamily\scriptsize] at (0,-1.12) {\roots};
+    \end{scope}
+  }
+  \begin{scope}
+    \pgfmathsetmacro{\rootpos}{sqrt(0.55/0.52)}
+    \draw[domain=-1.55:1.55,smooth,variable=\x,color=uzaBlue,thick] plot ({\x},{0.52*\x*\x-0.55});
+    \fill[color=uzaWarn] (-\rootpos,0) circle (2pt);
+    \fill[color=uzaWarn] (\rootpos,0) circle (2pt);
+  \end{scope}
+  \begin{scope}[xshift=5cm]
+    \draw[domain=-1.55:1.55,smooth,variable=\x,color=uzaBlue,thick] plot ({\x},{0.52*\x*\x});
+    \fill[color=uzaWarn] (0,0) circle (2pt);
+  \end{scope}
+  \begin{scope}[xshift=10cm]
+    \draw[domain=-1.55:1.55,smooth,variable=\x,color=uzaBlue,thick] plot ({\x},{0.42*\x*\x+0.45});
+  \end{scope}
+\end{tikzpicture}
+\caption{Relación entre el discriminante y el número de raíces reales de una ecuación de segundo grado.}\label{fig-discriminante}
+\end{figure}
+
+\section{Resolución de la práctica}\label{resolucion-de-la-practica}
+
+Para resolver esta práctica se propone implementar \textbf{tres clases en Java}, cada una correspondiente a un nivel de resolución de la ecuación cuadrática.
+
+La solución única o doble de la ecuación se calcula mediante la siguiente fórmula, conocida como la \textbf{fórmula general}:
+
+\[
+x = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a} = \frac{-b \pm \sqrt{\Delta}}{2a}
+\]
+
+El valor dentro de la raíz cuadrada, \(b^2 - 4ac\), se llama \textbf{discriminante} (\(\Delta\)) y determina el número de soluciones reales que tiene la ecuación.
+
+\begin{PracticeTipBox}{Clases en Java}
+Recuerda que una clase en Java toma el siguiente formato general:
+
+\PracticeCode{../resources/practica3/snippets/java/class-template.java}
+\end{PracticeTipBox}
+
+\subsection{Clase 1: dos soluciones reales}\label{clase-1-dos-soluciones-reales}
+
+Si \(\Delta > 0\), la ecuación tiene dos soluciones reales distintas. Estas soluciones se calculan con la fórmula general utilizando el signo \(+\) para una raíz y el signo \(-\) para la otra.
+
+\begin{PracticeNoteBox}{Notas para resolver el problema}
+\begin{itemize}
+\tightlist
+\item Supondremos que solo hay raíces reales.
+\item Lee los coeficientes del polinomio.
+\item Aplica las fórmulas para calcular las dos soluciones.
+\item Escribe las soluciones por pantalla.
+\end{itemize}
+\end{PracticeNoteBox}
+
+\begin{PracticeNoteBox}{Leer datos en Java}
+Utiliza la clase \texttt{Scanner} para leer los coeficientes del polinomio desde la entrada estándar:
+
+\PracticeCode{../resources/practica3/snippets/java/scanner-read-coefficients.java}
+\end{PracticeNoteBox}
+
+\begin{PracticeNoteBox}{Imprimir resultados en Java}
+Utiliza la consola para mostrar los resultados:
+
+\PracticeCode{../resources/practica3/snippets/java/print-solution.java}
+\end{PracticeNoteBox}
+
+A continuación se muestra una posible solución en pseudocódigo:
+
+\PracticeCode{../resources/practica3/snippets/pseudocode/raices1.txt}
+
+\begin{PracticeTipBox}{Comprobación}
+Verifica la solución con los siguientes coeficientes:
+
+\[
+a=1,\qquad b=-3,\qquad c=2
+\]
+
+El resultado esperado son dos soluciones reales: \(x=1\) y \(x=2\).
+\end{PracticeTipBox}
+
+\subsection{Clase 2: una solución real o dos soluciones reales}\label{clase-2-una-solucion-real-o-dos-soluciones-reales}
+
+Si \(\Delta = 0\), la ecuación tiene una única solución real. En este caso, los signos \(+\) y \(-\) de la fórmula general producen el mismo resultado.
+
+\begin{PracticeNoteBox}{Notas para resolver el problema}
+\begin{itemize}
+\tightlist
+\item Calcula las raíces cuando \(\Delta \geq 0\).
+\item Si \(\Delta > 0\), escribe las dos soluciones reales.
+\item Si \(\Delta = 0\), escribe la solución única.
+\item Si \(\Delta < 0\), escribe un mensaje indicando que no hay raíces reales.
+\end{itemize}
+\end{PracticeNoteBox}
+
+\PracticeCode{../resources/practica3/snippets/pseudocode/raices2.txt}
+
+\begin{PracticeTipBox}{Comprobación}
+Verifica la solución con los siguientes coeficientes:
+
+\[
+a=1,\qquad b=-2,\qquad c=1
+\]
+
+El resultado esperado es una única solución real: \(x=1\).
+\end{PracticeTipBox}
+
+\subsection{Clase 3: solución completa}\label{clase-3-solucion-completa}
+
+Si \(\Delta < 0\), la ecuación no tiene soluciones reales, ya que la raíz cuadrada de un número negativo no es un número real.
+
+En este caso, se pueden calcular las soluciones complejas utilizando números imaginarios:
+
+\[
+x = \frac{-b \pm i\sqrt{-(b^2 - 4ac)}}{2a} = \frac{-b \pm i\sqrt{4ac - b^2}}{2a}
+\]
+
+Las dos soluciones complejas conjugadas se pueden expresar como:
+
+\[
+\begin{aligned}
+x_1 &= \frac{-b + i\sqrt{4ac - b^2}}{2a} = \frac{-b}{2a} + i\frac{\sqrt{4ac - b^2}}{2a} \\
+x_2 &= \frac{-b - i\sqrt{4ac - b^2}}{2a} = \frac{-b}{2a} - i\frac{\sqrt{4ac - b^2}}{2a}
+\end{aligned}
+\]
+
+\begin{PracticeNoteBox}{Notas para resolver el problema}
+\begin{itemize}
+\tightlist
+\item Calcula las raíces en todos los casos.
+\item Si \(\Delta > 0\), escribe las dos soluciones reales.
+\item Si \(\Delta = 0\), escribe la solución única.
+\item Si \(\Delta < 0\), escribe las dos soluciones complejas conjugadas.
+\end{itemize}
+\end{PracticeNoteBox}
+
+\PracticeCode{../resources/practica3/snippets/pseudocode/raices3.txt}
+
+\begin{PracticeTipBox}{Comprobación}
+Verifica la solución con los siguientes coeficientes:
+
+\[
+a=1,\qquad b=0,\qquad c=1
+\]
+
+Las soluciones esperadas son:
+
+\[
+x_1 = i,\qquad x_2 = -i
+\]
+\end{PracticeTipBox}
+
+\section{Entrega de la práctica}\label{entrega-de-la-practica}
+
+La práctica se entregará a través de la plataforma de la asignatura, con un fichero \textbf{.zip} que contenga las tres clases Java implementadas.
+
+\begin{itemize}
+\tightlist
+\item \texttt{Solucion1.java} para el caso de dos soluciones reales.
+\item \texttt{Solucion2.java} para el caso de discriminante no negativo, es decir, una o dos soluciones reales.
+\item \texttt{Solucion3.java} para el caso completo, con soluciones reales o complejas.
+\end{itemize}
+
+\textbf{Solo realizará la entrega de la práctica un miembro del grupo.}
+
+\end{document}
