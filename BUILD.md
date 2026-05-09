@@ -60,7 +60,7 @@ Use the launcher script for PDFs:
 scripts\pdf
 ```
 
-That builds the default PDF practices, currently practice 1, practice 2, practice 3, practice 4, and practice 9.
+That builds the default PDF practices, currently practice 1, practice 2, practice 3, practice 4, practice 5, practice 6, practice 7, and practice 9.
 
 Build only practice 1:
 

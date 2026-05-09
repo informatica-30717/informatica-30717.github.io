@@ -71,14 +71,17 @@ export function computeSelectionSortSteps(baseArr) {
 
 export function createStepPlayer({ html, max, onRegenerate }) {
   const safeMax = Math.max(0, max);
-  const form = html`<form style="display: flex; align-items: center; gap: 15px; width: 100%; margin-top: 15px; flex-wrap: wrap;">
-    <button type="button" class="btn btn-secondary btn-sm rand-btn" style="color: #eee; font-weight: bold; font-size: 0.9em;">🎲 Regenerar</button>
-    <button type="button" class="btn btn-primary btn-sm play-btn" style="color: #eee; font-weight: bold; font-size: 0.9em;">▶ Reproducir</button>
-    <label style="font-weight: bold; white-space: nowrap; font-size: 0.9em;">Paso:</label>
-    <input type="range" min="0" max="${safeMax}" value="0" style="flex-grow: 1;">
-    <output style="min-width: 30px; text-align: right; font-weight: bold;">0</output>
-  </form>`;
+  const form = html`<div class="p6-control-panel-uza">
+    <form class="p6-step-form-uza">
+      <button type="button" class="btn btn-secondary btn-sm rand-btn" style="color:#eee;font-weight:700;">Regenerar</button>
+      <button type="button" class="btn btn-primary btn-sm play-btn" style="color:#eee;font-weight:700;">Reproducir</button>
+      <label class="p6-step-label-uza">Paso</label>
+      <input type="range" min="0" max="${safeMax}" value="0">
+      <output>0</output>
+    </form>
+  </div>`;
 
+  const innerForm = form.querySelector("form");
   const randBtn = form.querySelector(".rand-btn");
   const playBtn = form.querySelector(".play-btn");
   const range = form.querySelector("input[type=range]");
@@ -93,13 +96,14 @@ export function createStepPlayer({ html, max, onRegenerate }) {
       clearInterval(timer);
       timer = null;
     }
-    playBtn.innerHTML = "▶ Reproducir";
+    playBtn.innerHTML = "Reproducir";
     playBtn.classList.add("btn-primary");
     playBtn.classList.remove("btn-danger");
   };
 
   const update = () => {
     output.value = range.value;
+    output.textContent = range.value;
     form.value = Number(range.value);
     form.dispatchEvent(new Event("input", { bubbles: true }));
   };
@@ -123,7 +127,7 @@ export function createStepPlayer({ html, max, onRegenerate }) {
     }
 
     isPlaying = true;
-    playBtn.innerHTML = "⏸ Pausar";
+    playBtn.innerHTML = "Pausar";
     playBtn.classList.remove("btn-primary");
     playBtn.classList.add("btn-danger");
 
@@ -143,15 +147,16 @@ export function createStepPlayer({ html, max, onRegenerate }) {
     }, 1100);
   };
 
+  innerForm.onsubmit = (event) => event.preventDefault();
   form.value = 0;
   return form;
 }
 
 function renderLegend(html, items) {
   return html`
-    <div style="margin-top:15px; display:flex; gap:15px; justify-content:center; font-size:0.85em; color:#555; flex-wrap: wrap;">
+    <div class="p6-legend-uza">
       ${items.map(
-        (item) => html`<span><span style="display:inline-block; width:12px; height:12px; background:${item.color}; margin-right:5px; border-radius:2px;"></span>${item.label}</span>`
+        (item) => html`<span class="p6-legend-chip-uza"><span class="p6-legend-swatch-uza" style="background:${item.color};"></span>${item.label}</span>`
       )}
     </div>
   `;
@@ -166,40 +171,43 @@ function renderArrayState({ html, Plot, steps, stepIndex, gridBuilder, messageBu
 
   const grid = gridBuilder(step);
   const arr = step.arr;
+  const plot = Plot.plot({
+    width: 920,
+    height: 100,
+    margin: 10,
+    x: { axis: null, domain: [-0.5, arr.length - 0.5] },
+    y: { axis: null, domain: [0, 1] },
+    color: { type: "identity" },
+    marks: [
+      Plot.rect(grid, {
+        x1: (d) => d.n - 0.48,
+        x2: (d) => d.n + 0.48,
+        y1: 0.1,
+        y2: 0.9,
+        fill: "color",
+        stroke: "white",
+        strokeWidth: 1.5,
+        rx: 4,
+      }),
+      Plot.text(grid, {
+        x: "n",
+        y: 0.5,
+        text: "value",
+        fill: "white",
+        fontSize: 17,
+        fontWeight: "bold",
+      }),
+    ],
+  });
+
+  plot.classList.add("p6-sort-plot-uza");
 
   return html`
-    <div style="margin-top:20px;">
-      ${Plot.plot({
-        height: 80,
-        margin: 10,
-        x: { axis: null, domain: [-0.5, arr.length - 0.5] },
-        y: { axis: null, domain: [0, 1] },
-        color: { type: "identity" },
-        marks: [
-          Plot.rect(grid, {
-            x1: (d) => d.n - 0.45,
-            x2: (d) => d.n + 0.45,
-            y1: 0,
-            y2: 1,
-            fill: "color",
-            stroke: "white",
-            rx: 4,
-          }),
-          Plot.text(grid, {
-            x: "n",
-            y: 0.5,
-            text: "value",
-            fill: "white",
-            fontSize: 16,
-            fontWeight: "bold",
-          }),
-        ],
-      })}
-
-      <div style="margin-top:20px; font-size: 1.15em; height: 1.5em; text-align: center;">
+    <div class="p6-plot-panel-uza">
+      ${plot}
+      <div class="p6-sort-message-uza">
         ${messageBuilder(html, step, arr)}
       </div>
-
       ${renderLegend(html, legendItems)}
     </div>
   `;
@@ -223,10 +231,10 @@ export function renderBubbleSortState({ html, Plot, steps, stepIndex }) {
         return { n: idx, value, color: bgColor };
       }),
     messageBuilder: (htmlTag, step, arr) => {
-      if (step.type === "start") return htmlTag`🚀 Vector inicial. Comenzando ordenación de burbuja`;
-      if (step.type === "compare") return htmlTag`🔎 Comparando índices: ¿es <b>${arr[step.i]}</b> mayor que <b>${arr[step.j]}</b>?`;
-      if (step.type === "swap") return htmlTag`🔄 Intercambiando posiciones`;
-      return htmlTag`✅ Ordenamiento completado con éxito`;
+      if (step.type === "start") return htmlTag`Vector inicial. Comenzando ordenación de burbuja`;
+      if (step.type === "compare") return htmlTag`Comparando índices: ¿es <b>${arr[step.i]}</b> mayor que <b>${arr[step.j]}</b>?`;
+      if (step.type === "swap") return htmlTag`Intercambiando posiciones`;
+      return htmlTag`Ordenamiento completado`;
     },
     legendItems: [
       { color: "#2a9d8f", label: "No ordenado" },
@@ -259,11 +267,11 @@ export function renderSelectionSortState({ html, Plot, steps, stepIndex }) {
         return { n: idx, value, color: bgColor };
       }),
     messageBuilder: (htmlTag, step, arr) => {
-      if (step.type === "start") return htmlTag`🚀 Vector inicial. Comenzando ordenación por selección`;
-      if (step.type === "new_min") return htmlTag`📌 Mínimo provisional marcado: <b>${arr[step.minIdx]}</b>`;
-      if (step.type === "compare") return htmlTag`🔎 ¿Es <b>${arr[step.curr]}</b> menor que el mínimo actual <b>${arr[step.minIdx]}</b>?`;
-      if (step.type === "swap") return htmlTag`🔄 Mínimo encontrado. Intercambiando posiciones...`;
-      return htmlTag`✅ Ordenamiento completado con éxito`;
+      if (step.type === "start") return htmlTag`Vector inicial. Comenzando ordenación por selección`;
+      if (step.type === "new_min") return htmlTag`Mínimo provisional marcado: <b>${arr[step.minIdx]}</b>`;
+      if (step.type === "compare") return htmlTag`¿Es <b>${arr[step.curr]}</b> menor que el mínimo actual <b>${arr[step.minIdx]}</b>?`;
+      if (step.type === "swap") return htmlTag`Mínimo encontrado. Intercambiando posiciones`;
+      return htmlTag`Ordenamiento completado`;
     },
     legendItems: [
       { color: "#2a9d8f", label: "No ordenado" },

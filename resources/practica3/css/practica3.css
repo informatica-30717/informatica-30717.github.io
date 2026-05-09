@@ -18,6 +18,12 @@
   text-align: center;
 }
 
+.p3-figure-uza .code-copy-outer-scaffold,
+.p3-figure-uza .code-copy-button,
+.p3-figure-uza .anchorjs-link {
+  display: none !important;
+}
+
 .p3-quadratic-panel-uza,
 .p3-plot-card-uza {
   box-sizing: border-box;

@@ -4,12 +4,22 @@ format:
   html: 
     toc: true
     number-sections: true
+    include-in-header:
+      text: |
+        <link rel="stylesheet" href="../resources/practica5/css/practica5.css">
   revealjs: 
     output-ext: "reveal.html"
+    width: 1280
+    height: 720
+    margin: 0.08
+    include-in-header:
+      text: |
+        <link rel="stylesheet" href="../resources/practica5/css/practica5.css">
 execute:
   echo: false
 resources:
   - ../resources/practica5/ojs/practica5.js
+  - ../resources/practica5/css/practica5.css
 ---
 
 ## Objetivos de la práctica
@@ -121,8 +131,7 @@ $$
 
 ---
 
-::: {.card .shadow-sm .mb-4}
-::: {.card-body}
+::: {.p5-ojs-setup-uza}
 ```{ojs}
 import {
   cleanSlider,
@@ -132,23 +141,34 @@ import {
   renderSieveState
 } from "../resources/practica5/ojs/practica5.js"
 ```
+:::
 
+::: {.p5-figure-uza}
+::: {.p5-interactive-uza}
+::: {.p5-control-panel-uza}
 ```{ojs}
 viewof N1 = cleanSlider(Inputs, [10, 50], { value: 29, step: 1, label: "Valor N: " })
 ```
 
+::: {.p5-compute-uza}
 ```{ojs}
 steps1 = buildBasicSieveSteps(N1)
 ```
+:::
 
 ```{ojs}
 viewof step1 = cleanSlider(Inputs, [0, steps1.length - 1], { value: 0, step: 1, label: "Paso de la criba: " })
 ```
+:::
 
+::: {}
 ```{ojs}
 renderSieveState({ html, Plot, steps: steps1, stepIndex: step1, max: N1 })
 ```
 :::
+:::
+
+Evolución de la criba básica: candidatos, múltiplos descartados y primo activo.
 :::
 
 ---
@@ -207,25 +227,32 @@ Cada entero ocupa 4 bytes en Java, por lo que el vector utilizado para la criba 
 
 ---
 
-::: {.card .shadow-sm .mb-4}
-::: {.card-body}
-
+::: {.p5-figure-uza}
+::: {.p5-interactive-uza}
+::: {.p5-control-panel-uza}
 ```{ojs}
 viewof N2 = cleanSlider(Inputs, [10, 150], { value: 29, step: 1, label: "Valor N: " })
 ```
 
+::: {.p5-compute-uza}
 ```{ojs}
 steps2 = buildRootSieveSteps(N2)
 ```
+:::
 
 ```{ojs}
 viewof step2 = cleanSlider(Inputs, [0, steps2.length - 1], { value: 0, step: 1, label: "Paso de la criba: " })
 ```
+:::
 
+::: {}
 ```{ojs}
 renderSieveState({ html, Plot, steps: steps2, stepIndex: step2, max: N2 })
 ```
 :::
+:::
+
+Evolución de la criba optimizada: solo se prueban divisores hasta la raíz cuadrada.
 :::
 
 ---
@@ -395,25 +422,32 @@ System.out.println("Total: " + contadorPrimos + " números primos");
 
 ---
 
-::: {.card .shadow-sm .mb-4 .mt-4}
-::: {.card-body}
-
+::: {.p5-figure-uza}
+::: {.p5-interactive-uza}
+::: {.p5-control-panel-uza}
 ```{ojs}
 viewof N4 = cleanSlider(Inputs, [10, 150], { value: 51, step: 1, label: "Valor N: " })
 ```
 
+::: {.p5-compute-uza}
 ```{ojs}
 steps4 = buildOddOnlySieveSteps(N4)
 ```
+:::
 
 ```{ojs}
 viewof step4 = cleanSlider(Inputs, [0, steps4.length - 1], { value: 0, step: 1, label: "Paso de la criba: " })
 ```
+:::
 
+::: {}
 ```{ojs}
 renderSieveState({ html, Plot, steps: steps4, stepIndex: step4, max: N4, oddOnly: true })
 ```
 :::
+:::
+
+Evolución de la criba con solo impares: se omiten los pares y se reduce el vector.
 :::
 
 ::: {.callout-note collapse="true"}

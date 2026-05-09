@@ -4,12 +4,22 @@ format:
   html: 
     toc: true
     number-sections: true
+    include-in-header:
+      text: |
+        <link rel="stylesheet" href="../resources/practica6/css/practica6.css">
   revealjs: 
     output-ext: "reveal.html"
+    width: 1280
+    height: 720
+    margin: 0.08
+    include-in-header:
+      text: |
+        <link rel="stylesheet" href="../resources/practica6/css/practica6.css">
 execute:
   echo: false
 resources:
   - ../resources/practica6/ojs/practica6.js
+  - ../resources/practica6/css/practica6.css
 ---
 
 ## Objetivos de la práctica
@@ -45,8 +55,7 @@ Por ejemplo, dado un vector de $n$ números enteros, el proceso a seguir sería 
 
 A continuación se muestra un ejemplo del algoritmo de ordenación de burbuja para visualizar el proceso de ordenación paso a paso.
 
-::: {.card .shadow-sm .mb-4}
-::: {.card-body}
+::: {.p6-ojs-setup-uza}
 ```{ojs}
 import {
   randomIntArray,
@@ -57,7 +66,11 @@ import {
   renderSelectionSortState
 } from "../resources/practica6/ojs/practica6.js"
 ```
+:::
 
+::: {.p6-figure-uza}
+::: {.p6-interactive-uza}
+::: {.p6-ojs-setup-uza}
 ```{ojs}
 mutable randTrigger = 0
 ```
@@ -72,7 +85,15 @@ baseArr = {
 ```{ojs}
 stepsBS = computeBubbleSortSteps(baseArr)
 ```
+:::
 
+::: {}
+```{ojs}
+renderBubbleSortState({ html, Plot, steps: stepsBS, stepIndex: stepBS })
+```
+:::
+
+::: {}
 ```{ojs}
 viewof stepBS = createStepPlayer({
   html,
@@ -82,11 +103,10 @@ viewof stepBS = createStepPlayer({
   }
 })
 ```
-
-```{ojs}
-renderBubbleSortState({ html, Plot, steps: stepsBS, stepIndex: stepBS })
-```
 :::
+:::
+
+Evolución de la ordenación de burbuja sobre un vector pequeño.
 :::
 
 ---
@@ -105,8 +125,9 @@ Dado un vector de $n$ números enteros, **el proceso a seguir sería el siguient
 
 A continuación se muestra una animación paso a paso del algoritmo de ordenación por selección para visualizar el proceso de ordenación.
 
-::: {.card .shadow-sm .mb-4}
-::: {.card-body}
+::: {.p6-figure-uza}
+::: {.p6-interactive-uza}
+::: {.p6-ojs-setup-uza}
 ```{ojs}
 mutable randTriggerSS = 0
 ```
@@ -121,7 +142,15 @@ baseArrSS = {
 ```{ojs}
 stepsSS = computeSelectionSortSteps(baseArrSS)
 ```
+:::
 
+::: {}
+```{ojs}
+renderSelectionSortState({ html, Plot, steps: stepsSS, stepIndex: stepSS })
+```
+:::
+
+::: {}
 ```{ojs}
 viewof stepSS = createStepPlayer({
   html,
@@ -131,11 +160,10 @@ viewof stepSS = createStepPlayer({
   }
 })
 ```
-
-```{ojs}
-renderSelectionSortState({ html, Plot, steps: stepsSS, stepIndex: stepSS })
-```
 :::
+:::
+
+Evolución de la ordenación por selección sobre un vector pequeño.
 :::
 
 ---

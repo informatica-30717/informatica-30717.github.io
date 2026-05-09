@@ -6,8 +6,17 @@ format:
   html:
     toc: true
     number-sections: true
+    include-in-header:
+      text: |
+        <link rel="stylesheet" href="../resources/practica7/css/practica7.css">
   revealjs:
     output-ext: "reveal.html"
+    width: 1280
+    height: 720
+    margin: 0.08
+    include-in-header:
+      text: |
+        <link rel="stylesheet" href="../resources/practica7/css/practica7.css">
 execute:
   echo: false
 ---
@@ -79,17 +88,26 @@ Podéis encontrar también material complementario en algunos tutoriales disponi
 
 Durante el tutorial, intenta no limitarte a copiar conexiones. Ve comprobando qué hace cada componente y qué ocurre cuando cambias sus parámetros. En particular:
 
-:::: {layout="[60, 40]"}
-::: {.column}
+:::: {.p7-split-uza}
+::: {}
 1. Crea los polígonos o perfiles base de la taza.
 2. Ajusta su tamaño con *sliders*.
 3. Colócalos a distintas alturas.
 4. Conéctalos para generar una superficie o un volumen.
 5. Observa cómo cambia el resultado al modificar radios, alturas o posiciones.
 :::
-::: {.column}
+::: {}
 ![](../resources/practica7/images/teacups.jpg)
 :::
+::::
+
+::: {.p7-ojs-setup-uza}
+```{ojs}
+import {
+  createVoronoiControls,
+  renderVoronoiExplorer
+} from "../resources/practica7/ojs/practica7.js";
+```
 :::
 
 ### Consejos para no perderse
@@ -113,13 +131,13 @@ Antes de seguir, deberías tener una taza cuya forma cambie al modificar varios 
 
 Una vez modelada la taza, el siguiente paso consiste en reutilizar la misma idea para crear una **vasija**. No se trata de empezar desde cero, sino de modificar la definición anterior para obtener una pieza más alta y con un perfil diferente.
 
-:::: {layout="[60,40]"}
-::: {.column}
+:::: {.p7-split-uza}
+::: {}
 Para ello, puedes añadir un nuevo polígono en la parte superior y situarlo a una altura mayor que en la taza. Después, modifica su tamaño para que la silueta resultante sea más propia de una vasija: por ejemplo, con una base más estrecha y una parte superior más abierta, o al revés.
 
 Ten en cuenta que *Grasshopper* genera una geometría **procedimental**, pero esta no pasa a formar parte de la escena de *Rhino* hasta que la **bakeamos**. Por eso, cuando la pieza tenga el aspecto que buscas, deberás hacer clic derecho sobre el componente final y elegir **Bake** para incorporarla a *Rhino* y poder exportarla.
 :::
-::: {.column}
+::: {}
 ![Taza y vasija.](../resources/practica7/images/vase.png){#fig-vasija}
 :::
 ::::
@@ -132,13 +150,13 @@ Se recomienda **bakear** cada taza o vasija en una capa distinta, para mantener 
 
 Para dar algo más de complejidad a la vasija, escalaremos el polígono superior para que su diámetro sea distinto al de los otros perfiles.
 
-:::: {layout="[60,40]"}
-::: {.column}
+:::: {.p7-split-uza}
+::: {}
 Para ello, utilizaremos el componente **"Scale"** de *Grasshopper*, que permite escalar una geometría a partir de un centro y un factor de escala. El cambio puede ser muy sutil o muy pronunciado: basta con ajustar el valor del *slider* para obtener distintas variantes.
 
 Es importante **escalar antes de trasladar** el nuevo polígono con **"Move"**, para evitar que también se modifique la distancia del desplazamiento. Además, conviene controlar el factor de escala con un *slider*, igual que hicimos antes con radios y alturas.
 :::
-::: {.column}
+::: {}
 ![Esquema de vasija con escala en el polígono superior.](../resources/practica7/images/vase_scale.png){#fig-vase-scale}
 :::
 ::::
@@ -167,6 +185,24 @@ Una vez obtenida la vasija, podemos enriquecerla añadiendo un patrón a su supe
 Un diagrama de **Voronoi** divide una región en varias celdas a partir de un conjunto de puntos. Cada celda contiene todos los puntos que están más cerca de su punto generador que de cualquier otro. En modelado paramétrico, este recurso se utiliza con frecuencia para crear patrones geométricos, perforaciones y estructuras decorativas.
 :::
 
+::: {.p7-figure-uza}
+::: {.p7-interactive-grid-uza}
+::: {}
+```{ojs}
+renderVoronoiExplorer({ Plot, html, params: voronoiControls })
+```
+:::
+
+::: {}
+```{ojs}
+viewof voronoiControls = createVoronoiControls({ Inputs, html })
+```
+:::
+:::
+
+Explorador de densidad de un patrón Voronoi.
+:::
+
 ### Qué debes hacer
 
 Para conseguir este efecto en *Grasshopper*:
@@ -192,27 +228,27 @@ Una vez modeladas la taza y la vasija, podemos generar una imagen final más lla
 
 De este modo, una geometría sencilla puede transformarse en una imagen más cercana a una visualización arquitectónica. A continuación se muestran algunos ejemplos obtenidos a partir de modelos generados durante la práctica:
 
-:::: {layout="[30,30,30]"}
-::: {.column}
+:::: {.p7-prompt-grid-uza}
+::: {.p7-prompt-card-uza}
 ![](../resources/practica7/diffusion-images/building_edited.jpg)
 
-<div class="prompt-small">
+<div class="p7-prompt-text-uza">
 <strong>Prompt:</strong> <i>Photorealistic futuristic building inspired by the attached reference image, preserving its tall hexagonal silhouette and irregular cellular lattice structure. Reimagine it as a parametric architectural tower or pavilion with a metallic exoskeleton, glass walls, terraces, integrated base, and realistic architectural details. Set it in a modern urban plaza with soft landscaping and people for scale. Cinematic lighting, elegant materials, contemporary architecture, highly detailed, realistic reflections and shadows.</i>
 </div>
 :::
 
-::: {.column}
+::: {.p7-prompt-card-uza}
 ![](../resources/practica7/diffusion-images/teacup_edited.jpg)
 
-<div class="prompt-small">
+<div class="p7-prompt-text-uza">
 <strong>Prompt:</strong> <i>The mesh is a metal teacup lying on a wooden table in a modern kitchen.</i>
 </div>
 :::
 
-::: {.column}
+::: {.p7-prompt-card-uza}
 ![](../resources/practica7/diffusion-images/vase_flowers_edited.jpg)
 
-<div class="prompt-small">
+<div class="p7-prompt-text-uza">
 <strong>Prompt:</strong> <i>Photorealistic decorative vase inspired by the attached reference image, preserving its tall organic lattice structure and hexagonal opening. Refine it into a functional vase with an integrated base and a polished metallic material, such as brushed copper or glossy red metal. Fill it with a lush bouquet of large overflowing flowers — peonies, dahlias, roses, soft greenery, and trailing stems — creating an abundant, luxurious arrangement. Place it on a warm wooden table in a stylish kitchen, lit by soft natural window light, with realistic reflections, shadows, and an elegant editorial interior design aesthetic.</i>
 </div>
 :::

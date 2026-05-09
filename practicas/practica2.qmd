@@ -8,6 +8,9 @@ format:
     number-sections: true
   revealjs: 
     output-ext: "reveal.html"
+    width: 1280
+    height: 720
+    margin: 0.08
 ---
 
 ## Objetivos de la práctica

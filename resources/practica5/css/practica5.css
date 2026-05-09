@@ -1,0 +1,133 @@
+.p5-ojs-setup-uza {
+  display: none;
+}
+
+.p5-compute-uza {
+  display: none;
+}
+
+.p5-figure-uza {
+  max-width: 64rem;
+  overflow-x: clip;
+  margin: 1rem auto 1.35rem;
+}
+
+.p5-figure-uza > p:last-child {
+  margin-top: 0.62rem;
+  color: #56616b;
+  font-size: 0.88rem;
+  line-height: 1.35;
+  text-align: center;
+}
+
+.p5-figure-uza .code-copy-outer-scaffold,
+.p5-figure-uza .code-copy-button,
+.p5-figure-uza .anchorjs-link {
+  display: none !important;
+}
+
+.p5-interactive-uza {
+  display: grid;
+  gap: 0.65rem;
+  width: 100%;
+  max-width: 100%;
+}
+
+.p5-interactive-uza > div,
+.p5-interactive-uza .cell,
+.p5-interactive-uza .cell-output,
+.p5-interactive-uza .cell-output-display,
+.p5-interactive-uza [id^="ojs-cell"] {
+  min-width: 0;
+  max-width: 100%;
+}
+
+.p5-interactive-uza .cell-output-display,
+.p5-interactive-uza [id^="ojs-cell"] {
+  width: 100%;
+}
+
+.p5-control-panel-uza,
+.p5-plot-panel-uza {
+  box-sizing: border-box;
+  width: 100%;
+  min-width: 0;
+  border: 1px solid #d7e2ea;
+  border-radius: 8px;
+  background: #fff;
+  box-shadow: 0 0.45rem 1.4rem rgba(15, 23, 42, 0.06);
+}
+
+.p5-control-panel-uza {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(16rem, 100%), 1fr));
+  gap: 0.7rem;
+  padding: 0.72rem 0.8rem;
+}
+
+.p5-plot-panel-uza {
+  overflow: hidden;
+  padding: 0.75rem;
+}
+
+.p5-range-widget-uza,
+.p5-range-widget-uza *,
+.p5-range-widget-uza label {
+  box-sizing: border-box !important;
+  min-width: 0 !important;
+  max-width: 100% !important;
+}
+
+.p5-range-widget-uza {
+  display: block !important;
+  width: 100% !important;
+  overflow: hidden;
+}
+
+.p5-range-widget-uza input[type="range"],
+.p5-slider-uza {
+  display: block;
+  width: 100% !important;
+  min-width: 0 !important;
+  max-width: 100% !important;
+}
+
+.p5-range-widget-uza input[type="number"],
+.p5-range-widget-uza output {
+  display: none !important;
+}
+
+.p5-sieve-plot-uza {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+}
+
+.p5-sieve-message-uza {
+  margin-top: 0.65rem;
+  min-height: 1.5em;
+  color: #334155;
+  font-size: 0.95rem;
+  line-height: 1.35;
+  text-align: center;
+}
+
+.reveal .p5-figure-uza {
+  max-width: 58rem;
+  margin-top: 0.35rem;
+}
+
+.reveal .p5-interactive-uza {
+  gap: 0.45rem;
+}
+
+.reveal .p5-control-panel-uza,
+.reveal .p5-plot-panel-uza {
+  padding: 0.5rem;
+}
+
+.reveal .p5-sieve-message-uza,
+.reveal .p5-figure-uza > p:last-child {
+  font-size: 0.62em;
+}
