@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
-<!-- Generado por Microsoft Visio, SVG Export visio.svg Página-1 -->
+<!-- Generado por Microsoft Visio, SVG Export esquema.svg Página-1 -->
 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:ev="http://www.w3.org/2001/xml-events"
 		xmlns:v="http://schemas.microsoft.com/visio/2003/SVGExtensions/" width="8.14728in" height="2.73457in"
-		viewBox="0 0 586.604 196.889" xml:space="preserve" color-interpolation-filters="sRGB" class="st50">
+		viewBox="0 0 586.604 196.889" xml:space="preserve" color-interpolation-filters="sRGB" class="st54">
 	<v:documentProperties v:langID="3082" v:metric="true" v:viewMarkup="false"/>
 
 	<style type="text/css">
@@ -46,8 +46,8 @@
 		.st36 {fill:#c04878;fill-opacity:1;stroke:#c04878;stroke-opacity:1;stroke-width:0.22935779816514}
 		.st37 {marker-end:url(#mrkr4-190);stroke:#d4921a;stroke-linecap:round;stroke-linejoin:round;stroke-width:0.75}
 		.st38 {fill:#d4921a;fill-opacity:1;stroke:#d4921a;stroke-opacity:1;stroke-width:0.22935779816514}
-		.st39 {marker-start:url(#mrkr4-201);stroke:#8558c8;stroke-linecap:round;stroke-linejoin:round;stroke-width:0.75}
-		.st40 {fill:#8558c8;fill-opacity:1;stroke:#8558c8;stroke-opacity:1;stroke-width:0.22935779816514}
+		.st39 {marker-start:url(#mrkr4-201);stroke:#31859b;stroke-linecap:round;stroke-linejoin:round;stroke-width:0.75}
+		.st40 {fill:#31859b;fill-opacity:1;stroke:#31859b;stroke-opacity:1;stroke-width:0.22935779816514}
 		.st41 {fill:#f2f2f2;stroke:#7e649e;stroke-linecap:round;stroke-linejoin:round;stroke-width:1.25}
 		.st42 {fill:#000000;font-family:Handgley;font-size:0.583328em}
 		.st43 {font-size:1em;font-weight:bold}
@@ -57,7 +57,11 @@
 		.st47 {fill:#000000;font-family:Handgley;font-size:0.666664em}
 		.st48 {stroke:#d4921a;stroke-linecap:butt;stroke-width:1.39091}
 		.st49 {fill:#d4921a;stroke:none;stroke-linecap:butt;stroke-width:0.556364}
-		.st50 {fill:none;fill-rule:evenodd;font-size:12px;overflow:visible;stroke-linecap:square;stroke-miterlimit:3}
+		.st50 {fill:#ffffff;stroke:#31859b;stroke-dasharray:3.75,3.75;stroke-linecap:round;stroke-linejoin:round;stroke-width:1.25}
+		.st51 {font-size:1em}
+		.st52 {marker-start:url(#mrkr4-280);stroke:#7e649e;stroke-linecap:round;stroke-linejoin:round;stroke-width:0.75}
+		.st53 {fill:#7e649e;fill-opacity:1;stroke:#7e649e;stroke-opacity:1;stroke-width:0.22935779816514}
+		.st54 {fill:none;fill-rule:evenodd;font-size:12px;overflow:visible;stroke-linecap:square;stroke-miterlimit:3}
 	]]>
 	</style>
 
@@ -78,6 +82,10 @@
 			<use xlink:href="#lend4" transform="scale(-4.36,-4.36) "/>
 		</marker>
 		<marker id="mrkr4-201" class="st40" v:arrowType="4" v:arrowSize="2" v:setback="8.24" refX="8.24" orient="auto"
+				markerUnits="strokeWidth" overflow="visible">
+			<use xlink:href="#lend4" transform="scale(4.36) "/>
+		</marker>
+		<marker id="mrkr4-280" class="st53" v:arrowType="4" v:arrowSize="2" v:setback="8.24" refX="8.24" orient="auto"
 				markerUnits="strokeWidth" overflow="visible">
 			<use xlink:href="#lend4" transform="scale(4.36) "/>
 		</marker>
@@ -154,15 +162,15 @@
 				<v:ud v:nameU="BotRightOffset" v:prompt="" v:val="VT0(0.15748031496063):24"/>
 				<v:ud v:nameU="visVersion" v:prompt="" v:val="VT0(15):26"/>
 				<v:ud v:nameU="visMasterStencil" v:prompt="" v:val="VT4(Basic_M.vssx)"/>
-				<v:ud v:nameU="TopLeftOffset" v:prompt="" v:val="VT0(0.087560351224339):1"/>
-				<v:ud v:nameU="TopRightOffset" v:prompt="" v:val="VT0(0.087560351224339):1"/>
-				<v:ud v:nameU="BotLeftOffset" v:prompt="" v:val="VT0(0.087560351224339):1"/>
-				<v:ud v:nameU="BotRightOffset" v:prompt="" v:val="VT0(0.087560351224339):1"/>
+				<v:ud v:nameU="TopLeftOffset" v:prompt="" v:val="VT0(0.044101065175765):1"/>
+				<v:ud v:nameU="TopRightOffset" v:prompt="" v:val="VT0(0.044101065175765):1"/>
+				<v:ud v:nameU="BotLeftOffset" v:prompt="" v:val="VT0(0.044101065175765):1"/>
+				<v:ud v:nameU="BotRightOffset" v:prompt="" v:val="VT0(0.044101065175765):1"/>
 			</v:userDefs>
 			<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
 			<v:textRect cx="31.5217" cy="188.102" width="63.05" height="17.5748"/>
-			<path d="M6.3 196.89 L56.74 196.89 A6.30424 6.30424 -180 0 0 63.04 190.58 L63.04 185.62 A6.30424 6.30424 -180 0 0 56.74
-						 179.31 L6.3 179.31 A6.30424 6.30424 -180 0 0 0 185.62 L0 190.58 A6.30424 6.30424 -180 0 0 6.3 196.89 Z"
+			<path d="M3.18 196.89 L59.87 196.89 A3.17522 3.17522 -180 0 0 63.04 193.71 L63.04 182.49 A3.17522 3.17522 -180 0 0 59.87
+						 179.31 L3.18 179.31 A3.17522 3.17522 -180 0 0 0 182.49 L0 193.71 A3.17522 3.17522 -180 0 0 3.18 196.89 Z"
 					class="st2"/>
 			<text x="6.25" y="191.1" class="st3" v:langID="3082"><v:paragraph v:horizAlign="1"/><v:tabList/>Modelo BIM</text>		</g>
 		<g id="group481-8" transform="translate(145.357,-54.1499)" v:mID="481" v:groupContext="group">
@@ -288,15 +296,15 @@
 				<v:ud v:nameU="BotRightOffset" v:prompt="" v:val="VT0(0.15748031496063):24"/>
 				<v:ud v:nameU="visVersion" v:prompt="" v:val="VT0(15):26"/>
 				<v:ud v:nameU="visMasterStencil" v:prompt="" v:val="VT4(Basic_M.vssx)"/>
-				<v:ud v:nameU="TopLeftOffset" v:prompt="" v:val="VT0(0.087560351224339):1"/>
-				<v:ud v:nameU="TopRightOffset" v:prompt="" v:val="VT0(0.087560351224339):1"/>
-				<v:ud v:nameU="BotLeftOffset" v:prompt="" v:val="VT0(0.087560351224339):1"/>
-				<v:ud v:nameU="BotRightOffset" v:prompt="" v:val="VT0(0.087560351224339):1"/>
+				<v:ud v:nameU="TopLeftOffset" v:prompt="" v:val="VT0(0.044100949577638):1"/>
+				<v:ud v:nameU="TopRightOffset" v:prompt="" v:val="VT0(0.044100949577638):1"/>
+				<v:ud v:nameU="BotLeftOffset" v:prompt="" v:val="VT0(0.044100949577638):1"/>
+				<v:ud v:nameU="BotRightOffset" v:prompt="" v:val="VT0(0.044100949577638):1"/>
 			</v:userDefs>
 			<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
 			<v:textRect cx="31.5217" cy="188.102" width="63.05" height="17.5748"/>
-			<path d="M6.3 196.89 L56.74 196.89 A6.30424 6.30424 -180 0 0 63.04 190.58 L63.04 185.62 A6.30424 6.30424 -180 0 0 56.74
-						 179.31 L6.3 179.31 A6.30424 6.30424 -180 0 0 0 185.62 L0 190.58 A6.30424 6.30424 -180 0 0 6.3 196.89 Z"
+			<path d="M3.18 196.89 L59.87 196.89 A3.17522 3.17522 -180 0 0 63.04 193.71 L63.04 182.49 A3.17522 3.17522 -180 0 0 59.87
+						 179.31 L3.18 179.31 A3.17522 3.17522 -180 0 0 0 182.49 L0 193.71 A3.17522 3.17522 -180 0 0 3.18 196.89 Z"
 					class="st2"/>
 			<text x="15.04" y="191.1" class="st3" v:langID="3082"><v:paragraph v:horizAlign="1"/><v:tabList/>Edificio</text>		</g>
 		<g id="shape499-46" v:mID="499" v:groupContext="shape" transform="translate(267.082,-130.567)">
@@ -341,15 +349,15 @@
 				<v:ud v:nameU="BotRightOffset" v:prompt="" v:val="VT0(0.15748031496063):24"/>
 				<v:ud v:nameU="visVersion" v:prompt="" v:val="VT0(15):26"/>
 				<v:ud v:nameU="visMasterStencil" v:prompt="" v:val="VT4(Basic_M.vssx)"/>
-				<v:ud v:nameU="TopLeftOffset" v:prompt="" v:val="VT0(0.071339213835117):1"/>
-				<v:ud v:nameU="TopRightOffset" v:prompt="" v:val="VT0(0.071339213835117):1"/>
-				<v:ud v:nameU="BotLeftOffset" v:prompt="" v:val="VT0(0.071339213835117):1"/>
-				<v:ud v:nameU="BotRightOffset" v:prompt="" v:val="VT0(0.071339213835117):1"/>
+				<v:ud v:nameU="TopLeftOffset" v:prompt="" v:val="VT0(0.041735537279504):1"/>
+				<v:ud v:nameU="TopRightOffset" v:prompt="" v:val="VT0(0.041735537279504):1"/>
+				<v:ud v:nameU="BotLeftOffset" v:prompt="" v:val="VT0(0.041735537279504):1"/>
+				<v:ud v:nameU="BotRightOffset" v:prompt="" v:val="VT0(0.041735537279504):1"/>
 			</v:userDefs>
 			<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
 			<v:textRect cx="25.6821" cy="188.102" width="51.37" height="17.5748"/>
-			<path d="M5.14 196.89 L46.23 196.89 A5.13634 5.13634 -180 0 0 51.36 191.75 L51.36 184.45 A5.13634 5.13634 -180 0 0 46.23
-						 179.31 L5.14 179.31 A5.13634 5.13634 -180 0 0 0 184.45 L0 191.75 A5.13634 5.13634 -180 0 0 5.14 196.89 Z"
+			<path d="M3 196.89 L48.36 196.89 A3.00491 3.00491 -180 0 0 51.36 193.88 L51.36 182.32 A3.00491 3.00491 -180 0 0 48.36
+						 179.31 L3 179.31 A3.00491 3.00491 -180 0 0 0 182.32 L0 193.88 A3.00491 3.00491 -180 0 0 3 196.89 Z"
 					class="st14"/>
 			<text x="5.56" y="191.1" class="st3" v:langID="3082"><v:paragraph v:horizAlign="1"/><v:tabList/>BIMvision</text>		</g>
 		<g id="group501-51" transform="translate(272.971,-142.457)" v:mID="501" v:groupContext="group">
@@ -540,15 +548,15 @@
 				<v:ud v:nameU="BotRightOffset" v:prompt="" v:val="VT0(0.15748031496063):24"/>
 				<v:ud v:nameU="visVersion" v:prompt="" v:val="VT0(15):26"/>
 				<v:ud v:nameU="visMasterStencil" v:prompt="" v:val="VT4(Basic_M.vssx)"/>
-				<v:ud v:nameU="TopLeftOffset" v:prompt="" v:val="VT0(0.071339213835117):1"/>
-				<v:ud v:nameU="TopRightOffset" v:prompt="" v:val="VT0(0.071339213835117):1"/>
-				<v:ud v:nameU="BotLeftOffset" v:prompt="" v:val="VT0(0.071339213835117):1"/>
-				<v:ud v:nameU="BotRightOffset" v:prompt="" v:val="VT0(0.071339213835117):1"/>
+				<v:ud v:nameU="TopLeftOffset" v:prompt="" v:val="VT0(0.061420660148496):1"/>
+				<v:ud v:nameU="TopRightOffset" v:prompt="" v:val="VT0(0.061420660148496):1"/>
+				<v:ud v:nameU="BotLeftOffset" v:prompt="" v:val="VT0(0.061420660148496):1"/>
+				<v:ud v:nameU="BotRightOffset" v:prompt="" v:val="VT0(0.061420660148496):1"/>
 			</v:userDefs>
 			<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
 			<v:textRect cx="25.6821" cy="188.102" width="51.37" height="17.5748"/>
-			<path d="M5.14 196.89 L46.23 196.89 A5.13634 5.13634 -180 0 0 51.36 191.75 L51.36 184.45 A5.13634 5.13634 -180 0 0 46.23
-						 179.31 L5.14 179.31 A5.13634 5.13634 -180 0 0 0 184.45 L0 191.75 A5.13634 5.13634 -180 0 0 5.14 196.89 Z"
+			<path d="M4.42 196.89 L46.94 196.89 A4.42222 4.42222 -180 0 0 51.36 192.47 L51.36 183.74 A4.42222 4.42222 -180 0 0 46.94
+						 179.31 L4.42 179.31 A4.42222 4.42222 -180 0 0 0 183.74 L0 192.47 A4.42222 4.42222 -180 0 0 4.42 196.89 Z"
 					class="st22"/>
 			<text x="5.76" y="191.1" class="st3" v:langID="3082"><v:paragraph v:horizAlign="1"/><v:tabList/>IFCtoLBD</text>		</g>
 		<g id="shape535-119" v:mID="535" v:groupContext="shape" transform="translate(398.349,-25.6854)">
@@ -579,15 +587,15 @@
 				<v:ud v:nameU="BotRightOffset" v:prompt="" v:val="VT0(0.15748031496063):24"/>
 				<v:ud v:nameU="visVersion" v:prompt="" v:val="VT0(15):26"/>
 				<v:ud v:nameU="visMasterStencil" v:prompt="" v:val="VT4(Basic_M.vssx)"/>
-				<v:ud v:nameU="TopLeftOffset" v:prompt="" v:val="VT0(0.087560351224339):1"/>
-				<v:ud v:nameU="TopRightOffset" v:prompt="" v:val="VT0(0.087560351224339):1"/>
-				<v:ud v:nameU="BotLeftOffset" v:prompt="" v:val="VT0(0.087560351224339):1"/>
-				<v:ud v:nameU="BotRightOffset" v:prompt="" v:val="VT0(0.087560351224339):1"/>
+				<v:ud v:nameU="TopLeftOffset" v:prompt="" v:val="VT0(0.06378633921471):1"/>
+				<v:ud v:nameU="TopRightOffset" v:prompt="" v:val="VT0(0.06378633921471):1"/>
+				<v:ud v:nameU="BotLeftOffset" v:prompt="" v:val="VT0(0.06378633921471):1"/>
+				<v:ud v:nameU="BotRightOffset" v:prompt="" v:val="VT0(0.06378633921471):1"/>
 			</v:userDefs>
 			<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
 			<v:textRect cx="31.5217" cy="188.102" width="63.05" height="17.5748"/>
-			<path d="M6.3 196.89 L56.74 196.89 A6.30424 6.30424 -180 0 0 63.04 190.58 L63.04 185.62 A6.30424 6.30424 -180 0 0 56.74
-						 179.31 L6.3 179.31 A6.30424 6.30424 -180 0 0 0 185.62 L0 190.58 A6.30424 6.30424 -180 0 0 6.3 196.89 Z"
+			<path d="M4.59 196.89 L58.45 196.89 A4.59254 4.59254 -180 0 0 63.04 192.3 L63.04 183.91 A4.59254 4.59254 -180 0 0 58.45
+						 179.31 L4.59 179.31 A4.59254 4.59254 -180 0 0 0 183.91 L0 192.3 A4.59254 4.59254 -180 0 0 4.59 196.89 Z"
 					class="st2"/>
 			<text x="10.39" y="191.1" class="st3" v:langID="3082"><v:paragraph v:horizAlign="1"/><v:tabList/>Ontología</text>		</g>
 		<g id="shape539-127" v:mID="539" v:groupContext="shape" transform="translate(403.912,-52.6146)">
@@ -640,15 +648,15 @@
 				<v:ud v:nameU="BotRightOffset" v:prompt="" v:val="VT0(0.15748031496063):24"/>
 				<v:ud v:nameU="visVersion" v:prompt="" v:val="VT0(15):26"/>
 				<v:ud v:nameU="visMasterStencil" v:prompt="" v:val="VT4(Basic_M.vssx)"/>
-				<v:ud v:nameU="TopLeftOffset" v:prompt="" v:val="VT0(0.087560351224339):1"/>
-				<v:ud v:nameU="TopRightOffset" v:prompt="" v:val="VT0(0.087560351224339):1"/>
-				<v:ud v:nameU="BotLeftOffset" v:prompt="" v:val="VT0(0.087560351224339):1"/>
-				<v:ud v:nameU="BotRightOffset" v:prompt="" v:val="VT0(0.087560351224339):1"/>
+				<v:ud v:nameU="TopLeftOffset" v:prompt="" v:val="VT0(0.064969011653917):1"/>
+				<v:ud v:nameU="TopRightOffset" v:prompt="" v:val="VT0(0.064969011653917):1"/>
+				<v:ud v:nameU="BotLeftOffset" v:prompt="" v:val="VT0(0.064969011653917):1"/>
+				<v:ud v:nameU="BotRightOffset" v:prompt="" v:val="VT0(0.064969011653917):1"/>
 			</v:userDefs>
 			<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
 			<v:textRect cx="31.5217" cy="188.102" width="63.05" height="17.5748"/>
-			<path d="M6.3 196.89 L56.74 196.89 A6.30424 6.30424 -180 0 0 63.04 190.58 L63.04 185.62 A6.30424 6.30424 -180 0 0 56.74
-						 179.31 L6.3 179.31 A6.30424 6.30424 -180 0 0 0 185.62 L0 190.58 A6.30424 6.30424 -180 0 0 6.3 196.89 Z"
+			<path d="M4.68 196.89 L58.37 196.89 A4.67769 4.67769 -180 0 0 63.04 192.21 L63.04 183.99 A4.67769 4.67769 -180 0 0 58.37
+						 179.31 L4.68 179.31 A4.67769 4.67769 -180 0 0 0 183.99 L0 192.21 A4.67769 4.67769 -180 0 0 4.68 196.89 Z"
 					class="st26"/>
 			<text x="14.07" y="191.1" class="st3" v:langID="3082"><v:paragraph v:horizAlign="1"/><v:tabList/>Protégé</text>		</g>
 		<g id="shape543-138" v:mID="543" v:groupContext="shape" transform="translate(530.231,-107.823)">
@@ -919,5 +927,91 @@
 				<path d="M6.68 191.33 L0 194.11 L6.68 196.89 L6.68 191.33 Z" class="st49"/>
 			</g>
 		</g>
+		<g id="shape585-265" v:mID="585" v:groupContext="shape" transform="translate(374.798,-130.709)">
+			<title>Rectángulo redondeado.585</title>
+			<v:userDefs>
+				<v:ud v:nameU="CTypeTopLeftSnip" v:prompt="" v:val="VT0(0):5"/>
+				<v:ud v:nameU="CTypeTopRightSnip" v:prompt="" v:val="VT0(0):5"/>
+				<v:ud v:nameU="CTypeBotLeftSnip" v:prompt="" v:val="VT0(0):5"/>
+				<v:ud v:nameU="CTypeBotRightSnip" v:prompt="" v:val="VT0(0):5"/>
+				<v:ud v:nameU="CornerLockHoriz" v:prompt="" v:val="VT0(1):5"/>
+				<v:ud v:nameU="CornerLockVert" v:prompt="" v:val="VT0(1):5"/>
+				<v:ud v:nameU="CornerLockDiag" v:prompt="" v:val="VT0(0):5"/>
+				<v:ud v:nameU="TopLeftOffset" v:prompt="" v:val="VT0(0.15748031496063):24"/>
+				<v:ud v:nameU="TopRightOffset" v:prompt="" v:val="VT0(0.15748031496063):24"/>
+				<v:ud v:nameU="BotLeftOffset" v:prompt="" v:val="VT0(0.15748031496063):24"/>
+				<v:ud v:nameU="BotRightOffset" v:prompt="" v:val="VT0(0.15748031496063):24"/>
+				<v:ud v:nameU="visVersion" v:prompt="" v:val="VT0(15):26"/>
+				<v:ud v:nameU="visMasterStencil" v:prompt="" v:val="VT4(Basic_M.vssx)"/>
+				<v:ud v:nameU="TopLeftOffset" v:prompt="" v:val="VT0(0.051673329908312):1"/>
+				<v:ud v:nameU="TopRightOffset" v:prompt="" v:val="VT0(0.051673329908312):1"/>
+				<v:ud v:nameU="BotLeftOffset" v:prompt="" v:val="VT0(0.051673329908312):1"/>
+				<v:ud v:nameU="BotRightOffset" v:prompt="" v:val="VT0(0.051673329908312):1"/>
+			</v:userDefs>
+			<path d="M3.72 196.89 L75.65 196.89 A3.72042 3.72042 -180 0 0 79.37 193.17 L79.37 142.64 A3.72042 3.72042 -180 0 0 75.65
+						 138.92 L3.72 138.92 A3.72042 3.72042 -180 0 0 -0 142.64 L0 193.17 A3.72042 3.72042 -180 0 0 3.72 196.89
+						 Z" class="st50"/>
+		</g>
+		<g id="shape586-267" v:mID="586" v:groupContext="shape" transform="translate(382.961,-178.189)">
+			<title>Rectángulo redondeado.586</title>
+			<desc>Consulta DL</desc>
+			<v:userDefs>
+				<v:ud v:nameU="CTypeTopLeftSnip" v:prompt="" v:val="VT0(0):5"/>
+				<v:ud v:nameU="CTypeTopRightSnip" v:prompt="" v:val="VT0(0):5"/>
+				<v:ud v:nameU="CTypeBotLeftSnip" v:prompt="" v:val="VT0(0):5"/>
+				<v:ud v:nameU="CTypeBotRightSnip" v:prompt="" v:val="VT0(0):5"/>
+				<v:ud v:nameU="CornerLockHoriz" v:prompt="" v:val="VT0(1):5"/>
+				<v:ud v:nameU="CornerLockVert" v:prompt="" v:val="VT0(1):5"/>
+				<v:ud v:nameU="CornerLockDiag" v:prompt="" v:val="VT0(0):5"/>
+				<v:ud v:nameU="TopLeftOffset" v:prompt="" v:val="VT0(0.15748031496063):24"/>
+				<v:ud v:nameU="TopRightOffset" v:prompt="" v:val="VT0(0.15748031496063):24"/>
+				<v:ud v:nameU="BotLeftOffset" v:prompt="" v:val="VT0(0.15748031496063):24"/>
+				<v:ud v:nameU="BotRightOffset" v:prompt="" v:val="VT0(0.15748031496063):24"/>
+				<v:ud v:nameU="visVersion" v:prompt="" v:val="VT0(15):26"/>
+				<v:ud v:nameU="visMasterStencil" v:prompt="" v:val="VT4(Basic_M.vssx)"/>
+				<v:ud v:nameU="TopLeftOffset" v:prompt="" v:val="VT0(0.044101097912614):1"/>
+				<v:ud v:nameU="TopRightOffset" v:prompt="" v:val="VT0(0.044101097912614):1"/>
+				<v:ud v:nameU="BotLeftOffset" v:prompt="" v:val="VT0(0.044101097912614):1"/>
+				<v:ud v:nameU="BotRightOffset" v:prompt="" v:val="VT0(0.044101097912614):1"/>
+			</v:userDefs>
+			<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
+			<v:textRect cx="31.5217" cy="188.102" width="63.05" height="17.5748"/>
+			<path d="M3.18 196.89 L59.87 196.89 A3.17523 3.17523 -180 0 0 63.04 193.71 L63.04 182.49 A3.17523 3.17523 -180 0 0 59.87
+						 179.31 L3.18 179.31 A3.17523 3.17523 -180 0 0 0 182.49 L0 193.71 A3.17523 3.17523 -180 0 0 3.18 196.89 Z"
+					class="st26"/>
+			<text x="4.93" y="191.1" class="st3" v:langID="3082"><v:paragraph v:horizAlign="1"/><v:tabList/>Consulta DL</text>		</g>
+		<g id="shape587-270" v:mID="587" v:groupContext="shape" transform="translate(382.961,-142.457)">
+			<title>Hoja.587</title>
+			<desc>&#34;Espacio and &#39;elemento adyacente&#39; some Window&#34;</desc>
+			<v:textBlock v:margins="rect(0,0,0,0)" v:tabSpace="42.5197" v:verticalAlign="2"/>
+			<v:textRect cx="31.5217" cy="184.685" width="63.05" height="24.4091"/>
+			<rect x="0" y="172.48" width="63.0435" height="24.4091" class="st30"/>
+			<text x="0.08" y="180.69" class="st45" v:langID="3082"><v:paragraph v:horizAlign="1"/><v:tabList/>&#34;Espacio and &#39;elemento <tspan
+						x="8.33" dy="1.2em" class="st51">adyacente&#39; some </tspan><tspan x="20.2" dy="1.2em" class="st51">Window&#34;</tspan></text>		</g>
+		<g id="shape588-275" v:mID="588" v:groupContext="shape" v:layerMember="0" transform="translate(491.093,-142.286)">
+			<title>Conector dinámico.588</title>
+			<path d="M-0.51 190.73 L-0.54 190.37 C-1.19 187.69 -2.61 185.12 -5.74 183.36 C-12.6 179.48 -27.69 179.48 -36.92 179.48"
+					class="st52"/>
+		</g>
+		<g id="shape589-281" v:mID="589" v:groupContext="shape" transform="translate(469.54,-163.54)">
+			<title>Hoja.589</title>
+			<desc>pregunta</desc>
+			<v:textBlock v:margins="rect(0,0,0,0)" v:tabSpace="42.5197"/>
+			<v:textRect cx="12.9746" cy="193.011" width="25.95" height="7.75538"/>
+			<rect x="0" y="189.134" width="25.9492" height="7.75538" class="st30"/>
+			<text x="0.37" y="194.81" class="st45" v:langID="3082"><v:paragraph v:horizAlign="1"/><v:tabList/>pregunta</text>		</g>
+		<g id="shape590-284" v:mID="590" v:groupContext="shape" v:layerMember="0" transform="translate(414.483,-130.709)">
+			<title>Conector dinámico.590</title>
+			<path d="M4.2 201.42 L4.45 201.68 C14.95 212.51 23.04 217.14 32.21 219.63 C43 222.57 55.28 222.54 75.29 219.14"
+					class="st52"/>
+		</g>
+		<g id="shape591-289" v:mID="591" v:groupContext="shape" transform="translate(438.237,-112.516)">
+			<title>Hoja.591</title>
+			<desc>resultado de la consulta</desc>
+			<v:textBlock v:margins="rect(0,0,0,0)" v:tabSpace="42.5197"/>
+			<v:textRect cx="25.6821" cy="193.011" width="51.37" height="7.75538"/>
+			<rect x="0" y="189.134" width="51.3642" height="7.75538" class="st30"/>
+			<text x="5.39" y="191.21" class="st45" v:langID="3082"><v:paragraph v:horizAlign="1"/><v:tabList/>resultado de la <tspan
+						x="14.12" dy="1.2em" class="st51">consulta</tspan></text>		</g>
 	</g>
 </svg>
