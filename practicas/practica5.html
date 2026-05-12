@@ -122,6 +122,7 @@ gtag('config', 'G-KJSTYN212D', { 'anonymize_ip': true});
 
 <script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
 
+<link rel="stylesheet" href="../resources/practica5/css/practica5.css">
 
   <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
@@ -325,7 +326,7 @@ window.Quarto = {
   </ul></li>
   <li><a href="#entrega-de-la-solución" id="toc-entrega-de-la-solución" class="nav-link" data-scroll-target="#entrega-de-la-solución"><span class="header-section-number">5</span> Entrega de la solución</a></li>
   </ul>
-<div class="quarto-alternate-formats"><h2>Otros formatos</h2><ul><li><a href="practica5.reveal.html"><i class="bi bi-file-slides"></i>RevealJS</a></li></ul></div></nav>
+<div class="quarto-alternate-formats"><h2>Otros formatos</h2><ul><li><a href="practica5.reveal.html"><i class="bi bi-file-slides"></i>RevealJS</a></li><li><a href="practica5.pdf"><i class="bi bi-file-pdf"></i>PDF</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -403,7 +404,7 @@ Figura&nbsp;1: Gráfica de tiempo de ejecución de las diferentes implementacion
 </div>
 <hr>
 <div class="cell" data-tbl-cap="Tabla de tiempos de ejecución en milisegundos de las diferentes implementaciones de la criba de Eratóstenes." data-execution_count="1">
-<div class="cell-output cell-output-display" data-execution_count="1">
+<div class="cell-output cell-output-display" data-execution_count="2">
 <div>
 
 
@@ -497,48 +498,55 @@ Figura&nbsp;1: Gráfica de tiempo de ejecución de las diferentes implementacion
 numero[i] = \begin{cases} i &amp; \text{si } i \text{ es primo} \\ 0 &amp; \text{si } i \text{ no es primo} \end{cases}
 \]</span></p>
 <hr>
-<div class="card shadow-sm mb-4">
-<div class="card-body">
+<div class="p5-ojs-setup-uza">
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb4" data-startfrom="126" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 125;"><span id="cb4-126"><a href="#cb4-126" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> {</span>
-<span id="cb4-127"><a href="#cb4-127" aria-hidden="true" tabindex="-1"></a>  cleanSlider<span class="op">,</span></span>
-<span id="cb4-128"><a href="#cb4-128" aria-hidden="true" tabindex="-1"></a>  buildBasicSieveSteps<span class="op">,</span></span>
-<span id="cb4-129"><a href="#cb4-129" aria-hidden="true" tabindex="-1"></a>  buildRootSieveSteps<span class="op">,</span></span>
-<span id="cb4-130"><a href="#cb4-130" aria-hidden="true" tabindex="-1"></a>  buildOddOnlySieveSteps<span class="op">,</span></span>
-<span id="cb4-131"><a href="#cb4-131" aria-hidden="true" tabindex="-1"></a>  renderSieveState</span>
-<span id="cb4-132"><a href="#cb4-132" aria-hidden="true" tabindex="-1"></a>} <span class="im">from</span> <span class="st">"../resources/practica5/ojs/practica5.js"</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb4" data-startfrom="135" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 134;"><span id="cb4-135"><a href="#cb4-135" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> {</span>
+<span id="cb4-136"><a href="#cb4-136" aria-hidden="true" tabindex="-1"></a>  cleanSlider<span class="op">,</span></span>
+<span id="cb4-137"><a href="#cb4-137" aria-hidden="true" tabindex="-1"></a>  buildBasicSieveSteps<span class="op">,</span></span>
+<span id="cb4-138"><a href="#cb4-138" aria-hidden="true" tabindex="-1"></a>  buildRootSieveSteps<span class="op">,</span></span>
+<span id="cb4-139"><a href="#cb4-139" aria-hidden="true" tabindex="-1"></a>  buildOddOnlySieveSteps<span class="op">,</span></span>
+<span id="cb4-140"><a href="#cb4-140" aria-hidden="true" tabindex="-1"></a>  renderSieveState</span>
+<span id="cb4-141"><a href="#cb4-141" aria-hidden="true" tabindex="-1"></a>} <span class="im">from</span> <span class="st">"../resources/practica5/ojs/practica5.js"</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
 <div id="ojs-cell-1" data-nodetype="declaration">
 
 </div>
 </div>
 </div>
+</div>
+<div class="p5-figure-uza">
+<div class="p5-interactive-uza">
+<div class="p5-control-panel-uza">
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb5" data-startfrom="136" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 135;"><span id="cb5-136"><a href="#cb5-136" aria-hidden="true" tabindex="-1"></a>viewof N1 <span class="op">=</span> <span class="fu">cleanSlider</span>(Inputs<span class="op">,</span> [<span class="dv">10</span><span class="op">,</span> <span class="dv">50</span>]<span class="op">,</span> { <span class="dt">value</span><span class="op">:</span> <span class="dv">29</span><span class="op">,</span> <span class="dt">step</span><span class="op">:</span> <span class="dv">1</span><span class="op">,</span> <span class="dt">label</span><span class="op">:</span> <span class="st">"Valor N: "</span> })</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb5" data-startfrom="149" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 148;"><span id="cb5-149"><a href="#cb5-149" aria-hidden="true" tabindex="-1"></a>viewof N1 <span class="op">=</span> <span class="fu">cleanSlider</span>(Inputs<span class="op">,</span> [<span class="dv">10</span><span class="op">,</span> <span class="dv">50</span>]<span class="op">,</span> { <span class="dt">value</span><span class="op">:</span> <span class="dv">29</span><span class="op">,</span> <span class="dt">step</span><span class="op">:</span> <span class="dv">1</span><span class="op">,</span> <span class="dt">label</span><span class="op">:</span> <span class="st">"Valor N: "</span> })</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
 <div id="ojs-cell-2" data-nodetype="declaration">
 
 </div>
 </div>
 </div>
+<div class="p5-compute-uza">
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb6" data-startfrom="140" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 139;"><span id="cb6-140"><a href="#cb6-140" aria-hidden="true" tabindex="-1"></a>steps1 <span class="op">=</span> <span class="fu">buildBasicSieveSteps</span>(N1)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb6" data-startfrom="154" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 153;"><span id="cb6-154"><a href="#cb6-154" aria-hidden="true" tabindex="-1"></a>steps1 <span class="op">=</span> <span class="fu">buildBasicSieveSteps</span>(N1)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
 <div id="ojs-cell-3" data-nodetype="declaration">
 
 </div>
 </div>
 </div>
+</div>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb7" data-startfrom="144" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 143;"><span id="cb7-144"><a href="#cb7-144" aria-hidden="true" tabindex="-1"></a>viewof step1 <span class="op">=</span> <span class="fu">cleanSlider</span>(Inputs<span class="op">,</span> [<span class="dv">0</span><span class="op">,</span> steps1<span class="op">.</span><span class="at">length</span> <span class="op">-</span> <span class="dv">1</span>]<span class="op">,</span> { <span class="dt">value</span><span class="op">:</span> <span class="dv">0</span><span class="op">,</span> <span class="dt">step</span><span class="op">:</span> <span class="dv">1</span><span class="op">,</span> <span class="dt">label</span><span class="op">:</span> <span class="st">"Paso de la criba: "</span> })</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb7" data-startfrom="159" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 158;"><span id="cb7-159"><a href="#cb7-159" aria-hidden="true" tabindex="-1"></a>viewof step1 <span class="op">=</span> <span class="fu">cleanSlider</span>(Inputs<span class="op">,</span> [<span class="dv">0</span><span class="op">,</span> steps1<span class="op">.</span><span class="at">length</span> <span class="op">-</span> <span class="dv">1</span>]<span class="op">,</span> { <span class="dt">value</span><span class="op">:</span> <span class="dv">0</span><span class="op">,</span> <span class="dt">step</span><span class="op">:</span> <span class="dv">1</span><span class="op">,</span> <span class="dt">label</span><span class="op">:</span> <span class="st">"Paso de la criba: "</span> })</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
 <div id="ojs-cell-4" data-nodetype="declaration">
 
 </div>
 </div>
 </div>
+</div>
+<div>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb8" data-startfrom="148" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 147;"><span id="cb8-148"><a href="#cb8-148" aria-hidden="true" tabindex="-1"></a><span class="fu">renderSieveState</span>({ html<span class="op">,</span> Plot<span class="op">,</span> <span class="dt">steps</span><span class="op">:</span> steps1<span class="op">,</span> <span class="dt">stepIndex</span><span class="op">:</span> step1<span class="op">,</span> <span class="dt">max</span><span class="op">:</span> N1 })</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb8" data-startfrom="165" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 164;"><span id="cb8-165"><a href="#cb8-165" aria-hidden="true" tabindex="-1"></a><span class="fu">renderSieveState</span>({ html<span class="op">,</span> Plot<span class="op">,</span> <span class="dt">steps</span><span class="op">:</span> steps1<span class="op">,</span> <span class="dt">stepIndex</span><span class="op">:</span> step1<span class="op">,</span> <span class="dt">max</span><span class="op">:</span> N1 })</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
 <div id="ojs-cell-5" data-nodetype="expression">
 
@@ -546,6 +554,8 @@ numero[i] = \begin{cases} i &amp; \text{si } i \text{ es primo} \\ 0 &amp; \text
 </div>
 </div>
 </div>
+</div>
+<p>Evolución de la criba básica: candidatos, múltiplos descartados y primo activo.</p>
 </div>
 <hr>
 <p>La implementación básica se puede realizar de la siguiente manera:</p>
@@ -618,34 +628,39 @@ numero[i] = \begin{cases} i &amp; \text{si } i \text{ es primo} \\ 0 &amp; \text
 </div>
 </div>
 <hr>
-<div class="card shadow-sm mb-4">
-<div class="card-body">
+<div class="p5-figure-uza">
+<div class="p5-interactive-uza">
+<div class="p5-control-panel-uza">
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb10" data-startfrom="213" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 212;"><span id="cb10-213"><a href="#cb10-213" aria-hidden="true" tabindex="-1"></a>viewof N2 <span class="op">=</span> <span class="fu">cleanSlider</span>(Inputs<span class="op">,</span> [<span class="dv">10</span><span class="op">,</span> <span class="dv">150</span>]<span class="op">,</span> { <span class="dt">value</span><span class="op">:</span> <span class="dv">29</span><span class="op">,</span> <span class="dt">step</span><span class="op">:</span> <span class="dv">1</span><span class="op">,</span> <span class="dt">label</span><span class="op">:</span> <span class="st">"Valor N: "</span> })</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb10" data-startfrom="233" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 232;"><span id="cb10-233"><a href="#cb10-233" aria-hidden="true" tabindex="-1"></a>viewof N2 <span class="op">=</span> <span class="fu">cleanSlider</span>(Inputs<span class="op">,</span> [<span class="dv">10</span><span class="op">,</span> <span class="dv">150</span>]<span class="op">,</span> { <span class="dt">value</span><span class="op">:</span> <span class="dv">29</span><span class="op">,</span> <span class="dt">step</span><span class="op">:</span> <span class="dv">1</span><span class="op">,</span> <span class="dt">label</span><span class="op">:</span> <span class="st">"Valor N: "</span> })</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
 <div id="ojs-cell-6" data-nodetype="declaration">
 
 </div>
 </div>
 </div>
+<div class="p5-compute-uza">
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb11" data-startfrom="217" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 216;"><span id="cb11-217"><a href="#cb11-217" aria-hidden="true" tabindex="-1"></a>steps2 <span class="op">=</span> <span class="fu">buildRootSieveSteps</span>(N2)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb11" data-startfrom="238" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 237;"><span id="cb11-238"><a href="#cb11-238" aria-hidden="true" tabindex="-1"></a>steps2 <span class="op">=</span> <span class="fu">buildRootSieveSteps</span>(N2)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
 <div id="ojs-cell-7" data-nodetype="declaration">
 
 </div>
 </div>
 </div>
+</div>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb12" data-startfrom="221" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 220;"><span id="cb12-221"><a href="#cb12-221" aria-hidden="true" tabindex="-1"></a>viewof step2 <span class="op">=</span> <span class="fu">cleanSlider</span>(Inputs<span class="op">,</span> [<span class="dv">0</span><span class="op">,</span> steps2<span class="op">.</span><span class="at">length</span> <span class="op">-</span> <span class="dv">1</span>]<span class="op">,</span> { <span class="dt">value</span><span class="op">:</span> <span class="dv">0</span><span class="op">,</span> <span class="dt">step</span><span class="op">:</span> <span class="dv">1</span><span class="op">,</span> <span class="dt">label</span><span class="op">:</span> <span class="st">"Paso de la criba: "</span> })</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb12" data-startfrom="243" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 242;"><span id="cb12-243"><a href="#cb12-243" aria-hidden="true" tabindex="-1"></a>viewof step2 <span class="op">=</span> <span class="fu">cleanSlider</span>(Inputs<span class="op">,</span> [<span class="dv">0</span><span class="op">,</span> steps2<span class="op">.</span><span class="at">length</span> <span class="op">-</span> <span class="dv">1</span>]<span class="op">,</span> { <span class="dt">value</span><span class="op">:</span> <span class="dv">0</span><span class="op">,</span> <span class="dt">step</span><span class="op">:</span> <span class="dv">1</span><span class="op">,</span> <span class="dt">label</span><span class="op">:</span> <span class="st">"Paso de la criba: "</span> })</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
 <div id="ojs-cell-8" data-nodetype="declaration">
 
 </div>
 </div>
 </div>
+</div>
+<div>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb13" data-startfrom="225" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 224;"><span id="cb13-225"><a href="#cb13-225" aria-hidden="true" tabindex="-1"></a><span class="fu">renderSieveState</span>({ html<span class="op">,</span> Plot<span class="op">,</span> <span class="dt">steps</span><span class="op">:</span> steps2<span class="op">,</span> <span class="dt">stepIndex</span><span class="op">:</span> step2<span class="op">,</span> <span class="dt">max</span><span class="op">:</span> N2 })</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb13" data-startfrom="249" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 248;"><span id="cb13-249"><a href="#cb13-249" aria-hidden="true" tabindex="-1"></a><span class="fu">renderSieveState</span>({ html<span class="op">,</span> Plot<span class="op">,</span> <span class="dt">steps</span><span class="op">:</span> steps2<span class="op">,</span> <span class="dt">stepIndex</span><span class="op">:</span> step2<span class="op">,</span> <span class="dt">max</span><span class="op">:</span> N2 })</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
 <div id="ojs-cell-9" data-nodetype="expression">
 
@@ -653,6 +668,8 @@ numero[i] = \begin{cases} i &amp; \text{si } i \text{ es primo} \\ 0 &amp; \text
 </div>
 </div>
 </div>
+</div>
+<p>Evolución de la criba optimizada: solo se prueban divisores hasta la raíz cuadrada.</p>
 </div>
 <hr>
 <p>La implementación de esta optimización se puede realizar de la siguiente manera:</p>
@@ -818,34 +835,39 @@ p = 2i + 3 \quad \text{con } i = 0, 1, 2, \ldots, \left\lfloor \frac{n-3}{2} \ri
 <span id="cb16-30"><a href="#cb16-30" aria-hidden="true" tabindex="-1"></a><span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">();</span></span>
 <span id="cb16-31"><a href="#cb16-31" aria-hidden="true" tabindex="-1"></a><span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span><span class="st">"Total: "</span> <span class="op">+</span> contadorPrimos <span class="op">+</span> <span class="st">" números primos"</span><span class="op">);</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 <hr>
-<div class="card shadow-sm mb-4 mt-4">
-<div class="card-body">
+<div class="p5-figure-uza">
+<div class="p5-interactive-uza">
+<div class="p5-control-panel-uza">
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb17" data-startfrom="401" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 400;"><span id="cb17-401"><a href="#cb17-401" aria-hidden="true" tabindex="-1"></a>viewof N4 <span class="op">=</span> <span class="fu">cleanSlider</span>(Inputs<span class="op">,</span> [<span class="dv">10</span><span class="op">,</span> <span class="dv">150</span>]<span class="op">,</span> { <span class="dt">value</span><span class="op">:</span> <span class="dv">51</span><span class="op">,</span> <span class="dt">step</span><span class="op">:</span> <span class="dv">1</span><span class="op">,</span> <span class="dt">label</span><span class="op">:</span> <span class="st">"Valor N: "</span> })</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb17" data-startfrom="428" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 427;"><span id="cb17-428"><a href="#cb17-428" aria-hidden="true" tabindex="-1"></a>viewof N4 <span class="op">=</span> <span class="fu">cleanSlider</span>(Inputs<span class="op">,</span> [<span class="dv">10</span><span class="op">,</span> <span class="dv">150</span>]<span class="op">,</span> { <span class="dt">value</span><span class="op">:</span> <span class="dv">51</span><span class="op">,</span> <span class="dt">step</span><span class="op">:</span> <span class="dv">1</span><span class="op">,</span> <span class="dt">label</span><span class="op">:</span> <span class="st">"Valor N: "</span> })</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
 <div id="ojs-cell-10" data-nodetype="declaration">
 
 </div>
 </div>
 </div>
+<div class="p5-compute-uza">
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb18" data-startfrom="405" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 404;"><span id="cb18-405"><a href="#cb18-405" aria-hidden="true" tabindex="-1"></a>steps4 <span class="op">=</span> <span class="fu">buildOddOnlySieveSteps</span>(N4)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb18" data-startfrom="433" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 432;"><span id="cb18-433"><a href="#cb18-433" aria-hidden="true" tabindex="-1"></a>steps4 <span class="op">=</span> <span class="fu">buildOddOnlySieveSteps</span>(N4)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
 <div id="ojs-cell-11" data-nodetype="declaration">
 
 </div>
 </div>
 </div>
+</div>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb19" data-startfrom="409" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 408;"><span id="cb19-409"><a href="#cb19-409" aria-hidden="true" tabindex="-1"></a>viewof step4 <span class="op">=</span> <span class="fu">cleanSlider</span>(Inputs<span class="op">,</span> [<span class="dv">0</span><span class="op">,</span> steps4<span class="op">.</span><span class="at">length</span> <span class="op">-</span> <span class="dv">1</span>]<span class="op">,</span> { <span class="dt">value</span><span class="op">:</span> <span class="dv">0</span><span class="op">,</span> <span class="dt">step</span><span class="op">:</span> <span class="dv">1</span><span class="op">,</span> <span class="dt">label</span><span class="op">:</span> <span class="st">"Paso de la criba: "</span> })</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb19" data-startfrom="438" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 437;"><span id="cb19-438"><a href="#cb19-438" aria-hidden="true" tabindex="-1"></a>viewof step4 <span class="op">=</span> <span class="fu">cleanSlider</span>(Inputs<span class="op">,</span> [<span class="dv">0</span><span class="op">,</span> steps4<span class="op">.</span><span class="at">length</span> <span class="op">-</span> <span class="dv">1</span>]<span class="op">,</span> { <span class="dt">value</span><span class="op">:</span> <span class="dv">0</span><span class="op">,</span> <span class="dt">step</span><span class="op">:</span> <span class="dv">1</span><span class="op">,</span> <span class="dt">label</span><span class="op">:</span> <span class="st">"Paso de la criba: "</span> })</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
 <div id="ojs-cell-12" data-nodetype="declaration">
 
 </div>
 </div>
 </div>
+</div>
+<div>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb20" data-startfrom="413" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 412;"><span id="cb20-413"><a href="#cb20-413" aria-hidden="true" tabindex="-1"></a><span class="fu">renderSieveState</span>({ html<span class="op">,</span> Plot<span class="op">,</span> <span class="dt">steps</span><span class="op">:</span> steps4<span class="op">,</span> <span class="dt">stepIndex</span><span class="op">:</span> step4<span class="op">,</span> <span class="dt">max</span><span class="op">:</span> N4<span class="op">,</span> <span class="dt">oddOnly</span><span class="op">:</span> <span class="kw">true</span> })</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb20" data-startfrom="444" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 443;"><span id="cb20-444"><a href="#cb20-444" aria-hidden="true" tabindex="-1"></a><span class="fu">renderSieveState</span>({ html<span class="op">,</span> Plot<span class="op">,</span> <span class="dt">steps</span><span class="op">:</span> steps4<span class="op">,</span> <span class="dt">stepIndex</span><span class="op">:</span> step4<span class="op">,</span> <span class="dt">max</span><span class="op">:</span> N4<span class="op">,</span> <span class="dt">oddOnly</span><span class="op">:</span> <span class="kw">true</span> })</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
 <div id="ojs-cell-13" data-nodetype="expression">
 
@@ -853,6 +875,8 @@ p = 2i + 3 \quad \text{con } i = 0, 1, 2, \ldots, \left\lfloor \frac{n-3}{2} \ri
 </div>
 </div>
 </div>
+</div>
+<p>Evolución de la criba con solo impares: se omiten los pares y se reduce el vector.</p>
 </div>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">

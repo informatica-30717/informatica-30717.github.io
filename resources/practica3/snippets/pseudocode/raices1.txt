@@ -1,0 +1,20 @@
+Programa Raices1   { Funciona si solo hay raices reales }
+
+Definicion de variables
+    reales: coefA, coefB, coefC;
+    reales: discriminante, denominador;
+    reales: raiz1, raiz2;
+
+Principio del algoritmo
+
+    lee(coefA, coefB, coefC);
+
+    discriminante := pow(coefB, 2) - (4.0 * coefA * coefC);
+    denominador := 2.0 * coefA;
+
+    raiz1 := (-coefB + sqrt(discriminante)) / denominador;
+    raiz2 := (-coefB - sqrt(discriminante)) / denominador;
+
+    escribe(raiz1, raiz2);
+
+fin

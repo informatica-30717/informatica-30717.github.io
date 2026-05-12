@@ -1,0 +1,30 @@
+Programa Raices2   { Funciona si hay raices reales; si no, mensaje de error }
+
+Definicion de variables
+    reales: coefA, coefB, coefC;
+    reales: discriminante, denominador;
+    reales: raiz1, raiz2;
+
+Principio del algoritmo
+
+    lee(coefA, coefB, coefC);
+
+    discriminante := pow(coefB, 2) - (4.0 * coefA * coefC);
+
+    si discriminante > 0.0 entonces
+        principio
+            denominador := 2.0 * coefA;
+            raiz1 := (-coefB + sqrt(discriminante)) / denominador;
+            raiz2 := (-coefB - sqrt(discriminante)) / denominador;
+            escribe(raiz1, raiz2);
+        fin
+    sino si discriminante == 0.0 entonces
+        principio
+            denominador := 2.0 * coefA;
+            raiz1 := -coefB / denominador;
+            escribe(raiz1);
+        fin
+    sino
+        escribe("Este polinomio no tiene raices reales");
+    fin
+fin

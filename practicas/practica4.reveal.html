@@ -198,6 +198,7 @@
   </style>
   <script type="module" src="../site_libs/quarto-ojs/quarto-ojs-runtime.js"></script>
   <link href="../site_libs/quarto-ojs/quarto-ojs.css" rel="stylesheet">
+  <link rel="stylesheet" href="../resources/practica4/css/practica4.css">
 <meta property="og:title" content="Práctica 4: Aspectos avanzados de Excel – Informática (30717) - Grado en Estudios en Arquitectura">
 <meta property="og:site_name" content="Informática (30717) - Grado en Estudios en Arquitectura">
 <meta name="twitter:title" content="Práctica 4: Aspectos avanzados de Excel – Informática (30717) - Grado en Estudios en Arquitectura">
@@ -224,7 +225,8 @@
 </section>
 <section id="introducción" class="slide level2">
 <h2>Introducción</h2>
-<p>Una <strong>hoja de cálculo</strong> es una herramienta de gran utilidad en la <strong>resolución de problemas en ingeniería</strong> dado que, además de permitir manejar una gran cantidad de datos y realizar operaciones complejas de forma interactiva, proporciona una potente herramienta de representación gráfica de datos, fácil de utilizar. De hecho, hay una gran cantidad de problemas que pueden ser resueltos y analizados con una simple hoja de cálculo, de una <strong>manera rápida y eficaz</strong>, sin tener que recurrir al desarrollo de aplicaciones específicas o al uso de otras aplicaciones de cálculo comerciales más potentes, pero más costosas y complejas de utilizar.</p>
+<p>Una <strong>hoja de cálculo</strong> es una herramienta de gran utilidad en la <strong>resolución de problemas en ingeniería</strong> dado que, además de permitir manejar una gran cantidad de datos y realizar operaciones complejas de forma interactiva, proporciona una potente herramienta de representación gráfica de datos, fácil de utilizar.</p>
+<p>De hecho, hay una gran cantidad de problemas que pueden ser resueltos y analizados con una simple hoja de cálculo de una <strong>manera rápida y eficaz</strong>, sin tener que recurrir al desarrollo de aplicaciones específicas o al uso de otras aplicaciones de cálculo comerciales más potentes, pero más costosas y complejas de utilizar.</p>
 </section>
 <section class="slide level2">
 
@@ -246,24 +248,16 @@
 </section>
 <section class="slide level2">
 
-<p>Como caso de estudio consideraremos la <strong>curva catenaria</strong>. Desde el punto de vista físico, una catenaria describe la forma que adopta un cable suspendido por sus extremos y sometido exclusivamente a la acción de su propio peso. La <strong>catenaria invertida</strong>, obtenida al reflejar la curva respecto de un eje horizontal, presenta una propiedad estructural especialmente relevante en arquitectura: bajo cargas gravitatorias uniformes, el esfuerzo interno es predominantemente de compresión, lo que la convierte en una forma óptima para el diseño de arcos y bóvedas.</p>
-<div class="column-margin">
-<div id="fig-ejemplos-catenarias" class="quarto-float quarto-figure quarto-figure-center">
-<figure class="quarto-float quarto-float-fig">
-<div aria-describedby="fig-ejemplos-catenarias-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img data-src="../resources/practica4/images/ejemplos_catenarias.jpg">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-ejemplos-catenarias-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figura&nbsp;1: <a href="https://apuntesdearquitecturadigital.blogspot.com/2019/10/el-arquitecto-gaudi-y-la-catenaria-las.html">Ejemplos de catenarias en arquitectura.</a>
-</figcaption>
-</figure>
-</div>
-</div>
-</section>
+<p>Como caso de estudio consideraremos la <strong>curva catenaria</strong>. Desde el punto de vista físico, una catenaria describe la forma que adopta un cable suspendido por sus extremos y sometido exclusivamente a la acción de su propio peso.</p>
+<p>La <strong>catenaria invertida</strong>, obtenida al reflejar la curva respecto de un eje horizontal, presenta una propiedad estructural especialmente relevante en arquitectura: bajo cargas gravitatorias uniformes, el esfuerzo interno es predominantemente de compresión, lo que la convierte en una forma óptima para el diseño de arcos y bóvedas.</p>
+
+<img data-src="../resources/practica4/images/ejemplos_catenarias.jpg" style="width:72.0%" class="r-stretch quarto-figure-center" id="fig-ejemplos-catenarias"><p class="caption">
+Figura&nbsp;1: Ejemplos de catenarias en arquitectura. Fuente: apuntesdearquitecturadigital.blogspot.com.
+</p></section>
 <section class="slide level2">
 
 <p>Un ejemplo de su aplicación es la obra del arquitecto <strong>Antonio Gaudí</strong>, quien empleó modelos físicos de catenarias invertidas para el diseño de la <strong>Sagrada Familia</strong> en Barcelona, tal como se ilustra en la <a href="#/fig-ejemplos-catenarias" class="quarto-xref">Figura&nbsp;1</a>.</p>
-<p>Podéis utilizar la web <a href="https://es.wikiarquitectura.com/"><strong>WikiArchitect</strong></a> para explorar información sobre edificios, arquitectos y obras de distintos lugares del mundo. Su principal ventaja es que permite buscar proyectos mediante distintos criterios, como el país, el tipo de edificio o el nombre de una obra concreta. En el contexto de esta práctica, puede ser especialmente útil para localizar ejemplos arquitectónicos en los que aparezcan arcos, bóvedas o formas relacionadas con la curva <strong>catenaria</strong>, y así relacionar el modelo matemático que vamos a trabajar en clase con aplicaciones reales en arquitectura.</p>
+<p>Podéis utilizar la web <a href="https://es.wikiarquitectura.com/"><strong>WikiArquitectura</strong></a> para explorar información sobre edificios, arquitectos y obras de distintos lugares del mundo. En el contexto de esta práctica, puede ser especialmente útil para localizar ejemplos arquitectónicos en los que aparezcan arcos, bóvedas o formas relacionadas con la curva <strong>catenaria</strong>, y así relacionar el modelo matemático con aplicaciones reales en arquitectura.</p>
 <p>También podéis encontrar más información sobre las curvas catenarias en el siguiente vídeo:</p>
 <iframe data-external="1" src="https://www.youtube.com/embed/NnjnlxfB_D8" title="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe>
 </section>
@@ -284,23 +278,23 @@ y = a \cosh\left(\frac{x}{a}\right)
 f(x) = a \cosh\left(\frac{x}{a}\right) - b
 \]</span></p>
 <p>y buscaremos las soluciones de la ecuación <span class="math inline">\(f(x) = 0\)</span>.</p>
-<p>Podéis interactuar con la curva catenaria a continuación, modificando el valor de la constante <span class="math inline">\(a\)</span> para ver cómo afecta a la forma de la curva. También podéis modificar el valor de <span class="math inline">\(b\)</span> para ver cómo afecta a la posición de la línea horizontal y a las soluciones de la ecuación <span class="math inline">\(f(x) = 0\)</span>. El punto mínimo de la curva se denomina <strong>vértice</strong> y aparece marcado como un punto naranja. Las soluciones de la ecuación <span class="math inline">\(f(x) = 0\)</span> aparecen marcadas como puntos rojos.</p>
+<p>Podéis interactuar con la curva catenaria a continuación, modificando el valor de la constante <span class="math inline">\(a\)</span> para ver cómo afecta a la forma de la curva. También podéis modificar el valor de <span class="math inline">\(b\)</span> para ver cómo afecta a la posición de la línea horizontal y a las soluciones de la ecuación <span class="math inline">\(f(x) = 0\)</span>.</p>
 </section>
 <section class="slide level2">
 
-<div class="column-page-inset">
-<div class="card shadow-sm mb-4 mt-4">
-<div class="card-body">
-<div style="display: flex; gap: 30px; align-items: flex-start;">
-<div style="flex: 0 0 20%;">
+<div id="fig-catenaria-interactiva" class="p4-figure-uza quarto-float quarto-figure quarto-figure-center">
+<figure class="quarto-float quarto-float-fig">
+<div aria-describedby="fig-catenaria-interactiva-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="p4-interactive-grid-uza">
+<div class="p4-control-panel-uza">
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb1" data-startfrom="101" data-source-offset="0"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 100;"><span id="cb1-101"><a></a><span class="im">import</span> {</span>
-<span id="cb1-102"><a></a>  createCatenaryControls<span class="op">,</span></span>
-<span id="cb1-103"><a></a>  renderCatenaryPlot<span class="op">,</span></span>
-<span id="cb1-104"><a></a>  renderCatenaryExamplePlot<span class="op">,</span></span>
-<span id="cb1-105"><a></a>  createBisectionControls<span class="op">,</span></span>
-<span id="cb1-106"><a></a>  renderBisectionPlot</span>
-<span id="cb1-107"><a></a>} <span class="im">from</span> <span class="st">"../resources/practica4/ojs/practica4.js"</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb1" data-startfrom="114" data-source-offset="0"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 113;"><span id="cb1-114"><a></a><span class="im">import</span> {</span>
+<span id="cb1-115"><a></a>  createCatenaryControls<span class="op">,</span></span>
+<span id="cb1-116"><a></a>  renderCatenaryPlot<span class="op">,</span></span>
+<span id="cb1-117"><a></a>  renderCatenaryExamplePlot<span class="op">,</span></span>
+<span id="cb1-118"><a></a>  createBisectionControls<span class="op">,</span></span>
+<span id="cb1-119"><a></a>  renderBisectionPlot</span>
+<span id="cb1-120"><a></a>} <span class="im">from</span> <span class="st">"../resources/practica4/ojs/practica4.js"</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
 <div id="ojs-cell-1" data-nodetype="declaration">
 
@@ -308,7 +302,7 @@ f(x) = a \cosh\left(\frac{x}{a}\right) - b
 </div>
 </div>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb2" data-startfrom="111" data-source-offset="0"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 110;"><span id="cb2-111"><a></a>viewof params <span class="op">=</span> <span class="fu">createCatenaryControls</span>({ Inputs<span class="op">,</span> html })</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb2" data-startfrom="124" data-source-offset="0"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 123;"><span id="cb2-124"><a></a>viewof params <span class="op">=</span> <span class="fu">createCatenaryControls</span>({ Inputs<span class="op">,</span> html })</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
 <div id="ojs-cell-2" data-nodetype="declaration">
 
@@ -316,10 +310,9 @@ f(x) = a \cosh\left(\frac{x}{a}\right) - b
 </div>
 </div>
 </div>
-<!-- Right column -->
-<div style="flex: 1;">
+<div class="p4-plot-panel-uza">
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb3" data-startfrom="117" data-source-offset="0"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 116;"><span id="cb3-117"><a></a><span class="fu">renderCatenaryPlot</span>({ Plot<span class="op">,</span> <span class="dt">a</span><span class="op">:</span> params<span class="op">.</span><span class="at">a</span><span class="op">,</span> <span class="dt">b</span><span class="op">:</span> params<span class="op">.</span><span class="at">b</span> })</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb3" data-startfrom="130" data-source-offset="0"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 129;"><span id="cb3-130"><a></a><span class="fu">renderCatenaryPlot</span>({ Plot<span class="op">,</span> <span class="dt">a</span><span class="op">:</span> params<span class="op">.</span><span class="at">a</span><span class="op">,</span> <span class="dt">b</span><span class="op">:</span> params<span class="op">.</span><span class="at">b</span> })</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
 <div id="ojs-cell-3" data-nodetype="expression">
 
@@ -329,36 +322,52 @@ f(x) = a \cosh\left(\frac{x}{a}\right) - b
 </div>
 </div>
 </div>
-</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-catenaria-interactiva-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;2: Explorador interactivo de la catenaria <span class="math inline">\(y=a\cosh(x/a)\)</span>, el nivel <span class="math inline">\(b\)</span> y las soluciones de <span class="math inline">\(f(x)=0\)</span>.
+</figcaption>
+</figure>
 </div>
 </section>
 <section id="representación-gráfica-de-la-solución" class="slide level2 scrollable">
 <h2>Representación gráfica de la solución</h2>
 <p>Los pasos a seguir para representar gráficamente la función <span class="math inline">\(f\)</span> y obtener una aproximación de la solución a la ecuación <span class="math inline">\(f(x) = 0\)</span> son los siguientes:</p>
 <ol type="1">
-<li class="fragment"><p>Abrir <em>Excel</em> y crear un <code>Libro en blanco</code>.</p></li>
-<li class="fragment"><p>En las celdas <code>B2</code>, <code>C2</code> escribiremos los valores de <span class="math inline">\(a\)</span> y <span class="math inline">\(b\)</span>. Por ejemplo, <span class="math inline">\(a = 2\)</span> y <span class="math inline">\(b = 5\)</span>. Asimismo, podemos utilizar las columnas <code>B1</code> y <code>C1</code> para añadir texto que permita explicar el significado de las celdas de abajo, escribiendo <strong>a</strong> y <strong>b</strong>. Fijaros en la <a href="#/fig-grafico-limites-ejes" class="quarto-xref">Figura&nbsp;2</a> para ver un ejemplo de cómo debería quedar la hoja de cálculo en este punto.</p></li>
-<li class="fragment"><p>Buscaremos un intervalo de valores entre los que sepamos que se encuentra la solución, de manera que en ambos extremos del intervalo la función cambie de signo. Como la función <span class="math inline">\(f\)</span> es continua, esto implica que entre dicho valor existe un valor intermedio donde la función toma el valor <span class="math inline">\(0\)</span>. Por ejemplo, la gráfica de la derecha muestra que el valor de <span class="math inline">\(x\)</span> donde <span class="math inline">\(f(x) = 5\)</span> está en <span class="math inline">\([2, 4]\)</span>, y además <span class="math inline">\(f(2) &lt; 0\)</span> y <span class="math inline">\(f(4) &gt; 0\)</span>. Por tanto, los valores de <span class="math inline">\(x\)</span> irán en el rango <span class="math inline">\([2, 4]\)</span>, con un incremento de <span class="math inline">\(0,1\)</span> entre cada valor.</p></li>
+<li class="fragment">Abrir <em>Excel</em> y crear un <code>Libro en blanco</code>.</li>
+<li class="fragment">En las celdas <code>B2</code> y <code>C2</code> escribiremos los valores de <span class="math inline">\(a\)</span> y <span class="math inline">\(b\)</span>. Por ejemplo, <span class="math inline">\(a = 2\)</span> y <span class="math inline">\(b = 5\)</span>. Asimismo, podemos utilizar las columnas <code>B1</code> y <code>C1</code> para añadir texto que permita explicar el significado de las celdas de abajo, escribiendo <strong>a</strong> y <strong>b</strong>.</li>
+<li class="fragment">Buscaremos un intervalo de valores entre los que sepamos que se encuentra la solución, de manera que en ambos extremos del intervalo la función cambie de signo.</li>
 </ol>
 </section>
 <section class="slide level2">
 
+<p>Como la función <span class="math inline">\(f\)</span> es continua, un cambio de signo implica que entre dichos valores existe un valor intermedio donde la función toma el valor <span class="math inline">\(0\)</span>.</p>
+<p>Por ejemplo, la gráfica muestra que el valor de <span class="math inline">\(x\)</span> donde <span class="math inline">\(f(x) = 0\)</span> está en <span class="math inline">\([2, 4]\)</span>, y además <span class="math inline">\(f(2) &lt; 0\)</span> y <span class="math inline">\(f(4) &gt; 0\)</span>. Por tanto, los valores de <span class="math inline">\(x\)</span> irán en el rango <span class="math inline">\([2, 4]\)</span>, con un incremento de <span class="math inline">\(0,1\)</span> entre cada valor.</p>
+<div id="fig-catenaria-ejemplo" class="p4-figure-uza quarto-float quarto-figure quarto-figure-center">
+<figure class="quarto-float quarto-float-fig">
+<div aria-describedby="fig-catenaria-ejemplo-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="p4-plot-panel-uza">
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb4" data-startfrom="140" data-source-offset="0"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 139;"><span id="cb4-140"><a></a><span class="fu">renderCatenaryExamplePlot</span>({ Plot })</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-display column-margin">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb4" data-startfrom="157" data-source-offset="0"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 156;"><span id="cb4-157"><a></a><span class="fu">renderCatenaryExamplePlot</span>({ Plot })</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
 <div id="ojs-cell-4" data-nodetype="expression">
 
 </div>
 </div>
 </div>
+</div>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-catenaria-ejemplo-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;3: Intervalo inicial para localizar una solución de <span class="math inline">\(f(x)=0\)</span>.
+</figcaption>
+</figure>
+</div>
 </section>
 <section class="slide level2 scrollable">
 
 <ol start="4" type="1">
-<li class="fragment"><p>A continuación, en los pasos <strong>5, 6 y 7</strong>, crearemos una tabla con los valores de <span class="math inline">\(f(x)\)</span> en función de <span class="math inline">\(x\)</span>, en las celdas <code>D2-E22</code>. No basta con crear la tabla, es obligatorio utilizar correctamente referencias absolutas y relativas.</p></li>
-<li class="fragment"><p>Para rellenar los valores de <span class="math inline">\(x\)</span>, se introduce el primer valor, <span class="math inline">\(2\)</span>, en la celda <code>D2</code>. Después, marcamos las celdas a rellenar, <code>D2-D22</code> y utilizamos la opción <code>Inicio &gt; Rellenar &gt; Series</code> (sección de <code>Edición</code>), indicando el <strong>incremento</strong> de valor deseado (en este caso, <strong>0,1</strong>). Igual que antes, podemos indicar en <code>D1</code> y <code>E1</code> el significado de cada columna, escribiendo <strong>x</strong> y <strong>y</strong>, respectivamente.</p></li>
-<li class="fragment"><p>Introduce en la celda <code>E2</code> la fórmula para calcular <span class="math inline">\(f(x)\)</span> a partir del valor de <span class="math inline">\(x\)</span> en la celda <code>D2</code>. <em>Excel</em> incluye la función <code>COSH</code> para calcular un coseno hiperbólico.</p></li>
-<li class="fragment"><p>Copia el valor de la celda <code>E2</code> en las celdas <code>E3-E22</code>.</p></li>
+<li class="fragment">A continuación, en los pasos <strong>5, 6 y 7</strong>, crearemos una tabla con los valores de <span class="math inline">\(f(x)\)</span> en función de <span class="math inline">\(x\)</span>, en las celdas <code>D2:E22</code>. No basta con crear la tabla, es obligatorio utilizar correctamente referencias absolutas y relativas.</li>
+<li class="fragment">Para rellenar los valores de <span class="math inline">\(x\)</span>, se introduce el primer valor, <code>2</code>, en la celda <code>D2</code>. Después, marcamos las celdas a rellenar, <code>D2:D22</code>, y utilizamos la opción <code>Inicio &gt; Rellenar &gt; Series</code>, indicando el <strong>incremento</strong> de valor deseado.</li>
+<li class="fragment">Introduce en la celda <code>E2</code> la fórmula para calcular <span class="math inline">\(f(x)\)</span> a partir del valor de <span class="math inline">\(x\)</span> en la celda <code>D2</code>. <em>Excel</em> incluye la función <code>COSH</code> para calcular un coseno hiperbólico.</li>
+<li class="fragment">Copia el valor de la celda <code>E2</code> en las celdas <code>E3:E22</code>.</li>
 </ol>
 <div class="callout callout-warning callout-titled callout-style-default">
 <div class="callout-body">
@@ -369,7 +378,7 @@ f(x) = a \cosh\left(\frac{x}{a}\right) - b
 <p><strong>Error de actualización</strong></p>
 </div>
 <div class="callout-content">
-<p><em>Excel</em> ajusta automáticamente la fórmula, pero el resultado no es correcto; <span class="math inline">\(x\)</span> se ha actualizado correctamente, pero las referencias a los valores de <span class="math inline">\(a\)</span> y <span class="math inline">\(b\)</span> también.</p>
+<p><em>Excel</em> ajusta automáticamente la fórmula, pero el resultado no es correcto: <span class="math inline">\(x\)</span> se ha actualizado correctamente, pero las referencias a los valores de <span class="math inline">\(a\)</span> y <span class="math inline">\(b\)</span> también.</p>
 </div>
 </div>
 </div>
@@ -377,48 +386,40 @@ f(x) = a \cosh\left(\frac{x}{a}\right) - b
 <section class="slide level2 scrollable">
 
 <ol start="8" type="1">
-<li class="fragment"><p>Para solucionar el problema anterior, modificaremos la fórmula en <code>E2</code> combinando el uso de <strong>referencias absolutas</strong> (que se mantendrán constantes al copiar la celda) y <strong>relativas</strong> (que se actualizarán al ser copiadas). Para crear referencias absolutas, de modo que no cambien automáticamente al copiarse la celda, se añade un carácter <code>$</code> entre la letra y el número (por ejemplo, <code>$B$2</code>). También podéis usar el atajo de teclado con <code>F4</code> o <code>Fn+F4</code>. Haz los cambios correspondientes para utilizar referencias absolutas para los valores de <span class="math inline">\(a\)</span> y <span class="math inline">\(b\)</span> (celdas <code>B2</code> y <code>C2</code>) y referencias relativas para el valor de <span class="math inline">\(x\)</span> (celda <code>D2</code>).</p></li>
-<li class="fragment"><p>Ahora sí, propagad el valor de la celda <code>E2</code> a las celdas <code>E3-E22</code>.</p></li>
-</ol>
-</section>
-<section class="slide level2 scrollable">
-
-<ol start="10" type="1">
-<li class="fragment">Seleccionamos <code>D2-E22</code> e insertamos un gráfico de tipo <strong>XY Dispersión</strong> (abrid el menú de gráficos, pinchando en la esquina inferior derecha). Haciendo click en cada eje podemos cambiar el rango de valores mostrado, como muestra la <a href="#/fig-grafico-limites-ejes" class="quarto-xref">Figura&nbsp;2</a>:</li>
+<li class="fragment">Para solucionar el problema anterior, modificaremos la fórmula en <code>E2</code> combinando el uso de <strong>referencias absolutas</strong> y <strong>relativas</strong>. Para crear referencias absolutas, de modo que no cambien automáticamente al copiarse la celda, se añade un carácter <code>$</code> entre la letra y el número, por ejemplo <code>$B$2</code>. También podéis usar el atajo de teclado con <code>F4</code> o <code>Fn+F4</code>.</li>
+<li class="fragment">Ahora sí, propagad el valor de la celda <code>E2</code> a las celdas <code>E3:E22</code>.</li>
+<li class="fragment">Seleccionamos <code>D2:E22</code> e insertamos un gráfico de tipo <strong>XY Dispersión</strong>. Haciendo click en cada eje podemos cambiar el rango de valores mostrado, como muestra la <a href="#/fig-grafico-limites-ejes" class="quarto-xref">Figura&nbsp;4</a>.</li>
 </ol>
 
 <img data-src="../resources/practica4/images/limites_ejes.png" class="r-stretch quarto-figure-center" id="fig-grafico-limites-ejes"><p class="caption">
-Figura&nbsp;2: Actualización de ejes en el gráfico.
+Figura&nbsp;4: Actualización de ejes en el gráfico.
 </p></section>
 <section class="slide level2 scrollable">
 
 <ol start="11" type="1">
-<li class="fragment">Podemos observar en la <a href="#/fig-grafico-xy-dispersion" class="quarto-xref">Figura&nbsp;3</a> que el valor cero de <span class="math inline">\(f(x)\)</span> se alcanza en <strong>[3.1, 3.2]</strong>. Si se repite el proceso con valores de <span class="math inline">\(x\)</span> en el intervalo <strong><span class="math inline">\([2, 4]\)</span></strong> e incremento <strong>0.01</strong>, el resultado será más preciso.</li>
+<li class="fragment">Podemos observar en la <a href="#/fig-grafico-xy-dispersion" class="quarto-xref">Figura&nbsp;5</a> que el valor cero de <span class="math inline">\(f(x)\)</span> se alcanza en <strong>[3.1, 3.2]</strong>. Si se repite el proceso con valores de <span class="math inline">\(x\)</span> en el intervalo <strong><span class="math inline">\([2, 4]\)</span></strong> e incremento <strong>0.01</strong>, el resultado será más preciso.</li>
 </ol>
 
 <img data-src="../resources/practica4/images/grafico_xy_dispersion.png" style="width:65.0%" class="r-stretch quarto-figure-center" id="fig-grafico-xy-dispersion"><p class="caption">
-Figura&nbsp;3: Gráfico de tipo XY Dispersión.
-</p></section>
-<section class="slide level2 scrollable">
-
-<ol start="12" type="1">
+Figura&nbsp;5: Gráfico de tipo XY Dispersión.
+</p><ol start="12" type="1">
 <li class="fragment">Guarda el fichero de <em>Excel</em> con extensión <code>.xlsx</code>, por ejemplo, <code>practica4.xlsx</code>.</li>
 </ol>
 </section>
 <section id="automatización-mediante-el-método-de-bisección" class="slide level2">
 <h2>Automatización mediante el método de bisección</h2>
 <p>En lugar de repetir el proceso a mano, vamos a automatizarlo. Comenzaremos con un intervalo e iremos reduciéndolo por el <strong>método de bisección</strong> hasta obtener una solución que nos parezca suficientemente buena.</p>
-<p>El <strong>método de bisección</strong> es un método numérico para encontrar soluciones de funciones continuas. El método se basa en el teorema del valor intermedio, que establece que si una función cambia de signo en un intervalo, entonces debe tener al menos una solución en ese intervalo. El método de bisección consiste en dividir el intervalo en dos partes iguales y determinar en cuál de las dos partes se encuentra la raíz, repitiendo este proceso iterativamente hasta alcanzar la precisión deseada.</p>
+<p>El <strong>método de bisección</strong> es un método numérico para encontrar soluciones de funciones continuas. El método se basa en el teorema del valor intermedio: si una función cambia de signo en un intervalo, entonces debe tener al menos una solución en dicho intervalo.</p>
 </section>
 <section class="slide level2">
 
-<div class="column-page-inset">
-<div class="card shadow-sm mb-4 mt-4">
-<div class="card-body">
-<div style="display: flex; gap: 28px; align-items: flex-start; flex-wrap: wrap;">
-<div style="flex: 0 0 260px; min-width: 230px;">
+<div id="fig-biseccion-interactiva" class="p4-figure-uza quarto-float quarto-figure quarto-figure-center">
+<figure class="quarto-float quarto-float-fig">
+<div aria-describedby="fig-biseccion-interactiva-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="p4-interactive-grid-uza">
+<div class="p4-control-panel-uza">
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb5" data-startfrom="199" data-source-offset="0"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 198;"><span id="cb5-199"><a></a>viewof bisectParams <span class="op">=</span> <span class="fu">createBisectionControls</span>({ Inputs<span class="op">,</span> html })</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb5" data-startfrom="207" data-source-offset="0"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 206;"><span id="cb5-207"><a></a>viewof bisectParams <span class="op">=</span> <span class="fu">createBisectionControls</span>({ Inputs<span class="op">,</span> html })</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
 <div id="ojs-cell-5" data-nodetype="declaration">
 
@@ -426,15 +427,15 @@ Figura&nbsp;3: Gráfico de tipo XY Dispersión.
 </div>
 </div>
 </div>
-<div style="flex: 1 1 520px; min-width: 320px;">
+<div class="p4-plot-panel-uza">
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb6" data-startfrom="204" data-source-offset="0"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 203;"><span id="cb6-204"><a></a><span class="fu">renderBisectionPlot</span>({</span>
-<span id="cb6-205"><a></a>  Plot<span class="op">,</span></span>
-<span id="cb6-206"><a></a>  html<span class="op">,</span></span>
-<span id="cb6-207"><a></a>  <span class="dt">a</span><span class="op">:</span> bisectParams<span class="op">.</span><span class="at">a</span><span class="op">,</span></span>
-<span id="cb6-208"><a></a>  <span class="dt">b</span><span class="op">:</span> bisectParams<span class="op">.</span><span class="at">b</span><span class="op">,</span></span>
-<span id="cb6-209"><a></a>  <span class="dt">step</span><span class="op">:</span> bisectParams<span class="op">.</span><span class="at">step</span></span>
-<span id="cb6-210"><a></a>})</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb6" data-startfrom="213" data-source-offset="0"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 212;"><span id="cb6-213"><a></a><span class="fu">renderBisectionPlot</span>({</span>
+<span id="cb6-214"><a></a>  Plot<span class="op">,</span></span>
+<span id="cb6-215"><a></a>  html<span class="op">,</span></span>
+<span id="cb6-216"><a></a>  <span class="dt">a</span><span class="op">:</span> bisectParams<span class="op">.</span><span class="at">a</span><span class="op">,</span></span>
+<span id="cb6-217"><a></a>  <span class="dt">b</span><span class="op">:</span> bisectParams<span class="op">.</span><span class="at">b</span><span class="op">,</span></span>
+<span id="cb6-218"><a></a>  <span class="dt">step</span><span class="op">:</span> bisectParams<span class="op">.</span><span class="at">step</span></span>
+<span id="cb6-219"><a></a>})</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
 <div id="ojs-cell-6" data-nodetype="expression">
 
@@ -444,61 +445,48 @@ Figura&nbsp;3: Gráfico de tipo XY Dispersión.
 </div>
 </div>
 </div>
-</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-biseccion-interactiva-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;6: Evolución interactiva del intervalo en el método de bisección para el caso <span class="math inline">\(a=2\)</span>, <span class="math inline">\(b=5\)</span> e intervalo inicial <span class="math inline">\([3.1, 3.2]\)</span>.
+</figcaption>
+</figure>
 </div>
 </section>
 <section class="slide level2 scrollable">
 
 <ol type="1">
-<li class="fragment"><p>En las celdas <code>G1-J1</code> escribiremos los nombres <strong>Xmin</strong> (valor mínimo del intervalo), <strong>Xmax</strong> (valor máximo), <strong>Xmedio</strong> (valor del punto medio) y <strong>f(x)</strong> (valor de la función <span class="math inline">\(f\)</span> en el punto <strong>Xmedio</strong>).</p></li>
-<li class="fragment"><p>En las celdas <code>G2</code> y <code>H2</code> escribiremos los extremos del intervalo inicial, tales que <span class="math inline">\(f(G2)\)</span> y <span class="math inline">\(f(H2)\)</span> tengan distinto signo: <span class="math inline">\(f(3.1) &lt; 0\)</span> y <span class="math inline">\(f(3.2) &gt; 0\)</span>. Es decir, en <code>G2</code> escribimos <strong>3,1</strong> y en <code>H2</code> <strong>3,2</strong>.</p></li>
-<li class="fragment"><p>En la celda <code>I2</code> escribimos la fórmula para <strong>calcular el punto medio del intervalo</strong>, es decir, la media de <code>G2</code> y <code>H2</code>.</p></li>
+<li class="fragment">En las celdas <code>G1:J1</code> escribiremos los nombres <strong>Xmin</strong>, <strong>Xmax</strong>, <strong>Xmedio</strong> y <strong>f(x)</strong>.</li>
+<li class="fragment">En las celdas <code>G2</code> y <code>H2</code> escribiremos los extremos del intervalo inicial, tales que <span class="math inline">\(f(G2)\)</span> y <span class="math inline">\(f(H2)\)</span> tengan distinto signo: <span class="math inline">\(f(3.1) &lt; 0\)</span> y <span class="math inline">\(f(3.2) &gt; 0\)</span>.</li>
+<li class="fragment">En la celda <code>I2</code> escribimos la fórmula para <strong>calcular el punto medio del intervalo</strong>, es decir, la media de <code>G2</code> y <code>H2</code>.</li>
+<li class="fragment">En la celda <code>J2</code> calculamos el resultado de evaluar la función <span class="math inline">\(f\)</span> en el punto indicado en la celda <code>I2</code>.</li>
 </ol>
 </section>
 <section class="slide level2 scrollable">
 
-<ol start="4" type="1">
-<li class="fragment"><p>En la celda <code>J2</code> calculamos el resultado de evaluar la función <span class="math inline">\(f\)</span> en el punto indicado en la celda <code>I2</code>. El valor de <code>a</code> y <code>b</code> se mantiene para evaluar <span class="math inline">\(f\)</span>.</p></li>
-<li class="fragment"><p>En la fila <strong>3</strong> (celdas <code>G3</code> y <code>H3</code>) definimos un nuevo extremo para el intervalo. <strong>Si f(xMedio) es negativo</strong>, seleccionamos el intervalo <strong>[xMedio, xMax]</strong> en la siguiente iteración. <strong>Si es positivo</strong>, utilizamos <strong>[xMin, xMedio]</strong>. Usa la funcion <code>=SI</code> para resolver esta composición condicional.</p></li>
-<li class="fragment"><p>Copia las celdas <code>I2</code> y <code>J2</code> en <code>I3</code> y <code>J3</code>, respectivamente.</p></li>
-</ol>
-</section>
-<section class="slide level2 scrollable">
-
-<ol start="7" type="1">
+<ol start="5" type="1">
+<li class="fragment">En la fila <strong>3</strong>, celdas <code>G3</code> y <code>H3</code>, definimos un nuevo extremo para el intervalo. <strong>Si f(xMedio) es negativo</strong>, seleccionamos el intervalo <strong>[xMedio, xMax]</strong> en la siguiente iteración. <strong>Si es positivo</strong>, utilizamos <strong>[xMin, xMedio]</strong>. Usa la función <code>=SI</code> para resolver esta composición condicional.</li>
+<li class="fragment">Copia las celdas <code>I2</code> y <code>J2</code> en <code>I3</code> y <code>J3</code>, respectivamente.</li>
 <li class="fragment">Copia la fila <strong>3</strong> en la fila <strong>4</strong> y repite este proceso hasta que se obtenga una solución suficientemente buena. Con <strong>20 filas</strong> debería ser suficiente para obtener una aproximación de la solución con un error menor a <span class="math inline">\(10^{-6}\)</span>.</li>
 </ol>
 
 <img data-src="../resources/practica4/images/biseccion.png" class="r-stretch quarto-figure-center" id="fig-biseccion"><p class="caption">
-Figura&nbsp;4: Resultados obtenidos al aplicar el método de bisección. A la derecha, en <span class="math inline">\(f(x)\)</span>, se puede observar que no se ha alcanzado el valor cero, pero el error es inferior a <span class="math inline">\(10^{-6}\)</span>.
+Figura&nbsp;7: Resultados obtenidos al aplicar el método de bisección. A la derecha, en <span class="math inline">\(f(x)\)</span>, se puede observar que no se ha alcanzado el valor cero, pero el error es inferior a <span class="math inline">\(10^{-6}\)</span>.
 </p><ol start="8" type="1">
 <li class="fragment">Guarda los cambios en el fichero <code>practica4.xlsx</code>.</li>
 </ol>
 </section>
-<section id="creación-de-una-macro" class="slide level2 scrollable">
+<section id="creación-de-una-macro" class="slide level2">
 <h2>Creación de una macro</h2>
-<p>Por último, vamos a crear una <strong>macro</strong> que permita calcular nuestra función <span class="math inline">\(f\)</span>. Una <strong>macro</strong> no es más que una función que nos permitirá escribir una <strong>fórmula para evaluar la función en un punto</strong> dado por la celda <code>E2</code> (función <code>EvaluarF</code>), suponiendo que <code>B2</code> contiene el valor de <span class="math inline">\(a\)</span> y que <code>C2</code> contiene el valor de <span class="math inline">\(b\)</span> y <code>D2</code> el valor de <span class="math inline">\(x\)</span>. Es decir, nuestra función recibirá 3 parámetros de entrada: los valores de <span class="math inline">\(x\)</span>, <span class="math inline">\(a\)</span> y <span class="math inline">\(b\)</span> (fíjate en la <a href="#/fig-ejemplo-evaluarf" class="quarto-xref">Figura&nbsp;5</a>).</p>
+<p>Por último, vamos a crear una <strong>macro</strong> que permita calcular nuestra función <span class="math inline">\(f\)</span>. Una <strong>macro</strong> no es más que una función que nos permitirá escribir una <strong>fórmula para evaluar la función en un punto</strong> dado por una celda.</p>
+<p>Nuestra función recibirá 3 parámetros de entrada: los valores de <span class="math inline">\(x\)</span>, <span class="math inline">\(a\)</span> y <span class="math inline">\(b\)</span>. Fíjate en la <a href="#/fig-ejemplo-evaluarf" class="quarto-xref">Figura&nbsp;8</a>.</p>
+
+<img data-src="../resources/practica4/images/ejemplo_evaluarf.png" style="width:55.0%" class="r-stretch quarto-figure-center" id="fig-ejemplo-evaluarf"><p class="caption">
+Figura&nbsp;8: Ejemplo de uso de la macro <code>EvaluarF</code>.
+</p></section>
+<section class="slide level2 scrollable">
+
 <ol type="1">
 <li class="fragment">Crea un nuevo libro de <em>Excel</em> y en la celda <code>E2</code> escribe la fórmula <code>=EvaluarF(D2; B2; C2)</code>.</li>
 </ol>
-</section>
-<section class="slide level2">
-
-<div class="column-margin">
-<div id="fig-ejemplo-evaluarf" class="quarto-float quarto-figure quarto-figure-center">
-<figure class="quarto-float quarto-float-fig">
-<div aria-describedby="fig-ejemplo-evaluarf-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img data-src="../resources/practica4/images/ejemplo_evaluarf.png">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-ejemplo-evaluarf-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figura&nbsp;5: Ejemplo de uso de la macro <code>EvaluarF</code>.
-</figcaption>
-</figure>
-</div>
-</div>
-</section>
-<section class="slide level2">
-
 <div class="callout callout-warning callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
@@ -512,10 +500,10 @@ Figura&nbsp;5: Ejemplo de uso de la macro <code>EvaluarF</code>.
 <div id="fig-error-evaluarf" class="quarto-float quarto-figure quarto-figure-center">
 <figure class="quarto-float quarto-float-fig">
 <div aria-describedby="fig-error-evaluarf-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img data-src="../resources/practica4/images/error_evaluarf.png" style="width:50.0%">
+<img data-src="../resources/practica4/images/error_evaluarf.png" style="width:55.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-error-evaluarf-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figura&nbsp;6: Error indicando que la función <code>EvaluarF</code> no está definida.
+Figura&nbsp;9: Error indicando que la función <code>EvaluarF</code> no está definida.
 </figcaption>
 </figure>
 </div>
@@ -526,21 +514,20 @@ Figura&nbsp;6: Error indicando que la función <code>EvaluarF</code> no está de
 <section class="slide level2 scrollable">
 
 <ol start="2" type="1">
-<li class="fragment">Creamos la función <code>EvaluarF</code>. Para ello, utilizamos la opción del menú <code>Archivo &gt; Opciones &gt; Personalizar cinta de opciones</code> y activamos <strong>Desarrollador</strong> o <strong>Programador</strong> (ver <a href="#/fig-programador" class="quarto-xref">Figura&nbsp;7</a>).</li>
+<li class="fragment">Creamos la función <code>EvaluarF</code>. Para ello, utilizamos la opción del menú <code>Archivo &gt; Opciones &gt; Personalizar cinta de opciones</code> y activamos <strong>Desarrollador</strong> o <strong>Programador</strong>.</li>
 </ol>
 
 <img data-src="../resources/practica4/images/programador.png" class="r-stretch quarto-figure-center" id="fig-programador"><p class="caption">
-Figura&nbsp;7: Activación de las opciones de Programador.
-</p></section>
-<section class="slide level2 scrollable">
-
-<ol start="3" type="1">
-<li class="fragment">En la opción del menú <code>Desarrollador &gt; Visual Basic</code> aparecerá una nueva ventana. Después de utilizar la opción <code>Insertar &gt; módulo</code>, copia y pega el código siguiente (ver <a href="#/fig-evaluarf_macro" class="quarto-xref">Figura&nbsp;8</a>).</li>
+Figura&nbsp;10: Activación de las opciones de Programador.
+</p><ol start="3" type="1">
+<li class="fragment">En la opción del menú <code>Desarrollador &gt; Visual Basic</code> aparecerá una nueva ventana. Después de utilizar la opción <code>Insertar &gt; Módulo</code>, copia y pega el código siguiente.</li>
 </ol>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode numberSource java number-lines code-with-copy"><code class="sourceCode java"><span id="cb7-1"><a></a>Function <span class="fu">EvaluarF</span><span class="op">(</span>x<span class="op">,</span> a<span class="op">,</span> b<span class="op">)</span></span>
-<span id="cb7-2"><a></a>  EvaluarF <span class="op">=</span> <span class="kw">...</span></span>
-<span id="cb7-3"><a></a>End Function</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
-<p>Los puntos suspensivos <code>...</code> indican el código que debéis completar en la función, teniendo en cuenta que en <em>Visual Basic</em> hay una función exponencial <code>Exp(x)</code>, pero no una función <code>COSH</code> para calcular el coseno hiperbólico, por lo que tendréis que escribir la fórmula de la función <span class="math inline">\(f\)</span> utilizando <code>Exp</code> para calcular el coseno hiperbólico.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode numberSource vb number-lines code-with-copy"><code class="sourceCode monobasic"><span id="cb7-1"><a></a><span class="kw">Function </span>EvaluarF(x, a, b)</span>
+<span id="cb7-2"><a></a>  EvaluarF = a * (Exp(x / a) + Exp(-x / a)) / 2 - b</span>
+<span id="cb7-3"><a></a><span class="kw">End Function</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section class="slide level2">
+
 <div class="callout callout-tip callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
@@ -550,41 +537,32 @@ Figura&nbsp;7: Activación de las opciones de Programador.
 <p><strong>Programación en <em>Visual Basic</em></strong></p>
 </div>
 <div class="callout-content">
-<p>Al igual que en Java, nuestra función en <em>Visual Basic</em> debe utilizar operaciones como la suma (<code>+</code>), la resta (<code>-</code>), la multiplicación (<code>*</code>) y la división (<code>/</code>). Rercuerda además que los paréntesis se utilizan para indicar el orden de las operaciones. De nuevo, recuerda que la curva catenaria se define como <span class="math inline">\(f(x) = a \frac{e^{x/a} + e^{-x/a}}{2} - b\)</span>.</p>
+<p>Al igual que en Java, nuestra función en <em>Visual Basic</em> debe utilizar operaciones como la suma (<code>+</code>), la resta (<code>-</code>), la multiplicación (<code>*</code>) y la división (<code>/</code>). Recuerda además que los paréntesis se utilizan para indicar el orden de las operaciones.</p>
+<p>De nuevo, la curva catenaria se define como <span class="math inline">\(f(x) = a \frac{e^{x/a} + e^{-x/a}}{2} - b\)</span>.</p>
 </div>
 </div>
 </div>
-</section>
-<section class="slide level2">
 
-
-<!--<details>
-<summary>💡 Solución</summary>
-![Implementación de la función EvaluarF.](../resources/practica4/images/solucion-evaluarf.png){#fig-solucion-evaluarf}
-</details>-->
 <img data-src="../resources/practica4/images/evaluarf_macro.png" class="r-stretch quarto-figure-center" id="fig-evaluarf_macro"><p class="caption">
-Figura&nbsp;8: Ejemplo de definición de la función EvaluarF en <em>Visual Basic</em>.
+Figura&nbsp;11: Ejemplo de definición de la función EvaluarF en <em>Visual Basic</em>.
 </p></section>
 <section class="slide level2 scrollable">
 
 <ol start="4" type="1">
-<li class="fragment"><p>Cierra la ventana de <strong><em>Visual Basic</em></strong> y guarda el fichero de <em>Excel</em> con extensión <code>.xlsm</code>. Por ejemplo, guárdalo con el nombre <code>practica4_macro.xlsm</code>.</p></li>
-<li class="fragment"><p>Una vez guardado el fichero de <em>Excel</em>, probaremos sobre <code>E2</code> la macro <code>EvaluarF</code>. Haz lo mismo para las celdas <code>E3-E22</code>. Tened cuidado nuevamente con las referencias absolutas.</p></li>
+<li class="fragment">Cierra la ventana de <strong><em>Visual Basic</em></strong> y guarda el fichero de <em>Excel</em> con extensión <code>.xlsm</code>. Por ejemplo, guárdalo con el nombre <code>practica4_macro.xlsm</code>.</li>
+<li class="fragment">Una vez guardado el fichero de <em>Excel</em>, probaremos sobre <code>E2</code> la macro <code>EvaluarF</code>. Haz lo mismo para las celdas <code>E3:E22</code>. Tened cuidado nuevamente con las referencias absolutas.</li>
 </ol>
-</section>
-<section class="slide level2">
-
 <details>
 <summary>
-💡 Solución
+Solución:
 </summary>
 <div id="fig-resultado_evaluarf" class="quarto-float quarto-figure quarto-figure-center">
 <figure class="quarto-float quarto-float-fig">
 <div aria-describedby="fig-resultado_evaluarf-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img data-src="../resources/practica4/images/resultado_evaluarf.png">
+<img data-src="../resources/practica4/images/resultado_evaluarf.png" style="width:55.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-resultado_evaluarf-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figura&nbsp;9: función: EvaluarF
+Figura&nbsp;12: Función <code>EvaluarF</code> aplicada en la hoja de cálculo.
 </figcaption>
 </figure>
 </div>
@@ -592,14 +570,11 @@ Figura&nbsp;9: función: EvaluarF
 </section>
 <section id="entrega-de-la-solución" class="slide level2">
 <h2>Entrega de la solución</h2>
-<p><strong>Sólo debe realizar la entrega un miembro del grupo</strong>. Sube a Moodle un <strong>fichero comprimido <code>practica4.zip</code></strong> que contenga los siguientes archivos:</p>
+<p><strong>Solo debe realizar la entrega un miembro del grupo</strong>. Sube a Moodle un <strong>fichero comprimido <code>practica4.zip</code></strong> que contenga los siguientes archivos:</p>
 <ul>
 <li class="fragment"><code>practica4.xlsx</code></li>
 <li class="fragment"><code>practica4_macro.xlsm</code></li>
 </ul>
-</section>
-<section class="slide level2">
-
 
 
 </section>
@@ -784,12 +759,12 @@ Figura&nbsp;9: función: EvaluarF
         // The "normal" size of the presentation, aspect ratio will be preserved
         // when the presentation is scaled to fit different resolutions. Can be
         // specified using percentage units.
-        width: 1050,
+        width: 1280,
 
-        height: 700,
+        height: 720,
 
         // Factor of the display size that should remain empty around the content
-        margin: 0.1,
+        margin: 8.0e-2,
 
         math: {
           mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@2.7.9/MathJax.js',
@@ -819,7 +794,7 @@ Figura&nbsp;9: función: EvaluarF
       });
     </script>
     <script type="ojs-module-contents">
-    eyJjb250ZW50cyI6W3sibWV0aG9kTmFtZSI6ImludGVycHJldCIsImNlbGxOYW1lIjoib2pzLWNlbGwtMSIsImlubGluZSI6ZmFsc2UsInNvdXJjZSI6ImltcG9ydCB7XHJcbiAgY3JlYXRlQ2F0ZW5hcnlDb250cm9scyxcclxuICByZW5kZXJDYXRlbmFyeVBsb3QsXHJcbiAgcmVuZGVyQ2F0ZW5hcnlFeGFtcGxlUGxvdCxcclxuICBjcmVhdGVCaXNlY3Rpb25Db250cm9scyxcclxuICByZW5kZXJCaXNlY3Rpb25QbG90XHJcbn0gZnJvbSBcIi4uL3Jlc291cmNlcy9wcmFjdGljYTQvb2pzL3ByYWN0aWNhNC5qc1wiXHJcbiJ9LHsibWV0aG9kTmFtZSI6ImludGVycHJldCIsImNlbGxOYW1lIjoib2pzLWNlbGwtMiIsImlubGluZSI6ZmFsc2UsInNvdXJjZSI6InZpZXdvZiBwYXJhbXMgPSBjcmVhdGVDYXRlbmFyeUNvbnRyb2xzKHsgSW5wdXRzLCBodG1sIH0pXHJcbiJ9LHsibWV0aG9kTmFtZSI6ImludGVycHJldCIsImNlbGxOYW1lIjoib2pzLWNlbGwtMyIsImlubGluZSI6ZmFsc2UsInNvdXJjZSI6InJlbmRlckNhdGVuYXJ5UGxvdCh7IFBsb3QsIGE6IHBhcmFtcy5hLCBiOiBwYXJhbXMuYiB9KVxyXG4ifSx7Im1ldGhvZE5hbWUiOiJpbnRlcnByZXQiLCJjZWxsTmFtZSI6Im9qcy1jZWxsLTQiLCJpbmxpbmUiOmZhbHNlLCJzb3VyY2UiOiJyZW5kZXJDYXRlbmFyeUV4YW1wbGVQbG90KHsgUGxvdCB9KVxyXG4ifSx7Im1ldGhvZE5hbWUiOiJpbnRlcnByZXQiLCJjZWxsTmFtZSI6Im9qcy1jZWxsLTUiLCJpbmxpbmUiOmZhbHNlLCJzb3VyY2UiOiJ2aWV3b2YgYmlzZWN0UGFyYW1zID0gY3JlYXRlQmlzZWN0aW9uQ29udHJvbHMoeyBJbnB1dHMsIGh0bWwgfSlcclxuIn0seyJtZXRob2ROYW1lIjoiaW50ZXJwcmV0IiwiY2VsbE5hbWUiOiJvanMtY2VsbC02IiwiaW5saW5lIjpmYWxzZSwic291cmNlIjoicmVuZGVyQmlzZWN0aW9uUGxvdCh7XHJcbiAgUGxvdCxcclxuICBodG1sLFxyXG4gIGE6IGJpc2VjdFBhcmFtcy5hLFxyXG4gIGI6IGJpc2VjdFBhcmFtcy5iLFxyXG4gIHN0ZXA6IGJpc2VjdFBhcmFtcy5zdGVwXHJcbn0pXHJcbiJ9LHsibWV0aG9kTmFtZSI6ImludGVycHJldFF1aWV0Iiwic291cmNlIjoic2hpbnlJbnB1dCgncGFyYW1zJykifSx7Im1ldGhvZE5hbWUiOiJpbnRlcnByZXRRdWlldCIsInNvdXJjZSI6InNoaW55SW5wdXQoJ2Jpc2VjdFBhcmFtcycpIn1dfQ==
+    eyJjb250ZW50cyI6W3sibWV0aG9kTmFtZSI6ImludGVycHJldCIsImNlbGxOYW1lIjoib2pzLWNlbGwtMSIsImlubGluZSI6ZmFsc2UsInNvdXJjZSI6ImltcG9ydCB7XG4gIGNyZWF0ZUNhdGVuYXJ5Q29udHJvbHMsXG4gIHJlbmRlckNhdGVuYXJ5UGxvdCxcbiAgcmVuZGVyQ2F0ZW5hcnlFeGFtcGxlUGxvdCxcbiAgY3JlYXRlQmlzZWN0aW9uQ29udHJvbHMsXG4gIHJlbmRlckJpc2VjdGlvblBsb3Rcbn0gZnJvbSBcIi4uL3Jlc291cmNlcy9wcmFjdGljYTQvb2pzL3ByYWN0aWNhNC5qc1wiXG4ifSx7Im1ldGhvZE5hbWUiOiJpbnRlcnByZXQiLCJjZWxsTmFtZSI6Im9qcy1jZWxsLTIiLCJpbmxpbmUiOmZhbHNlLCJzb3VyY2UiOiJ2aWV3b2YgcGFyYW1zID0gY3JlYXRlQ2F0ZW5hcnlDb250cm9scyh7IElucHV0cywgaHRtbCB9KVxuIn0seyJtZXRob2ROYW1lIjoiaW50ZXJwcmV0IiwiY2VsbE5hbWUiOiJvanMtY2VsbC0zIiwiaW5saW5lIjpmYWxzZSwic291cmNlIjoicmVuZGVyQ2F0ZW5hcnlQbG90KHsgUGxvdCwgYTogcGFyYW1zLmEsIGI6IHBhcmFtcy5iIH0pXG4ifSx7Im1ldGhvZE5hbWUiOiJpbnRlcnByZXQiLCJjZWxsTmFtZSI6Im9qcy1jZWxsLTQiLCJpbmxpbmUiOmZhbHNlLCJzb3VyY2UiOiJyZW5kZXJDYXRlbmFyeUV4YW1wbGVQbG90KHsgUGxvdCB9KVxuIn0seyJtZXRob2ROYW1lIjoiaW50ZXJwcmV0IiwiY2VsbE5hbWUiOiJvanMtY2VsbC01IiwiaW5saW5lIjpmYWxzZSwic291cmNlIjoidmlld29mIGJpc2VjdFBhcmFtcyA9IGNyZWF0ZUJpc2VjdGlvbkNvbnRyb2xzKHsgSW5wdXRzLCBodG1sIH0pXG4ifSx7Im1ldGhvZE5hbWUiOiJpbnRlcnByZXQiLCJjZWxsTmFtZSI6Im9qcy1jZWxsLTYiLCJpbmxpbmUiOmZhbHNlLCJzb3VyY2UiOiJyZW5kZXJCaXNlY3Rpb25QbG90KHtcbiAgUGxvdCxcbiAgaHRtbCxcbiAgYTogYmlzZWN0UGFyYW1zLmEsXG4gIGI6IGJpc2VjdFBhcmFtcy5iLFxuICBzdGVwOiBiaXNlY3RQYXJhbXMuc3RlcFxufSlcbiJ9LHsibWV0aG9kTmFtZSI6ImludGVycHJldFF1aWV0Iiwic291cmNlIjoic2hpbnlJbnB1dCgncGFyYW1zJykifSx7Im1ldGhvZE5hbWUiOiJpbnRlcnByZXRRdWlldCIsInNvdXJjZSI6InNoaW55SW5wdXQoJ2Jpc2VjdFBhcmFtcycpIn1dfQ==
     </script>
     <script type="module">
     if (window.location.protocol === "file:") { alert("The OJS runtime does not work with file:// URLs. Please use a web server to view this document."); }

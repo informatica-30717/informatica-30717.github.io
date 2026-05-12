@@ -1,0 +1,135 @@
+#title-block-header .quarto-title-banner {
+  --title-banner-height: 360px;
+  --title-banner-size: cover;
+  --title-banner-position-y: center;
+}
+
+.p3-figure-uza {
+  max-width: 58rem;
+  overflow-x: clip;
+  margin: 1rem auto 1.2rem;
+}
+
+.p3-figure-uza > p:last-child {
+  margin-top: 0.62rem;
+  color: #56616b;
+  font-size: 0.88rem;
+  line-height: 1.35;
+  text-align: center;
+}
+
+.p3-figure-uza .code-copy-outer-scaffold,
+.p3-figure-uza .code-copy-button,
+.p3-figure-uza .anchorjs-link {
+  display: none !important;
+}
+
+.p3-quadratic-panel-uza,
+.p3-plot-card-uza {
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  border: 1px solid #d7e2ea;
+  border-radius: 8px;
+  background: #fff;
+  box-shadow: 0 0.45rem 1.4rem rgba(15, 23, 42, 0.06);
+}
+
+.p3-quadratic-panel-uza {
+  padding: 0.9rem;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+.p3-controls-uza {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(10rem, 100%), 1fr));
+  gap: 0.8rem;
+  min-width: 0;
+}
+
+.p3-control-uza {
+  display: grid;
+  gap: 0.35rem;
+  width: 100%;
+  min-width: 0;
+  max-width: 100%;
+  color: #334155;
+  font-size: 0.86rem;
+  font-weight: 700;
+}
+
+.p3-control-uza > * {
+  min-width: 0;
+  max-width: 100%;
+}
+
+.p3-range-widget-uza,
+.p3-range-widget-uza label {
+  min-width: 0 !important;
+  max-width: 100% !important;
+}
+
+.p3-range-widget-uza {
+  overflow: hidden;
+}
+
+.p3-slider-uza {
+  box-sizing: border-box;
+  width: 100% !important;
+  min-width: 0 !important;
+  max-width: 100% !important;
+}
+
+.p3-control-value-uza {
+  color: #153e5c;
+  font-family: ui-monospace, "Cascadia Code", "SFMono-Regular", Consolas, monospace;
+  font-size: 0.84rem;
+  font-weight: 700;
+}
+
+.p3-plot-card-uza {
+  overflow: hidden;
+  padding: 0.75rem;
+  border-top: 0;
+  border-top-right-radius: 0;
+  border-top-left-radius: 0;
+}
+
+.p3-plot-uza {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+}
+
+.p3-discriminant-uza {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 0.9rem;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 0.65rem;
+  padding-top: 0.65rem;
+  border-top: 1px solid #e2e8f0;
+  color: #475569;
+  font-size: 0.92rem;
+}
+
+.p3-discriminant-uza span {
+  font-family: ui-monospace, "Cascadia Code", "SFMono-Regular", Consolas, monospace;
+  color: #153e5c;
+  font-weight: 700;
+}
+
+.p3-discriminant-uza strong {
+  color: #172033;
+  font-weight: 800;
+}
+
+@media (max-width: 700px) {
+  .p3-controls-uza {
+    grid-template-columns: 1fr;
+  }
+}

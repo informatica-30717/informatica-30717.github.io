@@ -15,6 +15,13 @@
 \usepackage[skins,breakable]{tcolorbox}
 
 \providecommand{\practicaPdfCoverImage}{}
+\providecommand{\practicaPdfLogo}{../resources/unizar.png}
+\newlength{\PracticeCoverContentWidth}
+\newlength{\PracticeCoverMediaWidth}
+\newlength{\PracticeCoverBandHeight}
+\setlength{\PracticeCoverContentWidth}{0.94\textwidth}
+\setlength{\PracticeCoverMediaWidth}{\textwidth}
+\setlength{\PracticeCoverBandHeight}{88mm}
 
 \definecolor{uzaInk}{HTML}{172033}
 \definecolor{uzaMuted}{HTML}{5F6B7A}
@@ -136,6 +143,46 @@
   \end{Shaded}%
 }
 
+\newtcolorbox{PracticeNoteBox}[1]{%
+  enhanced,
+  breakable,
+  sharp corners,
+  boxrule=0.25pt,
+  colback=white,
+  colframe=uzaLine,
+  colbacktitle=uzaCyan,
+  coltitle=uzaInk,
+  fonttitle=\sffamily\bfseries,
+  title={#1},
+  borderline west={1.4pt}{0pt}{uzaBlue},
+  left=2mm,
+  right=2mm,
+  top=1.4mm,
+  bottom=1.4mm,
+  before skip=0.75em,
+  after skip=0.75em
+}
+
+\newtcolorbox{PracticeTipBox}[1]{%
+  enhanced,
+  breakable,
+  sharp corners,
+  boxrule=0.25pt,
+  colback=white,
+  colframe=uzaLine,
+  colbacktitle=uzaCyan,
+  coltitle=uzaInk,
+  fonttitle=\sffamily\bfseries,
+  title={#1},
+  borderline west={1.4pt}{0pt}{uzaTip},
+  left=2mm,
+  right=2mm,
+  top=1.4mm,
+  bottom=1.4mm,
+  before skip=0.75em,
+  after skip=0.75em
+}
+
 \makeatletter
 \@ifundefined{pandoc@box}{\newsavebox\pandoc@box}{}
 \providecommand*\pandocbounded[1]{%
@@ -162,21 +209,29 @@
   \begin{titlepage}
     \thispagestyle{empty}
     \begin{tikzpicture}[remember picture,overlay]
-      \fill[uzaCyan] (current page.north west) rectangle ([yshift=-72mm]current page.north east);
+      \fill[uzaCyan] (current page.north west) rectangle ([yshift=-\PracticeCoverBandHeight]current page.north east);
       \fill[uzaBlue] (current page.north west) rectangle ([xshift=7mm]current page.south west);
+      \node[anchor=south east, inner sep=0pt] at ([xshift=-24mm,yshift=22mm]current page.south east) {%
+        \includegraphics[width=34mm]{\practicaPdfLogo}%
+      };
     \end{tikzpicture}
     \vspace*{12mm}
     {\sffamily\small\bfseries\textcolor{uzaBlue}{INFORMÁTICA (30717)}}\par
-    \vspace{5mm}
-    {\sffamily\bfseries\fontsize{30}{35}\selectfont\textcolor{uzaInk}{\@title}}\par
+    \vspace{2.5mm}
+    \noindent
+    \begin{minipage}{\PracticeCoverContentWidth}
+      \raggedright
+      \sffamily\bfseries\fontsize{30}{35}\selectfont
+      \color{uzaInk}\@title\par
+    \end{minipage}\par
     \vspace{3mm}
     {\sffamily\Large\textcolor{uzaMuted}{Grado en Estudios en Arquitectura}}\par
-    \vspace{8mm}
-    {\color{uzaBlue}\rule{\textwidth}{0.6pt}}\par
+    \vspace{14mm}
+    \noindent\makebox[0pt][l]{\color{uzaBlue}\rule{\PracticeCoverMediaWidth}{0.6pt}}\par
     \if\relax\detokenize\expandafter{\practicaPdfCoverImage}\relax
     \else
       \vspace{5mm}
-      {\centering\includegraphics[width=\textwidth,height=78mm,keepaspectratio]{\practicaPdfCoverImage}\par}
+      \noindent\makebox[0pt][l]{\includegraphics[width=\PracticeCoverMediaWidth,height=78mm,keepaspectratio]{\practicaPdfCoverImage}}\par
     \fi
     \vfill
     {\sffamily\large\textcolor{uzaBlueDark}{Universidad de Zaragoza}}\par

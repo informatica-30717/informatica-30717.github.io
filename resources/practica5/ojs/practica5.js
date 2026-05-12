@@ -1,12 +1,13 @@
 export function cleanSlider(Inputs, range, config) {
   const input = Inputs.range(range, config);
+  input.classList.add("p5-range-widget-uza");
+
   const numberBox = input.querySelector("input[type=number]");
   if (numberBox) numberBox.style.display = "none";
 
   const rangeSlider = input.querySelector("input[type=range]");
-  if (rangeSlider) rangeSlider.style.width = "100%";
+  if (rangeSlider) rangeSlider.classList.add("p5-slider-uza");
 
-  input.style.width = "100%";
   return input;
 }
 
@@ -85,21 +86,26 @@ export function buildOddOnlySieveSteps(max) {
 function renderMessage(html, step, oddOnly) {
   if (step.type === "prime") {
     return oddOnly
-      ? html`🔎 Probando primo impar <b>${step.p}</b>`
-      : html`🔎 Probando primo <b>${step.p}</b>`;
+      ? html`Probando primo impar <b>${step.p}</b>`
+      : html`Probando primo <b>${step.p}</b>`;
   }
 
   if (step.type === "discard") {
     return oddOnly
-      ? html`❌ ${step.k} es múltiplo impar de <b>${step.p}</b>`
-      : html`❌ ${step.k} es múltiplo de <b>${step.p}</b>`;
+      ? html`${step.k} es múltiplo impar de <b>${step.p}</b>`
+      : html`${step.k} es múltiplo de <b>${step.p}</b>`;
   }
 
-  return html`✅ Criba completada`;
+  return html`Criba completada`;
+}
+
+function comfortableColumnCount(count) {
+  // A slightly taller-than-square grid keeps cells readable in slides.
+  return Math.max(3, Math.ceil(Math.sqrt(Math.max(count, 1))) - 1);
 }
 
 function fullGridState(step, max) {
-  const cols = Math.ceil(Math.sqrt(max));
+  const cols = comfortableColumnCount(max + 1);
   const grid = Array.from({ length: max + 1 }, (_, i) => {
     let bgColor = "#2a9d8f";
     if (i < 2) bgColor = "#ddd";
@@ -121,7 +127,7 @@ function fullGridState(step, max) {
 
 function oddGridState(step, max) {
   const size = Math.max(0, Math.floor((max - 3) / 2) + 1);
-  const cols = Math.max(1, Math.ceil(Math.sqrt(Math.max(size, 1))));
+  const cols = comfortableColumnCount(size);
   const grid = Array.from({ length: size }, (_, i) => {
     const num = 2 * i + 3;
     let bgColor = "#2a9d8f";
@@ -149,36 +155,46 @@ export function renderSieveState({ html, Plot, steps, stepIndex, max, oddOnly = 
   if (!step) return html`<div>Cargando...</div>`;
 
   const state = oddOnly ? oddGridState(step, max) : fullGridState(step, max);
+  const rows = Math.ceil(state.count / state.cols);
+  const yGap = 1.22;
+  const plotGrid = state.grid.map((d) => ({ ...d, plotY: d.y * yGap }));
+  const cellHeight = 45;
+  const yMax = (rows - 1) * yGap;
+  const plot = Plot.plot({
+    width: 920,
+    height: rows * cellHeight + 24,
+    margin: 10,
+    x: { axis: null, domain: [-0.5, state.cols - 0.5] },
+    y: { axis: null, domain: [-0.64, yMax + 0.64], reverse: true },
+    color: { type: "identity" },
+    marks: [
+      Plot.rect(plotGrid, {
+        x1: (d) => d.x - 0.48,
+        x2: (d) => d.x + 0.48,
+        y1: (d) => d.plotY - 0.52,
+        y2: (d) => d.plotY + 0.52,
+        fill: "color",
+        stroke: "white",
+        strokeWidth: 1.4,
+        rx: 4,
+      }),
+      Plot.text(plotGrid, {
+        x: "x",
+        y: "plotY",
+        text: "n",
+        fill: "textColor",
+        fontSize: rows > 9 ? 13 : 16,
+        fontWeight: "bold",
+      }),
+    ],
+  });
+
+  plot.classList.add("p5-sieve-plot-uza");
 
   return html`
-    <div style="margin-top:15px;">
-      ${Plot.plot({
-        height: Math.ceil(state.count / state.cols) * 35 + 20,
-        margin: 10,
-        x: { axis: null },
-        y: { axis: null, reverse: true },
-        color: { type: "identity" },
-        marks: [
-          Plot.rect(state.grid, {
-            x1: (d) => d.x - 0.45,
-            x2: (d) => d.x + 0.45,
-            y1: (d) => d.y - 0.45,
-            y2: (d) => d.y + 0.45,
-            fill: "color",
-            stroke: "white",
-            rx: 4,
-          }),
-          Plot.text(state.grid, {
-            x: "x",
-            y: "y",
-            text: "n",
-            fill: "textColor",
-            fontSize: 13,
-            fontWeight: "bold",
-          }),
-        ],
-      })}
-      <div style="margin-top:15px; font-size: 1.1em; height: 1.5em;">
+    <div class="p5-plot-panel-uza">
+      ${plot}
+      <div class="p5-sieve-message-uza">
         ${renderMessage(html, step, oddOnly)}
       </div>
     </div>

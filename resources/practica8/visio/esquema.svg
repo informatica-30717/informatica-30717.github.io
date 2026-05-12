@@ -1,0 +1,923 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generado por Microsoft Visio, SVG Export visio.svg Página-1 -->
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:ev="http://www.w3.org/2001/xml-events"
+		xmlns:v="http://schemas.microsoft.com/visio/2003/SVGExtensions/" width="8.14728in" height="2.73457in"
+		viewBox="0 0 586.604 196.889" xml:space="preserve" color-interpolation-filters="sRGB" class="st50">
+	<v:documentProperties v:langID="3082" v:metric="true" v:viewMarkup="false"/>
+
+	<style type="text/css">
+	<![CDATA[
+		.st1 {fill:#ffffff;stroke:#3a7fcf;stroke-dasharray:3.75,3.75;stroke-linecap:round;stroke-linejoin:round;stroke-width:1.25}
+		.st2 {fill:#3a7fcf;stroke:none;stroke-linecap:round;stroke-linejoin:round;stroke-width:2.25}
+		.st3 {fill:#ffffff;font-family:Handgley;font-size:0.833336em}
+		.st4 {fill:#d6e8fb;stroke:#3a7fcf;stroke-linecap:butt;stroke-width:0.667636}
+		.st5 {fill:#3a7fcf;fill-opacity:0.5;stroke:none;stroke-linecap:butt;stroke-width:0.556364}
+		.st6 {stroke:#3a7fcf;stroke-linecap:butt;stroke-opacity:0.4;stroke-width:0.556364}
+		.st7 {fill:none;stroke:none;stroke-linecap:butt;stroke-width:0.75}
+		.st8 {fill:#3a7fcf;font-family:Handgley;font-size:0.649086em;font-weight:bold}
+		.st9 {fill:#3a7fcf;fill-opacity:0.85;stroke:none;stroke-linecap:butt;stroke-width:0.556364}
+		.st10 {fill:#3a7fcf;fill-opacity:0.4;stroke:none;stroke-linecap:butt;stroke-width:0.556364}
+		.st11 {fill:#3a7fcf;fill-opacity:0.6;stroke:none;stroke-linecap:butt;stroke-width:0.556364}
+		.st12 {fill:#3a7fcf;fill-opacity:0.25;stroke:none;stroke-linecap:butt;stroke-width:0.556364}
+		.st13 {fill:#ffffff;stroke:#28a668;stroke-linecap:round;stroke-linejoin:round;stroke-width:1.25}
+		.st14 {fill:#28a668;stroke:none;stroke-linecap:round;stroke-linejoin:round;stroke-width:2.25}
+		.st15 {fill:#1a9e5c;stroke:none;stroke-linecap:butt;stroke-width:0.319909}
+		.st16 {fill:#28b86a;stroke:none;stroke-linecap:butt;stroke-width:0.319909}
+		.st17 {fill:#0e8a4e;stroke:none;stroke-linecap:butt;stroke-width:0.319909}
+		.st18 {fill:#28a668;stroke:none;stroke-linecap:butt;stroke-width:0.319909}
+		.st19 {fill:#34c97a;stroke:none;stroke-linecap:butt;stroke-width:0.319909}
+		.st20 {fill:#3dd98a;stroke:none;stroke-linecap:butt;stroke-width:0.319909}
+		.st21 {fill:#ffffff;stroke:#d4921a;stroke-linecap:round;stroke-linejoin:round;stroke-width:1.25}
+		.st22 {fill:#d4921a;stroke:none;stroke-linecap:round;stroke-linejoin:round;stroke-width:2.25}
+		.st23 {fill:#ede8fb;stroke:#3a7fcf;stroke-linecap:butt;stroke-width:0.667636}
+		.st24 {stroke:#7e649e;stroke-linecap:butt;stroke-opacity:0.4;stroke-width:0.556364}
+		.st25 {fill:#ffffff;stroke:#7e649e;stroke-linecap:round;stroke-linejoin:round;stroke-width:1.25}
+		.st26 {fill:#7e649e;stroke:none;stroke-linecap:round;stroke-linejoin:round;stroke-width:2.25}
+		.st27 {fill:#fff2cc;stroke:#000000;stroke-linecap:round;stroke-linejoin:round;stroke-width:0.25}
+		.st28 {fill:#cfe2f3;stroke:#000000;stroke-linecap:round;stroke-linejoin:round;stroke-width:0.25}
+		.st29 {fill:#d0e0e3;stroke:#000000;stroke-linecap:round;stroke-linejoin:round;stroke-width:0.25}
+		.st30 {fill:none;stroke:none;stroke-linecap:butt;stroke-width:0.25}
+		.st31 {fill:#000000;font-family:Handgley;font-size:0.416656em}
+		.st32 {fill:#000000;font-family:Handgley;font-size:0.250008em}
+		.st33 {marker-end:url(#mrkr4-178);stroke:#3a7fcf;stroke-linecap:round;stroke-linejoin:round;stroke-width:0.75}
+		.st34 {fill:#3a7fcf;fill-opacity:1;stroke:#3a7fcf;stroke-opacity:1;stroke-width:0.22935779816514}
+		.st35 {marker-start:url(#mrkr4-184);stroke:#c04878;stroke-linecap:round;stroke-linejoin:round;stroke-width:0.75}
+		.st36 {fill:#c04878;fill-opacity:1;stroke:#c04878;stroke-opacity:1;stroke-width:0.22935779816514}
+		.st37 {marker-end:url(#mrkr4-190);stroke:#d4921a;stroke-linecap:round;stroke-linejoin:round;stroke-width:0.75}
+		.st38 {fill:#d4921a;fill-opacity:1;stroke:#d4921a;stroke-opacity:1;stroke-width:0.22935779816514}
+		.st39 {marker-start:url(#mrkr4-201);stroke:#8558c8;stroke-linecap:round;stroke-linejoin:round;stroke-width:0.75}
+		.st40 {fill:#8558c8;fill-opacity:1;stroke:#8558c8;stroke-opacity:1;stroke-width:0.22935779816514}
+		.st41 {fill:#f2f2f2;stroke:#7e649e;stroke-linecap:round;stroke-linejoin:round;stroke-width:1.25}
+		.st42 {fill:#000000;font-family:Handgley;font-size:0.583328em}
+		.st43 {font-size:1em;font-weight:bold}
+		.st44 {stroke:#000000;stroke-linecap:round;stroke-linejoin:round;stroke-width:0.25}
+		.st45 {fill:#000000;font-family:Handgley;font-size:0.499992em}
+		.st46 {fill:#7f7f7f;font-family:Handgley;font-size:0.666664em;font-style:italic}
+		.st47 {fill:#000000;font-family:Handgley;font-size:0.666664em}
+		.st48 {stroke:#d4921a;stroke-linecap:butt;stroke-width:1.39091}
+		.st49 {fill:#d4921a;stroke:none;stroke-linecap:butt;stroke-width:0.556364}
+		.st50 {fill:none;fill-rule:evenodd;font-size:12px;overflow:visible;stroke-linecap:square;stroke-miterlimit:3}
+	]]>
+	</style>
+
+	<defs id="Markers">
+		<g id="lend4">
+			<path d="M 2 1 L 0 0 L 2 -1 L 2 1 " style="stroke:none"/>
+		</g>
+		<marker id="mrkr4-178" class="st34" v:arrowType="4" v:arrowSize="2" v:setback="8.72" refX="-8.72" orient="auto"
+				markerUnits="strokeWidth" overflow="visible">
+			<use xlink:href="#lend4" transform="scale(-4.36,-4.36) "/>
+		</marker>
+		<marker id="mrkr4-184" class="st36" v:arrowType="4" v:arrowSize="2" v:setback="8.24" refX="8.24" orient="auto"
+				markerUnits="strokeWidth" overflow="visible">
+			<use xlink:href="#lend4" transform="scale(4.36) "/>
+		</marker>
+		<marker id="mrkr4-190" class="st38" v:arrowType="4" v:arrowSize="2" v:setback="8.24" refX="-8.24" orient="auto"
+				markerUnits="strokeWidth" overflow="visible">
+			<use xlink:href="#lend4" transform="scale(-4.36,-4.36) "/>
+		</marker>
+		<marker id="mrkr4-201" class="st40" v:arrowType="4" v:arrowSize="2" v:setback="8.24" refX="8.24" orient="auto"
+				markerUnits="strokeWidth" overflow="visible">
+			<use xlink:href="#lend4" transform="scale(4.36) "/>
+		</marker>
+	</defs>
+	<g v:mID="0" v:index="1" v:groupContext="foregroundPage">
+		<title>Página-1</title>
+		<v:pageProperties v:drawingScale="0.0393701" v:pageScale="0.0393701" v:drawingUnits="24" v:shadowOffsetX="9"
+				v:shadowOffsetY="-9"/>
+		<v:layer v:name="Conector" v:index="0"/>
+		<g id="shape537-1" v:mID="537" v:groupContext="shape" transform="translate(374.798,-15.339)">
+			<title>Rectángulo redondeado.537</title>
+			<v:userDefs>
+				<v:ud v:nameU="CTypeTopLeftSnip" v:prompt="" v:val="VT0(0):5"/>
+				<v:ud v:nameU="CTypeTopRightSnip" v:prompt="" v:val="VT0(0):5"/>
+				<v:ud v:nameU="CTypeBotLeftSnip" v:prompt="" v:val="VT0(0):5"/>
+				<v:ud v:nameU="CTypeBotRightSnip" v:prompt="" v:val="VT0(0):5"/>
+				<v:ud v:nameU="CornerLockHoriz" v:prompt="" v:val="VT0(1):5"/>
+				<v:ud v:nameU="CornerLockVert" v:prompt="" v:val="VT0(1):5"/>
+				<v:ud v:nameU="CornerLockDiag" v:prompt="" v:val="VT0(0):5"/>
+				<v:ud v:nameU="TopLeftOffset" v:prompt="" v:val="VT0(0.15748031496063):24"/>
+				<v:ud v:nameU="TopRightOffset" v:prompt="" v:val="VT0(0.15748031496063):24"/>
+				<v:ud v:nameU="BotLeftOffset" v:prompt="" v:val="VT0(0.15748031496063):24"/>
+				<v:ud v:nameU="BotRightOffset" v:prompt="" v:val="VT0(0.15748031496063):24"/>
+				<v:ud v:nameU="visVersion" v:prompt="" v:val="VT0(15):26"/>
+				<v:ud v:nameU="visMasterStencil" v:prompt="" v:val="VT4(Basic_M.vssx)"/>
+				<v:ud v:nameU="TopLeftOffset" v:prompt="" v:val="VT0(0.051673329908307):1"/>
+				<v:ud v:nameU="TopRightOffset" v:prompt="" v:val="VT0(0.051673329908307):1"/>
+				<v:ud v:nameU="BotLeftOffset" v:prompt="" v:val="VT0(0.051673329908307):1"/>
+				<v:ud v:nameU="BotRightOffset" v:prompt="" v:val="VT0(0.051673329908307):1"/>
+			</v:userDefs>
+			<path d="M3.72 196.89 L75.65 196.89 A3.72042 3.72042 -180 0 0 79.37 193.17 L79.37 131.46 A3.72042 3.72042 -180 0 0 75.65
+						 127.74 L3.72 127.74 A3.72042 3.72042 -180 0 0 0 131.46 L0 193.17 A3.72042 3.72042 -180 0 0 3.72 196.89 Z"
+					class="st1"/>
+		</g>
+		<g id="shape479-3" v:mID="479" v:groupContext="shape" transform="translate(121.097,-39.2917)">
+			<title>Rectángulo redondeado</title>
+			<v:userDefs>
+				<v:ud v:nameU="CTypeTopLeftSnip" v:prompt="" v:val="VT0(0):5"/>
+				<v:ud v:nameU="CTypeTopRightSnip" v:prompt="" v:val="VT0(0):5"/>
+				<v:ud v:nameU="CTypeBotLeftSnip" v:prompt="" v:val="VT0(0):5"/>
+				<v:ud v:nameU="CTypeBotRightSnip" v:prompt="" v:val="VT0(0):5"/>
+				<v:ud v:nameU="CornerLockHoriz" v:prompt="" v:val="VT0(1):5"/>
+				<v:ud v:nameU="CornerLockVert" v:prompt="" v:val="VT0(1):5"/>
+				<v:ud v:nameU="CornerLockDiag" v:prompt="" v:val="VT0(0):5"/>
+				<v:ud v:nameU="TopLeftOffset" v:prompt="" v:val="VT0(0.15748031496063):24"/>
+				<v:ud v:nameU="TopRightOffset" v:prompt="" v:val="VT0(0.15748031496063):24"/>
+				<v:ud v:nameU="BotLeftOffset" v:prompt="" v:val="VT0(0.15748031496063):24"/>
+				<v:ud v:nameU="BotRightOffset" v:prompt="" v:val="VT0(0.15748031496063):24"/>
+				<v:ud v:nameU="visVersion" v:prompt="" v:val="VT0(15):26"/>
+				<v:ud v:nameU="visMasterStencil" v:prompt="" v:val="VT4(Basic_M.vssx)"/>
+				<v:ud v:nameU="TopLeftOffset" v:prompt="" v:val="VT0(0.051673329908312):1"/>
+				<v:ud v:nameU="TopRightOffset" v:prompt="" v:val="VT0(0.051673329908312):1"/>
+				<v:ud v:nameU="BotLeftOffset" v:prompt="" v:val="VT0(0.051673329908312):1"/>
+				<v:ud v:nameU="BotRightOffset" v:prompt="" v:val="VT0(0.051673329908312):1"/>
+			</v:userDefs>
+			<path d="M3.72 196.89 L75.65 196.89 A3.72042 3.72042 -180 0 0 79.37 193.17 L79.37 122.09 A3.72042 3.72042 -180 0 0 75.65
+						 118.37 L3.72 118.37 A3.72042 3.72042 -180 0 0 0 122.09 L0 193.17 A3.72042 3.72042 -180 0 0 3.72 196.89 Z"
+					class="st1"/>
+		</g>
+		<g id="shape480-5" v:mID="480" v:groupContext="shape" transform="translate(129.261,-107.607)">
+			<title>Rectángulo redondeado.480</title>
+			<desc>Modelo BIM</desc>
+			<v:userDefs>
+				<v:ud v:nameU="CTypeTopLeftSnip" v:prompt="" v:val="VT0(0):5"/>
+				<v:ud v:nameU="CTypeTopRightSnip" v:prompt="" v:val="VT0(0):5"/>
+				<v:ud v:nameU="CTypeBotLeftSnip" v:prompt="" v:val="VT0(0):5"/>
+				<v:ud v:nameU="CTypeBotRightSnip" v:prompt="" v:val="VT0(0):5"/>
+				<v:ud v:nameU="CornerLockHoriz" v:prompt="" v:val="VT0(1):5"/>
+				<v:ud v:nameU="CornerLockVert" v:prompt="" v:val="VT0(1):5"/>
+				<v:ud v:nameU="CornerLockDiag" v:prompt="" v:val="VT0(0):5"/>
+				<v:ud v:nameU="TopLeftOffset" v:prompt="" v:val="VT0(0.15748031496063):24"/>
+				<v:ud v:nameU="TopRightOffset" v:prompt="" v:val="VT0(0.15748031496063):24"/>
+				<v:ud v:nameU="BotLeftOffset" v:prompt="" v:val="VT0(0.15748031496063):24"/>
+				<v:ud v:nameU="BotRightOffset" v:prompt="" v:val="VT0(0.15748031496063):24"/>
+				<v:ud v:nameU="visVersion" v:prompt="" v:val="VT0(15):26"/>
+				<v:ud v:nameU="visMasterStencil" v:prompt="" v:val="VT4(Basic_M.vssx)"/>
+				<v:ud v:nameU="TopLeftOffset" v:prompt="" v:val="VT0(0.087560351224339):1"/>
+				<v:ud v:nameU="TopRightOffset" v:prompt="" v:val="VT0(0.087560351224339):1"/>
+				<v:ud v:nameU="BotLeftOffset" v:prompt="" v:val="VT0(0.087560351224339):1"/>
+				<v:ud v:nameU="BotRightOffset" v:prompt="" v:val="VT0(0.087560351224339):1"/>
+			</v:userDefs>
+			<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
+			<v:textRect cx="31.5217" cy="188.102" width="63.05" height="17.5748"/>
+			<path d="M6.3 196.89 L56.74 196.89 A6.30424 6.30424 -180 0 0 63.04 190.58 L63.04 185.62 A6.30424 6.30424 -180 0 0 56.74
+						 179.31 L6.3 179.31 A6.30424 6.30424 -180 0 0 0 185.62 L0 190.58 A6.30424 6.30424 -180 0 0 6.3 196.89 Z"
+					class="st2"/>
+			<text x="6.25" y="191.1" class="st3" v:langID="3082"><v:paragraph v:horizAlign="1"/><v:tabList/>Modelo BIM</text>		</g>
+		<g id="group481-8" transform="translate(145.357,-54.1499)" v:mID="481" v:groupContext="group">
+			<title>Hoja.481</title>
+			<g id="shape482-9" v:mID="482" v:groupContext="shape">
+				<title>Hoja.482</title>
+				<path d="M0 154.61 L24.48 154.61 L32.27 162.95 L32.27 196.89 L0 196.89 L0 154.61 Z" class="st4"/>
+			</g>
+			<g id="shape483-11" v:mID="483" v:groupContext="shape" transform="translate(24.48,-33.9382)">
+				<title>Hoja.483</title>
+				<path d="M0 188.54 L7.79 196.89 L0 196.89 L0 188.54 Z" class="st5"/>
+			</g>
+			<g id="shape484-13" v:mID="484" v:groupContext="shape" transform="translate(5.56364,-24.48)">
+				<title>Hoja.484</title>
+				<path d="M0 196.89 L21.14 196.89" class="st6"/>
+			</g>
+			<g id="shape485-16" v:mID="485" v:groupContext="shape" transform="translate(5.56364,-18.9164)">
+				<title>Hoja.485</title>
+				<path d="M0 196.89 L21.14 196.89" class="st6"/>
+			</g>
+			<g id="shape486-19" v:mID="486" v:groupContext="shape" transform="translate(0.556364,-5.45236)">
+				<title>Hoja.486</title>
+				<desc>.IFC</desc>
+				<v:textBlock v:margins="rect(0,0,0,0)" v:tabSpace="42.5197"/>
+				<v:textRect cx="15.5782" cy="192.216" width="31.16" height="9.34691"/>
+				<rect x="0" y="187.542" width="31.1564" height="9.34691" class="st7"/>
+				<text x="9.36" y="194.55" class="st8" v:langID="3082"><v:paragraph v:horizAlign="1"/><v:tabList/>.IFC</text>			</g>
+		</g>
+		<g id="shape487-22" v:mID="487" v:groupContext="shape" transform="translate(0.624939,-39.5752)">
+			<title>Rectángulo redondeado.487</title>
+			<v:userDefs>
+				<v:ud v:nameU="CTypeTopLeftSnip" v:prompt="" v:val="VT0(0):5"/>
+				<v:ud v:nameU="CTypeTopRightSnip" v:prompt="" v:val="VT0(0):5"/>
+				<v:ud v:nameU="CTypeBotLeftSnip" v:prompt="" v:val="VT0(0):5"/>
+				<v:ud v:nameU="CTypeBotRightSnip" v:prompt="" v:val="VT0(0):5"/>
+				<v:ud v:nameU="CornerLockHoriz" v:prompt="" v:val="VT0(1):5"/>
+				<v:ud v:nameU="CornerLockVert" v:prompt="" v:val="VT0(1):5"/>
+				<v:ud v:nameU="CornerLockDiag" v:prompt="" v:val="VT0(0):5"/>
+				<v:ud v:nameU="TopLeftOffset" v:prompt="" v:val="VT0(0.15748031496063):24"/>
+				<v:ud v:nameU="TopRightOffset" v:prompt="" v:val="VT0(0.15748031496063):24"/>
+				<v:ud v:nameU="BotLeftOffset" v:prompt="" v:val="VT0(0.15748031496063):24"/>
+				<v:ud v:nameU="BotRightOffset" v:prompt="" v:val="VT0(0.15748031496063):24"/>
+				<v:ud v:nameU="visVersion" v:prompt="" v:val="VT0(15):26"/>
+				<v:ud v:nameU="visMasterStencil" v:prompt="" v:val="VT4(Basic_M.vssx)"/>
+				<v:ud v:nameU="TopLeftOffset" v:prompt="" v:val="VT0(0.051673329908307):1"/>
+				<v:ud v:nameU="TopRightOffset" v:prompt="" v:val="VT0(0.051673329908307):1"/>
+				<v:ud v:nameU="BotLeftOffset" v:prompt="" v:val="VT0(0.051673329908307):1"/>
+				<v:ud v:nameU="BotRightOffset" v:prompt="" v:val="VT0(0.051673329908307):1"/>
+			</v:userDefs>
+			<path d="M3.72 196.89 L75.65 196.89 A3.72042 3.72042 -180 0 0 79.37 193.17 L79.37 122.66 A3.72042 3.72042 -180 0 0 75.65
+						 118.94 L3.72 118.94 A3.72042 3.72042 -180 0 0 0 122.66 L0 193.17 A3.72042 3.72042 -180 0 0 3.72 196.89 Z"
+					class="st1"/>
+		</g>
+		<g id="group488-24" transform="translate(18.0554,-52.7537)" v:mID="488" v:groupContext="group">
+			<title>Hoja.488</title>
+			<g id="shape489-25" v:mID="489" v:groupContext="shape" transform="translate(2.78182,0)">
+				<title>Hoja.489</title>
+				<path d="M0 195.22 A1.66913 1.66913 -180 0 0 1.67 196.89 L37.28 196.89 A1.66913 1.66913 -180 0 0 38.95 195.22 L38.95
+							 167.4 A1.66913 1.66913 -180 0 0 37.28 165.73 L1.67 165.73 A1.66913 1.66913 -180 0 0 -0 167.4 L0 195.22
+							 Z" class="st4"/>
+			</g>
+			<g id="shape490-27" v:mID="490" v:groupContext="shape" transform="translate(-5.15588E-13,-30.0436)">
+				<title>Hoja.490</title>
+				<path d="M22.25 183.54 L0 196.89 L44.51 196.89 L22.25 183.54 Z" class="st9"/>
+			</g>
+			<g id="shape491-29" v:mID="491" v:groupContext="shape" transform="translate(6.67636,-19.4727)">
+				<title>Hoja.491</title>
+				<path d="M0 195.78 A1.11275 1.11275 -180 0 0 1.11 196.89 L6.12 196.89 A1.11275 1.11275 -180 0 0 7.23 195.78 L7.23
+							 191.88 A1.11275 1.11275 -180 0 0 6.12 190.77 L1.11 190.77 A1.11275 1.11275 -180 0 0 -0 191.88 L0 195.78
+							 Z" class="st10"/>
+			</g>
+			<g id="shape492-31" v:mID="492" v:groupContext="shape" transform="translate(18.36,-19.4727)">
+				<title>Hoja.492</title>
+				<path d="M0 195.78 A1.11275 1.11275 -180 0 0 1.11 196.89 L6.12 196.89 A1.11275 1.11275 -180 0 0 7.23 195.78 L7.23
+							 191.88 A1.11275 1.11275 -180 0 0 6.12 190.77 L1.11 190.77 A1.11275 1.11275 -180 0 0 0 191.88 L0 195.78
+							 Z" class="st11"/>
+			</g>
+			<g id="shape493-33" v:mID="493" v:groupContext="shape" transform="translate(29.4873,-19.4727)">
+				<title>Hoja.493</title>
+				<path d="M0 195.78 A1.11275 1.11275 -180 0 0 1.11 196.89 L6.12 196.89 A1.11275 1.11275 -180 0 0 7.23 195.78 L7.23
+							 191.88 A1.11275 1.11275 -180 0 0 6.12 190.77 L1.11 190.77 A1.11275 1.11275 -180 0 0 0 191.88 L0 195.78
+							 Z" class="st10"/>
+			</g>
+			<g id="shape494-35" v:mID="494" v:groupContext="shape" transform="translate(6.67636,-10.0145)">
+				<title>Hoja.494</title>
+				<path d="M0 195.78 A1.11275 1.11275 -180 0 0 1.11 196.89 L6.12 196.89 A1.11275 1.11275 -180 0 0 7.23 195.78 L7.23
+							 191.88 A1.11275 1.11275 -180 0 0 6.12 190.77 L1.11 190.77 A1.11275 1.11275 -180 0 0 -0 191.88 L0 195.78
+							 Z" class="st10"/>
+			</g>
+			<g id="shape495-37" v:mID="495" v:groupContext="shape" transform="translate(18.36,-10.0145)">
+				<title>Hoja.495</title>
+				<path d="M0 195.78 A1.11275 1.11275 -180 0 0 1.11 196.89 L6.12 196.89 A1.11275 1.11275 -180 0 0 7.23 195.78 L7.23
+							 191.88 A1.11275 1.11275 -180 0 0 6.12 190.77 L1.11 190.77 A1.11275 1.11275 -180 0 0 0 191.88 L0 195.78
+							 Z" class="st10"/>
+			</g>
+			<g id="shape496-39" v:mID="496" v:groupContext="shape" transform="translate(29.4873,-10.0145)">
+				<title>Hoja.496</title>
+				<path d="M0 195.78 A1.11275 1.11275 -180 0 0 1.11 196.89 L6.12 196.89 A1.11275 1.11275 -180 0 0 7.23 195.78 L7.23
+							 191.88 A1.11275 1.11275 -180 0 0 6.12 190.77 L1.11 190.77 A1.11275 1.11275 -180 0 0 0 191.88 L0 195.78
+							 Z" class="st11"/>
+			</g>
+			<g id="shape497-41" v:mID="497" v:groupContext="shape" transform="translate(16.6909,-2.27374E-13)">
+				<title>Hoja.497</title>
+				<path d="M0 195.78 A1.11275 1.11275 -180 0 0 1.11 196.89 L8.9 196.89 A1.11275 1.11275 -180 0 0 10.01 195.78 L10.01
+							 187.99 A1.11275 1.11275 -180 0 0 8.9 186.87 L1.11 186.87 A1.11275 1.11275 -180 0 0 -0 187.99 L0 195.78
+							 Z" class="st12"/>
+			</g>
+		</g>
+		<g id="shape498-43" v:mID="498" v:groupContext="shape" transform="translate(8.78825,-107.323)">
+			<title>Rectángulo redondeado.498</title>
+			<desc>Edificio</desc>
+			<v:userDefs>
+				<v:ud v:nameU="CTypeTopLeftSnip" v:prompt="" v:val="VT0(0):5"/>
+				<v:ud v:nameU="CTypeTopRightSnip" v:prompt="" v:val="VT0(0):5"/>
+				<v:ud v:nameU="CTypeBotLeftSnip" v:prompt="" v:val="VT0(0):5"/>
+				<v:ud v:nameU="CTypeBotRightSnip" v:prompt="" v:val="VT0(0):5"/>
+				<v:ud v:nameU="CornerLockHoriz" v:prompt="" v:val="VT0(1):5"/>
+				<v:ud v:nameU="CornerLockVert" v:prompt="" v:val="VT0(1):5"/>
+				<v:ud v:nameU="CornerLockDiag" v:prompt="" v:val="VT0(0):5"/>
+				<v:ud v:nameU="TopLeftOffset" v:prompt="" v:val="VT0(0.15748031496063):24"/>
+				<v:ud v:nameU="TopRightOffset" v:prompt="" v:val="VT0(0.15748031496063):24"/>
+				<v:ud v:nameU="BotLeftOffset" v:prompt="" v:val="VT0(0.15748031496063):24"/>
+				<v:ud v:nameU="BotRightOffset" v:prompt="" v:val="VT0(0.15748031496063):24"/>
+				<v:ud v:nameU="visVersion" v:prompt="" v:val="VT0(15):26"/>
+				<v:ud v:nameU="visMasterStencil" v:prompt="" v:val="VT4(Basic_M.vssx)"/>
+				<v:ud v:nameU="TopLeftOffset" v:prompt="" v:val="VT0(0.087560351224339):1"/>
+				<v:ud v:nameU="TopRightOffset" v:prompt="" v:val="VT0(0.087560351224339):1"/>
+				<v:ud v:nameU="BotLeftOffset" v:prompt="" v:val="VT0(0.087560351224339):1"/>
+				<v:ud v:nameU="BotRightOffset" v:prompt="" v:val="VT0(0.087560351224339):1"/>
+			</v:userDefs>
+			<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
+			<v:textRect cx="31.5217" cy="188.102" width="63.05" height="17.5748"/>
+			<path d="M6.3 196.89 L56.74 196.89 A6.30424 6.30424 -180 0 0 63.04 190.58 L63.04 185.62 A6.30424 6.30424 -180 0 0 56.74
+						 179.31 L6.3 179.31 A6.30424 6.30424 -180 0 0 0 185.62 L0 190.58 A6.30424 6.30424 -180 0 0 6.3 196.89 Z"
+					class="st2"/>
+			<text x="15.04" y="191.1" class="st3" v:langID="3082"><v:paragraph v:horizAlign="1"/><v:tabList/>Edificio</text>		</g>
+		<g id="shape499-46" v:mID="499" v:groupContext="shape" transform="translate(267.082,-130.567)">
+			<title>Rectángulo redondeado.499</title>
+			<v:userDefs>
+				<v:ud v:nameU="CTypeTopLeftSnip" v:prompt="" v:val="VT0(0):5"/>
+				<v:ud v:nameU="CTypeTopRightSnip" v:prompt="" v:val="VT0(0):5"/>
+				<v:ud v:nameU="CTypeBotLeftSnip" v:prompt="" v:val="VT0(0):5"/>
+				<v:ud v:nameU="CTypeBotRightSnip" v:prompt="" v:val="VT0(0):5"/>
+				<v:ud v:nameU="CornerLockHoriz" v:prompt="" v:val="VT0(1):5"/>
+				<v:ud v:nameU="CornerLockVert" v:prompt="" v:val="VT0(1):5"/>
+				<v:ud v:nameU="CornerLockDiag" v:prompt="" v:val="VT0(0):5"/>
+				<v:ud v:nameU="TopLeftOffset" v:prompt="" v:val="VT0(0.15748031496063):24"/>
+				<v:ud v:nameU="TopRightOffset" v:prompt="" v:val="VT0(0.15748031496063):24"/>
+				<v:ud v:nameU="BotLeftOffset" v:prompt="" v:val="VT0(0.15748031496063):24"/>
+				<v:ud v:nameU="BotRightOffset" v:prompt="" v:val="VT0(0.15748031496063):24"/>
+				<v:ud v:nameU="visVersion" v:prompt="" v:val="VT0(15):26"/>
+				<v:ud v:nameU="visMasterStencil" v:prompt="" v:val="VT4(Basic_M.vssx)"/>
+				<v:ud v:nameU="TopLeftOffset" v:prompt="" v:val="VT0(0.047982385674502):1"/>
+				<v:ud v:nameU="TopRightOffset" v:prompt="" v:val="VT0(0.047982385674502):1"/>
+				<v:ud v:nameU="BotLeftOffset" v:prompt="" v:val="VT0(0.047982385674502):1"/>
+				<v:ud v:nameU="BotRightOffset" v:prompt="" v:val="VT0(0.047982385674502):1"/>
+			</v:userDefs>
+			<path d="M3.45 196.89 L70.25 196.89 A3.45468 3.45468 -180 0 0 73.7 193.43 L73.7 142.38 A3.45468 3.45468 -180 0 0 70.25
+						 138.92 L3.45 138.92 A3.45468 3.45468 -180 0 0 -0 142.38 L0 193.43 A3.45468 3.45468 -180 0 0 3.45 196.89
+						 Z" class="st13"/>
+		</g>
+		<g id="shape500-48" v:mID="500" v:groupContext="shape" transform="translate(276.833,-178.189)">
+			<title>Rectángulo redondeado.500</title>
+			<desc>BIMvision</desc>
+			<v:userDefs>
+				<v:ud v:nameU="CTypeTopLeftSnip" v:prompt="" v:val="VT0(0):5"/>
+				<v:ud v:nameU="CTypeTopRightSnip" v:prompt="" v:val="VT0(0):5"/>
+				<v:ud v:nameU="CTypeBotLeftSnip" v:prompt="" v:val="VT0(0):5"/>
+				<v:ud v:nameU="CTypeBotRightSnip" v:prompt="" v:val="VT0(0):5"/>
+				<v:ud v:nameU="CornerLockHoriz" v:prompt="" v:val="VT0(1):5"/>
+				<v:ud v:nameU="CornerLockVert" v:prompt="" v:val="VT0(1):5"/>
+				<v:ud v:nameU="CornerLockDiag" v:prompt="" v:val="VT0(0):5"/>
+				<v:ud v:nameU="TopLeftOffset" v:prompt="" v:val="VT0(0.15748031496063):24"/>
+				<v:ud v:nameU="TopRightOffset" v:prompt="" v:val="VT0(0.15748031496063):24"/>
+				<v:ud v:nameU="BotLeftOffset" v:prompt="" v:val="VT0(0.15748031496063):24"/>
+				<v:ud v:nameU="BotRightOffset" v:prompt="" v:val="VT0(0.15748031496063):24"/>
+				<v:ud v:nameU="visVersion" v:prompt="" v:val="VT0(15):26"/>
+				<v:ud v:nameU="visMasterStencil" v:prompt="" v:val="VT4(Basic_M.vssx)"/>
+				<v:ud v:nameU="TopLeftOffset" v:prompt="" v:val="VT0(0.071339213835117):1"/>
+				<v:ud v:nameU="TopRightOffset" v:prompt="" v:val="VT0(0.071339213835117):1"/>
+				<v:ud v:nameU="BotLeftOffset" v:prompt="" v:val="VT0(0.071339213835117):1"/>
+				<v:ud v:nameU="BotRightOffset" v:prompt="" v:val="VT0(0.071339213835117):1"/>
+			</v:userDefs>
+			<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
+			<v:textRect cx="25.6821" cy="188.102" width="51.37" height="17.5748"/>
+			<path d="M5.14 196.89 L46.23 196.89 A5.13634 5.13634 -180 0 0 51.36 191.75 L51.36 184.45 A5.13634 5.13634 -180 0 0 46.23
+						 179.31 L5.14 179.31 A5.13634 5.13634 -180 0 0 0 184.45 L0 191.75 A5.13634 5.13634 -180 0 0 5.14 196.89 Z"
+					class="st14"/>
+			<text x="5.56" y="191.1" class="st3" v:langID="3082"><v:paragraph v:horizAlign="1"/><v:tabList/>BIMvision</text>		</g>
+		<g id="group501-51" transform="translate(272.971,-142.457)" v:mID="501" v:groupContext="group">
+			<title>Hoja.501</title>
+			<g id="shape502-52" v:mID="502" v:groupContext="shape" transform="translate(22.2657,-2.23936)">
+				<title>Hoja.502</title>
+				<path d="M5.66 196.89 L0 196.89 L0 185.63 L5.66 179.81 L5.66 196.89 Z" class="st15"/>
+			</g>
+			<g id="shape503-54" v:mID="503" v:groupContext="shape" transform="translate(26.8724,-1.11968)">
+				<title>Hoja.503</title>
+				<path d="M0 196.89 L4.29 196.89 L4.29 186.46 L0 181.05 L0 196.89 Z" class="st16"/>
+			</g>
+			<g id="shape504-56" v:mID="504" v:groupContext="shape" transform="translate(20.2183,-2.23936)">
+				<title>Hoja.504</title>
+				<path d="M0 196.89 L3.23 196.89 L3.23 191.61 L0 186.2 L0 196.89 Z" class="st17"/>
+			</g>
+			<g id="shape505-58" v:mID="505" v:groupContext="shape" transform="translate(29.7515,-2.23936)">
+				<title>Hoja.505</title>
+				<path d="M3.2 196.89 L0 196.89 L0 191.61 L3.2 186.2 L3.2 196.89 Z" class="st17"/>
+			</g>
+			<g id="shape506-60" v:mID="506" v:groupContext="shape" transform="translate(4.44674,-6.52615)">
+				<title>Hoja.506</title>
+				<path d="M4.54 192.95 C3.55 192.31 2.72 191.71 2.02 191.19 C2.3 190.97 2.62 190.75 2.98 190.49 L0 189.88 L1.89 196.41
+							 C2.11 196.57 2.37 196.73 2.62 196.89 L4.54 192.95 Z" class="st18"/>
+			</g>
+			<g id="shape507-62" v:mID="507" v:groupContext="shape" transform="translate(7.038,-1.27964)">
+				<title>Hoja.507</title>
+				<path d="M14.97 193.15 C9.76 192.19 5.15 189.82 1.95 187.74 L0 191.67 C2.82 193.53 6.62 195.58 11.04 196.89 L14.75
+							 195.1 L14.97 193.15 Z" class="st15"/>
+			</g>
+			<g id="shape508-64" v:mID="508" v:groupContext="shape" transform="translate(-5.44564E-14,-7.00601)">
+				<title>Hoja.508</title>
+				<path d="M1.92 189.88 L0 191.67 L1.92 193.47 C2.08 193.63 3.68 195.1 6.3 196.89 L4.41 190.36 L1.92 189.88 Z"
+						class="st17"/>
+			</g>
+			<g id="shape509-66" v:mID="509" v:groupContext="shape" transform="translate(21.4979,-0.319909)">
+				<title>Hoja.509</title>
+				<path d="M3.58 192.54 L0.29 194.11 L0 196.7 C0.38 196.76 0.8 196.83 1.22 196.89 L4.67 192.57 C4.32 192.6 3.97 192.57
+							 3.58 192.54 Z" class="st19"/>
+			</g>
+			<g id="shape510-68" v:mID="510" v:groupContext="shape" transform="translate(18.0749,-0.511855)">
+				<title>Hoja.510</title>
+				<path d="M0 196.09 C1.12 196.41 2.24 196.7 3.42 196.89 L3.71 194.3 L0 196.09 Z" class="st16"/>
+			</g>
+			<g id="shape511-70" v:mID="511" v:groupContext="shape" transform="translate(22.7135,-5.68434E-14)">
+				<title>Hoja.511</title>
+				<path d="M3.9 192.28 C3.77 192.28 3.61 192.28 3.49 192.28 L0 196.6 C1.28 196.76 2.56 196.89 3.9 196.89 C4 196.89
+							 4.13 196.89 4.22 196.89 L4.32 192.31 C4.16 192.28 4.03 192.28 3.9 192.28 Z" class="st20"/>
+			</g>
+			<g id="shape512-72" v:mID="512" v:groupContext="shape" transform="translate(21.7858,-3.07113)">
+				<title>Hoja.512</title>
+				<path d="M0 196.89 L3.3 195.32 C2.24 195.26 1.22 195.13 0.22 194.94 L0 196.89 Z" class="st18"/>
+			</g>
+			<g id="shape513-74" v:mID="513" v:groupContext="shape" transform="translate(33.5585,-1.66353)">
+				<title>Hoja.513</title>
+				<path d="M0 193.27 L0.26 195.32 L1.47 196.89 C2.62 196.47 3.74 196.03 4.86 195.48 L0 193.27 Z" class="st15"/>
+			</g>
+			<g id="shape514-76" v:mID="514" v:groupContext="shape" transform="translate(36.5656,-5.75836)">
+				<title>Hoja.514</title>
+				<path d="M6.78 196.89 L5.63 192.51 C3.84 193.59 1.95 194.65 0 195.55 L6.78 196.89 Z" class="st17"/>
+			</g>
+			<g id="shape515-78" v:mID="515" v:groupContext="shape" transform="translate(33.8464,-1.31163)">
+				<title>Hoja.515</title>
+				<path d="M0.22 196.89 C0.54 196.79 0.86 196.67 1.22 196.57 L0 195 L0.22 196.89 Z" class="st16"/>
+			</g>
+			<g id="shape516-80" v:mID="516" v:groupContext="shape" transform="translate(26.9363,-0.0319909)">
+				<title>Hoja.516</title>
+				<path d="M5.15 191.48 C3.46 191.96 1.73 192.25 0.1 192.31 L0 196.89 C2.37 196.86 4.77 196.38 7.13 195.61 L6.91 193.72
+							 L5.15 191.48 Z" class="st15"/>
+			</g>
+			<g id="shape517-82" v:mID="517" v:groupContext="shape" transform="translate(47.5065,-9.27736)">
+				<title>Hoja.517</title>
+				<path d="M2.05 189.82 C2.37 189.92 2.69 189.98 3.01 190.08 C2.14 190.78 1.12 191.61 0 192.44 L1.28 196.89 C1.73 196.57
+							 2.18 196.22 2.59 195.9 L4.51 188.64 L2.05 189.82 Z" class="st18"/>
+			</g>
+			<g id="shape518-84" v:mID="518" v:groupContext="shape" transform="translate(42.196,-5.69438)">
+				<title>Hoja.518</title>
+				<path d="M5.28 188.86 C3.71 190.04 1.92 191.29 0 192.47 L1.15 196.86 L1.25 196.89 C3.17 195.74 4.96 194.52 6.56 193.34
+							 L5.28 188.86 Z" class="st17"/>
+			</g>
+			<g id="shape519-86" v:mID="519" v:groupContext="shape" transform="translate(50.0658,-10.2691)">
+				<title>Hoja.519</title>
+				<path d="M0 196.89 C3.52 194.2 5.82 191.99 6.08 191.77 L9.02 188.92 L5.66 187.84 L1.95 189.63 L0 196.89 Z"
+						class="st15"/>
+			</g>
+			<g id="shape520-88" v:mID="520" v:groupContext="shape" transform="translate(51.9852,-17.531)">
+				<title>Hoja.520</title>
+				<path d="M3.71 195.1 L3.46 195 C3.3 194.94 2.3 194.65 0.7 194.2 L0 196.89 L3.71 195.1 Z" class="st16"/>
+			</g>
+			<g id="shape521-90" v:mID="521" v:groupContext="shape" transform="translate(33.4945,-3.03914)">
+				<title>Hoja.521</title>
+				<path d="M3.07 192.83 C2.05 193.27 1.02 193.69 0 194.04 L0.06 194.65 L4.93 196.89 C6.62 196.09 8.29 195.19 9.85 194.27
+							 L9.82 194.2 L3.07 192.83 Z" class="st17"/>
+			</g>
+			<g id="shape522-92" v:mID="522" v:groupContext="shape" transform="translate(45.0432,-16.3474)">
+				<title>Hoja.522</title>
+				<path d="M4.51 196.89 L6.94 195.71 L7.65 193.02 C5.79 192.51 3.14 191.8 0 191.1 L1.44 196.09 C2.56 196.38 3.58 196.63
+							 4.51 196.89 Z" class="st18"/>
+			</g>
+			<g id="shape523-94" v:mID="523" v:groupContext="shape" transform="translate(3.83891,-12.9243)">
+				<title>Hoja.523</title>
+				<path d="M3.58 196.89 C4.67 196.12 6.01 195.23 7.58 194.36 L2.78 192.15 C1.66 192.89 0.74 193.59 0 194.17 L0.61 196.28
+							 L3.58 196.89 Z" class="st15"/>
+			</g>
+			<g id="shape524-96" v:mID="524" v:groupContext="shape" transform="translate(39.3488,-17.1151)">
+				<title>Hoja.524</title>
+				<path d="M0.67 195.55 C3.01 195.96 5.18 196.44 7.13 196.89 L5.69 191.9 C4.38 191.61 2.98 191.32 1.54 191.07 L0 192.99
+							 L0.67 195.55 Z" class="st19"/>
+			</g>
+			<g id="shape525-98" v:mID="525" v:groupContext="shape" transform="translate(6.62212,-15.4516)">
+				<title>Hoja.525</title>
+				<path d="M4.86 196.86 L8.09 190.36 C4.89 191.64 2.11 193.24 0 194.68 L4.8 196.89 C4.8 196.89 4.83 196.86 4.86 196.86
+							 Z" class="st16"/>
+			</g>
+			<g id="shape526-100" v:mID="526" v:groupContext="shape" transform="translate(18.2348,-19.2585)">
+				<title>Hoja.526</title>
+				<path d="M5.41 196.51 L5.92 191.87 C3.87 192.03 1.89 192.41 0 192.95 L3.07 196.89 C3.84 196.73 4.61 196.6 5.41 196.51
+							 Z" class="st15"/>
+			</g>
+			<g id="shape527-102" v:mID="527" v:groupContext="shape" transform="translate(11.4847,-15.4836)">
+				<title>Hoja.527</title>
+				<path d="M9.82 193.11 L6.75 189.18 C5.53 189.53 4.35 189.95 3.23 190.4 L0 196.89 C2.75 195.35 6.11 193.88 9.82 193.11
+							 Z" class="st17"/>
+			</g>
+			<g id="shape528-104" v:mID="528" v:groupContext="shape" transform="translate(31.1272,-18.8746)">
+				<title>Hoja.528</title>
+				<path d="M6.49 196.89 L8.22 194.71 L7.61 192.44 C5.15 192.06 2.59 191.71 0 191.51 L0.58 196.15 C2.59 196.35 4.57
+							 196.6 6.49 196.89 Z" class="st18"/>
+			</g>
+			<g id="shape529-106" v:mID="529" v:groupContext="shape" transform="translate(27.2882,-19.5784)">
+				<title>Hoja.529</title>
+				<path d="M4.48 196.89 L3.87 192.25 C2.59 192.15 1.34 192.09 0.1 192.09 L0 196.67 C1.47 196.67 2.98 196.73 4.48 196.89
+							 Z" class="st19"/>
+			</g>
+			<g id="shape530-108" v:mID="530" v:groupContext="shape" transform="translate(23.6413,-19.6744)">
+				<title>Hoja.530</title>
+				<path d="M2.98 196.73 C3.2 196.73 3.46 196.73 3.68 196.73 L3.74 192.15 C3.49 192.15 3.23 192.15 2.94 192.15 C2.11
+							 192.15 1.31 192.19 0.51 192.25 L0 196.89 C0.96 196.79 1.95 196.73 2.98 196.73 Z" class="st16"/>
+			</g>
+			<g id="shape531-110" v:mID="531" v:groupContext="shape" transform="translate(37.6533,-18.4268)">
+				<title>Hoja.531</title>
+				<path d="M1.73 194.3 L0 196.47 C0.8 196.6 1.63 196.73 2.4 196.89 L1.73 194.3 Z" class="st15"/>
+			</g>
+			<g id="shape532-112" v:mID="532" v:groupContext="shape" transform="translate(38.773,-21.05)">
+				<title>Hoja.532</title>
+				<path d="M2.14 195 C1.44 194.87 0.74 194.75 0 194.62 L0.61 196.89 L2.14 195 Z" class="st17"/>
+			</g>
+		</g>
+		<g id="shape533-114" v:mID="533" v:groupContext="shape" transform="translate(267.082,-15.339)">
+			<title>Rectángulo redondeado.533</title>
+			<v:userDefs>
+				<v:ud v:nameU="CTypeTopLeftSnip" v:prompt="" v:val="VT0(0):5"/>
+				<v:ud v:nameU="CTypeTopRightSnip" v:prompt="" v:val="VT0(0):5"/>
+				<v:ud v:nameU="CTypeBotLeftSnip" v:prompt="" v:val="VT0(0):5"/>
+				<v:ud v:nameU="CTypeBotRightSnip" v:prompt="" v:val="VT0(0):5"/>
+				<v:ud v:nameU="CornerLockHoriz" v:prompt="" v:val="VT0(1):5"/>
+				<v:ud v:nameU="CornerLockVert" v:prompt="" v:val="VT0(1):5"/>
+				<v:ud v:nameU="CornerLockDiag" v:prompt="" v:val="VT0(0):5"/>
+				<v:ud v:nameU="TopLeftOffset" v:prompt="" v:val="VT0(0.15748031496063):24"/>
+				<v:ud v:nameU="TopRightOffset" v:prompt="" v:val="VT0(0.15748031496063):24"/>
+				<v:ud v:nameU="BotLeftOffset" v:prompt="" v:val="VT0(0.15748031496063):24"/>
+				<v:ud v:nameU="BotRightOffset" v:prompt="" v:val="VT0(0.15748031496063):24"/>
+				<v:ud v:nameU="visVersion" v:prompt="" v:val="VT0(15):26"/>
+				<v:ud v:nameU="visMasterStencil" v:prompt="" v:val="VT4(Basic_M.vssx)"/>
+				<v:ud v:nameU="TopLeftOffset" v:prompt="" v:val="VT0(0.047982385674502):1"/>
+				<v:ud v:nameU="TopRightOffset" v:prompt="" v:val="VT0(0.047982385674502):1"/>
+				<v:ud v:nameU="BotLeftOffset" v:prompt="" v:val="VT0(0.047982385674502):1"/>
+				<v:ud v:nameU="BotRightOffset" v:prompt="" v:val="VT0(0.047982385674502):1"/>
+			</v:userDefs>
+			<path d="M3.45 196.89 L70.25 196.89 A3.45468 3.45468 -180 0 0 73.7 193.43 L73.7 131.19 A3.45468 3.45468 -180 0 0 70.25
+						 127.74 L3.45 127.74 A3.45468 3.45468 -180 0 0 -0 131.19 L0 193.43 A3.45468 3.45468 -180 0 0 3.45 196.89
+						 Z" class="st21"/>
+		</g>
+		<g id="shape534-116" v:mID="534" v:groupContext="shape" transform="translate(276.833,-75.2917)">
+			<title>Rectángulo redondeado.534</title>
+			<desc>IFCtoLBD</desc>
+			<v:userDefs>
+				<v:ud v:nameU="CTypeTopLeftSnip" v:prompt="" v:val="VT0(0):5"/>
+				<v:ud v:nameU="CTypeTopRightSnip" v:prompt="" v:val="VT0(0):5"/>
+				<v:ud v:nameU="CTypeBotLeftSnip" v:prompt="" v:val="VT0(0):5"/>
+				<v:ud v:nameU="CTypeBotRightSnip" v:prompt="" v:val="VT0(0):5"/>
+				<v:ud v:nameU="CornerLockHoriz" v:prompt="" v:val="VT0(1):5"/>
+				<v:ud v:nameU="CornerLockVert" v:prompt="" v:val="VT0(1):5"/>
+				<v:ud v:nameU="CornerLockDiag" v:prompt="" v:val="VT0(0):5"/>
+				<v:ud v:nameU="TopLeftOffset" v:prompt="" v:val="VT0(0.15748031496063):24"/>
+				<v:ud v:nameU="TopRightOffset" v:prompt="" v:val="VT0(0.15748031496063):24"/>
+				<v:ud v:nameU="BotLeftOffset" v:prompt="" v:val="VT0(0.15748031496063):24"/>
+				<v:ud v:nameU="BotRightOffset" v:prompt="" v:val="VT0(0.15748031496063):24"/>
+				<v:ud v:nameU="visVersion" v:prompt="" v:val="VT0(15):26"/>
+				<v:ud v:nameU="visMasterStencil" v:prompt="" v:val="VT4(Basic_M.vssx)"/>
+				<v:ud v:nameU="TopLeftOffset" v:prompt="" v:val="VT0(0.071339213835117):1"/>
+				<v:ud v:nameU="TopRightOffset" v:prompt="" v:val="VT0(0.071339213835117):1"/>
+				<v:ud v:nameU="BotLeftOffset" v:prompt="" v:val="VT0(0.071339213835117):1"/>
+				<v:ud v:nameU="BotRightOffset" v:prompt="" v:val="VT0(0.071339213835117):1"/>
+			</v:userDefs>
+			<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
+			<v:textRect cx="25.6821" cy="188.102" width="51.37" height="17.5748"/>
+			<path d="M5.14 196.89 L46.23 196.89 A5.13634 5.13634 -180 0 0 51.36 191.75 L51.36 184.45 A5.13634 5.13634 -180 0 0 46.23
+						 179.31 L5.14 179.31 A5.13634 5.13634 -180 0 0 0 184.45 L0 191.75 A5.13634 5.13634 -180 0 0 5.14 196.89 Z"
+					class="st22"/>
+			<text x="5.76" y="191.1" class="st3" v:langID="3082"><v:paragraph v:horizAlign="1"/><v:tabList/>IFCtoLBD</text>		</g>
+		<g id="shape535-119" v:mID="535" v:groupContext="shape" transform="translate(398.349,-25.6854)">
+			<title>Hoja.535</title>
+			<path d="M0 154.61 L24.48 154.61 L32.27 162.95 L32.27 196.89 L0 196.89 L0 154.61 Z" class="st23"/>
+		</g>
+		<g id="shape536-121" v:mID="536" v:groupContext="shape" transform="translate(398.336,-31.1378)">
+			<title>Hoja.536</title>
+			<desc>.OWL</desc>
+			<v:textBlock v:margins="rect(0,0,0,0)" v:tabSpace="42.5197"/>
+			<v:textRect cx="16.1345" cy="192.216" width="32.27" height="9.34691"/>
+			<rect x="0" y="187.542" width="32.2691" height="9.34691" class="st7"/>
+			<text x="7.34" y="194.55" class="st8" v:langID="3082"><v:paragraph v:horizAlign="1"/><v:tabList/>.OWL</text>		</g>
+		<g id="shape538-124" v:mID="538" v:groupContext="shape" transform="translate(382.961,-75.2917)">
+			<title>Rectángulo redondeado.538</title>
+			<desc>Ontología</desc>
+			<v:userDefs>
+				<v:ud v:nameU="CTypeTopLeftSnip" v:prompt="" v:val="VT0(0):5"/>
+				<v:ud v:nameU="CTypeTopRightSnip" v:prompt="" v:val="VT0(0):5"/>
+				<v:ud v:nameU="CTypeBotLeftSnip" v:prompt="" v:val="VT0(0):5"/>
+				<v:ud v:nameU="CTypeBotRightSnip" v:prompt="" v:val="VT0(0):5"/>
+				<v:ud v:nameU="CornerLockHoriz" v:prompt="" v:val="VT0(1):5"/>
+				<v:ud v:nameU="CornerLockVert" v:prompt="" v:val="VT0(1):5"/>
+				<v:ud v:nameU="CornerLockDiag" v:prompt="" v:val="VT0(0):5"/>
+				<v:ud v:nameU="TopLeftOffset" v:prompt="" v:val="VT0(0.15748031496063):24"/>
+				<v:ud v:nameU="TopRightOffset" v:prompt="" v:val="VT0(0.15748031496063):24"/>
+				<v:ud v:nameU="BotLeftOffset" v:prompt="" v:val="VT0(0.15748031496063):24"/>
+				<v:ud v:nameU="BotRightOffset" v:prompt="" v:val="VT0(0.15748031496063):24"/>
+				<v:ud v:nameU="visVersion" v:prompt="" v:val="VT0(15):26"/>
+				<v:ud v:nameU="visMasterStencil" v:prompt="" v:val="VT4(Basic_M.vssx)"/>
+				<v:ud v:nameU="TopLeftOffset" v:prompt="" v:val="VT0(0.087560351224339):1"/>
+				<v:ud v:nameU="TopRightOffset" v:prompt="" v:val="VT0(0.087560351224339):1"/>
+				<v:ud v:nameU="BotLeftOffset" v:prompt="" v:val="VT0(0.087560351224339):1"/>
+				<v:ud v:nameU="BotRightOffset" v:prompt="" v:val="VT0(0.087560351224339):1"/>
+			</v:userDefs>
+			<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
+			<v:textRect cx="31.5217" cy="188.102" width="63.05" height="17.5748"/>
+			<path d="M6.3 196.89 L56.74 196.89 A6.30424 6.30424 -180 0 0 63.04 190.58 L63.04 185.62 A6.30424 6.30424 -180 0 0 56.74
+						 179.31 L6.3 179.31 A6.30424 6.30424 -180 0 0 0 185.62 L0 190.58 A6.30424 6.30424 -180 0 0 6.3 196.89 Z"
+					class="st2"/>
+			<text x="10.39" y="191.1" class="st3" v:langID="3082"><v:paragraph v:horizAlign="1"/><v:tabList/>Ontología</text>		</g>
+		<g id="shape539-127" v:mID="539" v:groupContext="shape" transform="translate(403.912,-52.6146)">
+			<title>Hoja.539</title>
+			<path d="M0 196.89 L21.14 196.89" class="st24"/>
+		</g>
+		<g id="shape540-130" v:mID="540" v:groupContext="shape" transform="translate(403.912,-47.0509)">
+			<title>Hoja.540</title>
+			<path d="M0 196.89 L21.14 196.89" class="st24"/>
+		</g>
+		<g id="shape541-133" v:mID="541" v:groupContext="shape" transform="translate(489.772,-15.339)">
+			<title>Rectángulo redondeado.541</title>
+			<v:userDefs>
+				<v:ud v:nameU="CTypeTopLeftSnip" v:prompt="" v:val="VT0(0):5"/>
+				<v:ud v:nameU="CTypeTopRightSnip" v:prompt="" v:val="VT0(0):5"/>
+				<v:ud v:nameU="CTypeBotLeftSnip" v:prompt="" v:val="VT0(0):5"/>
+				<v:ud v:nameU="CTypeBotRightSnip" v:prompt="" v:val="VT0(0):5"/>
+				<v:ud v:nameU="CornerLockHoriz" v:prompt="" v:val="VT0(1):5"/>
+				<v:ud v:nameU="CornerLockVert" v:prompt="" v:val="VT0(1):5"/>
+				<v:ud v:nameU="CornerLockDiag" v:prompt="" v:val="VT0(0):5"/>
+				<v:ud v:nameU="TopLeftOffset" v:prompt="" v:val="VT0(0.15748031496063):24"/>
+				<v:ud v:nameU="TopRightOffset" v:prompt="" v:val="VT0(0.15748031496063):24"/>
+				<v:ud v:nameU="BotLeftOffset" v:prompt="" v:val="VT0(0.15748031496063):24"/>
+				<v:ud v:nameU="BotRightOffset" v:prompt="" v:val="VT0(0.15748031496063):24"/>
+				<v:ud v:nameU="visVersion" v:prompt="" v:val="VT0(15):26"/>
+				<v:ud v:nameU="visMasterStencil" v:prompt="" v:val="VT4(Basic_M.vssx)"/>
+				<v:ud v:nameU="TopLeftOffset" v:prompt="" v:val="VT0(0.062635316715297):1"/>
+				<v:ud v:nameU="TopRightOffset" v:prompt="" v:val="VT0(0.062635316715297):1"/>
+				<v:ud v:nameU="BotLeftOffset" v:prompt="" v:val="VT0(0.062635316715297):1"/>
+				<v:ud v:nameU="BotRightOffset" v:prompt="" v:val="VT0(0.062635316715297):1"/>
+			</v:userDefs>
+			<path d="M4.51 196.89 L91.7 196.89 A4.50967 4.50967 -180 0 0 96.21 192.38 L96.21 73.13 A4.50967 4.50967 -180 0 0 91.7
+						 68.62 L4.51 68.62 A4.50967 4.50967 -180 0 0 -0 73.13 L0 192.38 A4.50967 4.50967 -180 0 0 4.51 196.89 Z"
+					class="st25"/>
+		</g>
+		<g id="shape542-135" v:mID="542" v:groupContext="shape" transform="translate(506.354,-134.536)">
+			<title>Rectángulo redondeado.542</title>
+			<desc>Protégé</desc>
+			<v:userDefs>
+				<v:ud v:nameU="CTypeTopLeftSnip" v:prompt="" v:val="VT0(0):5"/>
+				<v:ud v:nameU="CTypeTopRightSnip" v:prompt="" v:val="VT0(0):5"/>
+				<v:ud v:nameU="CTypeBotLeftSnip" v:prompt="" v:val="VT0(0):5"/>
+				<v:ud v:nameU="CTypeBotRightSnip" v:prompt="" v:val="VT0(0):5"/>
+				<v:ud v:nameU="CornerLockHoriz" v:prompt="" v:val="VT0(1):5"/>
+				<v:ud v:nameU="CornerLockVert" v:prompt="" v:val="VT0(1):5"/>
+				<v:ud v:nameU="CornerLockDiag" v:prompt="" v:val="VT0(0):5"/>
+				<v:ud v:nameU="TopLeftOffset" v:prompt="" v:val="VT0(0.15748031496063):24"/>
+				<v:ud v:nameU="TopRightOffset" v:prompt="" v:val="VT0(0.15748031496063):24"/>
+				<v:ud v:nameU="BotLeftOffset" v:prompt="" v:val="VT0(0.15748031496063):24"/>
+				<v:ud v:nameU="BotRightOffset" v:prompt="" v:val="VT0(0.15748031496063):24"/>
+				<v:ud v:nameU="visVersion" v:prompt="" v:val="VT0(15):26"/>
+				<v:ud v:nameU="visMasterStencil" v:prompt="" v:val="VT4(Basic_M.vssx)"/>
+				<v:ud v:nameU="TopLeftOffset" v:prompt="" v:val="VT0(0.087560351224339):1"/>
+				<v:ud v:nameU="TopRightOffset" v:prompt="" v:val="VT0(0.087560351224339):1"/>
+				<v:ud v:nameU="BotLeftOffset" v:prompt="" v:val="VT0(0.087560351224339):1"/>
+				<v:ud v:nameU="BotRightOffset" v:prompt="" v:val="VT0(0.087560351224339):1"/>
+			</v:userDefs>
+			<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
+			<v:textRect cx="31.5217" cy="188.102" width="63.05" height="17.5748"/>
+			<path d="M6.3 196.89 L56.74 196.89 A6.30424 6.30424 -180 0 0 63.04 190.58 L63.04 185.62 A6.30424 6.30424 -180 0 0 56.74
+						 179.31 L6.3 179.31 A6.30424 6.30424 -180 0 0 0 185.62 L0 190.58 A6.30424 6.30424 -180 0 0 6.3 196.89 Z"
+					class="st26"/>
+			<text x="14.07" y="191.1" class="st3" v:langID="3082"><v:paragraph v:horizAlign="1"/><v:tabList/>Protégé</text>		</g>
+		<g id="shape543-138" v:mID="543" v:groupContext="shape" transform="translate(530.231,-107.823)">
+			<title>Círculo</title>
+			<v:userDefs>
+				<v:ud v:nameU="visVersion" v:val="VT0(15):26"/>
+				<v:ud v:nameU="visMasterStencil" v:prompt="" v:val="VT4(Basic_M.vssx)"/>
+			</v:userDefs>
+			<path d="M0 188.35 A8.5373 8.5373 0 0 1 17.07 188.35 A8.5373 8.5373 0 1 1 0 188.35 Z" class="st27"/>
+		</g>
+		<g id="shape545-140" v:mID="545" v:groupContext="shape" transform="translate(512.825,-85.1743)">
+			<title>Círculo.545</title>
+			<v:userDefs>
+				<v:ud v:nameU="visVersion" v:val="VT0(15):26"/>
+				<v:ud v:nameU="visMasterStencil" v:prompt="" v:val="VT4(Basic_M.vssx)"/>
+			</v:userDefs>
+			<path d="M0 188.35 A8.5373 8.5373 0 0 1 17.07 188.35 A8.5373 8.5373 0 1 1 0 188.35 Z" class="st28"/>
+		</g>
+		<g id="shape546-142" v:mID="546" v:groupContext="shape" transform="translate(547.848,-85.1743)">
+			<title>Círculo.546</title>
+			<v:userDefs>
+				<v:ud v:nameU="visVersion" v:val="VT0(15):26"/>
+				<v:ud v:nameU="visMasterStencil" v:prompt="" v:val="VT4(Basic_M.vssx)"/>
+			</v:userDefs>
+			<path d="M0 188.35 A8.5373 8.5373 0 0 1 17.07 188.35 A8.5373 8.5373 0 1 1 0 188.35 Z" class="st28"/>
+		</g>
+		<g id="shape547-144" v:mID="547" v:groupContext="shape" transform="translate(506.371,-61.0845)">
+			<title>Círculo.547</title>
+			<v:userDefs>
+				<v:ud v:nameU="visVersion" v:val="VT0(15):26"/>
+				<v:ud v:nameU="visMasterStencil" v:prompt="" v:val="VT4(Basic_M.vssx)"/>
+			</v:userDefs>
+			<path d="M0 189.71 A7.17759 7.17759 0 1 1 14.36 189.71 A7.17759 7.17759 0 0 1 0 189.71 Z" class="st29"/>
+		</g>
+		<g id="shape548-146" v:mID="548" v:groupContext="shape" transform="translate(522.08,-61.0284)">
+			<title>Círculo.548</title>
+			<v:userDefs>
+				<v:ud v:nameU="visVersion" v:val="VT0(15):26"/>
+				<v:ud v:nameU="visMasterStencil" v:prompt="" v:val="VT4(Basic_M.vssx)"/>
+			</v:userDefs>
+			<path d="M0 189.71 A7.17759 7.17759 0 1 1 14.36 189.71 A7.17759 7.17759 0 0 1 0 189.71 Z" class="st29"/>
+		</g>
+		<g id="shape549-148" v:mID="549" v:groupContext="shape" transform="translate(542.13,-61.2665)">
+			<title>Círculo.549</title>
+			<v:userDefs>
+				<v:ud v:nameU="visVersion" v:val="VT0(15):26"/>
+				<v:ud v:nameU="visMasterStencil" v:prompt="" v:val="VT4(Basic_M.vssx)"/>
+			</v:userDefs>
+			<path d="M0 189.71 A7.17759 7.17759 0 1 1 14.36 189.71 A7.17759 7.17759 0 0 1 0 189.71 Z" class="st29"/>
+		</g>
+		<g id="shape550-150" v:mID="550" v:groupContext="shape" transform="translate(557.621,-61.2665)">
+			<title>Círculo.550</title>
+			<v:userDefs>
+				<v:ud v:nameU="visVersion" v:val="VT0(15):26"/>
+				<v:ud v:nameU="visMasterStencil" v:prompt="" v:val="VT4(Basic_M.vssx)"/>
+			</v:userDefs>
+			<path d="M0 189.71 A7.17759 7.17759 0 1 1 14.36 189.71 A7.17759 7.17759 0 0 1 0 189.71 Z" class="st29"/>
+		</g>
+		<g id="shape551-152" v:mID="551" v:groupContext="shape" transform="translate(530.231,-112.483)">
+			<title>Hoja.551</title>
+			<desc>Thing</desc>
+			<v:textBlock v:margins="rect(0,0,0,0)" v:tabSpace="42.5197"/>
+			<v:textRect cx="8.5373" cy="193.011" width="17.08" height="7.75538"/>
+			<rect x="0" y="189.134" width="17.0746" height="7.75538" class="st30"/>
+			<text x="2.63" y="194.51" class="st31" v:langID="3082"><v:paragraph v:horizAlign="1"/><v:tabList/>Thing</text>		</g>
+		<g id="shape552-155" v:mID="552" v:groupContext="shape" transform="translate(513.133,-89.8339)">
+			<title>Hoja.552</title>
+			<desc>Zone</desc>
+			<v:textBlock v:margins="rect(0,0,0,0)" v:tabSpace="42.5197"/>
+			<v:textRect cx="8.5373" cy="193.011" width="17.08" height="7.75538"/>
+			<rect x="0" y="189.134" width="17.0746" height="7.75538" class="st30"/>
+			<text x="3.38" y="194.51" class="st31" v:langID="3082"><v:paragraph v:horizAlign="1"/><v:tabList/>Zone</text>		</g>
+		<g id="shape553-158" v:mID="553" v:groupContext="shape" transform="translate(547.848,-89.8339)">
+			<title>Hoja.553</title>
+			<desc>Elem.</desc>
+			<v:textBlock v:margins="rect(0,0,0,0)" v:tabSpace="42.5197"/>
+			<v:textRect cx="8.5373" cy="193.011" width="17.08" height="7.75538"/>
+			<rect x="0" y="189.134" width="17.0746" height="7.75538" class="st30"/>
+			<text x="2.35" y="194.51" class="st31" v:langID="3082"><v:paragraph v:horizAlign="1"/><v:tabList/>Elem.</text>		</g>
+		<g id="shape554-161" v:mID="554" v:groupContext="shape" transform="translate(542.13,-65.184)">
+			<title>Hoja.554</title>
+			<desc>Window</desc>
+			<v:textBlock v:margins="rect(0,0,0,0)" v:tabSpace="42.5197"/>
+			<v:textRect cx="7.17759" cy="193.629" width="14.36" height="6.52021"/>
+			<rect x="0" y="190.369" width="14.3552" height="6.52021" class="st30"/>
+			<text x="2.13" y="194.53" class="st32" v:langID="3082"><v:paragraph v:horizAlign="1"/><v:tabList/>Window</text>		</g>
+		<g id="shape555-164" v:mID="555" v:groupContext="shape" transform="translate(557.621,-65.184)">
+			<title>Hoja.555</title>
+			<desc>Chimney</desc>
+			<v:textBlock v:margins="rect(0,0,0,0)" v:tabSpace="42.5197"/>
+			<v:textRect cx="7.17759" cy="193.629" width="14.36" height="6.52021"/>
+			<rect x="0" y="190.369" width="14.3552" height="6.52021" class="st30"/>
+			<text x="1.33" y="194.53" class="st32" v:langID="3082"><v:paragraph v:horizAlign="1"/><v:tabList/>Chimney</text>		</g>
+		<g id="shape556-167" v:mID="556" v:groupContext="shape" transform="translate(521.861,-64.9459)">
+			<title>Hoja.556</title>
+			<desc>Storey</desc>
+			<v:textBlock v:margins="rect(0,0,0,0)" v:tabSpace="42.5197"/>
+			<v:textRect cx="7.17759" cy="193.629" width="14.36" height="6.52021"/>
+			<rect x="0" y="190.369" width="14.3552" height="6.52021" class="st30"/>
+			<text x="2.72" y="194.53" class="st32" v:langID="3082"><v:paragraph v:horizAlign="1"/><v:tabList/>Storey</text>		</g>
+		<g id="shape557-170" v:mID="557" v:groupContext="shape" transform="translate(506.371,-65.002)">
+			<title>Hoja.557</title>
+			<desc>Space</desc>
+			<v:textBlock v:margins="rect(0,0,0,0)" v:tabSpace="42.5197"/>
+			<v:textRect cx="7.17759" cy="193.629" width="14.36" height="6.52021"/>
+			<rect x="0" y="190.369" width="14.3552" height="6.52021" class="st30"/>
+			<text x="3.15" y="194.53" class="st32" v:langID="3082"><v:paragraph v:horizAlign="1"/><v:tabList/>Space</text>		</g>
+		<g id="shape558-173" v:mID="558" v:groupContext="shape" v:layerMember="0" transform="translate(79.995,-85.6382)">
+			<title>Conector dinámico.558</title>
+			<path d="M0 203.98 L34.56 203.98" class="st33"/>
+		</g>
+		<g id="shape559-179" v:mID="559" v:groupContext="shape" v:layerMember="0" transform="translate(200.467,-78.5516)">
+			<title>Conector dinámico.559</title>
+			<path d="M5.75 194.63 L6.09 194.5 C11.77 188.94 11.77 174.46 11.77 159.99 C11.77 137.94 11.77 115.89 66.61 115.89"
+					class="st35"/>
+		</g>
+		<g id="shape560-185" v:mID="560" v:groupContext="shape" v:layerMember="0" transform="translate(200.467,-78.5516)">
+			<title>Conector dinámico.560</title>
+			<path d="M0 196.89 C11.28 196.89 11.75 223.2 60.08 225.38 L60.44 225.39" class="st37"/>
+		</g>
+		<g id="shape561-191" v:mID="561" v:groupContext="shape" v:layerMember="0" transform="translate(340.782,-42.8273)">
+			<title>Conector dinámico.561</title>
+			<path d="M0 189.8 L27.48 189.8" class="st33"/>
+		</g>
+		<g id="shape562-196" v:mID="562" v:groupContext="shape" v:layerMember="0" transform="translate(454.168,-49.9139)">
+			<title>Conector dinámico.562</title>
+			<path d="M6.16 196.36 L6.52 196.33 C28.92 192.26 29.42 167.33 35.6 167.33" class="st39"/>
+		</g>
+		<g id="shape563-202" v:mID="563" v:groupContext="shape" transform="translate(499.693,-25.6854)">
+			<title>Rectángulo redondeado.563</title>
+			<desc>Razonador HermiT</desc>
+			<v:userDefs>
+				<v:ud v:nameU="CTypeTopLeftSnip" v:prompt="" v:val="VT0(0):5"/>
+				<v:ud v:nameU="CTypeTopRightSnip" v:prompt="" v:val="VT0(0):5"/>
+				<v:ud v:nameU="CTypeBotLeftSnip" v:prompt="" v:val="VT0(0):5"/>
+				<v:ud v:nameU="CTypeBotRightSnip" v:prompt="" v:val="VT0(0):5"/>
+				<v:ud v:nameU="CornerLockHoriz" v:prompt="" v:val="VT0(1):5"/>
+				<v:ud v:nameU="CornerLockVert" v:prompt="" v:val="VT0(1):5"/>
+				<v:ud v:nameU="CornerLockDiag" v:prompt="" v:val="VT0(0):5"/>
+				<v:ud v:nameU="TopLeftOffset" v:prompt="" v:val="VT0(0.15748031496063):24"/>
+				<v:ud v:nameU="TopRightOffset" v:prompt="" v:val="VT0(0.15748031496063):24"/>
+				<v:ud v:nameU="BotLeftOffset" v:prompt="" v:val="VT0(0.15748031496063):24"/>
+				<v:ud v:nameU="BotRightOffset" v:prompt="" v:val="VT0(0.15748031496063):24"/>
+				<v:ud v:nameU="visVersion" v:prompt="" v:val="VT0(15):26"/>
+				<v:ud v:nameU="visMasterStencil" v:prompt="" v:val="VT4(Basic_M.vssx)"/>
+				<v:ud v:nameU="TopLeftOffset" v:prompt="" v:val="VT0(0.049827853840158):1"/>
+				<v:ud v:nameU="TopRightOffset" v:prompt="" v:val="VT0(0.049827853840158):1"/>
+				<v:ud v:nameU="BotLeftOffset" v:prompt="" v:val="VT0(0.049827853840158):1"/>
+				<v:ud v:nameU="BotRightOffset" v:prompt="" v:val="VT0(0.049827853840158):1"/>
+			</v:userDefs>
+			<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
+			<v:textRect cx="38.2677" cy="184.685" width="76.54" height="24.4091"/>
+			<path d="M3.59 196.89 L72.95 196.89 A3.58755 3.58755 -180 0 0 76.54 193.3 L76.54 176.07 A3.58755 3.58755 -180 0 0 72.95
+						 172.48 L3.59 172.48 A3.58755 3.58755 -180 0 0 -0 176.07 L0 193.3 A3.58755 3.58755 -180 0 0 3.59 196.89 Z"
+					class="st41"/>
+			<text x="9.55" y="186.78" class="st42" v:langID="3082"><v:paragraph v:horizAlign="1"/><v:tabList/>Razonador <tspan
+						class="st43">HermiT</tspan></text>		</g>
+		<g id="shape564-206" v:mID="564" v:groupContext="shape" v:layerMember="0" transform="translate(540.171,-110.873)">
+			<title>Conector dinámico.564</title>
+			<path d="M-1.4 199.94 L-12.77 208.01" class="st44"/>
+		</g>
+		<g id="shape565-209" v:mID="565" v:groupContext="shape" v:layerMember="0" transform="translate(537.471,-110.873)">
+			<title>Conector dinámico.565</title>
+			<path d="M1.3 199.94 L12.88 208.01" class="st44"/>
+		</g>
+		<g id="shape566-212" v:mID="566" v:groupContext="shape" v:layerMember="0" transform="translate(524.542,-87.3936)">
+			<title>Conector dinámico.566</title>
+			<path d="M-3.18 199.11 L-10.99 208.84" class="st44"/>
+		</g>
+		<g id="shape567-215" v:mID="567" v:groupContext="shape" v:layerMember="0" transform="translate(518.224,-87.3656)">
+			<title>Conector dinámico.567</title>
+			<path d="M3.14 199.08 L11.03 208.87" class="st44"/>
+		</g>
+		<g id="shape568-218" v:mID="568" v:groupContext="shape" v:layerMember="0" transform="translate(559.933,-87.4846)">
+			<title>Conector dinámico.568</title>
+			<path d="M-3.55 199.2 L-10.63 208.75" class="st44"/>
+		</g>
+		<g id="shape569-221" v:mID="569" v:groupContext="shape" v:layerMember="0" transform="translate(553.505,-87.4846)">
+			<title>Conector dinámico.569</title>
+			<path d="M2.88 199.2 L11.29 208.75" class="st44"/>
+		</g>
+		<g id="shape570-224" v:mID="570" v:groupContext="shape" transform="translate(224.495,-130.567)">
+			<title>Hoja.570</title>
+			<desc>abre</desc>
+			<v:textBlock v:margins="rect(0,0,0,0)" v:tabSpace="42.5197"/>
+			<v:textRect cx="8.5373" cy="193.011" width="17.08" height="7.75538"/>
+			<rect x="0" y="189.134" width="17.0746" height="7.75538" class="st30"/>
+			<text x="1.95" y="194.81" class="st45" v:langID="3082"><v:paragraph v:horizAlign="1"/><v:tabList/>abre</text>		</g>
+		<g id="shape571-227" v:mID="571" v:groupContext="shape" transform="translate(223.474,-61.1185)">
+			<title>Hoja.571</title>
+			<desc>convierte</desc>
+			<v:textBlock v:margins="rect(0,0,0,0)" v:tabSpace="42.5197"/>
+			<v:textRect cx="16.1345" cy="193.011" width="32.27" height="7.75538"/>
+			<rect x="0" y="189.134" width="32.2691" height="7.75538" class="st30"/>
+			<text x="3.4" y="194.81" class="st45" v:langID="3082"><v:paragraph v:horizAlign="1"/><v:tabList/>convierte</text>		</g>
+		<g id="shape572-230" v:mID="572" v:groupContext="shape" transform="translate(341.656,-37.7726)">
+			<title>Hoja.572</title>
+			<desc>genera</desc>
+			<v:textBlock v:margins="rect(0,0,0,0)" v:tabSpace="42.5197"/>
+			<v:textRect cx="16.1345" cy="193.011" width="32.27" height="7.75538"/>
+			<rect x="0" y="189.134" width="32.2691" height="7.75538" class="st30"/>
+			<text x="6.42" y="194.81" class="st45" v:langID="3082"><v:paragraph v:horizAlign="1"/><v:tabList/>genera</text>		</g>
+		<g id="shape573-233" v:mID="573" v:groupContext="shape" transform="translate(456.912,-60.2137)">
+			<title>Hoja.573</title>
+			<desc>abre</desc>
+			<v:textBlock v:margins="rect(0,0,0,0)" v:tabSpace="42.5197"/>
+			<v:textRect cx="7.17759" cy="193.011" width="14.36" height="7.75538"/>
+			<rect x="0" y="189.134" width="14.3552" height="7.75538" class="st30"/>
+			<text x="0.59" y="194.81" class="st45" v:langID="3082"><v:paragraph v:horizAlign="1"/><v:tabList/>abre</text>		</g>
+		<g id="shape574-236" v:mID="574" v:groupContext="shape" transform="translate(121.097,-25.6854)">
+			<title>Hoja.574</title>
+			<desc>Duplex.ifc</desc>
+			<v:textBlock v:margins="rect(0,0,0,0)" v:tabSpace="42.5197"/>
+			<v:textRect cx="39.685" cy="193.011" width="79.38" height="7.75538"/>
+			<rect x="0" y="189.134" width="79.3701" height="7.75538" class="st30"/>
+			<text x="22.09" y="195.41" class="st46" v:langID="3082"><v:paragraph v:horizAlign="1"/><v:tabList/>Duplex.ifc</text>		</g>
+		<g id="shape575-239" v:mID="575" v:groupContext="shape" transform="translate(0.624939,-25.6854)">
+			<title>Hoja.575</title>
+			<desc>Duplex (modelo real)</desc>
+			<v:textBlock v:margins="rect(0,0,0,0)" v:tabSpace="42.5197"/>
+			<v:textRect cx="39.685" cy="193.011" width="79.38" height="7.75538"/>
+			<rect x="0" y="189.134" width="79.3701" height="7.75538" class="st30"/>
+			<text x="2.28" y="195.41" class="st47" v:langID="3082"><v:paragraph v:horizAlign="1"/><v:tabList/>Duplex (modelo real)</text>		</g>
+		<g id="shape576-242" v:mID="576" v:groupContext="shape" transform="translate(267.082,-0.922174)">
+			<title>Hoja.576</title>
+			<desc>IFCtoLBD</desc>
+			<v:textBlock v:margins="rect(0,0,0,0)" v:tabSpace="42.5197"/>
+			<v:textRect cx="36.8504" cy="193.011" width="73.71" height="7.75538"/>
+			<rect x="0" y="189.134" width="73.7008" height="7.75538" class="st30"/>
+			<text x="20.91" y="195.41" class="st47" v:langID="3082"><v:paragraph v:horizAlign="1"/><v:tabList/>IFCtoLBD</text>		</g>
+		<g id="shape577-245" v:mID="577" v:groupContext="shape" transform="translate(267.082,-117.426)">
+			<title>Hoja.577</title>
+			<desc>Visor 3D</desc>
+			<v:textBlock v:margins="rect(0,0,0,0)" v:tabSpace="42.5197"/>
+			<v:textRect cx="36.8504" cy="193.011" width="73.71" height="7.75538"/>
+			<rect x="0" y="189.134" width="73.7008" height="7.75538" class="st30"/>
+			<text x="22.55" y="195.41" class="st47" v:langID="3082"><v:paragraph v:horizAlign="1"/><v:tabList/>Visor 3D</text>		</g>
+		<g id="shape578-248" v:mID="578" v:groupContext="shape" transform="translate(374.798,-0.922174)">
+			<title>Hoja.578</title>
+			<desc>Duplex.owl</desc>
+			<v:textBlock v:margins="rect(0,0,0,0)" v:tabSpace="42.5197"/>
+			<v:textRect cx="39.685" cy="193.011" width="79.38" height="7.75538"/>
+			<rect x="0" y="189.134" width="79.3701" height="7.75538" class="st30"/>
+			<text x="21.17" y="195.41" class="st46" v:langID="3082"><v:paragraph v:horizAlign="1"/><v:tabList/>Duplex.owl</text>		</g>
+		<g id="shape579-251" v:mID="579" v:groupContext="shape" transform="translate(489.772,-0.922174)">
+			<title>Hoja.579</title>
+			<desc>Editor de ontologías</desc>
+			<v:textBlock v:margins="rect(0,0,0,0)" v:tabSpace="42.5197"/>
+			<v:textRect cx="48.1038" cy="193.011" width="96.21" height="7.75538"/>
+			<rect x="0" y="189.134" width="96.2077" height="7.75538" class="st30"/>
+			<text x="12.4" y="195.41" class="st47" v:langID="3082"><v:paragraph v:horizAlign="1"/><v:tabList/>Editor de ontologías</text>		</g>
+		<g id="group580-254" transform="translate(286.685,-38.4818)" v:mID="580" v:groupContext="group">
+			<title>Hoja.580</title>
+			<g id="shape581-255" v:mID="581" v:groupContext="shape" transform="translate(0,-13.9091)">
+				<title>Hoja.581</title>
+				<path d="M0 196.89 L28.93 196.89" class="st48"/>
+			</g>
+			<g id="shape582-258" v:mID="582" v:groupContext="shape" transform="translate(27.8182,-11.1273)">
+				<title>Hoja.582</title>
+				<path d="M0 191.33 L6.68 194.11 L0 196.89 L0 191.33 Z" class="st49"/>
+			</g>
+			<g id="shape583-260" v:mID="583" v:groupContext="shape" transform="translate(34.4945,390.997) rotate(180)">
+				<title>Hoja.583</title>
+				<path d="M0 196.89 L28.93 196.89" class="st48"/>
+			</g>
+			<g id="shape584-263" v:mID="584" v:groupContext="shape">
+				<title>Hoja.584</title>
+				<path d="M6.68 191.33 L0 194.11 L6.68 196.89 L6.68 191.33 Z" class="st49"/>
+			</g>
+		</g>
+	</g>
+</svg>
