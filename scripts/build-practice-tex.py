@@ -21,6 +21,7 @@ DEFAULT_TARGETS = (
     "practicas/practica5.tex",
     "practicas/practica6.tex",
     "practicas/practica7.tex",
+    "practicas/practica8.tex",
     "practicas/practica9.tex",
 )
 

@@ -60,7 +60,7 @@ Use the launcher script for PDFs:
 scripts\pdf
 ```
 
-That builds the default PDF practices, currently practice 1, practice 2, practice 3, practice 4, practice 5, practice 6, practice 7, and practice 9.
+That builds the default PDF practices, currently practice 1 through practice 9.
 
 Build only practice 1:
 
@@ -68,16 +68,16 @@ Build only practice 1:
 scripts\pdf p1
 ```
 
-Build only practice 9:
+Build only practice 8:
 
 ```powershell
-scripts\pdf p9
+scripts\pdf p8
 ```
 
 Build several practices:
 
 ```powershell
-scripts\pdf p1 p9
+scripts\pdf p1 p8 p9
 ```
 
 Build every available `practicas/practica*.tex` file:
@@ -106,7 +106,7 @@ scripts\pdf.cmd p1
 
 ## What the scripts do
 
-`scripts/pdf.ps1` is the user-facing launcher. It accepts short names like `p1`, `p9`, and `all`, sets the needed environment variables, and calls the Python build script.
+`scripts/pdf.ps1` is the user-facing launcher. It accepts short names like `p1`, `p8`, and `all`, sets the needed environment variables, and calls the Python build script.
 
 `scripts/pdf.cmd` is a Windows-friendly wrapper around `scripts/pdf.ps1`.
 
