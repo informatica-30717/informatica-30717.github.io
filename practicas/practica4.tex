@@ -167,11 +167,14 @@ y buscaremos las soluciones de la ecuación \(f(x) = 0\).
   \pgfmathsetmacro{\catB}{5}
   \pgfmathsetmacro{\catScale}{0.36}
   \pgfmathsetmacro{\catRoot}{\catA*ln(\catB/\catA + sqrt((\catB/\catA)^2 - 1))}
-  \draw[rounded corners=2pt, color=uzaLine, fill=uzaCodeBg] (-4.65,-0.35) rectangle (4.65,2.8);
-  \draw[-{Latex[length=2mm]}, color=uzaMuted] (-4.25,0) -- (4.35,0) node[right] {$x$};
-  \draw[-{Latex[length=2mm]}, color=uzaMuted] (0,-0.18) -- (0,2.55) node[above] {$y$};
+  \draw[rounded corners=2pt, color=uzaLine, fill=uzaCodeBg] (-5.15,-0.5) rectangle (5.15,3.12);
+  \draw[-{Latex[length=2mm]}, color=uzaMuted] (-4.45,0) -- (4.62,0);
+  \node[anchor=north east, color=uzaMuted] at (4.42,-0.05) {$x$};
+  \draw[-{Latex[length=2mm]}, color=uzaMuted] (0,-0.25) -- (0,2.7);
+  \node[anchor=east, color=uzaMuted] at (-0.12,2.52) {$y$};
   \draw[domain=-4:4,samples=180,smooth,variable=\x,color=uzaBlue,thick] plot ({\x},{\catScale*(\catA*(exp(\x/\catA)+exp(-\x/\catA))/2)});
-  \draw[color=uzaWarn,thick,dashed] (-4,{\catScale*\catB}) -- (4,{\catScale*\catB}) node[right,color=uzaWarn] {$y=b$};
+  \draw[color=uzaWarn,thick,dashed] (-4.25,{\catScale*\catB}) -- (4.25,{\catScale*\catB});
+  \node[anchor=south east, color=uzaWarn] at (3.95,{\catScale*\catB+0.04}) {$y=b$};
   \fill[color=uzaWarn] (-\catRoot,{\catScale*\catB}) circle (2.3pt);
   \fill[color=uzaWarn] (\catRoot,{\catScale*\catB}) circle (2.3pt);
   \fill[color=uzaTip] (0,{\catScale*\catA}) circle (2.3pt);

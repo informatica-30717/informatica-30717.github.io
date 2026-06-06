@@ -20,8 +20,6 @@ format:
     include-after-body:
       text: |
         <script type="module" src="../resources/practica8/js/practica8.js"></script>
-  pdf:
-    output-ext: "pdf"
 execute:
   echo: false
 resources:
