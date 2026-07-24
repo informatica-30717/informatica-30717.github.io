@@ -67,6 +67,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <meta name="quarto:offset" content="../">
 <link href="../practicas/practica6.html" rel="next">
 <link href="../practicas/practica4.html" rel="prev">
+<script src="../site_libs/cookie-consent/cookie-consent.js"></script>
+<link href="../site_libs/cookie-consent/cookie-consent.css" rel="stylesheet">
 <script src="../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
@@ -107,13 +109,32 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 }</script>
 <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-KJSTYN212D"></script>
 
-<script type="text/javascript">
+<script type="text/plain" cookie-consent="tracking">
 
 window.dataLayer = window.dataLayer || [];
 function gtag(){dataLayer.push(arguments);}
 gtag('js', new Date());
 gtag('config', 'G-KJSTYN212D', { 'anonymize_ip': true});
 </script>
+
+<script type="text/javascript" charset="UTF-8">
+document.addEventListener('DOMContentLoaded', function () {
+cookieconsent.run({
+  "notice_banner_type":"headline",
+  "consent_type":"express",
+  "palette":"light",
+  "language":"en",
+  "page_load_consent_levels":["strictly-necessary"],
+  "notice_banner_reject_button_hide":false,
+  "preferences_center_close_button_hide":false,
+  "website_name":"",
+"website_privacy_policy_url":"cookies.html"
+  ,
+"language":"es"
+  });
+});
+</script> 
+  
 <script type="module" src="../site_libs/quarto-ojs/quarto-ojs-runtime.js"></script>
 <link href="../site_libs/quarto-ojs/quarto-ojs.css" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/requirejs@2.3.6/require.min.js" integrity="sha384-c9c+LnTbwQ3aujuU7ULEPVvgLs+Fn6fJUvIGTsuu1ZcCf11fiEubah0ttpca4ntM sha384-6V1/AdqZRWk1KAlWbKBlGhN7VG4iE/yAZcO6NZPMF8od0vukrvr0tg4qY6NSrItx" crossorigin="anonymous"></script>
@@ -912,6 +933,20 @@ p = 2i + 3 \quad \text{con } i = 0, 1, 2, \ldots, \left\lfloor \frac{n-3}{2} \ri
 </section>
 
 <div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Reutilización</h2><div class="quarto-appendix-contents"><div><a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.es">CC BY-NC-SA 4.0</a></div></div></section></div></main> <!-- /main -->
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  const updateText = () => {
+    const el = document.querySelector(".cc-nb-text");
+    if (el && !el.dataset.customized) {
+      el.textContent = "Utilizamos únicamente Google Analytics para registrar estadísticas de uso, como las páginas a las que se accede, el tiempo de uso y lugar de origen.";
+      el.dataset.customized = "true";
+    }
+  };
+  updateText();
+  const obs = new MutationObserver(updateText);
+  obs.observe(document.body, { childList: true, subtree: true });
+});
+</script>
 <script type="ojs-module-contents">
 eyJjb250ZW50cyI6W3sibWV0aG9kTmFtZSI6ImludGVycHJldCIsImNlbGxOYW1lIjoib2pzLWNlbGwtMSIsImlubGluZSI6ZmFsc2UsInNvdXJjZSI6ImltcG9ydCB7XG4gIGNsZWFuU2xpZGVyLFxuICBidWlsZEJhc2ljU2lldmVTdGVwcyxcbiAgYnVpbGRSb290U2lldmVTdGVwcyxcbiAgYnVpbGRPZGRPbmx5U2lldmVTdGVwcyxcbiAgcmVuZGVyU2lldmVTdGF0ZVxufSBmcm9tIFwiLi4vcmVzb3VyY2VzL3ByYWN0aWNhNS9vanMvcHJhY3RpY2E1LmpzXCJcbiJ9LHsibWV0aG9kTmFtZSI6ImludGVycHJldCIsImNlbGxOYW1lIjoib2pzLWNlbGwtMiIsImlubGluZSI6ZmFsc2UsInNvdXJjZSI6InZpZXdvZiBOMSA9IGNsZWFuU2xpZGVyKElucHV0cywgWzEwLCA1MF0sIHsgdmFsdWU6IDI5LCBzdGVwOiAxLCBsYWJlbDogXCJWYWxvciBOOiBcIiB9KVxuIn0seyJtZXRob2ROYW1lIjoiaW50ZXJwcmV0IiwiY2VsbE5hbWUiOiJvanMtY2VsbC0zIiwiaW5saW5lIjpmYWxzZSwic291cmNlIjoic3RlcHMxID0gYnVpbGRCYXNpY1NpZXZlU3RlcHMoTjEpXG4ifSx7Im1ldGhvZE5hbWUiOiJpbnRlcnByZXQiLCJjZWxsTmFtZSI6Im9qcy1jZWxsLTQiLCJpbmxpbmUiOmZhbHNlLCJzb3VyY2UiOiJ2aWV3b2Ygc3RlcDEgPSBjbGVhblNsaWRlcihJbnB1dHMsIFswLCBzdGVwczEubGVuZ3RoIC0gMV0sIHsgdmFsdWU6IDAsIHN0ZXA6IDEsIGxhYmVsOiBcIlBhc28gZGUgbGEgY3JpYmE6IFwiIH0pXG4ifSx7Im1ldGhvZE5hbWUiOiJpbnRlcnByZXQiLCJjZWxsTmFtZSI6Im9qcy1jZWxsLTUiLCJpbmxpbmUiOmZhbHNlLCJzb3VyY2UiOiJyZW5kZXJTaWV2ZVN0YXRlKHsgaHRtbCwgUGxvdCwgc3RlcHM6IHN0ZXBzMSwgc3RlcEluZGV4OiBzdGVwMSwgbWF4OiBOMSB9KVxuIn0seyJtZXRob2ROYW1lIjoiaW50ZXJwcmV0IiwiY2VsbE5hbWUiOiJvanMtY2VsbC02IiwiaW5saW5lIjpmYWxzZSwic291cmNlIjoidmlld29mIE4yID0gY2xlYW5TbGlkZXIoSW5wdXRzLCBbMTAsIDE1MF0sIHsgdmFsdWU6IDI5LCBzdGVwOiAxLCBsYWJlbDogXCJWYWxvciBOOiBcIiB9KVxuIn0seyJtZXRob2ROYW1lIjoiaW50ZXJwcmV0IiwiY2VsbE5hbWUiOiJvanMtY2VsbC03IiwiaW5saW5lIjpmYWxzZSwic291cmNlIjoic3RlcHMyID0gYnVpbGRSb290U2lldmVTdGVwcyhOMilcbiJ9LHsibWV0aG9kTmFtZSI6ImludGVycHJldCIsImNlbGxOYW1lIjoib2pzLWNlbGwtOCIsImlubGluZSI6ZmFsc2UsInNvdXJjZSI6InZpZXdvZiBzdGVwMiA9IGNsZWFuU2xpZGVyKElucHV0cywgWzAsIHN0ZXBzMi5sZW5ndGggLSAxXSwgeyB2YWx1ZTogMCwgc3RlcDogMSwgbGFiZWw6IFwiUGFzbyBkZSBsYSBjcmliYTogXCIgfSlcbiJ9LHsibWV0aG9kTmFtZSI6ImludGVycHJldCIsImNlbGxOYW1lIjoib2pzLWNlbGwtOSIsImlubGluZSI6ZmFsc2UsInNvdXJjZSI6InJlbmRlclNpZXZlU3RhdGUoeyBodG1sLCBQbG90LCBzdGVwczogc3RlcHMyLCBzdGVwSW5kZXg6IHN0ZXAyLCBtYXg6IE4yIH0pXG4ifSx7Im1ldGhvZE5hbWUiOiJpbnRlcnByZXQiLCJjZWxsTmFtZSI6Im9qcy1jZWxsLTEwIiwiaW5saW5lIjpmYWxzZSwic291cmNlIjoidmlld29mIE40ID0gY2xlYW5TbGlkZXIoSW5wdXRzLCBbMTAsIDE1MF0sIHsgdmFsdWU6IDUxLCBzdGVwOiAxLCBsYWJlbDogXCJWYWxvciBOOiBcIiB9KVxuIn0seyJtZXRob2ROYW1lIjoiaW50ZXJwcmV0IiwiY2VsbE5hbWUiOiJvanMtY2VsbC0xMSIsImlubGluZSI6ZmFsc2UsInNvdXJjZSI6InN0ZXBzNCA9IGJ1aWxkT2RkT25seVNpZXZlU3RlcHMoTjQpXG4ifSx7Im1ldGhvZE5hbWUiOiJpbnRlcnByZXQiLCJjZWxsTmFtZSI6Im9qcy1jZWxsLTEyIiwiaW5saW5lIjpmYWxzZSwic291cmNlIjoidmlld29mIHN0ZXA0ID0gY2xlYW5TbGlkZXIoSW5wdXRzLCBbMCwgc3RlcHM0Lmxlbmd0aCAtIDFdLCB7IHZhbHVlOiAwLCBzdGVwOiAxLCBsYWJlbDogXCJQYXNvIGRlIGxhIGNyaWJhOiBcIiB9KVxuIn0seyJtZXRob2ROYW1lIjoiaW50ZXJwcmV0IiwiY2VsbE5hbWUiOiJvanMtY2VsbC0xMyIsImlubGluZSI6ZmFsc2UsInNvdXJjZSI6InJlbmRlclNpZXZlU3RhdGUoeyBodG1sLCBQbG90LCBzdGVwczogc3RlcHM0LCBzdGVwSW5kZXg6IHN0ZXA0LCBtYXg6IE40LCBvZGRPbmx5OiB0cnVlIH0pXG4ifSx7Im1ldGhvZE5hbWUiOiJpbnRlcnByZXRRdWlldCIsInNvdXJjZSI6InNoaW55SW5wdXQoJ04xJykifSx7Im1ldGhvZE5hbWUiOiJpbnRlcnByZXRRdWlldCIsInNvdXJjZSI6InNoaW55SW5wdXQoJ3N0ZXAxJykifSx7Im1ldGhvZE5hbWUiOiJpbnRlcnByZXRRdWlldCIsInNvdXJjZSI6InNoaW55SW5wdXQoJ04yJykifSx7Im1ldGhvZE5hbWUiOiJpbnRlcnByZXRRdWlldCIsInNvdXJjZSI6InNoaW55SW5wdXQoJ3N0ZXAyJykifSx7Im1ldGhvZE5hbWUiOiJpbnRlcnByZXRRdWlldCIsInNvdXJjZSI6InNoaW55SW5wdXQoJ040JykifSx7Im1ldGhvZE5hbWUiOiJpbnRlcnByZXRRdWlldCIsInNvdXJjZSI6InNoaW55SW5wdXQoJ3N0ZXA0JykifV19
 </script>
@@ -1342,8 +1377,8 @@ window._ojs.runtime.interpretFromScriptTags();
 <p>© 2026 F. Bobillo, A. López, I. Huitzil, Y. Toca Universidad de Zaragoza</p>
 </div>   
     <div class="nav-footer-center">
-      &nbsp;
-    </div>
+
+<div class="cookie-consent-footer"><a href="#" id="open_preferences_center">Preferencias de cookies</a></div></div>
     <div class="nav-footer-right">
 <p>Material docente protegido.<br>
 Licencia <strong>CC BY-NC-SA 4.0</strong> <img src="https://mirrors.creativecommons.org/presskit/buttons/88x31/png/by-nc-sa.png" class="img-fluid" width="80"><br>

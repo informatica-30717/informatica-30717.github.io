@@ -263,3 +263,44 @@ hr {
   color: #555;
   text-align: center;
 }
+
+/* Cookie consent banner styling - compact & full width at the bottom */
+#cookieconsent,
+.termsfeed-com---nb,
+.termsfeed-com---nb-headline {
+  position: fixed !important;
+  bottom: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  margin: 0 !important;
+  z-index: 999999 !important;
+  box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1) !important;
+}
+
+.cc-nb-main-container {
+  padding: 0.5rem 1.5rem !important;
+  max-width: 100% !important;
+  width: 100% !important;
+  box-sizing: border-box !important;
+  font-size: 0.82rem !important;
+}
+
+.cc-nb-title {
+  font-size: 0.9rem !important;
+  margin-bottom: 0.15rem !important;
+}
+
+.cc-nb-text {
+  font-size: 0.8rem !important;
+  line-height: 1.3 !important;
+  margin-bottom: 0.3rem !important;
+}
+
+.cc-nb-okagree, .cc-nb-changep, .cc-nb-reject {
+  padding: 0.25rem 0.65rem !important;
+  font-size: 0.78rem !important;
+  border-radius: 4px !important;
+  white-space: nowrap !important;
+}

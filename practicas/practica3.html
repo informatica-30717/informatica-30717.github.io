@@ -67,6 +67,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <meta name="quarto:offset" content="../">
 <link href="../practicas/practica4.html" rel="next">
 <link href="../practicas/practica2.html" rel="prev">
+<script src="../site_libs/cookie-consent/cookie-consent.js"></script>
+<link href="../site_libs/cookie-consent/cookie-consent.css" rel="stylesheet">
 <script src="../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
@@ -107,13 +109,32 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 }</script>
 <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-KJSTYN212D"></script>
 
-<script type="text/javascript">
+<script type="text/plain" cookie-consent="tracking">
 
 window.dataLayer = window.dataLayer || [];
 function gtag(){dataLayer.push(arguments);}
 gtag('js', new Date());
 gtag('config', 'G-KJSTYN212D', { 'anonymize_ip': true});
 </script>
+
+<script type="text/javascript" charset="UTF-8">
+document.addEventListener('DOMContentLoaded', function () {
+cookieconsent.run({
+  "notice_banner_type":"headline",
+  "consent_type":"express",
+  "palette":"light",
+  "language":"en",
+  "page_load_consent_levels":["strictly-necessary"],
+  "notice_banner_reject_button_hide":false,
+  "preferences_center_close_button_hide":false,
+  "website_name":"",
+"website_privacy_policy_url":"cookies.html"
+  ,
+"language":"es"
+  });
+});
+</script> 
+  
 <style>
 
       .quarto-title-block .quarto-title-banner h1,
@@ -816,6 +837,20 @@ x_1 = i,\qquad x_2 = -i
 </section>
 
 <div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Reutilización</h2><div class="quarto-appendix-contents"><div><a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.es">CC BY-NC-SA 4.0</a></div></div></section></div></main> <!-- /main -->
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  const updateText = () => {
+    const el = document.querySelector(".cc-nb-text");
+    if (el && !el.dataset.customized) {
+      el.textContent = "Utilizamos únicamente Google Analytics para registrar estadísticas de uso, como las páginas a las que se accede, el tiempo de uso y lugar de origen.";
+      el.dataset.customized = "true";
+    }
+  };
+  updateText();
+  const obs = new MutationObserver(updateText);
+  obs.observe(document.body, { childList: true, subtree: true });
+});
+</script>
 <script type="ojs-module-contents">
 eyJjb250ZW50cyI6W3sibWV0aG9kTmFtZSI6ImludGVycHJldCIsImNlbGxOYW1lIjoib2pzLWNlbGwtMSIsImlubGluZSI6ZmFsc2UsInNvdXJjZSI6InZpZXdvZiBjb2VmaWNpZW50ZXMgPSB7XG4gIGNvbnN0IG1ha2VSYW5nZSA9IChuYW1lLCBtaW4sIG1heCwgdmFsdWUsIHN0ZXAgPSAwLjEpID0+IHtcbiAgICBjb25zdCBjb250cm9sID0gSW5wdXRzLnJhbmdlKFttaW4sIG1heF0sIHsgdmFsdWUsIHN0ZXAgfSk7XG4gICAgY29udHJvbC5jbGFzc0xpc3QuYWRkKFwicDMtcmFuZ2Utd2lkZ2V0LXV6YVwiKTtcbiAgICBjb250cm9sLnN0eWxlLndpZHRoID0gXCIxMDAlXCI7XG4gICAgY29udHJvbC5zdHlsZS5tYXhXaWR0aCA9IFwiMTAwJVwiO1xuICAgIGNvbnRyb2wuc3R5bGUubWluV2lkdGggPSBcIjBcIjtcbiAgICBjb250cm9sLnN0eWxlLmJveFNpemluZyA9IFwiYm9yZGVyLWJveFwiO1xuXG4gICAgY29uc3QgbnVtYmVyQm94ID0gY29udHJvbC5xdWVyeVNlbGVjdG9yKFwiaW5wdXRbdHlwZT1udW1iZXJdXCIpO1xuICAgIGNvbnN0IHNsaWRlciA9IGNvbnRyb2wucXVlcnlTZWxlY3RvcihcImlucHV0W3R5cGU9cmFuZ2VdXCIpO1xuICAgIGlmIChudW1iZXJCb3gpIG51bWJlckJveC5zdHlsZS5kaXNwbGF5ID0gXCJub25lXCI7XG4gICAgaWYgKHNsaWRlcikge1xuICAgICAgc2xpZGVyLmNsYXNzTGlzdC5hZGQoXCJwMy1zbGlkZXItdXphXCIpO1xuICAgICAgc2xpZGVyLnN0eWxlLndpZHRoID0gXCIxMDAlXCI7XG4gICAgICBzbGlkZXIuc3R5bGUubWF4V2lkdGggPSBcIjEwMCVcIjtcbiAgICAgIHNsaWRlci5zdHlsZS5taW5XaWR0aCA9IFwiMFwiO1xuICAgIH1cblxuICAgIGNvbnN0IHZhbHVlTm9kZSA9IGh0bC5odG1sYDxvdXRwdXQgY2xhc3M9XCJwMy1jb250cm9sLXZhbHVlLXV6YVwiPiR7dmFsdWUudG9GaXhlZCgxKX08L291dHB1dD5gO1xuICAgIGNvbnN0IGZpZWxkID0gaHRsLmh0bWxgPGxhYmVsIGNsYXNzPVwicDMtY29udHJvbC11emFcIj5cbiAgICAgIDxzcGFuPiR7bmFtZX08L3NwYW4+XG4gICAgICAke2NvbnRyb2x9XG4gICAgICAke3ZhbHVlTm9kZX1cbiAgICA8L2xhYmVsPmA7XG5cbiAgICByZXR1cm4geyBmaWVsZCwgY29udHJvbCwgdmFsdWVOb2RlIH07XG4gIH07XG5cbiAgY29uc3QgYUNvbnRyb2wgPSBtYWtlUmFuZ2UoXCJhXCIsIC01LCA1LCAxKTtcbiAgY29uc3QgYkNvbnRyb2wgPSBtYWtlUmFuZ2UoXCJiXCIsIC0xMCwgMTAsIC0zKTtcbiAgY29uc3QgY0NvbnRyb2wgPSBtYWtlUmFuZ2UoXCJjXCIsIC0xMCwgMTAsIDIpO1xuXG4gIGNvbnN0IGZvcm0gPSBodGwuaHRtbGA8ZGl2IGNsYXNzPVwicDMtcXVhZHJhdGljLXBhbmVsLXV6YVwiPlxuICAgIDxkaXYgY2xhc3M9XCJwMy1jb250cm9scy11emFcIj5cbiAgICAgICR7YUNvbnRyb2wuZmllbGR9XG4gICAgICAke2JDb250cm9sLmZpZWxkfVxuICAgICAgJHtjQ29udHJvbC5maWVsZH1cbiAgICA8L2Rpdj5cbiAgPC9kaXY+YDtcblxuICBjb25zdCB1cGRhdGUgPSAoKSA9PiB7XG4gICAgY29uc3QgdmFsdWUgPSB7XG4gICAgICBhOiBOdW1iZXIoYUNvbnRyb2wuY29udHJvbC52YWx1ZSksXG4gICAgICBiOiBOdW1iZXIoYkNvbnRyb2wuY29udHJvbC52YWx1ZSksXG4gICAgICBjOiBOdW1iZXIoY0NvbnRyb2wuY29udHJvbC52YWx1ZSlcbiAgICB9O1xuXG4gICAgYUNvbnRyb2wudmFsdWVOb2RlLnZhbHVlID0gdmFsdWUuYS50b0ZpeGVkKDEpO1xuICAgIGJDb250cm9sLnZhbHVlTm9kZS52YWx1ZSA9IHZhbHVlLmIudG9GaXhlZCgxKTtcbiAgICBjQ29udHJvbC52YWx1ZU5vZGUudmFsdWUgPSB2YWx1ZS5jLnRvRml4ZWQoMSk7XG4gICAgZm9ybS52YWx1ZSA9IHZhbHVlO1xuICAgIGZvcm0uZGlzcGF0Y2hFdmVudChuZXcgQ3VzdG9tRXZlbnQoXCJpbnB1dFwiKSk7XG4gIH07XG5cbiAgW2FDb250cm9sLCBiQ29udHJvbCwgY0NvbnRyb2xdLmZvckVhY2goKHsgY29udHJvbCB9KSA9PiB7XG4gICAgY29udHJvbC5hZGRFdmVudExpc3RlbmVyKFwiaW5wdXRcIiwgdXBkYXRlKTtcbiAgfSk7XG5cbiAgdXBkYXRlKCk7XG4gIHJldHVybiBmb3JtO1xufVxuIn0seyJtZXRob2ROYW1lIjoiaW50ZXJwcmV0IiwiY2VsbE5hbWUiOiJvanMtY2VsbC0yIiwiaW5saW5lIjpmYWxzZSwic291cmNlIjoie1xuICBjb25zdCB7IGEsIGIsIGMgfSA9IGNvZWZpY2llbnRlcztcbiAgY29uc3QgY3VydmUgPSBBcnJheS5mcm9tKHsgbGVuZ3RoOiA0MDEgfSwgKF8sIGkpID0+IHtcbiAgICBjb25zdCB4ID0gLTEwICsgaSAqIDAuMDU7XG4gICAgcmV0dXJuIHsgeCwgeTogYSAqIHggKiB4ICsgYiAqIHggKyBjIH07XG4gIH0pO1xuXG4gIGNvbnN0IGRpc2NyaW1pbmFudGUgPSBiICogYiAtIDQgKiBhICogYztcbiAgY29uc3QgcG9pbnRzID0gW107XG5cbiAgaWYgKGEgIT09IDAgJiYgZGlzY3JpbWluYW50ZSA+PSAwKSB7XG4gICAgY29uc3QgcmFpejEgPSAoLWIgKyBNYXRoLnNxcnQoZGlzY3JpbWluYW50ZSkpIC8gKDIgKiBhKTtcbiAgICBjb25zdCByYWl6MiA9ICgtYiAtIE1hdGguc3FydChkaXNjcmltaW5hbnRlKSkgLyAoMiAqIGEpO1xuICAgIHBvaW50cy5wdXNoKHsgeDogcmFpejEsIHk6IDAsIGxhYmVsOiBgeD0ke3JhaXoxLnRvRml4ZWQoMil9YCB9KTtcbiAgICBpZiAoZGlzY3JpbWluYW50ZSA+IDApIHBvaW50cy5wdXNoKHsgeDogcmFpejIsIHk6IDAsIGxhYmVsOiBgeD0ke3JhaXoyLnRvRml4ZWQoMil9YCB9KTtcbiAgfSBlbHNlIGlmIChhID09PSAwICYmIGIgIT09IDApIHtcbiAgICBjb25zdCByYWl6ID0gLWMgLyBiO1xuICAgIHBvaW50cy5wdXNoKHsgeDogcmFpeiwgeTogMCwgbGFiZWw6IGB4PSR7cmFpei50b0ZpeGVkKDIpfWAgfSk7XG4gIH1cblxuICBjb25zdCBwbG90ID0gUGxvdC5wbG90KHtcbiAgICBoZWlnaHQ6IDM2MCxcbiAgICBncmlkOiB0cnVlLFxuICAgIG1hcmdpbkxlZnQ6IDQyLFxuICAgIG1hcmdpblJpZ2h0OiAxOCxcbiAgICB4OiB7IGRvbWFpbjogWy0xMCwgMTBdLCBsYWJlbDogXCJ4XCIgfSxcbiAgICB5OiB7IGRvbWFpbjogWy0xMCwgMTBdLCBsYWJlbDogbnVsbCB9LFxuICAgIG1hcmtzOiBbXG4gICAgICBQbG90LnJ1bGVZKFswXSwgeyBzdHJva2U6IFwiIzk0YTNiOFwiLCBzdHJva2VXaWR0aDogMS40IH0pLFxuICAgICAgUGxvdC5ydWxlWChbMF0sIHsgc3Ryb2tlOiBcIiM5NGEzYjhcIiwgc3Ryb2tlV2lkdGg6IDEuNCB9KSxcbiAgICAgIFBsb3QubGluZShjdXJ2ZSwgeyB4OiBcInhcIiwgeTogXCJ5XCIsIHN0cm9rZTogXCIjMWY1ZjhiXCIsIHN0cm9rZVdpZHRoOiAzIH0pLFxuICAgICAgUGxvdC5kb3QocG9pbnRzLCB7IHg6IFwieFwiLCB5OiBcInlcIiwgZmlsbDogXCIjZDk0ODQxXCIsIHI6IDYsIHN0cm9rZTogXCJ3aGl0ZVwiLCBzdHJva2VXaWR0aDogMiB9KSxcbiAgICAgIFBsb3QudGV4dChwb2ludHMsIHsgeDogXCJ4XCIsIHk6IFwieVwiLCB0ZXh0OiBcImxhYmVsXCIsIGR5OiAtMTUsIGZpbGw6IFwiIzE3MjAzM1wiLCBzdHJva2U6IFwid2hpdGVcIiwgc3Ryb2tlV2lkdGg6IDQsIGZvbnRXZWlnaHQ6IFwiYm9sZFwiLCBmb250U2l6ZTogMTIgfSlcbiAgICBdXG4gIH0pO1xuXG4gIHBsb3QuY2xhc3NMaXN0LmFkZChcInAzLXBsb3QtdXphXCIpO1xuXG4gIGNvbnN0IHN0YXRlID1cbiAgICBkaXNjcmltaW5hbnRlID4gMCA/IFwiRG9zIHNvbHVjaW9uZXMgcmVhbGVzXCIgOlxuICAgIGRpc2NyaW1pbmFudGUgPT09IDAgPyBcIlVuYSBzb2x1Y2nDs24gcmVhbFwiIDpcbiAgICBcIlNpbiBzb2x1Y2lvbmVzIHJlYWxlc1wiO1xuXG4gIHJldHVybiBodGwuaHRtbGA8ZGl2IGNsYXNzPVwicDMtcGxvdC1jYXJkLXV6YVwiPlxuICAgICR7cGxvdH1cbiAgICA8ZGl2IGNsYXNzPVwicDMtZGlzY3JpbWluYW50LXV6YVwiPlxuICAgICAgPHNwYW4+zpQgPSAke2Rpc2NyaW1pbmFudGUudG9GaXhlZCgyKX08L3NwYW4+XG4gICAgICA8c3Ryb25nPiR7c3RhdGV9PC9zdHJvbmc+XG4gICAgPC9kaXY+XG4gIDwvZGl2PmA7XG59XG4ifSx7Im1ldGhvZE5hbWUiOiJpbnRlcnByZXRRdWlldCIsInNvdXJjZSI6InNoaW55SW5wdXQoJ2NvZWZpY2llbnRlcycpIn1dfQ==
 </script>
@@ -1246,8 +1281,8 @@ window._ojs.runtime.interpretFromScriptTags();
 <p>© 2026 F. Bobillo, A. López, I. Huitzil, Y. Toca Universidad de Zaragoza</p>
 </div>   
     <div class="nav-footer-center">
-      &nbsp;
-    </div>
+
+<div class="cookie-consent-footer"><a href="#" id="open_preferences_center">Preferencias de cookies</a></div></div>
     <div class="nav-footer-right">
 <p>Material docente protegido.<br>
 Licencia <strong>CC BY-NC-SA 4.0</strong> <img src="https://mirrors.creativecommons.org/presskit/buttons/88x31/png/by-nc-sa.png" class="img-fluid" width="80"><br>

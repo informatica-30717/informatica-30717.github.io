@@ -32,6 +32,8 @@ ul.task-list li input[type="checkbox"] {
 <meta name="quarto:offset" content="../">
 <link href="../practicas/practica9.html" rel="next">
 <link href="../practicas/practica7.html" rel="prev">
+<script src="../site_libs/cookie-consent/cookie-consent.js"></script>
+<link href="../site_libs/cookie-consent/cookie-consent.css" rel="stylesheet">
 <script src="../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
@@ -72,13 +74,32 @@ ul.task-list li input[type="checkbox"] {
 }</script>
 <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-KJSTYN212D"></script>
 
-<script type="text/javascript">
+<script type="text/plain" cookie-consent="tracking">
 
 window.dataLayer = window.dataLayer || [];
 function gtag(){dataLayer.push(arguments);}
 gtag('js', new Date());
 gtag('config', 'G-KJSTYN212D', { 'anonymize_ip': true});
 </script>
+
+<script type="text/javascript" charset="UTF-8">
+document.addEventListener('DOMContentLoaded', function () {
+cookieconsent.run({
+  "notice_banner_type":"headline",
+  "consent_type":"express",
+  "palette":"light",
+  "language":"en",
+  "page_load_consent_levels":["strictly-necessary"],
+  "notice_banner_reject_button_hide":false,
+  "preferences_center_close_button_hide":false,
+  "website_name":"",
+"website_privacy_policy_url":"cookies.html"
+  ,
+"language":"es"
+  });
+});
+</script> 
+  
 <style>
 
       .quarto-title-block .quarto-title-banner h1,
@@ -834,6 +855,20 @@ Figura&nbsp;16: Pantalla de bienvenida de Protégé.
 </section>
 
 <div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Reutilización</h2><div class="quarto-appendix-contents"><div><a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.es">CC BY-NC-SA 4.0</a></div></div></section></div></main> <!-- /main -->
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  const updateText = () => {
+    const el = document.querySelector(".cc-nb-text");
+    if (el && !el.dataset.customized) {
+      el.textContent = "Utilizamos únicamente Google Analytics para registrar estadísticas de uso, como las páginas a las que se accede, el tiempo de uso y lugar de origen.";
+      el.dataset.customized = "true";
+    }
+  };
+  updateText();
+  const obs = new MutationObserver(updateText);
+  obs.observe(document.body, { childList: true, subtree: true });
+});
+</script>
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     const icon = "";
@@ -1253,8 +1288,8 @@ Figura&nbsp;16: Pantalla de bienvenida de Protégé.
 <p>© 2026 F. Bobillo, A. López, I. Huitzil, Y. Toca Universidad de Zaragoza</p>
 </div>   
     <div class="nav-footer-center">
-      &nbsp;
-    </div>
+
+<div class="cookie-consent-footer"><a href="#" id="open_preferences_center">Preferencias de cookies</a></div></div>
     <div class="nav-footer-right">
 <p>Material docente protegido.<br>
 Licencia <strong>CC BY-NC-SA 4.0</strong> <img src="https://mirrors.creativecommons.org/presskit/buttons/88x31/png/by-nc-sa.png" class="img-fluid" width="80"><br>
