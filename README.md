@@ -5,7 +5,7 @@
 
   <p>
     <strong>Material de prácticas para el Grado en Estudios en Arquitectura</strong><br>
-    Universidad de Zaragoza · Curso 2025-2026
+    Universidad de Zaragoza - Curso 2025-2026
   </p>
 
   <p>
@@ -37,30 +37,9 @@
 
 ## Qué es este repositorio
 
-Este repositorio contiene el material docente de la asignatura de **Informática (Código 30717)**: guiones de prácticas, recursos descargables, visualizaciones interactivas y material de apoyo para trabajar programación y herramientas digitales aplicadas a arquitectura.
+Este repositorio contiene el material docente de la asignatura de **Informática (Código 30717)** de la Universidad de Zaragoza. Incluye guiones de prácticas, recursos descargables, visualizaciones interactivas y material de apoyo para trabajar programación y herramientas digitales aplicadas a arquitectura.
 
-<table>
-  <tr>
-    <td width="50%">
-      <h3>Para estudiantes</h3>
-      <ul>
-        <li>Guiones de prácticas organizados por sesión.</li>
-        <li>Recursos descargables: imágenes, modelos, código y archivos de apoyo.</li>
-        <li>Visualizaciones interactivas integradas en la web.</li>
-      </ul>
-    </td>
-    <td width="50%">
-      <h3>Para mantenimiento</h3>
-      <ul>
-        <li>Sitio generado con <strong>Quarto</strong>.</li>
-        <li>Contenido fuente en <code>.qmd</code>.</li>
-        <li>Estilos globales centralizados en <code>styles.css</code>.</li>
-      </ul>
-    </td>
-  </tr>
-</table>
-
-## Mapa De Prácticas
+## Mapa de prácticas
 
 | Sesión | Tema | Guion |
 |---:|---|---|
@@ -105,7 +84,7 @@ Consulta [`BUILD.md`](BUILD.md) para el flujo completo de Quarto, PDFs y scripts
 
 ## Autores
 
-Alfonso López Ruiz, Fernando Bobillo, Ignacio Huitzil, Y. Toca.
+Alfonso López Ruiz, Fernando Bobillo, Ignacio Huitzil, Yamilka Toca Díaz.
 
 ## Licencia
 

@@ -1,0 +1,14 @@
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  const updateText = () => {
+    const el = document.querySelector(".cc-nb-text");
+    if (el && !el.dataset.customized) {
+      el.textContent = "Utilizamos únicamente Google Analytics para registrar estadísticas de uso, como las páginas a las que se accede, el tiempo de uso y lugar de origen.";
+      el.dataset.customized = "true";
+    }
+  };
+  updateText();
+  const obs = new MutationObserver(updateText);
+  obs.observe(document.body, { childList: true, subtree: true });
+});
+</script>

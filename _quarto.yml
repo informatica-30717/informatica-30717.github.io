@@ -18,6 +18,7 @@ format:
     toc: true
     theme: 
       light: cosmo
+    include-after-body: scripts/cookie-consent-custom.html
 
 website:
   title: "Informática (30717) - Grado en Estudios en Arquitectura"
@@ -46,6 +47,13 @@ website:
     tracking-id: "G-KJSTYN212D"
     anonymize-ip: true
     storage: cookies
+  cookie-consent:
+    type: express
+    style: headline
+    palette: light
+    language: es
+    policy-url: cookies.html
+    prefs-text: "Preferencias de cookies"
 
 license: "CC BY-NC-SA 4.0"
 

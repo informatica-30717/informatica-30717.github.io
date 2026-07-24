@@ -1,0 +1,9 @@
+---
+title: "Política de Cookies"
+---
+
+Este sitio web utiliza únicamente **Google Analytics** para registrar estadísticas de uso.
+
+### Cookies utilizadas
+
+* **Google Analytics:** Se utiliza exclusivamente para recopilar información estadística anónima sobre las páginas consultadas, la duración de las visitas y lugar de origen de los usuarios, con el fin de mejorar la experiencia docente y los contenidos de la asignatura.
